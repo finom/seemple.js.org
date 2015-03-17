@@ -1,5 +1,5 @@
 /**
-Event hsndler. Takes any arguments passed to {@link Matreshka#trigger}
+Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @callback eventHandler
 @param {...*} options - Any arguments
 @example
@@ -47,7 +47,7 @@ There are several types of event names:
 - ``@EVENT_NAME`` (for {@link Matreshka.Object} and {@link Matreshka.Array})
  
 ### Arbitrary events
-Such event may be fired manually by programmer using {@link Matreshka#trigger} method
+Such event may be fired manually by you using {@link Matreshka#trigger} method
 ```js
 this.on( 'x y z', function( message ) {
 	alert( message );
@@ -65,7 +65,8 @@ this.x = 1;
 ### DOM events for bound nodes
 DOM event name and key are separated by colon. Original DOM event is stored as ``domEvent`` property. Besides, event object contains few properties and methods taken from original DOM event: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` and few Matreshka-specific keys (``key``, ``element``, ``elements``, ``self``).
 ```js
-this.bindElement( 'x', '.my-button' );
+this.bindNode( 'x', '.my-button' );
+
 this.on( 'click::x', function( evt ) {
 	alert( 'clicked "x"' );
 	console.log( evt.domEvent ); // MouseEvent
@@ -80,15 +81,15 @@ Use this syntax if you don't want to create another binding for click event or a
 ```
 Compare two examples:
 ```js
-this.bindElement( 'x', '.my-div' );
-this.bindElement( 'y', '.my-button' );
+this.bindNode( 'x', '.my-div' );
+this.bindNode( 'y', '.my-button' );
 this.on( 'click::y', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
 ```
 
 ```js
-this.bindElement( 'x', '.my-div' );
+this.bindNode( 'x', '.my-div' );
 this.on( 'click::x(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
@@ -97,30 +98,28 @@ this.on( 'click::x(.my-button)', function( evt ) {
 First way forces us to bind button node before we add event listener. So we have to invent property name that will not be used anymore.
 
 ### Delegated DOM events for sandbox node
-{@link Matreshka#bindNode As you know}, для того, чтоб объявить песочницу нужно всего-навсего связать специальный ключ ``sandbox`` с соответствующим элементом. Напоминаем, песочница нужна для того, чтоб привязки внутри экземпляра класса были ограничены одним элементом, не влезая на территорию другого экземпляра и не создавая конфликтов селекторов.
-
-Синтаксис делегированных событий описан выше:
+If you want to add DOM event handler for an element from a sandbox, you can look at syntax described above:
 ```js
-this.bindElement( 'sandbox', '.my-div' );
+this.bindNode( 'sandbox', '.my-div' );
 this.on( 'click::sandbox(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
 ```
 
-Но, есть более краткий способ записи такого события, без указания ключа ``sandbox``
+But we have more elegant way how to do it without use of ``sandbox`` key.
 ```js
-this.bindElement( 'sandbox', '.my-div' );
+this.bindNode( 'sandbox', '.my-div' );
 this.on( 'click::(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
 ```
 
-Оригинальное DOM событие находится под ключём ``domEvent`` объекта события.
+Original DOM event is contained in ``domEvent`` property of ``evt``.
 
-### Делегированные события Матрешки
-Для того, чтоб отловить событие внутри свойства, если значением этого свойства является другой экземпляр Матрешки, можно использовать специальный синтаксис ``КЛЮЧ@ИМЯ_СОБЫТИЯ``. Таким образом, программисту не требуется всё время следить за значением свойства
+### Delegated Matreshka events
+In order to catch an event "inside" a property, if a value of this property is another instance of ``Matreshka``, you can use a special syntax ``KEY@EVENT_NAME``. Thus, you don't need to monitor the value of the property to add event handler.
 
-Сравните два подхода. Первый - простой: слушаем изменения свойства, проверяем, является ли значение свойства экземпляром Матрешки, невешиваем обработчик.
+Look at two examples. Fitst is obvious: listen to property change event, check is value instance of ``Matreshka`` then add the event handler
 ```js
 this.on( 'change:x', function() {
 	if( this.x && this.x.isMK ) {
@@ -133,7 +132,7 @@ this.x = new Matreshka;
 this.x.trigger( 'y', '"y" event is fired' );
 ```
 
-Вариант с использованием делегированных событий Матрешки выглядит многократно элегантнее.
+You can make this job more elegant.
 ```js
 this.on( 'x@y', function( message ) {
 	alert( message );
@@ -142,10 +141,11 @@ this.x = new Matreshka;
 this.x.trigger( 'y', '"y" event is fired' );
 ```
 
-### Делегированные события {@link Matreshka.Object} и {@link Matreshka.Array}
-В предыдущем варианте делегированных событий мы заранее знаем ключ свойства. Так как {@link Matreshka.Object} и {@link Matreshka.Array} ведут себя как коллекции (у {@link Matreshka.Object} есть метод {@link Matreshka.Object#each} для перебора всех ключей, отвечающих за данные), мы заранее можем не знать под какими ключами или индексами будут содержаться нужные нам экземпляры. Для того, чтоб навесить обработчик неизвестное свойство, в эти классы был добавлен дополнительный синтаксический сахар: ``@ИМЯ_СОБЫТИЯ``.
+### Delegated Matreshka events for {@link Matreshka.Object} and {@link Matreshka.Array}
 
-Пример с {@link Matreshka.Object}.
+Example above requires us to know a key of a property. Since {@link Matreshka.Object} and {@link Matreshka.Array} instances are collections we don't know which keys we need to listen. You can add an event handler on unknown properties using syntax sugar "@EVENT_NAME"
+
+{@link Matreshka.Object} example
 ```js
 this.on( '@y', function( message ) {
 	alert( message );
@@ -154,7 +154,7 @@ this.jset('x', new Matreshka );
 this.x.trigger( 'y', '"y" event is fired' );
 ```
 
-Пример с {@link Matreshka.Array}.
+{@link Matreshka.Array} example
 ```js
 this.on( '@y', function( message ) {
 	alert( message );
@@ -163,8 +163,7 @@ this.push( new Matreshka );
 this[0].trigger( 'y', '"y" event is fired' );
 ```
 
-### Всевозможные комбинации
-Все приведенные выше варианты синтаксиса можно комбинировать произвольным способом.
+### Any combinations
 ```js
 this.on( '@click::x z@y', function() { ... } );
 ```
@@ -179,12 +178,12 @@ this.on( 'x@y@z', function() { ... } );
 
 
 /**
-``binder`` (байндер, привязчик) содержит всю информацию о том, как синхронизировать значение свойства с привязанным к нему DOM элементом. Для всех методов байндера контекст (``this``) - соответствующий DOM узел.
+``binder` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as context (``this``)
 @typedef {object} binder
-@property {string|function} [on] - DOM событие (или список событий, разделенных пробелами), после срабатывания которого извлекается состояние DOM элемента и устанавливается свойство. Кроме этого, значением свойства может быть функция, которая устанавливает обработчик произвольным образом.
-@property {function} [getValue] - Функция, которая отвечает за то, как извлечь значение (или "состояние") DOM элемента
-@property {function} [setValue] - Функция, которая отвечает за то, как установить значение свойства DOM элементу
-@property {function} [initialize] - Функция, которая запускается при инициализации привязки. Например, может быть использована для инициализации jQuery плагина.
+@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when node state is changed. Besides, it accepts function as value if you need to catch change arbitrarily
+@property {function} [getValue] - A function which tells how to retrieve value (state) from HTML node when DOM event is fired
+@property {function} [setValue] - A function which tells how to change DOM node when property value is changed
+@property {function} [initialize] - A function which calls before binding is launched. For example it can initialize some jQuery plugin
 @example
 var binder = {
 	on: 'click',
@@ -199,7 +198,7 @@ var binder = {
 	}
 };
 
-this.bindElement( 'a', '.my-checkbox', binder );
+this.bindNode( 'a', '.my-checkbox', binder );
 @example
 var binder = {
 	on: function( callback ) {
@@ -216,14 +215,14 @@ var binder = {
 	}
 };
 
-this.bindElement( 'a', '.my-checkbox', binder );
+this.bindNode( 'a', '.my-checkbox', binder );
 */
 
 
 /**
-Объект события
+Event object
 @typedef {object} eventOptions
-@desc Это обычный объект, которй может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
+@desc An object which can contain service flags or custom data which will be passed to an event handler
 @example
 var eventOptions = { silent: true };
 
@@ -248,10 +247,10 @@ this.set( 'a', 2, eventOptions ); // alerts "yeah"
 
 
 /**
-Class (more precisely, class constructor) returned by {@link Class} function
+A class (more precisely constructor of a class) returned by {@link Class} function
 @typedef {function} class
 @example
-var MyXClass = Class({
+var MyClass = Class({
 	method: function() { ... }
 });
 */

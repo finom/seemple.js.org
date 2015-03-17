@@ -1,8 +1,8 @@
 /**
 @namespace Matreshka.binders
-@desc the namespace for binders. This object can be extended by means of its own properties so as not to make a mess of the global namespace.
+@desc The namespace for binders. This object can be extended by you so as not to make a mess of the global namespace.
 
-Take a little agreement into consideration: every property from the ``Matreshka.binders`` collection must be completed as a function returning the binder.
+Take a little agreement into consideration: every property from the ``Matreshka.binders`` collection must be made as a function which returns a binder.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.defaultBinders}
 @example
@@ -21,7 +21,7 @@ this.bindNode( 'myKey', '.my-element', MK.binders.myCoolBinder( 'Hello', 'World'
 /**
 @function Matreshka.binders.innerHTML
 @since 0.1
-@summary Returns the one-way binder which changes ``innerHTML`` DOM of the element depending  on the property value of the class instance.
+@summary Returns the one-way data binder which changes ``innerHTML`` of bound DOM node depending on instance property value
 @returns {binder}
 @example
 this.bindElement( 'myKey', '.my-element', MK.binders.innerHTML() );
@@ -37,7 +37,7 @@ this.bindElement( 'myKey', '.my-element', {
 /**
 @function Matreshka.binders.visibility
 @since 0.1
-@summary Returns the one-way binder which changes the visibility of the DOM element (using ``style.display``) depending on the property value of the class instance.
+@summary Returns the one-way data binder which controls the visibility of DOM node (using ``style.display``) depending on the instance property value
 @param {boolean} [value=true] - If the argument equals ``true``, the element is hidden when the property value is false; if it equals ``false``, it is hidden when the property value is true.
 @returns {binder}
 @example
@@ -63,41 +63,41 @@ this.bindElement( 'myKey', '.my-element', {
 /**
 @function Matreshka.binders.className
 @since 0.1
-@summary Returns the one-way binder which switches over the DOM class name of the element depending  on the property value of the class instance. If the property value equals ``true non-strictly``, the class name is added, otherwise - it's removed. The logic can be changed by adding a bang character in front of the class name and in this way, the class name will be added  when the property value equals ``false non-strictly`` and vice versa.
+@summary Returns the one-way data binder which switches over DOM node class name depending on instance property value. If property value equals ``true`` non-strictly, the class name is added, otherwise - it's removed. The logic can be changed by adding a bang character in front of the class name and in this way, the class name will be added  when the property value equals ``false`` non-strictly and vice versa.
 @param {string} className
 @returns {binder}
 @example
-this.bindElement( 'myKey', '.my-element', MK.binders.className( 'blah' ) );
+this.bindElement( 'myKey', '.my-element', MK.binders.className( 'foo' ) );
 
 // the same as
 this.bindElement( 'myKey', '.my-element', {
 	setValue: function( v ) {
-		$( this ).toggleClass( 'blah', v );
+		$( this ).toggleClass( 'foo', v );
 	}
 });
 
-this.myKey = true; // adds the 'blah'class
+this.myKey = true; // adds the 'foo' class
 
-this.myKey = false; // removes the 'blah' class 
+this.myKey = false; // removes the 'foo' class 
 @example <caption>The use of the bang character in front of the class name</caption>
-this.bindElement( 'myKey', '.my-element', MK.binders.className( '!blah' ) );
+this.bindElement( 'myKey', '.my-element', MK.binders.className( '!foo' ) );
 
 // the same as
 this.bindElement( 'myKey', '.my-element', {
 	setValue: function( v ) {
-		$( this ).toggleClass( 'blah', !v );
+		$( this ).toggleClass( 'foo', !v );
 	}
 });
 
-this.myKey = true; // adds the 'blah' class 
+this.myKey = true; // adds the 'foo' class 
 
-this.myKey = false; // removes the 'blah'class 
+this.myKey = false; // removes the 'foo' class 
 */
 
 /**
 @function Matreshka.binders.property
 @since 0.3
-@summary Returns the one-way binder which changes the property of the DOM element to the property value of the class instance.
+@summary Returns the one-way data binder which changes given property of DOM node depending on instance property value.
 @param {string} property
 @returns {binder}
 @example
@@ -110,17 +110,17 @@ this.bindElement( 'disabled', '.my-button', {
 	}
 });
 
-// sets the disabled = true property for the element
+// sets the disabled = true property for the node
 this.disabled = true;
 
-// sets the disabled = false property for the element
+// sets the disabled = false property for the node
 this.disabled = false; 
 */
 
 /**
 @function Matreshka.binders.attribute
 @since 0.3
-@summary Returns the one-way binder which changes the attribute of the DOM element to the property value of the class instance.
+@summary Returns the one-way data binder which changes an attribute of DOM node depending on instance property value
 @param {string} attribute
 @returns {binder}
 @example
@@ -139,8 +139,8 @@ this.image = 'http://example.com/cats.jpg';
 /**
 @function Matreshka.binders.input
 @since 0.3
-@summary Returns the one-way binder which binds the property of the class instance to the ``input`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
-@param {string} [type] - The input type
+@summary Returns the two-way data binder which binds instance property to the ``input`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
+@param {string} [type] - Input type
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-input', MK.binders.input( 'range' ) );
@@ -149,7 +149,7 @@ this.bindNode( 'myKey', '.my-input', MK.binders.input( 'range' ) );
 /**
 @function Matreshka.binders.textarea
 @since 0.3
-@summary Returns the two-way binder which binds the property of the instance to the ``textarea`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
+@summary Returns the two-way data binder which binds instance property to the ``textarea`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-textarea', MK.binders.textarea() );
@@ -158,7 +158,7 @@ this.bindNode( 'myKey', '.my-textarea', MK.binders.textarea() );
 /**
 @function Matreshka.binders.select
 @since 0.3
-@summary Returns the two-way binder which binds the property of the instance to the ``select`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
+@summary Returns the two-way data binder which binds instance property to the ``select`` element. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @param {boolean} [multiple=false] - If select is ``multiple``
 @returns {binder}
 @example

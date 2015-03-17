@@ -1,14 +1,11 @@
 ## [Introduction](#introduction)
-Matreshka is a framework for massive and endlessly extending applications (within the Universe, of course), written in JavaScript. It allows you to build the program architecture so that neither your team nor you can get confused in plentiful entities, debugging logic described in the HTML file, numerous restrictions of other frameworks and incomprehensible abstractions.
+Matreshka is a framework for massive and endlessly extending single page applications (within the Universe, of course), written in JavaScript. It allows you to build the program architecture so that neither your team nor you can get confused in plentiful entities, logic described in HTML files, numerous restrictions of other frameworks and incomprehensible abstractions.
 
 Two-way data binding are implemented by [bindNode](#Matrashka-bindNode) method only and it does not require to change HTML, adding weird {% raw %}{{syntactic.constructions}}{% endraw %}. Having set a few rules, a programmer can continue to work with data and forget about the state of the visible part of the application.
 
 > The order is not important, you can declare binders after the complete implementation of logic which is responsible for the data.
 
 In Matreshka the collections are represented by [Matreshka.Array](#Matreshka.Array) class, whose instances themselves render HTML while adding, deleting and changing inner elements. You can say that the framework X renders elements of array too, but in Matreshka this issue is resolved very simply and elegantly.
-
-
-Коллекции в Матрешке представлены классом [Matreshka.Array](#Matreshka.Array), экземпляры которого сами рендерят HTML при добавлении, удалении или изменении элементов. Вы можете сказать, что фреймворк X тоже отрисовывает элементы массива при изменении данных, но в Матрешке эта задача решается невероятно просто и элегантно.
 
 Additionally, Matreshka is a framework which is very easy for understanding. Any developer, from a beginner who can write simple things in JavaScript to an experienced ninja, will handle it without any problems.
 
@@ -31,7 +28,7 @@ This defect has been resolved in this documentation. To start working with the f
 
 > **Any other devices**: just bookmark the page
 
-> Now the documentation to Matreshka can be read without the Internet connection. If the page lags (noticed in Android 4.2), switch over to the mode "By one".
+> Now the documentation to Matreshka can be read without the Internet connection. If the page lags (noticed in Android 4.2), switch over to the mode "One By One".
 
 =======
 ## [Hello World!](#hello-world)
@@ -66,14 +63,15 @@ var Application = Class({
 		// bind the property x and the text field
 		this.bindNode( 'x', '.my-input' );
 		
-		// bind the property x and the block with the class "my-output"
+		// bind the property x and the ".my-output" block 
 		this.bindNode( 'x', '.my-output', {
 			setValue: function( v ) {
 				this.innerHTML = v;
 			}
 		});
 		
-		// if the property "х" has changed, inform about it in the console
+		// if the property "х" has changed,
+		// inform about it in the console
 		this.on( 'change:x', function() {
 			console.log( 'x changed to ' + this.x );
 		});
@@ -123,17 +121,17 @@ The most effective way to understand if it is worth studying the library or  the
 
 ![TodoMVC](img/todomvc.png)
 
-Look at the [working implementation of TodoMVC](todo/) on the base of Matreshka and then [take a glance over the source code with annotations](todo/js/docs/app.html). Looks very easy, doesn't it?
+Look at the [working implementation of TodoMVC](todo/) based on Matreshka and then [take a glance over the source code with annotations](todo/js/docs/app.html). Looks very easy, doesn't it?
 
 =======
-## [How to plug it in?](#how-to-include)
+## [How to include?](#how-to-include)
 Matreshka is an independent framework that requires no dependencies. But the possibility of using capabilities from the ECMAScript5 standard in the Internet Explorer 8 is absent. That's why if you support the IE8 in the apps which you develop, you should add another JavaScript file: [es5-shim](https://github.com/es-shims/es5-shim) or any other polyfill that implements the possibilities of the ECMAScript5.
 
 Adding jQuery is optional for all browsers (though, it's recommended for IE8). Instead of this one, you can use another jQuery-like library, for example  [Zepto](http://zeptojs.com/). If you don't want to use any libraries at all, giving preference to [Vanilla.js](http://vanilla-js.com/), Matreshka will make use of the built-in micro-library which is called [Balalaika]($b).
 
 
 ```html
-<!-- Required for для IE8 -->
+<!-- Required for IE8 -->
 <script src="js/es5-shim.min.js"></script> 
 <script src="js/matreshka.min.js"></script>
 ```

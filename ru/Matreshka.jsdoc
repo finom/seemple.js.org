@@ -2,7 +2,7 @@
 @class Matreshka
 @lang ru
 @version 0.3
-@author Акндрей Губанов <a@odessite.com.ua>
+@author Андрей Губанов <a@odessite.com.ua>
 @license {@link https://raw.github.com/finom/matreshka/master/LICENSE MIT}
 Version 2.0, January 2004
 @alias MK
@@ -59,13 +59,15 @@ alert(object.isMK);
 @returns {matreshka} self
 @example
 this.on( 'foo', function() {
-	alert( 'customEvent is fired' );
+	alert( 'Custom Event is fired' );
 });
+
 this.trigger( 'foo' );
 @example <caption>Передача контекста</caption>
 this.on( 'foo', function() {
 	alert( this.a ); // 5
 }, { a: 5 } );
+
 this.trigger( 'foo', 'Hello world' );
 @example <caption>Вызов обработчика сразу после инициализации</caption>
 //Выводит на экран "bar" сиюсекундно и ждет генерации события "foo"
@@ -400,7 +402,7 @@ console.log( this.$( '.inner-node' ) );
 
 
 @param {string|matreshka} key - Ключ (имя свойства)
-@param {string|node|$nodes} node - HTML элемент, который должен быть со свойством экземпляра
+@param {string|node|$nodes} node - HTML элемент, который должен быть связан со свойством экземпляра
 @param {binder} [binder] - Байндер (привязчик), содержащий следующие свойства: ``on`` - какое событие должно произойти на HTML элементе, говорящее о том, что пользователь что-то изменил (например, ``keyup`` или ``click``), ``getValue`` - как извлечь значение из HTML элемента, ``setValue`` - как установить новое значение элементу и ``initialize`` - функция, выполняющаяся однажды, при инициализации привязки. Более подробно о привязчиках можно найти в документации к ним: см. {@link #typedef-binder}. 
 @param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (не генерировать события ``"bind"`` и ``"bind:KEY"``), ``"assignDefaultValue"`` или другие данные
 @returns {matreshka} self

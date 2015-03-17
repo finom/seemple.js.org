@@ -65,7 +65,7 @@ this.x = 1;
 ### DOM события для привязанных элементов
 DOM событие и ключ разделяются двойным двоеточием. Объект оригинального DOM события находится под ключём ``domEvent`` объекта события. Кроме этого, в объекте доступно несколько свойств и методов, для того чтобы не обращаться каждый раз к ``domEvent``: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` и несколько других свойств (``key``, ``element``, ``elements``, ``self``).
 ```js
-this.bindElement( 'x', '.my-button' );
+this.bindNode( 'x', '.my-button' );
 this.on( 'click::x', function( evt ) {
 	alert( 'clicked "x"' );
 	console.log( evt.domEvent ); // MouseEvent
@@ -81,15 +81,15 @@ this.on( 'click::x', function( evt ) {
 ```
 Сравните два варианта:
 ```js
-this.bindElement( 'x', '.my-div' );
-this.bindElement( 'y', '.my-button' );
+this.bindNode( 'x', '.my-div' );
+this.bindNode( 'y', '.my-button' );
 this.on( 'click::y', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
 ```
 
 ```js
-this.bindElement( 'x', '.my-div' );
+this.bindNode( 'x', '.my-div' );
 this.on( 'click::x(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
@@ -102,7 +102,7 @@ this.on( 'click::x(.my-button)', function( evt ) {
 
 Синтаксис делегированных событий описан выше:
 ```js
-this.bindElement( 'sandbox', '.my-div' );
+this.bindNode( 'sandbox', '.my-div' );
 this.on( 'click::sandbox(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
@@ -110,7 +110,7 @@ this.on( 'click::sandbox(.my-button)', function( evt ) {
 
 Но, есть более краткий способ записи такого события, без указания ключа ``sandbox``
 ```js
-this.bindElement( 'sandbox', '.my-div' );
+this.bindNode( 'sandbox', '.my-div' );
 this.on( 'click::(.my-button)', function( evt ) {
 	alert( 'clicked ".my-button"' );
 });
@@ -200,7 +200,7 @@ var binder = {
 	}
 };
 
-this.bindElement( 'a', '.my-checkbox', binder );
+this.bindNode( 'a', '.my-checkbox', binder );
 @example
 var binder = {
 	on: function( callback ) {
@@ -217,7 +217,7 @@ var binder = {
 	}
 };
 
-this.bindElement( 'a', '.my-checkbox', binder );
+this.bindNode( 'a', '.my-checkbox', binder );
 */
 
 
@@ -252,7 +252,7 @@ this.set( 'a', 2, eventOptions ); // alerts "yeah"
 Класс (точнее, конструктор класса) возвращаемый функцией {@link Class}
 @typedef {function} class
 @example
-var MyXClass = Class({
+var MyClass = Class({
 	method: function() { ... }
 });
 */
