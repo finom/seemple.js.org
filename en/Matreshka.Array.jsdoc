@@ -9,7 +9,9 @@ this.push( 1, 2, 3 );
 this.pop();
 ```
 
-#### The ``method_ `` syntax is used for this, where underscore at the end of the method name means that the last argument is the event object. Such methods are not given in this documentation because it is necessary to remember their syntax only. See {@link Matreshka.Array#METHOD_}.
+#### All the methods adopted from the built-in ``Array`` which modify an array can be called with the event object passing.
+
+The ``method_ `` syntax is used for this, where underscore at the end of the method name means that the last argument is the event object. Such methods are not given in this documentation because it is necessary to remember their syntax only. See {@link Matreshka.Array#METHOD_}.
 ```js
 this.push_( 1, 2, 3, {
 	silent: true
