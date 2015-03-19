@@ -95,7 +95,8 @@ class Application extends Matreshka {
 				this.innerHTML = v;
 			}
 		});
-		this.on( 'change:x', () => console.log( 'x изменен на ' + this.x ) );
+		this.on( 'change:x', () =>
+			console.log( 'x изменен на ' + this.x ) );
 	}
 }
 ```
