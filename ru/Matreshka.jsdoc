@@ -43,6 +43,24 @@ class MyClass extends Matreshka {
 alert(object.isMK);
 */
 
+/**
+@member {$nodes} Matreshka#$sandbox
+@since 0.4
+@summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)
+@example
+this.bindNode( 'sandbox', '.app' );
+this.$sandbox; // то же самое, что и $( '.app' )
+*/
+
+/**
+@member {node} Matreshka#sandbox
+@since 0.4
+@summary Свойство содержит HTML песочницу
+@example
+this.bindNode( 'sandbox', '.app' );
+this.sandbox; // то же самое, что и $( '.app' )[0]
+*/
+
 
 /** 
 @method Matreshka#on
@@ -630,7 +648,7 @@ this.unbindNode( temporaryBindings );
 @example
 this.bindNode( 'myKey', '.my-element' );
 this.boundAll( 'myKey' ); // вернет $( '.my-element' )
-@example <caption>Возврат песочницы</caption>
+@example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#$sandbox})</caption>
 this.bindNode( 'sandbox', '.app' );
 this.boundAll(); // вернет $( '.app' )
 */
@@ -652,7 +670,7 @@ this.$bound( 'myKey' );
 @example
 this.bindNode( 'myKey', '.my-element' );
 this.bound( 'mykey' ); // вернет $( '.my-element' )[0]
-@example <caption>Возврат "песочницы"</caption>
+@example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#sandbox})</caption>
 this.bindNode( 'sandbox', '.app' );
 this.bound(); // вернет $( '.app' )[0]
 */

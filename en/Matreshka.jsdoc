@@ -43,6 +43,23 @@ class MyClass extends Matreshka {
 alert(object.isMK);
 */
 
+/**
+@member {$nodes} Matreshka#$sandbox
+@since 0.4
+@summary The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)
+@example
+this.bindNode( 'sandbox', '.app' );
+this.$sandbox; // // the same as $( '.app' )
+*/
+
+/**
+@member {node} Matreshka#sandbox
+@since 0.4
+@summary The property contains HTML sandbox
+@example
+this.bindNode( 'sandbox', '.app' );
+this.sandbox; // // the same as $( '.app' )[0]
+*/
 
 /** 
 @method Matreshka#on
@@ -630,7 +647,7 @@ this.unbindNode( temporaryBindings );
 @example
 this.bindNode( 'myKey', '.my-element' );
 this.boundAll( 'myKey' ); // will return $( '.my-element' )
-@example <caption>Getting sandbox node</caption>
+@example <caption>Getting sandbox node (you can use {@link Matreshka#$sandbox} property instead)</caption>
 this.bindNode( 'sandbox', '.app' );
 this.boundAll(); // will return $( '.app' )
 */
@@ -652,7 +669,7 @@ this.$bound( 'myKey' );
 @example
 this.bindNode( 'myKey', '.my-element' );
 this.bound( 'mykey' ); // will return $( '.my-element' )[0]
-@example <caption>Getting sandbox node</caption>
+@example <caption>Getting sandbox node (you can use {@link Matreshka#sandbox} property instead)</caption>
 this.bindNode( 'sandbox', '.app' );
 this.bound(); // will return $( '.app' )[0]
 */
