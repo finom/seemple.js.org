@@ -47,6 +47,7 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$sandbox
 @since 0.4
 @summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)
+@see {@link Matreshka#bindNode}
 @example
 this.bindNode( 'sandbox', '.app' );
 this.$sandbox; // то же самое, что и $( '.app' )
@@ -56,6 +57,7 @@ this.$sandbox; // то же самое, что и $( '.app' )
 @member {node} Matreshka#sandbox
 @since 0.4
 @summary Свойство содержит HTML песочницу
+@see {@link Matreshka#bindNode}
 @example
 this.bindNode( 'sandbox', '.app' );
 this.sandbox; // то же самое, что и $( '.app' )[0]

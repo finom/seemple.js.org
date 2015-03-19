@@ -47,18 +47,20 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$sandbox
 @since 0.4
 @summary The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)
+@see {@link Matreshka#bindNode}
 @example
 this.bindNode( 'sandbox', '.app' );
-this.$sandbox; // // the same as $( '.app' )
+this.$sandbox; // the same as $( '.app' )
 */
 
 /**
 @member {node} Matreshka#sandbox
 @since 0.4
 @summary The property contains HTML sandbox
+@see {@link Matreshka#bindNode}
 @example
 this.bindNode( 'sandbox', '.app' );
-this.sandbox; // // the same as $( '.app' )[0]
+this.sandbox; // the same as $( '.app' )[0]
 */
 
 /** 

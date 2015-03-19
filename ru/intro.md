@@ -88,16 +88,14 @@ app.x = 'Привет Мир!';
 > Матрешка использует объектно-ориентированный подход основанный на классах, которые зарекомендовали себя самой с лучшей стороны в большинстве языков программирования: Python, C#, Java и многих других. Такое решение позволяет легко перейти на новые возможности синтаксиса JavaScript, описанные в стандарте ECMAScript 2015 и поддерживаемые Матрешкой. Проекты типа [Babel](http://babeljs.io/) уже сегодня позволяют использовать крутой синтаксис JS нового поколения.
 ```js
 class Application extends Matreshka {
-	constructor: function() {
+	constructor() {
 		this.bindNode( 'x', '.my-input' );
 		this.bindNode( 'x', '.my-output', {
-			setValue: function( v ) {
+			setValue( v ) {
 				this.innerHTML = v;
 			}
 		});
-		this.on( 'change:x', function() {
-			console.log( 'x изменен на ' + this.x );
-		});
+		this.on( 'change:x', () => console.log( 'x изменен на ' + this.x ) );
 	}
 }
 ```

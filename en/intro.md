@@ -93,16 +93,14 @@ Cool, isn't it? Now you can work with the properties directly without any weird 
 > Matreshka uses the object-oriented approach based on the classes which are acknowledged to be the best in most programming languages such as Python, C#, Java and many others. This solution allows to easily change over to new possibilities of JavaScript syntax described in the ECMAScript 2015 specs which supported by Matreshka out of the box. [Babel](http://babeljs.io/) let us make use of the cool new generation JS syntax today.
 ```js
 class Application extends Matreshka {
-	constructor: function() {
+	constructor() {
 		this.bindNode( 'x', '.my-input' );
 		this.bindNode( 'x', '.my-output', {
-			setValue: function( v ) {
+			setValue( v ) {
 				this.innerHTML = v;
 			}
 		});
-		this.on( 'change:x', function() {
-			console.log( 'x changed to ' + this.x );
-		});
+		this.on( 'change:x', () => console.log( 'x changed to ' + this.x ) );
 	}
 }
 ```
