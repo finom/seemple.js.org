@@ -498,7 +498,16 @@ var MyArray = Class({
 });
 ```
 
+#### Moving object across few collections
+By default, when you add an object to an array the Matreshka will try to render it using ``itemRenderer`` (if it's not rendered yet). It gives a great advantage in cases when you have two or more lists which include the same object. The lists react instantly on any change in the object.
 
+But sometimes you just need to move an object across few collections without re-rendering it again. If you need to move object to another collection including its sandbox use the ``moveSandbox`` flag.
+
+```js
+this.push_( item, {
+	moveSandbox: true
+})
+```
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.Array#Model}
 */
@@ -553,6 +562,12 @@ myArray.push({
 //  will return [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
 
+@example <caption>``Model`` and the ECMAScript 2015</caption>
+class MyArray extends MK.Array {
+	get Model() {
+		return MyModel;
+	}
+}
 */
 
 

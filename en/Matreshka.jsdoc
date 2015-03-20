@@ -1072,6 +1072,13 @@ this.delay( function() {
 this.x = 1;
 */
 
+/**
+@method Matreshka#getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
+@since 0.4
+@summary Computes the answer to the Ultimate Question of Life, the Universe, and Everything and displays the answer in 7.5 million years.
+@example
+this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
+*/
 
 /**
 @method Matreshka.extend

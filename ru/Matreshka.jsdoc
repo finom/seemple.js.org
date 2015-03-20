@@ -1070,6 +1070,14 @@ this.delay( function() {
 this.x = 1;
 */
 
+/**
+@method Matreshka#getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
+@since 0.4
+@summary Выдаёт ответ на главный вопрос жизни, Вселенной и всего такого через 7.5 миллионов лет
+@example
+this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
+*/
+
 
 /**
 @method Matreshka.extend
