@@ -104,7 +104,7 @@ mkObject.x.trigger( 'something' );
 
 /**
 @method Matreshka.Object#hasOwnProperty
-@summary Проверяет есть ли в экземпляре свойство, отвечающее за данные, с заданным ключем 
+@summary Проверяет есть ли в экземпляре свойство, отвечающее за данные, с заданным ключом 
 @param {string} key
 @returns {matreshkaObject} self
 @example
@@ -197,7 +197,7 @@ mkObject.keyOf( 3 ); // null
 
 1\. Устанавливает заданное значение заданному свойству.
 
-2\. Добавляет ключ свойства в список данных, что далет свойство доступным для использования в методах {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toObject} и {@link Matreshka.Object#toJSON}).
+2\. Добавляет ключ свойства в список данных, что делает свойство доступным для использования в методах {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toObject} и {@link Matreshka.Object#toJSON}).
 
 В остальном, метод работает так же, как и {@link Matreshka#set}.
 
