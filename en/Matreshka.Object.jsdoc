@@ -13,7 +13,7 @@ this.b = 2;
 this.c = 3;
 ```
 
-If you don't know which properties are specified in advance, you can always use the {@link Matreshka.Object#jset} method, which declares not only the properties responsible for a data but sets their values at once.
+If you don't know which properties are specified in advance, you can always use the {@link Matreshka.Object#jset} method, which declares not only the properties responsible for data but sets their values at once.
 ```js
 this.jset({
 	a: 1,
@@ -88,7 +88,7 @@ var keys = this.keys();
 /**
 @method Matreshka.Object#on
 @since 0.2
-@summary Works the same as {@link Matreshka#on}, but additionally it allows to dynamically hang handlers on the properties which are responsible for the data without direct specifying property name.
+@summary Works the same as {@link Matreshka#on}, but additionally it allows dynamically add handlers to properties  which are responsible for the data without direct specifying property name.
 @example
 var mkObject = new MK.Object();
 

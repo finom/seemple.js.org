@@ -1,11 +1,11 @@
 ## [Introduction](#introduction)
 Matreshka is a framework for massive and endlessly extending single page applications (within the Universe, of course), written in JavaScript. It allows you to build the program architecture so that neither your team nor you can get confused in plentiful entities, logic described in HTML files, numerous restrictions of other frameworks and incomprehensible abstractions.
 
-Two-way data binding are implemented by [bindNode](#Matrashka-bindNode) method only and it does not require to change HTML, adding weird {% raw %}{{syntactic.constructions}}{% endraw %}. Having set a few rules, a programmer can continue to work with data and forget about the state of the visible part of the application.
+Two-way data binding is implemented by [bindNode](#Matrashka-bindNode) method only and it does not require to change HTML, adding weird {% raw %}{{syntactic.constructions}}{% endraw %}. Having set a few rules, a programmer can continue to work with data and forget about the state of the visible part of the application.
 
 > The order is not important, you can declare binders after the complete implementation of logic which is responsible for the data.
 
-In Matreshka the collections are represented by [Matreshka.Array](#Matreshka.Array) class, whose instances themselves render HTML while adding, deleting and changing inner elements. You can say that the framework X renders elements of array too, but in Matreshka this issue is resolved very simply and elegantly.
+In Matreshka the collections are represented by [Matreshka.Array](#Matreshka.Array) class, whose instances themselves render HTML while adding, deleting and changing its items. You can say that the framework X renders items of an array too, but in Matreshka this issue is resolved very simply and elegantly.
 
 Additionally, Matreshka is a framework which is very easy for understanding. Any developer, from a beginner who can write simple things in JavaScript to an experienced ninja, will handle it without any problems.
 
@@ -90,7 +90,7 @@ app.x = 'Hello World!';
 ```
 Cool, isn't it? Now you can work with the properties directly without any weird encapsulations.
 
-> Matreshka uses the object-oriented approach based on the classes which are acknowledged to be the best in most programming languages such as Python, C#, Java and many others. This solution allows to easily change over to new possibilities of JavaScript syntax described in the ECMAScript 2015 specs which supported by Matreshka out of the box. [Babel](http://babeljs.io/) let us make use of the cool new generation JS syntax today.
+> Matreshka uses the object-oriented approach based on the classes which are acknowledged to be the best in most programming languages such as Python, C#, Java and many others. This solution allows to easily change over to new possibilities of JavaScript syntax described in the ECMAScript 2015 specs and supported by Matreshka out of the box. [Babel](http://babeljs.io/) lets us make use of the cool new generation JS syntax today.
 ```js
 class Application extends Matreshka {
 	constructor() {

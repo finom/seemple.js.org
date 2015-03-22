@@ -1,6 +1,7 @@
 ## [Что нового?](#whats-new)
-### Матрешка 1.0 (скоро)
-* Убраны предупреждения об использовании устаревших методов и событий, очищен код.
+### [Матрешка 1.0](https://github.com/finom/matreshka/releases/tag/v1.0.0)
+* Убраны предупреждения об использовании устаревших методов и событий, очищен код
+* Несколько небольших исправлений
 
 ### [Матрешка 0.4.1](https://github.com/finom/matreshka/releases/tag/v0.4.1)
 * Устранена проблема со сборкой
@@ -43,18 +44,18 @@
 * Вызывать событие ``change``, если при привязке Матрешка меняет значение свойства на состояние элемента (если свойство не определено и не передан флаг ``assignDefaultValue: false``)
 * Новые селекторы: ``:sandbox`` и ``:bound(KEY)``
 * Поддержка свойства ``attributes`` для функции ``Balalaika.create``
-* Экспериментальный шаблонизатор для {@link Matreshka.Array#itemRenderer} если {@link Matreshka.Array#itemRenderer} установлен, как ``true``
+* Экспериментальный шаблонизатор для {@link Matreshka.Array#itemRenderer} если {@link Matreshka.Array#useBindingsParser} установлен, как ``true``
 * Перенесены все привязчики в объект {@link Matreshka.binders}
 * {@link Matreshka.Array#pull} теперь поддерживает объект в качестве аргумента
 * Короткая запись для делегированных событий DOM внутри песочницы (click::(.selector) вместо click::sandbox(.selector))
-* Поддержка цикла ``for..of`` для {@link Matreshka.ArrayЪ и {@link Matreshka.ObjectЪ
+* Поддержка цикла ``for..of`` для {@link Matreshka.Array} и {@link Matreshka.Object}
 * Свойство ``domEvent`` содержащее объект события для событий DOM
 * Делегированные DOM события (``this.on( 'click::something(.x > .y)' )``)
 
 **Устаревшие методы и события**
 * Все методы, имя которых начинается с ``silent`` (``silentPush``, ``silentSplice``, ``silentSort`` ...) удалены. Для этих целей теперь используются методы с нижним подчеркиванием в конце имени и флагом ``silent`` (например, ``this.push_(1,2,3, {silent: true})``)
 * Метод ``Matreshka#initMK`` удален, теперь используется ленивая инициализация
-* Метод ``Matreshka#defineNotEnum`` удален по причине неиспользуемости
+* Метод ``Matreshka#defineNotEnum`` удален по причине отсутствия в нем потребности
 * Matreshka.Array#initializeSmartArray -> {@link Matreshka.Array#rerender}
 * Matreshka#setMediator -> {@link Matreshka#mediate}
 * Matreshka#bindElement -> {@link Matreshka#bindNode}
@@ -86,7 +87,7 @@
 * Привязанные HTML элементы не обновлялись после вызова {@link Matreshka#mediate}
 * Фиксы для Internet Explorer 8
 * Matreshka.lookForBinder теперь возвращает ``undefined`` если байндер не найден
-* Генерировать события модификации Matreshka.Array **только тогда** коллекция изменилась
+* Генерировать события модификации Matreshka.Array только когда коллекция изменилась
 
 
 **Изменения в коде**

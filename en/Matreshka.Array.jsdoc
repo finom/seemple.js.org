@@ -85,7 +85,7 @@ __``length`` is an ordinary property which can be bound to HTML node__  or you c
 > For example, on adding three elements using the ``push`` method with three arguments, the following events: ``push``, ``add``, ``addone`` (three times), ``modify``, ``change:length`` are fired..
 
 #### Model
-The {@link Matreshka.Array#Model} property specifies the model class that an array contains. Its behavior is very similar to ``model`` property from ``Backbone.Collection``. It is recommended to inherit ``Model`` from the {@link Matreshka.Object} class or the {@link Matreshka.Array} one (in case if it is necessary to get the collection of the collections) in order to get the opportunity of converting an array into an ordinary one by using the {@link Matreshka.Array#toJSON} method.
+The {@link Matreshka.Array#Model} property specifies the model class that an array contains. Its behavior is very similar to ``model`` property from ``Backbone.Collection``. It is recommended to inherit ``Model`` from the {@link Matreshka.Object} class or the {@link Matreshka.Array} one (in case if it is necessary to get a collection of collections) in order to get the opportunity of converting an array into an ordinary one by using the {@link Matreshka.Array#toJSON} method.
 ```js
 // define Model
 var MyModel = Class({
@@ -243,7 +243,7 @@ var MyArray = Class({
 
 /**
 @member {boolean} Matreshka.Array#renderIfPossible
-@summary The ``renderIfPossible`` property cancels the array rendering if equals ``false``
+@summary The ``renderIfPossible`` property cancels the array rendering if it equals ``false``
 @see {@link Matreshka.Array#itemRenderer}
 @example
 var MyArray = Class({
@@ -384,7 +384,7 @@ var MyArray = Class({
 In this case you do not have to designate ``itemRenderer`` at all because ``render`` of a child element adopts all its roles. The syntax remains the same:  HTML string, a selector or a function can be used.
 
 #### The  ``render`` event
-After a element has been inserted into an array and its HTML node has already been created but it hasn't been inserted into the container yet, the ``render`` event is generated on inserted element. After its triggering you can declare needed data bindings.
+After an item has been inserted into an array and its HTML node has already been created but it hasn't been inserted into the container yet, the ``render`` event is generated on inserted element. After its triggering you can declare needed data bindings.
 ```html
 <form class="my-form"></form>
 ```
@@ -438,7 +438,7 @@ The code above will create the following HTML tree:
 ```
 And it will bind the checkboxes to the corresponding ``isChecked`` and ``text`` properties. <a href="http://jsbin.com/zetuya/1/" target="_blank">The live example</a>
 
-Remember, the opportunity of catching the delegated events is implemented in Matreshka. The array can catch an event of an elementrendering itself, using the ``@render`` event name (see the documentation of {@link #typedef-eventNames}).
+Remember, the opportunity of catching the delegated events is implemented in Matreshka. The array can catch an event of an element rendering itself, using the ``@render`` event name (see the documentation of {@link #typedef-eventNames}).
 ```js
 this.on( '@render', function( evt ) {
 	alert( 'Child element is rendered' );
@@ -456,7 +456,7 @@ var MyModel = Class({
 
 
 #### The experimental template engine
-If you have a look at the examples of using {@link Matreshka.Array} and {@link Matreshka.Array#itemRenderer}, you can notice that all logic which is responsible for the two-way and one-way data binding is contained in JavaScript code. It is one of the main Matreshka advantages. But when you develop a very simple collection which does not include complicated logic, lots of bindings, etc, you would like to have a shorter variant of the binding declaration. The template including the bindings can be passed to ``itemRenderer`` or that. Use the {@link Matreshka.Array#useBindingsParser} key which is set as ``true`` in order to launch templating.
+If you have a look at the examples of using {@link Matreshka.Array} and {@link Matreshka.Array#itemRenderer}, you can notice that all logic which is responsible for the two-way and one-way data binding is contained in JavaScript code. It is one of the main Matreshka advantages. But when you develop a very simple collection which does not include complicated logic, lots of bindings, etc, you would like to have a shorter variant of the binding declaration. The template including the bindings can be passed to ``itemRenderer`` for that. Use the {@link Matreshka.Array#useBindingsParser} key which is set as ``true`` in order to launch templating.
 ```js
 var MyArray = Class({
 	'extends': MK.Array,
@@ -518,14 +518,14 @@ this.push_( item, {
 @since 0.2
 @abstract
 @summary The property defines a class of elements which will be inserted to a collection
-@desc Every time elements are added to an array, the built-in handler checks if added element is ``Model`` instance and converts it into the one if the check fails. This behavior is very similar to the ``model`` property from ``Backbone.Collection``. It is recommended to inherit ``Model`` from the {@link Matreshka.Object} or {@link Matreshka.Array} class (in case if it is necessary to get a collection of a collections) to get an opportunity of an array conversion into ordinary one by means of the {@link Matreshka.Array#toJSON} method.
+@desc Every time elements are added to an array, the built-in handler checks if added element is ``Model`` instance and converts it into the one if the check fails. This behavior is very similar to the ``model`` property from ``Backbone.Collection``. It is recommended to inherit ``Model`` from the {@link Matreshka.Object} or {@link Matreshka.Array} class (in case if it is necessary to get a collection of collections) to get an opportunity of an array conversion into ordinary one by means of the {@link Matreshka.Array#toJSON} method.
 
 Use {@link Matreshka.Array#mediateItem} for more flexible control of an element class (for example, if you need to use one Model for certain elements and another one - for others).
 
 @see {@link Matreshka.Array#mediateItem}
 @see {@link Matreshka.Array#itemRenderer}
 
-@param {object} data - A data which have been passed to a constructor
+@param {object} data - Data which have been passed to a constructor
 @param {matreshkaArray} mkArray - An array where the element has been added to
 
 @example
@@ -663,7 +663,7 @@ this.toNative();
 /**
 @method Matreshka.Array#rerender
 @since 0.3
-@summary Rerenders DOM nodes corresponded to array items
+@summary Rerenders DOM nodes for items included into array
 @desc As a rule, this method is used when the {@link Matreshka.Array#itemRenderer} property is set after elements have been added to an array.
 @returns {matreshkaArray} self
 @example
@@ -682,7 +682,7 @@ mkArray.rerender();
 
 /**
 @method Matreshka.Array#hasOwnProperty
-@summary If the property is present in the instance (index or the ``length`` property) returns ``true``
+@summary Returns ``true`` if a property is present in the instance (index or ``length`` property) 
 @returns {boolean}
 @example
 var mkArray = new MK.Array( 42 ); // creates the array of the length 42

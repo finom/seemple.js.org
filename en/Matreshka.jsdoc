@@ -128,7 +128,7 @@ for( var i = 0; i < 100; i++ ) {
 /** 
 @method Matreshka#once
 @summary Adds the event handler which can be called only once
-@desc The method works the same as {@link Matreshka#on} but passing handler can be called only once. Note  the method lacks the <code>triggerOnInit</code> argument.
+@desc The method works the same as {@link Matreshka#on} but the passing handler can be called only once. Note  the method lacks the <code>triggerOnInit</code> argument.
 @see {@link Matreshka#on}
 @see {@link Matreshka#off}
 @see {@link Matreshka#onDebounce}
@@ -203,7 +203,7 @@ this.trigger( 'foo', 1, 2, 3 ); // alerts 6
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
-@desc {@link Matreshka#bindNode} is the only method of the {@link Matreshka} class  which is responsible for changing DOM. It creates a bridge between value of a property and state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). ``bindNode``can be truly regarded as the main method of the framework. After use of this method, it isn't necessary to monitor the synchronizations between model and view.
+@desc {@link Matreshka#bindNode} is the only method of the {@link Matreshka} class  which is responsible for changing DOM. It creates a bridge between value of a property and state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). ``bindNode``can be truly regarded as the main method of the framework. After using this method, it isn't necessary to monitor the synchronizations between model and view.
 
 The method acepts three arguments: **a property name** (key), **HTML node** (or a selector) and a **binding rule**. In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize`` (Read more here: {@link #typedef-binder}). All the four properties are optional. It also allows to declare one-way data bindings (any direction).
 
@@ -320,7 +320,7 @@ this.bindNode( 'myKey', '.my-checkbox' );
 this.myKey = true;
 ```
 
-What should you do if you need to pass arguments for initializing some plug-in or a widget? It is a piece of cake: you can do with adding the binder to the {@link Matreshka.binders}, collection  without creating a function for {@link Matreshka.defaultBinders}.
+What should you do if you need to pass arguments for initializing some plug-in or a widget? It is a piece of cake: you can do with adding the binder to the {@link Matreshka.binders} collection  without creating a function for {@link Matreshka.defaultBinders}.
 ```js
 Matreshka.binders.uiSlider = function( min, max ) {
 	return {
@@ -960,7 +960,7 @@ this.on( 'change:myKey', function( eventOptions ) {
 	alert( eventOptions.value );
 });
 
-// handler doesn't called
+// handler isn't called
 this.set( 'myKey', 4, {
 	silent: true
 });
@@ -1151,7 +1151,7 @@ Matreshka.useAs$( jQuery.noConflict() );
 
 /**
 @member {boolean} Matreshka.isXDR
-@summary If Matrshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8
+@summary If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8
 @example
 alert( Matreshka.isXDR );
 */
