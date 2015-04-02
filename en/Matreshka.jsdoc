@@ -24,7 +24,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>Matreshka uses prototypes for implementing the inheritance. The {@link Class} function just brings in some syntactic sugar and adds some hacks for the Internet Explorer 8. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 2015</caption>
+@example <caption>Matreshka uses prototypes for implementing the inheritance. The {@link Class} function just brings in some syntactic sugar and adds some hacks for the Internet Explorer 8. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 6</caption>
 class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();

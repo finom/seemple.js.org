@@ -61,7 +61,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Mtreshka  OOB supports any type of the prototype inheritance including the ECMAScript 2015 syntax.</caption>
+@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Mtreshka  OOB supports any type of the prototype inheritance including the ECMAScript 6 syntax.</caption>
 class A extends B {
 	constructor() {
 		super();

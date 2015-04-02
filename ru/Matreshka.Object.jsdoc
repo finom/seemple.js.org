@@ -52,7 +52,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>Наследование, используя синтаксис ECMAScript 2015</caption>
+@example <caption>Наследование, используя синтаксис ECMAScript 6</caption>
 class MyClass extends MK.Object {
 	constructor() {
 		this.sayHello();
@@ -61,7 +61,7 @@ class MyClass extends MK.Object {
 		alert("Hello World!");
 	}
 }
-@example <caption>Перебор данных, используя цикл for..of из ECMAScript 2015</caption>
+@example <caption>Перебор данных, используя цикл for..of из ECMAScript 6</caption>
 var mkObject = new MK.Object({ a: 1, b: 2 });
 for(let item of mkObject) {
 	console.log( item ); // 1 .. 2

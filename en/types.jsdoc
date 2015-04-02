@@ -178,7 +178,7 @@ this.on( 'x@y@z', function() { ... } );
 
 
 /**
-``binder` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as context (``this``)
+``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as context (``this``)
 @typedef {object} binder
 @property {string|function} [on] - DOM event (or space-delimited list of events) which tells when node state is changed. Besides, it accepts function as value if you need to catch change arbitrarily
 @property {function} [getValue] - A function which tells how to retrieve value (state) from HTML node when DOM event is fired

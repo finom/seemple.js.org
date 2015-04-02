@@ -180,7 +180,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>The inheritance using the ECMAScript 2015 syntax</caption>
+@example <caption>The inheritance using the ECMAScript 6 syntax</caption>
 class MyClass extends MK.Array {
 	constructor() {
 		this.sayHello();
@@ -189,7 +189,7 @@ class MyClass extends MK.Array {
 		alert("Hello World!");
 	}
 }
-@example <caption>The data enumerating, using the for..of syntax from ECMAScript 2015</caption>
+@example <caption>The data enumerating, using the for..of syntax from ECMAScript 6</caption>
 var mkArray = new MK.Array( 1, 2, 3 );
 for(let item of mkArray) {
 	console.log( item ); // 1 .. 2 .. 3
@@ -562,7 +562,7 @@ myArray.push({
 //  will return [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
 
-@example <caption>``Model`` and the ECMAScript 2015</caption>
+@example <caption>``Model`` and the ECMAScript 6</caption>
 class MyArray extends MK.Array {
 	get Model() {
 		return MyModel;

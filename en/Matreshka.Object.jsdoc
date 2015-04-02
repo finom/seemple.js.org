@@ -52,7 +52,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>The inheritance using ECMAScript 2015 syntax</caption>
+@example <caption>The inheritance using ECMAScript 6 syntax</caption>
 class MyClass extends MK.Object {
 	constructor() {
 		this.sayHello();
@@ -61,7 +61,7 @@ class MyClass extends MK.Object {
 		alert("Hello World!");
 	}
 }
-@example <caption>Data enumerating, using for..of syntax from ECMAScript 2015</caption>
+@example <caption>Data enumerating, using for..of syntax from ECMAScript 6</caption>
 var mkObject = new MK.Object({ a: 1, b: 2 });
 for(let item of mkObject) {
 	console.log( item ); // 1 .. 2
