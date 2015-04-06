@@ -1,4 +1,7 @@
 ## [Что нового?](#whats-new)
+### [Матрешка 1.0.4](https://github.com/finom/matreshka/releases/tag/v1.0.4)
+* Исправлена ошибка рендеринга, связанная с удалением элементов {@link Matreshka.Array}.
+
 ### [Матрешка 1.0.3](https://github.com/finom/matreshka/releases/tag/v1.0.3)
 * Исправлена ошибка {@link Matreshka.binders.select}, возникающая при использовании аргумента ``multiple``
 * Серьезная оптимизация скорости большинства методов {@link Matreshka.Array}
