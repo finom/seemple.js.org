@@ -193,10 +193,10 @@ this.off( 'change:x', handler, object );
 @param {...*} [arg] - Аргументы, которые будут переданы обработчикам
 @returns {matreshka} self
 @example
-this.on( 'jigurda ohyeah', function( a, b, c ) {
-	alert( a, b, c );
+this.on( 'foo bar', function( a, b, c ) {
+	alert( a + b + c );
 });
-this.trigger( 'ohyeah', 1, 2, 3 ); // alerts 6
+this.trigger( 'bar', 1, 2, 3 ); // alerts 6
 */
 
 
@@ -212,7 +212,7 @@ this.trigger( 'ohyeah', 1, 2, 3 ); // alerts 6
 > Метод ``bindNode`` поддерживает привязки "многие ко многим". С одним свойством можно связать несколько элементов, а с одним элементом можно связать несколько свойств, в том числе и от разных экземпляров разных классов.
 
 ```js
-this.bindNode( 'myKey', '.my-element'. {
+this.bindNode( 'myKey', '.my-element', {
 	on: 'click',
 	getValue: function() { ... },
 	setValue: function() { ... }

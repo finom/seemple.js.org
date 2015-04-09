@@ -192,7 +192,7 @@ this.off( 'change:x', handler, object );
 @returns {matreshka} self
 @example
 this.on( 'foo bar', function( a, b, c ) {
-	alert( a, b, c );
+	alert( a + b + c );
 });
 this.trigger( 'foo', 1, 2, 3 ); // alerts 6
 */
@@ -210,7 +210,7 @@ The method acepts three arguments: **a property name** (key), **HTML node** (or 
 > The ``bindNode`` method  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different instances of various classes.
 
 ```js
-this.bindNode( 'myKey', '.my-element'. {
+this.bindNode( 'myKey', '.my-element', {
 	on: 'click',
 	getValue: function() { ... },
 	setValue: function() { ... }
