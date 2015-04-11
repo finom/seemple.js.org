@@ -1054,7 +1054,7 @@ this.define({
 @method Matreshka#delay
 @since 0.3
 @summary Calls given function after timed delay
-@desc The work of the method is very similar to ``setTimaout``. A current instance or a passed object is taken as a context.
+@desc The work of the method is very similar to ``setTimeout``. A current instance or a passed object is taken as a context.
 @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setTimeout setTimeout on MDN}
 @param {function} f - A function which must be called after the timer has expired
 @param {number} [delay=0] - A delay in milliseconds

@@ -35,7 +35,7 @@ var D = Class({
 	}
 });
 @example <caption>The usage of AMD (named modules)</caption>
-retuire.config({
+require.config({
 	paths: {
 		'xclass': 'path/to/matreshka.min',
 		'matreshka': 'path/to/matreshka.min',

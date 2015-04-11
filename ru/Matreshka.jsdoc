@@ -1052,7 +1052,7 @@ this.define({
 @method Matreshka#delay
 @since 0.3
 @summary Выполняет функцию после заданной задержки
-@desc Работа метода очень похожа на ``setTimaout``. В качестве контекста принимается текущий экземпляр или переданный объект.
+@desc Работа метода очень похожа на ``setTimеout``. В качестве контекста принимается текущий экземпляр или переданный объект.
 @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setTimeout setTimeout на MDN}
 @param {function} f - Функция, которая должна быть выполнена после истечения таймера
 @param {number} [delay=0] - Задержка в миллисекундах
