@@ -106,7 +106,7 @@ this.on( 'foo', function() {
 @see {@link Matreshka#off}
 @see {@link Matreshka#trigger}
 @see {@link Matreshka.debounce}
-@see {@link http://habrahabr.ru/post/60957/ Статья на Хабре микропаттерне debounce}
+@see {@link http://habrahabr.ru/post/60957/ Статья на Хабре о микропаттерне debounce}
 @param {eventNames} names - Имя события или несколько имен, разделенных пробелом  (например, ``"change:x ajaxcomplete change:y"``).
 @param {eventHandler} callback - Функция, которая вызывается по событию
 @param {number} [debounceDelay=0] - Задержка

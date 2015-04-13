@@ -126,7 +126,7 @@ Look at the [working implementation of TodoMVC](todo/) based on Matreshka and th
 ## [How to include?](#how-to-include)
 Matreshka is an independent framework that requires no dependencies. But the possibility of using capabilities from the ECMAScript5 standard in the Internet Explorer 8 is absent. That's why if you support the IE8 in the apps which you develop, you should add another JavaScript file: [es5-shim](https://github.com/es-shims/es5-shim) or any other polyfill that implements the possibilities of the ECMAScript5.
 
-Adding jQuery is optional for all browsers (though, it's recommended for IE8). Instead of this one, you can use another jQuery-like library, for example  [Zepto](http://zeptojs.com/). If you don't want to use any libraries at all, giving preference to [Vanilla.js](http://vanilla-js.com/), Matreshka will make use of the built-in micro-library which is called [Balalaika]($b).
+Adding jQuery is optional for all browsers (though, it's recommended for IE8). Instead of this one, you can use another jQuery-like library, for example  [Zepto](http://zeptojs.com/). If you don't want to use any libraries at all, giving preference to [Vanilla.js](http://vanilla-js.com/), Matreshka will make use of the built-in micro-library which is called [Balalaika](#$b).
 
 
 ```html

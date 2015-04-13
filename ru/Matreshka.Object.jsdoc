@@ -151,7 +151,7 @@ mkObject.toNative(); // возвращает { a: 1, b: 2 }
 
 /**
 @method Matreshka.Object#toJSON
-@summary Конвертирует экземпляр и внутренние свойства {@link Matreshka.Object} обычный объект
+@summary Конвертирует экземпляр и внутренние свойства {@link Matreshka.Object} в обычный объект
 @returns {object}
 @example
 var mkObject = new MK.Object({
@@ -170,7 +170,7 @@ mkObject.toJSON();
 
 /**
 @method Matreshka.Object#keyOf
-@summary Ищет заданное значение свойства среди свойств, отвечающих за данные и возвращает ключ, если такое значение найдено  (аналог <code>Array.prototype.indexOf</code>)
+@summary Ищет заданное значение свойства среди свойств, отвечающих за данные, и возвращает ключ, если такое значение найдено  (аналог <code>Array.prototype.indexOf</code>)
 @prop {*} value - значение любого типа, которое следует найти среди данных
 @returns {string|null}
 @example
