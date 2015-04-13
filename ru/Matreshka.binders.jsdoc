@@ -89,9 +89,9 @@ this.bindElement( 'myKey', '.my-element', {
 	}
 });
 
-this.myKey = true; // добавляет класс 'blah' 
+this.myKey = false; // добавляет класс 'blah' 
 
-this.myKey = false; // убирает класс 'blah' 
+this.myKey = true; // убирает класс 'blah' 
 */
 
 /**

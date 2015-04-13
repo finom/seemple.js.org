@@ -89,9 +89,9 @@ this.bindElement( 'myKey', '.my-element', {
 	}
 });
 
-this.myKey = true; // adds the 'foo' class 
+this.myKey = false; // adds the 'foo' class 
 
-this.myKey = false; // removes the 'foo' class 
+this.myKey = true; // removes the 'foo' class 
 */
 
 /**
