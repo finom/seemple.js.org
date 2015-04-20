@@ -24,10 +24,10 @@ this.bindNode( 'myKey', '.my-element', MK.binders.myCoolBinder( 'Hello', 'World'
 @summary Returns the one-way data binder which changes ``innerHTML`` of bound DOM node depending on instance property value
 @returns {binder}
 @example
-this.bindElement( 'myKey', '.my-element', MK.binders.innerHTML() );
+this.bindNode( 'myKey', '.my-element', MK.binders.innerHTML() );
 
 // the same as
-this.bindElement( 'myKey', '.my-element', {
+this.bindNode( 'myKey', '.my-element', {
 	setValue: function( v ) {
 		this.innerHTML = v;
 	}
@@ -41,19 +41,19 @@ this.bindElement( 'myKey', '.my-element', {
 @param {boolean} [value=true] - If the argument equals ``true``, the element is hidden when the property value is false; if it equals ``false``, it is hidden when the property value is true.
 @returns {binder}
 @example
-this.bindElement( 'myKey', '.my-element', MK.binders.visibility(true) );
+this.bindNode( 'myKey', '.my-element', MK.binders.visibility(true) );
 
 // the same as
-this.bindElement( 'myKey', '.my-element', {
+this.bindNode( 'myKey', '.my-element', {
 	setValue: function( v ) {
 		this.style.display = v ? '' : 'none';
 	}
 });
 @example
-this.bindElement( 'myKey', '.my-element', MK.binders.visibility(false) );
+this.bindNode( 'myKey', '.my-element', MK.binders.visibility(false) );
 
 // the same as
-this.bindElement( 'myKey', '.my-element', {
+this.bindNode( 'myKey', '.my-element', {
 	setValue: function( v ) {
 		this.style.display = v ? 'none' : '';
 	}
@@ -67,10 +67,10 @@ this.bindElement( 'myKey', '.my-element', {
 @param {string} className
 @returns {binder}
 @example
-this.bindElement( 'myKey', '.my-element', MK.binders.className( 'foo' ) );
+this.bindNode( 'myKey', '.my-element', MK.binders.className( 'foo' ) );
 
 // the same as
-this.bindElement( 'myKey', '.my-element', {
+this.bindNode( 'myKey', '.my-element', {
 	setValue: function( v ) {
 		$( this ).toggleClass( 'foo', v );
 	}
@@ -80,10 +80,10 @@ this.myKey = true; // adds the 'foo' class
 
 this.myKey = false; // removes the 'foo' class 
 @example <caption>The use of the bang character in front of the class name</caption>
-this.bindElement( 'myKey', '.my-element', MK.binders.className( '!foo' ) );
+this.bindNode( 'myKey', '.my-element', MK.binders.className( '!foo' ) );
 
 // the same as
-this.bindElement( 'myKey', '.my-element', {
+this.bindNode( 'myKey', '.my-element', {
 	setValue: function( v ) {
 		$( this ).toggleClass( 'foo', !v );
 	}
@@ -101,10 +101,10 @@ this.myKey = true; // removes the 'foo' class
 @param {string} property
 @returns {binder}
 @example
-this.bindElement( 'disabled', '.my-button', MK.binders.property( 'disabled' ) );
+this.bindNode( 'disabled', '.my-button', MK.binders.property( 'disabled' ) );
 
 // the same as
-this.bindElement( 'disabled', '.my-button', {
+this.bindNode( 'disabled', '.my-button', {
 	setValue: function( v ) {
 		this.disabled = v;
 	}
@@ -124,10 +124,10 @@ this.disabled = false;
 @param {string} attribute
 @returns {binder}
 @example
-this.bindElement( 'image', 'img.my-image', MK.binders.attribute( 'src' ) );
+this.bindNode( 'image', 'img.my-image', MK.binders.attribute( 'src' ) );
 
 // the same as
-this.bindElement( 'image', 'img.my-image', {
+this.bindNode( 'image', 'img.my-image', {
 	setValue: function( v ) {
 		this.setAttribute( 'src', v );
 	}

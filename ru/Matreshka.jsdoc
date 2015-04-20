@@ -221,7 +221,7 @@ this.bindNode( 'myKey', '.my-element', {
 
 Например, вы хотите связать свойство объекта с элементом ``input[type="checkbox"]``:
 ```js
-this.bindNode( 'myKey', '.my-checkbox'. {
+this.bindNode( 'myKey', '.my-checkbox', {
 	// когда менятся состояние элемента?
 	// - по событию 'click'
 	on: 'click',
@@ -1270,6 +1270,6 @@ console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
 @desc Для генерации строки используются функции ``new Date().getTime`` и ``Math.random()``, так что возвращаемая строка уникальна.
 @returns {string} случайная строка
 @example
-var id = MK.ramdomString();
+var id = MK.randomString();
 */
 

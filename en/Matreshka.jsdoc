@@ -219,7 +219,7 @@ this.bindNode( 'myKey', '.my-element', {
 
 For example, you want to bind the property of the object to the ``input[type="checkbox"]`` node:
 ```js
-this.bindNode( 'myKey', '.my-checkbox'. {
+this.bindNode( 'myKey', '.my-checkbox', {
 	// when is the element state changed?
 	// - after the event 'click'
 	on: 'click',
@@ -1270,6 +1270,6 @@ console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
 @desc The ``new Date().getTime`` and ``Math.random()`` functions are used for generating a string, so the returned string is unique.
 @returns {string} A random string
 @example
-var id = MK.ramdomString();
+var id = MK.randomString();
 */
 
