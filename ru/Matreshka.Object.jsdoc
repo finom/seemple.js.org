@@ -69,6 +69,15 @@ for(let item of mkObject) {
 */
 
 /**
+@member {boolean} Matreshka.Object#constructor
+@summary Вызывается при инициализации объекта Matreshka.Object.
+@param {object} data - Данные объекта, переданные при его создании
+@param {object} collection - Данные коллекции, в которой была создана эта модель
+@example
+alert( object.isMKObject );
+*/
+
+/**
 @member {boolean} Matreshka.Object#isMKObject
 @summary Свойство ``isMKObject`` всегда равно ``true``. Оно используется для проверки, является ли объект экземпляром {@link Matreshka.Object}.
 @example
