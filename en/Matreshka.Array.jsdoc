@@ -259,6 +259,7 @@ var MyArray = Class({
 @abstract
 @since 0.1
 @summary The HTML string, selector or function which is responsible for rendering elements of an array on the page.
+@param {matreshkaObject} model - an object, which will be rendered (in case you need to use some conditions)
 @desc The ``itemRenderer`` property is an overridden one which allows to render corresponded HTML nodes of elements of an array without a programmer's participation. On a new element insertion into an array, the HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode})  for the inserted element and it is inserted into HTML container which is defined in an array.
 
 #### Where is the created element inserted?

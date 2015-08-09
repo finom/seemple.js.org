@@ -36,6 +36,7 @@ this.on( 'modify', function() {
 });
 ```
 @param {object} [data] - Данные, входящие в новый экземпляр
+@param {matreshkaArray} [collection] - Массив, в который был добавлен объект в качестве {@link Matreshka.Array#Model модели}
 @inherits Matreshka
 @example <caption>Создание экземпляра</caption>
 new MK.Object;
@@ -68,14 +69,6 @@ for(let item of mkObject) {
 }
 */
 
-/**
-@member {boolean} Matreshka.Object#constructor
-@summary Вызывается при инициализации объекта Matreshka.Object.
-@param {object} data - Данные, переданные в конструктор
-@param {object} mkArray - Массив, в котором была создана эта модель
-@example
-alert( object.isMKObject );
-*/
 
 /**
 @member {boolean} Matreshka.Object#isMKObject

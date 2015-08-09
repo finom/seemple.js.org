@@ -178,7 +178,7 @@ $.fn.addClass = function( className ) {
 @example <caption>Функция ``create`` - дополнительная утилита для создания элементов, входящая в комплект Матрешки. Первый аргумент - имя тега, второй - свойства, расширяющие DOM объект</caption>
 var div = $.create( 'div', {
 	className: 'my-div',
-	innerHTML: 'My DIV'
+	innerHTML: 'My DIV',
 	dataset: {
 		a: 1,
 		b: 2

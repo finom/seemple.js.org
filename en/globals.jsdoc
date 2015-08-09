@@ -179,7 +179,7 @@ $.fn.addClass = function( className ) {
 @example <caption>The ``create`` function is an additional utility for creating elements which comes standard with Matreshka. The first argument is a tag name, the second one - properties which extend DOM object.</caption>
 var div = $.create( 'div', {
 	className: 'my-div',
-	innerHTML: 'My DIV'
+	innerHTML: 'My DIV',
 	dataset: {
 		a: 1,
 		b: 2

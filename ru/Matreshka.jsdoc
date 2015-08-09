@@ -64,7 +64,7 @@ this.sandbox; // то же самое, что и $( '.app' )[0]
 */
 
 
-/** 
+/**
 @method Matreshka#on
 @summary Добавляет обработчик события
 @desc Метод {@link Matreshka#on} добавляет обработчик события для экземпляра класса ``Matreshka``. Полный список возможных событий с описанием см. здесь: {@link #typedef-eventNames}.
@@ -94,10 +94,10 @@ this.trigger( 'foo', 'Hello world' );
 this.on( 'foo', function() {
 	alert( 'bar' );
 }, true );
-*/  
+*/
 
 
-/** 
+/**
 @method Matreshka#onDebounce
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
 @desc Метод позволяет добавить обработчик события на экземпляр класса {@link Matreshka}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Matreshka#on}.
@@ -123,10 +123,10 @@ this.x = 1;
 for( var i = 0; i < 100; i++ ) {
 	this.x++;
 }
-*/ 
+*/
 
 
-/** 
+/**
 @method Matreshka#once
 @summary Добавляет обработчик событий, который может быть вызван однажды
 @desc Метод работает так же, как и {@link Matreshka#on} но передаваемый обработчик может быть вызван только один раз.
@@ -169,7 +169,7 @@ this.off( 'change:x bind' );
 @example <caption>Удаление всех событий</caption>
 this.off();
 @example <caption>Удаление события с определенным обработчиком</caption>
-var handler = function() { 
+var handler = function() {
 	//...
 }
 this.on( 'change:x', handler );
@@ -205,7 +205,7 @@ this.trigger( 'bar', 1, 2, 3 ); // alerts 6
 @fires bind
 @fires bind:KEY
 @summary Связывает свойство объекта с HTML элементом
-@desc {@link Matreshka#bindNode} - это единственный метод класса {@link Matreshka}, отвечающий за изменения DOM. Он создаёт мост между значением свойства и состоянием HTML элемента на странице: от простого инпута до сложного виджета (сложность элементов не ограничена). ``bindNode``, по праву, можно назвать главным методом фреймворка. После связывания свойства экземпляра и HTML элемента не нужно больше следить за синхронизацией данных и представления. 
+@desc {@link Matreshka#bindNode} - это единственный метод класса {@link Matreshka}, отвечающий за изменения DOM. Он создаёт мост между значением свойства и состоянием HTML элемента на странице: от простого инпута до сложного виджета (сложность элементов не ограничена). ``bindNode``, по праву, можно назвать главным методом фреймворка. После связывания свойства экземпляра и HTML элемента не нужно больше следить за синхронизацией данных и представления.
 
 Для двустороннего связывания элемента и значения свойства, в метод передаются три аргумента: **имя свойства** (ключ), **HTML элемент** (или селектор) и **правило привязки** (синонимы: байндер, биндер, binder, привязчик). Байндер, в свою очередь, является обычным объектом и может иметь следующие свойства: ``on``, ``getValue``, ``setValue``, ``initialize`` (подробнее см. {@link #typedef-binder}). Все четыре свойства - опциональны. Это позволяет также объявить и односторонние привязки.
 
@@ -423,7 +423,7 @@ console.log( this.$( '.inner-node' ) );
 
 @param {string|matreshka} key - Ключ (имя свойства)
 @param {string|node|$nodes} node - HTML элемент, который должен быть связан со свойством экземпляра
-@param {binder} [binder] - Байндер (привязчик), содержащий следующие свойства: ``on`` - какое событие должно произойти на HTML элементе, говорящее о том, что пользователь что-то изменил (например, ``keyup`` или ``click``), ``getValue`` - как извлечь значение из HTML элемента, ``setValue`` - как установить новое значение элементу и ``initialize`` - функция, выполняющаяся однажды, при инициализации привязки. Более подробно о привязчиках можно найти в документации к ним: см. {@link #typedef-binder}. 
+@param {binder} [binder] - Байндер (привязчик), содержащий следующие свойства: ``on`` - какое событие должно произойти на HTML элементе, говорящее о том, что пользователь что-то изменил (например, ``keyup`` или ``click``), ``getValue`` - как извлечь значение из HTML элемента, ``setValue`` - как установить новое значение элементу и ``initialize`` - функция, выполняющаяся однажды, при инициализации привязки. Более подробно о привязчиках можно найти в документации к ним: см. {@link #typedef-binder}.
 @param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (не генерировать события ``"bind"`` и ``"bind:KEY"``), ``"assignDefaultValue"`` или другие данные
 @returns {matreshka} self
 
@@ -474,7 +474,7 @@ MK.defaultBinders.shift( function( element ) {
 
 this.bindNode( 'myKey', '.my-custom-checkbox' );
 
-@example <caption>Событие ``"bind"``, которое генерируется после связыввании любого свойства и HTML узла</caption>
+@example <caption>Событие ``"bind"``, которое генерируется после связывании любого свойства и HTML узла</caption>
 this.on( 'bind', function() { alert( 'ok!' ); });
 this.bindNode( 'myKey', '.my-element' ); // alerts "ok!"
 
@@ -577,12 +577,12 @@ this.bindOptionalNode( 'myKey', '.my-element' );
 this.bindNode( 'myKey', '.my-element' );
 
 // меняет значение свойства и состояние HTML элемента
-this.myKey = true; 
+this.myKey = true;
 
 this.unbindNode( 'myKey', '.my-element' );
 
 // теперь меняется только значение свойства
-this.myKey = false; 
+this.myKey = false;
 */
 
 
@@ -596,8 +596,8 @@ this.myKey = false;
 @returns {matreshka} self
 @example
 this.unbindNode({
-	myKey1: '.my-element1' 
-	myKey1: '.my-element2' 
+	myKey1: '.my-element1'
+	myKey1: '.my-element2'
 });
 */
 
@@ -760,8 +760,8 @@ this.defineGetter( 'myKey', function() {
 @param {object} keyGetterPairs - Объект со свойствами ключ-геттер
 @example
 this.defineGetter({
-	myKey1: function() { return 1; } 
-	myKey2: function() { return 2; } 
+	myKey1: function() { return 1; }
+	myKey2: function() { return 2; }
 });
 */
 
@@ -786,8 +786,8 @@ this.defineSetter( 'mykey', function( v ) {
 @param {object} keySetterPairs - Объект со свойствами ключ-сеттер
 @example
 this.defineSetter({
-	myKey1: function( v ) { alert( v ); } 
-	myKey2: function( v ) { alert( v ); } 
+	myKey1: function( v ) { alert( v ); }
+	myKey2: function( v ) { alert( v ); }
 });
 */
 
@@ -895,7 +895,7 @@ this.a = 5; // alerts "периметр изменен и равен 18"
 @summary Дополнительная возможность метода {@link Matreshka#linkProps}: зависимость от значений свойств других экземпляров
 @param {string|array} keys - Свойство (свойства) которое зависит от других свойств
 @param {array} instancesAndKeys - Массив, который содержит экземпляры (четные элементы) их ключи (нечетные элементы), от которых зависит искомое свойство (свойства). Такой, возможно, странный синтаксис является следствием ограничений синтаксиса JavaScript.
-@param {function} [handler=function(v){return v}] - Функция, возвращающая новое значение 
+@param {function} [handler=function(v){return v}] - Функция, возвращающая новое значение
 @param {boolean} [setOnInit=true] - Установить ли значение свойства сразу после объявления зависимости
 @example <caption>Свойство ``sum`` является суммой свойств ``a`` и ``b`` других экземпляров и вычисляется каждый раз при их изменении</caption>
 anotherInstance1.a = 2;
@@ -1088,7 +1088,7 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 @example
 var o1 = { a: 3 },
 	o2 = { b: 4 };
-	
+
 MK.extend( o1, o2 );
 */
 
@@ -1227,7 +1227,7 @@ MK.each( myObject, function( value, key ) {
 @since 0.3
 @summary Запускает функцию лишь однажды после истечения таймера. С каждой попыткой запуска таймер обновляется
 @desc Этот метод - реализация микропаттерна **debounce**, который решает проблему многократного вызова обработчика событий за определенный промежуток времени. См. пример и {@link http://habrahabr.ru/post/60957/ статью на Хабре}.
-@param {function} f - Оригинальная функция, 
+@param {function} f - Оригинальная функция,
 @param {number} [duration=0] - Задержка
 @param {*} [thisArg] - Контекст, в котором функция должна быть запущена
 @example
@@ -1272,4 +1272,3 @@ console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
 @example
 var id = MK.randomString();
 */
-

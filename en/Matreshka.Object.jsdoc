@@ -35,7 +35,8 @@ this.on( 'modify', function() {
 	alert( 'Object is modified' );
 });
 ```
-@param {object} [data] - data
+@param {object} [data] - Data
+@param {matreshkaArray} [collection] - An array, where this object is added as {@link Matreshka.Array#Model Model}
 @inherits Matreshka
 @example <caption>The creation of the instance.</caption>
 new MK.Object;
