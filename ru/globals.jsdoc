@@ -60,7 +60,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>Использование функции ``Class`` обязательно для IE8, но не требуется в других браузерах. Поэтому, Матрешка из коробки поддерживает любой вид прототипного наследования, в том числе и синтаксис ECMAScript 6</caption>
+@example <caption>Использование функции ``Class`` обязательно для IE8, но не требуется в других браузерах. Поэтому, Матрешка из коробки поддерживает любой вид прототипного наследования, в том числе и синтаксис ECMAScript 2015</caption>
 class A extends B {
 	constructor() {
 		super();
@@ -183,5 +183,21 @@ var div = $.create( 'div', {
 		a: 1,
 		b: 2
 	}
+});
+
+@example <caption>Начиная с версии 1.1, функция ``create`` имеет альтернативный синтаксис. Имя тега можно передать в объект в виде свойства ``tagName``, а дочерние элементы в виде свойства ``children``</caption>
+var div = $.create({
+	tagName: 'div',
+	className: 'my-div',
+	innerHTML: 'My DIV',
+	children: [{
+		tagName: 'span',
+		className: 'div-child',
+		innerHTML: 'first child'
+	}, {
+		tagName: 'span',
+		className: 'div-child',
+		innerHTML: 'second child'
+	}]
 });
 */

@@ -61,7 +61,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Mtreshka  OOB supports any type of the prototype inheritance including the ECMAScript 6 syntax.</caption>
+@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Mtreshka  OOB supports any type of the prototype inheritance including the ECMAScript 2015 syntax.</caption>
 class A extends B {
 	constructor() {
 		super();
@@ -184,5 +184,21 @@ var div = $.create( 'div', {
 		a: 1,
 		b: 2
 	}
+});
+
+@example <caption>starting with the version 1.1, function ``create`` has alternative syntax. The tag name can be passed as ``tagName`` property and list of children as ``children`` property.</caption>
+var div = $.create({
+	tagName: 'div',
+	className: 'my-div',
+	innerHTML: 'My DIV',
+	children: [{
+		tagName: 'span',
+		className: 'div-child',
+		innerHTML: 'first child'
+	}, {
+		tagName: 'span',
+		className: 'div-child',
+		innerHTML: 'second child'
+	}]
 });
 */

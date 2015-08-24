@@ -24,7 +24,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>Матрешка использует прототипы для реализации наследования. Функция {@link Class} лишь вносит синтаксический сахар и добавляет хаки для Internet Explorer 8. Поэтому вы можете воспользоваться любым другим полюбившимся способом наследования, например, используя классы из ECMAScript 6</caption>
+@example <caption>Матрешка использует прототипы для реализации наследования. Функция {@link Class} лишь вносит синтаксический сахар и добавляет хаки для Internet Explorer 8. Поэтому вы можете воспользоваться любым другим полюбившимся способом наследования, например, используя классы из ECMAScript 2015</caption>
 class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();
@@ -63,6 +63,27 @@ this.bindNode( 'sandbox', '.app' );
 this.sandbox; // то же самое, что и $( '.app' )[0]
 */
 
+/**
+@member {$nodes} Matreshka#$nodes
+@since 1.1
+@summary Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.
+@see {@link Matreshka#bindNode}
+@example
+this.bindNode( 'myKey', '.my-node' );
+this.$nodes.myKey; // то же самое, что и $( '.my-node' )
+*/
+
+/**
+@member {node} Matreshka#nodes
+@since 1.1
+@summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов. 
+@desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
+@see {@link Matreshka#bindNode}
+@example
+this.bindNode( 'myKey', '.my-node' );
+this.nodes.myKey; // то же самое, что и $( '.my-node' )[0]
+*/
+
 
 /**
 @method Matreshka#on
@@ -98,6 +119,33 @@ this.on( 'foo', function() {
 
 
 /**
+@method Matreshka#on
+@variation 2
+@since 1.1
+@summary Альтернативный синтаксис: пары "событие-обработчик"
+@desc В метод {@link Matreshka#on} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+
+@param {object} evtnameHandlerObject - Объект с событиями
+@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчики будут вызван немедленно после инициализации
+@param {object} [context] - Контекст обработчика
+@returns {matreshka} self
+@example
+this.on({
+	'custom': function(evt) { ... },
+	'click::x': function(evt) { ... },
+	'change:y': function(evt) { ... }
+});
+
+@example Особенно круто этот способ вызова метода ``on`` выглядит с использованием синтаксиса ECMAScript 2015
+this.on({
+	'custom': evt => ...,
+	'click::x': evt => ...,
+	'change:y': evt => ...,
+});
+*/
+
+
+/**
 @method Matreshka#onDebounce
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
 @desc Метод позволяет добавить обработчик события на экземпляр класса {@link Matreshka}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Matreshka#on}.
@@ -127,6 +175,27 @@ for( var i = 0; i < 100; i++ ) {
 
 
 /**
+@method Matreshka#onDebounce
+@variation 2
+@since 1.1
+@summary Альтернативный синтаксис: пары "событие-обработчик"
+@desc В метод {@link Matreshka#onDebounce} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+@see {@link Matreshka#on(2)}
+@param {object} evtnameHandlerObject - Объект с событиями
+@param {number} [debounceDelay=0] - Задержка
+@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчики будут вызван немедленно после инициализации
+@param {object} [context] - Контекст обработчиков
+@returns {matreshka} self
+@example
+this.onDebounce({
+	'custom': function(evt) { ... },
+	'click::x': function(evt) { ... },
+	'change:y': function(evt) { ... }
+});
+*/
+
+
+/**
 @method Matreshka#once
 @summary Добавляет обработчик событий, который может быть вызван однажды
 @desc Метод работает так же, как и {@link Matreshka#on} но передаваемый обработчик может быть вызван только один раз.
@@ -149,6 +218,25 @@ this.once( 'change:x', function() {
 this.x = 2; // выводит 'x is changed'
 
 this.x = 3; // ничего не делает
+*/
+
+
+/**
+@method Matreshka#once
+@variation 2
+@since 1.1
+@summary Альтернативный синтаксис: пары "событие-обработчик"
+@desc В метод {@link Matreshka#once} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+@see {@link Matreshka#on(2)}
+@param {object} evtnameHandlerObject - Объект с событиями
+@param {object} [context] - Контекст обработчиков
+@returns {matreshka} self
+@example
+this.once({
+	'custom': function(evt) { ... },
+	'click::x': function(evt) { ... },
+	'change:y': function(evt) { ... }
+});
 */
 
 
@@ -281,7 +369,7 @@ this.bindNode( 'myKey', '.my-slider', {
 ```
 
 ```js
-// установит знчаение слайдера 42
+// установит знaчeние слайдера 42
 this.myKey = 42;
 ```
 
@@ -307,8 +395,8 @@ Matreshka.binders.checkbox = function() {
 	}
 };
 
-// метод shift добавляет функцию в начало массива Matreshka.defaultBinders
-Matreshka.defaultBinders.shift( function( node ) {
+// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
+Matreshka.defaultBinders.unshift( function( node ) {
 	// проверяем, является ли элемент чекбоксом
 	if( node.tagName == 'INPUT' && node.type == 'checkbox' ) {
 		// если проверка пройдена, возвращаем новый байндер
@@ -368,10 +456,10 @@ this.bindNode( 'myAnotherKey', ':bound(myKey) .my-inner-element' );
 this.bindNode( 'myKey', '.my-element' );
 
 // отловит клик на элементе .my-element
-this.on( 'click::myKey', functinon() { ... });
+this.on( 'click::myKey', function() { ... });
 
 // отловит клик на элементе .my-inner-element
-this.on( 'click::myKey(.my-inner-element)', functinon() { ... });
+this.on( 'click::myKey(.my-inner-element)', function() { ... });
 ```
 
 
@@ -409,6 +497,24 @@ console.log( this.$bound() );
 
 // выведет в консоль элемент .inner-node, который находится внутри песочницы
 console.log( this.$( '.inner-node' ) );
+```
+
+#### Глубокое связывание
+Начиная с версии 1.1, метод ``bindNode`` поддерживает так называемое "глубокое связывание". Метод научился связывать DOM узел со свойством внутри дерева вложенных объектов. Например, у вас есть вложенный объект:
+```js
+this.a = { b: { c: { d: 42 } } };
+```
+
+И вы хотите связать некий узел со свойством ``d`` из этого объекта. Достаточно только указать путь к свойству, а Матрешка будет слушать изменения во всём дереве объектов, то разрывая связь, то создавая её вновь:
+
+```js
+this.bindNode( 'a.b.c.d', '.my-node' );
+```
+
+Когда произойдут какие-нибудь изменения в дереве, ``bindNode`` отловит эти изменения и пересоздаст связь между свойством и нодой.
+
+```js
+this.a.b = { c: { d: 41 } };
 ```
 
 
@@ -464,7 +570,7 @@ Matreshka.binders.customCheckbox = function() {
 	}
 };
 
-MK.defaultBinders.shift( function( element ) {
+MK.defaultBinders.unshift( function( element ) {
 	// проверяем, есть ли у элемента класс "custom-checkbox"
 	if( $( element ).hasClass( 'custom-checkbox' ) ) {
 		// если проверка пройдена, возвращаем новый байндер
@@ -506,7 +612,7 @@ this.bindNode( 'myKey', '.my-element', MK.binders.innerHTML() );
 @method Matreshka#bindNode
 @variation 2
 @summary Альтернативный синтаксис: пары "ключ-элемент"
-@desc Метод {@link Matreshka#bindNode} можно передать объект с парами ключ-элемент, чтобы избежать многократного вызова метода и сократить код
+@desc В метод {@link Matreshka#bindNode} можно передать объект с парами ключ-элемент, чтобы избежать многократного вызова метода и сократить код
 
 @param {object} keyElementPairs - (см. пример)
 @param {binder} [binder] - (см. выше)
@@ -800,18 +906,18 @@ this.defineSetter({
 @param {string|array} key - Ключ или массив ключей или список ключей, разделенных пробелами
 @param {function} mediator - Функция-посредник (медиатор, mediator), возвращающая новое значение
 @example
-this.mediate( 'x', function() {
-	return String( s );
+this.mediate( 'x', function( value ) {
+	return String( value );
 });
 this.x = 1;
 alert( typeof this.x ); // "string"
 @example <caption>Список ключей, разделенных пробелами</caption>
-this.mediate( 'x y', function() {
-	return String( s );
+this.mediate( 'x y', function( value ) {
+	return String( value );
 });
 @example <caption>Массив ключей</caption>
-this.mediate( [ 'x', 'y' ], function() {
-	return String( s );
+this.mediate( [ 'x', 'y' ], function( value ) {
+	return String( value );
 });
 */
 
@@ -839,6 +945,168 @@ this.mediate({
 	'u v': String,
 	'w x': Number,
 	'y z': Boolean
+});
+*/
+
+
+/**
+@method Matreshka#setClassFor
+@since 1.1
+@summary Устанавливает класс для свойства
+@desc Метод позволяет строго указать на то, экземпляром какого класса будет заданное свойство. Это позволяет не беспокоиться о том, что значение свойства случайно перезапишется "голыми" данными.
+
+> Метод является надстройкой над {@link Matreshka#mediate} и переопределяет медиатор, исключая конфликт двух медиаторов.
+
+Экземпляр класса создается во время запуска метода {@link Matreshka#setClassFor}. Первым аргументом конструктора класса становится текущее значение свойства. В конструкторе класса необходимо предусмотреть то, что в него попадет либо ``undefined`` (если свойство не содержало до этого никаких данных), либо объект, с которым нужно что-то сделать (например, расширить экземпляр класса свойствами объекта).
+
+> На деле это выглядит просто: вы создаете обычный класс, который почти всегда принимает какие-нибудь данные, которые нужно обработать (например, использовать их в методе {@link Matreshka.Object#jset}).
+
+При попытке присвоить свойству другое значение (как правило, объект), внутренний механизм метода ``setClassFor``, вместо присваивания, расширяет текущее значение свойства (экземпляра класса) свойствами присваиваемого значения, не заменяя сам экземпляр. 
+
+Для того, чтоб кастомизировать способ обновления свойств экземпляра, можно воспользоваться третьим аргументом ``updateCallback``. Он запускается каждый раз при попытке присваивания свойству новых данных.
+
+> Крутой особенностью функции является отсутствие ограничений на источник класса. В качестве класса может выступать любая функция-конструктор. которая инициализируется с помощью оператора ``new``, а не только наследники {@link Matreshka}.
+
+@param {string|array} key - Ключ или массив ключей, или список ключей, разделенных пробелами
+@param {function} class - Класс, который вы хотите установить свойству
+@param {function} [updateCallback] - Функция, вызывающаяся при каждой попытке присвоить новые данные свойству. Функция принимает два аргумента: текущее значение свойства (экземпляр класса) и данные, которые пытаются присвоить.
+@example
+var SubClass = Class({
+	// ...
+});
+
+// ...
+
+this.setClassFor( 'x', SubClass );
+
+// пытаемся присвоить свойству другое значение
+this.x = { a: 42 };
+
+// this.x по-прежнему экземпляр класса SubClass
+alert( this.x instanceof SubClass ); // true
+alert( this.x.a ); // 42
+@example <caption>Использование ``updateCallback``. Пример демонстрирует использования кастомного способа обновления экземпляра класса методом {@link Matreshka.Object#jset}, если ``SubClass`` унаследован от {@link Matreshka.Object}.</caption>
+this.setClassFor( 'x', SubClass, function( instance, data ) {
+	instance.jset( data );
+});
+@example <caption>Нестандартный способ использования ``updateCallback`` для игнорирования любых изменений свойства.</caption>
+// MK.noop - пустая функция
+this.setClassFor( 'x', SubClass, MK.noop );
+@example <caption>В случае, если ваш класс не подерживает использование оператора ``new``, вместо ``setClassFor`` воспользуйтесь методом {@link Matreshka#mediate}.</caption>
+this.mediate( 'x', function( data, currentValue ) {
+	return currentValue instanceof SomeClass
+		? Object.assign( currentValue, data )
+		: SomeLib.initInstance( SomeClass, data );
+});
+@example <caption>Абстрактный пример с данными большой вложенности (для краткости используется синтаксис ECMAScript 7)</caption>
+// app.js
+class App extends MK {
+	constructor( appData ) {
+		this.appData = appData;
+		this.setClassFor( 'appData', AppData );
+	}
+}
+
+// app-data.js
+class AppData extends MK.Object {
+	constructor( data ) {
+		this
+			.jset( data )
+			.setClassFor( 'friends', Friends, ( instance, data ) =>
+				instance.recreate( data ) )
+			.setClassFor( 'settins', Settings )
+		;
+	}
+}
+
+// friend.js
+class Friend extends MK.Object {
+	constructor( data ) {
+		this.jset( data );
+	}
+}
+
+// friends.js
+class Friends extends MK.Array {
+	Model = Friend;
+	constructor( data ) {
+		this.recreate( data );
+	}
+}
+
+// settings.js
+class Settings extends MK.Object {
+	constructor( data ) {
+		this.jset( data );
+		this.setClassFor( 'credentials', Credentials )
+	}
+}
+
+// credentials.js
+class Credentials extends MK.Object {
+	constructor( data ) {
+		this.jset( data );
+	}
+}
+
+// app-init.js
+var app = new App({
+	settings: {
+		name: 'Vasiliy Vasiliev',
+		credentials: {
+			email: 'vasia.vasia@gmail.com'
+		}
+	},
+	friends: [{
+		name: 'Yulia Zuyeva',
+		id: 1
+	}, {
+		name: 'Konstantin Konstantinopolsky',
+		id: 2
+	}, {
+		name: 'nagibator3000',
+		id: 3
+	}]
+});
+
+// данные можно сериализировать и передать на сервер
+JSON.stringify( app.appData );
+
+
+// потом, в какой-то момент, просто присвоить новые данные свойству appData
+// при этом, структура классов не изменится
+app.appData = {
+	settings: {
+		name: 'Petr Petrov',
+		credentials: {
+			email: 'petr.petrov@gmail.com'
+		}
+	},
+	friends: [{
+		name: 'Yulechka Zuyeva',
+		id: 1
+	}, {
+		name: 'Konstantin Konstantinopolsky',
+		id: 2
+	}]
+};
+*/
+
+
+/**
+@method Matreshka#setClassFor
+@variation 2
+@since 1.1
+@summary Альтернативный синтаксис метода {@link Matreshka#setClassFor}, принимающий в качестве аргумента объект "ключ-класс"
+@param {object} keyClassPairs - Объект со свойствами ключ-класс
+@param {function} [updateCallback] - Функция, вызывающаяся при каждой попытке присвоить новые данные свойству.
+@example
+this.setClassFor({
+	x: Class1,
+	y: Class2,
+	z: Class3
+}, function( data ) {
+	instance.jset( data );
 });
 */
 
@@ -1181,8 +1449,8 @@ MK.binders.customCheckbox = function() {
 	}
 };
 
-// метод shift добавляет функцию в начало массива Matreshka.defaultBinders
-MK.defaultBinders.shift( function( element ) {
+// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
+MK.defaultBinders.unshift( function( element ) {
 	// проверяем, есть ли у элемента класс "custom-checkbox"
 	if( $( element ).hasClass( 'custom-checkbox' ) ) {
 		// если проверка пройдена, возвращаем новый байндер
@@ -1239,8 +1507,9 @@ for( var i = 0; i < 100; i++ ) {
 	debounced( i );
 }
 
-// >>> 100
+// >>> 99
 */
+
 
 /**
 @method Matreshka.lookForBinder
@@ -1264,6 +1533,7 @@ console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
 }
 */
 
+
 /**
 @method Matreshka.randomString
 @summary Функция, которая возвращает уникальную псевдо-случайную строку
@@ -1271,4 +1541,20 @@ console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
 @returns {string} случайная строка
 @example
 var id = MK.randomString();
+*/
+
+
+/**
+@method Matreshka.to
+@since 1.1
+@summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Matreshka.Object} и {@link Matreshka.Array}
+@returns {matreshka} новосозданный экземпляр Матрешки
+@example
+var mk = MK.to({
+	a: 1,
+	b: {
+		c: 2
+	},
+	d: [{e: 1}, {e: 2}, {e: 3}]
+});
 */

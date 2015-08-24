@@ -180,7 +180,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>The inheritance using the ECMAScript 6 syntax</caption>
+@example <caption>The inheritance using the ECMAScript 2015 syntax</caption>
 class MyClass extends MK.Array {
 	constructor() {
 		this.sayHello();
@@ -189,7 +189,7 @@ class MyClass extends MK.Array {
 		alert("Hello World!");
 	}
 }
-@example <caption>The data enumerating, using the for..of syntax from ECMAScript 6</caption>
+@example <caption>The data enumerating, using the for..of syntax from ECMAScript 2015</caption>
 var mkArray = new MK.Array( 1, 2, 3 );
 for(let item of mkArray) {
 	console.log( item ); // 1 .. 2 .. 3
@@ -509,8 +509,64 @@ this.push_( item, {
 	moveSandbox: true
 })
 ```
+
+#### Reassigning the ``itemRenderer``
+Starting version 1.1, when you reassign ``itemRenderer`` a collection rerenders automatically.
+```js
+this.itemRenderer = '<div class="new-renderer"></div>';
+```
+
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.Array#Model}
+
+@example <caption>ECMAScript 2015</caption>
+class MyArray extends MK.Array {
+	get itemRenderer() {
+		return '<div>';
+	},
+	constructor() { ... }
+}
+
+@example <caption>ECMAScript 7</caption>
+class MyArray extends MK.Array {
+	itemRenderer = '<div>';
+	constructor() { ... }
+}
+*/
+
+
+/**
+@member {function} Matreshka.Array#onItemRender
+@abstract
+@since 1.1
+@summary Docs are coming soon...
+@param {matreshka} item
+@param {matreshka} itemEvt
+@example
+var MyModel = Class({
+	'extends': MK.Object,
+	constructor: function( data ) {
+		this.set( data );		
+	},
+	onRender: function(evt) {
+		this.bindNode( 'isChecked', ':sandbox .my-checkbox' );
+		this.bindNode( 'text', ':sandbox .text', MK.binders.innerHTML() );
+	}
+});
+
+var MyArray = Class({
+	'extends': MK.Array,
+	Model: MyModel,
+	itemRenderer: '<li>',
+	constructor: function() {
+		this.bindNode( 'sandbox', '.my-form' );
+	},
+	onItemRender: function(item, evt) {
+		// ...
+	}
+});
+
+var app = new MyArray();
 */
 
 
@@ -563,7 +619,7 @@ myArray.push({
 //  will return [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
 
-@example <caption>``Model`` and the ECMAScript 6</caption>
+@example <caption>``Model`` and the ECMAScript 2015</caption>
 class MyArray extends MK.Array {
 	get Model() {
 		return MyModel;
@@ -665,19 +721,13 @@ this.toNative();
 @method Matreshka.Array#rerender
 @since 0.3
 @summary Rerenders DOM nodes for items included into array
-@desc As a rule, this method is used when the {@link Matreshka.Array#itemRenderer} property is set after elements have been added to an array.
+@desc Docs are coming doon...
+@param {object} [options]
 @returns {matreshkaArray} self
 @example
-var mkArray = new MK.Array;
-
-// DOM is not changed as itemRenderer is not defined yet
-mkArray.push( ... );
-
-// define itemRenderer
-mkArray.itemRenderer = function() { '<div>MyDiv</div>' };
-
-// DOM is rerendered as usual
-mkArray.rerender();
+this.rerender({
+	forceRerender: true
+});
 */
 
 
@@ -832,5 +882,32 @@ this.on( 'modify', function( evt ) {
 this.push_( 1, 2, 3, {
 	flag: 42
 });
+*/
+
+
+/**
+@method Matreshka.Array.from
+@summary Docs are coming soon...
+@see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from Array.from}
+@param {object} arrayLike
+@param {function} [mapFn]
+@param {*} [thisArg]
+@returns {matreshkaArray}
+@example
+var mkArray = MK.Array.from([1, 2, 3, 4]);
+@example
+var mkArray = MK.Array.from([1, 2, 3, 4], function(item) {
+	return item*2;
+}, this);
+*/
+
+
+/**
+@method Matreshka.Array.of
+@summary Docs are coming soon...
+@see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/of Array.of}
+@returns {matreshkaArray}
+@example
+var mkArray = MK.Array.of(1, 2, 3, 4);
 */
 

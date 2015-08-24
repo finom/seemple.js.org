@@ -179,7 +179,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>Наследование, используя синтаксис ECMAScript 6</caption>
+@example <caption>Наследование, используя синтаксис ECMAScript 2015</caption>
 class MyClass extends MK.Array {
 	constructor() {
 		this.sayHello();
@@ -188,7 +188,7 @@ class MyClass extends MK.Array {
 		alert("Hello World!");
 	}
 }
-@example <caption>Перебор данных, используя цикл for..of из ECMAScript 6</caption>
+@example <caption>Перебор данных, используя цикл for..of из ECMAScript 2015</caption>
 var mkArray = new MK.Array( 1, 2, 3 );
 for(let item of mkArray) {
 	console.log( item ); // 1 .. 2 .. 3
@@ -259,7 +259,7 @@ var MyArray = Class({
 @since 0.1
 @summary HTML строка, селектор или функция, отвечающая за отрисовку элементов массива на странице
 @param {matreshkaObject} model - объект, который будет рендериться (на случай необходимости использования условий для рендеринга разных элементов в разных случаях)
-@desc Свойство ``itemRenderer`` - это переопределяемое свойство, которое позволяет рендерить элементы массива без участия программиста. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. {@link Matreshka#bindNode}) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.
+@desc Свойство ``itemRenderer`` - это переопределяемое (виртуальное) свойство, которое позволяет рендерить элементы массива без участия программиста. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. {@link Matreshka#bindNode}) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.
 
 #### Куда вставляется созданный элемент?
 Для того, чтобы определить HTML контейнер, в который будут вставляться отрисованные HTML узлы, нужно определить **контейнер**. Для этого следует объявить HTML песочницу для массива либо связать специальный ключ ``container`` с HTML контейнером. Подробнее о привязках и песочнице см. {@link Matreshka#bindNode}.
@@ -465,6 +465,7 @@ var MyModel = Class({
 });
 ```
 
+> Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод {@link Matreshka.Array#onItemRender}, который можно использовать вместо события ``render``. В качестве альтернативы, у "моделей" вызывается метод ``onRender``, так же позволяющий сделать код более "плоским" и избавиться от вложенных функций.
 
 #### Экспериментальный шаблонизатор
 Взглянув на примеры использования {@link Matreshka.Array} и {@link Matreshka.Array#itemRenderer} можно обратить внимание на то, что вся логика, отвечающая за двустороннюю и одностороннюю привязку данных заключена в JavaScript коде. Это одно из главных преимуществ Матрешки. Но когда разрабатываешь очень простую коллекцию, не включающую в себя сложную логику, массу привязок и пр. хотелось бы иметь более краткий вариант объявления привязок. Для этого, в ``itemRenderer`` может быть передан шаблон, включающий привязки. Для того, чтоб включить шаблонизацию, используйте ключ {@link Matreshka.Array#useBindingsParser}, установленный, как ``true``.
@@ -516,11 +517,68 @@ var MyArray = Class({
 ```js
 this.push_( item, {
 	moveSandbox: true
-})
+});
+
+#### Переустановка ``itemRenderer``
+Начиная с версии 1.1, при переустановке свойства ``itemRenderer``, коллекция автоматически перерисовывается.
+```js
+this.itemRenderer = '<div>';
 ```
 
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.Array#Model}
+
+@example <caption>ECMAScript 2015</caption>
+class MyArray extends MK.Array {
+	get itemRenderer() {
+		return '<div>';
+	},
+	constructor() { ... }
+}
+
+@example <caption>ECMAScript 7</caption>
+class MyArray extends MK.Array {
+	itemRenderer = '<div>';
+	constructor() { ... }
+}
+*/
+
+
+/**
+@member {function} Matreshka.Array#onItemRender
+@abstract
+@since 1.1
+@summary Функция, которая запускается перед событием ``render``.
+@desc Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод ``onItemRender``, который можно использовать в качестве замены события ``render``.
+
+При этом, у отрисованного элемента вызывается метод ``onRender`` с единственным аргументом - объектом события.
+@param {matreshka} item - отрисованный элемент коллекции
+@param {matreshka} itemEvt - объект события ``render``
+@example
+var MyModel = Class({
+	'extends': MK.Object,
+	constructor: function( data ) {
+		this.set( data );		
+	},
+	onRender: function(evt) {
+		this.bindNode( 'isChecked', ':sandbox .my-checkbox' );
+		this.bindNode( 'text', ':sandbox .text', MK.binders.innerHTML() );
+	}
+});
+
+var MyArray = Class({
+	'extends': MK.Array,
+	Model: MyModel,
+	itemRenderer: '<li>',
+	constructor: function() {
+		this.bindNode( 'sandbox', '.my-form' );
+	},
+	onItemRender: function(item, evt) {
+		// тоже что-то сделать
+	}
+});
+
+var app = new MyArray();
 */
 
 
@@ -573,11 +631,18 @@ myArray.push({
 // вернет [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
 
-@example <caption>``Model`` и ECMAScript 6</caption>
+@example <caption>``Model`` и ECMAScript 2015</caption>
 class MyArray extends MK.Array {
 	get Model() {
 		return MyModel;
 	}
+	constructor() { ... }
+}
+
+@example <caption>``Model`` и ECMAScript 7</caption>
+class MyArray extends MK.Array {
+	Model = MyModel;
+	constructor() { ... }
 }
 */
 
@@ -655,7 +720,7 @@ this.recreate();
 
 /**
 @method Matreshka.Array#toArray
-@summary Конвертирует {@link Matreshka.Array} в обычный массив, но не конвертирует входящие в него элемены
+@summary Конвертирует {@link Matreshka.Array} в обычный массив, но не конвертирует входящие в него элементы
 @returns {array}
 @example
 this.toArray();
@@ -675,19 +740,15 @@ this.toNative();
 @method Matreshka.Array#rerender
 @since 0.3
 @summary Перерисовывает DOM узлы элементов, входящих в массив
-@desc Этот метод, как правило, используется тогда, когда свойство {@link Matreshka.Array#itemRenderer} устанавливается после того, как элементы были добавлены в массив.
+@desc Этот метод заново рендерит элементы массива в контейнере массива. Если узел, который ассоциирован с элеменом масива уже создан, метод, вместо перерисовки с нуля, "перевставляет" его в контейнер или песочницу массива.
+
+Начиная с версии 1.1, для того, чтоб заставить массив перерисоваться, независимо от наличия отрендеренных узлов (например, вы используете handlebars в ``itemRenderer``), передайте в метод объект со свойством ``forceRerender`` равным ``true``.
+@param {object} [options] - Объект с флагами (на сегодняшний день, единственный флаг - ``forceRerender``)
 @returns {matreshkaArray} self
 @example
-var mkArray = new MK.Array;
-
-// DOM не меняется, так как itemRenderer еще не определен
-mkArray.push( ... );
-
-// определяем itemRenderer
-mkArray.itemRenderer = function() { '<div>MyDiv</div>' };
-
-// DOM перерисовывается
-mkArray.rerender();
+this.rerender({
+	forceRerender: true
+});
 */
 
 
@@ -842,5 +903,32 @@ this.on( 'modify', function( evt ) {
 this.push_( 1, 2, 3, {
 	flag: 42
 });
+*/
+
+
+/**
+@method Matreshka.Array.from
+@summary Метод создаёт новый экземпляр {@link Matreshka.Array} из массивоподобного объекта.
+@see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from Array.from}
+@param {object} arrayLike - Массивоподобный объект.
+@param {function} [mapFn] - Отображающая функция, вызываемая для каждого элемента массива.
+@param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``mapFn``
+@returns {matreshkaArray}
+@example
+var mkArray = MK.Array.from([1, 2, 3, 4]);
+@example
+var mkArray = MK.Array.from([1, 2, 3, 4], function(item) {
+	return item*2;
+}, this);
+*/
+
+
+/**
+@method Matreshka.Array.of
+@summary Метод Array.of() создаёт новый экземпляр {@link Matreshka.Array} из произвольного числа агрументов, вне зависимости от числа или типа аргумента.
+@see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/of Array.of}
+@returns {matreshkaArray}
+@example
+var mkArray = MK.Array.of(1, 2, 3, 4);
 */
 

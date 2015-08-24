@@ -21,17 +21,10 @@ this.bindNode( 'myKey', '.my-element', MK.binders.myCoolBinder( 'Hello', 'World'
 /**
 @function Matreshka.binders.innerHTML
 @since 0.1
-@summary Возвращает односторонний привязчик, меняющий ``innerHTML`` DOM элемента в зависимости от значения свойства экземпляра класса
+@summary Возвращает привязчик, меняющий ``innerHTML`` DOM элемента в зависимости от значения свойства экземпляра класса
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-element', MK.binders.innerHTML() );
-
-// то же самое, что и
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
-		this.innerHTML = v;
-	}
-});
 */
 
 /**
@@ -42,52 +35,24 @@ this.bindNode( 'myKey', '.my-element', {
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-element', MK.binders.visibility(true) );
-
-// то же самое, что и
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
-		this.style.display = v ? '' : 'none';
-	}
-});
 @example
 this.bindNode( 'myKey', '.my-element', MK.binders.visibility(false) );
-
-// то же самое, что и
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
-		this.style.display = v ? 'none' : '';
-	}
-});
 */
 
 /**
 @function Matreshka.binders.className
 @since 0.1
-@summary Возвращает односторонний привязчик, который переключает имя класса DOM элемента в зависимости от значения свойства экземпляра класса. Если значение свойства нестрого равно ``true``, имя класса добавляется, в противном случае - убирается. Логику можно изменить, добавив восклицательный знак перед именем класса, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно ``false`` и наоборот.
+@summary Возвращает привязчик, который переключает имя класса DOM элемента в зависимости от значения свойства экземпляра класса. Если значение свойства нестрого равно ``true``, имя класса добавляется, в противном случае - убирается. Логику можно изменить, добавив восклицательный знак перед именем класса, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно ``false`` и наоборот.
 @param {string} className
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-element', MK.binders.className( 'blah' ) );
-
-// то же самое, что и
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
-		$( this ).toggleClass( 'blah', v );
-	}
-});
 
 this.myKey = true; // добавляет класс 'blah' 
 
 this.myKey = false; // убирает класс 'blah' 
 @example <caption>Использование восклицательного знака перед именем класса</caption>
 this.bindNode( 'myKey', '.my-element', MK.binders.className( '!blah' ) );
-
-// то же самое, что и
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
-		$( this ).toggleClass( 'blah', !v );
-	}
-});
 
 this.myKey = false; // добавляет класс 'blah' 
 
@@ -97,18 +62,11 @@ this.myKey = true; // убирает класс 'blah'
 /**
 @function Matreshka.binders.property
 @since 0.3
-@summary Возвращает односторонний привязчик, меняющий свойство DOM элемента на значение свойства экземпляра класса
+@summary Возвращает привязчик, меняющий свойство DOM элемента на значение свойства экземпляра класса
 @param {string} property
 @returns {binder}
 @example
 this.bindNode( 'disabled', '.my-button', MK.binders.property( 'disabled' ) );
-
-// то же самое, что и
-this.bindNode( 'disabled', '.my-button', {
-	setValue: function( v ) {
-		this.disabled = v;
-	}
-});
 
 // устанавливает свойство disabled = true для элемента
 this.disabled = true;
@@ -120,18 +78,11 @@ this.disabled = false;
 /**
 @function Matreshka.binders.attribute
 @since 0.3
-@summary Возвращает односторонний привязчик, меняющий атрибут DOM элемента на значение свойства экземпляра класса
+@summary Возвращает привязчик, меняющий атрибут DOM элемента на значение свойства экземпляра класса
 @param {string} attribute
 @returns {binder}
 @example
 this.bindNode( 'image', 'img.my-image', MK.binders.attribute( 'src' ) );
-
-// то же самое, что и
-this.bindNode( 'image', 'img.my-image', {
-	setValue: function( v ) {
-		this.setAttribute( 'src', v );
-	}
-});
 
 this.image = 'http://example.com/cats.jpg';
 */
@@ -139,7 +90,7 @@ this.image = 'http://example.com/cats.jpg';
 /**
 @function Matreshka.binders.input
 @since 0.3
-@summary Возвращает двусторонний привязчик, связывающий свойство экземпляра класса с элементом ``input``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@summary Возвращает привязчик, связывающий свойство экземпляра класса с элементом ``input``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
 @param {string} [type] - Тип инпута
 @returns {binder}
 @example
@@ -149,7 +100,7 @@ this.bindNode( 'myKey', '.my-input', MK.binders.input( 'range' ) );
 /**
 @function Matreshka.binders.textarea
 @since 0.3
-@summary Возвращает двусторонний привязчик, связывающий свойство экземпляра с элементом ``textarea``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@summary Возвращает привязчик, связывающий свойство экземпляра с элементом ``textarea``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-textarea', MK.binders.textarea() );
@@ -158,9 +109,83 @@ this.bindNode( 'myKey', '.my-textarea', MK.binders.textarea() );
 /**
 @function Matreshka.binders.select
 @since 0.3
-@summary Возвращает двусторонний привязчик, связывающий свойство экземпляра с элементом ``select``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@summary Возвращает привязчик, связывающий свойство экземпляра с элементом ``select``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
 @param {boolean} [multiple=false] - Является ли селект ``multiple``
 @returns {binder}
 @example
 this.bindNode( 'myKey', '.my-select', MK.binders.select( true ) );
 */
+
+
+/**
+@function Matreshka.binders.progress
+@since 1.1
+@summary Возвращает привязчик, связывающий свойство с экземпляра с элементом ``progress``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@returns {binder}
+@example
+this.bindNode( 'myKey', '.my-progress', MK.binders.progress() );
+*/
+
+
+/**
+@function Matreshka.binders.innerText
+@since 1.1
+@summary Возвращает привязчик, меняющий ``innerText`` (текстовое содержимое) DOM элемента в зависимости от значения свойства экземпляра класса. 
+@desc {@link Matreshka.binders.innerText} позволяет вывести содержимое свойства как есть и немного улучшает производительность из-за отсутствия необходимости браузеру парсить HTML.
+@returns {binder}
+@example
+this.bindNode( 'myKey', '.my-node', MK.binders.innerText() );
+*/
+
+
+/**
+@function Matreshka.binders.style
+@since 1.1
+@summary Возвращает привязчик, меняющий заданное свойство стиля DOM элемента в зависимости от значения свойства экземпляра класса.
+@param {string} property - Свойство ``style`` (camel-cased)
+@returns {binder}
+@example
+this.bindNode( 'myKey', '.my-node', MK.binders.style('backgroundColor') );
+this.myKey = 'red'; // цвет фона ``.my-node`` стал красным
+*/
+
+
+/**
+@function Matreshka.binders.dataset
+@since 1.1
+@summary Возвращает привязчик, меняющий заданное свойство объекта [dataset](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset) DOM элемента в зависимости от значения свойства экземпляра класса.
+@param {string} property - Свойство dataset
+@returns {binder}
+@example
+this.bindNode( 'myKey', '.my-node', MK.binders.dataset('myProp') );
+this.myKey = 'cool value';
+*/
+
+
+/**
+@function Matreshka.binders.file
+@since 1.1
+@summary Возвращает привязчик для ``input[type="file"]``.
+
+@desc Байндер позволяет не только получить основные данные о файле, но и считать его, не вызывая ``FileReader`` вручную. Если ``readAs`` не задан, то в привязанное свойство попадает значение инпута после его изменения (по событию ``change``). Если ``readAs`` задан, то байндер считает файл и преобразует в необходимый формат (data URI, Blob...) и только после прочтения файла свойство изменится. Результирующим значением свойства становится файл (нативный ``File``) или нативный массив файлов (не ``FileList``, для удобства) при наличии атрибута ``multiple``. При этом, результат чтения попадет в объект файла (файлов) в виде свойства ``readerResult``.
+@see {https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
+@param {string} [readAs] - Значением аргумента ``readAs`` могут быть ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. Значение зависит от наличия соответствующих методов в ``FileReader``.
+@returns {binder}
+@example
+this.bindNode( 'myKey', '.my-file', MK.binders.file('dataURL') );
+// ... пользователь меняет содержимое инпута, выбирая my-image.png из файловой системы ...
+this.on( 'change:myKey', function() {
+	console.log(this.myKey);
+	// --> 
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..." <-- результат считывания файла
+	//	size: 9378
+	//	type: "image/png"
+});
+*/
+
+
+

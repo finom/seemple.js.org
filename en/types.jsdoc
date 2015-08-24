@@ -62,6 +62,14 @@ this.on( 'change:x', function( evt ) {
 });
 this.x = 1;
 ```
+
+### The event which fired before property is changed
+```js
+this.on( 'change:x', function( evt ) {
+	alert( evt.value );
+});
+this.x = 1;
+```
 ### DOM events for bound nodes
 DOM event name and key are separated by colon. Original DOM event is stored as ``domEvent`` property. Besides, event object contains few properties and methods taken from original DOM event: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` and few Matreshka-specific keys (``key``, ``element``, ``elements``, ``self``).
 ```js
