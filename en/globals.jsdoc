@@ -1,10 +1,10 @@
 /**
 @function Class
-@summary The class implementation based on the prototype inheritance
-@desc The ``Class`` function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses the hack which allows to use accessors (getters and setters) using the ``Object.defineProperty`` function.
+@summary A class implementation based on the prototype inheritance
+@desc The ``Class`` function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses a hack which allows to use accessors (getters and setters) using the ``Object.defineProperty`` function.
 
 @param {object} prototype - Methods and properties
-@returns {class} class (the class constructor to be exact)
+@returns {class} class (a class constructor to be exact)
 @example
 var A = Class({
 	method1: function() { ... }
@@ -21,17 +21,17 @@ var C = Class({
 	'extends': B,
 	method2: function() {
 		// calling the parent method
-		B.prototype.method2.apply( this, arguments );
+		B.prototype.method2.apply(this, arguments);
 	},
-	method3: function( a, b ) { ... }
+	method3: function(a, b) { ... }
 });
 
 var D = Class({
 	// D is inherited from C
 	'extends': C,
-	method3: function( a, b ) {
+	method3: function(a, b) {
 		// calling the parent method
-		C.prototype.method2.call( this, arguments );
+		C.prototype.method2.call(this, arguments);
 	}
 });
 @example <caption>The usage of AMD (named modules)</caption>
@@ -61,7 +61,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Mtreshka  OOB supports any type of the prototype inheritance including the ECMAScript 2015 syntax.</caption>
+@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Matreshka OOB supports any type of prototype inheritance including ECMAScript 2015 syntax.</caption>
 class A extends B {
 	constructor() {
 		super();
@@ -73,12 +73,12 @@ class A extends B {
 	}
 }
 
-@example <caption>**The ``instanceOf`` method**. The instances of the class which has been created using the ``Class`` function include the ``instanceOf`` method that checks if the object is an instance of the specified class. This method is necessary only when your application needs IE8 support.</caption>
+@example <caption>**The ``instanceOf`` method**. Instances of a class which has been created using the ``Class`` function include the ``instanceOf`` method that checks if an object is an instance of specified class. This method is necessary only when your application needs IE8 support.</caption>
 // for IE8 and other browsers
-alert( this.instanceOf( MyClass ) );
+alert(this.instanceOf(MyClass));
 
 // for ordinary browsers
-alert( this instanceof MyClass );
+alert(this instanceof MyClass);
 */
 
 
@@ -88,7 +88,7 @@ alert( this instanceof MyClass );
 @since 0.1
 @extends Array
 @summary Balalaika micro-library
-@desc Balalaika is a tiny  (as of this writing -  605 bytes) jQuery-like library for working with DOM. It is inherited from ``Array.prototype`` and includes all the methods existing in the Array:
+@desc Balalaika is a tiny (as of this writing -  605 bytes) jQuery-like library for working with DOM. It is inherited from ``Array.prototype`` and includes all the methods existing in native Array:
 
 <ul>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank">concat</a></li>
@@ -111,7 +111,7 @@ alert( this instanceof MyClass );
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 
-Besides, it includes several own methods: ``on``, ``off``, ``is``, ``extend``, HTML parsing feature, DOM-ready feature and others. Balalaika is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on the page.
+Besides, it includes several own methods: ``on``, ``off``, ``is``, ``extend``, HTML parsing feature, DOM-ready feature and others. Balalaika is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.
 
 @see {@link https://github.com/finom/balalaika Balalaika on Github}
 
@@ -130,8 +130,8 @@ $('.my-selector').on('click', function(evt) {
     }
 });
 
-@example <caption>The ``extend`` method (the extension of one object by another one)</caption>
-var myObject = {a:1};
+@example <caption>The ``extend`` method (extension of one object by another one)</caption>
+var myObject = {a: 1};
 $.extend(myObject,{
     b: 2
 });
@@ -147,7 +147,7 @@ var elements = $('<div><span class="yeah"></span></div>');
 @example <caption>Searching for one element in another one</caption>
 var myElement = $('.my-selector', node);
 
-@example <caption>The style setting</caption>
+@example <caption>Setting styles</caption>
 $('.my-selector').forEach(function(el) {
     $.extend( el.style, {
         width: '30px',
@@ -168,16 +168,16 @@ $('.my-selector').on('click', function(evt) {
 });
 
 @example <caption>A simple plugin</caption>
-$.fn.addClass = function( className ) {
-    this.forEach( function( item ) {
+$.fn.addClass = function(className) {
+    this.forEach(function(item ) {
         var classList = item.classList;
-        classList.add.apply( classList, className.split( /\s/ ) );
+        classList.add.apply(classList, className.split(/\s+/));
     });
     return this;
 };
 
 @example <caption>The ``create`` function is an additional utility for creating elements which comes standard with Matreshka. The first argument is a tag name, the second one - properties which extend DOM object.</caption>
-var div = $.create( 'div', {
+var div = $.create('div', {
 	className: 'my-div',
 	innerHTML: 'My DIV',
 	dataset: {
@@ -186,7 +186,7 @@ var div = $.create( 'div', {
 	}
 });
 
-@example <caption>starting with the version 1.1, function ``create`` has alternative syntax. The tag name can be passed as ``tagName`` property and list of children as ``children`` property.</caption>
+@example <caption>starting with version 1.1, function ``create`` has alternative syntax. A tag name can be passed as ``tagName`` property and list of children as ``children`` property.</caption>
 var div = $.create({
 	tagName: 'div',
 	className: 'my-div',

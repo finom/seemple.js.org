@@ -4,10 +4,10 @@
 @param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени собыия
 @example
 var eventHandler = function() {
-	console.log( arguments ); 
+	console.log(arguments); 
 }
-this.on( 'fyeah', eventHandler );
-this.trigger( 'fyeah', 'foo', 'bar', 'baz' ); // logs 'foo', 'bar', 'baz'
+this.on('fyeah', eventHandler);
+this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 */
 
 
@@ -49,33 +49,33 @@ this.trigger( 'fyeah', 'foo', 'bar', 'baz' ); // logs 'foo', 'bar', 'baz'
 ### Произвольное событие
 Такое событие может быть сгенерировано программистом вручную с помощью метода {@link Matreshka#trigger}
 ```js
-this.on( 'x y z', function( message ) {
-	alert( message );
+this.on('x y z', function(message) {
+	alert(message);
 });
 
-this.trigger( 'y', '"y" event is fired' );
+this.trigger('y', '"y" event is fired');
 ```
 ### Событие изменения свойства
 ```js
-this.on( 'change:x', function( evt ) {
-	alert( evt.value );
+this.on('change:x', function(evt) {
+	alert(evt.value);
 });
 this.x = 1;
 ```
 ### Событие, вызываемое перед изменением свойства
 ```js
-this.on( 'beforechange:x', function( evt ) {
-	alert( evt.value );
+this.on('beforechange:x', function(evt) {
+	alert(evt.value);
 });
 this.x = 1;
 ```
 ### DOM события для привязанных элементов
 DOM событие и ключ разделяются двойным двоеточием. Объект оригинального DOM события находится под ключём ``domEvent`` объекта события. Кроме этого, в объекте доступно несколько свойств и методов, для того чтобы не обращаться каждый раз к ``domEvent``: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` и несколько других свойств (``key``, ``element``, ``elements``, ``self``).
 ```js
-this.bindNode( 'x', '.my-button' );
-this.on( 'click::x', function( evt ) {
-	alert( 'clicked "x"' );
-	console.log( evt.domEvent ); // MouseEvent
+this.bindNode('x', '.my-button');
+this.on('click::x', function(evt) {
+	alert('clicked "x"');
+	console.log(evt.domEvent); // MouseEvent
 });
 ```
 ### Делегированные DOM события для привязанных элементов
@@ -88,17 +88,17 @@ this.on( 'click::x', function( evt ) {
 ```
 Сравните два варианта:
 ```js
-this.bindNode( 'x', '.my-div' );
-this.bindNode( 'y', '.my-button' );
-this.on( 'click::y', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('x', '.my-div');
+this.bindNode('y', '.my-button');
+this.on('click::y', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
 ```js
-this.bindNode( 'x', '.my-div' );
-this.on( 'click::x(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('x', '.my-div');
+this.on('click::x(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
@@ -109,17 +109,17 @@ this.on( 'click::x(.my-button)', function( evt ) {
 
 Синтаксис делегированных событий описан выше:
 ```js
-this.bindNode( 'sandbox', '.my-div' );
-this.on( 'click::sandbox(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('sandbox', '.my-div');
+this.on('click::sandbox(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
 Но, есть более краткий способ записи такого события, без указания ключа ``sandbox``
 ```js
-this.bindNode( 'sandbox', '.my-div' );
-this.on( 'click::(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('sandbox', '.my-div');
+this.on('click::(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
@@ -130,24 +130,24 @@ this.on( 'click::(.my-button)', function( evt ) {
 
 Сравните два подхода. Первый - простой: слушаем изменения свойства, проверяем, является ли значение свойства экземпляром Матрешки, навешиваем обработчик.
 ```js
-this.on( 'change:x', function() {
-	if( this.x && this.x.isMK ) {
-		this.x.on( 'y', function( message ) {
-			alert( message );
+this.on('change:x', function() {
+	if(this.x && this.x.isMK) {
+		this.x.on('y', function(message) {
+			alert(message);
 		});
 	}
 });
-this.x = new Matreshka;
-this.x.trigger( 'y', '"y" event is fired' );
+this.x = new Matreshka();
+this.x.trigger('y', '"y" event is fired');
 ```
 
 Вариант с использованием делегированных событий Матрешки выглядит многократно элегантнее.
 ```js
-this.on( 'x@y', function( message ) {
-	alert( message );
+this.on('x@y', function(message) {
+	alert(message);
 });
-this.x = new Matreshka;
-this.x.trigger( 'y', '"y" event is fired' );
+this.x = new Matreshka();
+this.x.trigger('y', '"y" event is fired');
 ```
 
 ### Делегированные события {@link Matreshka.Object} и {@link Matreshka.Array}
@@ -155,32 +155,32 @@ this.x.trigger( 'y', '"y" event is fired' );
 
 Пример с {@link Matreshka.Object}.
 ```js
-this.on( '@y', function( message ) {
-	alert( message );
+this.on('@y', function(message) {
+	alert(message);
 });
 this.jset('x', new Matreshka );
-this.x.trigger( 'y', '"y" event is fired' );
+this.x.trigger('y', '"y" event is fired');
 ```
 
 Пример с {@link Matreshka.Array}.
 ```js
-this.on( '@y', function( message ) {
-	alert( message );
+this.on('@y', function(message) {
+	alert(message);
 });
-this.push( new Matreshka );
-this[0].trigger( 'y', '"y" event is fired' );
+this.push(new Matreshka);
+this[0].trigger('y', '"y" event is fired');
 ```
 
 ### Всевозможные комбинации
 Все приведенные выше варианты синтаксиса можно комбинировать произвольным способом.
 ```js
-this.on( '@click::x z@y', function() { ... } );
+this.on('@click::x z@y', function() { ... });
 ```
 ```js
-this.on( 'property@click::(.my-selector)', function() { ... } );
+this.on('property@click::(.my-selector)', function() { ... });
 ```
 ```js
-this.on( 'x@y@z', function() { ... } );
+this.on('x@y@z', function() { ... });
 ```
 @typedef {string} eventNames
 */
@@ -196,35 +196,35 @@ this.on( 'x@y@z', function() { ... } );
 @example
 var binder = {
 	on: 'click',
-	getValue: function( options ) {
+	getValue: function(options) {
 		return this.value;
 	} 
-	setValue: function( v, options ) {
+	setValue: function(v, options) {
 		this.value = v;
 	},
-	initialize: function( options ) {
-		alert( 'Binder is initialized. Initial input value=' + this.value );
+	initialize: function(options) {
+		alert('Binder is initialized. Initial input value=' + this.value);
 	}
 };
 
-this.bindNode( 'a', '.my-checkbox', binder );
+this.bindNode('a', '.my-checkbox', binder);
 @example
 var binder = {
-	on: function( callback ) {
+	on: function(callback) {
 		this.onclick = callback;
 	},
-	getValue: function( options ) {
+	getValue: function(options) {
 		return this.value;
 	} 
-	setValue: function( v, options ) {
+	setValue: function(v, options) {
 		this.value = v;
 	},
-	initialize: function( options ) {
-		alert( 'Binder is initialized. Initial input value=' + this.value );
+	initialize: function(options) {
+		alert('Binder is initialized. Initial input value=' + this.value);
 	}
 };
 
-this.bindNode( 'a', '.my-checkbox', binder );
+this.bindNode('a', '.my-checkbox', binder);
 */
 
 
@@ -233,25 +233,25 @@ this.bindNode( 'a', '.my-checkbox', binder );
 @typedef {object} eventOptions
 @desc Это обычный объект, которй может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
 @example
-var eventOptions = { silent: true };
+var eventOptions = {silent: true};
 
 this.a = 1;
 
-this.on( 'change:a', function() {
-	alert( 'a is changed' );
+this.on('change:a', function() {
+	alert('a is changed');
 });
 
-this.set( 'a', 2, eventOptions ); // no alert
+this.set('a', 2, eventOptions); // no alert
 @example
-var eventOptions = { f: 'yeah' };
+var eventOptions = {f: 'yeah'};
 
 this.a = 1;
 
-this.on( 'change:a', function( eventOptions ) {
-	alert( eventOptions.f );
+this.on('change:a', function(eventOptions) {
+	alert(eventOptions.f);
 });
 
-this.set( 'a', 2, eventOptions ); // alerts "yeah"
+this.set('a', 2, eventOptions); // alerts "yeah"
 */
 
 

@@ -1,19 +1,19 @@
 /**
 @class Matreshka.Object
-@classdesc ``Matreshka.Object`` is a class which is responsible for the data of the key-value pair type. Its goal is to separate the service properties from the data that can be passed to the server or kept in the local storage. The class is inherited from the {@link Matreshka} class and includes all its properties and methods.
+@classdesc ``Matreshka.Object`` is a class which is responsible for key-value data. Its goal is to separate service properties from data that can be passed to a server or kept in a local storage. The class is inherited from the {@link Matreshka} class and includes all its properties and methods.
 
-Imagine you create a class including ``"a"``, ``"b"`` and ``"c"`` properties. Let's assume that ``"a"`` and ``"b"`` are the properties which must be sent to the server, and ``"c"`` property is just responsible for some application state (for example, it contains the sum of ``"a"`` and ``"b"``). The server does not need the ``"c"`` property. So we have to separate **the properties which are responsible for the data** from the ones which are not.
+Imagine you create a class including ``"a"``, ``"b"`` and ``"c"`` properties. Let's assume that ``"a"`` and ``"b"`` are the properties which must be sent to a server, and ``"c"`` property is just responsible for some application state (for example, it contains the sum of ``"a"`` and ``"b"``). The server does not need the ``"c"`` property. So we have to separate **the properties which are responsible for data** from ones which are not.
 
-In order to declare such properties from the others, you can make use of the {@link Matreshka.Object#addDataKeys} method.
+In order to declare such properties from others, you can make use of the {@link Matreshka.Object#addDataKeys} method.
 ```js
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 
 this.a = 1;
 this.b = 2;
 this.c = 3;
 ```
 
-If you don't know which properties are specified in advance, you can always use the {@link Matreshka.Object#jset} method, which declares not only the properties responsible for data but sets their values at once.
+If you don't know which properties are specified in advance, you can always use the {@link Matreshka.Object#jset} method, which declares not only properties responsible for data but sets their values at once.
 ```js
 this.jset({
 	a: 1,
@@ -23,27 +23,27 @@ this.jset({
 this.c = 3;
 ``` 
 
-After an application has found out what is data, {@link Matreshka.Object} instance can be converted into an ordinary object by the {@link Matreshka.Object#toJSON} method and passed to the server or kept in the local DB (for example, in ``localStorage``).
+After an application has found out what is data, {@link Matreshka.Object} instance can be converted into an ordinary object by the {@link Matreshka.Object#toJSON} method and passed to a server or kept in a local DB (for example, in ``localStorage``).
 ```js
-// will return the object { a: 1, b: 2 }
+// will return the object {a: 1, b: 2}
 this.toJSON();
 ```
 
-The ``modify`` event is fired on changing the properties which are responsible for the data
+The ``modify`` event is fired on changing properties which are responsible for data
 ```js
-this.on( 'modify', function() {
-	alert( 'Object is modified' );
+this.on('modify', function() {
+	alert('Object is modified');
 });
 ```
 @param {object} [data] - Data
 @param {matreshkaArray} [collection] - An array, where this object is added as {@link Matreshka.Array#Model Model}
 @inherits Matreshka
-@example <caption>The creation of the instance.</caption>
-new MK.Object;
-@example <caption>The creation of the instance with two specified properties.</caption>
-// the same as new MK.Object().jset({ a: 1, b: 2 });
-new MK.Object({ a: 1, b: 2 });
-@example <caption>The inheritance</caption>
+@example <caption>Simple use.</caption>
+new MK.Object();
+@example <caption>Creation of an instance with two specified properties.</caption>
+// the same as new MK.Object().jset({a: 1, b: 2});
+new MK.Object({a: 1, b: 2});
+@example <caption>The inheritance.</caption>
 var MyClass = Class({
 	'extends': MK.Object,
 	constructor: function() {
@@ -63,9 +63,9 @@ class MyClass extends MK.Object {
 	}
 }
 @example <caption>Data enumerating, using for..of syntax from ECMAScript 2015</caption>
-var mkObject = new MK.Object({ a: 1, b: 2 });
+var mkObject = new MK.Object({a: 1, b: 2});
 for(let item of mkObject) {
-	console.log( item ); // 1 .. 2
+	console.log(item); // 1 .. 2
 }
 */
 
@@ -73,13 +73,13 @@ for(let item of mkObject) {
 @member {boolean} Matreshka.Object#isMKObject
 @summary The ``isMKObject`` property always equals ``true``. It is used for checking if an object is an instance of {@link Matreshka.Object}.
 @example
-alert( object.isMKObject );
+alert(object.isMKObject);
 */
 
 
 /**
 @method Matreshka.Object#keys
-@summary Returns an array of keys which are responsible for the data 
+@summary Returns an array of keys which are responsible for data 
 @returns {array} keys
 @example
 var keys = this.keys();
@@ -87,25 +87,8 @@ var keys = this.keys();
 
 
 /**
-@method Matreshka.Object#on
-@since 0.2
-@summary Works the same as {@link Matreshka#on}, but additionally it allows dynamically add handlers to properties  which are responsible for the data without direct specifying property name.
-@example
-var mkObject = new MK.Object();
-
-mkObject.on( '@something', function() {
-	alert( 'something happens' )
-});
-
-mkObject.jset( 'x', new MK );
-
-mkObject.x.trigger( 'something' );
-*/ 
-
-
-/**
 @method Matreshka.Object#hasOwnProperty
-@summary Checks if there is a property which is responsible for the data with given key in an instance. 
+@summary Checks if there is a property which is responsible for data with given key in an instance. 
 @param {string} key
 @returns {matreshkaObject} self
 @example
@@ -114,11 +97,11 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.hasOwnProperty( 'a' ); // true
+mkObject.hasOwnProperty('a'); // true
 
-mkObject.hasOwnProperty( 'b' ); // true
+mkObject.hasOwnProperty('b'); // true
 
-mkObject.hasOwnProperty( 'c' ); // false
+mkObject.hasOwnProperty('c'); // false
 */
 
 
@@ -132,7 +115,7 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.toObject(); // returns { a: 1, b: 2 }
+mkObject.toObject(); // returns {a: 1, b: 2}
 */
 
 
@@ -146,7 +129,7 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.toNative(); // returns { a: 1, b: 2 }
+mkObject.toNative(); // returns {a: 1, b: 2}
 */
 
 
@@ -164,15 +147,15 @@ var mkObject = new MK.Object({
 	})
 });
 
-// returns  { a: 1, b: 2, c: { d: 3, e: 4 } }
+// returns  {a: 1, b: 2, c: {d: 3, e: 4}}
 mkObject.toJSON();
 */
 
 
 /**
 @method Matreshka.Object#keyOf
-@summary Searches for the specified property value among others which are responsible for the data and returns a key if this value has been found (very similar to ``Array.prototype.indexOf`` function)
-@prop {*} value - A value of any type which should be found among the data
+@summary Searches for specified property value among others which are responsible for data and returns a key if this value has been found (very similar to ``Array.prototype.indexOf`` function)
+@prop {*} value - A value of any type which should be found among data keys
 @returns {string|null}
 @example
 var mkObject = new MK.Object({
@@ -180,11 +163,11 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.keyOf( 1 ); // 'a'
+mkObject.keyOf(1); // 'a'
 
-mkObject.keyOf( 2 ); // 'b'
+mkObject.keyOf(2); // 'b'
 
-mkObject.keyOf( 3 ); // null
+mkObject.keyOf(3); // null
 */
 
 
@@ -193,12 +176,12 @@ mkObject.keyOf( 3 ); // null
 @fires change
 @fires change:KEY
 @fires modify
-@summary Sets a property and adds a key to a list of keys which are responsible for the data.
+@summary Sets a property and adds a key to a list of keys which are responsible for data.
 @desc This method does two things:
 
 1\. Sets a specified value to a given property.
 
-2\. Adds a key of the property to the data list and it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toObject} and {@link Matreshka.Object#toJSON} methods).
+2\. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toObject} and {@link Matreshka.Object#toJSON} methods).
 
 Apart from that, the method works the same as {@link Matreshka#set}.
 
@@ -211,28 +194,28 @@ Apart from that, the method works the same as {@link Matreshka#set}.
 @returns {matreshkaObject} self
 
 @example
-this.jset( 'a', 1 ).jset( 'b', 2 );
+this.jset('a', 1).jset('b', 2);
 
 @example
-this.jset( 'a', 1 ).jset( 'b', 2 );
+this.jset('a', 1).jset('b', 2);
 
 // assign 3 to the 'c' property,
-// but do not add the key to the list of keys which are responsible for the data
-this.set( 'c', 3 );
+// but do not add the key to a list of keys which are responsible for data
+this.set('c', 3);
 
-this.each( function( value, key ) {
-	console.log( key, value ); 
+this.each(function(value, key) {
+	console.log(key, value); 
 });
 
 // displays  'a' 1 and 'b' 2
 
-console.log( this.keys() ); // displays  [ 'a', 'b' ]
+console.log(this.keys()); // displays  ['a', 'b']
 
-console.log( this.toJSON() ); // displays  { a: 1, b: 2 }
+console.log(this.toJSON()); // displays  {a: 1, b: 2}
 
 @example <caption>After using the {@link Matreshka.Object#jset} method, you can work with a property like with an ordinary one</caption>
-this.jset( 'a', 1 ).jset( 'b', 2 );
-this.set( 'a', 3 ); 
+this.jset('a', 1).jset('b', 2);
+this.set('a', 3); 
 this.b = 4;
 */
 
@@ -250,11 +233,11 @@ this.jset({
 	a: 1,
 	b: 2
 });
-@example <caption>The usage of the event object</caption>
+@example <caption>The usage of event object</caption>
 this.jset({
 	a: 1,
 	b: 2
-}, { silent: true });
+}, {silent: true});
 */
 
 
@@ -263,36 +246,36 @@ this.jset({
 @fires delete
 @fires delete:KEY
 @fires modify
-@summary Deletes a property from a {@link Matreshka.Object} class instance and from a list of keys which are responsible for the data.
+@summary Deletes a property from a {@link Matreshka.Object} class instance and from a list of keys which are responsible for data.
 @see {@link Matreshka#remove}
 @param {string} key - A key (or a list of keys which are separated by spaces)
 @param {eventOptions} [evtOptions] - An event object
 @returns {matreshkaObject} self
 @example
-this.remove( 'myKey' );
-this.remove( 'myKey1 myKey2' );
-@example <caption>The usage of the event object</caption>
-this.remove( 'myKey', { silent: true } );
+this.remove('myKey');
+this.remove('myKey1 myKey2');
+@example <caption>The usage of an event object</caption>
+this.remove('myKey', {silent: true});
 */
 
 
 /**
 @method Matreshka.Object#addDataKeys
-@summary Adds keys to the list of keys which are responsible for the data.
-@desc This method is used when you need to declare keys which are responsible for the data but values of corresponding properties are not known yet.
-@param {string|array} keys - A key or the keys which are separated by spaces or an array of keys
+@summary Adds keys to a list of keys which are responsible for data.
+@desc This method is used when you need to declare keys which are responsible for data but values of corresponding properties are not known yet.
+@param {string|array} keys - A key or keys which are separated by spaces or an array of keys
 @returns {matreshkaObject} self
 @example
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 @example
-this.addDataKeys( [ 'a', 'b' ] );
+this.addDataKeys(['a', 'b']);
 @example
-this.addDataKeys( 'a', 'b' );
+this.addDataKeys('a', 'b');
 @example <caption>Using {@link Matreshka.Object#each} method</caption>
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 
-this.each( function( value, key ) {
-	console.log( key, value );
+this.each( function(value, key) {
+	console.log(key, value);
 });
 // displays  'a' undefined and 'b' undefined
 */
@@ -300,36 +283,36 @@ this.each( function( value, key ) {
 
 /**
 @method Matreshka.Object#removeDataKeys
-@summary Deletes keys from a list of keys which are responsible for the data (but does not delete a property)
+@summary Deletes keys from a list of keys which are responsible for data (but does not delete given properties)
 @param {string|array} keys - A key or keys which are separated by spaces or an array of keys
 @returns {matreshkaObject} self
 @example
-this.removeDataKeys( 'a b' );
+this.removeDataKeys('a b');
 @example
-this.removeDataKeys( [ 'a', 'b' ] );
+this.removeDataKeys(['a', 'b']);
 @example
-this.removeDataKeys( 'a', 'b' );
+this.removeDataKeys('a', 'b');
 */
 
 
 /**
 @method Matreshka.Object#each
-@summary Searches for properties which are responsible for the data.
-@desc This method is very similar to ``Array.prototype.forEach``
+@summary Iterates properties which are responsible for data through ``callback`` function.
+@desc This method is very similar to ``Array.prototype.forEach``.
 @param {function} callback - A function which is called on every iteration
 @param {*} [thisArg] - A context of a function
 @returns {matreshkaObject} self
 @example
-this.each( function( value, key ) {
+this.each(function(value, key) {
 	... 
 }, this );
 @example
 this
-	.jset({ a: 1, b: 2 })
-	.addDataKeys( 'c' )
-	.each( function( value, key ) {
-		console.log( key, value );
-	}, this );
+	.jset({a: 1, b: 2})
+	.addDataKeys('c')
+	.each(function(value, key) {
+		console.log(key, value);
+	}, this);
 ; 
 // >>> a 1, b 2, c undefined
 */

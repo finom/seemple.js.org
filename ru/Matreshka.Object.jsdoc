@@ -6,7 +6,7 @@
 
 Для того, чтоб объявить такие свойства от остальных, можно воспользоваться методом {@link Matreshka.Object#addDataKeys}.
 ```js
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 
 this.a = 1;
 this.b = 2;
@@ -25,14 +25,14 @@ this.c = 3;
 
 После того, как приложение "узнало" о том, что является данными, экземпляр {@link Matreshka.Object} можно сконвертировать в обычный объект методом {@link Matreshka.Object#toJSON} и передать на сервер или сохранить в локальной БД (например, в ``localStorage``).
 ```js
-// вернет объект { a: 1, b: 2 }
+// вернет объект {a: 1, b: 2}
 this.toJSON();
 ```
 
 При изменении свойств, отвечающих за данные генерируется событие ``modify``
 ```js
-this.on( 'modify', function() {
-	alert( 'Object is modified' );
+this.on('modify', function() {
+	alert('Object is modified');
 });
 ```
 @param {object} [data] - Данные, входящие в новый экземпляр
@@ -41,8 +41,8 @@ this.on( 'modify', function() {
 @example <caption>Создание экземпляра</caption>
 new MK.Object;
 @example <caption>Создание экземпляра с двумя заданными свойствами</caption>
-// то же самое, что и new MK.Object().jset({ a: 1, b: 2 });
-new MK.Object({ a: 1, b: 2 });
+// то же самое, что и new MK.Object().jset({a: 1, b: 2});
+new MK.Object({a: 1, b: 2});
 @example <caption>Наследование</caption>
 var MyClass = Class({
 	'extends': MK.Object,
@@ -63,9 +63,9 @@ class MyClass extends MK.Object {
 	}
 }
 @example <caption>Перебор данных, используя цикл for..of из ECMAScript 2015</caption>
-var mkObject = new MK.Object({ a: 1, b: 2 });
+var mkObject = new MK.Object({a: 1, b: 2});
 for(let item of mkObject) {
-	console.log( item ); // 1 .. 2
+	console.log(item); // 1 .. 2
 }
 */
 
@@ -74,7 +74,7 @@ for(let item of mkObject) {
 @member {boolean} Matreshka.Object#isMKObject
 @summary Свойство ``isMKObject`` всегда равно ``true``. Оно используется для проверки, является ли объект экземпляром {@link Matreshka.Object}.
 @example
-alert( object.isMKObject );
+alert(object.isMKObject);
 */
 
 
@@ -88,23 +88,6 @@ var keys = this.keys();
 
 
 /**
-@method Matreshka.Object#on
-@since 0.2
-@summary Работает так же, как и {@link Matreshka#on}, но дополнительно позволяет динамически навешивать обработчики на свойства, отвечающие за данные без прямого указания имени свойства
-@example
-var mkObject = new MK.Object();
-
-mkObject.on( '@something', function() {
-	alert( 'something happens' )
-});
-
-mkObject.jset( 'x', new MK );
-
-mkObject.x.trigger( 'something' );
-*/ 
-
-
-/**
 @method Matreshka.Object#hasOwnProperty
 @summary Проверяет есть ли в экземпляре свойство, отвечающее за данные, с заданным ключом 
 @param {string} key
@@ -115,11 +98,11 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.hasOwnProperty( 'a' ); // true
+mkObject.hasOwnProperty('a'); // true
 
-mkObject.hasOwnProperty( 'b' ); // true
+mkObject.hasOwnProperty('b'); // true
 
-mkObject.hasOwnProperty( 'c' ); // false
+mkObject.hasOwnProperty('c'); // false
 */
 
 
@@ -133,7 +116,7 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.toObject(); // возвращает { a: 1, b: 2 }
+mkObject.toObject(); // возвращает {a: 1, b: 2}
 */
 
 
@@ -147,7 +130,7 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.toNative(); // возвращает { a: 1, b: 2 }
+mkObject.toNative(); // возвращает {a: 1, b: 2}
 */
 
 
@@ -165,7 +148,7 @@ var mkObject = new MK.Object({
 	})
 });
 
-// возвращает { a: 1, b: 2, c: { d: 3, e: 4 } }
+// возвращает {a: 1, b: 2, c: {d: 3, e: 4}}
 mkObject.toJSON();
 */
 
@@ -181,11 +164,11 @@ var mkObject = new MK.Object({
 	b: 2
 });
 
-mkObject.keyOf( 1 ); // 'a'
+mkObject.keyOf(1); // 'a'
 
-mkObject.keyOf( 2 ); // 'b'
+mkObject.keyOf(2); // 'b'
 
-mkObject.keyOf( 3 ); // null
+mkObject.keyOf(3); // null
 */
 
 
@@ -212,28 +195,28 @@ mkObject.keyOf( 3 ); // null
 @returns {matreshkaObject} self
 
 @example
-this.jset( 'a', 1 ).jset( 'b', 2 );
+this.jset('a', 1).jset('b', 2);
 
 @example
-this.jset( 'a', 1 ).jset( 'b', 2 );
+this.jset('a', 1).jset('b', 2);
 
 // присваиваем свойству 'c' тройку,
 // но не добавляем ключ в список ключей, отвечающих за данные
-this.set( 'c', 3 );
+this.set('c', 3);
 
-this.each( function( value, key ) {
-	console.log( key, value ); 
+this.each(function(value, key) {
+	console.log(key, value); 
 });
 
 // выводит 'a' 1 и 'b' 2
 
-console.log( this.keys() ); // выводит [ 'a', 'b' ]
+console.log(this.keys()); // выводит ['a', 'b']
 
-console.log( this.toJSON() ); // выводит { a: 1, b: 2 }
+console.log(this.toJSON()); // выводит {a: 1, b: 2}
 
 @example <caption>После использования  метода {@link Matreshka.Object#jset} со свойством можно работать, как с обычным свойством</caption>
-this.jset( 'a', 1 ).jset( 'b', 2 );
-this.set( 'a', 3 ); 
+this.jset('a', 1).jset('b', 2);
+this.set('a', 3); 
 this.b = 4;
 */
 
@@ -255,7 +238,7 @@ this.jset({
 this.jset({
 	a: 1,
 	b: 2
-}, { silent: true });
+}, {silent: true});
 */
 
 
@@ -270,10 +253,10 @@ this.jset({
 @param {eventOptions} [evtOptions] - Объект события
 @returns {matreshkaObject} self
 @example
-this.remove( 'myKey' );
-this.remove( 'myKey1 myKey2' );
+this.remove('myKey');
+this.remove('myKey1 myKey2');
 @example <caption>Использование объекта события</caption>
-this.remove( 'myKey', { silent: true } );
+this.remove('myKey', {silent: true});
 */
 
 
@@ -284,16 +267,16 @@ this.remove( 'myKey', { silent: true } );
 @param {string|array} keys - Ключ, или ключи разделенные пробелами, или массив ключей
 @returns {matreshkaObject} self
 @example
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 @example
-this.addDataKeys( [ 'a', 'b' ] );
+this.addDataKeys(['a', 'b']);
 @example
-this.addDataKeys( 'a', 'b' );
+this.addDataKeys('a', 'b');
 @example <caption>Пример с {@link Matreshka.Object#each}</caption>
-this.addDataKeys( 'a b' );
+this.addDataKeys('a b');
 
-this.each( function( value, key ) {
-	console.log( key, value );
+this.each(function(value, key) {
+	console.log(key, value);
 });
 // выводит 'a' undefined and 'b' undefined
 */
@@ -305,11 +288,11 @@ this.each( function( value, key ) {
 @param {string|array} keys - Ключ или ключи разделенные пробелами или массив ключей
 @returns {matreshkaObject} self
 @example
-this.removeDataKeys( 'a b' );
+this.removeDataKeys('a b');
 @example
-this.removeDataKeys( [ 'a', 'b' ] );
+this.removeDataKeys(['a', 'b']);
 @example
-this.removeDataKeys( 'a', 'b' );
+this.removeDataKeys('a', 'b');
 */
 
 
@@ -321,16 +304,16 @@ this.removeDataKeys( 'a', 'b' );
 @param {*} [thisArg] - Контекст функции
 @returns {matreshkaObject} self
 @example
-this.each( function( value, key ) {
+this.each( function(value, key) {
 	... 
-}, this );
+}, this);
 @example
 this
-	.jset({ a: 1, b: 2 })
-	.addDataKeys( 'c' )
-	.each( function( value, key ) {
-		console.log( key, value );
-	}, this );
+	.jset({a: 1, b: 2})
+	.addDataKeys('c')
+	.each(function(value, key) {
+		console.log(key, value);
+	}, this);
 ; 
 // >>> a 1, b 2, c undefined
 */

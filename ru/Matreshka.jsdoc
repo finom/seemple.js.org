@@ -1,7 +1,6 @@
 /**
 @class Matreshka
 @lang ru
-@version 0.3
 @author Андрей Губанов <a@odessite.com.ua>
 @license {@link https://raw.github.com/finom/matreshka/master/LICENSE MIT}
 Version 2.0, January 2004
@@ -49,8 +48,8 @@ alert(object.isMK);
 @summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)
 @see {@link Matreshka#bindNode}
 @example
-this.bindNode( 'sandbox', '.app' );
-this.$sandbox; // то же самое, что и $( '.app' )
+this.bindNode('sandbox', '.app');
+this.$sandbox; // то же самое, что и $('.app')
 */
 
 /**
@@ -59,8 +58,8 @@ this.$sandbox; // то же самое, что и $( '.app' )
 @summary Свойство содержит HTML песочницу
 @see {@link Matreshka#bindNode}
 @example
-this.bindNode( 'sandbox', '.app' );
-this.sandbox; // то же самое, что и $( '.app' )[0]
+this.bindNode('sandbox', '.app');
+this.sandbox; // то же самое, что и $('.app')[0]
 */
 
 /**
@@ -69,8 +68,8 @@ this.sandbox; // то же самое, что и $( '.app' )[0]
 @summary Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.
 @see {@link Matreshka#bindNode}
 @example
-this.bindNode( 'myKey', '.my-node' );
-this.$nodes.myKey; // то же самое, что и $( '.my-node' )
+this.bindNode('myKey', '.my-node');
+this.$nodes.myKey; // то же самое, что и $('.my-node')
 */
 
 /**
@@ -80,8 +79,8 @@ this.$nodes.myKey; // то же самое, что и $( '.my-node' )
 @desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
 @see {@link Matreshka#bindNode}
 @example
-this.bindNode( 'myKey', '.my-node' );
-this.nodes.myKey; // то же самое, что и $( '.my-node' )[0]
+this.bindNode('myKey', '.my-node');
+this.nodes.myKey; // то же самое, что и $('.my-node')[0]
 */
 
 
@@ -99,22 +98,22 @@ this.nodes.myKey; // то же самое, что и $( '.my-node' )[0]
 @param {object} [context] - Контекст обработчика. Другими словами, ``this`` при вызове ``callback``
 @returns {matreshka} self
 @example
-this.on( 'foo', function() {
-	alert( 'Custom Event is fired' );
+this.on('foo', function() {
+	alert('Custom Event is fired');
 });
 
-this.trigger( 'foo' );
+this.trigger('foo');
 @example <caption>Передача контекста</caption>
-this.on( 'foo', function() {
-	alert( this.a ); // 5
-}, { a: 5 } );
+this.on('foo', function() {
+	alert(this.a); // 5
+}, {a: 5});
 
-this.trigger( 'foo', 'Hello world' );
+this.trigger('foo', 'Hello world');
 @example <caption>Вызов обработчика сразу после инициализации</caption>
 //Выводит на экран "bar" сиюсекундно и ждет генерации события "foo"
-this.on( 'foo', function() {
-	alert( 'bar' );
-}, true );
+this.on('foo', function() {
+	alert('bar');
+}, true);
 */
 
 
@@ -162,13 +161,13 @@ this.on({
 @param {object} [context] - Контекст обработчика. Другими словами, ``this`` при вызове ``callback``
 @returns {matreshka} self
 @example
-this.onDebounce( 'change:x', function() {
-	alert( 'x = ' + this.x ); // x = 100
-}, 300 );
+this.onDebounce('change:x', function() {
+	alert('x = ' + this.x); // x = 100
+}, 300);
 
 this.x = 1;
 
-for( var i = 0; i < 100; i++ ) {
+for(var i = 0; i < 100; i++) {
 	this.x++;
 }
 */
@@ -211,8 +210,8 @@ this.onDebounce({
 @example
 this.x = 1;
 
-this.once( 'change:x', function() {
-	alert( 'x is changed' );
+this.once('change:x', function() {
+	alert('x is changed');
 });
 
 this.x = 2; // выводит 'x is changed'
@@ -253,19 +252,19 @@ this.once({
 @param {object} [context] - Контекст
 @returns {matreshka} self
 @example
-this.off( 'change:x bind' );
+this.off('change:x bind');
 @example <caption>Удаление всех событий</caption>
 this.off();
 @example <caption>Удаление события с определенным обработчиком</caption>
 var handler = function() {
 	//...
 }
-this.on( 'change:x', handler );
-this.off( 'change:x', handler );
+this.on('change:x', handler);
+this.off('change:x', handler);
 @example <caption>Удаление события с определенным контекстом</caption>
 var object = {};
-this.on( 'change:x', handler, object );
-this.off( 'change:x', handler, object );
+this.on('change:x', handler, object);
+this.off('change:x', handler, object);
 */
 
 
@@ -281,10 +280,10 @@ this.off( 'change:x', handler, object );
 @param {...*} [arg] - Аргументы, которые будут переданы обработчикам
 @returns {matreshka} self
 @example
-this.on( 'foo bar', function( a, b, c ) {
-	alert( a + b + c );
+this.on('foo bar', function(a, b, c) {
+	alert(a + b + c);
 });
-this.trigger( 'bar', 1, 2, 3 ); // alerts 6
+this.trigger('bar', 1, 2, 3); // alerts 6
 */
 
 
@@ -300,7 +299,7 @@ this.trigger( 'bar', 1, 2, 3 ); // alerts 6
 > Метод ``bindNode`` поддерживает привязки "многие ко многим". С одним свойством можно связать несколько элементов, а с одним элементом можно связать несколько свойств, в том числе и от разных экземпляров разных классов.
 
 ```js
-this.bindNode( 'myKey', '.my-element', {
+this.bindNode('myKey', '.my-element', {
 	on: 'click',
 	getValue: function() { ... },
 	setValue: function() { ... }
@@ -309,7 +308,7 @@ this.bindNode( 'myKey', '.my-element', {
 
 Например, вы хотите связать свойство объекта с элементом ``input[type="checkbox"]``:
 ```js
-this.bindNode( 'myKey', '.my-checkbox', {
+this.bindNode('myKey', '.my-checkbox', {
 	// когда менятся состояние элемента?
 	// - по событию 'click'
 	on: 'click',
@@ -320,7 +319,7 @@ this.bindNode( 'myKey', '.my-checkbox', {
 	},
 	// как установить состояние элемента?
 	// - установить значение 'checked'
-	setValue: function( v ) {
+	setValue: function(v) {
 		this.checked = !!v;
 	}
 });
@@ -334,7 +333,7 @@ this.myKey = true;
 
 > Если значение свойства экземпляра класса не задано, Матрешка, после привязки, попробует извлечь это значение из HTML узла, используя ``getValue``. Отменить это поведение можно передав свойство ``assignDefaultValue: false`` в объект события.
 ```js
-this.bindNode( 'myKey', '.my-element', binder, {
+this.bindNode('myKey', '.my-element', binder, {
 	assignDefaultValue: false
 });
 ```
@@ -345,25 +344,25 @@ this.bindNode( 'myKey', '.my-element', binder, {
 ```
 
 ```js
-this.bindNode( 'myKey', '.my-slider', {
+this.bindNode('myKey', '.my-slider', {
 	// когда менятся состояние элемента?
 	// - по событию 'slide'
 	on: 'slide',
 	// как извлечь состояние элемента?
 	// - вернуть значение виджета 'value'
 	getValue: function() {
-		return $( this ).slider( 'option', 'value' );
+		return $(thi ).slider('option', 'value');
 	},
 	// как установить состояние элемента?
 	// - установить значение 'value'
-	setValue: function( v ) {
-		$( this ).slider( 'option', 'value', v );
+	setValue: function(v) {
+		$(this).slider('option', 'value', v);
 	},
 	// как инициализировать виджет?
 	// инициализировать слайдер можно любым способом,
 	// но initialize предоставляет немного синтаксического сахара
 	initialize: function() {
-		$( this ).slider({ min: 0, max: 100 });
+		$(this).slider({min: 0, max: 100});
 	}
 });
 ```
@@ -377,7 +376,7 @@ this.myKey = 42;
 
 Как видно из документации к аргументам метода {@link Matreshka#bindNode} (см. ниже), третий аргумент не обязателен. Этот вопрос решает массив {@link Matreshka.defaultBinders}, который содержит функции, проверяющие HTML элемент на соответствие заданным правилам. Вы получаете возможность многократно сократить код, вынося правила привязки в отдельную часть вашего кода, а для привязки использовать синтаксис без третьего аргумента:
 ```js
-this.bindNode( 'myKey', '.my-element' );
+this.bindNode('myKey', '.my-element');
 ```
 Как это сделать? Нужно добавить функцию, проверяющую ваш элемент на соответствие некоторым правилам в начало массива {@link Matreshka.defaultBinders}. Пример ниже можно использовать в качестве шаблона для создания своего стандартного байндера.
 ```js
@@ -389,46 +388,46 @@ Matreshka.binders.checkbox = function() {
 		getValue: function() {
 			return this.checked;
 		},
-		setValue: function( v ) {
+		setValue: function(v) {
 			this.checked = !!v;
 		}
 	}
 };
 
 // метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
-Matreshka.defaultBinders.unshift( function( node ) {
+Matreshka.defaultBinders.unshift(function(node) {
 	// проверяем, является ли элемент чекбоксом
-	if( node.tagName == 'INPUT' && node.type == 'checkbox' ) {
+	if(node.tagName == 'INPUT' && node.type == 'checkbox') {
 		// если проверка пройдена, возвращаем новый байндер
 		return Matreshka.binders.checkbox();
 	}
 });
 ```
 ```js
-this.bindNode( 'myKey', '.my-checkbox' );
+this.bindNode('myKey', '.my-checkbox');
 this.myKey = true;
 ```
 
 Что делать, если вам нужно передать аргументы для инициализации какого-нибудь плагина или виджета? Всё очень просто: можно ограничиться добавлением байндера в коллекцию {@link Matreshka.binders}, не создавая функцию для {@link Matreshka.defaultBinders}.
 ```js
-Matreshka.binders.uiSlider = function( min, max ) {
+Matreshka.binders.uiSlider = function(min, max) {
 	return {
 		on: 'slide',
 		getValue: function() {
-			return $( this ).slider( 'option', 'value' );
+			return $(this).slider('option', 'value');
 		},
-		setValue: function( v ) {
-			$( this ).slider( 'option', 'value', v );
+		setValue: function(v) {
+			$(this).slider('option', 'value', v);
 		},
 		initialize: function() {
-			$( this ).slider({ min: min, max: max });
+			$(this).slider({min: min, max: max});
 		}
 	}
 };
 ```
 ```js
-this.bindNode( 'myKey1', '.my-slider1', Matreshka.binders.uiSlider( 0, 100 ) );
-this.bindNode( 'myKey2', '.my-slider2', Matreshka.binders.uiSlider( 1, 1000 ) );
+this.bindNode('myKey1', '.my-slider1', Matreshka.binders.uiSlider(0, 100));
+this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
 this.myKey1 = 42;
 this.myKey2 = 999;
 ```
@@ -438,28 +437,28 @@ this.myKey2 = 999;
 <input type="color" class="my-color-input">
 ```
 ```js
-this.bindNode( 'myColor', '.my-color-input' );
+this.bindNode('myColor', '.my-color-input');
 this.myColor = '#66bb6a';
 ```
 
 
 Кроме всего, после привязки, вам доступен новый нестандартный CSS селектор ``:bound(KEY)``.
 ```js
-this.bindNode( 'myKey', '.my-element' );
+this.bindNode('myKey', '.my-element');
 
 // найдет элемент '.my-inner-element' внутри '.my-element'
-this.bindNode( 'myAnotherKey', ':bound(myKey) .my-inner-element' );
+this.bindNode('myAnotherKey', ':bound(myKey) .my-inner-element');
 ```
 
 И расширяется синтаксис возможных имен событий:
 ```js
-this.bindNode( 'myKey', '.my-element' );
+this.bindNode('myKey', '.my-element');
 
 // отловит клик на элементе .my-element
-this.on( 'click::myKey', function() { ... });
+this.on('click::myKey', function() { ... });
 
 // отловит клик на элементе .my-inner-element
-this.on( 'click::myKey(.my-inner-element)', function() { ... });
+this.on('click::myKey(.my-inner-element)', function() { ... });
 ```
 
 
@@ -472,49 +471,50 @@ this.on( 'click::myKey(.my-inner-element)', function() { ... });
 ```
 
 ```js
-this.bindNode( 'sandbox', '.my-sandbox' );
+this.bindNode('sandbox', '.my-sandbox');
 ```
 
 Определение песочницы добавляет множество удобств программисту. Например:
 + Позволяет использовать методы {@link Matreshka#select} и {@link Matreshka#$}
 + Позволяет использовать методы {@link Matreshka#bound} и {@link Matreshka#$bound} без указания аргумента
++ Позволяет использовать свойства {@link Matreshka#sandbox} и {@link Matreshka#$sandbox}
 + Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} и других
 + Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
 
 
 ```js
 // объявляем песочницу
-this.bindNode( 'sandbox', '.my-sandbox' );
+this.bindNode('sandbox', '.my-sandbox');
 
 // .my-element ищется в песочнице
-this.bindNode( 'myKey', ':sandbox .my-element' );
+this.bindNode('myKey', ':sandbox .my-element');
 
 // для делегированных событий внутри песочницы не требуется указывать ключ
-this.on( 'click::(.my-button)', function() { ... } );
+this.on('click::(.my-button)', function() { ... });
 
 // выведет в консоль элемент песочницы
-console.log( this.$bound() );
+console.log(this.$bound());
 
 // выведет в консоль элемент .inner-node, который находится внутри песочницы
-console.log( this.$( '.inner-node' ) );
+console.log(this.$('.inner-node'));
 ```
 
 #### Глубокое связывание
 Начиная с версии 1.1, метод ``bindNode`` поддерживает так называемое "глубокое связывание". Метод научился связывать DOM узел со свойством внутри дерева вложенных объектов. Например, у вас есть вложенный объект:
 ```js
-this.a = { b: { c: { d: 42 } } };
+this.a = {b: {c: {d: 42}}};
 ```
 
 И вы хотите связать некий узел со свойством ``d`` из этого объекта. Достаточно только указать путь к свойству, а Матрешка будет слушать изменения во всём дереве объектов, то разрывая связь, то создавая её вновь:
 
 ```js
-this.bindNode( 'a.b.c.d', '.my-node' );
+this.bindNode('a.b.c.d', '.my-node');
 ```
 
 Когда произойдут какие-нибудь изменения в дереве, ``bindNode`` отловит эти изменения и пересоздаст связь между свойством и нодой.
 
 ```js
-this.a.b = { c: { d: 41 } };
+this.a.b = {c: {d: 41}};
 ```
 
 
@@ -534,19 +534,19 @@ this.a.b = { c: { d: 41 } };
 @returns {matreshka} self
 
 @example <caption>Кастомный чекбокс. Этот пример демонстрирует создание кастомного элемента, по клику на который у него меняется класс ``"checked"``</caption>
-this.bindNode( 'myKey', '.custom-checkbox', {
+this.bindNode('myKey', '.custom-checkbox', {
 	on: 'click',
 	getValue: function() {
-		return $( this ).hasClass( 'checked' );
+		return $(this).hasClass('checked');
 	},
 	setValue: function( v ) {
-		$( this ).toggleClass( 'checked', !!v );
+		$(this).toggleClass('checked', !!v);
 	},
 	// инициализируем поведение элемента
 	// по клику на элемент меняется наличие класса 'checked'
 	initialize: function() {
-		$( this ).on( 'click', function() {
-			$( this ).toggleClass( 'checked' );
+		$(this).on('click', function() {
+			$(this).toggleClass('checked');
 		});
 	}
 });
@@ -557,54 +557,54 @@ Matreshka.binders.customCheckbox = function() {
 	return {
 		on: 'click',
 		getValue: function() {
-			return $( this ).hasClass( 'checked' );
+			return $(this).hasClass('checked');
 		},
 		setValue: function( v ) {
-			$( this ).toggleClass( 'checked', !!v );
+			$(this).toggleClass('checked', !!v);
 		},
 		initialize: function() {
-			$( this ).on( 'click', function() {
-				$( this ).toggleClass( 'checked' );
+			$(this).on( 'click', function() {
+				$(this).toggleClass('checked');
 			});
 		}
 	}
 };
 
-MK.defaultBinders.unshift( function( element ) {
+MK.defaultBinders.unshift(function(element) {
 	// проверяем, есть ли у элемента класс "custom-checkbox"
-	if( $( element ).hasClass( 'custom-checkbox' ) ) {
+	if($(element).hasClass('custom-checkbox') ) {
 		// если проверка пройдена, возвращаем новый байндер
 		return Matreshka.binders.customCheckbox();
 	}
 });
 
-this.bindNode( 'myKey', '.my-custom-checkbox' );
+this.bindNode('myKey', '.my-custom-checkbox');
 
 @example <caption>Событие ``"bind"``, которое генерируется после связывании любого свойства и HTML узла</caption>
-this.on( 'bind', function() { alert( 'ok!' ); });
-this.bindNode( 'myKey', '.my-element' ); // alerts "ok!"
+this.on('bind', function() { alert('ok!'); });
+this.bindNode('myKey', '.my-element'); // alerts "ok!"
 
 @example <caption>Событие ``"bind:KEY"``, которое генерируется при связыввании конкретного свойства и HTML узла</caption>
-this.on( 'bind:myKey', function() { alert( 'ok!' ); });
-this.bindNode( 'myKey', '.my-element' ); // alerts "ok!"
+this.on('bind:myKey', function() { alert('ok!'); });
+this.bindNode('myKey', '.my-element'); // alerts "ok!"
 
 @example <caption>Подмена DOM события для стандартного байндера. Например, мы хотим связать ``input[type="text"]`` со свойством. По умолчанию, стандартный байндер для этого элемента содержит свойство ``"on"`` со значением ``"keydown paste"``. Это значит, что значение свойства экземпляра и состояние элемента будут синхронизированы, когда пользователь отпускает клавишу клавиатуры или вставляет содержимое из буфера обмена. В случае, если вы хотите, чтоб синхронизация происходила по DOM событию ``"blur"``, вам потребуется передать третьим аргументом объект, содержащий единственное свойство ``"on"``. Этот объект объединится со стандартным байндером, сохранив при этом значения ``getValue`` и ``setValue``</caption>
-this.bindNode( 'myKey', '.my-input', { on: "blur" });
+this.bindNode('myKey', '.my-input', {on: "blur"});
 
 
 @example <caption>Если элемент не найден, бросается исключение ``"Bound element is missing"``. Для того, чтоб избежать ошибки используйте метод {@link Matreshka#bindOptionalNode}</caption>
 var $el = $();
-this.bindNode( 'x', $el ); // Ошибка, так как $el пуст
+this.bindNode('x', $el); // Ошибка, так как $el пуст
 
 @example <caption>Синхронизация значения свойства и HTML содержимого элемента</caption>
-this.bindNode( 'myKey', '.my-element', {
-	setValue: function( v ) {
+this.bindNode('myKey', '.my-element', {
+	setValue: function(v) {
 		this.innerHTML = v;
 	}
 });
 
 // можно сделать проще
-this.bindNode( 'myKey', '.my-element', MK.binders.innerHTML() );
+this.bindNode('myKey', '.my-element', MK.binders.innerHTML());
 */
 
 
@@ -622,6 +622,18 @@ this.bindNode( 'myKey', '.my-element', MK.binders.innerHTML() );
 this.bindNode({
 	myKey1: '.custom-checkbox',
 	myKey2: 'textarea'
+});
+
+@example <caption>Начиная с версии 1.1 синтаксис метода немного расширился: вместо элемента, можно передать массив, состоящий из элемента и байндера</caption>
+@example
+this.bindNode({
+	myKey1: ['.custom-checkbox', MK.binders.customCheckbox()],
+	myKey2: 'textarea',
+	myKey3: ['.my-node', {
+		setValue: function(v) {
+			// do something
+		}
+	}]
 });
 */
 
@@ -666,7 +678,7 @@ this.bindNode([
 @summary Работает в точности так же, как и {@link Matreshka#bindNode} но не бросает исключение, если аргумент ``node`` - пустой массив, ``undefined`` или не существует
 @see {@link Matreshka#bindNode}
 @example
-this.bindOptionalNode( 'myKey', '.my-element' );
+this.bindOptionalNode('myKey', '.my-element');
 */
 
 /**
@@ -680,12 +692,12 @@ this.bindOptionalNode( 'myKey', '.my-element' );
 @param {eventOptions} [eventOptions] -  Объект события, в который можно передать какие-нибудь данные для обработчика или ключ ``"silent"``, который отключает генерацию событий ``"unbind"`` и ``"unbind:KEY"``
 @returns {matreshka} self
 @example
-this.bindNode( 'myKey', '.my-element' );
+this.bindNode('myKey', '.my-element');
 
 // меняет значение свойства и состояние HTML элемента
 this.myKey = true;
 
-this.unbindNode( 'myKey', '.my-element' );
+this.unbindNode('myKey', '.my-element');
 
 // теперь меняется только значение свойства
 this.myKey = false;
@@ -740,10 +752,10 @@ var temporaryBindings = [
 	}]
 ];
 
-this.bindNode( temporaryBindings );
+this.bindNode(temporaryBindings);
 
 // больше не нужны эти привязки
-this.unbindNode( temporaryBindings );
+this.unbindNode(temporaryBindings);
 */
 
 
@@ -754,11 +766,11 @@ this.unbindNode( temporaryBindings );
 @param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чьи привязанные элементы мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
 @returns {$nodes} Привязанные элементы
 @example
-this.bindNode( 'myKey', '.my-element' );
-this.boundAll( 'myKey' ); // вернет $( '.my-element' )
+this.bindNode('myKey', '.my-element');
+this.boundAll('myKey'); // вернет $('.my-element')
 @example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#$sandbox})</caption>
-this.bindNode( 'sandbox', '.app' );
-this.boundAll(); // вернет $( '.app' )
+this.bindNode('sandbox', '.app');
+this.boundAll(); // вернет $('.app')
 */
 
 
@@ -766,7 +778,7 @@ this.boundAll(); // вернет $( '.app' )
 @method Matreshka#$bound
 @summary Делает то же самое, что и {@link Matreshka#boundAll}
 @example
-this.$bound( 'myKey' );
+this.$bound('myKey');
 */
 
 
@@ -776,11 +788,11 @@ this.$bound( 'myKey' );
 @param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чей привязанный элемент мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
 @returns {node|null} Привязанный элемент
 @example
-this.bindNode( 'myKey', '.my-element' );
-this.bound( 'mykey' ); // вернет $( '.my-element' )[0]
+this.bindNode('myKey', '.my-element');
+this.bound('mykey'); // вернет $('.my-element')[0]
 @example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#sandbox})</caption>
-this.bindNode( 'sandbox', '.app' );
-this.bound(); // вернет $( '.app' )[0]
+this.bindNode('sandbox', '.app');
+this.bound(); // вернет $('.app')[0]
 */
 
 
@@ -788,23 +800,23 @@ this.bound(); // вернет $( '.app' )[0]
 @method Matreshka#selectAll
 @summary Возвращает элементы из песочницы, соответствующие селектору
 @desc После создания песочницы методом {@link Matreshka#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``
-@param {string} Cелектор
+@param {string} selector - Cелектор
 @returns {$nodes}
 @example
-this.bindNode( 'sandbox', '.app' );
-this.selectAll( '.my-element' );
+this.bindNode('sandbox', '.app');
+this.selectAll('.my-element');
 // то же самое, что и
-this.$bound().find( '.my-element' );
+this.$bound().find('.my-element');
 // и то же самое, что и
-$( '.app' ).find( '.my-element' );
+$('.app').find('.my-element');
 
 @example <caption>Селектор ``:bound(KEY)``</caption>
-this.bindNode( 'myKey', '.my-element' );
-this.selectAll( ':bound(myKey) .my-another-element' );
+this.bindNode('myKey', '.my-element');
+this.selectAll(':bound(myKey) .my-another-element');
 // то же самое, что и
-this.$bound( 'myKey' ).find( '.my-another-element' );
+this.$bound('myKey').find('.my-another-element');
 // и то же самое, что и
-$( '.my-element' ).find( '.my-another-element' );
+$('.my-element').find('.my-another-element');
 */
 
 
@@ -813,7 +825,7 @@ $( '.my-element' ).find( '.my-another-element' );
 @variation instance
 @summary Делает то же самое, что и {@link Matreshka#selectAll}
 @example
-this.$( '.my-element' );
+this.$('.my-element');
 */
 
 
@@ -821,15 +833,15 @@ this.$( '.my-element' );
 @method Matreshka#select
 @summary Возвращает элемент из песочницы, соответствующий селектору
 @desc Метод очень похож на {@link Matreshka#selectAll}, но возвращает лишь один элемент или ``null``
-@param {string} Селектор
-@returns {node}
+@param {string} selector - Селектор
+@returns {node|null}
 @example
-this.bindNode( 'sandbox', '.app' );
-this.select( '.my-element' );
+this.bindNode('sandbox', '.app');
+this.select('.my-element');
 // то же самое, что и
-this.bound().querySelector( '.my-element' );
+this.bound().querySelector('.my-element');
 // и то же самое, что и
-$( '.app' ).find( '.my-element' )[ 0 ];
+$('.app').find('.my-element')[0];
 */
 
 
@@ -840,7 +852,7 @@ $( '.app' ).find( '.my-element' )[ 0 ];
 @desc Internet Explorer 8 бросает исключение при попытке традиционного сравнения на равенство, используя ``==`` или ``===``. Метод ``.eq`` решает эту проблему. Если поддержка IE8 не нужна, то метод использовать не обязательно.
 @param {object} object - Объект, с которым нужно сравнить экземпляр
 @example
-this.eq( object ); // true или false
+this.eq(object); // true или false
 @example <caption>Ошибка в IE8</caption>
 this === object; //иногда IE8 выкидывает "Class doesn't support Automation"
 */
@@ -853,7 +865,7 @@ this === object; //иногда IE8 выкидывает "Class doesn't support 
 @param {string} key - Ключ свойства, для которого устанавливается геттер
 @param {function} getter - Функция-геттер
 @example
-this.defineGetter( 'myKey', function() {
+this.defineGetter('myKey', function() {
 	return 42; // функция может возвращать любое вычисляемое значение
 });
 */
@@ -879,8 +891,8 @@ this.defineGetter({
 @param {string} key - Ключ, для которого требуется установить сеттер
 @param {function} setter - Функция-сеттер
 @example
-this.defineSetter( 'mykey', function( v ) {
-	alert( v );
+this.defineSetter('mykey', function(v) {
+	alert(v);
 });
 */
 
@@ -892,8 +904,8 @@ this.defineSetter( 'mykey', function( v ) {
 @param {object} keySetterPairs - Объект со свойствами ключ-сеттер
 @example
 this.defineSetter({
-	myKey1: function( v ) { alert( v ); }
-	myKey2: function( v ) { alert( v ); }
+	myKey1: function(v) { alert(v); }
+	myKey2: function(v) { alert(v); }
 });
 */
 
@@ -906,18 +918,18 @@ this.defineSetter({
 @param {string|array} key - Ключ или массив ключей или список ключей, разделенных пробелами
 @param {function} mediator - Функция-посредник (медиатор, mediator), возвращающая новое значение
 @example
-this.mediate( 'x', function( value ) {
-	return String( value );
+this.mediate('x', function(value) {
+	return String(value);
 });
 this.x = 1;
 alert( typeof this.x ); // "string"
 @example <caption>Список ключей, разделенных пробелами</caption>
-this.mediate( 'x y', function( value ) {
-	return String( value );
+this.mediate('x y', function(value) {
+	return String(value);
 });
 @example <caption>Массив ключей</caption>
-this.mediate( [ 'x', 'y' ], function( value ) {
-	return String( value );
+this.mediate(['x', 'y'], function(value) {
+	return String(value);
 });
 */
 
@@ -937,9 +949,9 @@ this.mediate({
 this.x = 1;
 this.y = 2;
 this.z = 3;
-alert( typeof this.x ); // "string"
-alert( typeof this.y ); // "number"
-alert( typeof this.z ); // "boolean"
+alert(typeof this.x); // "string"
+alert(typeof this.y); // "number"
+alert(typeof this.z); // "boolean"
 @example <caption>Список ключей, разделенных пробелами</caption>
 this.mediate({
 	'u v': String,
@@ -961,15 +973,17 @@ this.mediate({
 
 > На деле это выглядит просто: вы создаете обычный класс, который почти всегда принимает какие-нибудь данные, которые нужно обработать (например, использовать их в методе {@link Matreshka.Object#jset}).
 
-При попытке присвоить свойству другое значение (как правило, объект), внутренний механизм метода ``setClassFor``, вместо присваивания, расширяет текущее значение свойства (экземпляра класса) свойствами присваиваемого значения, не заменяя сам экземпляр. 
-
-Для того, чтоб кастомизировать способ обновления свойств экземпляра, можно воспользоваться третьим аргументом ``updateCallback``. Он запускается каждый раз при попытке присваивания свойству новых данных.
+При попытке присвоить свойству другое значение (объект или массив), внутренний механизм метода ``setClassFor``, вместо присваивания, делает следующее:
++ Если указана функция ``updateCallback``, метод запускает его с двумя аргументами: текущим значением свойства и данными, которые код пытается присвоить.
++ Если заданный класс унаследован от {@link Matreshka.Object}, экземпляр обновляется новыми данными, используя метод {@link Matreshka.Object#jset}.
++ Если заданный класс унаследован от {@link Matreshka.Array}, экземпляр обновляется новыми данными, используя метод {@link Matreshka.Object#recreate}.
++ Если не указана функция ``updateCallback`` и если класс не унаследован от {@link Matreshka.Object} или {@link Matreshka.Array}, экземпляр расширяется свойствами объекта, который код пытается присвоить.
 
 > Крутой особенностью функции является отсутствие ограничений на источник класса. В качестве класса может выступать любая функция-конструктор. которая инициализируется с помощью оператора ``new``, а не только наследники {@link Matreshka}.
 
 @param {string|array} key - Ключ или массив ключей, или список ключей, разделенных пробелами
 @param {function} class - Класс, который вы хотите установить свойству
-@param {function} [updateCallback] - Функция, вызывающаяся при каждой попытке присвоить новые данные свойству. Функция принимает два аргумента: текущее значение свойства (экземпляр класса) и данные, которые пытаются присвоить.
+@param {function} [updateCallback] - Функция, вызывающаяся при каждой попытке присвоить новые данные свойству, позволяющая кастомизировать логику обновления экземпляра класса новыми данными. Функция принимает два аргумента: текущее значение свойства (экземпляр класса) и данные, которые пытаются присвоить.
 @example
 var SubClass = Class({
 	// ...
@@ -977,75 +991,76 @@ var SubClass = Class({
 
 // ...
 
-this.setClassFor( 'x', SubClass );
+this.setClassFor('x', SubClass);
 
 // пытаемся присвоить свойству другое значение
-this.x = { a: 42 };
+this.x = {a: 42};
 
 // this.x по-прежнему экземпляр класса SubClass
-alert( this.x instanceof SubClass ); // true
-alert( this.x.a ); // 42
-@example <caption>Использование ``updateCallback``. Пример демонстрирует использования кастомного способа обновления экземпляра класса методом {@link Matreshka.Object#jset}, если ``SubClass`` унаследован от {@link Matreshka.Object}.</caption>
-this.setClassFor( 'x', SubClass, function( instance, data ) {
-	instance.jset( data );
+alert(this.x instanceof SubClass); // true
+alert(this.x.a); // 42
+@example <caption>Использование ``updateCallback``.</caption>
+this.setClassFor('x', SubClass, function(instance, data) {
+	updateSomeHow(instance, data);
 });
 @example <caption>Нестандартный способ использования ``updateCallback`` для игнорирования любых изменений свойства.</caption>
 // MK.noop - пустая функция
-this.setClassFor( 'x', SubClass, MK.noop );
+this.setClassFor('x', SubClass, MK.noop);
 @example <caption>В случае, если ваш класс не подерживает использование оператора ``new``, вместо ``setClassFor`` воспользуйтесь методом {@link Matreshka#mediate}.</caption>
-this.mediate( 'x', function( data, currentValue ) {
+this.mediate('x', function(data, currentValue) {
 	return currentValue instanceof SomeClass
-		? Object.assign( currentValue, data )
-		: SomeLib.initInstance( SomeClass, data );
+		? Object.assign(currentValue, data)
+		: SomeLib.initInstance(SomeClass, data);
 });
 @example <caption>Абстрактный пример с данными большой вложенности (для краткости используется синтаксис ECMAScript 7)</caption>
 // app.js
 class App extends MK {
-	constructor( appData ) {
+	constructor(appData) {
 		this.appData = appData;
-		this.setClassFor( 'appData', AppData );
+		this.setClassFor('appData', AppData);
 	}
 }
 
 // app-data.js
 class AppData extends MK.Object {
-	constructor( data ) {
+	constructor(data) {
 		this
-			.jset( data )
-			.setClassFor( 'friends', Friends, ( instance, data ) =>
-				instance.recreate( data ) )
-			.setClassFor( 'settins', Settings )
+			.jset(data)
+			.setClassFor({
+				friends: Friends,
+				settins: Settings
+			})
 		;
 	}
 }
 
 // friend.js
 class Friend extends MK.Object {
-	constructor( data ) {
-		this.jset( data );
+	constructor(data) {
+		this.jset(data);
 	}
 }
 
 // friends.js
 class Friends extends MK.Array {
 	Model = Friend;
-	constructor( data ) {
-		this.recreate( data );
+	constructor(data) {
+		this.recreate(data);
 	}
 }
 
 // settings.js
 class Settings extends MK.Object {
-	constructor( data ) {
-		this.jset( data );
-		this.setClassFor( 'credentials', Credentials )
+	constructor(data) {
+		this.jset(data);
+		this.setClassFor('credentials', Credentials)
 	}
 }
 
 // credentials.js
 class Credentials extends MK.Object {
-	constructor( data ) {
-		this.jset( data );
+	constructor(data) {
+		this.jset(data);
 	}
 }
 
@@ -1070,7 +1085,7 @@ var app = new App({
 });
 
 // данные можно сериализировать и передать на сервер
-JSON.stringify( app.appData );
+JSON.stringify(app.appData);
 
 
 // потом, в какой-то момент, просто присвоить новые данные свойству appData
@@ -1105,8 +1120,8 @@ this.setClassFor({
 	x: Class1,
 	y: Class2,
 	z: Class3
-}, function( data ) {
-	instance.jset( data );
+}, function(data) {
+	instance.jset(data);
 });
 */
 
@@ -1121,35 +1136,35 @@ this.setClassFor({
 @param {function} [handler=function(v){return v}] - Функция, возвращающая новое значение
 @param {boolean} [setOnInit=true] - Установить ли значение свойства сразу после объявления зависимости
 @example
-this.linkProps( 'greeting', 'name', function() {
+this.linkProps('greeting', 'name', function() {
 	return 'Hello, ' + this.name + '!';
 });
 
 this.name = 'Joe';
 
-alert( this.greeting ); // 'Hello, Joe!'
+alert(this.greeting); // 'Hello, Joe!'
 
 @example <caption>Сложный пример: вычисление периметра прямоугольника по двум сторонам (и сторон по периметру). Как видите, ``linkProps`` можно использовать и для решения математических задач, где каждый член уравнения можно использовать, как неизвестное</caption>
 this.a = 3;
 
 this.b = 4;
 
-this.linkProps( 'p', 'a b', function( a, b ) {
-	return ( a + b ) * 2;
+this.linkProps('p', 'a b', function(a, b) {
+	return (a + b) * 2;
 });
 
-this.linkProps( 'a', 'p b', function( p, b ) {
+this.linkProps('a', 'p b', function(p, b) {
 	return p/2 - b;
 });
 
-this.linkProps( 'b', 'p a', function( p, a ) {
+this.linkProps('b', 'p a', function(p, a) {
 	return p/2 - a;
 });
 
-alert( this.p ); // 14
+alert(this.p); // 14
 
-this.on( 'change:p', function() {
-	alert( 'периметр изменен и равен ' + this.p );
+this.on('change:p', function() {
+	alert('периметр изменен и равен ' + this.p);
 });
 
 this.a = 5; // alerts "периметр изменен и равен 18"
@@ -1170,17 +1185,17 @@ anotherInstance1.a = 2;
 
 anotherInstance2.b = 3;
 
-this.linkProps( 'sum', [
+this.linkProps('sum', [
 	anotherInstance1, 'a',
 	anotherInstance2, 'b'
-], function( a, b ) {
+], function(a, b) {
 	return a + b;
 });
 
-alert( this.sum ); // 5
+alert(this.sum); // 5
 
-this.on( 'change:sum', function() {
-	alert( 'this.sum равен ' + this.sum );
+this.on('change:sum', function() {
+	alert('this.sum равен ' + this.sum);
 });
 
 anotherInstance1.a = 5; // "this.sum равен 8"
@@ -1192,8 +1207,8 @@ anotherInstance1.a = 5; // "this.sum равен 8"
 @summary Возвращает значение свойства
 @param {string} key
 @example
-// то же самое, что и this[ 'myKey' ] или this.myKey
-this.get( 'myKey' );
+// то же самое, что и this['myKey'] или this.myKey
+this.get('myKey');
 */
 
 
@@ -1213,31 +1228,31 @@ this.get( 'myKey' );
 @param {*} value - Значение
 @param {eventOptions} [eventOptions] - Объект события
 @example
-this.on( 'change:myKey', function( eventOptions ) {
-	alert( eventOptions.value );
+this.on('change:myKey', function(eventOptions) {
+	alert(eventOptions.value);
 });
 
-// то же самое, что и this[ 'myKey' ] = 3
+// то же самое, что и this['myKey'] = 3
 // или this.myKey = 3
 // выводит на экран 3
-this.set( 'myKey', 3 );
+this.set('myKey', 3);
 @example <caption>Используя ``eventOptions``</caption>
-this.on( 'change:myKey', function( eventOptions ) {
-	alert( eventOptions.value );
+this.on('change:myKey', function(eventOptions) {
+	alert(eventOptions.value);
 });
 
 // alert не срабатывает
-this.set( 'myKey', 4, {
+this.set('myKey', 4, {
 	silent: true
 });
 
 @example <caption>Передача произвольных данных в обработчик</caption>
-this.on( 'change:myKey', function( eventOptions ) {
-	alert( eventOptions.myCustomFlag );
+this.on('change:myKey', function(eventOptions) {
+	alert(eventOptions.myCustomFlag);
 });
 
 // выводит на экран 42
-this.set( 'myKey', 4, {
+this.set('myKey', 4, {
 	myCustomFlag: 42
 });
 */
@@ -1272,10 +1287,10 @@ this.set({
 @param {eventOptions} [eventOptions] - Объект события
 @returns {matreshka} self
 @example
-this.remove( 'myKey' );
-this.remove( 'myKey1 myKey2' );
+this.remove('myKey');
+this.remove('myKey1 myKey2');
 @example <caption>Использование ``eventOptions``</caption>
-this.remove( 'myKey', {
+this.remove('myKey', {
 	silent: true
 });
 */
@@ -1316,6 +1331,7 @@ this.define({
 });
 */
 
+
 /**
 @method Matreshka#delay
 @since 0.3
@@ -1327,16 +1343,17 @@ this.define({
 @param {object} [thisArg] - Контекст
 @returns {matreshka} self
 @example
-this.on( 'change:x', function() {
-	alert( this.x ); // 1 ... 2
+this.on('change:x', function() {
+	alert(this.x); // 1 ... 2
 });
 
-this.delay( function() {
+this.delay(function() {
 	this.x = 2;
-}, 100 );
+}, 100);
 
 this.x = 1;
 */
+
 
 /**
 @method Matreshka#getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
@@ -1348,213 +1365,93 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 
 
 /**
-@method Matreshka.extend
-@summary Небольшая вспомогательная функция, которая расширяет один объект свойствами другого объекта
-@prop {object} o1
-@prop {...object} o2
-@returns {object} o1
-@example
-var o1 = { a: 3 },
-	o2 = { b: 4 };
-
-MK.extend( o1, o2 );
-*/
-
-
-/**
-@member {string} Matreshka.version
-@summary Версия Матрешки
-@example
-alert( Matreshka.version );
-*/
-
-
-/**
-@method Matreshka.Class
-@since 0.2
-@summary Содержит ссылку на глобальную функцию {@link Class}
-@desc Такой способ применения функции Class употребляется тогда, когда разрабатываемое приложение использует {@link https://github.com/amdjs/amdjs-api/blob/master/AMD.md AMD}
-@example
-MK.Class({
-	method: function() {}
-});
-
-// то же самое, что и
-Class({
-	method: function() {}
-});
-*/
-
-
-/**
-@method Matreshka.$
-@variation static
-@summary Библиотека, используемая Матрешкой (jQuery, Zepto, {@link Matreshka.$b Balalaika} или др.)
-@example
-MK.$( '.my-element' );
-*/
-
-
-/**
-@method Matreshka.$b
-@summary Встроенная микро-библиотека {@link $b Балалайка}
-@example
-MK.$b( '.my-element' );
-*/
-
-
-/**
-@method Matreshka.useAs$
-@since 0.2
-@summary Заставляет использовать определенную библиотеку для работы с DOM
-@desc По умолчанию, Матрешка использует в качестве библиотеки ту, которая находится по ссылке ``window.$``. Если такой переменной нет в глобальном пространстве имен, либо же она не включает в себя необходимый набор методов, то используется встроенная микро библиотека {@link $b Балалайка}.
-
-Метод {@link Matreshka.useAs$} заставляет Матрешку использовать ту библиотеку, которую вы захотите использовать, не смотря на отсутствие таковой в глобальном пространстве имен или по другой причине (например, если используется две разных версии jQuery на странице). Желательно, чтобы метод был запущен перед объявлением какого-либо класса, так как никакой конвертации в объект новой библиотеки не происходит.
-@param {function} $ - Любая библиотека (jQuery, Zepto, Balalaika или др.)
-@todo Конвертировать все коллекции привязанных элементов в объект переданной библиотеки.
-@example
-Matreshka.useAs$( jQuery.noConflict() );
-*/
-
-
-/**
-@member {boolean} Matreshka.isXDR
-@summary Использует ли Матрешка хак с XDomainRequest. Другими словами, является ли текущий браузер Internet Explorer 8
-@example
-alert( Matreshka.isXDR );
-*/
-
-
-/**
-@member {array} Matreshka.defaultBinders
-@enum {function}
-@summary Массив функций, возвращающих соответствующий байндер
-@desc {@link Matreshka.defaultBinders} - массив функций, которые по очереди проверяют элемент на соответствие заданным в этих функциях правилам и возвращающих байндер (см. {@link #typedef-binder}). Этот массив используется тогда, когда в метод {@link Matreshka#bindNode} не был передан третий аргумент. Подробную информацию о привязках смотрите в документации к {@link Matreshka#bindNode}.
-@see {@link Matreshka#bindNode}
-@see {@link Matreshka.lookForBinder}
-@example <caption>Кастомный чекбокс</caption>
-// добавляем байндер в коллекцию байндеров
-MK.binders.customCheckbox = function() {
-	return {
-		on: 'click',
-		getValue: function() {
-			return $( this ).hasClass( 'checked' );
-		},
-		setValue: function( v ) {
-			$( this ).toggleClass( 'checked', !!v );
-		},
-		initialize: function() {
-			$( this ).toggleClass( 'checked' );
-		}
-	}
-};
-
-// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
-MK.defaultBinders.unshift( function( element ) {
-	// проверяем, есть ли у элемента класс "custom-checkbox"
-	if( $( element ).hasClass( 'custom-checkbox' ) ) {
-		// если проверка пройдена, возвращаем новый байндер
-		return MK.binders.customCheckbox();
-	}
-});
-
-// ...
-
-this.bindNode( 'myKey', '.custom-checkbox' );
-*/
-
-
-/**
-@method Matreshka.noop
-@summary Пустая функция, которая ничего не делает
-@example
-this.on( 'x', MK.noop );
-*/
-
-
-/**
-@method Matreshka.each
-@summary Итерирует любой объект, прогоняя каждое его свойство через функцию ``callback``
-@desc Этот статичный метод схож с работой ``Array.prototype.forEach``.
-@param {object} o - Объект
-@param {function} callback - Функция, запускаемая на каждой итерации
-@param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``callback``
-@example
-var myObject = {
-	a: 1,
-	b: 2
-};
-MK.each( myObject, function( value, key ) {
-	// ...
-});
-*/
-
-
-/**
-@method Matreshka.debounce
-@since 0.3
-@summary Запускает функцию лишь однажды после истечения таймера. С каждой попыткой запуска таймер обновляется
-@desc Этот метод - реализация микропаттерна **debounce**, который решает проблему многократного вызова обработчика событий за определенный промежуток времени. См. пример и {@link http://habrahabr.ru/post/60957/ статью на Хабре}.
-@param {function} f - Оригинальная функция,
-@param {number} [duration=0] - Задержка
-@param {*} [thisArg] - Контекст, в котором функция должна быть запущена
-@example
-var debounced = MK.debounce( function( x ) {
-	console.log( x );
-}, 10 );
-
-for( var i = 0; i < 100; i++ ) {
-	debounced( i );
-}
-
-// >>> 99
-*/
-
-
-/**
-@method Matreshka.lookForBinder
-@desc Возвращает байндер, соответствующий элементу. Если таковой не найден, возвращает ``undefined``. Функция использует {@link Matreshka.defaultBinders}.
-@see {@link Matreshka#bindNode}
-@see {@link Matreshka.defaultBinders}
-@param {node} node
-@returns {object} properties
-@example
-console.log( Matreshka.lookForBinder( $( 'input[type="text"]' ) ) );
-
-// вернет объект
-{
-	on: 'keyup paste',
-	getValue: function() { return this.value; },
-	setValue: function( v ) {
-		if( this.value != v ) {
-			this.value = v;
-		}
-	}
-}
-*/
-
-
-/**
-@method Matreshka.randomString
-@summary Функция, которая возвращает уникальную псевдо-случайную строку
-@desc Для генерации строки используются функции ``new Date().getTime`` и ``Math.random()``, так что возвращаемая строка уникальна.
-@returns {string} случайная строка
-@example
-var id = MK.randomString();
-*/
-
-
-/**
-@method Matreshka.to
+@method Matreshka#parseBindings
 @since 1.1
-@summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Matreshka.Object} и {@link Matreshka.Array}
-@returns {matreshka} новосозданный экземпляр Матрешки
-@example
-var mk = MK.to({
-	a: 1,
-	b: {
-		c: 2
-	},
-	d: [{e: 1}, {e: 2}, {e: 3}]
-});
+@summary Парсит DOM дерево, объявляя привязки свойств, заключенных в двойные фигурные скобки.
+@desc Начиная с версии 1.1, Матрешка включает в себя простой DOM парсер, обрабатывающий синтаксические конструкции, заключенные в двойные фигурные скобки. Метод ``parseBindings`` принимает один опциональный аргумент: HTML строку, DOM узел или селектор, соответствующий DOM узлу. Если аргумент не задан, парсер обрабатывает песочницу (см. {@link Matreshka#bindNode}).
+
+Так как метод является DOM шаблонизатором (а не строковым HTML шаблонизатором), все дочерние DOM узлы переданного элемента остаются в своём прежнем состоянии (например, DOM события не затираются).
+
+#### Поддерживаемый синтаксис.
+1. HTML привязка
+```html
+<!--
+Создаст DOM узел на месте {{user.name}} 
+и свяжет свойство name из объекта user с этим узлом
+JS: this.user = {name: 'Joe'}
+-->
+<span>Hello, &#123;{user.name}}</span>
+```
+
+2. Привязка элементов форм.
+```html
+<!--
+Свяжет свойство "x" экземпляра с текстовым 
+полем (двусторонняя привязка)
+JS: this.x = 'some value';
+-->
+<input type="text" value="&#123;{x}}">
+```
+
+```html
+<!--
+Для привязки textarea и select нужно использовать атрибут value
+-->
+<textarea value="&#123;{x}}"></textarea>
+<select value="&#123;{x}}">...</select>
+```
+
+```html
+<!--
+Свяжет свойство "x" экземпляра с чекбоксом 
+(двусторонняя привязка)
+JS: this.x = true;
+-->
+<input type="checkbox" checked="&#123;{x}}">
+```
+
+
+3. Привязка атрибутов.
+```html
+<!--
+Значение атрибута href будет зависеть
+от значений свойств "category" и "someObject.page"
+(односторонняя привязка)
+JS:
+	this.category = 'matreshka';
+	this.someObject = {page: 42}
+-->
+<a href="http://example.com/&#123;{category}}/&#123;{someObject.page}}">A link</a>
+<!--
+Результат:
+<a href="http://example.com/matreshka/42">A link</a>
+-->
+```
+
+#### Зачем нужен такой метод?
+В случае, если вы разрабатываете большую форму со стандартными HTML5 полями, метод поможет сохранить время на объявление многочисленных привязок. Кроме этого, ``parseBindings`` полезен в случае создания очень простой коллекции, не требующей реализации сложной {@link Matreshka.Array#Model модели}.
+
+#### Не противоречит ли это идеологии Матрешки ("вся логика должна быть заключена в JavaScript файле")?
+Нет, в парсере не предусмотрено циклов, условных операторов и любой другой логики. Объявление простых привязок это всё, что доступно разработчику, использующему ``parseBindings``.
+
+#### Производительность
+Метод работает несколько медленнее чем объявление привязок вручную методом {@link Matreshka#bindNode}. Это нужно иметь в виду при создании приложения с очень серьезными требованиями к производительности.
+
+@param {string|node|$nodes} [node] - HTML строка, селектор, DOM узел или коллекция DOM узлов
+@returns {$nodes} Коллекция DOM узлов (как правило, состоящая из одного элемента), переданная в функцию в качестве аргумента или, если аргументов нет, песочница
+@example <caption>Парсинг заданного узла</caption>
+this.parseBindings(node);
+
+@example <caption>Парсинг узла по селектору</caption>
+this.parseBindings('.my-node');
+
+@example <caption>Парсинг HTML строки</caption>
+var $node = this.parseBindings('<h3>Hello, &#123;{name}}</h3>');
+this.name = 'Arthur Philip Dent';
+
+@example <caption>Парсинг песочницы</caption>
+this.bindNode('sandbox', '.my-node');
+this.parseBindings();
 */
+
+

@@ -4,10 +4,10 @@ Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @param {...*} options - Any arguments
 @example
 var eventHandler = function() {
-	console.log( arguments ); 
+	console.log(arguments); 
 }
-this.on( 'fyeah', eventHandler );
-this.trigger( 'fyeah', 'foo', 'bar', 'baz' ); // logs 'foo', 'bar', 'baz'
+this.on('fyeah', eventHandler);
+this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 */
 
 
@@ -47,37 +47,37 @@ There are several types of event names:
 - ``@EVENT_NAME`` (for {@link Matreshka.Object} and {@link Matreshka.Array})
  
 ### Arbitrary events
-Such event may be fired manually by you using {@link Matreshka#trigger} method
+Sthis kind of event can be fired manually by you using {@link Matreshka#trigger} method
 ```js
-this.on( 'x y z', function( message ) {
-	alert( message );
+this.on('x y z', function(message) {
+	alert(message);
 });
 
-this.trigger( 'y', '"y" event is fired' );
+this.trigger('y', '"y" event is fired');
 ```
 ### Property change event
 ```js
-this.on( 'change:x', function( evt ) {
-	alert( evt.value );
+this.on('change:x', function(evt) {
+	alert(evt.value);
 });
 this.x = 1;
 ```
 
 ### The event which fired before property is changed
 ```js
-this.on( 'change:x', function( evt ) {
+this.on( 'beforechange:x', function( evt ) {
 	alert( evt.value );
 });
 this.x = 1;
 ```
 ### DOM events for bound nodes
-DOM event name and key are separated by colon. Original DOM event is stored as ``domEvent`` property. Besides, event object contains few properties and methods taken from original DOM event: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` and few Matreshka-specific keys (``key``, ``element``, ``elements``, ``self``).
+DOM event name and key are separated by double colon. Original DOM event is stored as ``domEvent`` property. Besides, event object contains few properties and methods taken from original DOM event: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` and few Matreshka-specific keys (``key``, ``node``, ``$nodes``, ``self``).
 ```js
-this.bindNode( 'x', '.my-button' );
+this.bindNode('x', '.my-button');
 
-this.on( 'click::x', function( evt ) {
-	alert( 'clicked "x"' );
-	console.log( evt.domEvent ); // MouseEvent
+this.on('click::x', function(evt) {
+	alert('clicked "x"');
+	console.log(evt.domEvent); // MouseEvent
 });
 ```
 ### Delegated DOM events for bound nodes
@@ -89,17 +89,17 @@ Use this syntax if you don't want to create another binding for click event or a
 ```
 Compare two examples:
 ```js
-this.bindNode( 'x', '.my-div' );
-this.bindNode( 'y', '.my-button' );
-this.on( 'click::y', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('x', '.my-div');
+this.bindNode('y', '.my-button');
+this.on('click::y', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
 ```js
-this.bindNode( 'x', '.my-div' );
-this.on( 'click::x(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('x', '.my-div');
+this.on('click::x(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
@@ -108,17 +108,17 @@ First way forces us to bind button node before we add event listener. So we have
 ### Delegated DOM events for sandbox node
 If you want to add DOM event handler for an element from a sandbox, you can look at syntax described above:
 ```js
-this.bindNode( 'sandbox', '.my-div' );
-this.on( 'click::sandbox(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('sandbox', '.my-div');
+this.on('click::sandbox(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
 But we have more elegant way how to do it without use of ``sandbox`` key.
 ```js
-this.bindNode( 'sandbox', '.my-div' );
-this.on( 'click::(.my-button)', function( evt ) {
-	alert( 'clicked ".my-button"' );
+this.bindNode('sandbox', '.my-div');
+this.on('click::(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
 });
 ```
 
@@ -129,24 +129,24 @@ In order to catch an event "inside" a property, if a value of this property is a
 
 Look at two examples. Fitst is obvious: listen to property change event, check is value instance of ``Matreshka`` then add the event handler
 ```js
-this.on( 'change:x', function() {
-	if( this.x && this.x.isMK ) {
-		this.x.on( 'y', function( message ) {
-			alert( message );
+this.on('change:x', function() {
+	if(this.x && this.x.isMK) {
+		this.x.on('y', function(message) {
+			alert(message);
 		});
 	}
 });
-this.x = new Matreshka;
-this.x.trigger( 'y', '"y" event is fired' );
+this.x = new Matreshka();
+this.x.trigger('y', '"y" event is fired');
 ```
 
 You can make this job more elegant.
 ```js
-this.on( 'x@y', function( message ) {
-	alert( message );
+this.on('x@y', function(message) {
+	alert(message);
 });
-this.x = new Matreshka;
-this.x.trigger( 'y', '"y" event is fired' );
+this.x = new Matreshka();
+this.x.trigger('y', '"y" event is fired');
 ```
 
 ### Delegated Matreshka events for {@link Matreshka.Object} and {@link Matreshka.Array}
@@ -155,31 +155,31 @@ Example above requires us to know a key of a property. Since {@link Matreshka.Ob
 
 {@link Matreshka.Object} example
 ```js
-this.on( '@y', function( message ) {
-	alert( message );
+this.on('@y', function(message) {
+	alert(message);
 });
-this.jset('x', new Matreshka );
-this.x.trigger( 'y', '"y" event is fired' );
+this.jset('x', new Matreshka);
+this.x.trigger('y', '"y" event is fired');
 ```
 
 {@link Matreshka.Array} example
 ```js
-this.on( '@y', function( message ) {
-	alert( message );
+this.on('@y', function(message) {
+	alert(message);
 });
-this.push( new Matreshka );
-this[0].trigger( 'y', '"y" event is fired' );
+this.push(new Matreshka());
+this[0].trigger('y', '"y" event is fired' );
 ```
 
 ### Any combinations
 ```js
-this.on( '@click::x z@y', function() { ... } );
+this.on('@click::x z@y', function() { ... });
 ```
 ```js
-this.on( 'property@click::(.my-selector)', function() { ... } );
+this.on('property@click::(.my-selector)', function() { ... });
 ```
 ```js
-this.on( 'x@y@z', function() { ... } );
+this.on('x@y@z', function() { ... });
 ```
 @typedef {string} eventNames
 */
@@ -195,31 +195,31 @@ this.on( 'x@y@z', function() { ... } );
 @example
 var binder = {
 	on: 'click',
-	getValue: function( options ) {
+	getValue: function(options) {
 		return this.value;
 	} 
-	setValue: function( v, options ) {
+	setValue: function(v, options) {
 		this.value = v;
 	},
-	initialize: function( options ) {
-		alert( 'Binder is initialized. Initial input value=' + this.value );
+	initialize: function(options) {
+		alert('Binder is initialized. Initial input value=' + this.value);
 	}
 };
 
 this.bindNode( 'a', '.my-checkbox', binder );
 @example
 var binder = {
-	on: function( callback ) {
+	on: function(callback) {
 		this.onclick = callback;
 	},
-	getValue: function( options ) {
+	getValue: function(options) {
 		return this.value;
 	} 
-	setValue: function( v, options ) {
+	setValue: function(v, options) {
 		this.value = v;
 	},
-	initialize: function( options ) {
-		alert( 'Binder is initialized. Initial input value=' + this.value );
+	initialize: function(options) {
+		alert('Binder is initialized. Initial input value=' + this.value);
 	}
 };
 
@@ -232,25 +232,25 @@ Event object
 @typedef {object} eventOptions
 @desc An object which can contain service flags or custom data which will be passed to an event handler
 @example
-var eventOptions = { silent: true };
+var eventOptions = {silent: true};
 
 this.a = 1;
 
-this.on( 'change:a', function() {
-	alert( 'a is changed' );
+this.on('change:a', function() {
+	alert('a is changed');
 });
 
-this.set( 'a', 2, eventOptions ); // no alert
+this.set('a', 2, eventOptions); // no alert
 @example
-var eventOptions = { f: 'yeah' };
+var eventOptions = {f: 'yeah'};
 
 this.a = 1;
 
-this.on( 'change:a', function( eventOptions ) {
-	alert( eventOptions.f );
+this.on('change:a', function(eventOptions) {
+	alert(eventOptions.f);
 });
 
-this.set( 'a', 2, eventOptions ); // alerts "yeah"
+this.set('a', 2, eventOptions); // alerts "yeah"
 */
 
 

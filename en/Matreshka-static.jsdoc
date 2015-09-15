@@ -1,0 +1,591 @@
+/**
+@method Matreshka.extend
+@summary A little additional function which extends one object by means of the other object properties
+@prop {object} o1
+@prop {...object} o2
+@returns {object} o1
+@example
+var o1 = {a: 3},
+	o2 = {b: 4};
+
+MK.extend(o1, o2);
+*/
+
+
+/**
+@member {string} Matreshka.version
+@summary The version of Matreshka
+@example
+alert(Matreshka.version);
+*/
+
+
+/**
+@method Matreshka.Class
+@since 0.2
+@summary A link to the {@link Class} global function
+@desc This way of using the ``Class`` function is usable when an application you develop uses {@link https://github.com/amdjs/amdjs-api/blob/master/AMD.md AMD}
+@example
+MK.Class({
+	method: function() {}
+});
+
+// the same as
+Class({
+	method: function() {}
+});
+*/
+
+
+/**
+@method Matreshka.$
+@variation static
+@summary A library used by Matreshka (jQuery, Zepto, {@link Matreshka.$b Balalaika} or others)
+@example
+MK.$('.my-element');
+*/
+
+
+/**
+@method Matreshka.$b
+@summary Bbuilt-in micro-library {@link $b Balalaika}
+@example
+MK.$b('.my-element');
+*/
+
+
+/**
+@method Matreshka.useAs$
+@since 0.2
+@summary Forces to use a definite DOM-library
+@desc By default, Matreshka uses a library which can be found by ``window.$`` reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library {@link $b Balalaika} is used.
+
+The {@link Matreshka.useAs$} method makes Matreshka use a library you would like to use in spite of its absence in the global namespace or for a different reason (for example, if two different versions of jQuery are used on a page). It is desirable to launch the method before your code starts.
+@param {function} $ - Any library (jQuery, Zepto, Balalaika or others)
+@example
+Matreshka.useAs$(jQuery.noConflict());
+*/
+
+
+/**
+@member {boolean} Matreshka.isXDR
+@summary If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8
+@example
+alert(Matreshka.isXDR);
+*/
+
+
+/**
+@member {array} Matreshka.defaultBinders
+@enum {function}
+@summary An array of functions which return a corresponding binder
+@desc {@link Matreshka.defaultBinders} - The array of functions which check an element in turn against given rules in these functions and return a binder (see {@link #typedef-binder}). This method is used when the third argument has not been passed to the {@link Matreshka#bindNode} method. See more detailed information about bindings in {@link Matreshka#bindNode} documentation.
+@see {@link Matreshka#bindNode}
+@see {@link Matreshka.lookForBinder}
+@example <caption>A custom checkbox</caption>
+// add the binder to the collection of binders
+MK.binders.customCheckbox = function() {
+	return {
+		on: 'click',
+		getValue: function() {
+			return $(this).hasClass('checked');
+		},
+		setValue: function( v ) {
+			$(this).toggleClass('checked', !!v);
+		},
+		initialize: function() {
+			$(this).toggleClass('checked');
+		}
+	}
+};
+
+// unshift method adds a function to the beginning of the Matreshka.defaultBinders array
+MK.defaultBinders.unshift( function( element ) {
+	// check if the element has the "custom-checkbox" class name
+	if($(element).hasClass('custom-checkbox')) {
+		// if checking is OK, return a new binder
+		return MK.binders.customCheckbox();
+	}
+});
+
+// ...
+
+this.bindNode('myKey', '.custom-checkbox');
+*/
+
+
+/**
+@method Matreshka.noop
+@summary An empty function which does nothing
+@example
+this.on('x', MK.noop);
+*/
+
+
+/**
+@method Matreshka.each
+@summary Iterates any object running its every property through ``callback`` function
+@desc This static method is similar to the work of ``Array.prototype.forEach``.
+@param {object} o - An object
+@param {function} callback - A function which is launched on every iteration
+@param {*} [thisArg] - An object which is used as ``this`` on calling ``callback``
+@example
+var myObject = {
+	a: 1,
+	b: 2
+};
+MK.each(myObject, function(value, key) {
+	// ...
+});
+*/
+
+
+/**
+@method Matreshka.debounce
+@since 0.3
+@summary Calls a function only once after a timer has expired. At every attempt of launching a timer is updated.
+@desc This method is an implementation of the **debounce** micro pattern which solves the problem of multiple call of a function for a certain period of time. See the example and {@link http://davidwalsh.name/javascript-debounce-function JavaScript Debounce Function}.
+@param {function} f - Original function
+@param {number} [duration=0] - A delay
+@param {*} [thisArg] - A context which a function must be launched in
+@example
+var debounced = MK.debounce(function( x ) {
+	console.log(x);
+}, 10);
+
+for(var i = 0; i < 100; i++) {
+	debounced(i);
+}
+
+// >>> 99
+*/
+
+/**
+@method Matreshka.lookForBinder
+@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders}.
+@see {@link Matreshka#bindNode}
+@see {@link Matreshka.defaultBinders}
+@param {node} node
+@returns {object} properties
+@example
+console.log(Matreshka.lookForBinder($('input[type="text"]' )[0]));
+
+// will return the object
+{
+	on: 'keyup paste',
+	getValue: function() { return this.value; },
+	setValue: function(v) {
+		if( this.value != v ) {
+			this.value = v;
+		}
+	}
+}
+*/
+
+
+/**
+@method Matreshka.randomString
+@summary The function which returns a unique pseudo-random string.
+@desc The ``new Date().getTime`` and ``Math.random()`` functions are used for generating a string, so returned string is unique.
+@returns {string} A random string
+@example
+var id = MK.randomString();
+*/
+
+
+/**
+@method Matreshka.to
+@since 1.1
+@summary Docs are coming soon...
+@returns {matreshka}
+@example
+var mk = MK.to({
+	a: 1,
+	b: {
+		c: 2
+	},
+	d: [{e: 1}, {e: 2}, {e: 3}]
+});
+*/
+
+
+/**
+@method Matreshka.on
+@since 1.1
+@summary Adds an event handler
+@desc This static method works the same as {@link Matreshka#on} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#on}
+@example
+var object = {};
+MK.on(object, 'foo', function(evt) {
+	alert(evt.hello);
+});
+
+MK.trigger(object, 'foo', {hello: 'World'});
+*/
+
+
+/**
+@method Matreshka.once
+@since 1.1
+@summary Adds event handler which can be called only once
+@desc This static method works the same as {@link Matreshka#once} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#once}
+@example
+var object = {};
+MK.once(object, 'foo', function(evt) {
+	//...
+});
+*/
+
+
+/**
+@method Matreshka.onDebounce
+@since 1.1
+@summary Adds an event handler which is called only once during a definite period of time
+@desc This static method works the same as {@link Matreshka#onDebounce} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#onDebounce}
+@example
+var object = {};
+MK.onDebounce(object, 'foo', function(evt) {
+	//...
+});
+*/
+
+/**
+@method Matreshka.trigger
+@since 1.1
+@summary Fires an event
+@desc This static method works the same as {@link Matreshka#trigger} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#trigger}
+@example
+var object = {};
+MK.on(object, 'foo', function(evt) {
+	alert(evt.hello);
+});
+
+MK.trigger(object, 'foo', {hello: 'World'});
+*/
+
+
+/**
+@method Matreshka.off
+@since 1.1
+@summary Deletes an event handler
+@desc This static method works the same as {@link Matreshka#off} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#off}
+@example
+var object = {};
+MK.on(object, 'foo', function(evt) {
+	//...
+});
+
+MK.off(object, 'foo');
+*/
+
+
+/**
+@method Matreshka.mediate
+@since 1.1
+@summary Transforms property value on its changing
+@desc This static method works the same as {@link Matreshka#mediate} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#mediate}
+@example
+var object = {};
+MK.mediate(object, 'x', String);
+object.x = 42;
+alert(typeof object.x); // string
+*/
+
+/**
+@method Matreshka.setClassFor
+@since 1.1
+@summary Sets a class for a property
+@desc This static method works the same as {@link Matreshka#setClassFor} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#setClassFor}
+@example
+var object = {};
+MK.setClassFor(object, 'x', SomeClass);
+object.x = {a: 42};
+alert(this.x instanceof SubClass); // true
+alert(this.x.a); // 42
+*/
+
+/**
+@method Matreshka.linkProps
+@since 1.1
+@summary Creates a dependency of one property value on values of others
+@desc This static method works the same as {@link Matreshka#linkProps} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#linkProps}
+@example
+var object = {};
+MK.linkProps(object, 'sum', 'a b' function(a, b) {
+	return a + b;
+});
+object.a = 40;
+object.b = 2;
+alert(object.sum); // 42
+*/
+
+
+/**
+@method Matreshka.bindNode
+@since 1.1
+@summary Binds a property of an object to HTML node, implementing two-way data binding
+@desc This static method works the same as {@link Matreshka#bindNode} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#bindNode}
+@example
+var object = {};
+MK.bindNode(object, 'x', '.my-node');
+*/
+
+
+
+/**
+@method Matreshka.bindOptionalNode
+@since 1.1
+@summary Works just the same as {@link Matreshka#bindNode} but it does not throw an exception if the node argument is an empty array, undefined or non-existent.
+@desc This static method works the same as {@link Matreshka#bindOptionalNode} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#bindOptionalNode}
+@example
+var object = {};
+MK.bindOptionalNode(object, 'x', '.my-node');
+*/
+
+
+/**
+@method Matreshka.unbindNode
+@since 1.1
+@summary Breaks a binding between given property and HTML node.
+@desc This static method works the same as {@link Matreshka#unbindNode} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#unbindNode}
+@example
+var object = {};
+MK.unbindNode(object, 'x', '.my-node');
+*/
+
+
+/**
+@method Matreshka.select
+@since 1.1
+@summary Returns HTML node corresponding to a selector from a sandbox
+@desc This static method works the same as {@link Matreshka#select} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {node|null}
+@see {@link Matreshka#select}
+@example
+var object = {};
+MK.bindNode(object, 'sandbox', '.app');
+MK.select(object, '.my-element');
+*/
+
+
+/**
+@method Matreshka.selectAll
+@since 1.1
+@summary Returns HTML nodes corresponding to a selector from a sandbox
+@desc This static method works the same as {@link Matreshka#selectAll} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {$nodes}
+@see {@link Matreshka#selectAll}
+@example
+var object = {};
+MK.bindNode(object, 'sandbox', '.app');
+MK.selectAll(object, '.my-element');
+*/
+
+
+/**
+@method Matreshka.bound
+@since 1.1
+@summary Returns the first bound element or null
+@desc This static method works the same as {@link Matreshka#bound} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {node|null} Bound node
+@see {@link Matreshka#bound}
+@example
+var object = {},
+	bound;
+MK.bindNode(object, 'x', '.my-node');
+bound = MK.bound(object, 'x');
+*/
+
+
+/**
+@method Matreshka.boundAll
+@since 1.1
+@summary Returns a collection of bound nodes by given key
+@desc This static method works the same as {@link Matreshka#boundAll} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {$nodes} Bound nodes
+@see {@link Matreshka#boundAll}
+@example
+var object = {},
+	bound;
+MK.bindNode(object, 'x', '.my-node');
+bound = MK.boundAll(object, 'x');
+*/
+
+
+/**
+@method Matreshka.$bound
+@since 1.1
+@summary Returns a collection of bound nodes by given key
+@desc This static method works the same as {@link Matreshka#$bound} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {$nodes} Bound nodes
+@see {@link Matreshka#$bound}
+@example
+var object = {},
+	bound;
+MK.bindNode(object, 'x', '.my-node');
+bound = MK.$bound(object, 'x');
+*/
+
+
+/**
+@method Matreshka.get
+@since 1.1
+@summary Returns a value of property
+@desc This static method works the same as {@link Matreshka#get} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {*} A value
+@see {@link Matreshka#get}
+@example
+var object = {},
+	val = MK.get(object, 'x');
+*/
+
+
+/**
+@method Matreshka.set
+@since 1.1
+@summary Sets a property value allowing to pass an event object as the third argument
+@desc This static method works the same as {@link Matreshka#set} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#set}
+@example
+var object = {};
+MK.set(object, 'x', 42, {
+	someOption: true
+});
+*/
+
+
+/**
+@method Matreshka.remove
+@since 1.1
+@summary Deletes a property
+@desc This static method works the same as {@link Matreshka#remove} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#remove}
+@example
+MK.remove(object, 'x');
+*/
+
+
+/**
+@method Matreshka.define
+@since 1.1
+@summary Overrides a property descriptor completely using ``Object.defineProperty``
+@desc This static method works the same as {@link Matreshka#define} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#define}
+@example
+var object = {};
+MK.define(object, 'myKey', {
+	get: function() { ... }
+	set: function() { ... }
+});
+*/
+
+
+/**
+@method Matreshka.defineGetter
+@since 1.1
+@summary Defines custom getter for a property
+@desc This static method works the same as {@link Matreshka#defineGetter} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#defineGetter}
+@example
+var object = {};
+MK.defineGetter(object, 'myKey', function() {
+	return 42;
+});
+*/
+
+
+/**
+@method Matreshka.defineSetter
+@since 1.1
+@summary Defines a custom setter for a property
+@desc This static method works the same as {@link Matreshka#defineSetter} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#defineSetter}
+@example
+var object = {};
+MK.defineSetter(object, 'myKey', function() {
+	alert('setter is running');
+});
+*/
+
+
+/**
+@method Matreshka.parseBindings
+@since 1.1
+@summary Parses DOM tree, declaring bindings with properties enclosed in double braces.
+@desc This static method works the same as {@link Matreshka#parseBindings} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {$nodes} Resulting collection of DOM nodes
+@see {@link Matreshka#parseBindings}
+@example
+var object = {};
+var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
+object.name = 'Arthur Philip Dent';
+*/
+
+/**
+@method Matreshka#parseBindings
+@since 1.1
+@summary Parses DOM tree, declaring bindings with properties enclosed in double braces.
+@desc Docs are coming soon...
+*/
+
+
+/**
+@method Matreshka.trim
+@since 1.1
+@summary Strip whitespace from the beginning and end of a string
+@desc The method is usable when you're not sure does browser support ``String.prototype.trim``.
+@param {string} string - A string
+@returns {string} A result
+@example
+console.log(MK.trim('   hello world  ')); // "hello world"
+*/
+
+
+/**
+@method Matreshka.toArray
+@since 1.1
+@summary Converts any array-like object to native array.
+@desc The function works twice faster than ``Array.prototype.slice``.
+@param {object|array} arr - Any array-like object
+@returns {array} New array
+@example
+var object = {
+	0: 'a',
+	1: 'b',
+	2: 'c',
+	length: 3
+};
+
+console.log(MK.toArray(object)); // ['a', 'b', 'c']
+
+@example <caption>Cloning array</caption>
+var arr = ['a', 'b', 'c'],
+	cloneArr = MK.toArray(arr);
+*/

@@ -20,17 +20,17 @@ var C = Class({
 	'extends': B,
 	method2: function() {
 		// вызов родительского метода
-		B.prototype.method2.apply( this, arguments );
+		B.prototype.method2.apply(this, arguments);
 	},
-	method3: function( a, b ) { ... }
+	method3: function(a, b) { ... }
 });
 
 var D = Class({
 	// D наследуется от C
 	'extends': C,
-	method3: function( a, b ) {
+	method3: function(a, b) {
 		// вызов родительского метода
-		C.prototype.method2.call( this, arguments );
+		C.prototype.method2.call(this, arguments);
 	}
 });
 @example <caption>Использование AMD (именованные модули)</caption>
@@ -74,10 +74,10 @@ class A extends B {
 
 @example <caption>**Метод ``instanceOf``**. Экземпляры класса, созданного при помощи функции ``Class`` включают в себя метод ``instanceOf``, проверяющий, является ли объект экземпляром заданного класса. Этот метод нужен только тогда, когда ваше приложение требует поддержки IE8</caption>
 // для IE8 и остальных браузеров
-alert( this.instanceOf( MyClass ) );
+alert(this.instanceOf(MyClass));
 
 // для нормальных браузеров
-alert( this instanceof MyClass );
+alert(this instanceof MyClass);
 */
 
 
@@ -168,15 +168,15 @@ $('.my-selector').on('click', function(evt) {
 
 @example <caption>Простой плагин</caption>
 $.fn.addClass = function( className ) {
-    this.forEach( function( item ) {
+    this.forEach( function(item) {
         var classList = item.classList;
-        classList.add.apply( classList, className.split( /\s/ ) );
+        classList.add.apply(classList, className.split(/\s/+));
     });
     return this;
 };
 
 @example <caption>Функция ``create`` - дополнительная утилита для создания элементов, входящая в комплект Матрешки. Первый аргумент - имя тега, второй - свойства, расширяющие DOM объект</caption>
-var div = $.create( 'div', {
+var div = $.create('div', {
 	className: 'my-div',
 	innerHTML: 'My DIV',
 	dataset: {
