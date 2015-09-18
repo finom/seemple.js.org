@@ -369,7 +369,8 @@ __Handlebars.js в качестве шаблонизатора__
 ```js
 var MyArray = Class({
 	'extends': MK.Array,
-	itemRenderer: function(model) { // model - модель (экземпляр Matreshka.Object), который будет рендериться
+	// model - модель (экземпляр Matreshka.Object), который будет рендериться
+	itemRenderer: function(model) {
 		// получение и компилирование шаблона
         var template = Handlebars
 			.compile($('#handlebarsTemplateSelector').html());
@@ -618,22 +619,24 @@ class MyArray extends MK.Array {
 
 
 /**
-@member {function} Matreshka.Array#onItemRender
+@method Matreshka.Array#onItemRender
 @abstract
 @since 1.1
 @summary Функция, которая запускается перед событием ``render``.
 @desc Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод ``onItemRender``, который можно использовать в качестве замены события ``render``.
 
 При этом, у отрисованного элемента вызывается метод ``onRender`` с единственным аргументом - объектом события.
+
 @param {matreshka} item - отрисованный элемент коллекции
-@param {matreshka} itemEvt - объект события ``render``
+@param {matreshka} renderEvt - объект события ``render``
+
 @example
 var MyModel = Class({
 	'extends': MK.Object,
 	constructor: function(data) {
-		this.set(data);		
+		this.jset(data);		
 	},
-	onRender: function(evt) {
+	onRender: function(renderEvt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
 		this.bindNode('text', ':sandbox .text', MK.binders.innerHTML());
 	}
@@ -646,7 +649,7 @@ var MyArray = Class({
 	constructor: function() {
 		this.bindNode('sandbox', '.my-form');
 	},
-	onItemRender: function(item, evt) {
+	onItemRender: function(item, renderEvt) {
 		// тоже что-то сделать
 	}
 });
@@ -800,6 +803,8 @@ this.toNative();
 @since 0.3
 @summary Перерисовывает DOM узлы элементов, входящих в массив
 @desc Этот метод заново рендерит элементы массива в контейнере массива. Если узел, который ассоциирован с элеменом масива уже создан, метод, вместо перерисовки с нуля, "перевставляет" его в контейнер или песочницу массива.
+
+Метод может быть полезным на случай, когда элементы добавлены в массив перед объявлением песочницы или контейнера.
 
 Начиная с версии 1.1, для того, чтоб заставить массив перерисоваться, независимо от наличия отрендеренных узлов (например, вы используете handlebars в ``itemRenderer``), передайте в метод объект со свойством ``forceRerender`` равным ``true``.
 @param {object} [options] - Объект с флагами (на сегодняшний день, единственный флаг - ``forceRerender``)

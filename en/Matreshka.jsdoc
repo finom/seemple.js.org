@@ -89,6 +89,8 @@ this.nodes.myKey; // the same as $('.my-node')[0]
 
 /**
 @method Matreshka#on
+@fires addevent
+@fires addevent:NAME
 @summary Adds an event handler
 @desc The {@link Matreshka#on} method adds an event handler for an instance of the ``Matreshka`` class. Refer to the complete list of possible events with the description here: {@link #typedef-eventNames}.
 @see {@link Matreshka#onDebounce}
@@ -149,6 +151,8 @@ this.on({
 
 /**
 @method Matreshka#onDebounce
+@fires addevent
+@fires addevent:NAME
 @summary Adds an event handler which is called only once during a definite period of time
 @desc The method allows to add an event handler to an instance of the {@link Matreshka} class, debouncing the handler. Callback function can be called only once during a definite period of time. As to the rest the method works the same as {@link Matreshka#on}.
 @see {@link Matreshka#on}
@@ -197,6 +201,8 @@ this.onDebounce({
 
 /**
 @method Matreshka#once
+@fires addevent
+@fires addevent:NAME
 @summary Adds an event handler which can be called only once
 @desc The method works the same as {@link Matreshka#on} but the passing handler can be called only once. Note the method lacks the ``triggerOnInit`` argument.
 @see {@link Matreshka#on}
@@ -1119,6 +1125,8 @@ this.get('myKey');
 @method Matreshka#set
 @fires change
 @fires change:KEY
+@fires beforechange
+@fires beforechange:KEY
 @summary Sets a property value allowing to pass an event object as the third argument
 @desc The list of the supported flags:
 + ``silent`` -  do not call the ``change`` and ``change:KEY`` events

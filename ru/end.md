@@ -137,6 +137,96 @@ var magic = require('magic/matreshka-magic.min');
 )))
 
 ## [Что нового?](#!whats-new)
+Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
+### [Матрешка 1.1.0 RC](https://github.com/finom/matreshka/releases/tag/v1.1.0-rc)
+#### Новые методы и свойства
+
+* Статичные методы, работающие с любым объектом (полный список методов можно увидеть [здесь](#!matreshka-magic))
+* Свойства [Matreshka#nodes](#!Matreshka-nodes) и [Matreshka#$nodes](#!Matreshka-$nodes)
+* Метод [Matreshka#setClassFor](#!Matreshka-setClassFor)
+* Статичный метод  [Matreshka.to](#!Matreshka.to)
+* Метод [Matreshka.trim](#!Matreshka.trim)
+* Метод [Matreshka.toArray](#!Matreshka.toArray)
+* Простой шаблонизатор [Matreshka#parseBindings](#!Matreshka-parseBindings).
+* Новые байндеры
+	* [progress](#!Matreshka.binders.progress)
+	* [innerText](#!Matreshka.binders.innerText)
+	* [style](#!Matreshka.binders.style)
+	* [dataset](#!Matreshka.binders.dataset)
+	* [file](#!Matreshka.binders.file)
+* Статичные методы  [Matreshka.Array.of](#!Matreshka.Array.of) и [Matreshka.Array.from](#!Matreshka.Array.from)
+* Новый виртуальный метод [Matreshka.Array#onItemRender](#!Matreshka.Array-onItemRender) и его альтернатива ``onRender`` для элементов, входящих в массив.
+
+#### Расширение функционала Матрешки
+
+* "Глубокое связывание", позволяющее связать элемент со свойством, находящемся где-то в глубине дерева объектов.
+```js
+this.bindNode('a.b.c.d', '.my-node');
+```
+* Изменение синтаксиса делегированных событий и реализация совместимости со старыми приложениями.
+```js
+this.on('a.b.*.*.e@someevent', f);
+```
+* Дополнительный синтаксис  [Matreshka#bindNode](#!Matreshka-bindNode)
+```js
+this.bindNode({
+	x: '.my-x-node',
+	y: ['.my-y-node', MK.binders.className()],
+	z: ['.my-z-node', {
+		setValue: function(v) {...}
+	}]
+})
+```
+* Новые вариации методов [Matreshka#on](#!Matreshka-on), [Matreshka#once](#!Matreshka-once), [Matreshka#onDebounce](#!Matreshka-onDebounce), позволяющие передать объект событие-обработчик.
+* Улучшенный багрепорт в случае, если нода не найдена при использовании [Matreshka#bindNode](#!Matreshka-bindNode). В тексте ошибки теперь видно селектор, а не только ключ.
+* ``getValue`` для старых байндеров (для получения значения ноды в момент привязки).
+	* [innerHTML](#!Matreshka.binders.innerHTML)
+	* [className](#!Matreshka.binders.className)
+	* [property](#!Matreshka.binders.property)
+	* [attribute](#!Matreshka.binders.attribute)
+
+
+* Флаг ``forceRerender`` для [Matreshka.Array#rerender](#!Matreshka.Array-rerender).
+* Рендеринг любых объектов в [Matreshka.Array](#!Matreshka.Array).
+* Включение шаблонизатора для  [Matreshka.Array#renderer](#!Matreshka.Array-renderer) по умолчанию.
+* Возможность создавать DOM дерево произвольной вложенности с помощью функции [$b.create](#!$b).
+* Возврат ``this`` из всех конструкторов для красивого цепочечного вызова после ``super`` в ECMAScript 2015.
+```js
+class X extends Matreshka.Array {
+	constructor(data) {
+		super(...data).bindNode(/*...*/);
+	}
+}
+```
+
+#### События
+
+* Новые события: ``beforechange`` и ``beforechange:KEY``, вызывающиеся перед изменением свойства.
+* Новые события: ``addevent`` и ``addevent:NAME`` для отслеживания добавления новых событий.
+
+#### Исправления
+
+* [Matreshka.Object#jset](#!Matreshka.Object#jset) не генерирует исключение, если передан ``null``.
+* Исправлена ошибка зацикливания [Matreshka#linkProps](#!Matreshka-linkProps) в некоторых специфичных случаях.
+* Исправлен кейс, когда флаг ``forceHTML`` не срабатывал в методе [Matreshka.#set](#!Matreshka-set)
+* Исправлен баг в методе [Matreshka.Array#concat](#!Matreshka.Array-METHOD).
+* Исправление небольшого бага для старых WebKit браузеров при использовании шаблонизатора.
+* Исправлен баг в MacOS, появляющися при использовании [Matreshka#mediate](#!Matreshka-mediate).
+* Рендерить массивы, даже если в модифицирующий метод передан ``silent: true``.
+* Мелкие исправления.
+
+#### Другие новости
+
+* Объекты, использующиеся Матрешкой получают свойство ``Symbol(matreshka)`` вместо ``__events``, ``__special`` и ``__id``.
+* Добавлены автоматические тесты (на текущий момент, 145 штук).
+* Исходный код разбит на мелкие кусочки.
+* Многократное увеличение производительности фреймворка. В некоторых местах производительность улучшена в 40 (!) раз.
+* Библиотека [MatreshkaMagic](#!matreshka-magic).
+
+
+### [Матрешка 1.0.7](https://github.com/finom/matreshka/releases/tag/v1.0.7)
+* Устранена ошибка в MacOS, возникающая при использовании {@link Matreshka#mediate}
+
 ### [Матрешка 1.0.6](https://github.com/finom/matreshka/releases/tag/v1.0.6)
 * Устранена проблема работы AMD в минифицированной версии
 

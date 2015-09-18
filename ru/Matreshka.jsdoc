@@ -76,7 +76,7 @@ this.$nodes.myKey; // то же самое, что и $('.my-node')
 @member {node} Matreshka#nodes
 @since 1.1
 @summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов. 
-@desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
+@desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством.  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
@@ -86,6 +86,8 @@ this.nodes.myKey; // то же самое, что и $('.my-node')[0]
 
 /**
 @method Matreshka#on
+@fires addevent
+@fires addevent:NAME
 @summary Добавляет обработчик события
 @desc Метод {@link Matreshka#on} добавляет обработчик события для экземпляра класса ``Matreshka``. Полный список возможных событий с описанием см. здесь: {@link #typedef-eventNames}.
 @see {@link Matreshka#onDebounce}
@@ -146,6 +148,8 @@ this.on({
 
 /**
 @method Matreshka#onDebounce
+@fires addevent
+@fires addevent:NAME
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
 @desc Метод позволяет добавить обработчик события на экземпляр класса {@link Matreshka}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Matreshka#on}.
 @see {@link Matreshka#on}
@@ -196,6 +200,8 @@ this.onDebounce({
 
 /**
 @method Matreshka#once
+@fires addevent
+@fires addevent:NAME
 @summary Добавляет обработчик событий, который может быть вызван однажды
 @desc Метод работает так же, как и {@link Matreshka#on} но передаваемый обработчик может быть вызван только один раз.
 Обратите внимание, что у метода отсутствует аргумент <code>triggerOnInit</code>.
@@ -965,7 +971,7 @@ this.mediate({
 @method Matreshka#setClassFor
 @since 1.1
 @summary Устанавливает класс для свойства
-@desc Метод позволяет строго указать на то, экземпляром какого класса будет заданное свойство. Это позволяет не беспокоиться о том, что значение свойства случайно перезапишется "голыми" данными.
+@desc Метод позволяет строго указать на то, экземпляром какого класса будет заданное свойство. Разработчику не нужно беспокоиться о том, что значение свойства случайно перезапишется "голыми" данными.
 
 > Метод является надстройкой над {@link Matreshka#mediate} и переопределяет медиатор, исключая конфликт двух медиаторов.
 
@@ -1024,20 +1030,18 @@ class App extends MK {
 // app-data.js
 class AppData extends MK.Object {
 	constructor(data) {
-		this
-			.jset(data)
+		super(data)
 			.setClassFor({
 				friends: Friends,
 				settins: Settings
-			})
-		;
+			});
 	}
 }
 
 // friend.js
 class Friend extends MK.Object {
 	constructor(data) {
-		this.jset(data);
+		super(data);
 	}
 }
 
@@ -1045,22 +1049,22 @@ class Friend extends MK.Object {
 class Friends extends MK.Array {
 	Model = Friend;
 	constructor(data) {
-		this.recreate(data);
+		super(...data);
 	}
 }
 
 // settings.js
 class Settings extends MK.Object {
 	constructor(data) {
-		this.jset(data);
-		this.setClassFor('credentials', Credentials)
+		super(data)
+			.setClassFor('credentials', Credentials);
 	}
 }
 
 // credentials.js
 class Credentials extends MK.Object {
 	constructor(data) {
-		this.jset(data);
+		super(data);
 	}
 }
 
@@ -1088,7 +1092,7 @@ var app = new App({
 JSON.stringify(app.appData);
 
 
-// потом, в какой-то момент, просто присвоить новые данные свойству appData
+// потом просто присвоить новые данные свойству appData
 // при этом, структура классов не изменится
 app.appData = {
 	settings: {
@@ -1216,6 +1220,8 @@ this.get('myKey');
 @method Matreshka#set
 @fires change
 @fires change:KEY
+@fires beforechange
+@fires beforechange:KEY
 @summary Устанавливает значение свойства, позволяя передать объект события в качестве третьего аргумента
 @desc Список поддерживаемых флагов:
 + ``silent`` - не вызывать события ``change`` и ``change:KEY``
@@ -1435,7 +1441,7 @@ JS:
 Нет, в парсере не предусмотрено циклов, условных операторов и любой другой логики. Объявление простых привязок это всё, что доступно разработчику, использующему ``parseBindings``.
 
 #### Производительность
-Метод работает несколько медленнее чем объявление привязок вручную методом {@link Matreshka#bindNode}. Это нужно иметь в виду при создании приложения с очень серьезными требованиями к производительности.
+Метод работает несколько медленнее, чем объявление привязок вручную методом {@link Matreshka#bindNode}. Это нужно иметь в виду при создании приложения с очень серьезными требованиями к производительности. Скорость немного падает только во время процесса связывания. В остальном, привязки работают так же быстро, как и с {@link Matreshka#bindNode}.
 
 @param {string|node|$nodes} [node] - HTML строка, селектор, DOM узел или коллекция DOM узлов
 @returns {$nodes} Коллекция DOM узлов (как правило, состоящая из одного элемента), переданная в функцию в качестве аргумента или, если аргументов нет, песочница
