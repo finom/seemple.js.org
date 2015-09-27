@@ -37,65 +37,68 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 Event name or space-delimited list of event names.
 
-There are several types of event names:
-- Arbitrary events
-- ``change:KEY``
-- ``DOM_EVENT::KEY``
-- ``DOM_EVENT::KEY(.DELEGATED-SELECTOR)``
-- ``DOM_EVENT::(.DELEGATED-SELECTOR-FROM-SANDBOX)``
-- ``KEY@EVENT_NAME``
-- ``@EVENT_NAME`` (for {@link Matreshka.Object} and {@link Matreshka.Array})
- 
-### Arbitrary events
-Sthis kind of event can be fired manually by you using {@link Matreshka#trigger} method
-```js
-this.on('x y z', function(message) {
-	alert(message);
-});
+> This is very brief list of event names. The full article about events is coming very soon. If you know Russian, take a look at  [this article](http://habrahabr.ru/company/matreshka/blog/267513/).
 
-this.trigger('y', '"y" event is fired');
-```
-### Property change event
+##### Custom events.
 ```js
-this.on('change:x', function(evt) {
-	alert(evt.value);
-});
-this.x = 1;
+this.on('myevent', function() {...});
+this.trigger('myevent');
 ```
 
-### The event which fired before property is changed
+##### ``change:KEY`` which is triggered every time when a property is changed.
 ```js
-this.on( 'beforechange:x', function( evt ) {
-	alert( evt.value );
-});
-this.x = 1;
+this.on('change:x', function(evt) {...});
+this.x = 42;
 ```
-### DOM events for bound nodes
-DOM event name and key are separated by double colon. Original DOM event is stored as ``domEvent`` property. Besides, event object contains few properties and methods taken from original DOM event: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` and few Matreshka-specific keys (``key``, ``node``, ``$nodes``, ``self``).
-```js
-this.bindNode('x', '.my-button');
 
+##### ``beforechange:KEY``  which is triggered every time before a property is changed.
+```js
+this.on('beforechange:x', function(evt) {...});
+this.x = 42;
+```
+
+##### ``bind:KEY`` and ``bind`` which are triggered after data binding.
+```js
+//for any property
+this.on('bind', function(evt) {...});
+//for "x" property
+this.on('bind:x', function(evt) {...});
+this.bindNode('x', '.my-node');
+```
+
+##### ``delete:KEY`` and ``delete`` which are triggered after property removal.
+```js
+//for any property
+this.on('delete', function(evt) {...});
+//for "x" property
+this.on('delete:x', function(evt) {...});
+this.remove('x');
+```
+
+##### ``addevent:NAME`` and ``addevent`` which are triggered on event initialization.
+```js
+//for any event
+this.on('addevent', function(evt) {...});
+//for "someevent" event
+this.on('addevent:someevent', function(evt) {...});
+//the line below fires "addevent" and "addevent:someevent"
+this.on('someevent', function(evt) {...});
+```
+
+##### ``DOM_EVENT::KEY``, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node bound to the KEY.
+```js
+this.bindNode('x', '.my-div');
 this.on('click::x', function(evt) {
-	alert('clicked "x"');
-	console.log(evt.domEvent); // MouseEvent
+	alert('clicked ".my-div"');
 });
 ```
-### Delegated DOM events for bound nodes
-Use this syntax if you don't want to create another binding for click event or another simple event inside bound node. Selector goes to brackets after specified key. Original DOM event is stored as ``domEvent`` property.
+
+##### ``DOM_EVENT::KEY(SELECTOR)``, where DOM_EVENT is a name of DOM event, KEY is a key, SELECTOR is a selector. A handler is called when DOM_EVENT is triggered on a node which matches the SELECTOR within a node bound to the KEY.
 ```html
 <div class="my-div">
 	<button class="my-button"></button>
 </div>
 ```
-Compare two examples:
-```js
-this.bindNode('x', '.my-div');
-this.bindNode('y', '.my-button');
-this.on('click::y', function(evt) {
-	alert('clicked ".my-button"');
-});
-```
-
 ```js
 this.bindNode('x', '.my-div');
 this.on('click::x(.my-button)', function(evt) {
@@ -103,10 +106,15 @@ this.on('click::x(.my-button)', function(evt) {
 });
 ```
 
-First way forces us to bind button node before we add event listener. So we have to invent property name that will not be used anymore.
+##### ``DOM_EVENT::(SELECTOR)``, where DOM_EVENT is a name of DOM event, SELECTOR is a selector. A handler is called when DOM_EVENT is triggered on a node which matches the SELECTOR within a sandbox.
 
-### Delegated DOM events for sandbox node
-If you want to add DOM event handler for an element from a sandbox, you can look at syntax described above:
+```js
+this.bindNode('sandbox', '.my-div');
+this.on('click::(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
+});
+```
+The same as:
 ```js
 this.bindNode('sandbox', '.my-div');
 this.on('click::sandbox(.my-button)', function(evt) {
@@ -114,72 +122,22 @@ this.on('click::sandbox(.my-button)', function(evt) {
 });
 ```
 
-But we have more elegant way how to do it without use of ``sandbox`` key.
+##### Delegated events: ``PATH@EVENT``, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.
 ```js
-this.bindNode('sandbox', '.my-div');
-this.on('click::(.my-button)', function(evt) {
-	alert('clicked ".my-button"');
-});
+this.on('a@someevent', function() {...});
+this.on('a.b.c@change:d', function() {...});
 ```
 
-Original DOM event is contained in ``domEvent`` property of ``evt``.
+If you need to listen an event of every item of {@link Matreshka.Array} or every data key of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific  key.
 
-### Delegated Matreshka events
-In order to catch an event "inside" a property, if a value of this property is another instance of ``Matreshka``, you can use a special syntax ``KEY@EVENT_NAME``. Thus, you don't need to monitor the value of the property to add event handler.
-
-Look at two examples. Fitst is obvious: listen to property change event, check is value instance of ``Matreshka`` then add the event handler
 ```js
-this.on('change:x', function() {
-	if(this.x && this.x.isMK) {
-		this.x.on('y', function(message) {
-			alert(message);
-		});
-	}
-});
-this.x = new Matreshka();
-this.x.trigger('y', '"y" event is fired');
+this.on('*@someevent', function() {...});
+this.on('*.b.*.d@change:e', function() {...});
 ```
 
-You can make this job more elegant.
+##### Any combinations. All events described above can be combined.
 ```js
-this.on('x@y', function(message) {
-	alert(message);
-});
-this.x = new Matreshka();
-this.x.trigger('y', '"y" event is fired');
-```
-
-### Delegated Matreshka events for {@link Matreshka.Object} and {@link Matreshka.Array}
-
-Example above requires us to know a key of a property. Since {@link Matreshka.Object} and {@link Matreshka.Array} instances are collections we don't know which keys we need to listen. You can add an event handler on unknown properties using syntax sugar "@EVENT_NAME"
-
-{@link Matreshka.Object} example
-```js
-this.on('@y', function(message) {
-	alert(message);
-});
-this.jset('x', new Matreshka);
-this.x.trigger('y', '"y" event is fired');
-```
-
-{@link Matreshka.Array} example
-```js
-this.on('@y', function(message) {
-	alert(message);
-});
-this.push(new Matreshka());
-this[0].trigger('y', '"y" event is fired' );
-```
-
-### Any combinations
-```js
-this.on('@click::x z@y', function() { ... });
-```
-```js
-this.on('property@click::(.my-selector)', function() { ... });
-```
-```js
-this.on('x@y@z', function() { ... });
+this.on('x.y.z@click::(.my-selector)', function() {...});
 ```
 @typedef {string} eventNames
 */

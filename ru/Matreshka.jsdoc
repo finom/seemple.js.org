@@ -1009,6 +1009,22 @@ alert(this.x.a); // 42
 this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
 });
+@example <caption>Получение родителя. Кроме данных (первый аргумент), в конструктор создаваемого класса, передается ссылка на объект, вызвавший ``setClassFor``</caption>
+var MySubClass = Class({
+	'extends': Matreshka,
+	constructor: function(data, parent) {
+		// parent - это экземпляр MyClass,
+		// вызвавший setClassFor
+	}
+});
+
+var MyClass = Class({
+	'extends': Matreshka,
+	constructor: function() {
+		this.setClassFor('x', MySubClass);
+	}
+});
+
 @example <caption>Нестандартный способ использования ``updateCallback`` для игнорирования любых изменений свойства.</caption>
 // MK.noop - пустая функция
 this.setClassFor('x', SubClass, MK.noop);
@@ -1172,6 +1188,15 @@ this.on('change:p', function() {
 });
 
 this.a = 5; // alerts "периметр изменен и равен 18"
+
+@example <caption>Начиная с версии 1.1, можно использовать путь к ключу во втором аргументе, вместо ключа</caption>
+this.a = {b: {c: 21}};
+
+this.linkProps('x', 'a.b.c', function(c) {
+	return c * 2;
+});
+
+alert(this.x); //42
 */
 
 
@@ -1459,5 +1484,3 @@ this.name = 'Arthur Philip Dent';
 this.bindNode('sandbox', '.my-node');
 this.parseBindings();
 */
-
-

@@ -196,8 +196,8 @@ var id = MK.randomString();
 /**
 @method Matreshka.to
 @since 1.1
-@summary Docs are coming soon...
-@returns {matreshka}
+@summary The function, converting a random structure of objects and arrays into {@link Matreshka.Object} and {@link Matreshka.Array} instances.
+@returns {matreshka} a newly created instance of Matreshka
 @example
 var mk = MK.to({
 	a: 1,
@@ -306,7 +306,7 @@ alert(typeof object.x); // string
 /**
 @method Matreshka.setClassFor
 @since 1.1
-@summary Sets a class for a property
+@summary Sets class for a property.
 @desc This static method works the same as {@link Matreshka#setClassFor} and all its variations, but accepts any kind of JavaScript objects as first argument.
 @returns {object} The first argument
 @see {@link Matreshka#setClassFor}
@@ -546,13 +546,6 @@ MK.defineSetter(object, 'myKey', function() {
 var object = {};
 var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
 object.name = 'Arthur Philip Dent';
-*/
-
-/**
-@method Matreshka#parseBindings
-@since 1.1
-@summary Parses DOM tree, declaring bindings with properties enclosed in double braces.
-@desc Docs are coming soon...
 */
 
 

@@ -37,64 +37,69 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 Имя события или несколько имен, разделенных пробелами.
 
-Существует несколько видов событий:
-- Произвольные события
-- ``change:KEY``
-- ``DOM_EVENT::KEY``
-- ``DOM_EVENT::KEY(.DELEGATED-SELECTOR)``
-- ``DOM_EVENT::(.DELEGATED-SELECTOR-FROM-SANDBOX)``
-- ``KEY@EVENT_NAME``
-- ``@EVENT_NAME`` (для {@link Matreshka.Object} и {@link Matreshka.Array})
- 
-### Произвольное событие
-Такое событие может быть сгенерировано программистом вручную с помощью метода {@link Matreshka#trigger}
-```js
-this.on('x y z', function(message) {
-	alert(message);
-});
+> Здесь представлен краткий список событий с небольшими примерами. Для получения полной информации, прочтите [эту статью на Хабре](http://habrahabr.ru/company/matreshka/blog/267513/).
 
-this.trigger('y', '"y" event is fired');
-```
-### Событие изменения свойства
+##### Произвольные события
 ```js
-this.on('change:x', function(evt) {
-	alert(evt.value);
-});
-this.x = 1;
+this.on('myevent', function() {...});
+this.trigger('myevent');
 ```
-### Событие, вызываемое перед изменением свойства
+
+##### ``change:KEY``, вызывающееся, когда свойство меняется
 ```js
-this.on('beforechange:x', function(evt) {
-	alert(evt.value);
-});
-this.x = 1;
+this.on('change:x', function(evt) {...});
+this.x = 42;
 ```
-### DOM события для привязанных элементов
-DOM событие и ключ разделяются двойным двоеточием. Объект оригинального DOM события находится под ключём ``domEvent`` объекта события. Кроме этого, в объекте доступно несколько свойств и методов, для того чтобы не обращаться каждый раз к ``domEvent``: ``preventDefault``, ``stopPropagation``, ``which``, ``target`` и несколько других свойств (``key``, ``element``, ``elements``, ``self``).
+
+##### ``beforechange:KEY``, вызывающееся перед изменением свойства
 ```js
-this.bindNode('x', '.my-button');
+this.on('beforechange:x', function(evt) {...});
+this.x = 42;
+```
+
+##### ``bind:KEY`` и ``bind``, вызывающееся после связывания данных
+```js
+//для всех свойств
+this.on('bind', function(evt) {...});
+//для свойства "x"
+this.on('bind:x', function(evt) {...});
+this.bindNode('x', '.my-node');
+```
+
+##### ``delete:KEY`` и ``delete``, вызывающееся при удалении свойства
+```js
+//для всех свойств
+this.on('delete', function(evt) {...});
+//для свойства "x"
+this.on('delete:x', function(evt) {...});
+this.remove('x');
+```
+
+##### ``addevent:NAME`` и ``addevent``, вызывающееся при инициализации события
+```js
+//для всех событий
+this.on('addevent', function(evt) {...});
+//для события "someevent"
+this.on('addevent:someevent', function(evt) {...});
+//генерирует события "addevent" и "addevent:someevent"
+this.on('someevent', function(evt) {...});
+```
+
+##### ``DOM_EVENT::KEY``, где DOM_EVENT - имя DOM события, KEY - ключ. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, связанным с KEY.
+```js
+this.bindNode('x', '.my-div');
 this.on('click::x', function(evt) {
-	alert('clicked "x"');
-	console.log(evt.domEvent); // MouseEvent
+	alert('clicked ".my-div"');
 });
 ```
-### Делегированные DOM события для привязанных элементов
-Такой синтаксис позволяет навесить обработчик события на дочерний элемент внутри привязанного элемента, даже если дочерний элемент еще не существует. Этот вариант используется тогда, когда программист не хочет создавать еще одну дополнительную привязку для того, чтоб добавить небольшой DOM обработчик.
-Селектор указывается в скобках после ключа. Оригинальное DOM событие находится под ключём ``domEvent`` объекта события.
+
+##### ``DOM_EVENT::KEY(SELECTOR)``, где DOM_EVENT - имя DOM события, KEY - ключ, SELECTOR - селектор.  Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, который соответствует селектору SELECTOR, и находится в элементе, который связан со свойством KEY.
+
 ```html
 <div class="my-div">
 	<button class="my-button"></button>
 </div>
 ```
-Сравните два варианта:
-```js
-this.bindNode('x', '.my-div');
-this.bindNode('y', '.my-button');
-this.on('click::y', function(evt) {
-	alert('clicked ".my-button"');
-});
-```
-
 ```js
 this.bindNode('x', '.my-div');
 this.on('click::x(.my-button)', function(evt) {
@@ -102,12 +107,15 @@ this.on('click::x(.my-button)', function(evt) {
 });
 ```
 
-В первом случае приходится привязать кнопку прежде чем навешать обработчик, заставляя придумывать имя для ключа, который, в дальнейшем не используется.
+##### ``DOM_EVENT::(SELECTOR)``, где DOM_EVENT - имя DOM события, SELECTOR - селектор. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, который соответствует селектору SELECTOR, и находится в песочнице текущего объекта.
 
-### Делегированные DOM события для песочницы
-Как известно из документации к {@link Matreshka#bindNode}, для того, чтоб объявить песочницу нужно всего-навсего связать специальный ключ ``sandbox`` с соответствующим элементом. Напоминаем, песочница нужна для того, чтоб привязки внутри экземпляра класса были ограничены одним элементом, не влезая на территорию другого экземпляра и не создавая конфликтов селекторов.
-
-Синтаксис делегированных событий описан выше:
+```js
+this.bindNode('sandbox', '.my-div');
+this.on('click::(.my-button)', function(evt) {
+	alert('clicked ".my-button"');
+});
+```
+То же самое, что и:
 ```js
 this.bindNode('sandbox', '.my-div');
 this.on('click::sandbox(.my-button)', function(evt) {
@@ -115,72 +123,22 @@ this.on('click::sandbox(.my-button)', function(evt) {
 });
 ```
 
-Но, есть более краткий способ записи такого события, без указания ключа ``sandbox``
+##### Делегированные события ``PATH@EVENT``, где PATH - путь к объекту, события которого мы желаем прослушивать, EVENT - имя события.
 ```js
-this.bindNode('sandbox', '.my-div');
-this.on('click::(.my-button)', function(evt) {
-	alert('clicked ".my-button"');
-});
+this.on('a@someevent', function() {...});
+this.on('a.b.c@change:d', function() {...});
 ```
 
-Оригинальное DOM событие находится под ключём ``domEvent`` объекта события.
-
-### Делегированные события Матрешки
-Для того, чтоб отловить событие внутри свойства, если значением этого свойства является другой экземпляр Матрешки, можно использовать специальный синтаксис ``КЛЮЧ@ИМЯ_СОБЫТИЯ``. Таким образом, программисту не требуется всё время следить за значением свойства
-
-Сравните два подхода. Первый - простой: слушаем изменения свойства, проверяем, является ли значение свойства экземпляром Матрешки, навешиваем обработчик.
+При возникновении необходимости слушать изменения во всех элементах {@link Matreshka.Array} или во всех ключах, отвечающих за данные {@link Matreshka.Object}, вместо имени свойства можно указать звездочку "*".
 ```js
-this.on('change:x', function() {
-	if(this.x && this.x.isMK) {
-		this.x.on('y', function(message) {
-			alert(message);
-		});
-	}
-});
-this.x = new Matreshka();
-this.x.trigger('y', '"y" event is fired');
+this.on('*@someevent', function() {...});
+this.on('*.b.*.d@change:e', function() {...});
 ```
 
-Вариант с использованием делегированных событий Матрешки выглядит многократно элегантнее.
-```js
-this.on('x@y', function(message) {
-	alert(message);
-});
-this.x = new Matreshka();
-this.x.trigger('y', '"y" event is fired');
-```
-
-### Делегированные события {@link Matreshka.Object} и {@link Matreshka.Array}
-В предыдущем варианте делегированных событий мы заранее знаем ключ свойства. Так как {@link Matreshka.Object} и {@link Matreshka.Array} ведут себя как коллекции (у {@link Matreshka.Object} есть метод {@link Matreshka.Object#each} для перебора всех ключей, отвечающих за данные), мы заранее можем не знать под какими ключами или индексами будут содержаться нужные нам экземпляры. Для того, чтоб навесить обработчик неизвестное свойство, в эти классы был добавлен дополнительный синтаксический сахар: ``@ИМЯ_СОБЫТИЯ``.
-
-Пример с {@link Matreshka.Object}.
-```js
-this.on('@y', function(message) {
-	alert(message);
-});
-this.jset('x', new Matreshka );
-this.x.trigger('y', '"y" event is fired');
-```
-
-Пример с {@link Matreshka.Array}.
-```js
-this.on('@y', function(message) {
-	alert(message);
-});
-this.push(new Matreshka);
-this[0].trigger('y', '"y" event is fired');
-```
-
-### Всевозможные комбинации
+#### Всевозможные комбинации
 Все приведенные выше варианты синтаксиса можно комбинировать произвольным способом.
 ```js
-this.on('@click::x z@y', function() { ... });
-```
-```js
-this.on('property@click::(.my-selector)', function() { ... });
-```
-```js
-this.on('x@y@z', function() { ... });
+this.on('x.y.z@click::(.my-selector)', function() {...});
 ```
 @typedef {string} eventNames
 */

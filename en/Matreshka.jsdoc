@@ -68,7 +68,7 @@ this.sandbox; // the same as $('.app')[0]
 /**
 @member {$nodes} Matreshka#$nodes
 @since 1.1
-@summary The object contains quick-accessible collections (jQuery, Zepto, Balalaika) of bound nodes.
+@summary An object contains collections (jQuery, Zepto, Balalaika) of bound nodes for quick access.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
@@ -79,8 +79,8 @@ this.$nodes.myKey; // the same as $('.my-node')
 /**
 @member {node} Matreshka#nodes
 @since 1.1
-@summary The object contains quick-accessible bound nodes.
-@desc Pay attention: every property of this object contains the first DOM node bound to given key. To get all bound nodes use {@link Matreshka#$nodes}.
+@summary The object contains bound elements in the form of separate DOM nodes for quick access.
+@desc Pay attention, every object property has got the first node of the bound ones to the corresponding property. Use {@link Matreshka#$nodes} for getting all the nodes bound to a certain property.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
@@ -1011,11 +1011,162 @@ this.mediate({
 /**
 @method Matreshka#setClassFor
 @since 1.1
-@summary Docs are coming soon...
-@param {string|array} key
-@param {function} class
-@param {function} [updateCallback]
+@summary Sets class for a property
+@desc The method allows to precisely determine which class instance the set property will be. A developer doesn't have to worry about the fact that a property value will be accidentally rewritten by wrong type of data.
 
+> The method is an addon over {@link Matreshka#mediate} and it overrides a mediator excluding the conflict of two mediators.
+
+
+Class instance is being created during the launch of {@link Matreshka#setClassFor}  method. The current property value becomes the first argument of the class constructor. Provisions should be made so that either undefined (if a property hasn’t contained any data before), or an object you should do something with (for example, to extend class instance by object properties) will get into the class constructor.
+
+> It looks easy in practice: you create an ordinary class which almost always receives some data to be handled (for example, to use them in {@link Matreshka.Object#jset} method).
+
+While attempting to assign another value (an object or an array) to the property, the inner mechanism of ``setClassFor`` method performs the following instead of  assignment:
++ If ``updateCallback`` function is given, the method launches it with two arguments: the current property value and the data which code is trying to assign.
++ If given class is inherited from {@link Matreshka.Object}, the instance is updated with new data using {@link Matreshka.Object#jset} method.
++ If given class is inherited from M{@link Matreshka.Array}, the instance is updated with new data using {@link Matreshka.Object#recreate} method.
++ If ``updateCallback`` function isn’t given and class isn’t inherited from {@link Matreshka.Object} or {@link Matreshka.Array}, the instance is extended by object properties which code is trying to assign.
+
+> A cool feature of this method is the absence of limitations on the class source. Any function-constructor that can be initialized using ``new`` operator and not only {@link Matreshka}'s successors can act as a class.
+
+@param {string|array} key - Key or an array of keys or a list of keys which are separated by spaces.
+@param {function} class - Class you want to assign to the property
+@param {function} [updateCallback] - Function which is called at every attempt of assigning new data to the property, allowing to customize logic of class instance updating with new data. The function receives two arguments: the current property value (class instance) and data which are attempted to assign.
+@example
+var SubClass = Class({
+	// ...
+});
+
+// ...
+
+this.setClassFor('x', SubClass);
+
+// trying to assign another value to property
+this.x = {a: 42};
+
+// this.x is still SubClass instance
+alert(this.x instanceof SubClass); // true
+alert(this.x.a); // 42
+@example <caption>The use of ``updateCallback``.</caption>
+this.setClassFor('x', SubClass, function(instance, data) {
+	updateSomeHow(instance, data);
+});
+@example <caption>Getting parent. Besides data (the first argument), the link to the object which has called ``setClassFor`` is passed to the constructor of the creating class.</caption>
+var MySubClass = Class({
+	'extends': Matreshka,
+	constructor: function(data, parent) {
+		// parent - is MyClass instance which
+		// has called setClassFor
+	}
+});
+
+var MyClass = Class({
+	'extends': Matreshka,
+	constructor: function() {
+		this.setClassFor('x', MySubClass);
+	}
+});
+
+@example <caption>A non-standard way of using ``updateCallback`` for ignoring any changes of the property.</caption>
+// MK.noop - is an empty function
+this.setClassFor('x', SubClass, MK.noop);
+@example <caption>In case if your class doesn’t support the use of ``new`` operator, use @link Matreshka#mediate} method instead of ``setClassFor``.</caption>
+this.mediate('x', function(data, currentValue) {
+	return currentValue instanceof SomeClass
+		? Object.assign(currentValue, data)
+		: SomeLib.initInstance(SomeClass, data);
+});
+@example <caption>An abstract example with large nested data (for brevity, ECMAScript 7 syntax is used)</caption>
+// app.js
+class App extends MK {
+	constructor(appData) {
+		this.appData = appData;
+		this.setClassFor('appData', AppData);
+	}
+}
+
+// app-data.js
+class AppData extends MK.Object {
+	constructor(data) {
+		super(data)
+			.setClassFor({
+				friends: Friends,
+				settins: Settings
+			});
+	}
+}
+
+// friend.js
+class Friend extends MK.Object {
+	constructor(data) {
+		super(data);
+	}
+}
+
+// friends.js
+class Friends extends MK.Array {
+	Model = Friend;
+	constructor(data) {
+		super(...data);
+	}
+}
+
+// settings.js
+class Settings extends MK.Object {
+	constructor(data) {
+		super(data)
+			.setClassFor('credentials', Credentials);
+	}
+}
+
+// credentials.js
+class Credentials extends MK.Object {
+	constructor(data) {
+		super(data);
+	}
+}
+
+// app-init.js
+var app = new App({
+	settings: {
+		name: 'Vasiliy Vasiliev',
+		credentials: {
+			email: 'vasia.vasia@gmail.com'
+		}
+	},
+	friends: [{
+		name: 'Yulia Zuyeva',
+		id: 1
+	}, {
+		name: 'Konstantin Konstantinopolsky',
+		id: 2
+	}, {
+		name: 'nagibator3000',
+		id: 3
+	}]
+});
+
+// data can be serialized and passed to the server
+JSON.stringify(app.appData);
+
+
+// next just to assign new data to appData property
+// yet the class structure won’t be changed
+app.appData = {
+	settings: {
+		name: 'Petr Petrov',
+		credentials: {
+			email: 'petr.petrov@gmail.com'
+		}
+	},
+	friends: [{
+		name: 'Yulechka Zuyeva',
+		id: 1
+	}, {
+		name: 'Konstantin Konstantinopolsky',
+		id: 2
+	}]
+};
 */
 
 
@@ -1023,14 +1174,16 @@ this.mediate({
 @method Matreshka#setClassFor
 @variation 2
 @since 1.1
-@summary Docs are coming soon...
-@param {object} keyClassPairs
-@param {function} [updateCallback]
+@summary Additional syntax for {@link Matreshka#setClassFor}, which accepts key-class object as the first argument.
+@param {object} keyClassPairs - key-class object
+@param {function} [updateCallback] - Function which is called at every attempt of assigning new data to the property.
 @example
 this.setClassFor({
 	x: Class1,
 	y: Class2,
 	z: Class3
+}, function(data) {
+	instance.jset(data);
 });
 */
 
@@ -1077,6 +1230,15 @@ this.on('change:p', function() {
 });
 
 this.a = 5; // alerts "The perimeter has been changed and equals 18"
+
+@example <caption>Starting the v1.1, you can pass a path to target property</caption>
+this.a = {b: {c: 21}};
+
+this.linkProps('x', 'a.b.c', function(c) {
+	return c * 2;
+});
+
+alert(this.x); //42
 */
 
 
@@ -1242,6 +1404,81 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 /**
 @method Matreshka#parseBindings
 @since 1.1
-@summary Parses DOM tree, declaring bindings with properties enclosed in double braces.
-@desc Docs are coming soon...
+@summary Parses DOM tree, declaring property bindings which are double braced.
+@desc Starting with 1.1 version, Matreshka includes a simple DOM parser that handles double braced syntactic constructions. ``parseBindings`` method receives one optional argument: HTML string, DOM node or selector corresponding to DOM node. If argument isn’t set, parser handles a sandbox (see {@link Matreshka#bindNode}).
+
+As the method is DOM template engine (and not HTML-replace parser), all child DOM nodes of the passed element remain in their same state (for example, DOM events aren’t erased).
+
+### The supported syntax
+1. HTML binding
+```html
+<!--
+will create DOM node in place of &#123;{user.name}}
+and will bind name property from user object to this node
+JS: this.user = {name: 'Joe'}
+-->
+<span>Hello, &#123;{user.name}}</span>
+```
+
+2. Binding form elements.
+```html
+<!--
+will bind "x" instance property to a text field (two-way data binding)
+JS: this.x = 'some value';
+-->
+<input type="text" value="&#123;{x}}">
+<!--
+For binding textarea and select you should use value attribute
+-->
+<textarea value="&#123;{x}}"></textarea>
+<select value="&#123;{x}}">...</select>
+<!--
+will bind "x" instance property to a checkbox (two-way data binding)
+JS: this.x = true;
+-->
+<input type="checkbox" checked="&#123;{x}}">
+```
+
+3. Attributes binding.
+```html
+<!--
+href attribute value will depend on "category" 
+and "someObject.page" value (one-way data binding)
+JS:
+ this.category = 'matreshka';
+ this.someObject = {page: 42}
+-->
+<a href="http://example.com/&#123;{category}}/&#123;{someObject.page}}">A link</a>
+<!--
+The result:
+<a href="http://example.com/matreshka/42">A link</a>
+-->
+```
+
+#### Why do we need this method?
+In case if you develop a large form with standard HTML5 fields, the method will help you save time on declaring numerous bindings. Besides, ``parseBindings`` is useful in case of creating a very simple collection which doesn’t require implementation of a complicated {@link Matreshka.Array#Model model}.
+
+#### Is it compatible with Matreshka ideology ("all logic must be included into JavaScript file")?
+Yes, no cycles, conditional operators or any other logic are supported in the parser. Only declaration of simple bindings is available for a developer using ``parseBindings`.
+
+#### Performance
+The method works a little slower than manual declaration of bindings with {@link Matreshka#bindNode} method. You should bear that in mind while creating applications with very strict performance requirements. The speed decreases a little only during the process of binding. As for the rest, bindings work as fast as with {@link Matreshka#bindNode}.
+
+
+@param {string|node|$nodes} [node] - HTML string, selector, DOM node or collection of DOM nodes
+@returns {$nodes} A collection of DOM nodes (usually contained single node), which is passed to the method as an argument; or a sandbox, in case when there are no arguments are passed.
+
+@example <caption>Parsing of given node</caption>
+this.parseBindings(node);
+
+@example <caption>Parsing of nodes matching given selector</caption>
+this.parseBindings('.my-node');
+
+@example <caption>HTML string parsing</caption>
+var $node = this.parseBindings('<h3>Hello, &#123;{name}}</h3>');
+this.name = 'Arthur Philip Dent';
+
+@example <caption>Sandbox parsing</caption>
+this.bindNode('sandbox', '.my-node');
+this.parseBindings();
 */

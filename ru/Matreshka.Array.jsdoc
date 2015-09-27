@@ -66,8 +66,8 @@ this.push(1, 2, 3, 4, 5);
 
 // обработчик запустится трижды,
 // так как в массив добавили три новых элемента
-this.on( 'removeone', function( evt ) {
-	console.log(evt.added); // 2 ... 3 ... 4
+this.on('removeone', function( evt ) {
+	console.log(evt.removed); // 2 ... 3 ... 4
 });
 
 this.splice(1, 3);
@@ -454,9 +454,9 @@ var app = new MyArray();
 ```
 И свяжет чекбоксы с соответствующими свойствaми ``isChecked`` и ``text``. <a href="http://jsbin.com/zetuya/1/" target="_blank">Живой пример</a>
 
-Не забывайте, что в Матрешке реализована возможность отлова всплывающих событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события ``@render`` (см. документацию к {@link #typedef-eventNames}).
+Не забывайте, что в Матрешке реализована возможность отлова всплывающих событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события ``*@render`` (см. документацию к {@link #typedef-eventNames}).
 ```js
-this.on('@render', function(evt) {
+this.on('*@render', function(evt) {
 	alert('Child element is rendered');
 });
 ```
@@ -678,7 +678,7 @@ var app = new MyArray();
 var MyModel = Class({
 	// она наследуется от MK.Object
 	'extends': MK.Object,
-	constructor: function(data) {
+	constructor: function(data, parentArray) {
 		// устанавливаем переданные свойства методом jset
 		this.jset(data);
 		this.doSomething();

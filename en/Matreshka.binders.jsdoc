@@ -165,9 +165,31 @@ this.myKey = 'cool value';
 /**
 @function Matreshka.binders.file
 @since 1.1
-@summary Returns the binder for ``input[type="file"]``.
+@summary Returns binder for ``input[type="file"]``.
 
-@desc Docs are coming soon...
-@param {string} [readAs]
+@desc Binder allows not only to get basic data about  a file, but also to read it without calling ``FileReader`` manually.
+
+If ``readAs`` argument isn’t set, input value gets into the bound property after its changing (on ``"change"`` DOM event). If ``readAs`` is set, binder will read the file and transform it into the needed format (data URI, Blob...) and only after reading the file, the property will be changed.
+
+The file (native ``File``) or an array of files becomes the final value of the property in the presence of ``multiple`` attribute. At the same time the result of reading will get into the object of every file as ``readerResult`` property.
+
+@see {@link https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
+@param {string} [readAs] - ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods in ``FileReader`` interface
 @returns {binder}
+@example
+this.bindNode('myKey', '.my-file', MK.binders.file('dataURL'));
+// ... user changes input content
+// choosing my-image.png from file system ...
+this.on('change:myKey', function() {
+	console.log(this.myKey);
+	// --> 
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..."
+	//		- result of file reading
+	//	size: 9378
+	//	type: "image/png"
+});
 */
