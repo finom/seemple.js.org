@@ -1064,6 +1064,7 @@ class Friend extends MK.Object {
 // friends.js
 class Friends extends MK.Array {
 	Model = Friend;
+	trackBy = 'id';
 	constructor(data) {
 		super(...data);
 	}
