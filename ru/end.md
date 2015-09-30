@@ -138,7 +138,17 @@ var magic = require('magic/matreshka-magic.min');
 
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
-### [Матрешка 1.1.1](https://github.com/finom/matreshka/releases/tag/v1.1.0)
+
+### [Матрешка 1.2.0](https://github.com/finom/matreshka/releases/tag/v1.2.0)
+* Добавлено виртуальное свойство {@link Matreshka.Array#trackBy}
+* Исправлена ошибка в {@link Matreshka.to}
+* Кастомные селекторы при глубоком связывании работали некорректно
+
+### [Матрешка 1.1.2](https://github.com/finom/matreshka/releases/tag/v1.1.2)
+* Улучшена производительность кастомных селекторов (``:bound(KEY)`` и ``:sandbox``)
+* Восстановлен {@link Matreshka#parseBindings}
+
+### [Матрешка 1.1.1](https://github.com/finom/matreshka/releases/tag/v1.1.1)
 * Поддержка Матрешкой Opera Mini за счет включения ``oMatchesSelector`` для Балалайки
 
 ### [Матрешка 1.1.0](https://github.com/finom/matreshka/releases/tag/v1.1.0)
