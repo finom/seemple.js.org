@@ -7,15 +7,15 @@ This repo contains the source code for Matreshka.js website. It's moved to open-
 
 ## Project structure
 
-- /template - JSDoc template
-- /src - Jekyll source
-- /src/sass - Compass-based stylesheets
-- /src/js - Javascript source (written in ECMAScript 2015+)
-- /dist - Compiled ready-to-go HTML, CSS and JS. It's gitignored, so you need to run ``gulp`` to get this folder
-- /en - Matreshka documentation source in English
-- /ru - Matreshka documentation source in Russian
-- /configs - Config files
-- /server and /assets contain server stuff. If you're collaborator, you don't need them
+- **/template** - JSDoc template
+- **/src** - Jekyll source
+- **/src/sass** - Compass-based stylesheets
+- **/src/js** - Javascript source (written in ECMAScript 2015+)
+- **/dist** - Compiled ready-to-go HTML, CSS and JS. It's gitignored, so you need to run ``gulp`` to get this folder
+- **/en** - Matreshka documentation source in English
+- **/ru** - Matreshka documentation source in Russian
+- **/configs** - Config files
+- **/server** and /assets** contain server stuff. If you're collaborator, you don't need them
 
 ## How to compile
 
@@ -25,7 +25,7 @@ If you want to make some changes to Matreshka docs you need to run the website a
 2. Install [Jekyll](https://jekyllrb.com/).
 3. Install [Gulp](http://gulpjs.com/) globally.
 4. Install dependencies via ``npm install``.
-5. Run ``gulp`` to see is everything OK (/dist folder is created and HTML files look not broken).
+5. Run ``gulp`` to see is everything OK (**/dist** folder is created and HTML files look not broken).
 
 ## Useful Gulp tasks
 
