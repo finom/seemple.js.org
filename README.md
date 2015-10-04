@@ -1,6 +1,6 @@
 # [matreshka.io](http://matreshka.io) source code
 
-[![devDependency Status](https://david-dm.org/matreshkajs/matreshka.io/dev-status.svg)](https://david-dm.org/matreshkajs/matreshka.io#info=devDependencies)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/pr)](http://issuestats.com/github/matreshkajs/matreshka.io)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/issue)](http://issuestats.com/github/matreshkajs/matreshka.io)
+[![Dependency Status](https://david-dm.org/matreshkajs/matreshka.io.svg)](https://david-dm.org/matreshkajs/matreshka.io)[![devDependency Status](https://david-dm.org/matreshkajs/matreshka.io/dev-status.svg)](https://david-dm.org/matreshkajs/matreshka.io#info=devDependencies)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/pr)](http://issuestats.com/github/matreshkajs/matreshka.io)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/issue)](http://issuestats.com/github/matreshkajs/matreshka.io)
 
 
 <p align="center"><img src="http://i.imgur.com/42Lyr6F.png"></p>
