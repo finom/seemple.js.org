@@ -19,7 +19,7 @@ This repo contains the source code for Matreshka.js website. It's moved to open-
 - **/en** - Matreshka documentation source in English
 - **/ru** - Matreshka documentation source in Russian
 - **/configs** - Config files
-- **/server** and /assets** contain server stuff. If you're collaborator, you don't need them
+- **/server** and **/assets** contain server stuff. If you're collaborator, you don't need them
 
 ## How to compile
 
