@@ -7,7 +7,7 @@
 This repo contains the source code for [Matreshka.js](https://github.com/matreshkajs/matreshka) website. It's moved to open-source because of 2 reasons:
 
 1. For better Matreshka docs collaboration.
-2. Some people asked how can they make the same cool website for another library or a framework. It's for you, guys. The website and docs are available under MIT license, that means you can use every part of this repo for any purpose including commercial. But pay attention: the source code isn't created for general use. There are many matreshka-specific parts and you can meet hardcoded spikes.
+2. Some people asked how can they make the same cool website for another library or a framework. It's for you, guys. The website and docs are available under MIT license, that means you can use every part of this repo for any purpose including commercial. But pay attention: source code isn't created for general use. There are many matreshka-specific parts and you can meet hardcoded spikes.
 
 ## Project structure
 
