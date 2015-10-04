@@ -1,0 +1,17 @@
+<article class="item ns" id="!<?js= obj.longname ?>">
+	<h2>
+		<a href="#!<?js= obj.longname ?>">
+			<?js= '<span class="memberof">' + obj.memberof + '.</span>' + obj.name ?> <span data-type="object">object</span>
+		</a>
+	</h2>
+	<div class="summary"><?js= obj.summary ?></div>
+	<div class="description"><?js= obj.description ?></div>
+	<?js print( this.partial( 'see.html', obj.see ) ) ?>
+	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
+
+
+	<?js print( this.partial( 'comments.html', { link: obj.longname, title: this.lang.namespace + ' ' + obj.longname }) ) ?>
+</article>
+<?js obj.members.forEach( function( member ) {
+	print( this.partial( 'method.html', member ) )
+}, this ); ?>

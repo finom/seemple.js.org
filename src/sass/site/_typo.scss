@@ -1,0 +1,116 @@
+form.typo {
+	@extend .modal;
+	display: block;
+	top: -100%;
+	opacity: 0;
+	z-index: 1001;
+	
+	h5 {
+		&::after {
+			content: 'by';
+			margin-right: 30px;
+			display: inline-block;
+			color: #888;
+			width: 130px;
+			height: 21px;
+			font-size: .9rem;
+			background: inline-image("google-forms-logo.png") no-repeat top right;
+			float: right;
+		}
+	}
+	
+	textarea {
+		@extend .materialize-textarea;
+	}
+	
+	button {
+		@extend .btn-flat;
+	}
+	
+	&.shown {
+		top: 10%;
+		opacity: 1;
+	}
+	
+	p.selection {
+		&::before, &::after {
+			content: '...';
+		}
+	}
+	
+	.cancel {
+		float: right;
+	}
+	
+	
+	@include transition-property(#{"opacity,top"});
+	@include transition-duration(.4s);
+	@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+} 
+
+
+.typo-overlay {
+	@extend .overlay;
+	z-index: 4;
+}
+
+.typo-badge {
+	position: fixed;
+	top: calc(50% - 190px);
+	right: -45px;
+	background: #000;
+	opacity: .35;
+	color: white;
+	text-align: center;
+	-webkit-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	-webkit-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	font-size: 0.9rem;
+	line-height: 1.5rem;
+	padding: 0 15px;
+	-webkit-transition: right  .5s, opacity .5s;
+	transition: right  .5s, opacity .5s;
+	
+	button {
+		color: black;
+		line-height: 1.2rem;
+	}
+	
+	.close {
+		@extend .mdi, .mdi-navigation-close;
+		position: absolute;
+		padding: 3px;
+		bottom: 0;
+		right: 7px;
+		cursor: pointer;
+		font-size: .9rem;
+		opacity: .5;
+		-webkit-transition: opacity .5s;
+		transition: opacity .5s;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.mobile {
+	.typo-badge {
+		display: none;
+	}
+}
+
+.typo-badge:hover {
+	&:hover, &:active {
+		right: 0;
+		opacity: .8;
+	}
+}
+
+@media #{$medium-and-down} {
+	.typo-badge {
+		display: none;
+	}
+}

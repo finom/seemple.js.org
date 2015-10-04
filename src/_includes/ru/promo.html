@@ -1,0 +1,26 @@
+<section id="promo">
+	<article id="!home">
+		<img src="img/mk5-logo_matreshka.svg" class="mk-logo-matreshka">
+		<img src="img/mk5-logo_text.svg" class="mk-logo-text">
+		<span class="version">v{{ site.data.package.version }}</span>
+		<p class="slogan">Event-driven JavaScript фреймворк</p>
+		<pre class="prettyprint lang-html" style="max-width: 540px; margin: 0 auto; text-align: left;"><code>&lt;script src=&quot;matreshka.min.js&quot;&gt;&lt;/script&gt;
+&lt;input type=&quot;text&quot; class=&quot;my-input&quot;&gt;
+&lt;script&gt;
+var app = new Matreshka();
+app.bindNode('x', '.my-input');
+app.x = 'Двустороннее связывание данных в JS? Серьезно?';
+&lt;/script&gt;</code></pre>
+		<p>
+			<a href="https://github.com/finom/matreshka/archive/v{{ site.data.package.version }}.zip" download class="download-btn">Скачать <i></i></a>
+			<a href="https://github.com/finom/matreshka" class="github-btn">Github <i></i></a>
+		</p>
+
+		<div class="main-sponsor">
+		    The main sponsor<br>
+		    <a href="http://shooju.com" target="_blank"><img src="img/logos/shooju.png"></a>
+		</div>
+		{% include ru/performance.html %}
+		{% include ru/extras.html %}
+	</article>
+</section>

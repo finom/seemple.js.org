@@ -1,0 +1,166 @@
+$sidenav-width: 240px;
+$header-height: 56px;
+$primary-color: #8BC34A;
+$secondary-color: #ef5350;
+$text-color: rgba(#000,.9);
+
+@mixin sidebar-animation($property) {
+	@include transition-property($property);
+	@include transition-duration(.4s);
+	@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+
+
+.hide {
+	display: none !important;
+}
+
+
+* { box-sizing: border-box; }
+
+
+/*@media #{$large-and-up} {
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background-color: rgba(#000,.2);;
+		//border-left: 1px solid #ccc;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: rgba(#000,.3);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background-color: rgba(#000,.4);
+	}
+}*/
+
+
+
+
+html {
+	body[data-view="per-one"] {
+		article:not([data-typedef]) {
+			display: none;
+			&:target {
+				display: block;
+			}
+		}
+
+		.pagination {
+			display: block;
+		}
+	}
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+pre {
+	overflow: auto;
+}
+
+.overlay {
+	opacity: 0;
+	cursor: pointer;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	background: #000;
+	@include transition-property(opacity);
+	@include transition-duration(.4s);
+	@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.prettyprint {
+	font-size: 1rem;
+	border: 0;
+	background-color: #f9f9f9;
+	margin-bottom: 1rem;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	position: relative;
+}
+
+.close-modal {
+	@extend .mdi, .mdi-navigation-close;
+	position: absolute;
+	padding: 5px;
+	top: 5px;
+	right: 7px;
+	cursor: pointer;
+	font-size: 1.5rem;
+	opacity: .5;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+i.important {
+	font-size: 1.5rem;
+	margin-left: 2px;
+	color: $secondary-color;
+	@extend .mdi, .mdi-content-flag;
+}
+
+i.cool {
+	font-size: 1.5rem;
+	margin-left: 2px;
+	color: #1E88E5;
+	@extend .mdi, .mdi-action-thumb-up;
+}
+
+.modal {
+	@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+		// IE9 CSS
+		width: 700px;
+		margin: 0 0 0 -350px;
+		left: 50%;
+	}
+
+
+	_:-ms-fullscreen, :root & {
+		// IE11 CSS
+		width: 700px;
+		margin: 0 0 0 -350px;
+		left: 50%;
+	}
+}
+
+.m-account input[type="checkbox"] {
+	position: static;
+}
+
+summary {
+	color: #1E88E5;
+	//text-decoration-line: underline;
+    //text-decoration-style: dashed;
+    //text-decoration-color: #1E88E5;
+	cursor: pointer;
+	&:focus {
+		outline: none;
+
+	}
+}
+
+a[href*="//"] {
+	@extend .mdi, .mdi-action-open-in-new;
+	&::before {
+		vertical-align: middle;
+		margin-right: .3em;
+		font-size: 1.2em;
+		line-height: 1;
+		font-weight: normal;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {}

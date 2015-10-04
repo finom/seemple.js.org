@@ -1,0 +1,18 @@
+[data-type] {
+	padding: 3px 8px;
+	color: white;
+	background-color: $secondary-color;
+	border-radius: 2px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+	vertical-align: middle;
+	display: inline-block;
+	margin: 1px;
+}
+
+$types: matreshka, matreshkaObject, matreshkaArray, class, binder, node, "$nodes", object, eventOptions, array, eventHandler, function, string, eventNames, number, boolean, "*", null;
+
+@for $i from 1 through length($types) {
+	[data-type="#{nth($types, $i)}"] { background-color: hsl(360*$i/length($types), 38%, 57%); }
+}

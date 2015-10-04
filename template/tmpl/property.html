@@ -1,0 +1,26 @@
+<?js var link = obj.longname.replace( '#', '-' ); ?>
+<article class="item property" id="!<?js= link ?>" data-since="<?js= obj.since ?>">
+	<h2>
+		<a href="#!<?js= link ?>">
+
+			<?js=
+				( obj.virtual ? '<span class="signature">&lt;virtual&gt;</span>' : '' )
+				+ '<span class="memberof">' + obj.memberof + ( obj.scope === 'static' ? '.' : '#' ) + '</span>' + obj.name ?></a><span class="type">:
+				<?js=
+					obj.type && obj.type.names && obj.type.names.map( function( name ) {
+						return '<span data-type="' + name + '">'+name+'</span>';
+					}).join( ' ' )
+				?>
+			</span>
+
+			<!-- <span data-type="<?js= obj.type.names[0] ?>"><?js= obj.type.names[0] ?></span></span>-->
+		<?js= obj.important ? '<i class="important" title="'+this.lang.important+'"></i>' : '' ?>
+		<?js= obj.cool ? '<i class="cool" title="'+this.lang.cool+'"></i>' : '' ?>
+		<span class="new-badge"></span>
+	</h2>
+	<div class="summary"><?js= obj.summary ?></div>
+	<div class="description"><?js= obj.description ?></div>
+	<?js print( this.partial( 'see.html', obj.see ) ) ?>
+	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
+	<?js print( this.partial( 'comments.html', { link: link, title: this.lang.property + ' ' + link }) ) ?>
+</article>

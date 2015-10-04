@@ -357,7 +357,7 @@ this.bindNode('myKey', '.my-slider', {
 	// как извлечь состояние элемента?
 	// - вернуть значение виджета 'value'
 	getValue: function() {
-		return $(thi ).slider('option', 'value');
+		return $(this).slider('option', 'value');
 	},
 	// как установить состояние элемента?
 	// - установить значение 'value'

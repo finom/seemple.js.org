@@ -1,0 +1,27 @@
+<nav>
+	<span class="view-switcher">
+		<span data-value="all" class="checked">Всё сразу</span><span data-value="per-one">По одному</span>
+	</span>
+	<span class="version-switcher hide">
+		<span data-value="stable" class="checked">Стабильная</span><span data-value="unstable">1.1 Beta</span>
+	</span>
+	<a href="#!home">Начало</a>
+	<a href="#!introduction">Введение</a>
+	<a href="#!getting-started">С чего начать? <span class="expand"></span><span class="hidden-active-child"></span></a>
+	<div class="submenu-wrapper">
+		<ul data-submenu="!getting-started">
+			<li><a href="#!hello-world">Hello World</a>
+			<li><a href="#!todomvc">TodoMVC</a>
+			<li><a href="#!how-to-include">Как подключить</a>
+		</ul>
+	</div>
+	{% include ru/doc_menu.html %}
+	<a href="#!matreshka-magic" data-since="1.1">MatreshkaMagic</a>
+	<a href="#!10-reasons">10 причин попробовать</a>
+	<a href="#!whats-new">Что нового?</a>
+	<a href="#!faq">FAQ</a>
+	<a href="forum/" target="_blank" class="forum-link">Форум</a>
+	<a href="http://habrahabr.ru/company/matreshka/blog/254889/">Туториал</a>
+	<a href="//matreshka.io" class="another-language"><i></i> English version</a>
+	<a>Обновлено {{site.time | date: "%Y-%m-%d" }}</a>
+</nav>

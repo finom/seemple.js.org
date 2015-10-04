@@ -1,0 +1,27 @@
+@media print {
+	header, .view-switcher {
+		display: none!important;
+	}
+	
+	nav {
+		position: static;
+		width: 100%;
+		overflow: auto;
+		height: auto;
+		
+		ul {
+			margin-top: 0px!important;
+		}
+	}
+	
+	article, main, section {
+		page-break-before: always;
+		position: relative;
+		page-break-inside: avoid;
+	}
+	
+	main {
+		padding: 0;
+	}
+	
+} 

@@ -1,0 +1,1 @@
+exclude: ["sass", "config", "_assets", "js"]

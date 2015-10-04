@@ -1,0 +1,27 @@
+<?js if( obj.length ) { 
+	
+?>
+	<h4><?js= this.lang.properties ?></h4>
+	<table class="properties">
+		<thead>
+			<tr>
+				<th><?js= this.lang.name ?>
+				<th><?js= this.lang.type ?>
+				<th><?js= this.lang.details ?>
+			</tr>
+		</thead>
+		<tbody>
+			<?js obj.forEach( function( prop ) { ?> 
+				<tr>
+					<td>
+						<?js= prop.name ?>
+						<?js if( prop.optional ) {?>
+							<span class="signature">optional</span>
+						<?js} ?>
+					<td><?js= this.partial( 'params.html', prop ) ?>
+					<td><?js= prop.description ?>
+				</tr>
+			<?js }, this ) ?>
+		</tbody>
+	</table>
+<?js } ?>

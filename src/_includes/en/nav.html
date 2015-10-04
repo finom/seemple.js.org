@@ -1,0 +1,26 @@
+<nav>
+	<span class="view-switcher">
+		<span data-value="all" class="checked">Everything</span><span data-value="per-one">One by one</span>
+	</span>
+	<span class="version-switcher hide">
+		<span data-value="stable" class="checked">Stable version</span><span data-value="unstable">1.1 Beta</span>
+	</span>
+	<a href="#!home">Home</a>
+	<a href="#!introduction">Introduction</a>
+	<a href="#!getting-started">Getting started <span class="expand"></span><span class="hidden-active-child"></span></a>
+	<div class="submenu-wrapper">
+		<ul data-submenu="!getting-started">
+			<li><a href="#!hello-world">Hello World</a>
+			<li><a href="#!todomvc">TodoMVC</a>
+			<li><a href="#!how-to-include">How to include</a>
+		</ul>
+	</div>
+	{% include en/doc_menu.html %}
+	<a href="#!matreshka-magic" data-since="1.1">MatreshkaMagic</a>
+	<a>Tutorial (really soon)</a>
+	<a href="#!faq">FAQ</a>
+	<a href="https://github.com/finom/matreshka/releases">What's new?</a>
+	<a href="forum/" target="_blank" class="forum-link">Forum</a>
+	<a href="//ru.matreshka.io" class="another-language"><i></i> In Russian</a>
+	<a>Last update: {{site.time | date: "%Y-%m-%d" }}</a>
+</nav>

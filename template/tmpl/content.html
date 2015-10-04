@@ -1,0 +1,20 @@
+<section>
+<?js= obj.intro ?>
+</section>
+<?js for( var i in obj.classes ) { ?>
+	<?js= this.partial( 'class.html', obj.classes[i] ) ?>
+<?js } ?>
+
+<section>
+<?js for( var i = 0; i < obj.globals.length; i++ ) { ?>
+	<?js= this.partial( 'method.html', obj.globals[i] ) ?>
+<?js } ?>
+</section>
+<section>
+<?js for( var i in obj.typedefs ) { ?>
+	<?js= this.partial( 'typedef.html', obj.typedefs[i] ) ?>
+<?js } ?>
+</section>
+<section>
+<?js= obj.end ?>
+</section>

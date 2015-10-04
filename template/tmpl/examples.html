@@ -1,0 +1,4 @@
+<?js if( obj.length ) { ?> 
+	<h4><?js= this.lang.examples ?></h4>
+<?js } ?>  
+<?js obj.forEach( function( example ) {  print( this.partial( 'example.html', example ) ) }, this ); ?>

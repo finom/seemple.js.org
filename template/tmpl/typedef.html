@@ -1,0 +1,17 @@
+<?js
+	var type = obj.type && obj.type.names[0];
+?>
+<article class="item typedef" data-typedef="<?js= obj.longname ?>">
+	<i class="close-modal"></i>
+	<h2>
+		<?js= obj.name ?><?js if( type ) { ?>:
+			<span data-type="<?js= type ?>"><?js= type ?></span>
+		<?js } ?>
+	</h2>
+	
+	<?js= obj.description ?>
+	<?js print( this.partial( 'arguments.html', obj.params ) ) ?>
+	<?js print( this.partial( 'props.html', obj.properties ) ) ?>
+	<?js print( this.partial( 'see.html', obj.see ) ) ?>
+	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
+</article>

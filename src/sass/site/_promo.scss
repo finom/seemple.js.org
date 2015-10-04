@@ -1,0 +1,219 @@
+#promo {
+	background-color: #fff;
+	//height: 2000px;
+	margin: 0;
+	//color: #fff;
+	width: 100%;
+	text-align: center;
+	font-weight: 300;
+
+	a:before { content: ''; }
+
+	article {
+		padding-top: 100px;
+		max-width: none;
+	}
+
+	.pagination:first-child {
+		display: none;
+	}
+
+	.version {
+		color: #999;
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 30px;
+		margin-left: 15px;
+		font-size: 1.5rem;
+	}
+
+
+	img {
+		max-width: 90%;
+	}
+
+	.mk-logo-matreshka {
+		height: 133px;
+	}
+
+	.mk-logo-text {
+		height: 100px;
+		margin-left: 30px;
+	}
+
+	@media #{$medium-and-down} {
+		.version {
+			display: block;
+			margin: 0;
+		}
+
+		.mk-logo-text {
+			display: block;
+			margin: 0 auto;
+			margin-top: 25px;
+		}
+	}
+
+	h1 {
+		margin-top: 15px;
+		margin-bottom: 10px;
+		font-size: 4rem;
+		@media #{$small-and-down} {
+			font-size: 3rem;
+		}
+
+	}
+
+	p.slogan {
+		font-size: 1.5rem;
+		margin-top: 1rem;
+	}
+
+	.download-btn, .github-btn {
+		vertical-align: top;
+		font-size: 1rem;
+		@extend .btn;
+		margin-top: 20px;
+
+		i {
+			display: inline-block;
+		}
+	}
+
+	.download-btn i {
+		@extend .mdi, .mdi-file-file-download;
+		margin-left: 15px;
+	}
+
+	.github-btn i::after {
+		content: '';
+		display: inline-block;
+		vertical-align: top;
+		background: inline-image("github-logo.svg") no-repeat;
+		background-size: cover;
+		height: 18px;
+		width: 18px;
+		margin-left: 15px;
+		margin-top: 8px;
+	}
+
+	.next-page {
+		display: block;
+		float: none;
+		margin-top: 4rem;
+		font-size: 1.5rem;
+	}
+
+	.main-sponsor {
+		margin-top: 4rem;
+		img {
+			margin-top: 1rem;
+		}
+	}
+
+	.thanks {
+		summary {
+
+			//font-size: 1.5rem;
+		}
+		margin-top: 4rem;
+	}
+
+
+	.perf-graph-wrapper{
+		max-width: 550px;
+		margin: 0 auto;
+
+		.perf-graph {
+			height: 300px;
+			position: relative;
+			margin-bottom: 4rem;
+			margin-top: 4rem;
+			border-bottom: 1px solid #f2f2f2;
+		}
+
+		.column {
+			position: absolute;
+			bottom: 0;
+			float: left;
+			margin: 0 5%;
+			background: red;
+			width: 15%;
+			height: 0;
+			-webkit-transition: height 1s ease-out 0.5s;
+			-moz-transition: height 1s ease-out 0.5s;
+			-o-transition: height 1s ease-out 0.5s;
+			transition: height 1s ease-out 0.5s;
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-moz-border-radius-topleft: 5px;
+			-moz-border-radius-topright: 5px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+
+			&.mk {
+				left: 0;
+				background: #8BC34A;
+			}
+
+			&.rt {
+				left: 25%;
+				background: #61dafb;
+			}
+
+			&.kk {
+				left: 50%;
+				background: #DE8601;
+				;
+			}
+
+			&.ng {
+				left: 75%;
+				background: #DD1B16;
+			}
+
+			.fw-name {
+				position: absolute;
+				left: 0;
+				bottom: -2rem;
+				width: 100%;
+				text-align: center;
+			}
+
+			.slower {
+				position: absolute;
+				top: -1.5rem;
+				width: 100%;
+				text-align: center;
+				color: white;
+				overflow: hidden;
+				text-overflow: ellipsis;
+
+				&:first-line {
+					color: black;
+				}
+			}
+		}
+	}
+
+	.logos {
+		margin-top: 4rem;
+		summary {
+			color: #aaa;
+		}
+		img {
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+			opacity: .5;
+			width: 100%;
+			max-width: 250px;
+			margin: 0 1rem;
+
+			&:hover {
+				-webkit-filter: none;
+				filter: none;
+				opacity: 1;
+			}
+		}
+	}
+}

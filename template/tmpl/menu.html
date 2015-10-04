@@ -1,0 +1,105 @@
+<?js for( var i in obj.classes ) {
+	var _class = obj.classes[i];
+	var previous;
+	var self = this;
+?>
+	<a href="#!<?js= _class.longname ?>" data-name="<?js= _class.name ?>">
+		<b><?js= _class.longname ?></b>
+
+		<i class="important" title="<?js=self.lang.important?>"></i>
+		<span class="expand"></span>
+		<span class="hidden-active-child"></span>
+	</a>
+	<div class="submenu-wrapper">
+		<ul data-submenu="!<?js= _class.longname ?>">
+			<?js _class.instanceMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
+				<li>
+					<a href="#!<?js= member.longname.replace( '#', '-' )  ?>" \
+						title="<?js= member.summary_plain ?>"
+						data-name="<?js= member.name ?>"
+						data-since="<?js= member.since ?>">
+						<?js= member.name ?>
+						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
+						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
+					</a>
+				</li>
+			<?js } }); ?>
+			<?js _class.instanceMembers['function'].forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
+				<li>
+					<a href="#!<?js= member.longname.replace( '#', '-' )  ?>"
+						title="<?js= member.summary_plain ?>"
+						data-name="<?js= member.name ?>"
+						data-since="<?js= member.since ?>">
+						<?js= member.name ?>
+						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
+						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
+						<?js if( member.variations && member.variations.length ) { ?>
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						<?js } ?>
+					</a>
+					<?js if( member.variations && member.variations.length ) { ?>
+						<div class="submenu-wrapper">
+							<ul data-submenu="!<?js= member.longname.replace( '#', '-' )  ?>">
+								<?js member.variations.forEach( function( member ) { ?>
+									<li>
+										<a href="#!<?js= member.longname.replace( '#', '-' ) ?>"
+											title="<?js= member.summary_plain ?>"
+											data-name="<?js= member.name ?>#<?js= member.variation ?>"
+											data-since="<?js= member.since ?>">
+											#<?js= member.variation ?>
+										</a>
+									</li>
+								<?js }); ?>
+							</ul>
+						</div>
+					<?js } ?>
+			<?js } }); ?>
+			<?js _class.staticMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
+				<li>
+					<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain ?>" data-name="<?js= member.name ?>" data-since="<?js= member.since ?>">
+						<?js= member.name ?>
+						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
+						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
+					</a>
+				</li>
+			<?js } }); ?>
+			<?js _class.staticMembers['function'].forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
+				<li>
+					<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain ?>" data-name="<?js= member.name ?>" data-since="<?js= member.since ?>">
+						<?js= member.name ?>
+						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
+						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
+					</a>
+				</li>
+			<?js } }); ?>
+			<?js if( _class.binders ) { ?>
+				<li>
+					<a href="#!<?js= obj.binders.longname ?>" title="<?js= obj.binders.summary_plain ?>" data-name="<?js= obj.binders.name ?>">
+						<?js= obj.binders.name ?>
+						<span class="expand"></span>
+						<span class="hidden-active-child"></span>
+					</a>
+					<div class="submenu-wrapper">
+						<ul data-submenu="!<?js= obj.binders.longname ?>">
+							<?js obj.binders.members.forEach( function( member ) { ?>
+								<li>
+									<a href="#!<?js= member.longname.replace( '#', '-' ) ?>" title="<?js= member.summary_plain ?>" data-name="binders.<?js= member.name ?>" data-since="<?js= member.since ?>">
+										<?js= member.name ?>
+									</a>
+								</li>
+							<?js }); ?>
+						</ul>
+					</div>
+				</li>
+			<?js } ?>
+		</ul>
+	</div>
+<?js } ?>
+<?js obj.globals.forEach( function( member ) {?>
+<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain?>" data-since="<?js= member.since ?>">
+	<?js= member.name ?>
+	<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
+	<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
+</a>
+<?js}, this );?>

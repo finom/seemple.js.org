@@ -1,0 +1,8 @@
+<?js if( obj.length ) { ?>
+<h4><?js= this.lang.see ?></h4>
+<ul class="see">
+	<?js obj.forEach( function( item ) {?>
+		<li><?js= item ?>
+	<?js}, this ); ?>
+</ul>
+<?js } ?>

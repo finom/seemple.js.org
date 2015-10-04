@@ -1,0 +1,23 @@
+{
+  "name": "matreshka_docs",
+  "version": "1.0.0",
+  "description": "Matreshka.js docs",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-babel": "^5.2.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-jsdoc": "^0.1.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-sftp": "^0.1.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.4.1",
+    "gulp-util": "^3.0.6",
+    "jsdoc": "^3.3.3",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
