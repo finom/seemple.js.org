@@ -1,6 +1,6 @@
 # [matreshka.io](http://matreshka.io) source code
 
-~[](http://i.imgur.com/42Lyr6F.png)
+![](http://i.imgur.com/42Lyr6F.png)
 
 This repo contains the source code for Matreshka.js website. It's moved to open-source because of 2 reasons:
 
