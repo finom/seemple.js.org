@@ -1,5 +1,7 @@
 # [matreshka.io](http://matreshka.io) source code
 
+[![Join the chat at https://gitter.im/matreshkajs/matreshka.io](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/matreshkajs/matreshka.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 <p align="center"><img src="http://i.imgur.com/42Lyr6F.png"></p>
 
 [![Dependency Status](https://david-dm.org/matreshkajs/matreshka.io.svg)](https://david-dm.org/matreshkajs/matreshka.io)[![devDependency Status](https://david-dm.org/matreshkajs/matreshka.io/dev-status.svg)](https://david-dm.org/matreshkajs/matreshka.io#info=devDependencies)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/pr)](http://issuestats.com/github/matreshkajs/matreshka.io)[![Issue Stats](http://issuestats.com/github/matreshkajs/matreshka.io/badge/issue)](http://issuestats.com/github/matreshkajs/matreshka.io)
