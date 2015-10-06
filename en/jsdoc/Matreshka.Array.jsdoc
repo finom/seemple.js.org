@@ -134,7 +134,7 @@ var MyModel = MK.Class({
 		this.on('render', function() {
 			// and bind the 'value' property
 			// to the newly created <li> HTML node
-			this.bindNode('value', ':sandbox', MK.binders.innerHTML());
+			this.bindNode('value', ':sandbox', MK.binders.html());
 		});
 	}
 });
@@ -406,7 +406,7 @@ var MyModel = Class({
 		this.on('render', function() {
 			this.bindNode('isChecked', ':sandbox .my-checkbox');
 			this.bindNode('text', ':sandbox .text',
-				MK.binders.innerHTML());
+				MK.binders.html());
 		});
 	}
 });
@@ -479,7 +479,7 @@ var MyModel = Class({
 	onRender: function(evt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
 		this.bindNode('text', ':sandbox .text',
-				MK.binders.innerHTML());
+				MK.binders.html());
 	}
 });
 
@@ -655,7 +655,7 @@ var MyModel = Class({
 	},
 	onRender: function(renderEvt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
-		this.bindNode('text', ':sandbox .text', MK.binders.innerHTML());
+		this.bindNode('text', ':sandbox .text', MK.binders.html());
 	}
 });
 
@@ -827,7 +827,7 @@ var MyModel = Class({
 		this.set(data);
 	},
 	onRender: function() {
-		this.bindNode('value', ':sandbox', MK.binders.innerHTML())
+		this.bindNode('value', ':sandbox', MK.binders.html())
 	}
 });
 

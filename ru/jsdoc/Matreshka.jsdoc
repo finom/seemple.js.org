@@ -75,7 +75,7 @@ this.$nodes.myKey; // то же самое, что и $('.my-node')
 /**
 @member {node} Matreshka#nodes
 @since 1.1
-@summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов. 
+@summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов.
 @desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством.  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
 @see {@link Matreshka#bindNode}
 @example
@@ -247,6 +247,8 @@ this.once({
 
 /**
 @method Matreshka#off
+@fires removeevent
+@fires removeevent:NAME
 @summary Удаляет обработчик события
 @desc Удаляет созданный ранее обработчик. Все три аргумента опциональны. Вы можете удалить как все события (не передавая ни одного аргумента), так и отдельные (передав только имя события, передав имя события и обработчик, передав и имя события, и обработчик, и контекст)
 @see {@link Matreshka#on}
@@ -610,7 +612,7 @@ this.bindNode('myKey', '.my-element', {
 });
 
 // можно сделать проще
-this.bindNode('myKey', '.my-element', MK.binders.innerHTML());
+this.bindNode('myKey', '.my-element', MK.binders.html());
 */
 
 
@@ -1408,7 +1410,7 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 1. HTML привязка
 ```html
 <!--
-Создаст DOM узел на месте {{user.name}} 
+Создаст DOM узел на месте {{user.name}}
 и свяжет свойство name из объекта user с этим узлом
 JS: this.user = {name: 'Joe'}
 -->
@@ -1418,7 +1420,7 @@ JS: this.user = {name: 'Joe'}
 2. Привязка элементов форм.
 ```html
 <!--
-Свяжет свойство "x" экземпляра с текстовым 
+Свяжет свойство "x" экземпляра с текстовым
 полем (двусторонняя привязка)
 JS: this.x = 'some value';
 -->
@@ -1435,7 +1437,7 @@ JS: this.x = 'some value';
 
 ```html
 <!--
-Свяжет свойство "x" экземпляра с чекбоксом 
+Свяжет свойство "x" экземпляра с чекбоксом
 (двусторонняя привязка)
 JS: this.x = true;
 -->

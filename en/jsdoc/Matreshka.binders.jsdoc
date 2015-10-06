@@ -20,12 +20,12 @@ this.bindNode('myKey', '.my-element',
 */
 
 /**
-@function Matreshka.binders.innerHTML
+@function Matreshka.binders.html
 @since 0.1
 @summary Returns data binder which changes ``innerHTML`` of bound DOM node depending on instance property value.
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-element', MK.binders.innerHTML());
+this.bindNode('myKey', '.my-element', MK.binders.html());
 */
 
 /**
@@ -51,39 +51,39 @@ this.bindNode('myKey', '.my-element', MK.binders.className('foo'));
 
 this.myKey = true; // adds the 'foo' class
 
-this.myKey = false; // removes the 'foo' class 
+this.myKey = false; // removes the 'foo' class
 @example <caption>The use of the bang character in front of a class name</caption>
 this.bindNode('myKey', '.my-element', MK.binders.className('!foo'));
 
-this.myKey = false; // adds the 'foo' class 
+this.myKey = false; // adds the 'foo' class
 
-this.myKey = true; // removes the 'foo' class 
+this.myKey = true; // removes the 'foo' class
 */
 
 /**
-@function Matreshka.binders.property
+@function Matreshka.binders.prop
 @since 0.3
 @summary Returns data binder which changes given property of DOM node depending on instance property value.
 @param {string} property
 @returns {binder}
 @example
-this.bindNode('disabled', '.my-button', MK.binders.property('disabled'));
+this.bindNode('disabled', '.my-button', MK.binders.prop('disabled'));
 
 // sets disabled = true property for the node
 this.disabled = true;
 
 // sets disabled = false property for the node
-this.disabled = false; 
+this.disabled = false;
 */
 
 /**
-@function Matreshka.binders.attribute
+@function Matreshka.binders.attr
 @since 0.3
 @summary Returns data binder which changes an attribute of DOM node depending on instance property value
 @param {string} attribute
 @returns {binder}
 @example
-this.bindNode('image', 'img.my-image', MK.binders.attribute('src'));
+this.bindNode('image', 'img.my-image', MK.binders.attr('src'));
 
 this.image = 'http://example.com/cats.jpg';
 */
@@ -129,12 +129,12 @@ this.bindNode('myKey', '.my-progres', MK.binders.progress());
 
 
 /**
-@function Matreshka.binders.innerText
+@function Matreshka.binders.text
 @since 1.1
-@summary Returns data binder which changes ``innerText`` of bound DOM node depending on instance property value.
+@summary Returns data binder which changes ``textContent`` of bound DOM node depending on instance property value.
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-progres', MK.binders.innerText());
+this.bindNode('myKey', '.my-progres', MK.binders.text());
 */
 
 
@@ -182,7 +182,7 @@ this.bindNode('myKey', '.my-file', MK.binders.file('dataURL'));
 // choosing my-image.png from file system ...
 this.on('change:myKey', function() {
 	console.log(this.myKey);
-	// --> 
+	// -->
 	// File
 	//	lastModified: 1383404384000
 	//	lastModifiedDate: ...

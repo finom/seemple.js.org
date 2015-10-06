@@ -1639,7 +1639,7 @@ this.bindNode('x', $el); // Ошибка, так как $el пуст</code></pre
 });
 
 // можно сделать проще
-this.bindNode('myKey', '.my-element', MK.binders.innerHTML());</code></pre>
+this.bindNode('myKey', '.my-element', MK.binders.html());</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
 	<a class="comments" data-id="Matreshka-bindNode" data-title="Метод Matreshka-bindNode">Задать вопрос<i></i></a>
@@ -4406,14 +4406,14 @@ this.x = 1;</code></pre>
 <h4>Поддерживаемый синтаксис.</h4><ol>
 <li><p>HTML привязка</p>
 <pre class="prettyprint source lang-html"><code>&lt;!--
-Создаст DOM узел на месте {{user.name}} 
+Создаст DOM узел на месте {{user.name}}
 и свяжет свойство name из объекта user с этим узлом
 JS: this.user = {name: 'Joe'}
 -->
 &lt;span>Hello, &#123;{user.name}}&lt;/span></code></pre></li>
 <li><p>Привязка элементов форм.</p>
 <pre class="prettyprint source lang-html"><code>&lt;!--
-Свяжет свойство &quot;x&quot; экземпляра с текстовым 
+Свяжет свойство &quot;x&quot; экземпляра с текстовым
 полем (двусторонняя привязка)
 JS: this.x = 'some value';
 -->
@@ -4424,7 +4424,7 @@ JS: this.x = 'some value';
 -->
 &lt;textarea value=&quot;&#123;{x}}&quot;>&lt;/textarea>
 &lt;select value=&quot;&#123;{x}}&quot;>...&lt;/select></code></pre><pre class="prettyprint source lang-html"><code>&lt;!--
-Свяжет свойство &quot;x&quot; экземпляра с чекбоксом 
+Свяжет свойство &quot;x&quot; экземпляра с чекбоксом
 (двусторонняя привязка)
 JS: this.x = true;
 -->
@@ -6769,10 +6769,10 @@ this.bindNode('myKey', '.my-element',
   data-upload="false"></div>
 </article>
 
-<article class="item method" id="!Matreshka.binders.innerHTML" data-since="0.1">
+<article class="item method" id="!Matreshka.binders.html" data-since="0.1">
 	<h2>
-		<a href="#!Matreshka.binders.innerHTML">
-			<span class="memberof">Matreshka.binders.</span>innerHTML()
+		<a href="#!Matreshka.binders.html">
+			<span class="memberof">Matreshka.binders.</span>html()
 		</a> <span class="returns">→ 
 	<span data-type="binder">binder</span>
 </span>
@@ -6800,14 +6800,14 @@ this.bindNode('myKey', '.my-element',
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element', MK.binders.innerHTML());</code></pre>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element', MK.binders.html());</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<a class="comments" data-id="Matreshka.binders.innerHTML" data-title="Метод Matreshka.binders.innerHTML">Задать вопрос<i></i></a>
+	<a class="comments" data-id="Matreshka.binders.html" data-title="Метод Matreshka.binders.html">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.innerHTML"
-  title="Метод Matreshka.binders.innerHTML"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.html"
+  title="Метод Matreshka.binders.html"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -6949,14 +6949,14 @@ this.bindNode('myKey', '.my-element',
 <h5></h5>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element', MK.binders.className('blah'));
 
-this.myKey = true; // добавляет класс 'blah' 
+this.myKey = true; // добавляет класс 'blah'
 
-this.myKey = false; // убирает класс 'blah' </code></pre><h5><p>Использование восклицательного знака перед именем класса</p></h5>
+this.myKey = false; // убирает класс 'blah'</code></pre><h5><p>Использование восклицательного знака перед именем класса</p></h5>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element', MK.binders.className('!blah'));
 
-this.myKey = false; // добавляет класс 'blah' 
+this.myKey = false; // добавляет класс 'blah'
 
-this.myKey = true; // убирает класс 'blah' </code></pre>
+this.myKey = true; // убирает класс 'blah'</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
 	<a class="comments" data-id="Matreshka.binders.className" data-title="Метод Matreshka.binders.className">Задать вопрос<i></i></a>
@@ -6969,10 +6969,10 @@ this.myKey = true; // убирает класс 'blah' </code></pre>
   data-upload="false"></div>
 </article>
 
-<article class="item method" id="!Matreshka.binders.property" data-since="0.3">
+<article class="item method" id="!Matreshka.binders.prop" data-since="0.3">
 	<h2>
-		<a href="#!Matreshka.binders.property">
-			<span class="memberof">Matreshka.binders.</span>property<wbr>(<span class="args">property</span>)
+		<a href="#!Matreshka.binders.prop">
+			<span class="memberof">Matreshka.binders.</span>prop<wbr>(<span class="args">property</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="binder">binder</span>
@@ -7028,29 +7028,29 @@ this.myKey = true; // убирает класс 'blah' </code></pre>
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('disabled', '.my-button', MK.binders.property('disabled'));
+<pre class="prettyprint source lang-js"><code>this.bindNode('disabled', '.my-button', MK.binders.prop('disabled'));
 
 // устанавливает свойство disabled = true для элемента
 this.disabled = true;
 
 // устанавливает свойство disabled = false для элемента
-this.disabled = false; </code></pre>
+this.disabled = false;</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<a class="comments" data-id="Matreshka.binders.property" data-title="Метод Matreshka.binders.property">Задать вопрос<i></i></a>
+	<a class="comments" data-id="Matreshka.binders.prop" data-title="Метод Matreshka.binders.prop">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.property"
-  title="Метод Matreshka.binders.property"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.prop"
+  title="Метод Matreshka.binders.prop"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
 </article>
 
-<article class="item method" id="!Matreshka.binders.attribute" data-since="0.3">
+<article class="item method" id="!Matreshka.binders.attr" data-since="0.3">
 	<h2>
-		<a href="#!Matreshka.binders.attribute">
-			<span class="memberof">Matreshka.binders.</span>attribute<wbr>(<span class="args">attribute</span>)
+		<a href="#!Matreshka.binders.attr">
+			<span class="memberof">Matreshka.binders.</span>attr<wbr>(<span class="args">attribute</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="binder">binder</span>
@@ -7106,16 +7106,16 @@ this.disabled = false; </code></pre>
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('image', 'img.my-image', MK.binders.attribute('src'));
+<pre class="prettyprint source lang-js"><code>this.bindNode('image', 'img.my-image', MK.binders.attr('src'));
 
 this.image = 'http://example.com/cats.jpg';</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<a class="comments" data-id="Matreshka.binders.attribute" data-title="Метод Matreshka.binders.attribute">Задать вопрос<i></i></a>
+	<a class="comments" data-id="Matreshka.binders.attr" data-title="Метод Matreshka.binders.attr">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.attribute"
-  title="Метод Matreshka.binders.attribute"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.attr"
+  title="Метод Matreshka.binders.attr"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -7357,10 +7357,10 @@ this.image = 'http://example.com/cats.jpg';</code></pre>
   data-upload="false"></div>
 </article>
 
-<article class="item method" id="!Matreshka.binders.innerText" data-since="1.1">
+<article class="item method" id="!Matreshka.binders.text" data-since="1.1">
 	<h2>
-		<a href="#!Matreshka.binders.innerText">
-			<span class="memberof">Matreshka.binders.</span>innerText()
+		<a href="#!Matreshka.binders.text">
+			<span class="memberof">Matreshka.binders.</span>text()
 		</a> <span class="returns">→ 
 	<span data-type="binder">binder</span>
 </span>
@@ -7368,8 +7368,8 @@ this.image = 'http://example.com/cats.jpg';</code></pre>
 		
 		<span class="new-badge"></span>
 	</h2>
-	<div class="summary"><p>Возвращает привязчик, меняющий <code>innerText</code> (текстовое содержимое) DOM элемента в зависимости от значения свойства экземпляра класса.</p></div>
-	<div class="description"><p><a href="#!Matreshka.binders.innerText">Matreshka.binders.innerText</a> позволяет вывести содержимое свойства как есть и немного улучшает производительность из-за отсутствия необходимости браузеру парсить HTML.</p></div>
+	<div class="summary"><p>Возвращает привязчик, меняющий <code>textContent</code> (текстовое содержимое) DOM элемента в зависимости от значения свойства экземпляра класса.</p></div>
+	<div class="description"><p><a href="#!Matreshka.binders.text">Matreshka.binders.text</a> позволяет вывести содержимое свойства как есть и немного улучшает производительность из-за отсутствия необходимости браузеру парсить HTML.</p></div>
 	
 	<p>
 		<b>Возвращает</b> 
@@ -7388,14 +7388,14 @@ this.image = 'http://example.com/cats.jpg';</code></pre>
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node', MK.binders.innerText());</code></pre>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node', MK.binders.text());</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<a class="comments" data-id="Matreshka.binders.innerText" data-title="Метод Matreshka.binders.innerText">Задать вопрос<i></i></a>
+	<a class="comments" data-id="Matreshka.binders.text" data-title="Метод Matreshka.binders.text">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.innerText"
-  title="Метод Matreshka.binders.innerText"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.text"
+  title="Метод Matreshka.binders.text"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -7622,7 +7622,7 @@ this.myKey = 'cool value';</code></pre>
 // выбирая my-image.png из файловой системы ...
 this.on('change:myKey', function() {
 	console.log(this.myKey);
-	// --> 
+	// -->
 	// File
 	//	lastModified: 1383404384000
 	//	lastModifiedDate: ...
@@ -8834,7 +8834,7 @@ myArray.toJSON();</code></pre><h4>Автоматический рендерин�
         this.on('render', function() {
             // и привязываем свойство 'value'
             // к новосозданному HTML элементу &lt;li>
-            this.bindNode('value', ':sandbox', MK.binders.innerHTML());
+            this.bindNode('value', ':sandbox', MK.binders.html());
         });
     }
 });
@@ -9163,7 +9163,7 @@ var MyArray = Class({
         this.on('render', function() {
             this.bindNode('isChecked', ':sandbox .my-checkbox');
             this.bindNode('text', ':sandbox .text',
-                MK.binders.innerHTML());
+                MK.binders.html());
         });
     }
 });
@@ -9217,7 +9217,7 @@ var app = new MyArray();</code></pre><p>Код выше создаст тако�
     onRender: function(evt) {
         this.bindNode('isChecked', ':sandbox .my-checkbox');
         this.bindNode('text', ':sandbox .text',
-                MK.binders.innerHTML());
+                MK.binders.html());
     }
 });
 
@@ -9505,7 +9505,7 @@ arr.recreate([
 	},
 	onRender: function(renderEvt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
-		this.bindNode('text', ':sandbox .text', MK.binders.innerHTML());
+		this.bindNode('text', ':sandbox .text', MK.binders.html());
 	}
 });
 
@@ -9856,7 +9856,7 @@ this.recreate();</code></pre>
         this.set(data);
     },
     onRender: function() {
-        this.bindNode('value', ':sandbox', MK.binders.innerHTML())
+        this.bindNode('value', ':sandbox', MK.binders.html())
     }
 });
 

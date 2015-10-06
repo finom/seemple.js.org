@@ -118,4 +118,21 @@ gulp.task('deploy:website', () => {
         }));
 });
 
+gulp.task('copypackage', () => {
+	gulp.src('../matreshka_develope/**/*')
+
+		.pipe(gulp.dest('dist/matreshka'));
+});
+
+gulp.task('copymatreshka', () => {
+	// this is undocumented task that copies matreshka files to /dist folder
+	let rename = require('gulp-rename');
+	gulp.src('../matreshka_develop/package.json')
+		.pipe(rename('package.yaml'))
+		.pipe(gulp.dest('src/_data/'));
+
+	return gulp.src('../matreshka_develop/**/*')
+		.pipe(gulp.dest('dist/matreshka/')).on('error', e => console.error(e));
+});
+
 gulp.task('default', ['scripts','jsdoc', 'jekyll', 'styles']);

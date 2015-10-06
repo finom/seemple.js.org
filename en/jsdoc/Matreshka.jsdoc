@@ -245,6 +245,8 @@ this.once({
 
 /**
 @method Matreshka#off
+@fires removeevent
+@fires removeevent:NAME
 @summary Deletes an event handler
 @desc It deletes a handler which has been created before. All the three arguments are optional. You can delete both all the events (without passing any argument) and separate ones (having passed only the event name, the event name and the handler, the event name and the handler and the context)
 @see {@link Matreshka#on}
@@ -314,7 +316,7 @@ For example, you want to bind a property of an object to a ``input[type="checkbo
 ```js
 this.bindNode('myKey', '.my-checkbox', {
 	// when is element state changed?
-	// - after 'click' event 
+	// - after 'click' event
 	on: 'click',
 	// how to extract element state?
 	// - return 'checked' value
@@ -322,7 +324,7 @@ this.bindNode('myKey', '.my-checkbox', {
 		return this.checked;
 	},
 	// how to set element state?
-	// - set 'checked' value 
+	// - set 'checked' value
 	setValue: function(v) {
 		this.checked = !!v;
 	}
@@ -350,7 +352,7 @@ More complicated example: binding object property to jQuery UI widget
 ```js
 this.bindNode('myKey', '.my-slider', {
 	// when is element state changed?
-	// - after 'slide' event 
+	// - after 'slide' event
 	on: 'slide',
 	// how to extract element state?
 	// - return 'value' of the widget
@@ -612,7 +614,7 @@ this.bindNode('myKey', '.my-element', {
 });
 
 // it can be done easier
-this.bindNode('myKey', '.my-element', MK.binders.innerHTML());
+this.bindNode('myKey', '.my-element', MK.binders.html());
 */
 
 
@@ -1276,7 +1278,7 @@ anotherInstance1.a = 5; // "this.sum equals 8"
 
 /**
 @method Matreshka#get
-@summary Returns a value of property 
+@summary Returns a value of property
 @param {string} key
 @example
 // the same as this['myKey'] or this.myKey
@@ -1443,7 +1445,7 @@ JS: this.x = true;
 3. Attributes binding.
 ```html
 <!--
-href attribute value will depend on "category" 
+href attribute value will depend on "category"
 and "someObject.page" value (one-way data binding)
 JS:
  this.category = 'matreshka';
