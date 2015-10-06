@@ -139,6 +139,19 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.3.0](https://github.com/finom/matreshka/releases/tag/v1.3.0)
+* Новый метод  {@link Matreshka.Array#restore}
+* Некоторые байндеры из {@link Matreshka.binders} переименованы (старые названия будут по-прежнему работать)
+	* ``innerHTML`` -> {@link Matreshka.binders.html html}
+	* ``innerText`` -> {@link Matreshka.binders.text text}
+	* ``property`` -> {@link Matreshka.binders.prop prop}
+	* ``attribute`` -> {@link Matreshka.binders.attr attr}
+* Байндеры ``html`` и ``text`` поддерживают двустороннее связывание при использовании атрибута ``"contenteditable"``.
+* Новые события ``"removeevent"`` и ``"removeevent:NAME"``, вызывающиеся при удалении события.
+* {@link Matreshka.Array#itemRenderer} не обязательно должен быть валидным HTML элементом. Теперь, если HTML строка содержит несколько узлов (HTML или текстовых), она оборачивается в ``span``.
+* Балалайка поддерживает любые объекты, а не только DOM узлы.
+* Изменения в способе подключения исходника Матрешки при помощи AMD.
+
 ### [Матрешка 1.2.0](https://github.com/finom/matreshka/releases/tag/v1.2.0)
 * Добавлено виртуальное свойство {@link Matreshka.Array#trackBy}
 * Исправлена ошибка в {@link Matreshka.to}
