@@ -1,6 +1,6 @@
 {
   "name": "matreshka",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Event-driven JavaScript framework",
   "bugs": {
     "url": "https://github.com/finom/matreshka/issues"
@@ -9,6 +9,7 @@
     "name": "Andrey Gubanov",
     "email": "a@odessite.com.ua"
   },
+  "main": "matreshka.js",
   "license": "MIT",
   "homepage": "http://matreshka.io",
   "devDependencies": {

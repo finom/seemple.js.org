@@ -118,20 +118,18 @@ gulp.task('deploy:website', () => {
         }));
 });
 
-gulp.task('copypackage', () => {
-	gulp.src('../matreshka_develope/**/*')
 
-		.pipe(gulp.dest('dist/matreshka'));
+gulp.task('copypackage', () => {
+	// this is undocumented task that copies package.json to /src/_data/ folder
+	let rename = require('gulp-rename');
+	return gulp.src('../matreshka_develop/package.json')
+		.pipe(rename('package.yaml'))
+		.pipe(gulp.dest('src/_data/'));
 });
 
 gulp.task('copymatreshka', () => {
 	// this is undocumented task that copies matreshka files to /dist folder
-	let rename = require('gulp-rename');
-	gulp.src('../matreshka_develop/package.json')
-		.pipe(rename('package.yaml'))
-		.pipe(gulp.dest('src/_data/'));
-
-	return gulp.src('../matreshka_develop/**/*')
+	return gulp.src(['../matreshka_develop/**/*', '!../matreshka_develop/node_modules/**/*'])
 		.pipe(gulp.dest('dist/matreshka/')).on('error', e => console.error(e));
 });
 

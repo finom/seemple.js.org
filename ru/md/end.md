@@ -139,6 +139,12 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.3.2](https://github.com/finom/matreshka/releases/tag/v1.3.2)
+* Устранена проблема "Cannot find module 'matreshka'" при использовании Browserify.
+
+### [Матрешка 1.3.1](https://github.com/finom/matreshka/releases/tag/v1.3.1)
+* Исправлена проблема импорта AMD модуля при использовании SystemJS Builder.
+
 ### [Матрешка 1.3.0](https://github.com/finom/matreshka/releases/tag/v1.3.0)
 * Новый метод  {@link Matreshka.Array#restore}
 * Некоторые байндеры из {@link Matreshka.binders} переименованы (старые названия будут по-прежнему работать)
