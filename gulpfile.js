@@ -11,6 +11,7 @@ gulp.task('jekyll', cbc => {
 	jekyll.on('exit', code => cbc(code === 0 ? null : 'ERROR: Jekyll process exited with code: ' + code));
 });
 
+
 gulp.task('jsdoc', cbc => {
     let jsdoc = require("gulp-jsdoc"),
 		cli = './node_modules/jsdoc/jsdoc.js',
@@ -42,6 +43,11 @@ gulp.task('jsdoc', cbc => {
 });
 
 gulp.task('scripts', () => {
+	function handleError(err) {
+	  	console.error(err);
+	  	this.emit('end');
+	}
+
 	let source = require('vinyl-source-stream'),
     	browserify = require("browserify"),
     	babelify = require("babelify"),
@@ -57,7 +63,7 @@ gulp.task('scripts', () => {
 			stage: 0
 		}))
 		.bundle()
-		.on('error', gutil.log)
+		.on('error', handleError)
 		.pipe(source('app.js'))
 		.pipe(gulp.dest('dist/js/'))
 		.pipe(rename('app.min.js'))
@@ -91,8 +97,9 @@ gulp.task('styles', () => {
 // Rerun the task when a file changes
 gulp.task('watch', () => {
 	gulp.start('default');
-  gulp.watch('src/js/**/*.js', ['scripts']);
-  gulp.watch('src/sass/**/*.scss', ['styles']);
+	gulp.watch('src/js/**/*.js', ['scripts']);
+	gulp.watch('src/sass/**/*.scss', ['styles']);
+	gulp.watch(['src/_*/**', 'src/img/**', 'src/*.html', 'src/matreshka.appcache'], ['jekyll']);
 });
 
 gulp.task('deploy', ['deploy:server', 'deploy:website']);
@@ -133,4 +140,4 @@ gulp.task('copymatreshka', () => {
 		.pipe(gulp.dest('dist/matreshka/')).on('error', e => console.error(e));
 });
 
-gulp.task('default', ['scripts','jsdoc', 'jekyll', 'styles']);
+gulp.task('default', ['jsdoc', 'jekyll', 'styles', 'scripts']);

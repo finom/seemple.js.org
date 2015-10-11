@@ -39,6 +39,16 @@ export default class Article extends MK.Object {
 						commentsContainer.classList.add('muut');
 						g.app.muut();
 					}
+				},
+				'click::(.share-facebook)': evt => {
+					let url = `http://www.facebook.com/dialog/feed?app_id=901572946532005&link=${encodeURIComponent(location.href)}&name=${this.name}&caption=${this.summary}&description=Matreshka.js&redirect_uri=${encodeURIComponent('http://matreshka.io/popupclose.html')}&display=popup&picture=${encodeURIComponent(location.origin + '/img/mk5-logo_full-horiz.svg')}`;
+
+					window.open(url, 'Facebook', 'height=400,width=600');
+				}, //
+				'click::(.share-twitter)': evt => {
+					console.log(this.summary.substr(10))
+					let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent('#matreshkajs ' + this.name +': ' + this.summary.substr(0, 60) + '...')}&url=${location.href}`;
+					window.open(url, 'Twitter', 'height=400,width=600');
 				}
 			})
 			.on('render change:expanded', function() {
@@ -134,7 +144,8 @@ export default class Article extends MK.Object {
 					getValue: function() {
 						return this.innerHTML.replace(/<wbr>/g, '');
 					}
-				}]
+				}],
+				summary: [':sandbox .summary p', MK.binders.innerText()]
 			})
 			.bindNode('pagination', [
 				this.sandbox.insertBefore($(paginationHTML)[0], this.sandbox.firstChild),

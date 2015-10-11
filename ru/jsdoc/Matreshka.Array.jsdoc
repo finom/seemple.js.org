@@ -830,7 +830,7 @@ this.recreate();
 var MyModel = Class({
 	'extends': MK.Object,
 	constructor: function() {
-		this.addDataLeys('value');
+		this.addDataKeys('value');
 		this.set(data);
 	},
 	onRender: function() {

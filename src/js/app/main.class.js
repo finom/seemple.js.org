@@ -6,6 +6,7 @@ import Typo from './typo.class';
 import Notifier from './notifier.class';
 import Search from './search.class';
 import Performance from './performance.class';
+import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import prettify from '../lib/prettify';
 import embed from '../lib/embed-jsbin';
@@ -14,6 +15,7 @@ import _dp from '../lib/details-polyfill';
 export default class Main extends MK.Object {
 	constructor() {
 		g.app = super();
+
 		this
 			.bindings()
 			.events()
@@ -33,7 +35,8 @@ export default class Main extends MK.Object {
 				search: Search,
 				performance: Performance,
 				articles: Articles,
-				typedefs: Typedefs
+				typedefs: Typedefs,
+				examples: Examples
 			});
 
 		if (location.hash) {
@@ -48,8 +51,10 @@ export default class Main extends MK.Object {
 
 		location.hash = location.hash || '!home';
 
-		if (~location.hash.indexOf('comments')) { //  #!/matreshka/comments/matreshka-ru%23matreshka::unread
-			var threadID = location.hash.replace(/#!\/matreshka\/comments\/matreshka-\S{2}%23(.*)::unread/, '$1').toLowerCase(),
+		if (~location.hash.indexOf('comments')) {
+			 // #!/matreshka/comments/matreshka-ru%23matreshka::unread
+			 // #!/matreshka/comments/matreshka-ru:matreshka-bindnode::unread
+			var threadID = location.hash.replace(/#!\/matreshka\/comments\/matreshka-\S{2}(?:%23|:)(.*)::unread/, '$1').toLowerCase(),
 				commentArticle,
 				commentsContainer;
 
@@ -68,6 +73,23 @@ export default class Main extends MK.Object {
 				this.muut();
 			}
 		}
+
+		/*if (~location.hash.indexOf('&')) {
+			 //#!Matreshka-nodes&st_refDomain=www.facebook.com&st_refQuery=/
+			let threadID = location.hash.replace(/#([^&]+)&.* /, '$1').toLowerCase(),
+				article;
+
+			for (let i = 0; i < this.articles.length; i++) {
+				if (~this.articles[i].id.toLowerCase().indexOf(threadID)) {
+					commentArticle = this.articles[i];
+					break;
+				}
+			}
+
+			if (commentArticle) {
+				location.hash = commentArticle.id;
+			}
+		}*/
 
 		// have no time to make it work in tamplete, so let's shitcode!
 		for(let a of $('a')) {

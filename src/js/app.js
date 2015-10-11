@@ -1,2 +1,2 @@
 var Main = require('./app/main.class');
-module.exports = new Main();
+module.exports = window.app = new Main();

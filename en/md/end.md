@@ -77,6 +77,18 @@ Pay attention. Matreshka framework works in the Internet Explorer 8 thanks to th
 
 
 =======(((
+	"id": "!examples"
+)))
+
+## [Examples](#!examples)
+[TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
+
+[Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
+
+[Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
+
+
+=======(((
 	"id": "!faq"
 )))
 

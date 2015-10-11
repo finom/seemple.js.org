@@ -1,1 +1,2 @@
 exclude: ["sass", "config", "_assets", "js"]
+keep_files: ["css", "js"]

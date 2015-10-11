@@ -7,7 +7,7 @@
 	text-align: center;
 	font-weight: 300;
 
-	a:before { content: ''; }
+	a::before { content: none; }
 
 	article {
 		padding-top: 100px;
@@ -104,11 +104,16 @@
 		font-size: 1.5rem;
 	}
 
-	.main-sponsor {
+	.sponsors {
 		margin-top: 4rem;
 		img {
-			margin-top: 1rem;
+			margin: 1rem 1rem;
 		}
+	}
+
+	.main-sponsor {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
 	}
 
 	.thanks {

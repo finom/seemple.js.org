@@ -76,6 +76,17 @@ var magic = require('magic/matreshka-magic.min');
 
 
 =======(((
+	"id": "!examples"
+)))
+
+## [Примеры](#!examples)
+[TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
+
+[Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
+
+[Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
+
+=======(((
 	"id": "!10-reasons"
 )))
 
