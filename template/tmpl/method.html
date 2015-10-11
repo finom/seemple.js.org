@@ -15,6 +15,9 @@
 		<?js= obj.cool ? '<i class="cool" title="'+this.lang.cool+'"></i>' : '' ?>
 		<span class="new-badge"></span>
 	</h2>
+	<?js if(obj.since) {?>
+		<div class="since"><p><?js= this.lang.since ?> <?js= obj.since ?>.</p></div>
+	<?js }?>
 	<div class="summary"><?js= obj.summary ?></div>
 	<div class="description"><?js= obj.description ?></div>
 	<?js if( obj.returns ) { ?>

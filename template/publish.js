@@ -134,7 +134,8 @@ exports.publish = function(data, opts) {
 			comments: 'ASK A QUESTION',
 			important: 'Important',
 			see: 'Links',
-			cool: 'Cool method or property'
+			cool: 'Cool method or property',
+			since: 'Available since'
 		},
 		ru: {
 			'class': 'Класс',
@@ -153,7 +154,8 @@ exports.publish = function(data, opts) {
 			comments: 'Задать вопрос',
 			important: 'Важно',
 			see: 'Ссылки',
-			cool: 'Крутой метод или свойство'
+			cool: 'Крутой метод или свойство',
+			since: 'Добавлено в версии'
 		}
 	}[view.langName];
 
