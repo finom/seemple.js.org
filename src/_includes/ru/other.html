@@ -1,0 +1,23 @@
+<section class="other">
+    <article id="!caniuse">
+        <h2><a href="#!caniuse">Поддержка браузерами</a></h2>
+        {% include caniuse.html %}
+        <ul class="legend">
+            <li><span class="yep"></span> Тесты прошли успешно.
+            <li><span class="na"></span> Нет данных. Матрешка в этих браузерах не проверялась.
+            <li><span class="nope"></span> Некоторые тесты не пройдены.
+        </ul>
+        <p>
+            * Базовая поддержка осталась для совместимости со старыми приложениями. Статичные методы, которые модифицируют акцессор объекта (добавлены в версии 1.1) не работают с нативными объектами в Internet Explorer 8. Список таких методов: <a href="#!Matreshka.define">Matreshka.define</a>, <a href="#!Matreshka.defineGetter">Matreshka.defineGetter</a>, <a href="#!Matreshka.defineSetterm">Matreshka.defineSetterm</a>, <a href="#!Matreshka.linkProps">Matreshka.linkProps</a>, <a href="#!Matreshka.mediate">Matreshka.mediate</a>, <a href="#!Matreshka.setClassFor">Matreshka.setClassFor</a>, <a href="#!Matreshka.bindNode">Matreshka.bindNode</a>, <a href="#!Matreshka.bindOptionalNode">Matreshka.bindOptionalNode</a>, <a href="#!Matreshka.unbindNode">Matreshka.unbindNode</a>, <a href="#!Matreshka.parseBindings">Matreshka.parseBindings</a>, <a href="#!Matreshka.on">Matreshka.on</a>, <a href="#!Matreshka.off">Matreshka.off</a>, <a href="#!Matreshka.trigger">Matreshka.trigger</a>. Для того, чтоб воспользоваться этими методами, нужно сконвертировать передаваемый в качестве первого аргумента объект в экземпляр Матрешки. 
+            <pre class="prettyprint source lang-js"><code>var object = {},
+    mk = MK.to(object);
+MK.linkProps(mk, ...);</code></pre>
+        </p>
+        <p>
+            Обратите так же внимание, поддержка чтения файлов <a href="#!Matreshka.binders.file">Matreshka.binders.file</a> не включена в тест. Она зависит от налиия в браузере <a href="https://developer.mozilla.org/ru/docs/Web/API/FileReader">FileReader API</a>. Узнать, поддерживает ли тот или иной браузер FileReader можно на <a href="http://caniuse.com/#feat=filereader">Caniuse</a>.
+        </p>
+        <p>
+            Не нашли свой браузер? Откройте в нем <a href="http://matreshka.io/matreshka/test/SpecRunner.html">страницу с тестами</a>.
+        </p>
+    </article>
+</section>

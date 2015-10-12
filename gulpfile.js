@@ -102,7 +102,7 @@ gulp.task('watch', () => {
 	gulp.watch(['src/_*/**', 'src/img/**', 'src/*.html', 'src/matreshka.appcache'], ['jekyll']);
 });
 
-gulp.task('deploy', ['deploy:server', 'deploy:website']);
+gulp.task('deploy', ['deploy:server', 'deploy:website', 'deploy:matreshka']);
 
 
 gulp.task('deploy:server', () => {
@@ -126,6 +126,17 @@ gulp.task('deploy:website', () => {
 });
 
 
+gulp.task('deploy:matreshka', () => {
+	let sftp = require("gulp-sftp");
+	gulp.src(['../matreshka_develop/**/*', '!../matreshka_develop/node_modules/**/*'])
+        .pipe(sftp({
+            host: 'matreshka.io',
+            auth: 'keyMain',
+			remotePath: '/home/finom/web/matreshka/dist/matreshka/'
+        }));
+});
+
+
 gulp.task('copypackage', () => {
 	// this is undocumented task that copies package.json to /src/_data/ folder
 	let rename = require('gulp-rename');
@@ -133,11 +144,12 @@ gulp.task('copypackage', () => {
 		.pipe(rename('package.yaml'))
 		.pipe(gulp.dest('src/_data/'));
 });
-
+/*
 gulp.task('copymatreshka', () => {
 	// this is undocumented task that copies matreshka files to /dist folder
-	return gulp.src(['../matreshka_develop/**/*', '!../matreshka_develop/node_modules/**/*'])
+	return gulp.src(['../matreshka_develop/** /*', '!../matreshka_develop/node_modules/** /*'])
 		.pipe(gulp.dest('dist/matreshka/')).on('error', e => console.error(e));
 });
+*/
 
 gulp.task('default', ['jsdoc', 'jekyll', 'styles', 'scripts']);
