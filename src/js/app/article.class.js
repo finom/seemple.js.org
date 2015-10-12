@@ -41,12 +41,11 @@ export default class Article extends MK.Object {
 					}
 				},
 				'click::(.share-facebook)': evt => {
-					let url = `http://www.facebook.com/dialog/feed?app_id=901572946532005&link=${encodeURIComponent(location.href)}&name=${this.name}&caption=${this.summary}&description=Matreshka.js&redirect_uri=${encodeURIComponent('http://matreshka.io/popupclose.html')}&display=popup&picture=${encodeURIComponent('http://matreshka.io/img/mk_logo.png')}`;
+					let url = `http://www.facebook.com/dialog/feed?app_id=901572946532005&link=${encodeURIComponent(location.href)}&name=${this.name}&description=${this.summary}&redirect_uri=${encodeURIComponent('http://matreshka.io/popupclose.html')}&display=popup&picture=${encodeURIComponent('http://matreshka.io/img/mk_logo.png')}`;
 
 					window.open(url, 'Facebook', 'height=600,width=700');
 				}, //
 				'click::(.share-twitter)': evt => {
-					console.log(this.summary.substr(10))
 					let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent('#matreshkajs ' + this.name +': ' + this.summary.substr(0, 60) + '...')}&url=${location.href}`;
 					window.open(url, 'Twitter', 'height=600,width=700');
 				}
