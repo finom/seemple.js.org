@@ -129,7 +129,7 @@ export default class Article extends MK.Object {
 				expanded: [':bound(menuItem)', MK.binders.className('expanded')],
 				newVersions: [':sandbox', {
 					setValue(v) {
-						this.classList.toggle('new', ~v.indexOf(this.dataset.since));
+						this.classList.toggle('new', ~v.indexOf(this.getAttribute('data-since')));
 					}
 				}]
 			})

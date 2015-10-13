@@ -101,6 +101,13 @@ export default class Main extends MK.Object {
 
 		this.initDynamicStyles();
 
+		// in ie10 code snippets are inlined
+		if(document.documentMode <= 10) {
+			for(let snippet of $('pre code')) {
+				snippet.innerHTML = snippet.innerHTML.replace(/\n/g, '<br>');
+			}
+		}
+
 		prettyPrint();
 
 		this.loading = false;
@@ -149,7 +156,7 @@ export default class Main extends MK.Object {
 				}],
 				version: [':sandbox', {
 					setValue(v) {
-						this.dataset.version = v;
+						this.setAttribute('data-version', v);
 					}
 				}],
 				mainTitle: ['title', {
@@ -157,13 +164,15 @@ export default class Main extends MK.Object {
 						return this.innerHTML;
 					}
 				}],
+				view: ['body', MK.binders.dataset('view')]
+			})
+			.bindNode({
 				hashValue: [window, {
 					on: 'hashchange',
 					getValue: function() {
 						return location.hash.replace('#', '');
 					}
-				}],
-				view: ['body', MK.binders.dataset('view')]
+				}]
 			})
 			.bindNode({
 				view: ':bound(viewSwitcher)',
@@ -171,7 +180,7 @@ export default class Main extends MK.Object {
 			}, {
 				on: 'click',
 				getValue: function() {
-					return this.querySelector('.checked').dataset.value;
+					return this.querySelector('.checked').getAttribute('data-value');
 				},
 				setValue: function(v) {
 					MK.$b(this.children).forEach(function(item) {
@@ -216,6 +225,7 @@ export default class Main extends MK.Object {
 			}, 200)
 			.on({
 				'change:view': evt => {
+					if(!this.articles) return;
 					var fromLeft = window.pageXOffset,
 						fromTop;
 

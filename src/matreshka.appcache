@@ -5,6 +5,7 @@ css/screen.css
 js/app.min.js
 js/app.js
 js/app.min.js.map
+js/browser-polyfill.js
 fonts/Roboto-Light.ttf
 fonts/Roboto-Regular.ttf
 fonts/Roboto-Bold.ttf

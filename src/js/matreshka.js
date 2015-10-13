@@ -1,11 +1,11 @@
 ;(function(__root) {
 /*
-	Matreshka v1.2.0 (2015-10-04)
+	Matreshka v1.3.2 (2015-10-13)
 	JavaScript Framework by Andrey Gubanov
 	Released under the MIT license
 	More info: http://matreshka.io
 */
-var matreshka_dir_xclass, matreshka_dir_core_var_core, matreshka_dir_core_util_common, matreshka_dir_core_var_sym, matreshka_dir_core_bindings_binders, matreshka_dir_polyfills_addeventlistener, matreshka_dir_core_dom_lib_balalaika, matreshka_dir_polyfills_classlist, matreshka_dir_core_dom_lib_balalaika_extended, matreshka_dir_core_dom_lib_dollar_lib, matreshka_dir_core_dom_lib_used_lib, matreshka_dir_core_var_isxdr, matreshka_dir_core_initmk, matreshka_dir_core_definespecial, matreshka_dir_core_util_define, matreshka_dir_core_util_linkprops, matreshka_dir_core_util_mediate, matreshka_dir_core_get_set_remove, matreshka_dir_core_bindings_bindnode, matreshka_dir_core_bindings_unbindnode, matreshka_dir_core_bindings_parsebindings, matreshka_dir_core_bindings_getnodes, matreshka_dir_core_events_trigger, matreshka_dir_core_events_on, matreshka_dir_core_events_off, matreshka_dir_core_var_specialevtreg, matreshka_dir_core_events_addlistener, matreshka_dir_core_events_removelistener, matreshka_dir_core_events_delegatelistener, matreshka_dir_core_events_undelegatelistener, matreshka_dir_core_events_domevents, matreshka_dir_core_events_adddomlistener, matreshka_dir_core_events_removedomlistener, matreshka_dir_core_events_once, matreshka_dir_core_events_ondebounce, matreshka_dir_matreshka_magic, matreshka_dir_matreshka_dynamic, matreshka_dir_matreshka_static, matreshka_dir_matreshkaclass, matreshka_dir_matreshka_object_dynamic, matreshka_dir_matreshka_object_iterator, matreshka_dir_core_var_sym_iterator, matreshka_dir_matreshka_objectclass, matreshka_dir_matreshka_array_processrendering, matreshka_dir_matreshka_array_triggermodify, matreshka_dir_matreshka_array_indexof, matreshka_dir_matreshka_array_lastindexof, matreshka_dir_matreshka_array_recreate, matreshka_dir_matreshka_array_native_dynamic, matreshka_dir_matreshka_array_native_static, matreshka_dir_matreshka_array_custom_dynamic, matreshka_dir_matreshka_array_iterator, matreshka_dir_matreshka_arrayclass, matreshka, balalaika, xclass, matreshka_magic;
+var matreshka_dir_xclass, matreshka_dir_core_var_core, matreshka_dir_core_util_common, matreshka_dir_core_var_sym, matreshka_dir_core_bindings_binders, matreshka_dir_polyfills_addeventlistener, matreshka_dir_core_dom_lib_balalaika, matreshka_dir_polyfills_classlist, matreshka_dir_core_dom_lib_balalaika_extended, matreshka_dir_core_dom_lib_dollar_lib, matreshka_dir_core_dom_lib_used_lib, matreshka_dir_core_var_isxdr, matreshka_dir_core_initmk, matreshka_dir_core_definespecial, matreshka_dir_core_util_define, matreshka_dir_core_util_linkprops, matreshka_dir_core_util_mediate, matreshka_dir_core_get_set_remove, matreshka_dir_core_bindings_bindnode, matreshka_dir_core_bindings_unbindnode, matreshka_dir_core_bindings_parsebindings, matreshka_dir_core_bindings_getnodes, matreshka_dir_core_events_trigger, matreshka_dir_core_events_on, matreshka_dir_core_events_off, matreshka_dir_core_var_specialevtreg, matreshka_dir_core_events_addlistener, matreshka_dir_core_events_removelistener, matreshka_dir_core_events_delegatelistener, matreshka_dir_core_events_undelegatelistener, matreshka_dir_core_events_domevents, matreshka_dir_core_events_adddomlistener, matreshka_dir_core_events_removedomlistener, matreshka_dir_core_events_once, matreshka_dir_core_events_ondebounce, matreshka_dir_matreshka_magic, matreshka_dir_matreshka_dynamic, matreshka_dir_matreshka_static, matreshka_dir_matreshkaclass, matreshka_dir_matreshka_object_dynamic, matreshka_dir_matreshka_object_iterator, matreshka_dir_core_var_sym_iterator, matreshka_dir_matreshka_objectclass, matreshka_dir_matreshka_array_processrendering, matreshka_dir_matreshka_array_triggermodify, matreshka_dir_matreshka_array_indexof, matreshka_dir_matreshka_array_lastindexof, matreshka_dir_matreshka_array_recreate, matreshka_dir_matreshka_array_native_dynamic, matreshka_dir_matreshka_array_native_static, matreshka_dir_matreshka_array_custom_dynamic, matreshka_dir_matreshka_array_iterator, matreshka_dir_matreshka_arrayclass, matreshka_dir_amd_modules_matreshka, matreshka_dir_amd_modules_balalaika, matreshka_dir_amd_modules_xclass, matreshka_dir_amd_modules_matreshka_magic, matreshka;
 matreshka_dir_xclass = function () {
   var isArguments = function (o) {
       return !!o && (o.toString() === '[object Arguments]' || typeof o === 'object' && o !== null && 'length' in o && 'callee' in o);
@@ -260,12 +260,14 @@ matreshka_dir_core_bindings_binders = function (core) {
           }
         }
       }
-    }, binders;
-  return core.binders = binders = {
+    }, binders,
+    // cross-browser input event
+    cbInputEvent = document.documentMode == 8 ? 'keyup paste' : 'input';
+  core.binders = binders = {
     innerHTML: function () {
       // @IE8
       return {
-        on: null,
+        on: cbInputEvent,
         getValue: function () {
           return this.innerHTML;
         },
@@ -277,7 +279,7 @@ matreshka_dir_core_bindings_binders = function (core) {
     innerText: function () {
       // @IE8
       return {
-        on: null,
+        on: cbInputEvent,
         getValue: function () {
           return this.textContent || this.innerText;
         },
@@ -329,13 +331,25 @@ matreshka_dir_core_bindings_binders = function (core) {
       };
     },
     dataset: function (prop) {
+      // replace namesLikeThis with names-like-this
+      function toDashed(name) {
+        return 'data-' + name.replace(/([A-Z])/g, function (u) {
+          return '-' + u.toLowerCase();
+        });
+      }
       return {
         on: null,
         getValue: function () {
-          return this.dataset[prop];
+          var _this = this;
+          return _this.dataset ? _this.dataset[prop] : _this.getAttribute(toDashed(prop));
         },
         setValue: function (v) {
-          this.dataset[prop] = v;
+          var _this = this;
+          if (_this.dataset) {
+            _this.dataset[prop] = v;
+          } else {
+            _this.setAttribute(toDashed(prop), v);
+          }
         }
       };
     },
@@ -382,7 +396,7 @@ matreshka_dir_core_bindings_binders = function (core) {
       case 'text':
       case 'password':
         // IE8 requires to use 'keyup paste' instead of 'input'
-        on = document.documentMode == 8 ? 'keyup paste' : 'input';
+        on = cbInputEvent;
         break;
       /*  case 'date':
       case 'datetime':
@@ -501,6 +515,11 @@ matreshka_dir_core_bindings_binders = function (core) {
       };
     }
   };
+  binders.html = binders.innerHTML;
+  binders.text = binders.innerText;
+  binders.prop = binders.property;
+  binders.attr = binders.attribute;
+  return binders;
 }(matreshka_dir_core_var_core);
 matreshka_dir_polyfills_addeventlistener = function () {
   (function (win, doc, s_add, s_rem) {
@@ -950,14 +969,14 @@ matreshka_dir_core_definespecial = function (core, sym, isXDR) {
   };
 }(matreshka_dir_core_var_core, matreshka_dir_core_var_sym, matreshka_dir_core_var_isxdr);
 matreshka_dir_core_util_define = function (core, initMK) {
-  var define, defineGetter, defineSetter;
-  define = core.define = function (object, key, descriptor) {
+  var _define, defineGetter, defineSetter;
+  _define = core.define = function (object, key, descriptor) {
     if (!object || typeof object != 'object')
       return object;
     var i;
     if (typeof key == 'object') {
       for (i in key) {
-        define(object, i, key[i]);
+        _define(object, i, key[i]);
       }
       return object;
     }
@@ -3377,36 +3396,44 @@ matreshka_dir_matreshka_arrayclass = function (MK, sym, nDynamic, nStatic, cDyna
   MK.extend(MK.Array, nStatic);
   return MK.Array;
 }(matreshka_dir_matreshkaclass, matreshka_dir_core_var_sym, matreshka_dir_matreshka_array_native_dynamic, matreshka_dir_matreshka_array_native_static, matreshka_dir_matreshka_array_custom_dynamic, matreshka_dir_matreshka_array_triggermodify, matreshka_dir_matreshka_array_processrendering, matreshka_dir_matreshka_array_iterator, matreshka_dir_core_var_sym_iterator);
-matreshka = function (MK, MK_Object, MK_Array, MK_binders) {
+matreshka_dir_amd_modules_matreshka = function (MK, MK_Object, MK_Array, MK_binders) {
   return MK;
 }(matreshka_dir_matreshkaclass, matreshka_dir_matreshka_objectclass, matreshka_dir_matreshka_arrayclass);
-balalaika = function ($b) {
+matreshka_dir_amd_modules_balalaika = function ($b) {
   return $b;
 }(matreshka_dir_core_dom_lib_balalaika_extended);
-xclass = function (Class) {
+matreshka_dir_amd_modules_xclass = function (Class) {
   return Class;
 }(matreshka_dir_xclass);
-matreshka_magic = function (magic) {
+matreshka_dir_amd_modules_matreshka_magic = function (magic) {
   return magic;
 }(matreshka_dir_matreshka_magic);
- matreshka.version="1.2.0";									(function () {
+matreshka = function (MK) {
+  return MK;
+}(matreshka_dir_amd_modules_matreshka);
+ matreshka.version="1.3.2";									(function () {
+			// hack for systemjs builder
+			var d = "define";
 			// I don't know how to define modules with no dependencies (since we use AMDClean)
 			// so I have to hack it, unfortunatelly
 			if (typeof __root != 'undefined') {
 				/* global matreshka, balalaika, matreshka_magic, xclass, __root */
 				if (typeof define == 'function' && define.amd) {
-					define('matreshka', function() {
-						return matreshka;
-					});
-					define('balalaika', function() {
-						return balalaika;
-					});
-					define('xclass', function() {
-						return xclass;
-					});
-					define('matreshka-magic', function() {
-						return matreshka_magic;
-					});
+					if(__root[d]) {
+						__root[d]('matreshka', function() {
+							return matreshka;
+						});
+						__root[d]('balalaika', function() {
+							return matreshka.$b;
+						});
+						__root[d]('xclass', function() {
+							return matreshka.Class;
+						});
+						__root[d]('matreshka-magic', function() {
+							return matreshka_magic;
+						});
+					}
+
 					define(function() {
 						return matreshka;
 					});
@@ -3414,8 +3441,8 @@ matreshka_magic = function (magic) {
 					module.exports = matreshka;
 				} else {
 					__root.Matreshka = __root.MK = matreshka;
-					__root.$b = balalaika;
-					__root.Class = xclass;
+					__root.$b = matreshka.$b;
+					__root.Class = matreshka.Class;
 				}
 			}
-		})()								}(Function("return this")()||(42, eval)("this")));
+		})()								})(typeof window != "undefined" ? window : Function("return this")());

@@ -56,8 +56,11 @@ gulp.task('scripts', () => {
     	sourcemaps = require('gulp-sourcemaps'),
     	streamify = require('gulp-streamify');
 
+	gulp.src('src/js/lib/browser-polyfill.js')
+		.pipe(gulp.dest('dist/js/'));
+
 	return browserify("src/js/app.js", {
-			debug: true
+			//debug: true
 		})
 		.transform(babelify.configure({
 			stage: 0
@@ -68,12 +71,14 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest('dist/js/'))
 		.pipe(rename('app.min.js'))
 		.pipe(streamify(sourcemaps.init({
-			loadMaps: true
+			//loadMaps: true
 		})))
 		.pipe(streamify(uglify()))
 		.on('error', e => console.error(e))
 		.pipe(streamify(sourcemaps.write('.')))
-		.pipe(gulp.dest('dist/js/'))
+		.pipe(gulp.dest('dist/js/'));
+
+
 
 });
 
