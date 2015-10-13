@@ -2,9 +2,9 @@ CACHE MANIFEST
 ./
 index.html
 css/screen.css
-js/dist/app.min.js
-js/dist/app.js
-js/dist/app.map
+js/app.min.js
+js/app.js
+js/app.min.js.map
 fonts/Roboto-Light.ttf
 fonts/Roboto-Regular.ttf
 fonts/Roboto-Bold.ttf
@@ -18,8 +18,9 @@ img/logos/etaktiker.png
 img/logos/ricardo.gif
 img/logos/browserstack.svg
 img/logos/habrahabr.svg
-img/logos/twitter-icon.svg
-img/logos/facebook-icon.svg
+
+img/twitter-icon.svg
+img/facebook-icon.svg
 
 
 NETWORK:

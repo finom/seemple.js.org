@@ -137,6 +137,16 @@ gulp.task('deploy:matreshka', () => {
 });
 
 
+
+
+gulp.task('updatemanifest', function(){
+	let replace = require('gulp-replace');
+	gulp.src(['src/matreshka.appcache'])
+		.pipe(replace(/###.*/, '###' + Math.random()))
+		.pipe(gulp.dest('dist'));
+});
+
+
 gulp.task('copypackage', () => {
 	// this is undocumented task that copies package.json to /src/_data/ folder
 	let rename = require('gulp-rename');
@@ -152,4 +162,4 @@ gulp.task('copymatreshka', () => {
 });
 */
 
-gulp.task('default', ['jsdoc', 'jekyll', 'styles', 'scripts']);
+gulp.task('default', ['jsdoc', 'jekyll', 'styles', 'scripts', 'updatemanifest']);
