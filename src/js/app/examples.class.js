@@ -7,6 +7,8 @@ export default class Examples extends MK {
             .bindNode('sandbox', 'article[id="!examples"]')
             .on('click::(a)', evt => {
                 let target = evt.target;
+
+                if(!~target.href.indexOf('gh-embed')) return;
                 evt.preventDefault();
 
                 if(!target.classList.contains('initialized')) {

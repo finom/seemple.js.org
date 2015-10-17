@@ -116,14 +116,7 @@ class Application extends Matreshka {
 * [Метод Matreshka#on](#!Matreshka-on)
 * [Функция Class](#!Class)
 
-=======(((
-	"id": "!todomvc"
-)))
-## [TodoMVC](#!todomvc)
-Как известно, самым эффективным способом понять, стоит ли изучать библиотеку или фреймворк является код. Проект [TodoMVC](http://todomvc.com/) объединяет десятки фреймворков позволяя их сравнить на примере одного и того же приложения.
-![TodoMVC](img/todomvc.png)
 
-Посмотрите на [живую реализацию TodoMVC](todo/) на базе Матрешки, а, затем, [взгляните на исходный код с аннотациями](todo/js_ru/docs/app.html). Выглядит очень просто, не так ли?
 
 =======(((
 	"id": "!how-to-include"
@@ -152,3 +145,21 @@ require(['path/to/matreshka'], function(Matreshka) {
 ```js
 import Matreshka from 'path/to/matreshka';
 ```
+
+=======(((
+	"id": "!examples"
+)))
+
+## [Примеры](#!examples)
+1) [TodoMVC](http://gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages)
+
+([исходный код с аннотациями](http://finom.github.io/matreshka_todomvc_ru/docs/app.html))
+
+2) [TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
+
+3) [Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
+
+4) [Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
+
+
+

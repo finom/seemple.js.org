@@ -75,21 +75,10 @@ var magic = require('magic/matreshka-magic.min');
 Обратите внимание. Фреймворк Матрешка работает в Internet Explorer 8 благодаря хакам, возвращающим из конструктора объект ``XDomainRequest``, вместо "чистого" JavaScript объекта. Так как MatreshkaMagic позволяет работать исключительно с произвольными объектами, поддeржка IE8 для MatreshkaMagic невозможна. Это значит, библиотека работает везде, включая IE9+.
 
 
-=======(((
-	"id": "!examples"
-)))
-
-## [Примеры](#!examples)
-[TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
-
-[Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
-
-[Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
 
 =======(((
 	"id": "!10-reasons"
 )))
-
 ## [10 причин попробовать Матрешку](#!10-reasons)
 ### 1. Чистый JavaScript и HTML
 

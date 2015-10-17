@@ -121,15 +121,22 @@ class Application extends Matreshka {
 * [Matreshka#on method](#!Matreshka-on)
 * [Class function](#!Class)
 
+
 =======(((
-	"id": "!todomvc"
+	"id": "!examples"
 )))
-## [TodoMVC](#!todomvc)
-The most effective way to understand if it is worth studying a library or a framework is known to be a code. The [TodoMVC](http://todomvc.com/) project joins a score of frameworks letting us compare them through the example of one and the same application.
 
-![TodoMVC](img/todomvc.png)
+## [Examples](#!examples)
 
-Look at the [working implementation of TodoMVC](todo/) based on Matreshka and then [take a glance over the source code with annotations](todo/js/docs/app.html). Looks very easy, doesn't it?
+1) [TodoMVC](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_todomvc/?ref=gh-pages)
+
+([source code with annotations](http://matreshkajs.github.io/matreshka_todomvc/docs/app.html))
+
+2) [TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
+
+3) [Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
+
+4) [Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
 
 =======(((
 	"id": "!how-to-include"

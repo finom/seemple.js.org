@@ -75,19 +75,6 @@ As of writing this documentation,  **matreshka-magic.min.js**  file is a bit les
 
 Pay attention. Matreshka framework works in the Internet Explorer 8 thanks to the hacks returning ``XDomainRequest`` object from the constructor instead of the "clean" JavaScript object. As MatreshkaMagic allows to work with native objects only, the IE8 support for MatreshkaMagic is impossible. It means that the library works everywhere including IE9+.
 
-
-=======(((
-	"id": "!examples"
-)))
-
-## [Examples](#!examples)
-[TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
-
-[Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
-
-[Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
-
-
 =======(((
 	"id": "!faq"
 )))
