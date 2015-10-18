@@ -1,1 +1,0 @@
-# TodoMVC implementation powered by Matreshka.js
