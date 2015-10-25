@@ -139,6 +139,9 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.3.3](https://github.com/finom/matreshka/releases/tag/v1.3.3)
+* Исправлен баг рендеринга коллекций и вызова события ``modify`` при использовании методов ``reverse`` и ``sort``
+
 ### [Матрешка 1.3.2](https://github.com/finom/matreshka/releases/tag/v1.3.2)
 * Устранена проблема "Cannot find module 'matreshka'" при использовании Browserify.
 
