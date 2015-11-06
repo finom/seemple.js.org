@@ -573,7 +573,7 @@ this.myKey = true;</code></pre><p>What should you do if you need to pass argumen
 };</code></pre><pre class="prettyprint source lang-js"><code>this.bindNode('myKey1', '.my-slider1', Matreshka.binders.uiSlider(0, 100));
 this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
 this.myKey1 = 42;
-this.myKey2 = 999;</code></pre><p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> OOB, starting with the version 0.3, has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p>
+this.myKey2 = 999;</code></pre><p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> OOB, starting with the version 0.3, has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>output</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p>
 <pre class="prettyprint source lang-html"><code>&lt;input type=&quot;color&quot; class=&quot;my-color-input&quot;></code></pre><pre class="prettyprint source lang-js"><code>this.bindNode('myColor', '.my-color-input');
 this.myColor = '#66bb6a';</code></pre><p>Besides, after the binding, a new non-standard <code>:bound(KEY)</code> CSS selector is available for you.</p>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element');
@@ -9996,7 +9996,18 @@ var app = new MyArray();</code></pre><p>The code above will create the following
     bindRenderedAsSandbox: false
     // ...
 });</code></pre></blockquote>
-<h4><code>onItemRender</code> and <code>onRender</code></h4><p>To improve the readability of the code and a small gain in performance, version 1.1 presents the new virtual method called <a href="#!Matreshka.Array-onItemRender">Matreshka.Array#onItemRender</a>, which can be used instead of <code>render</code> event. As second alternative, the <code>onRender</code> can be used for a model.</p>
+<h4>The <code>afterrender</code> event</h4><p>After <code>render</code> event is fired Matreshka starts zero timer <code>setTimeout(f, 0)</code> which calls <code>afterrender</code> event. In this way you can get actual information about node position and another data which is available only when DOM node inserted to the <code>document</code>.</p>
+<pre class="prettyprint source lang-js"><code>var MyModel = Class({
+    'extends': MK.Object,
+    constructor: function(data) {
+        //...
+        this.on('afterrender', function() {
+            console.log('Computed style', getComputedStyle(this.sandbox));
+        });
+        //...
+    }
+});
+// ...</code></pre><h4><code>onItemRender</code> and <code>onRender</code></h4><p>To improve the readability of the code and a small gain in performance, version 1.1 presents the new virtual method called <a href="#!Matreshka.Array-onItemRender">Matreshka.Array#onItemRender</a>, which can be used instead of <code>render</code> event. As second alternative, the <code>onRender</code> can be used for a model.</p>
 <pre class="prettyprint source lang-js"><code>var MyModel = Class({
     'extends': MK.Object,
     constructor: function(data) {
