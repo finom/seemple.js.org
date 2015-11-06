@@ -21,6 +21,16 @@ Today is the year [[script]]document.write(new Date().getFullYear());[[/script]]
 ## [Getting started](#!getting-started)
 All popular frameworks include lots of convenient and interesting functions. The problem is that it is difficult for a beginner to understand where to start his training. A great number of functional possibilities of a given framework leads us to the reasonable question "Hey, do I have to learn all that?"
 
+This issue has been resolved in this documentation. We have split up the API into three parts.
+
+### [[i class="imp-level-1"]][[/i]] The first level - the most important stuff
+After you've learned the most important API parts you can hardily start doing fantastic things. Classes, methods and properties marked with [[i class="imp-level-1"]][[/i]] need to be learned primarily.
+
+### [[i class="imp-level-2"]][[/i]] The second level - recommended to learn
+If you already know the quick-start basics, you can look at other methods and properties of Matreshka.
+
+### [[i class="imp-level-3"]][[/i]] The third level - other methods and properties
+We've hidden rarely used parts (MAtreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.
 
 This issue has been resolved in this documentation. To start working with the framework confidently, you should study classes, properties and methods flagged as important [[i class="important"]][[/i]] (there are a little more than ten of them). Next, if you wish, you can gradually proceed to master the other methods which add the magic you couldn't even dream of into your JavaScript code (but look at the "cool" [[i class="cool"]][[/i]] methods first).
 

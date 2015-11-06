@@ -3,7 +3,11 @@
 	var previous;
 	var self = this;
 ?>
-	<a href="#!<?js= _class.longname ?>" data-name="<?js= _class.name ?>">
+	<a
+		href="#!<?js= _class.longname ?>"
+		data-name="<?js= _class.name ?>"
+		<?js if(_class.importance) {?>data-importance="<?js= _class.importance ?>"<?js } ?>
+	>
 		<b><?js= _class.longname ?></b>
 
 		<i class="important" title="<?js=self.lang.important?>"></i>
@@ -14,10 +18,11 @@
 		<ul data-submenu="!<?js= _class.longname ?>">
 			<?js _class.instanceMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
 				<li>
-					<a href="#!<?js= member.longname.replace( '#', '-' )  ?>" \
+					<a href="#!<?js= member.longname.replace( '#', '-' )  ?>"
 						title="<?js= member.summary_plain ?>"
 						data-name="<?js= member.name ?>"
-						data-since="<?js= member.since ?>">
+						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
 						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
 						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
@@ -29,8 +34,9 @@
 					<a href="#!<?js= member.longname.replace( '#', '-' )  ?>"
 						title="<?js= member.summary_plain ?>"
 						data-name="<?js= member.name ?>"
-						data-since="<?js= member.since ?>">
-						<?js= member.name ?>
+						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+						<?js= member.name ?><span class="brackets">( )</span>
 						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
 						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 						<?js if( member.variations && member.variations.length ) { ?>
@@ -46,7 +52,8 @@
 										<a href="#!<?js= member.longname.replace( '#', '-' ) ?>"
 											title="<?js= member.summary_plain ?>"
 											data-name="<?js= member.name ?>#<?js= member.variation ?>"
-											data-since="<?js= member.since ?>">
+											<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+											<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 											#<?js= member.variation ?>
 										</a>
 									</li>
@@ -57,7 +64,12 @@
 			<?js } }); ?>
 			<?js _class.staticMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
 				<li>
-					<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain ?>" data-name="<?js= member.name ?>" data-since="<?js= member.since ?>">
+					<a
+						href="#!<?js= member.longname ?>"
+						title="<?js= member.summary_plain ?>"
+						data-name="<?js= member.name ?>"
+						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
 						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
 						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
@@ -66,8 +78,13 @@
 			<?js } }); ?>
 			<?js _class.staticMembers['function'].forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
 				<li>
-					<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain ?>" data-name="<?js= member.name ?>" data-since="<?js= member.since ?>">
-						<?js= member.name ?>
+					<a
+						href="#!<?js= member.longname ?>"
+						title="<?js= member.summary_plain ?>"
+						data-name="<?js= member.name ?>"
+						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+						<?js= member.name ?><span class="brackets">( )</span>
 						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
 						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 					</a>
@@ -84,8 +101,13 @@
 						<ul data-submenu="!<?js= obj.binders.longname ?>">
 							<?js obj.binders.members.forEach( function( member ) { ?>
 								<li>
-									<a href="#!<?js= member.longname.replace( '#', '-' ) ?>" title="<?js= member.summary_plain ?>" data-name="binders.<?js= member.name ?>" data-since="<?js= member.since ?>">
-										<?js= member.name ?>
+									<a
+										href="#!<?js= member.longname.replace( '#', '-' ) ?>"
+										title="<?js= member.summary_plain ?>"
+										data-name="binders.<?js= member.name ?>"
+										<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+										<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+										<?js= member.name ?><span class="brackets">( )</span>
 									</a>
 								</li>
 							<?js }); ?>
@@ -97,7 +119,12 @@
 	</div>
 <?js } ?>
 <?js obj.globals.forEach( function( member ) {?>
-<a href="#!<?js= member.longname ?>" title="<?js= member.summary_plain?>" data-since="<?js= member.since ?>">
+<a
+	href="#!<?js= member.longname ?>"
+	title="<?js= member.summary_plain?>"
+	<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
+	<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>
+>
 	<?js= member.name ?>
 	<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
 	<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>

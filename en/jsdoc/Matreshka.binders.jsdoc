@@ -1,5 +1,6 @@
 /**
 @namespace Matreshka.binders
+@importance 1
 @desc The namespace for binders. This object can be extended by you so as not to make a mess of the global namespace.
 
 Take a little agreement into consideration: every property from the ``Matreshka.binders`` collection must be made as a function which returns a binder.
@@ -21,6 +22,7 @@ this.bindNode('myKey', '.my-element',
 
 /**
 @function Matreshka.binders.html
+@importance 2
 @since 0.1
 @summary Returns data binder which changes ``innerHTML`` of bound DOM node depending on instance property value.
 @returns {binder}
@@ -29,19 +31,21 @@ this.bindNode('myKey', '.my-element', MK.binders.html());
 */
 
 /**
-@function Matreshka.binders.visibility
+@function Matreshka.binders.display
+@importance 2
 @since 0.1
 @summary Returns data binder which controls a visibility of DOM node (using ``style.display``) depending on the instance property value
 @param {boolean} [value=true] - If the argument equals ``true``, the node is hidden when a property value is falsy; if it equals ``false``, it is hidden when the property value is truly.
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-element', MK.binders.visibility(true));
+this.bindNode('myKey', '.my-element', MK.binders.display(true));
 @example
-this.bindNode('myKey', '.my-element', MK.binders.visibility(false));
+this.bindNode('myKey', '.my-element', MK.binders.display(false));
 */
 
 /**
 @function Matreshka.binders.className
+@importance 2
 @since 0.1
 @summary Returns data binder which switches over DOM node class name depending on instance property value. If property value equals ``true`` non-strictly, a class name is added, otherwise - it's removed. The logic can be changed by adding a bang character in front of a class name and in this way, a class name will be added  when a property value equals ``false`` non-strictly and vice versa.
 @param {string} className
@@ -62,6 +66,7 @@ this.myKey = true; // removes the 'foo' class
 
 /**
 @function Matreshka.binders.prop
+@importance 2
 @since 0.3
 @summary Returns data binder which changes given property of DOM node depending on instance property value.
 @param {string} property
@@ -78,6 +83,7 @@ this.disabled = false;
 
 /**
 @function Matreshka.binders.attr
+@importance 2
 @since 0.3
 @summary Returns data binder which changes an attribute of DOM node depending on instance property value
 @param {string} attribute
@@ -90,6 +96,7 @@ this.image = 'http://example.com/cats.jpg';
 
 /**
 @function Matreshka.binders.input
+@importance 3
 @since 0.3
 @summary Returns data binder which binds instance property to an ``input`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @param {string} [type] - Input type
@@ -98,8 +105,21 @@ this.image = 'http://example.com/cats.jpg';
 this.bindNode('myKey', '.my-input', MK.binders.input('range'));
 */
 
+
+/**
+@function Matreshka.binders.output
+@importance 3
+@since 0.3
+@summary Returns data binder which binds instance property to an ``output`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-input', MK.binders.output());
+*/
+
+
 /**
 @function Matreshka.binders.textarea
+@importance 3
 @since 0.3
 @summary Returns data binder which binds instance property to a ``textarea`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @returns {binder}
@@ -109,6 +129,7 @@ this.bindNode('myKey', '.my-textarea', MK.binders.textarea());
 
 /**
 @function Matreshka.binders.select
+@importance 3
 @since 0.3
 @summary Returns data binder which binds instance property to a ``select`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @param {boolean} [multiple=false] - If select is ``multiple``
@@ -120,6 +141,7 @@ this.bindNode('myKey', '.my-select', MK.binders.select(true));
 
 /**
 @function Matreshka.binders.progress
+@importance 3
 @since 1.1
 @summary Returns data binder which binds instance property to a ``progress`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @returns {binder}
@@ -130,6 +152,7 @@ this.bindNode('myKey', '.my-progres', MK.binders.progress());
 
 /**
 @function Matreshka.binders.text
+@importance 2
 @since 1.1
 @summary Returns data binder which changes ``textContent`` of bound DOM node depending on instance property value.
 @returns {binder}
@@ -140,6 +163,7 @@ this.bindNode('myKey', '.my-progres', MK.binders.text());
 
 /**
 @function Matreshka.binders.style
+@importance 2
 @since 1.1
 @summary Returns data binder which changes given style property of bound DOM node depending on instance property value.
 @param {string} property - A property of ``style`` object (camel-cased)
@@ -152,6 +176,7 @@ this.myKey = 'red'; // background-color of ``.my-progress`` is red now
 
 /**
 @function Matreshka.binders.dataset
+@importance 2
 @since 1.1
 @summary Returns data binder which changes given [dataset](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset) property of bound DOM node depending on instance property value.
 @param {string} property - A property of ``dataset`` object
@@ -164,6 +189,7 @@ this.myKey = 'cool value';
 
 /**
 @function Matreshka.binders.file
+@importance 2
 @since 1.1
 @summary Returns binder for ``input[type="file"]``.
 

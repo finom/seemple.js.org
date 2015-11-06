@@ -1,5 +1,6 @@
 /**
 @function Class
+@importance 2
 @summary A class implementation based on the prototype inheritance
 @desc The ``Class`` function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses a hack which allows to use accessors (getters and setters) using the ``Object.defineProperty`` function.
 
@@ -84,7 +85,7 @@ alert(this instanceof MyClass);
 
 /**
 @function $b
-@version 1.0
+@importance 2
 @since 0.1
 @extends Array
 @summary Balalaika micro-library

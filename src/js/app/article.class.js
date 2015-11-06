@@ -67,50 +67,50 @@ export default class Article extends MK.Object {
 		return this
 			.linkProps('ieVersion', [g.app, 'ieVersion'])
 			.linkProps('newVersions', [g.app, 'newVersions'])
-				.linkProps('_previous', [
-					this, 'previous',
-					g.app, 'unstableVersion',
-					g.app, 'version',
-					g.app, 'articles'
-				], (previous, unstableVersion, version, articles) => {
-					if (!previous || version == 'unstable' || !articles) {
-						return previous;
-					} else {
-						do {
-							if (previous.since != unstableVersion) {
-								return previous;
-							}
-						} while (previous = previous.previous)
-					}
-				})
-				.linkProps('_next', [
-					this, 'next',
-					g.app, 'unstableVersion',
-					g.app, 'version',
-					g.app, 'articles'
-				], (next, unstableVersion, version, articles) => {
-					if (!next || version == 'unstable' || !articles) {
-						return next;
-					} else {
-						do {
-							if (next.since != unstableVersion) {
-								return next;
-							}
-						} while (next = next.next)
-					}
-				})
-				.linkProps('previousId', '_previous', function(previous) {
-					return previous ? previous.id : '';
-				})
-				.linkProps('nextId', '_next', function(next) {
-					return next ? next.id : '';
-				})
-				.linkProps('previousHeader', '_previous', function(previous) {
-					return previous ? previous.name : '';
-				})
-				.linkProps('nextHeader', '_next', function(next) {
-					return next ? next.name : '';
-				});
+			.linkProps('_previous', [
+				this, 'previous',
+				g.app, 'unstableVersion',
+				g.app, 'version',
+				g.app, 'articles'
+			], (previous, unstableVersion, version, articles) => {
+				if (!previous || version == 'unstable' || !articles) {
+					return previous;
+				} else {
+					do {
+						if (previous.since != unstableVersion) { // app.globalImportance <= previous.importance
+							return previous;
+						}
+					} while (previous = previous.previous)
+				}
+			})
+			.linkProps('_next', [
+				this, 'next',
+				g.app, 'unstableVersion',
+				g.app, 'version',
+				g.app, 'articles'
+			], (next, unstableVersion, version, articles) => {
+				if (!next || version == 'unstable' || !articles) {
+					return next;
+				} else {
+					do {
+						if (next.since != unstableVersion) {
+							return next;
+						}
+					} while (next = next.next)
+				}
+			})
+			.linkProps('previousId', '_previous', function(previous) {
+				return previous ? previous.id : '';
+			})
+			.linkProps('nextId', '_next', function(next) {
+				return next ? next.id : '';
+			})
+			.linkProps('previousHeader', '_previous', function(previous) {
+				return previous ? previous.name : '';
+			})
+			.linkProps('nextHeader', '_next', function(next) {
+				return next ? next.name : '';
+			});
 	}
 
 	onRender() {
@@ -144,7 +144,12 @@ export default class Article extends MK.Object {
 						return this.innerHTML.replace(/<wbr>/g, '');
 					}
 				}],
-				summary: [':sandbox .summary p', MK.binders.innerText()]
+				summary: [':sandbox .summary p', MK.binders.innerText()],
+				importance: [':sandbox', {
+					getValue() {
+						return +this.getAttribute('data-importance');
+					}
+				}]
 			})
 			.bindNode('pagination', [
 				this.sandbox.insertBefore($(paginationHTML)[0], this.sandbox.firstChild),

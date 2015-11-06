@@ -1,10 +1,11 @@
 <section>
 <?js= obj.intro ?>
 </section>
+<section class="api">
 <?js for( var i in obj.classes ) { ?>
 	<?js= this.partial( 'class.html', obj.classes[i] ) ?>
 <?js } ?>
-
+</section>
 <section>
 <?js for( var i = 0; i < obj.globals.length; i++ ) { ?>
 	<?js= this.partial( 'method.html', obj.globals[i] ) ?>

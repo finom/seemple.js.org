@@ -1,5 +1,6 @@
 /**
 @class Matreshka
+@importance 1
 @lang en
 @author Andrey Gubanov <a@odessite.com.ua>
 @license {@link https://raw.github.com/finom/matreshka/master/LICENSE MIT}
@@ -37,6 +38,7 @@ class MyClass extends Matreshka {
 
 /**
 @member {boolean} Matreshka#isMK
+@importance 3
 @summary ``isMK`` always equals ``true``. This property is used for defining whether an object is an instance of the {@link Matreshka} class
 @example
 alert(object.isMK);
@@ -45,6 +47,7 @@ alert(object.isMK);
 
 /**
 @member {$nodes} Matreshka#$sandbox
+@importance 2
 @since 0.4
 @summary The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)
 @see {@link Matreshka#bindNode}
@@ -56,6 +59,7 @@ this.$sandbox; // the same as $('.app')
 
 /**
 @member {node} Matreshka#sandbox
+@importance 2
 @since 0.4
 @summary The property contains HTML sandbox as DOM node
 @see {@link Matreshka#bindNode}
@@ -67,6 +71,7 @@ this.sandbox; // the same as $('.app')[0]
 
 /**
 @member {$nodes} Matreshka#$nodes
+@importance 2
 @since 1.1
 @summary An object contains collections (jQuery, Zepto, Balalaika) of bound nodes for quick access.
 @see {@link Matreshka#bindNode}
@@ -78,6 +83,7 @@ this.$nodes.myKey; // the same as $('.my-node')
 
 /**
 @member {node} Matreshka#nodes
+@importance 2
 @since 1.1
 @summary The object contains bound elements in the form of separate DOM nodes for quick access.
 @desc Pay attention, every object property has got the first node of the bound ones to the corresponding property. Use {@link Matreshka#$nodes} for getting all the nodes bound to a certain property.
@@ -89,6 +95,7 @@ this.nodes.myKey; // the same as $('.my-node')[0]
 
 /**
 @method Matreshka#on
+@importance 1
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler
@@ -124,6 +131,7 @@ this.on('foo', function() {
 
 /**
 @method Matreshka#on
+@importance 2
 @variation 2
 @since 1.1
 @summary Alternative syntax: "eventname-handler" pairs
@@ -151,6 +159,7 @@ this.on({
 
 /**
 @method Matreshka#onDebounce
+@importance 2
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler which is called only once during a definite period of time
@@ -182,6 +191,7 @@ for(var i = 0; i < 100; i++) {
 
 /**
 @method Matreshka#onDebounce
+@importance 2
 @variation 2
 @since 1.1
 @summary Alternative syntax: "eventname-handler" pairs
@@ -201,6 +211,7 @@ this.onDebounce({
 
 /**
 @method Matreshka#once
+@importance 2
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler which can be called only once
@@ -228,6 +239,7 @@ this.x = 3; // does nothing
 
 /**
 @method Matreshka#once
+@importance 2
 @variation 2
 @since 1.1
 @summary Alternative syntax: "eventname-handler" pairs
@@ -245,6 +257,7 @@ this.once({
 
 /**
 @method Matreshka#off
+@importance 1
 @fires removeevent
 @fires removeevent:NAME
 @summary Deletes an event handler
@@ -276,6 +289,7 @@ this.off('change:x', handler, object);
 
 /**
 @method Matreshka#trigger
+@importance 1
 @summary Fires an event
 @desc After adding event handlers using {@link Matreshka#on}, {@link Matreshka#onDebounce} or {@link Matreshka#once}, any event can be fired manually using this method.
 @see {@link Matreshka#on}
@@ -295,6 +309,7 @@ this.trigger('foo', 1, 2, 3); // alerts 6
 
 /**
 @method Matreshka#bindNode
+@importance 1
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
@@ -439,7 +454,7 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
-{@link Matreshka.defaultBinders} OOB, starting with the version 0.3, has a support for **all form elements** without any exception: ``select`` (including ``multiple``), ``textarea``, ``input`` (including all types from the specification of HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` and others). That means it is not necessary to designate a binder for standard elements.
+{@link Matreshka.defaultBinders} OOB, starting with the version 0.3, has a support for **all form elements** without any exception: ``select`` (including ``multiple``), ``textarea``, ``output``, ``input`` (including all types from the specification of HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` and others). That means it is not necessary to designate a binder for standard elements.
 ```html
 <input type="color" class="my-color-input">
 ```
@@ -620,6 +635,7 @@ this.bindNode('myKey', '.my-element', MK.binders.html());
 
 /**
 @method Matreshka#bindNode
+@importance 2
 @variation 2
 @summary Alternative syntax: "key-element" pairs
 @desc In the {@link Matreshka#bindNode} method an object with the key-element pairs can be passed to avoid multiple invocation of the method and reduce the code.
@@ -650,6 +666,7 @@ this.bindNode({
 
 /**
 @method Matreshka#bindNode
+@importance 2
 @variation 3
 @summary Alternative syntax: "heap of arguments"
 @desc Another syntax for the {@link Matreshka#bindNode} method. This way may seem unattractive but sometimes you have need of binding lots of nodes to different properties at one operation. With such a syntax you can assign definite binders to some variable and then easily delete all at once using {@link Matreshka#unbindNode}.
@@ -684,6 +701,7 @@ this.bindNode([
 
 /**
 @method Matreshka#bindOptionalNode
+@importance 2
 @since 0.3
 @summary Works just the same as {@link Matreshka#bindNode} but it does not throw an exception if the ``node`` argument is an empty array, ``undefined`` or non-existent.
 @see {@link Matreshka#bindNode}
@@ -693,6 +711,7 @@ this.bindOptionalNode('myKey', '.my-element');
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @fires unbind
 @fires unbind:KEY
 @summary Breaks a binding between given property and HTML node.
@@ -716,6 +735,7 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @variation 2
 @summary Alternative syntax "key-element" for {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindNode(2)}
@@ -732,6 +752,7 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @variation 3
 @summary Alternative syntax "heap of arguments" for {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindNode(3)}
@@ -771,6 +792,7 @@ this.unbindNode(temporaryBindings);
 
 /**
 @method Matreshka#boundAll
+@importance 3
 @summary Returns a collection of bound nodes by given key
 @param {string} [key] - The key of a property (or a list of keys separated by spaces), which bound elements we want to get. If no arguments are passed the method returns a sandbox.
 @returns {$nodes} Bound nodes
@@ -785,6 +807,7 @@ this.boundAll(); // will return $('.app')
 
 /**
 @method Matreshka#$bound
+@importance 3
 @summary Does the same as {@link Matreshka#boundAll}
 @example
 this.$bound('myKey');
@@ -793,6 +816,7 @@ this.$bound('myKey');
 
 /**
 @method Matreshka#bound
+@importance 3
 @summary Returns the first bound element or ``null``
 @param {string} [key] - A key of a property (or the list of the keys separated by spaces), which bound nodes we need to get. If no arguments are passed the method returns a sandbox.
 @returns {node|null} The bound element
@@ -807,6 +831,7 @@ this.bound(); // will return $('.app')[0]
 
 /**
 @method Matreshka#selectAll
+@importance 2
 @summary Returns HTML nodes corresponding to a selector from the sandbox
 @desc After sandbox creation by the {@link Matreshka#bindNode} method, you can get and use HTML nodes which are located in it. Besides, the method supports the ``:bound(KEY)`` selector
 @param {string} selector - A selector
@@ -831,6 +856,7 @@ $('.my-element').find('.my-another-element');
 
 /**
 @method Matreshka#$
+@importance 2
 @variation instance
 @summary Does the same as {@link Matreshka#selectAll}
 @example
@@ -840,6 +866,7 @@ this.$('.my-element');
 
 /**
 @method Matreshka#select
+@importance 2
 @summary Returns HTML node corresponding to a selector from the sandbox
 @desc The method is very similar to {@link Matreshka#selectAll}, but it returns only one element or ``null``
 @param {string} selector - A selector
@@ -856,6 +883,7 @@ $('.app').find('.my-element')[0];
 
 /**
 @method Matreshka#eq
+@importance 3
 @since 0.0.2
 @summary Tests the instance for other object equality
 @desc Internet Explorer 8 throws an exception while attempting the traditional comparison for equality using ``==`` or ``===``. The ``.eq`` method solves this problem. If the support of IE8 is not necessary, the use of this method is not obligatory.
@@ -870,6 +898,7 @@ this === object;
 
 /**
 @method Matreshka#defineGetter
+@importance 3
 @summary Defines custom getter for a property
 @desc This method allows to define a getter using the native ``Object.defineProperty`` method and it works in all browsers starting with Internet Explorer 8. The returned property value is calculated on every accessing the property, that is why, from viewpoint of performance, the most preferred method is {@link Matreshka#linkProps}.
 @param {string} key - A key property which the getter is set for
@@ -884,6 +913,7 @@ this.defineGetter('myKey', function() {
 
 /**
 @method Matreshka#defineGetter
+@importance 3
 @variation 2
 @summary Alternative "key-getter" syntax of the {@link Matreshka#defineGetter} method
 @param {object} keyGetterPairs - An object with the key-getter properties
@@ -897,6 +927,7 @@ this.defineGetter({
 
 /**
 @method Matreshka#defineSetter
+@importance 3
 @summary Defines a custom setter for a property
 @desc This method allows to define a setter using the ``Object.defineProperty`` native method and it works in all browsers starting with Internet Explorer 8. While using this method you should remember that it overrides a setter which has been built in by Matreshka and in this way it disables the opportunity to catch events like ``change:KEY``. Use this method if you are 100% sure what you are doing. The {@link Matreshka#on} and {@link Matreshka#mediate} methods are safe from viewpoint of stability of the application you create so it is better to use them.
 @param {string} key - A key which the setter is required to be defined for
@@ -910,6 +941,7 @@ this.defineSetter('mykey', function(v) {
 
 /**
 @method Matreshka#defineSetter
+@importance 3
 @variation 2
 @summary Alternative  "key-setter" syntax of the {@link Matreshka#defineSetter} method
 @param {object} keySetterPairs - An object with the key-setter properties
@@ -923,6 +955,7 @@ this.defineSetter({
 
 /**
 @method Matreshka#define
+@importance 3
 @summary Overrides a property descriptor completely using ``Object.defineProperty``
 @desc Note, ``Object.defineProperty``  works incorrectly in Internet Explorer 8. Use this method only when you know what you are doing.
 @param {string} key - A key
@@ -938,6 +971,7 @@ this.define('myKey', {
 
 /**
 @method Matreshka#define
+@importance 3
 @variation 2
 @summary Alternative "key-descriptor" syntax for the {@link Matreshka#define} method
 @desc The work of the method is very similar to ``Object.defineProperties``
@@ -959,6 +993,7 @@ this.define({
 
 /**
 @method Matreshka#mediate
+@importance 2
 @since 0.1
 @summary Transforms property value on its changing
 @desc This method is used for transforming the property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
@@ -985,6 +1020,7 @@ this.mediate(['x', 'y'], function(value) {
 
 /**
 @method Matreshka#mediate
+@importance 2
 @variation 2
 @since 0.1
 @summary Alternative syntax of the {@link Matreshka#mediate} method which accepts "key-mediator" object as an argument
@@ -1012,6 +1048,7 @@ this.mediate({
 
 /**
 @method Matreshka#setClassFor
+@importance 2
 @since 1.1
 @summary Sets class for a property
 @desc The method allows to precisely determine which class instance the set property will be. A developer doesn't have to worry about the fact that a property value will be accidentally rewritten by wrong type of data.
@@ -1175,6 +1212,7 @@ app.appData = {
 
 /**
 @method Matreshka#setClassFor
+@importance 2
 @variation 2
 @since 1.1
 @summary Additional syntax for {@link Matreshka#setClassFor}, which accepts key-class object as the first argument.
@@ -1193,6 +1231,7 @@ this.setClassFor({
 
 /**
 @method Matreshka#linkProps
+@importance 1
 @since 0.1
 @summary Creates a dependency of one property value on values of others
 @desc The ``linkProps`` method creates a dependency of a property value (the first argument) on values of other properties (the second argument). The method is protected from circular references (for example, ``a`` depends on ``b``, ``b`` depends on ``c`` and ``c`` depends on ``a``) and if there is a calculation error, it does not block the page and does not throw an exception about the stack over-flow.
@@ -1247,6 +1286,7 @@ alert(this.x); //42
 
 /**
 @method Matreshka#linkProps
+@importance 1
 @variation 2
 @since 0.2
 @summary An additional possibility of the {@link Matreshka#linkProps} method: a dependency on property values of other instances
@@ -1278,6 +1318,7 @@ anotherInstance1.a = 5; // "this.sum equals 8"
 
 /**
 @method Matreshka#get
+@importance 3
 @summary Returns a value of property
 @param {string} key
 @example
@@ -1288,6 +1329,7 @@ this.get('myKey');
 
 /**
 @method Matreshka#set
+@importance 1
 @fires change
 @fires change:KEY
 @fires beforechange
@@ -1356,6 +1398,7 @@ this.set({
 
 /**
 @method Matreshka#remove
+@importance 3
 @fires delete
 @fires delete:KEY
 @summary Deletes a property
@@ -1374,6 +1417,7 @@ this.remove('myKey', {
 
 /**
 @method Matreshka#delay
+@importance 3
 @since 0.3
 @summary Calls given function after timed delay
 @desc The work of the method is very similar to ``setTimeout``. A current instance or a passed object is taken as a context.
@@ -1397,6 +1441,7 @@ this.x = 1;
 
 /**
 @method Matreshka#getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
+@importance 3
 @since 0.4
 @summary Computes the answer to the Ultimate Question of Life, the Universe, and Everything and displays the answer in 7.5 million years.
 @example
@@ -1406,6 +1451,7 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 
 /**
 @method Matreshka#parseBindings
+@importance 2
 @since 1.1
 @summary Parses DOM tree, declaring property bindings which are double braced.
 @desc Starting with 1.1 version, Matreshka includes a simple DOM parser that handles double braced syntactic constructions. ``parseBindings`` method receives one optional argument: HTML string, DOM node or selector corresponding to DOM node. If argument isn’t set, parser handles a sandbox (see {@link Matreshka#bindNode}).

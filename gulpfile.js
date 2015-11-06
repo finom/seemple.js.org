@@ -23,7 +23,8 @@ gulp.task('jsdoc', cbc => {
 			'Matreshka-static',
 			'Matreshka.Object',
 			'Matreshka.Array',
-			'Matreshka.binders'
+			'Matreshka.binders',
+			'globals'
 		],
 		done = 0;
 

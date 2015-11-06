@@ -82,15 +82,45 @@ nav {
 			background-color: white;
 			color: rgba(#000, 0.4);
 		}
+
 	}
 
-
-
-	i.important, i.cool {
-		line-height: 30px;
+	.brackets {
+		color: #bbb;
 	}
 
+	.api {
+		a {
+			&::after {
+				@extend .imp-level-2;
+				content: '';
+				width: 1rem;
+				height: 1rem;
+				display: inline-block;
+				margin-left: 5px;
+				vertical-align: middle;
 
+
+			}
+
+			&[data-importance="1"]::after {
+				@extend .imp-level-1;
+			}
+
+			&[data-importance="3"]::after {
+				@extend .imp-level-3;
+			}
+		}
+
+
+	}
+
+	hr {
+		border-top: none;
+		border-bottom: 1px solid $gray-color;
+		margin-top: 22px;
+		margin-bottom: 11px;
+	}
 
 	ul {
 
@@ -200,6 +230,37 @@ nav {
 
 		.expand {
 			@extend .mdi, .mdi-hardware-keyboard-arrow-up;
+		}
+	}
+
+	.nav-heading {
+		display: block;
+		line-height: 44px;
+		//padding-left: 20px;
+		text-align: center;
+		color: #777;
+	}
+
+	.doc-importance {
+		display: block;
+		line-height: 44px;
+		margin-left: 20px;
+		font-size: 1rem;
+		color: rgba(0, 0, 0, 0.87);
+		font-style: italic;
+
+		[type="checkbox"] {
+			position: static;
+		}
+
+		a {
+			display: inline-block;
+			background: none;
+			padding: 0;
+			color: inherit;
+			font-weight: bold;
+			font-style: normal;
+			margin-left: 5px;
 		}
 	}
 }

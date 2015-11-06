@@ -1,5 +1,6 @@
 /**
 @function Class
+@importance 2
 @summary Реализация классов, основанная на прототипном наследовании
 @desc Функция ``Class`` позволяет использовать классическое ООП, основанное на классах. Для современных браузеров классы базируются на прототипном наследовании, а в Internet Explorer 8 используется хак, который разрешает использовать акцессоры (геттеры и сеттеры), с помощью функции Object.defineProperty.
 @param {object} prototype - Методы и свойства
@@ -83,6 +84,7 @@ alert(this instanceof MyClass);
 
 /**
 @function $b
+@importance 2
 @version 1.0
 @since 0.1
 @extends Array

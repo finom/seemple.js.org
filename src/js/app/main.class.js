@@ -24,10 +24,11 @@ export default class Main extends MK.Object {
 				isOldIE: document.documentMode <= 9,
 				view: localStorage.view || 'all',
 				version: localStorage.version || 'stable',
-				unstableVersion: '1.4',
-				newVersions: ['1.1', '1.2', '1.3'],
+				unstableVersion: '1.5',
+				newVersions: ['1.2', '1.3', '1.4'],
 				hideTypoBadge: localStorage.hideTypoBadge,
 				isMobile: /mobile|android/i.test(navigator.userAgent),
+				importanceLevel: +localStorage.importanceLevel || 2
 			})
 			.setClassFor({
 				typo: Typo,
@@ -74,22 +75,7 @@ export default class Main extends MK.Object {
 			}
 		}
 
-		/*if (~location.hash.indexOf('&')) {
-			 //#!Matreshka-nodes&st_refDomain=www.facebook.com&st_refQuery=/
-			let threadID = location.hash.replace(/#([^&]+)&.* /, '$1').toLowerCase(),
-				article;
 
-			for (let i = 0; i < this.articles.length; i++) {
-				if (~this.articles[i].id.toLowerCase().indexOf(threadID)) {
-					commentArticle = this.articles[i];
-					break;
-				}
-			}
-
-			if (commentArticle) {
-				location.hash = commentArticle.id;
-			}
-		}*/
 
 		// have no time to make it work in tamplete, so let's shitcode!
 		for(let a of $('a')) {
@@ -102,7 +88,7 @@ export default class Main extends MK.Object {
 		this.initDynamicStyles();
 
 		// in ie10 code snippets are inlined
-		if(document.documentMode <= 10) {
+		if(this.ieVersion <= 10) {
 			for(let snippet of $('pre code')) {
 				snippet.innerHTML = snippet.innerHTML.replace(/\n/g, '<br>');
 			}
@@ -110,23 +96,32 @@ export default class Main extends MK.Object {
 
 		prettyPrint();
 
+		for(let article of this.articles) {
+			if(article.id === location.hash && article.importance > this.importanceLevel) {
+
+			}
+		}
+
 		this.loading = false;
 	}
 
 	initDynamicStyles() {
 		let styleSheet = document.styleSheets[0];
 
-		styleSheet.insertRule(`body[data-version="stable"]
-			[data-since="${this.unstableVersion}"] {
+		styleSheet.insertRule(`
+			body[data-version="stable"] [data-since="${this.unstableVersion}"],
+			body[data-importance-level="1"] [data-importance="2"],
+			body[data-importance-level="1"] [data-importance="3"],
+			body[data-importance-level="2"] [data-importance="3"] {
 				display: none;
 			}`, styleSheet.cssRules.length);
 
-		styleSheet.insertRule(`article[data-since="${this.unstableVersion}"]:before {
+		styleSheet.insertRule(`article[data-since="${this.unstableVersion}"]::before {
 				content: '\\26A0   New since ${this.unstableVersion}';
 				color: #ef5350;
 			}`, styleSheet.cssRules.length);
 
-		styleSheet.insertRule(`nav a[data-since="${this.unstableVersion}"]:after {
+		styleSheet.insertRule(`nav a[data-since="${this.unstableVersion}"]::after {
 				content: '\\26A0';
 				color: #ef5350;
 			}`, styleSheet.cssRules.length);
@@ -164,9 +159,19 @@ export default class Main extends MK.Object {
 						return this.innerHTML;
 					}
 				}],
-				view: ['body', MK.binders.dataset('view')]
+
+				view: ['body', MK.binders.dataset('view')],
+				importanceLevel: [':sandbox .doc-importance input', {
+					getValue() {
+						return this.checked ? 3 : 2;
+					},
+					setValue(v) {
+						this.checked = v === 3;
+					}
+				}]
 			})
 			.bindNode({
+				importanceLevel: [':sandbox', MK.binders.dataset('importanceLevel')],
 				hashValue: [window, {
 					on: 'hashchange',
 					getValue: function() {
@@ -204,7 +209,10 @@ export default class Main extends MK.Object {
 					var fromTop = window.pageYOffset,
 						fromLeft = window.pageXOffset,
 						cur = this.articles.filter(article => {
-							return (article.since !== this.unstableVersion || this.version == 'unstable') && article.sandbox.offsetTop < fromTop + 50;
+							let el = article.sandbox;
+							return (article.since !== this.unstableVersion || this.version == 'unstable')
+								&& el.offsetTop < fromTop + 50
+								&& el.offsetWidth > 0 && el.offsetHeight > 0;
 						}),
 						hash;
 
@@ -240,6 +248,7 @@ export default class Main extends MK.Object {
 					scrollTo(fromLeft, fromTop);
 				},
 				'change:version': evt => localStorage.version = this.version,
+				'change:importanceLevel': evt => localStorage.importanceLevel = this.importanceLevel,
 				'click::(.show-nav)': evt => {
 					this.navOverlay = true;
 
@@ -260,7 +269,13 @@ export default class Main extends MK.Object {
 
 					evt.preventDefault();
 				},
-				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true
+				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true,
+				'change:hashValue change:articles': evt => {
+					let article = this.articles.filter(article => article.id === this.hashValue)[0];
+					if(article && article.importance > this.importanceLevel) {
+						this.importanceLevel = article.importance;
+					}
+				}
 			});
 	}
 

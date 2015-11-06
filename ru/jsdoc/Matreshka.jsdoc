@@ -1,5 +1,6 @@
 /**
 @class Matreshka
+@importance 1
 @lang ru
 @author Андрей Губанов <a@odessite.com.ua>
 @license {@link https://raw.github.com/finom/matreshka/master/LICENSE MIT}
@@ -37,6 +38,7 @@ class MyClass extends Matreshka {
 
 /**
 @member {boolean} Matreshka#isMK
+@importance 3
 @summary ``isMK`` всегда равен ``true``. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса {@link Matreshka}
 @example
 alert(object.isMK);
@@ -44,6 +46,7 @@ alert(object.isMK);
 
 /**
 @member {$nodes} Matreshka#$sandbox
+@importance 2
 @since 0.4
 @summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)
 @see {@link Matreshka#bindNode}
@@ -54,6 +57,7 @@ this.$sandbox; // то же самое, что и $('.app')
 
 /**
 @member {node} Matreshka#sandbox
+@importance 2
 @since 0.4
 @summary Свойство содержит HTML песочницу
 @see {@link Matreshka#bindNode}
@@ -64,6 +68,7 @@ this.sandbox; // то же самое, что и $('.app')[0]
 
 /**
 @member {$nodes} Matreshka#$nodes
+@importance 2
 @since 1.1
 @summary Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.
 @see {@link Matreshka#bindNode}
@@ -74,6 +79,7 @@ this.$nodes.myKey; // то же самое, что и $('.my-node')
 
 /**
 @member {node} Matreshka#nodes
+@importance 2
 @since 1.1
 @summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов.
 @desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством.  Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
@@ -86,6 +92,7 @@ this.nodes.myKey; // то же самое, что и $('.my-node')[0]
 
 /**
 @method Matreshka#on
+@importance 1
 @fires addevent
 @fires addevent:NAME
 @summary Добавляет обработчик события
@@ -121,6 +128,7 @@ this.on('foo', function() {
 
 /**
 @method Matreshka#on
+@importance 2
 @variation 2
 @since 1.1
 @summary Альтернативный синтаксис: пары "событие-обработчик"
@@ -148,6 +156,7 @@ this.on({
 
 /**
 @method Matreshka#onDebounce
+@importance 2
 @fires addevent
 @fires addevent:NAME
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
@@ -179,6 +188,7 @@ for(var i = 0; i < 100; i++) {
 
 /**
 @method Matreshka#onDebounce
+@importance 2
 @variation 2
 @since 1.1
 @summary Альтернативный синтаксис: пары "событие-обработчик"
@@ -200,6 +210,7 @@ this.onDebounce({
 
 /**
 @method Matreshka#once
+@importance 2
 @fires addevent
 @fires addevent:NAME
 @summary Добавляет обработчик событий, который может быть вызван однажды
@@ -228,6 +239,7 @@ this.x = 3; // ничего не делает
 
 /**
 @method Matreshka#once
+@importance 2
 @variation 2
 @since 1.1
 @summary Альтернативный синтаксис: пары "событие-обработчик"
@@ -247,6 +259,7 @@ this.once({
 
 /**
 @method Matreshka#off
+@importance 1
 @fires removeevent
 @fires removeevent:NAME
 @summary Удаляет обработчик события
@@ -278,6 +291,7 @@ this.off('change:x', handler, object);
 
 /**
 @method Matreshka#trigger
+@importance 1
 @summary Генерирует событие
 @desc После добавление обработчиков событий с помощью метода {@link Matreshka#on}, {@link Matreshka#onDebounce} или {@link Matreshka#once}, событие можно генерировать вручную с помощью этого метода.
 @see {@link Matreshka#on}
@@ -297,6 +311,7 @@ this.trigger('bar', 1, 2, 3); // alerts 6
 
 /**
 @method Matreshka#bindNode
+@importance 1
 @fires bind
 @fires bind:KEY
 @summary Связывает свойство объекта с HTML элементом
@@ -440,7 +455,7 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
-{@link Matreshka.defaultBinders} из коробки, начиная с версии 0.3, содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер вовсе не обязательно.
+{@link Matreshka.defaultBinders} из коробки, начиная с версии 0.3, содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``,``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер вовсе не обязательно.
 ```html
 <input type="color" class="my-color-input">
 ```
@@ -618,6 +633,7 @@ this.bindNode('myKey', '.my-element', MK.binders.html());
 
 /**
 @method Matreshka#bindNode
+@importance 2
 @variation 2
 @summary Альтернативный синтаксис: пары "ключ-элемент"
 @desc В метод {@link Matreshka#bindNode} можно передать объект с парами ключ-элемент, чтобы избежать многократного вызова метода и сократить код
@@ -648,6 +664,7 @@ this.bindNode({
 
 /**
 @method Matreshka#bindNode
+@importance 2
 @variation 3
 @summary Альтернативный синтаксис "куча аргументов"
 @desc Еще один синтаксис для метода {@link Matreshka#bindNode}. Этот способ может показаться непривлекательным, но, иногда, есть нужда привязать много элементов с различными байндерами за один присест. С таким синтаксисом вы можете присвоить определенные байндеры какой-нибудь переменной, затем легко удалить все и сразу, используя {@link Matreshka#unbindNode}.
@@ -682,6 +699,7 @@ this.bindNode([
 
 /**
 @method Matreshka#bindOptionalNode
+@importance 2
 @since 0.3
 @summary Работает в точности так же, как и {@link Matreshka#bindNode} но не бросает исключение, если аргумент ``node`` - пустой массив, ``undefined`` или не существует
 @see {@link Matreshka#bindNode}
@@ -691,6 +709,7 @@ this.bindOptionalNode('myKey', '.my-element');
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @fires unbind
 @fires unbind:KEY
 @summary Разрывает связь между свойством и HTML элементом
@@ -714,6 +733,7 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @variation 2
 @summary Альтернативный синтаксис {@link Matreshka#unbindNode} "ключ-элемент" для {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindNode(2)}
@@ -730,6 +750,7 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
+@importance 2
 @variation 3
 @summary Альтернативный синтаксис {@link Matreshka#unbindNode} "большая куча аргументов"
 @see {@link Matreshka#bindNode(3)}
@@ -769,6 +790,7 @@ this.unbindNode(temporaryBindings);
 
 /**
 @method Matreshka#boundAll
+@importance 3
 @summary Возвращает коллекцию привязанных элементов
 @desc После привязки свойств и HTML элементов, можно получить коллекцию этих элементов с помощью метода ``boundAll``.
 @param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чьи привязанные элементы мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
@@ -784,6 +806,7 @@ this.boundAll(); // вернет $('.app')
 
 /**
 @method Matreshka#$bound
+@importance 3
 @summary Делает то же самое, что и {@link Matreshka#boundAll}
 @example
 this.$bound('myKey');
@@ -792,6 +815,7 @@ this.$bound('myKey');
 
 /**
 @method Matreshka#bound
+@importance 3
 @summary Возвращает первый привязанный элемент или null
 @param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чей привязанный элемент мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
 @returns {node|null} Привязанный элемент
@@ -806,6 +830,7 @@ this.bound(); // вернет $('.app')[0]
 
 /**
 @method Matreshka#selectAll
+@importance 2
 @summary Возвращает элементы из песочницы, соответствующие селектору
 @desc После создания песочницы методом {@link Matreshka#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``
 @param {string} selector - Cелектор
@@ -830,6 +855,7 @@ $('.my-element').find('.my-another-element');
 
 /**
 @method Matreshka#$
+@importance 2
 @variation instance
 @summary Делает то же самое, что и {@link Matreshka#selectAll}
 @example
@@ -839,6 +865,7 @@ this.$('.my-element');
 
 /**
 @method Matreshka#select
+@importance 2
 @summary Возвращает элемент из песочницы, соответствующий селектору
 @desc Метод очень похож на {@link Matreshka#selectAll}, но возвращает лишь один элемент или ``null``
 @param {string} selector - Селектор
@@ -855,6 +882,7 @@ $('.app').find('.my-element')[0];
 
 /**
 @method Matreshka#eq
+@importance 3
 @since 0.0.2
 @summary Проверяет экземпляр на равенство другому объекту
 @desc Internet Explorer 8 бросает исключение при попытке традиционного сравнения на равенство, используя ``==`` или ``===``. Метод ``.eq`` решает эту проблему. Если поддержка IE8 не нужна, то метод использовать не обязательно.
@@ -868,6 +896,7 @@ this === object; //иногда IE8 выкидывает "Class doesn't support 
 
 /**
 @method Matreshka#defineGetter
+@importance 3
 @summary Устанавливает кастомный геттер для свойства
 @desc Этот метод позволяет установить геттер (getter), используя нативный метод ``Object.defineProperty`` и работает во всех браузерах, начиная с Internet Explorer 8. Возвращаемое значение свойства вычисляется при каждом обращении к свойству, поэтому более предпочтительным методом, с точки зрения производительности, является {@link Matreshka#linkProps}.
 @param {string} key - Ключ свойства, для которого устанавливается геттер
@@ -881,6 +910,7 @@ this.defineGetter('myKey', function() {
 
 /**
 @method Matreshka#defineGetter
+@importance 3
 @variation 2
 @summary Альтернативный синтаксис метода {@link Matreshka#defineGetter} для установки геттера "ключ-геттер"
 @param {object} keyGetterPairs - Объект со свойствами ключ-геттер
@@ -894,6 +924,7 @@ this.defineGetter({
 
 /**
 @method Matreshka#defineSetter
+@importance 3
 @summary Устанавливает кастомный сеттер для свойства
 @desc Этот метод позволяет установить сеттер (setter), используя нативный метод ``Object.defineProperty`` и работает во всех браузерах, начиная с Internet Explorer 8. При использовании этого метода следует иметь в виду, что он переписывает встроенный Матрешкой сеттер и, таким образом убирает возможность отлова событий, типа ``change:КЛЮЧ``. Используйте этот метод только если точно знаете, что делаете. Медоды {@link Matreshka#on} и {@link Matreshka#mediate} безопасны с точки зрения стабильности создаваемого приложения, лучше используйте их.
 @param {string} key - Ключ, для которого требуется установить сеттер
@@ -907,6 +938,7 @@ this.defineSetter('mykey', function(v) {
 
 /**
 @method Matreshka#defineSetter
+@importance 3
 @variation 2
 @summary Альтернативный синтаксис метода {@link Matreshka#defineSetter} для установки сеттера "ключ-сеттер"
 @param {object} keySetterPairs - Объект со свойствами ключ-сеттер
@@ -920,6 +952,7 @@ this.defineSetter({
 
 /**
 @method Matreshka#mediate
+@importance 2
 @since 0.1
 @summary Трансформирует значение свойства при его изменении
 @desc Этот метод используется для преобразования значения свойства при его изменении. Например, вам нужно, чтоб значение свойства всегда было либо определенного типа, либо целым числом, либо быть не менее нуля и не более ста и т. д.
@@ -944,6 +977,7 @@ this.mediate(['x', 'y'], function(value) {
 
 /**
 @method Matreshka#mediate
+@importance 2
 @variation 2
 @since 0.1
 @summary Альтернативный синтаксис метода {@link Matreshka#mediate}, принимающий в качестве аргумента объект "ключ-медиатор"
@@ -971,6 +1005,7 @@ this.mediate({
 
 /**
 @method Matreshka#setClassFor
+@importance 2
 @since 1.1
 @summary Устанавливает класс для свойства
 @desc Метод позволяет строго указать на то, экземпляром какого класса будет заданное свойство. Разработчику не нужно беспокоиться о том, что значение свойства случайно перезапишется "голыми" данными.
@@ -1133,6 +1168,7 @@ app.appData = {
 
 /**
 @method Matreshka#setClassFor
+@importance 2
 @variation 2
 @since 1.1
 @summary Альтернативный синтаксис метода {@link Matreshka#setClassFor}, принимающий в качестве аргумента объект "ключ-класс"
@@ -1151,6 +1187,7 @@ this.setClassFor({
 
 /**
 @method Matreshka#linkProps
+@importance 1
 @since 0.1
 @summary Создает зависимость значения одного свойства от значений других
 @desc Метод ``linkProps`` создает зависимость значения свойства (первый аргумент) от значений других свойств (второй аргумент). Метод защищен от цикличных ссылок (например a зависит от b, b зависит от c, а c зависит от a) и при ошибке вычислений не блокирует страницу и не бросает исключение о переполнении стека.
@@ -1205,6 +1242,7 @@ alert(this.x); //42
 
 /**
 @method Matreshka#linkProps
+@importance 1
 @variation 2
 @since 0.2
 @summary Дополнительная возможность метода {@link Matreshka#linkProps}: зависимость от значений свойств других экземпляров
@@ -1236,6 +1274,7 @@ anotherInstance1.a = 5; // "this.sum равен 8"
 
 /**
 @method Matreshka#get
+@importance 3
 @summary Возвращает значение свойства
 @param {string} key
 @example
@@ -1246,6 +1285,7 @@ this.get('myKey');
 
 /**
 @method Matreshka#set
+@importance 1
 @fires change
 @fires change:KEY
 @fires beforechange
@@ -1294,6 +1334,7 @@ this.set('myKey', 4, {
 
 /**
 @method Matreshka#set
+@importance 1
 @variation 2
 @summary Альтернативный синтаксис метода {@link Matreshka#set} "ключ-значение"
 @param {object} keyValuePairs - Объект, содержащий пары ключ-значение
@@ -1314,6 +1355,7 @@ this.set({
 
 /**
 @method Matreshka#remove
+@importance 3
 @fires delete
 @fires delete:KEY
 @summary Удаляет свойство
@@ -1332,6 +1374,7 @@ this.remove('myKey', {
 
 /**
 @method Matreshka#define
+@importance 3
 @summary Полностью переписывает дескриптор свойства, используя ``Object.defineProperty``
 @desc Обратите внимание, ``Object.defineProperty`` работает некорректно в Internet Explorer 8. Используйте метод только тогда, когда знаете, что делаете.
 @param {string} key - Ключ
@@ -1347,6 +1390,7 @@ this.define( 'myKey', {
 
 /**
 @method Matreshka#define
+@importance 3
 @variation 2
 @summary Альтернативный синтаксис для метода {@link Matreshka#define} "ключ-дескриптор"
 @desc Работа метода очень похожа на ``Object.defineProperties``
@@ -1368,6 +1412,7 @@ this.define({
 
 /**
 @method Matreshka#delay
+@importance 3
 @since 0.3
 @summary Выполняет функцию после заданной задержки
 @desc Работа метода очень похожа на ``setTimеout``. В качестве контекста принимается текущий экземпляр или переданный объект.
@@ -1391,6 +1436,7 @@ this.x = 1;
 
 /**
 @method Matreshka#getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
+@importance 3
 @since 0.4
 @summary Выдаёт ответ на главный вопрос жизни, Вселенной и всего такого через 7.5 миллионов лет
 @example
@@ -1400,6 +1446,7 @@ this.getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
 
 /**
 @method Matreshka#parseBindings
+@importance 2
 @since 1.1
 @summary Парсит DOM дерево, объявляя привязки свойств, заключенных в двойные фигурные скобки.
 @desc Начиная с версии 1.1, Матрешка включает в себя простой DOM парсер, обрабатывающий синтаксические конструкции, заключенные в двойные фигурные скобки. Метод ``parseBindings`` принимает один опциональный аргумент: HTML строку, DOM узел или селектор, соответствующий DOM узлу. Если аргумент не задан, парсер обрабатывает песочницу (см. {@link Matreshka#bindNode}).

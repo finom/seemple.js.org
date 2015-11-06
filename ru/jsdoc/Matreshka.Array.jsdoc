@@ -1,5 +1,6 @@
 /**
 @class Matreshka.Array
+@importance 1
 @classdesc Класс ``Matreshka.Array`` служит коллекцией во фреймворке Матрешка. Он наследуется от класса {@link Matreshka}, получая все без исключения возможности родителя. Кроме этого, ``Matreshka.Array`` имеет все методы, которые есть у обычного массива.
 
 #### Все методы, позаимствованные у встроенного Array работают аналогично их оригиналам
@@ -223,6 +224,7 @@ this.shift_({
 
 /**
 @member {boolean} Matreshka.Array#isMKArray
+@importance 3
 @summary ``isMKArray`` всегда равен ``true``. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса {@link Matreshka.Array}
 @example
 alert(object.isMKArray);
@@ -230,6 +232,7 @@ alert(object.isMKArray);
 
 /**
 @member {boolean} Matreshka.Array#useBindingsParser
+@importance 3
 @summary Свойство отключает парсер, если присвоить ему ``false``
 @see {@link Matreshka.Array#itemRenderer}
 @example
@@ -243,6 +246,7 @@ var MyArray = Class({
 
 /**
 @member {boolean} Matreshka.Array#renderIfPossible
+@importance 3
 @summary Свойство ``renderIfPossible`` отменяет рендеринг массива
 @see {@link Matreshka.Array#itemRenderer}
 @example
@@ -257,6 +261,7 @@ var MyArray = Class({
 
 /**
 @member {string|function} Matreshka.Array#itemRenderer
+@importance 1
 @abstract
 @since 0.1
 @summary HTML строка, селектор или функция, отвечающая за отрисовку элементов массива на странице
@@ -467,14 +472,31 @@ this.on('*@render', function(evt) {
 ```js
 var MyModel = Class({
 	'extends': MK.Object,
-	bindRenderedAsSandbox: false
+	bindRenderedAsSandbox: false,
 	// ...
 });
+```
+
+#### Событие ``afterrender``
+После срабатывания события ``render`` запускается нулевой таймер (``setTimeout(f, 0)``), вызывающий событие ``afterrender``. Таким образом можно получить актуальные данные о позиции элемента на странице и другую информацию, которая доступна только тогда, когда DOM узел вставлен на страницу.
+```js
+var MyModel = Class({
+	'extends': MK.Object,
+	constructor: function(data) {
+		//...
+		this.on('afterrender', function() {
+			console.log('Computed style', getComputedStyle(this.sandbox));
+		});
+		//...
+	}
+});
+// ...
 ```
 
 
 #### ``onItemRender`` и ``onRender``
 Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод {@link Matreshka.Array#onItemRender}, который можно использовать вместо события ``render``. В качестве альтернативы, у "моделей" вызывается метод ``onRender``, так же позволяющий сделать код более "плоским" и избавиться от вложенных функций.
+```
 
 ```js
 var MyModel = Class({
@@ -585,6 +607,26 @@ fetch('templates/template.html')
 	.then(data => this.itemRenderer = data);
 ```
 
+Для отрисовки только тех объектов, которые еще не были отрисованы, воспользуйтесь методом {@link Matreshka#set} с флагом ``forceRerender: false``
+```js
+this.set('itemRenderer', renderer, {forceRerender: false});
+```
+Такая необходимость может возникнуть тогда, когда вы используете серверный пререндеринг (см. {@link Matreshka.Array#restore}), а шаблон подгружается динамически.
+```js
+var MyArray = Class({
+	'extends': MK.Array,
+	constructor:  function() {
+		this
+			.bindNode('sandbox', '.some-node')
+			.restore();
+
+		jQuery.get('templates/template.html', function(data) {
+			this.set('itemRenderer', data, {forceRerender: false})
+		}.bind(this));
+	}
+});
+```
+
 #### Рендеринг коллекции, состоящей из обычных объектов
 В версии 1.1 самым большим нововведением фреймворка стала поддержка нативных объектов в методах {@link Matreshka.bindNode}, {@link Matreshka.linkProps}, {@link Matreshka.mediate} и пр. Эта замечательная возможность не обошла стороной и рендеринг. Теперь не обязательно заботиться о том, чтобы элементы, входящие в коллекцию наследовались от класса {@link Matreshka}.
 ```js
@@ -643,6 +685,7 @@ class MyArray extends MK.Array {
 
 /**
 @method Matreshka.Array#onItemRender
+@importance 2
 @abstract
 @since 1.1
 @summary Функция, которая запускается перед событием ``render``.
@@ -683,6 +726,7 @@ var app = new MyArray();
 
 /**
 @method Matreshka.Array#Model
+@importance 1
 @since 0.2
 @abstract
 @summary Свойство определяет класс элементов, которые будет содержать коллекция
@@ -748,6 +792,7 @@ class MyArray extends MK.Array {
 
 /**
 @method Matreshka.Array#mediateItem
+@importance 2
 @since 0.1
 @see {@link Matreshka.Array#Model}
 @see {@link Matreshka#mediate}
@@ -783,6 +828,7 @@ this.mediateItem(function(item) {
 
 /**
 @method Matreshka.Array#recreate
+@importance 1
 @fires recreate
 @fires modify
 @fires add
@@ -806,6 +852,7 @@ this.recreate();
 
 /**
 @method Matreshka.Array#restore
+@importance 2
 @since 1.3
 @fires recreate
 @fires modify
@@ -872,6 +919,7 @@ this.restore();
 
 /**
 @member {string} Matreshka.Array#trackBy
+@importance 2
 @since 1.2
 @abstract
 @summary Свойство ``trackBy`` указывает на ключ идентификатора объектов, входящих в массив
@@ -949,6 +997,7 @@ arr.recreate([
 
 /**
 @method Matreshka.Array#toArray
+@importance 3
 @summary Конвертирует {@link Matreshka.Array} в обычный массив, но не конвертирует входящие в него элементы
 @returns {array}
 @example
@@ -958,6 +1007,7 @@ this.toArray();
 
 /**
 @method Matreshka.Array#toNative
+@importance 3
 @summary Делает то же самое, что и {@link Matreshka.Array#toArray}
 @returns {array}
 @example
@@ -967,6 +1017,7 @@ this.toNative();
 
 /**
 @method Matreshka.Array#rerender
+@importance 3
 @since 0.3
 @summary Перерисовывает DOM узлы элементов, входящих в массив
 @desc Этот метод заново рендерит элементы массива в контейнере массива. Если узел, который ассоциирован с элеменом масива уже создан, метод, вместо перерисовки с нуля, "перевставляет" его в контейнер или песочницу массива.
@@ -985,6 +1036,7 @@ this.rerender({
 
 /**
 @method Matreshka.Array#hasOwnProperty
+@importance 3
 @summary Существует ли свойство в экземпляре (индекс или свойство ``length``)
 @returns {boolean}
 @example
@@ -1002,6 +1054,7 @@ mkArray.hasOwnProperty('blah'); // false
 
 /**
 @method Matreshka.Array#toJSON
+@importance 1
 @summary Конвертирует экземпляр и элементы, входящие в него в обычный массив
 @returns {object}
 @example
@@ -1011,6 +1064,7 @@ var data = this.toJSON();
 
 /**
 @method Matreshka.Array#pull
+@importance 2
 @since 0.1
 @fires pull
 @fires remove
@@ -1048,6 +1102,7 @@ alert(this.length); // 2
 
 /**
 @method Matreshka.Array#each
+@importance 3
 @summary Работает точно так же, как и метод ``forEach``, который перебирает элементы массива
 @param {function} callback - Функция, запускаемая на каждой итерации
 @param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``callback``
@@ -1061,6 +1116,7 @@ this.each(function(item, index) {
 
 /**
 @method Matreshka.Array#METHOD
+@importance 1
 @summary Любой метод из ``Array.prototype``
 @desc {@link Matreshka.Array} включает в себя все методы, входящие в нативный JavaScript массив:
 <ul>
@@ -1108,6 +1164,7 @@ this.reverse();
 
 /**
 @method Matreshka.Array#METHOD_
+@importance 1
 @summary Любой метод из ``Array.prototype`` с возможностью передать объект события
 @desc Ознакомившись с {@link Matreshka.Array#METHOD} становится понятно, что методы не поддерживают передачу объекта события, так как в точности повторяют синтаксис и количество аргументов встроенного ``Array``. Синтаксис ``МЕТОД_`` позволяет передать в обработчик события какие-нибудь данные либо установить служебные флаги, отвечающие за поведение массива после вызова метода.
 
@@ -1139,6 +1196,7 @@ this.push_(1, 2, 3, {
 
 /**
 @method Matreshka.Array.from
+@importance 2
 @since 1.1
 @summary Метод создаёт новый экземпляр {@link Matreshka.Array} из массивоподобного объекта.
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from Array.from}
@@ -1157,6 +1215,7 @@ var mkArray = MK.Array.from([1, 2, 3, 4], function(item) {
 
 /**
 @method Matreshka.Array.of
+@importance 2
 @since 1.1
 @summary Метод Array.of() создаёт новый экземпляр {@link Matreshka.Array} из произвольного числа агрументов, вне зависимости от числа или типа аргумента.
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/of Array.of}

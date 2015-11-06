@@ -1,5 +1,9 @@
 
-	<a href="#!Matreshka" data-name="Matreshka">
+	<a
+		href="#!Matreshka"
+		data-name="Matreshka"
+		data-importance="1"
+	>
 		<b>Matreshka</b>
 
 		<i class="important" title="Important"></i>
@@ -10,43 +14,11 @@
 		<ul data-submenu="!Matreshka">
 			
 				<li>
-					<a href="#!Matreshka-isMK" \
-						title="isMK always equals true. This property is used for defining whether an object is an instance of the Matreshka class"
-						data-name="isMK"
-						data-since="">
-						isMK
-						
-						
-					</a>
-				</li>
-			
-				<li>
-					<a href="#!Matreshka-$sandbox" \
-						title="The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)"
-						data-name="$sandbox"
-						data-since="0.4">
-						$sandbox
-						
-						
-					</a>
-				</li>
-			
-				<li>
-					<a href="#!Matreshka-sandbox" \
-						title="The property contains HTML sandbox as DOM node"
-						data-name="sandbox"
-						data-since="0.4">
-						sandbox
-						
-						
-					</a>
-				</li>
-			
-				<li>
-					<a href="#!Matreshka-$nodes" \
+					<a href="#!Matreshka-$nodes"
 						title="An object contains collections (jQuery, Zepto, Balalaika) of bound nodes for quick access."
 						data-name="$nodes"
-						data-since="1.1">
+						data-since="1.1"
+						data-importance="2">
 						$nodes
 						
 						
@@ -54,11 +26,48 @@
 				</li>
 			
 				<li>
-					<a href="#!Matreshka-nodes" \
+					<a href="#!Matreshka-$sandbox"
+						title="The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)"
+						data-name="$sandbox"
+						data-since="0.4"
+						data-importance="2">
+						$sandbox
+						
+						
+					</a>
+				</li>
+			
+				<li>
+					<a href="#!Matreshka-isMK"
+						title="isMK always equals true. This property is used for defining whether an object is an instance of the Matreshka class"
+						data-name="isMK"
+						
+						data-importance="3">
+						isMK
+						
+						
+					</a>
+				</li>
+			
+				<li>
+					<a href="#!Matreshka-nodes"
 						title="The object contains bound elements in the form of separate DOM nodes for quick access."
 						data-name="nodes"
-						data-since="1.1">
+						data-since="1.1"
+						data-importance="2">
 						nodes
+						
+						
+					</a>
+				</li>
+			
+				<li>
+					<a href="#!Matreshka-sandbox"
+						title="The property contains HTML sandbox as DOM node"
+						data-name="sandbox"
+						data-since="0.4"
+						data-importance="2">
+						sandbox
 						
 						
 					</a>
@@ -66,101 +75,12 @@
 			
 			
 				<li>
-					<a href="#!Matreshka-on"
-						title="Adds an event handler"
-						data-name="on"
-						data-since="">
-						on
-						<i class="important" title="Important"></i>
-						<i class="cool" title="Cool method or property"></i>
+					<a href="#!Matreshka-$(instance)"
+						title="Does the same as Matreshka#selectAll"
+						data-name="$"
 						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-on">
-								
-									<li>
-										<a href="#!Matreshka-on(2)"
-											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
-											data-name="on#2"
-											data-since="1.1">
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-			
-				<li>
-					<a href="#!Matreshka-onDebounce"
-						title="Adds an event handler which is called only once during a definite period of time"
-						data-name="onDebounce"
-						data-since="">
-						onDebounce
-						
-						
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-onDebounce">
-								
-									<li>
-										<a href="#!Matreshka-onDebounce(2)"
-											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
-											data-name="onDebounce#2"
-											data-since="1.1">
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-			
-				<li>
-					<a href="#!Matreshka-once"
-						title="Adds an event handler which can be called only once"
-						data-name="once"
-						data-since="">
-						once
-						
-						
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-once">
-								
-									<li>
-										<a href="#!Matreshka-once(2)"
-											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
-											data-name="once#2"
-											data-since="1.1">
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-			
-				<li>
-					<a href="#!Matreshka-off"
-						title="Deletes an event handler"
-						data-name="off"
-						data-since="">
-						off
+						data-importance="2">
+						$<span class="brackets">( )</span>
 						
 						
 						
@@ -168,12 +88,13 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-trigger"
-						title="Fires an event"
-						data-name="trigger"
-						data-since="">
-						trigger
-						<i class="important" title="Important"></i>
+					<a href="#!Matreshka-$bound"
+						title="Does the same as Matreshka#boundAll"
+						data-name="$bound"
+						
+						data-importance="3">
+						$bound<span class="brackets">( )</span>
+						
 						
 						
 					</a>
@@ -183,8 +104,9 @@
 					<a href="#!Matreshka-bindNode"
 						title="Binds a property of an object to HTML node, implementing two-way data binding"
 						data-name="bindNode"
-						data-since="">
-						bindNode
+						
+						data-importance="1">
+						bindNode<span class="brackets">( )</span>
 						<i class="important" title="Important"></i>
 						<i class="cool" title="Cool method or property"></i>
 						
@@ -200,7 +122,8 @@
 										<a href="#!Matreshka-bindNode(2)"
 											title="Alternative syntax: &quot;key-element&quot; pairs"
 											data-name="bindNode#2"
-											data-since="">
+											
+											data-importance="2">
 											#2
 										</a>
 									</li>
@@ -209,7 +132,8 @@
 										<a href="#!Matreshka-bindNode(3)"
 											title="Alternative syntax: &quot;heap of arguments&quot;"
 											data-name="bindNode#3"
-											data-since="">
+											
+											data-importance="2">
 											#3
 										</a>
 									</li>
@@ -222,71 +146,9 @@
 					<a href="#!Matreshka-bindOptionalNode"
 						title="Works just the same as Matreshka#bindNode but it does not throw an exception if the node argument is an empty array, undefined or non-existent."
 						data-name="bindOptionalNode"
-						data-since="0.3">
-						bindOptionalNode
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-unbindNode"
-						title="Breaks a binding between given property and HTML node."
-						data-name="unbindNode"
-						data-since="">
-						unbindNode
-						
-						
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-unbindNode">
-								
-									<li>
-										<a href="#!Matreshka-unbindNode(2)"
-											title="Alternative syntax &quot;key-element&quot; for Matreshka#unbindNode"
-											data-name="unbindNode#2"
-											data-since="">
-											#2
-										</a>
-									</li>
-								
-									<li>
-										<a href="#!Matreshka-unbindNode(3)"
-											title="Alternative syntax &quot;heap of arguments&quot; for Matreshka#unbindNode"
-											data-name="unbindNode#3"
-											data-since="">
-											#3
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-			
-				<li>
-					<a href="#!Matreshka-boundAll"
-						title="Returns a collection of bound nodes by given key"
-						data-name="boundAll"
-						data-since="">
-						boundAll
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-$bound"
-						title="Does the same as Matreshka#boundAll"
-						data-name="$bound"
-						data-since="">
-						$bound
+						data-since="0.3"
+						data-importance="2">
+						bindOptionalNode<span class="brackets">( )</span>
 						
 						
 						
@@ -297,8 +159,9 @@
 					<a href="#!Matreshka-bound"
 						title="Returns the first bound element or null"
 						data-name="bound"
-						data-since="">
-						bound
+						
+						data-importance="3">
+						bound<span class="brackets">( )</span>
 						
 						
 						
@@ -306,119 +169,25 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-selectAll"
-						title="Returns HTML nodes corresponding to a selector from the sandbox"
-						data-name="selectAll"
-						data-since="">
-						selectAll
+					<a href="#!Matreshka-boundAll"
+						title="Returns a collection of bound nodes by given key"
+						data-name="boundAll"
+						
+						data-importance="3">
+						boundAll<span class="brackets">( )</span>
 						
 						
 						
 					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-$(instance)"
-						title="Does the same as Matreshka#selectAll"
-						data-name="$"
-						data-since="">
-						$
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-select"
-						title="Returns HTML node corresponding to a selector from the sandbox"
-						data-name="select"
-						data-since="">
-						select
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-eq"
-						title="Tests the instance for other object equality"
-						data-name="eq"
-						data-since="0.0.2">
-						eq
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-defineGetter"
-						title="Defines custom getter for a property"
-						data-name="defineGetter"
-						data-since="">
-						defineGetter
-						
-						
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-defineGetter">
-								
-									<li>
-										<a href="#!Matreshka-defineGetter(2)"
-											title="Alternative &quot;key-getter&quot; syntax of the Matreshka#defineGetter method"
-											data-name="defineGetter#2"
-											data-since="">
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-			
-				<li>
-					<a href="#!Matreshka-defineSetter"
-						title="Defines a custom setter for a property"
-						data-name="defineSetter"
-						data-since="">
-						defineSetter
-						
-						
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-defineSetter">
-								
-									<li>
-										<a href="#!Matreshka-defineSetter(2)"
-											title="Alternative  &quot;key-setter&quot; syntax of the Matreshka#defineSetter method"
-											data-name="defineSetter#2"
-											data-since="">
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
 					
 			
 				<li>
 					<a href="#!Matreshka-define"
 						title="Overrides a property descriptor completely using Object.defineProperty"
 						data-name="define"
-						data-since="">
-						define
+						
+						data-importance="3">
+						define<span class="brackets">( )</span>
 						
 						
 						
@@ -434,7 +203,8 @@
 										<a href="#!Matreshka-define(2)"
 											title="Alternative &quot;key-descriptor&quot; syntax for the Matreshka#define method"
 											data-name="define#2"
-											data-since="">
+											
+											data-importance="3">
 											#2
 										</a>
 									</li>
@@ -444,13 +214,14 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-mediate"
-						title="Transforms property value on its changing"
-						data-name="mediate"
-						data-since="0.1">
-						mediate
+					<a href="#!Matreshka-defineGetter"
+						title="Defines custom getter for a property"
+						data-name="defineGetter"
 						
-						<i class="cool" title="Cool method or property"></i>
+						data-importance="3">
+						defineGetter<span class="brackets">( )</span>
+						
+						
 						
 							<span class="expand"></span>
 							<span class="hidden-active-child"></span>
@@ -458,13 +229,14 @@
 					</a>
 					
 						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-mediate">
+							<ul data-submenu="!Matreshka-defineGetter">
 								
 									<li>
-										<a href="#!Matreshka-mediate(2)"
-											title="Alternative syntax of the Matreshka#mediate method which accepts &quot;key-mediator&quot; object as an argument"
-											data-name="mediate#2"
-											data-since="0.1">
+										<a href="#!Matreshka-defineGetter(2)"
+											title="Alternative &quot;key-getter&quot; syntax of the Matreshka#defineGetter method"
+											data-name="defineGetter#2"
+											
+											data-importance="3">
 											#2
 										</a>
 									</li>
@@ -474,13 +246,14 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-setClassFor"
-						title="Sets class for a property"
-						data-name="setClassFor"
-						data-since="1.1">
-						setClassFor
+					<a href="#!Matreshka-defineSetter"
+						title="Defines a custom setter for a property"
+						data-name="defineSetter"
 						
-						<i class="cool" title="Cool method or property"></i>
+						data-importance="3">
+						defineSetter<span class="brackets">( )</span>
+						
+						
 						
 							<span class="expand"></span>
 							<span class="hidden-active-child"></span>
@@ -488,27 +261,81 @@
 					</a>
 					
 						<div class="submenu-wrapper">
-							<ul data-submenu="!Matreshka-setClassFor">
+							<ul data-submenu="!Matreshka-defineSetter">
 								
 									<li>
-										<a href="#!Matreshka-setClassFor(2)"
-											title="Additional syntax for Matreshka#setClassFor, which accepts key-class object as the first argument."
-											data-name="setClassFor#2"
-											data-since="1.1">
+										<a href="#!Matreshka-defineSetter(2)"
+											title="Alternative  &quot;key-setter&quot; syntax of the Matreshka#defineSetter method"
+											data-name="defineSetter#2"
+											
+											data-importance="3">
 											#2
 										</a>
 									</li>
 								
 							</ul>
 						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-delay"
+						title="Calls given function after timed delay"
+						data-name="delay"
+						data-since="0.3"
+						data-importance="3">
+						delay<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-eq"
+						title="Tests the instance for other object equality"
+						data-name="eq"
+						data-since="0.0.2"
+						data-importance="3">
+						eq<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-get"
+						title="Returns a value of property"
+						data-name="get"
+						
+						data-importance="3">
+						get<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything"
+						title="Computes the answer to the Ultimate Question of Life, the Universe, and Everything and displays the answer in 7.5 million years."
+						data-name="getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything"
+						data-since="0.4"
+						data-importance="3">
+						getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything<span class="brackets">( )</span>
+						
+						
+						
+					</a>
 					
 			
 				<li>
 					<a href="#!Matreshka-linkProps"
 						title="Creates a dependency of one property value on values of others"
 						data-name="linkProps"
-						data-since="0.1">
-						linkProps
+						data-since="0.1"
+						data-importance="1">
+						linkProps<span class="brackets">( )</span>
 						
 						<i class="cool" title="Cool method or property"></i>
 						
@@ -524,7 +351,8 @@
 										<a href="#!Matreshka-linkProps(2)"
 											title="An additional possibility of the Matreshka#linkProps method: a dependency on property values of other instances"
 											data-name="linkProps#2"
-											data-since="0.2">
+											data-since="0.2"
+											data-importance="1">
 											#2
 										</a>
 									</li>
@@ -534,11 +362,192 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-get"
-						title="Returns a value of property"
-						data-name="get"
-						data-since="">
-						get
+					<a href="#!Matreshka-mediate"
+						title="Transforms property value on its changing"
+						data-name="mediate"
+						data-since="0.1"
+						data-importance="2">
+						mediate<span class="brackets">( )</span>
+						
+						<i class="cool" title="Cool method or property"></i>
+						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						
+					</a>
+					
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-mediate">
+								
+									<li>
+										<a href="#!Matreshka-mediate(2)"
+											title="Alternative syntax of the Matreshka#mediate method which accepts &quot;key-mediator&quot; object as an argument"
+											data-name="mediate#2"
+											data-since="0.1"
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+							</ul>
+						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-off"
+						title="Deletes an event handler"
+						data-name="off"
+						
+						data-importance="1">
+						off<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-on"
+						title="Adds an event handler"
+						data-name="on"
+						
+						data-importance="1">
+						on<span class="brackets">( )</span>
+						<i class="important" title="Important"></i>
+						<i class="cool" title="Cool method or property"></i>
+						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						
+					</a>
+					
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-on">
+								
+									<li>
+										<a href="#!Matreshka-on(2)"
+											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
+											data-name="on#2"
+											data-since="1.1"
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+							</ul>
+						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-onDebounce"
+						title="Adds an event handler which is called only once during a definite period of time"
+						data-name="onDebounce"
+						
+						data-importance="2">
+						onDebounce<span class="brackets">( )</span>
+						
+						
+						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						
+					</a>
+					
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-onDebounce">
+								
+									<li>
+										<a href="#!Matreshka-onDebounce(2)"
+											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
+											data-name="onDebounce#2"
+											data-since="1.1"
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+							</ul>
+						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-once"
+						title="Adds an event handler which can be called only once"
+						data-name="once"
+						
+						data-importance="2">
+						once<span class="brackets">( )</span>
+						
+						
+						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						
+					</a>
+					
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-once">
+								
+									<li>
+										<a href="#!Matreshka-once(2)"
+											title="Alternative syntax: &quot;eventname-handler&quot; pairs"
+											data-name="once#2"
+											data-since="1.1"
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+							</ul>
+						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-parseBindings"
+						title="Parses DOM tree, declaring property bindings which are double braced."
+						data-name="parseBindings"
+						data-since="1.1"
+						data-importance="2">
+						parseBindings<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-remove"
+						title="Deletes a property"
+						data-name="remove"
+						
+						data-importance="3">
+						remove<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-select"
+						title="Returns HTML node corresponding to a selector from the sandbox"
+						data-name="select"
+						
+						data-importance="2">
+						select<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka-selectAll"
+						title="Returns HTML nodes corresponding to a selector from the sandbox"
+						data-name="selectAll"
+						
+						data-importance="2">
+						selectAll<span class="brackets">( )</span>
 						
 						
 						
@@ -549,8 +558,9 @@
 					<a href="#!Matreshka-set"
 						title="Sets a property value allowing to pass an event object as the third argument"
 						data-name="set"
-						data-since="">
-						set
+						
+						data-importance="1">
+						set<span class="brackets">( )</span>
 						<i class="important" title="Important"></i>
 						
 						
@@ -566,7 +576,8 @@
 										<a href="#!Matreshka-set(2)"
 											title="Alternative &quot;key-value&quot; syntax of the Matreshka#set method"
 											data-name="set#2"
-											data-since="">
+											
+											>
 											#2
 										</a>
 									</li>
@@ -576,64 +587,113 @@
 					
 			
 				<li>
-					<a href="#!Matreshka-remove"
-						title="Deletes a property"
-						data-name="remove"
-						data-since="">
-						remove
+					<a href="#!Matreshka-setClassFor"
+						title="Sets class for a property"
+						data-name="setClassFor"
+						data-since="1.1"
+						data-importance="2">
+						setClassFor<span class="brackets">( )</span>
 						
+						<i class="cool" title="Cool method or property"></i>
+						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
+						
+					</a>
+					
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-setClassFor">
+								
+									<li>
+										<a href="#!Matreshka-setClassFor(2)"
+											title="Additional syntax for Matreshka#setClassFor, which accepts key-class object as the first argument."
+											data-name="setClassFor#2"
+											data-since="1.1"
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+							</ul>
+						</div>
+					
+			
+				<li>
+					<a href="#!Matreshka-trigger"
+						title="Fires an event"
+						data-name="trigger"
+						
+						data-importance="1">
+						trigger<span class="brackets">( )</span>
+						<i class="important" title="Important"></i>
 						
 						
 					</a>
 					
 			
 				<li>
-					<a href="#!Matreshka-delay"
-						title="Calls given function after timed delay"
-						data-name="delay"
-						data-since="0.3">
-						delay
+					<a href="#!Matreshka-unbindNode"
+						title="Breaks a binding between given property and HTML node."
+						data-name="unbindNode"
+						
+						data-importance="2">
+						unbindNode<span class="brackets">( )</span>
 						
 						
 						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka-getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything"
-						title="Computes the answer to the Ultimate Question of Life, the Universe, and Everything and displays the answer in 7.5 million years."
-						data-name="getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything"
-						data-since="0.4">
-						getAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
-						
-						
+							<span class="expand"></span>
+							<span class="hidden-active-child"></span>
 						
 					</a>
 					
-			
-				<li>
-					<a href="#!Matreshka-parseBindings"
-						title="Parses DOM tree, declaring property bindings which are double braced."
-						data-name="parseBindings"
-						data-since="1.1">
-						parseBindings
-						
-						
-						
-					</a>
+						<div class="submenu-wrapper">
+							<ul data-submenu="!Matreshka-unbindNode">
+								
+									<li>
+										<a href="#!Matreshka-unbindNode(2)"
+											title="Alternative syntax &quot;key-element&quot; for Matreshka#unbindNode"
+											data-name="unbindNode#2"
+											
+											data-importance="2">
+											#2
+										</a>
+									</li>
+								
+									<li>
+										<a href="#!Matreshka-unbindNode(3)"
+											title="Alternative syntax &quot;heap of arguments&quot; for Matreshka#unbindNode"
+											data-name="unbindNode#3"
+											
+											data-importance="2">
+											#3
+										</a>
+									</li>
+								
+							</ul>
+						</div>
 					
 			
 			
 				<li>
-					<a href="#!Matreshka.version" title="The version of Matreshka" data-name="version" data-since="">
-						version
+					<a
+						href="#!Matreshka.defaultBinders"
+						title="An array of functions which return a corresponding binder"
+						data-name="defaultBinders"
+						
+						data-importance="1">
+						defaultBinders
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.isXDR" title="If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8" data-name="isXDR" data-since="">
+					<a
+						href="#!Matreshka.isXDR"
+						title="If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8"
+						data-name="isXDR"
+						
+						data-importance="3">
 						isXDR
 						
 						
@@ -641,8 +701,13 @@
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.defaultBinders" title="An array of functions which return a corresponding binder" data-name="defaultBinders" data-since="">
-						defaultBinders
+					<a
+						href="#!Matreshka.version"
+						title="The version of Matreshka"
+						data-name="version"
+						
+						data-importance="3">
+						version
 						
 						
 					</a>
@@ -650,288 +715,468 @@
 			
 			
 				<li>
-					<a href="#!Matreshka.extend" title="A little additional function which extends one object by means of the other object properties" data-name="extend" data-since="">
-						extend
+					<a
+						href="#!Matreshka.$(static)"
+						title="A library used by Matreshka (jQuery, Zepto, Balalaika or others)"
+						data-name="$"
+						
+						data-importance="2">
+						$<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.Class" title="A link to the Class global function" data-name="Class" data-since="0.2">
-						Class
+					<a
+						href="#!Matreshka.$b"
+						title="Built-in micro-library Balalaika"
+						data-name="$b"
+						
+						data-importance="3">
+						$b<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.$(static)" title="A library used by Matreshka (jQuery, Zepto, Balalaika or others)" data-name="$" data-since="">
-						$
+					<a
+						href="#!Matreshka.$bound"
+						title="Returns a collection of bound nodes by given key"
+						data-name="$bound"
+						data-since="1.1"
+						data-importance="3">
+						$bound<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.$b" title="Bbuilt-in micro-library Balalaika" data-name="$b" data-since="">
-						$b
+					<a
+						href="#!Matreshka.Class"
+						title="A link to the Class global function"
+						data-name="Class"
+						data-since="0.2"
+						data-importance="2">
+						Class<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.useAs$" title="Forces to use a definite DOM-library" data-name="useAs$" data-since="0.2">
-						useAs$
+					<a
+						href="#!Matreshka.bindNode"
+						title="Binds a property of an object to HTML node, implementing two-way data binding"
+						data-name="bindNode"
+						data-since="1.1"
+						data-importance="3">
+						bindNode<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.noop" title="An empty function which does nothing" data-name="noop" data-since="">
-						noop
+					<a
+						href="#!Matreshka.bindOptionalNode"
+						title="Works just the same as Matreshka#bindNode but it does not throw an exception if the node argument is an empty array, undefined or non-existent."
+						data-name="bindOptionalNode"
+						data-since="1.1"
+						data-importance="3">
+						bindOptionalNode<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.each" title="Iterates any object running its every property through callback function" data-name="each" data-since="">
-						each
+					<a
+						href="#!Matreshka.bound"
+						title="Returns the first bound element or null"
+						data-name="bound"
+						data-since="1.1"
+						data-importance="3">
+						bound<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.debounce" title="Calls a function only once after a timer has expired. At every attempt of launching a timer is updated." data-name="debounce" data-since="0.3">
-						debounce
+					<a
+						href="#!Matreshka.boundAll"
+						title="Returns a collection of bound nodes by given key"
+						data-name="boundAll"
+						data-since="1.1"
+						data-importance="3">
+						boundAll<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.lookForBinder" title="" data-name="lookForBinder" data-since="">
-						lookForBinder
+					<a
+						href="#!Matreshka.debounce"
+						title="Calls a function only once after a timer has expired. At every attempt of launching a timer is updated."
+						data-name="debounce"
+						data-since="0.3"
+						data-importance="3">
+						debounce<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.randomString" title="The function which returns a unique pseudo-random string." data-name="randomString" data-since="">
-						randomString
+					<a
+						href="#!Matreshka.define"
+						title="Overrides a property descriptor completely using Object.defineProperty"
+						data-name="define"
+						data-since="1.1"
+						data-importance="3">
+						define<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.to" title="The function, converting a random structure of objects and arrays into Matreshka.Object and Matreshka.Array instances." data-name="to" data-since="1.1">
-						to
+					<a
+						href="#!Matreshka.defineGetter"
+						title="Defines custom getter for a property"
+						data-name="defineGetter"
+						data-since="1.1"
+						data-importance="3">
+						defineGetter<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.on" title="Adds an event handler" data-name="on" data-since="1.1">
-						on
+					<a
+						href="#!Matreshka.defineSetter"
+						title="Defines a custom setter for a property"
+						data-name="defineSetter"
+						data-since="1.1"
+						data-importance="3">
+						defineSetter<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.once" title="Adds event handler which can be called only once" data-name="once" data-since="1.1">
-						once
+					<a
+						href="#!Matreshka.each"
+						title="Iterates any object running its every property through callback function"
+						data-name="each"
+						
+						data-importance="3">
+						each<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.onDebounce" title="Adds an event handler which is called only once during a definite period of time" data-name="onDebounce" data-since="1.1">
-						onDebounce
+					<a
+						href="#!Matreshka.extend"
+						title="A little additional function which extends one object by means of the other object properties"
+						data-name="extend"
+						
+						data-importance="3">
+						extend<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.trigger" title="Fires an event" data-name="trigger" data-since="1.1">
-						trigger
+					<a
+						href="#!Matreshka.get"
+						title="Returns a value of property"
+						data-name="get"
+						data-since="1.1"
+						data-importance="3">
+						get<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.off" title="Deletes an event handler" data-name="off" data-since="1.1">
-						off
+					<a
+						href="#!Matreshka.linkProps"
+						title="Creates a dependency of one property value on values of others"
+						data-name="linkProps"
+						data-since="1.1"
+						data-importance="3">
+						linkProps<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.mediate" title="Transforms property value on its changing" data-name="mediate" data-since="1.1">
-						mediate
+					<a
+						href="#!Matreshka.lookForBinder"
+						title=""
+						data-name="lookForBinder"
+						
+						data-importance="3">
+						lookForBinder<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.setClassFor" title="Sets class for a property." data-name="setClassFor" data-since="1.1">
-						setClassFor
+					<a
+						href="#!Matreshka.mediate"
+						title="Transforms property value on its changing"
+						data-name="mediate"
+						data-since="1.1"
+						data-importance="3">
+						mediate<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.linkProps" title="Creates a dependency of one property value on values of others" data-name="linkProps" data-since="1.1">
-						linkProps
+					<a
+						href="#!Matreshka.noop"
+						title="An empty function which does nothing"
+						data-name="noop"
+						
+						data-importance="3">
+						noop<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.bindNode" title="Binds a property of an object to HTML node, implementing two-way data binding" data-name="bindNode" data-since="1.1">
-						bindNode
+					<a
+						href="#!Matreshka.off"
+						title="Deletes an event handler"
+						data-name="off"
+						data-since="1.1"
+						data-importance="3">
+						off<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.bindOptionalNode" title="Works just the same as Matreshka#bindNode but it does not throw an exception if the node argument is an empty array, undefined or non-existent." data-name="bindOptionalNode" data-since="1.1">
-						bindOptionalNode
+					<a
+						href="#!Matreshka.on"
+						title="Adds an event handler"
+						data-name="on"
+						data-since="1.1"
+						data-importance="3">
+						on<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.unbindNode" title="Breaks a binding between given property and HTML node." data-name="unbindNode" data-since="1.1">
-						unbindNode
+					<a
+						href="#!Matreshka.onDebounce"
+						title="Adds an event handler which is called only once during a definite period of time"
+						data-name="onDebounce"
+						data-since="1.1"
+						data-importance="3">
+						onDebounce<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.select" title="Returns HTML node corresponding to a selector from a sandbox" data-name="select" data-since="1.1">
-						select
+					<a
+						href="#!Matreshka.once"
+						title="Adds event handler which can be called only once"
+						data-name="once"
+						data-since="1.1"
+						data-importance="3">
+						once<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.selectAll" title="Returns HTML nodes corresponding to a selector from a sandbox" data-name="selectAll" data-since="1.1">
-						selectAll
+					<a
+						href="#!Matreshka.parseBindings"
+						title="Parses DOM tree, declaring bindings with properties enclosed in double braces."
+						data-name="parseBindings"
+						data-since="1.1"
+						data-importance="3">
+						parseBindings<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.bound" title="Returns the first bound element or null" data-name="bound" data-since="1.1">
-						bound
+					<a
+						href="#!Matreshka.randomString"
+						title="The function which returns a unique pseudo-random string."
+						data-name="randomString"
+						
+						data-importance="3">
+						randomString<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.boundAll" title="Returns a collection of bound nodes by given key" data-name="boundAll" data-since="1.1">
-						boundAll
+					<a
+						href="#!Matreshka.remove"
+						title="Deletes a property"
+						data-name="remove"
+						data-since="1.1"
+						data-importance="3">
+						remove<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.$bound" title="Returns a collection of bound nodes by given key" data-name="$bound" data-since="1.1">
-						$bound
+					<a
+						href="#!Matreshka.select"
+						title="Returns HTML node corresponding to a selector from a sandbox"
+						data-name="select"
+						data-since="1.1"
+						data-importance="3">
+						select<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.get" title="Returns a value of property" data-name="get" data-since="1.1">
-						get
+					<a
+						href="#!Matreshka.selectAll"
+						title="Returns HTML nodes corresponding to a selector from a sandbox"
+						data-name="selectAll"
+						data-since="1.1"
+						data-importance="3">
+						selectAll<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.set" title="Sets a property value allowing to pass an event object as the third argument" data-name="set" data-since="1.1">
-						set
+					<a
+						href="#!Matreshka.set"
+						title="Sets a property value allowing to pass an event object as the third argument"
+						data-name="set"
+						data-since="1.1"
+						data-importance="3">
+						set<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.remove" title="Deletes a property" data-name="remove" data-since="1.1">
-						remove
+					<a
+						href="#!Matreshka.setClassFor"
+						title="Sets class for a property."
+						data-name="setClassFor"
+						data-since="1.1"
+						data-importance="3">
+						setClassFor<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.define" title="Overrides a property descriptor completely using Object.defineProperty" data-name="define" data-since="1.1">
-						define
+					<a
+						href="#!Matreshka.to"
+						title="The function, converting a random structure of objects and arrays into Matreshka.Object and Matreshka.Array instances."
+						data-name="to"
+						data-since="1.1"
+						data-importance="3">
+						to<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.defineGetter" title="Defines custom getter for a property" data-name="defineGetter" data-since="1.1">
-						defineGetter
+					<a
+						href="#!Matreshka.toArray"
+						title="Converts any array-like object to native array."
+						data-name="toArray"
+						data-since="1.1"
+						data-importance="3">
+						toArray<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.defineSetter" title="Defines a custom setter for a property" data-name="defineSetter" data-since="1.1">
-						defineSetter
+					<a
+						href="#!Matreshka.trigger"
+						title="Fires an event"
+						data-name="trigger"
+						data-since="1.1"
+						data-importance="3">
+						trigger<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.parseBindings" title="Parses DOM tree, declaring bindings with properties enclosed in double braces." data-name="parseBindings" data-since="1.1">
-						parseBindings
+					<a
+						href="#!Matreshka.trim"
+						title="Strip whitespace from the beginning and end of a string"
+						data-name="trim"
+						data-since="1.1"
+						data-importance="3">
+						trim<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.trim" title="Strip whitespace from the beginning and end of a string" data-name="trim" data-since="1.1">
-						trim
+					<a
+						href="#!Matreshka.unbindNode"
+						title="Breaks a binding between given property and HTML node."
+						data-name="unbindNode"
+						data-since="1.1"
+						data-importance="3">
+						unbindNode<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.toArray" title="Converts any array-like object to native array." data-name="toArray" data-since="1.1">
-						toArray
+					<a
+						href="#!Matreshka.useAs$"
+						title="Forces to use a definite DOM-library"
+						data-name="useAs$"
+						data-since="0.2"
+						data-importance="3">
+						useAs$<span class="brackets">( )</span>
 						
 						
 					</a>
@@ -948,80 +1193,156 @@
 						<ul data-submenu="!Matreshka.binders">
 							
 								<li>
-									<a href="#!Matreshka.binders.html" title="Returns data binder which changes innerHTML of bound DOM node depending on instance property value." data-name="binders.html" data-since="0.1">
-										html
+									<a
+										href="#!Matreshka.binders.html"
+										title="Returns data binder which changes innerHTML of bound DOM node depending on instance property value."
+										data-name="binders.html"
+										data-since="0.1"
+										data-importance="2">
+										html<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.visibility" title="Returns data binder which controls a visibility of DOM node (using style.display) depending on the instance property value" data-name="binders.visibility" data-since="0.1">
-										visibility
+									<a
+										href="#!Matreshka.binders.display"
+										title="Returns data binder which controls a visibility of DOM node (using style.display) depending on the instance property value"
+										data-name="binders.display"
+										data-since="0.1"
+										data-importance="2">
+										display<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.className" title="Returns data binder which switches over DOM node class name depending on instance property value. If property value equals true non-strictly, a class name is added, otherwise - it's removed. The logic can be changed by adding a bang character in front of a class name and in this way, a class name will be added  when a property value equals false non-strictly and vice versa." data-name="binders.className" data-since="0.1">
-										className
+									<a
+										href="#!Matreshka.binders.className"
+										title="Returns data binder which switches over DOM node class name depending on instance property value. If property value equals true non-strictly, a class name is added, otherwise - it's removed. The logic can be changed by adding a bang character in front of a class name and in this way, a class name will be added  when a property value equals false non-strictly and vice versa."
+										data-name="binders.className"
+										data-since="0.1"
+										data-importance="2">
+										className<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.prop" title="Returns data binder which changes given property of DOM node depending on instance property value." data-name="binders.prop" data-since="0.3">
-										prop
+									<a
+										href="#!Matreshka.binders.prop"
+										title="Returns data binder which changes given property of DOM node depending on instance property value."
+										data-name="binders.prop"
+										data-since="0.3"
+										data-importance="2">
+										prop<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.attr" title="Returns data binder which changes an attribute of DOM node depending on instance property value" data-name="binders.attr" data-since="0.3">
-										attr
+									<a
+										href="#!Matreshka.binders.attr"
+										title="Returns data binder which changes an attribute of DOM node depending on instance property value"
+										data-name="binders.attr"
+										data-since="0.3"
+										data-importance="2">
+										attr<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.input" title="Returns data binder which binds instance property to an input value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list." data-name="binders.input" data-since="0.3">
-										input
+									<a
+										href="#!Matreshka.binders.input"
+										title="Returns data binder which binds instance property to an input value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list."
+										data-name="binders.input"
+										data-since="0.3"
+										data-importance="3">
+										input<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.textarea" title="Returns data binder which binds instance property to a textarea value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list." data-name="binders.textarea" data-since="0.3">
-										textarea
+									<a
+										href="#!Matreshka.binders.output"
+										title="Returns data binder which binds instance property to an output value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list."
+										data-name="binders.output"
+										data-since="0.3"
+										data-importance="3">
+										output<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.select" title="Returns data binder which binds instance property to a select value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list." data-name="binders.select" data-since="0.3">
-										select
+									<a
+										href="#!Matreshka.binders.textarea"
+										title="Returns data binder which binds instance property to a textarea value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list."
+										data-name="binders.textarea"
+										data-since="0.3"
+										data-importance="3">
+										textarea<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.progress" title="Returns data binder which binds instance property to a progress value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list." data-name="binders.progress" data-since="1.1">
-										progress
+									<a
+										href="#!Matreshka.binders.select"
+										title="Returns data binder which binds instance property to a select value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list."
+										data-name="binders.select"
+										data-since="0.3"
+										data-importance="3">
+										select<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.text" title="Returns data binder which changes textContent of bound DOM node depending on instance property value." data-name="binders.text" data-since="1.1">
-										text
+									<a
+										href="#!Matreshka.binders.progress"
+										title="Returns data binder which binds instance property to a progress value. It is not obligatory to use the binder directly because it is included in the Matreshka.defaultBinders list."
+										data-name="binders.progress"
+										data-since="1.1"
+										data-importance="3">
+										progress<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.style" title="Returns data binder which changes given style property of bound DOM node depending on instance property value." data-name="binders.style" data-since="1.1">
-										style
+									<a
+										href="#!Matreshka.binders.text"
+										title="Returns data binder which changes textContent of bound DOM node depending on instance property value."
+										data-name="binders.text"
+										data-since="1.1"
+										data-importance="2">
+										text<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.dataset" title="Returns data binder which changes given dataset property of bound DOM node depending on instance property value." data-name="binders.dataset" data-since="1.1">
-										dataset
+									<a
+										href="#!Matreshka.binders.style"
+										title="Returns data binder which changes given style property of bound DOM node depending on instance property value."
+										data-name="binders.style"
+										data-since="1.1"
+										data-importance="2">
+										style<span class="brackets">( )</span>
 									</a>
 								</li>
 							
 								<li>
-									<a href="#!Matreshka.binders.file" title="Returns binder for input[type=&quot;file&quot;]." data-name="binders.file" data-since="1.1">
-										file
+									<a
+										href="#!Matreshka.binders.dataset"
+										title="Returns data binder which changes given dataset property of bound DOM node depending on instance property value."
+										data-name="binders.dataset"
+										data-since="1.1"
+										data-importance="2">
+										dataset<span class="brackets">( )</span>
+									</a>
+								</li>
+							
+								<li>
+									<a
+										href="#!Matreshka.binders.file"
+										title="Returns binder for input[type=&quot;file&quot;]."
+										data-name="binders.file"
+										data-since="1.1"
+										data-importance="2">
+										file<span class="brackets">( )</span>
 									</a>
 								</li>
 							
@@ -1032,7 +1353,11 @@
 		</ul>
 	</div>
 
-	<a href="#!Matreshka.Object" data-name="Object">
+	<a
+		href="#!Matreshka.Object"
+		data-name="Object"
+		data-importance="1"
+	>
 		<b>Matreshka.Object</b>
 
 		<i class="important" title="Important"></i>
@@ -1043,10 +1368,11 @@
 		<ul data-submenu="!Matreshka.Object">
 			
 				<li>
-					<a href="#!Matreshka.Object-isMKObject" \
+					<a href="#!Matreshka.Object-isMKObject"
 						title="The isMKObject property always equals true. It is used for checking if an object is an instance of Matreshka.Object."
 						data-name="isMKObject"
-						data-since="">
+						
+						data-importance="3">
 						isMKObject
 						
 						
@@ -1055,11 +1381,25 @@
 			
 			
 				<li>
-					<a href="#!Matreshka.Object-keys"
-						title="Returns an array of keys which are responsible for data"
-						data-name="keys"
-						data-since="">
-						keys
+					<a href="#!Matreshka.Object-addDataKeys"
+						title="Adds keys to a list of keys which are responsible for data."
+						data-name="addDataKeys"
+						
+						data-importance="1">
+						addDataKeys<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Object-each"
+						title="Iterates properties which are responsible for data through callback function."
+						data-name="each"
+						
+						data-importance="2">
+						each<span class="brackets">( )</span>
 						
 						
 						
@@ -1070,56 +1410,9 @@
 					<a href="#!Matreshka.Object-hasOwnProperty"
 						title="Checks if there is a property which is responsible for data with given key in an instance."
 						data-name="hasOwnProperty"
-						data-since="">
-						hasOwnProperty
 						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Object-toObject"
-						title="Converts Matreshka.Object instance into an ordinary object, but it doesn't convert properties which are included in it."
-						data-name="toObject"
-						data-since="">
-						toObject
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Object-toNative"
-						title="Does the same as Matreshka.Object#toObject"
-						data-name="toNative"
-						data-since="">
-						toNative
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Object-toJSON"
-						title="Converts an instance and Matreshka.Object internal properties into an ordinary object."
-						data-name="toJSON"
-						data-since="">
-						toJSON
-						<i class="important" title="Important"></i>
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Object-keyOf"
-						title="Searches for specified property value among others which are responsible for data and returns a key if this value has been found (very similar to Array.prototype.indexOf function)"
-						data-name="keyOf"
-						data-since="">
-						keyOf
+						data-importance="3">
+						hasOwnProperty<span class="brackets">( )</span>
 						
 						
 						
@@ -1130,8 +1423,9 @@
 					<a href="#!Matreshka.Object-jset"
 						title="Sets a property and adds a key to a list of keys which are responsible for data."
 						data-name="jset"
-						data-since="">
-						jset
+						
+						data-importance="1">
+						jset<span class="brackets">( )</span>
 						<i class="important" title="Important"></i>
 						
 						
@@ -1147,7 +1441,8 @@
 										<a href="#!Matreshka.Object-jset(2)"
 											title="Alternative syntax of the Matreshka.Object#jset method that uses a &quot;key-value&quot; object for setting several properties at once"
 											data-name="jset#2"
-											data-since="">
+											
+											data-importance="1">
 											#2
 										</a>
 									</li>
@@ -1157,11 +1452,12 @@
 					
 			
 				<li>
-					<a href="#!Matreshka.Object-remove"
-						title="Deletes a property from a Matreshka.Object class instance and from a list of keys which are responsible for data."
-						data-name="remove"
-						data-since="">
-						remove
+					<a href="#!Matreshka.Object-keyOf"
+						title="Searches for specified property value among others which are responsible for data and returns a key if this value has been found (very similar to Array.prototype.indexOf function)"
+						data-name="keyOf"
+						
+						data-importance="2">
+						keyOf<span class="brackets">( )</span>
 						
 						
 						
@@ -1169,11 +1465,25 @@
 					
 			
 				<li>
-					<a href="#!Matreshka.Object-addDataKeys"
-						title="Adds keys to a list of keys which are responsible for data."
-						data-name="addDataKeys"
-						data-since="">
-						addDataKeys
+					<a href="#!Matreshka.Object-keys"
+						title="Returns an array of keys which are responsible for data"
+						data-name="keys"
+						
+						data-importance="2">
+						keys<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Object-remove"
+						title="Deletes a property from a Matreshka.Object class instance and from a list of keys which are responsible for data."
+						data-name="remove"
+						
+						data-importance="2">
+						remove<span class="brackets">( )</span>
 						
 						
 						
@@ -1184,8 +1494,9 @@
 					<a href="#!Matreshka.Object-removeDataKeys"
 						title="Deletes keys from a list of keys which are responsible for data (but does not delete given properties)"
 						data-name="removeDataKeys"
-						data-since="">
-						removeDataKeys
+						
+						data-importance="2">
+						removeDataKeys<span class="brackets">( )</span>
 						
 						
 						
@@ -1193,11 +1504,38 @@
 					
 			
 				<li>
-					<a href="#!Matreshka.Object-each"
-						title="Iterates properties which are responsible for data through callback function."
-						data-name="each"
-						data-since="">
-						each
+					<a href="#!Matreshka.Object-toJSON"
+						title="Converts an instance and Matreshka.Object internal properties into an ordinary object."
+						data-name="toJSON"
+						
+						data-importance="1">
+						toJSON<span class="brackets">( )</span>
+						<i class="important" title="Important"></i>
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Object-toNative"
+						title="Does the same as Matreshka.Object#toObject"
+						data-name="toNative"
+						
+						data-importance="3">
+						toNative<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Object-toObject"
+						title="Converts Matreshka.Object instance into an ordinary object, but it doesn't convert properties which are included in it."
+						data-name="toObject"
+						
+						data-importance="3">
+						toObject<span class="brackets">( )</span>
 						
 						
 						
@@ -1210,7 +1548,11 @@
 		</ul>
 	</div>
 
-	<a href="#!Matreshka.Array" data-name="Array">
+	<a
+		href="#!Matreshka.Array"
+		data-name="Array"
+		data-importance="1"
+	>
 		<b>Matreshka.Array</b>
 
 		<i class="important" title="Important"></i>
@@ -1221,10 +1563,11 @@
 		<ul data-submenu="!Matreshka.Array">
 			
 				<li>
-					<a href="#!Matreshka.Array-isMKArray" \
+					<a href="#!Matreshka.Array-isMKArray"
 						title="isMKArray always equals true. This property is used to define whether an object is an instance of the Matreshka.Array class."
 						data-name="isMKArray"
-						data-since="">
+						
+						data-importance="3">
 						isMKArray
 						
 						
@@ -1232,32 +1575,11 @@
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.Array-useBindingsParser" \
-						title="The property turns off the parser if it is assigned false"
-						data-name="useBindingsParser"
-						data-since="">
-						useBindingsParser
-						
-						
-					</a>
-				</li>
-			
-				<li>
-					<a href="#!Matreshka.Array-renderIfPossible" \
-						title="The renderIfPossible property cancels the array rendering if it equals false"
-						data-name="renderIfPossible"
-						data-since="">
-						renderIfPossible
-						
-						
-					</a>
-				</li>
-			
-				<li>
-					<a href="#!Matreshka.Array-itemRenderer" \
+					<a href="#!Matreshka.Array-itemRenderer"
 						title="HTML string, selector or function which is responsible for rendering DOM nodes of an array on a page."
 						data-name="itemRenderer"
-						data-since="0.1">
+						data-since="0.1"
+						data-importance="1">
 						itemRenderer
 						<i class="important" title="Important"></i>
 						<i class="cool" title="Cool method or property"></i>
@@ -1265,11 +1587,36 @@
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.Array-trackBy" \
+					<a href="#!Matreshka.Array-renderIfPossible"
+						title="The renderIfPossible property cancels the array rendering if it equals false"
+						data-name="renderIfPossible"
+						
+						data-importance="3">
+						renderIfPossible
+						
+						
+					</a>
+				</li>
+			
+				<li>
+					<a href="#!Matreshka.Array-trackBy"
 						title="trackBy property indicates a key of unique IDs for collection items."
 						data-name="trackBy"
-						data-since="1.2">
+						data-since="1.2"
+						data-importance="2">
 						trackBy
+						
+						
+					</a>
+				</li>
+			
+				<li>
+					<a href="#!Matreshka.Array-useBindingsParser"
+						title="The property turns off the parser if it is assigned false"
+						data-name="useBindingsParser"
+						
+						data-importance="3">
+						useBindingsParser
 						
 						
 					</a>
@@ -1277,155 +1624,12 @@
 			
 			
 				<li>
-					<a href="#!Matreshka.Array-onItemRender"
-						title="A function which is launched before &quot;render&quot; event."
-						data-name="onItemRender"
-						data-since="1.1">
-						onItemRender
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-Model"
-						title="The property defines a class of items which will be inserted to a collection"
-						data-name="Model"
-						data-since="0.2">
-						Model
-						<i class="important" title="Important"></i>
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-mediateItem"
-						title="Transforms an item value while inserting."
-						data-name="mediateItem"
-						data-since="0.1">
-						mediateItem
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-recreate"
-						title="Recreates the Matreshka.Array instance."
-						data-name="recreate"
-						data-since="">
-						recreate
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-restore"
-						title="Restores Matreshka.Array instance from existing HTML nodes on a page."
-						data-name="restore"
-						data-since="1.3">
-						restore
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-toArray"
-						title="Converts Matreshka.Array into an ordinary array, but it does not convert items it contains."
-						data-name="toArray"
-						data-since="">
-						toArray
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-toNative"
-						title="Does the same as Matreshka.Array#toArray"
-						data-name="toNative"
-						data-since="">
-						toNative
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-rerender"
-						title="Rerenders DOM nodes of items which are included into an instance."
-						data-name="rerender"
-						data-since="0.3">
-						rerender
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-hasOwnProperty"
-						title="Returns true if a property is present in an instance (index or length property)"
-						data-name="hasOwnProperty"
-						data-since="">
-						hasOwnProperty
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-toJSON"
-						title="Converts the instance and its items into native arrays and objects"
-						data-name="toJSON"
-						data-since="">
-						toJSON
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-pull"
-						title="Removes an item with specified index from an array and returns this item."
-						data-name="pull"
-						data-since="0.1">
-						pull
-						
-						
-						
-					</a>
-					
-			
-				<li>
-					<a href="#!Matreshka.Array-each"
-						title="Works the same as the forEach method which enumerates array items"
-						data-name="each"
-						data-since="">
-						each
-						
-						
-						
-					</a>
-					
-			
-				<li>
 					<a href="#!Matreshka.Array-METHOD"
 						title="Any method from Array.prototype"
 						data-name="METHOD"
-						data-since="">
-						METHOD
+						
+						data-importance="1">
+						METHOD<span class="brackets">( )</span>
 						<i class="important" title="Important"></i>
 						
 						
@@ -1436,9 +1640,166 @@
 					<a href="#!Matreshka.Array-METHOD_"
 						title="Any method from Array.prototype with the possibility of passing event object."
 						data-name="METHOD_"
-						data-since="">
-						METHOD_
+						
+						data-importance="1">
+						METHOD_<span class="brackets">( )</span>
 						<i class="important" title="Important"></i>
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-Model"
+						title="The property defines a class of items which will be inserted to a collection"
+						data-name="Model"
+						data-since="0.2"
+						data-importance="1">
+						Model<span class="brackets">( )</span>
+						<i class="important" title="Important"></i>
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-each"
+						title="Works the same as the forEach method which enumerates array items"
+						data-name="each"
+						
+						data-importance="3">
+						each<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-hasOwnProperty"
+						title="Returns true if a property is present in an instance (index or length property)"
+						data-name="hasOwnProperty"
+						
+						data-importance="3">
+						hasOwnProperty<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-mediateItem"
+						title="Transforms an item value while inserting."
+						data-name="mediateItem"
+						data-since="0.1"
+						data-importance="2">
+						mediateItem<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-onItemRender"
+						title="A function which is launched before &quot;render&quot; event."
+						data-name="onItemRender"
+						data-since="1.1"
+						data-importance="2">
+						onItemRender<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-pull"
+						title="Removes an item with specified index from an array and returns this item."
+						data-name="pull"
+						data-since="0.1"
+						data-importance="2">
+						pull<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-recreate"
+						title="Recreates the Matreshka.Array instance."
+						data-name="recreate"
+						
+						data-importance="1">
+						recreate<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-rerender"
+						title="Rerenders DOM nodes of items which are included into an instance."
+						data-name="rerender"
+						data-since="0.3"
+						data-importance="3">
+						rerender<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-restore"
+						title="Restores Matreshka.Array instance from existing HTML nodes on a page."
+						data-name="restore"
+						data-since="1.3"
+						data-importance="2">
+						restore<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-toArray"
+						title="Converts Matreshka.Array into an ordinary array, but it does not convert items it contains."
+						data-name="toArray"
+						
+						data-importance="3">
+						toArray<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-toJSON"
+						title="Converts the instance and its items into native arrays and objects"
+						data-name="toJSON"
+						
+						data-importance="1">
+						toJSON<span class="brackets">( )</span>
+						
+						
+						
+					</a>
+					
+			
+				<li>
+					<a href="#!Matreshka.Array-toNative"
+						title="Does the same as Matreshka.Array#toArray"
+						data-name="toNative"
+						
+						data-importance="3">
+						toNative<span class="brackets">( )</span>
+						
 						
 						
 					</a>
@@ -1447,16 +1808,26 @@
 			
 			
 				<li>
-					<a href="#!Matreshka.Array.from" title="The function creates a new Matreshka.Array instance from array-like object." data-name="from" data-since="1.1">
-						from
+					<a
+						href="#!Matreshka.Array.from"
+						title="The function creates a new Matreshka.Array instance from array-like object."
+						data-name="from"
+						data-since="1.1"
+						data-importance="2">
+						from<span class="brackets">( )</span>
 						
 						
 					</a>
 				</li>
 			
 				<li>
-					<a href="#!Matreshka.Array.of" title="The function creates a new Matreshka.Array instance with a variable number of arguments, regardless of number or type of the arguments." data-name="of" data-since="1.1">
-						of
+					<a
+						href="#!Matreshka.Array.of"
+						title="The function creates a new Matreshka.Array instance with a variable number of arguments, regardless of number or type of the arguments."
+						data-name="of"
+						data-since="1.1"
+						data-importance="2">
+						of<span class="brackets">( )</span>
 						
 						
 					</a>
@@ -1466,4 +1837,26 @@
 		</ul>
 	</div>
 
+
+<a
+	href="#!Class"
+	title="A class implementation based on the prototype inheritance"
+	
+	data-importance="2"
+>
+	Class
+	
+	
+</a>
+
+<a
+	href="#!$b"
+	title="Balalaika micro-library"
+	data-since="0.1"
+	data-importance="2"
+>
+	$b
+	
+	
+</a>
 

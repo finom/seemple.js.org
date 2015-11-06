@@ -86,6 +86,8 @@ exports.publish = function(data, opts) {
 		resolveAllLinks(item);
 
 		item.summary_plain = (item.summary || '').replace(/(<([^>]+)>)/ig, "");
+		item.importance = item.comment && /[\s\S]+@importance\s+(\d+)[\s\S]+/.exec(item.comment);//.replace(/[\s\S]+@importance\s+([a-z]+)\s[\s\S]+/g, '$1') : null;
+		item.importance = item.importance ? item.importance[1] : null;
 	});
 
 	result.classes.Matreshka.binders = result.binders;
@@ -158,6 +160,20 @@ exports.publish = function(data, opts) {
 			since: 'Добавлено в версии'
 		}
 	}[view.langName];
+
+	for(var className in result.classes) {
+		var _class = result.classes[className];
+		var sortFunction = function(a, b) {
+			//console.log(a.longname);
+			return a.longname < b.longname ? -1 : 1;
+		};
+
+		_class.instanceMembers.member = _class.instanceMembers.member.sort(sortFunction);
+		_class.instanceMembers['function'] = _class.instanceMembers['function'].sort(sortFunction);
+		_class.staticMembers.member = _class.staticMembers.member.sort(sortFunction);
+		_class.staticMembers['function'] = _class.staticMembers['function'].sort(sortFunction);
+
+	}
 
 	fs.writeFileSync(env.opts.destination + '/doc_menu.html', view.render('menu.html', result), 'utf8');
 	fs.writeFileSync(env.opts.destination + '/doc_content.html', view.render('content.html', result), 'utf8');
