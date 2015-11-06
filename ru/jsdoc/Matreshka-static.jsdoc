@@ -353,7 +353,7 @@ alert(this.x.a); // 42
 @see {@link Matreshka#linkProps}
 @example
 var object = {};
-MK.linkProps(object, 'sum', 'a b' function(a, b) {
+MK.linkProps(object, 'sum', 'a b', function(a, b) {
 	return a + b;
 });
 object.a = 40;

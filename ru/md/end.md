@@ -85,7 +85,7 @@ var magic = require('magic/matreshka-magic.min');
 
 ### [Матрешка 1.4.0](https://github.com/finom/matreshka/releases/tag/v1.4.0)
 * Стандартный байндер для тега ``output`` {@link Matreshka.binders.output}
-* Байндер ``visibility`` переименован в {@link Matreshka.binders.display} во избежания путанницы с CSS свойством ``visibility`` (старое название будет по-прежнему работать	)
+* Байндер ``visibility`` переименован в {@link Matreshka.binders.display} во избежания путаницы с CSS свойством ``visibility`` (старое название будет по-прежнему работать	)
 * При установке {@link Matreshka.Array#itemRenderer} доступен флаг ``forceRerender: false``
 * Событие ``afterrender``, которое срабатывает после небольшой задержки, следующей за вставкой элемента в контейнер (см. {@link Matreshka.Array#itemRenderer})
 * {@link Matreshka#trigger} теперь умеет генерировать нативные DOM события (``"click::x(.selector)"``), которые можно отловить ``addEventListener``
@@ -93,7 +93,7 @@ var magic = require('magic/matreshka-magic.min');
 * Ускорен метод {@link Matreshka.Array#pull}
 * Исправлена проблема удаления DOM событий, используя метод {@link Matreshka#off}
 * Исправлена [небольшая проблема](https://github.com/matreshkajs/matreshka/issues/19) в методе {@link Matreshka#mediate}
-* Испраавлена проблема работы {@link Matreshka.binders.dataset} в Internet Explorer
+* Исправлена проблема работы {@link Matreshka.binders.dataset} в Internet Explorer
 * Все байндеры покрыты тестами
 * Другие небольшие исправления
 

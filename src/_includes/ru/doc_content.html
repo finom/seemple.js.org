@@ -6015,7 +6015,7 @@ data-importance="3">
   
 <h5></h5>
 <pre class="prettyprint source lang-js"><code>var object = {};
-MK.linkProps(object, 'sum', 'a b' function(a, b) {
+MK.linkProps(object, 'sum', 'a b', function(a, b) {
 	return a + b;
 });
 object.a = 40;
@@ -12639,7 +12639,7 @@ magic.mediate(object, 'z', Number);
 <p>Обратите внимание. Фреймворк Матрешка работает в Internet Explorer 8 благодаря хакам, возвращающим из конструктора объект <code>XDomainRequest</code>, вместо "чистого" JavaScript объекта. Так как MatreshkaMagic позволяет работать исключительно с произвольными объектами, поддeржка IE8 для MatreshkaMagic невозможна. Это значит, библиотека работает везде, включая IE9+.</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.4.0">Матрешка 1.4.0</a></h3><ul>
 <li>Стандартный байндер для тега <code>output</code> <a href="#!Matreshka.binders.output">Matreshka.binders.output</a></li>
-<li>Байндер <code>visibility</code> переименован в <a href="#!Matreshka.binders.display">Matreshka.binders.display</a> во избежания путанницы с CSS свойством <code>visibility</code> (старое название будет по-прежнему работать    )</li>
+<li>Байндер <code>visibility</code> переименован в <a href="#!Matreshka.binders.display">Matreshka.binders.display</a> во избежания путаницы с CSS свойством <code>visibility</code> (старое название будет по-прежнему работать    )</li>
 <li>При установке <a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a> доступен флаг <code>forceRerender: false</code></li>
 <li>Событие <code>afterrender</code>, которое срабатывает после небольшой задержки, следующей за вставкой элемента в контейнер (см. <a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a>)</li>
 <li><a href="#!Matreshka-trigger">Matreshka#trigger</a> теперь умеет генерировать нативные DOM события (<code>"click::x(.selector)"</code>), которые можно отловить <code>addEventListener</code></li>
@@ -12647,7 +12647,7 @@ magic.mediate(object, 'z', Number);
 <li>Ускорен метод <a href="#!Matreshka.Array-pull">Matreshka.Array#pull</a></li>
 <li>Исправлена проблема удаления DOM событий, используя метод <a href="#!Matreshka-off">Matreshka#off</a></li>
 <li>Исправлена <a href="https://github.com/matreshkajs/matreshka/issues/19">небольшая проблема</a> в методе <a href="#!Matreshka-mediate">Matreshka#mediate</a></li>
-<li>Испраавлена проблема работы <a href="#!Matreshka.binders.dataset">Matreshka.binders.dataset</a> в Internet Explorer</li>
+<li>Исправлена проблема работы <a href="#!Matreshka.binders.dataset">Matreshka.binders.dataset</a> в Internet Explorer</li>
 <li>Все байндеры покрыты тестами</li>
 <li>Другие небольшие исправления</li>
 </ul>
