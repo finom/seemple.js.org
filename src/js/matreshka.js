@@ -1,11 +1,11 @@
 ;(function(__root) {
 /*
-	Matreshka v1.3.2 (2015-10-13)
+	Matreshka v1.4.0 (2015-11-06)
 	JavaScript Framework by Andrey Gubanov
 	Released under the MIT license
 	More info: http://matreshka.io
 */
-var matreshka_dir_xclass, matreshka_dir_core_var_core, matreshka_dir_core_util_common, matreshka_dir_core_var_sym, matreshka_dir_core_bindings_binders, matreshka_dir_polyfills_addeventlistener, matreshka_dir_core_dom_lib_balalaika, matreshka_dir_polyfills_classlist, matreshka_dir_core_dom_lib_balalaika_extended, matreshka_dir_core_dom_lib_dollar_lib, matreshka_dir_core_dom_lib_used_lib, matreshka_dir_core_var_isxdr, matreshka_dir_core_initmk, matreshka_dir_core_definespecial, matreshka_dir_core_util_define, matreshka_dir_core_util_linkprops, matreshka_dir_core_util_mediate, matreshka_dir_core_get_set_remove, matreshka_dir_core_bindings_bindnode, matreshka_dir_core_bindings_unbindnode, matreshka_dir_core_bindings_parsebindings, matreshka_dir_core_bindings_getnodes, matreshka_dir_core_events_trigger, matreshka_dir_core_events_on, matreshka_dir_core_events_off, matreshka_dir_core_var_specialevtreg, matreshka_dir_core_events_addlistener, matreshka_dir_core_events_removelistener, matreshka_dir_core_events_delegatelistener, matreshka_dir_core_events_undelegatelistener, matreshka_dir_core_events_domevents, matreshka_dir_core_events_adddomlistener, matreshka_dir_core_events_removedomlistener, matreshka_dir_core_events_once, matreshka_dir_core_events_ondebounce, matreshka_dir_matreshka_magic, matreshka_dir_matreshka_dynamic, matreshka_dir_matreshka_static, matreshka_dir_matreshkaclass, matreshka_dir_matreshka_object_dynamic, matreshka_dir_matreshka_object_iterator, matreshka_dir_core_var_sym_iterator, matreshka_dir_matreshka_objectclass, matreshka_dir_matreshka_array_processrendering, matreshka_dir_matreshka_array_triggermodify, matreshka_dir_matreshka_array_indexof, matreshka_dir_matreshka_array_lastindexof, matreshka_dir_matreshka_array_recreate, matreshka_dir_matreshka_array_native_dynamic, matreshka_dir_matreshka_array_native_static, matreshka_dir_matreshka_array_custom_dynamic, matreshka_dir_matreshka_array_iterator, matreshka_dir_matreshka_arrayclass, matreshka_dir_amd_modules_matreshka, matreshka_dir_amd_modules_balalaika, matreshka_dir_amd_modules_xclass, matreshka_dir_amd_modules_matreshka_magic, matreshka;
+var matreshka_dir_xclass, matreshka_dir_core_var_core, matreshka_dir_core_util_common, matreshka_dir_core_var_sym, matreshka_dir_core_bindings_binders, matreshka_dir_polyfills_addeventlistener, matreshka_dir_core_dom_lib_balalaika, matreshka_dir_polyfills_classlist, matreshka_dir_core_dom_lib_balalaika_extended, matreshka_dir_core_dom_lib_dollar_lib, matreshka_dir_core_dom_lib_used_lib, matreshka_dir_core_var_isxdr, matreshka_dir_core_initmk, matreshka_dir_core_definespecial, matreshka_dir_core_util_define, matreshka_dir_core_util_linkprops, matreshka_dir_core_util_mediate, matreshka_dir_core_get_set_remove, matreshka_dir_core_bindings_bindnode, matreshka_dir_core_bindings_unbindnode, matreshka_dir_core_bindings_parsebindings, matreshka_dir_core_bindings_getnodes, matreshka_dir_core_var_domevtreg, matreshka_dir_core_events_trigger, matreshka_dir_core_events_on, matreshka_dir_core_events_off, matreshka_dir_core_var_specialevtreg, matreshka_dir_core_events_addlistener, matreshka_dir_core_events_removelistener, matreshka_dir_core_events_delegatelistener, matreshka_dir_core_events_undelegatelistener, matreshka_dir_core_events_domevents, matreshka_dir_core_events_adddomlistener, matreshka_dir_core_events_removedomlistener, matreshka_dir_core_events_once, matreshka_dir_core_events_ondebounce, matreshka_dir_matreshka_magic, matreshka_dir_matreshka_dynamic, matreshka_dir_matreshka_static, matreshka_dir_matreshkaclass, matreshka_dir_matreshka_object_dynamic, matreshka_dir_matreshka_object_iterator, matreshka_dir_core_var_sym_iterator, matreshka_dir_matreshka_objectclass, matreshka_dir_matreshka_array_processrendering, matreshka_dir_matreshka_array_triggermodify, matreshka_dir_matreshka_array_indexof, matreshka_dir_matreshka_array_lastindexof, matreshka_dir_matreshka_array_recreate, matreshka_dir_matreshka_array_native_dynamic, matreshka_dir_matreshka_array_native_static, matreshka_dir_matreshka_array_custom_dynamic, matreshka_dir_matreshka_array_iterator, matreshka_dir_matreshka_arrayclass, matreshka_dir_amd_modules_matreshka, matreshka_dir_amd_modules_balalaika, matreshka_dir_amd_modules_xclass, matreshka_dir_amd_modules_matreshka_magic, matreshka;
 matreshka_dir_xclass = function () {
   var isArguments = function (o) {
       return !!o && (o.toString() === '[object Arguments]' || typeof o === 'object' && o !== null && 'length' in o && 'callee' in o);
@@ -263,6 +263,7 @@ matreshka_dir_core_bindings_binders = function (core) {
     }, binders,
     // cross-browser input event
     cbInputEvent = document.documentMode == 8 ? 'keyup paste' : 'input';
+  // TODO tests
   core.binders = binders = {
     innerHTML: function () {
       // @IE8
@@ -422,9 +423,20 @@ matreshka_dir_core_bindings_binders = function (core) {
           return this.value;
         },
         setValue: function (v) {
-          if (this.value != v) {
-            this.value = v;
-          }
+          this.value = v;
+        }
+      };
+    },
+    output: function () {
+      // @IE8
+      return {
+        getValue: function () {
+          var _this = this;
+          return _this.value || _this.textContent || _this.innerText;
+        },
+        setValue: function (v) {
+          var _this = this;
+          _this['form' in _this ? 'value' : 'textContent' in _this ? 'textContent' : 'innerText'] = v === null ? '' : v + '';
         }
       };
     },
@@ -468,11 +480,14 @@ matreshka_dir_core_bindings_binders = function (core) {
         };
       }
     },
-    visibility: function (value) {
+    display: function (value) {
       value = typeof value == 'undefined' ? true : value;
       return {
         on: null,
-        getValue: null,
+        getValue: function () {
+          var _this = this, v = _this.style.display || (window.getComputedStyle ? getComputedStyle(_this, null).getPropertyValue('display') : _this.currentStyle.display), none = v == 'none';
+          return value ? !none : !!none;
+        },
         setValue: function (v) {
           this.style.display = value ? v ? '' : 'none' : v ? 'none' : '';
         }
@@ -507,7 +522,8 @@ matreshka_dir_core_bindings_binders = function (core) {
       return {
         getValue: function () {
           // @IE8
-          return window.getComputedStyle ? getComputedStyle(this, null).getPropertyValue(property) : this.currentStyle[property];
+          var _this = this;
+          return _this.style[property] || (window.getComputedStyle ? getComputedStyle(_this, null).getPropertyValue(property) : _this.currentStyle[property]);
         },
         setValue: function (v) {
           this.style[property] = v;
@@ -515,6 +531,7 @@ matreshka_dir_core_bindings_binders = function (core) {
       };
     }
   };
+  binders.visibility = binders.display;
   binders.html = binders.innerHTML;
   binders.text = binders.innerText;
   binders.prop = binders.property;
@@ -595,7 +612,7 @@ matreshka_dir_core_dom_lib_balalaika = function (window, document, fn, nsRegAndE
           // while j = one of array of events
           while (j = k[--i]) {
             // if( no f and no namespace || f but no namespace || no f but namespace || f and namespace )
-            if ((!f || f == j[0]) && (!n[1] || n[1] == j[1])) {
+            if ((!f || f == j[0] || f == j[0]._callback) && (!n[1] || n[1] == j[1])) {
               // item.removeEventListener( eventName, handler );
               item[l](n[0], j[0]);
               // remove event from array of events
@@ -1272,6 +1289,8 @@ matreshka_dir_core_bindings_bindnode = function (core, sym, initMK, util) {
         b = binders.select(node.multiple);
       } else if (tagName == 'PROGRESS') {
         b = binders.progress();
+      } else if (tagName == 'OUTPUT') {
+        b = binders.output();
       }
       return b;
     }];
@@ -1426,8 +1445,10 @@ matreshka_dir_core_bindings_bindnode = function (core, sym, initMK, util) {
       }
       if (_binder.setValue) {
         mkHandler = function (evt) {
-          var v = object[sym].special[key].value;
-          if (evt && evt.changedNode == node && evt.onChangeValue == v)
+          var v = object[sym].special[key].value,
+            // dirty hack for this one https://github.com/matreshkajs/matreshka/issues/19
+            _v = evt && typeof evt.onChangeValue == 'string' && typeof v == 'number' ? String(v) : v;
+          if (evt && evt.changedNode == node && evt.onChangeValue == _v)
             return;
           _options = { value: v };
           for (j in options) {
@@ -1617,8 +1638,12 @@ matreshka_dir_core_bindings_parsebindings = function (core, sym, initMK, util) {
     }
     for (i = 0; i < nodes.length; i++) {
       node = nodes[i];
-      if (node.outerHTML && !~node.outerHTML.indexOf('{{'))
-        continue;
+      // we need 2 ifs for old firefoxes
+      if (node.outerHTML) {
+        // '%7B%7B' is for firefox too
+        if (!~node.outerHTML.indexOf('{{') && !~node.outerHTML.indexOf('%7B%7B'))
+          continue;
+      }
       childNodes = node.getElementsByTagName('*');
       for (j = 0; j < childNodes.length; j++) {
         all[k++] = childNodes[j];
@@ -1696,11 +1721,7 @@ matreshka_dir_core_bindings_parsebindings = function (core, sym, initMK, util) {
             node.setAttribute(attrName, '');
             core.bindNode(object, key, node);
           } else {
-            core.bindNode(object, key, node, {
-              setValue: function (v) {
-                this.setAttribute(attrName, v);
-              }
-            });
+            core.bindNode(object, key, node, core.binders.attr(attrName));
           }
         }
       }
@@ -1822,18 +1843,61 @@ matreshka_dir_core_bindings_getnodes = function (core, sym, initMK, util) {
     return typeof s == 'string' && !/</.test(s) && /:sandbox|:bound\(([^(]*)\)/.test(s) ? selectNodes(object, s) : core.$(s);
   };
 }(matreshka_dir_core_var_core, matreshka_dir_core_var_sym, matreshka_dir_core_initmk, matreshka_dir_core_util_common);
-matreshka_dir_core_events_trigger = function (core, sym, utils) {
+matreshka_dir_core_var_domevtreg = /([^\:\:]+)(::([^\(\)]+)?(\((.*)\))?)?/;
+matreshka_dir_core_events_trigger = function (core, sym, utils, domEvtReg) {
+  var triggerDOMEvent = function (el, name, args) {
+    var doc = document, event;
+    if (doc.createEvent) {
+      event = doc.createEvent('Event');
+      event.initEvent(name, true, true);
+      event.mkArgs = args;
+      el.dispatchEvent(event);
+    } else if (typeof Event != 'undefined' && !el.fireEvent) {
+      event = new Event(name, {
+        bubbles: true,
+        cancelable: true
+      });
+      event.mkArgs = args;
+      el.dispatchEvent(event);
+    } else if (el.fireEvent) {
+      event = doc.createEventObject();
+      event.mkArgs = args;
+      el.fireEvent('on' + name, event);
+    } else {
+      throw Error('Cannot trigger DOM event');
+    }
+    return event;
+  };
   core.trigger = function (object, names) {
-    var allEvents = object && typeof object == 'object' && object[sym] && object[sym].events, args, i, j, l, events, ev;
+    var allEvents = object && typeof object == 'object' && object[sym] && object[sym].events, args, i, j, l, events, ev, name, executed, nodes, _nodes, selector;
     if (names && allEvents) {
       args = utils.toArray(arguments, 2);
       names = names.split(/\s/);
       for (i = 0; i < names.length; i++) {
-        events = allEvents[names[i]];
-        if (events) {
-          j = -1, l = events.length;
-          while (++j < l)
-            (ev = events[j]).callback.apply(ev.ctx, args);
+        name = names[i];
+        if (~name.indexOf('::')) {
+          executed = domEvtReg.exec(name);
+          nodes = object[sym].special[executed[3] || 'sandbox'];
+          nodes = nodes && nodes.$nodes;
+          _nodes = core.$();
+          selector = executed[5];
+          if (selector) {
+            for (j = 0; j < nodes.length; j++) {
+              _nodes = _nodes.add(nodes.find(selector));
+            }
+          } else {
+            _nodes = nodes;
+          }
+          for (j = 0; j < _nodes.length; j++) {
+            triggerDOMEvent(_nodes[i], executed[1], args);
+          }
+        } else {
+          events = allEvents[name];
+          if (events) {
+            j = -1, l = events.length;
+            while (++j < l)
+              (ev = events[j]).callback.apply(ev.ctx, args);
+          }
         }
       }
     }
@@ -1847,7 +1911,7 @@ matreshka_dir_core_events_trigger = function (core, sym, utils) {
         (ev = events[i]).callback.call(ev.ctx, evt);
     }
   };
-}(matreshka_dir_core_var_core, matreshka_dir_core_var_sym, matreshka_dir_core_util_common);
+}(matreshka_dir_core_var_core, matreshka_dir_core_var_sym, matreshka_dir_core_util_common, matreshka_dir_core_var_domevtreg);
 matreshka_dir_core_events_on = function (core, initMK, util) {
   var on = core.on = function (object, names, callback, triggerOnInit, context, evtData) {
     if (!object)
@@ -1906,7 +1970,7 @@ matreshka_dir_core_events_off = function (core, initMK, util, sym) {
   var off = core.off = function (object, names, callback, context) {
     if (!object || typeof object != 'object' || !object[sym])
       return object;
-    var i, path, lastIndexOfET;
+    var i, path, lastIndexOfET, name;
     // if event-callback object is passed to the function
     if (typeof names == 'object' && !(names instanceof Array)) {
       for (i in names)
@@ -1940,7 +2004,7 @@ matreshka_dir_core_events_off = function (core, initMK, util, sym) {
   };
 }(matreshka_dir_core_var_core, matreshka_dir_core_initmk, matreshka_dir_core_util_common, matreshka_dir_core_var_sym);
 matreshka_dir_core_var_specialevtreg = /_rundependencies:|_runbindings:|change:/;
-matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtReg) {
+matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtReg, domEvtReg) {
   var _addListener;
   core._fastAddListener = function (object, name, callback, context, evtData) {
     var allEvents = object[sym].events, events = allEvents[name] || (allEvents[name] = []);
@@ -1959,9 +2023,9 @@ matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtR
   };
   _addListener = core._addListener = function (object, name, callback, context, evtData) {
     if (!object || typeof object != 'object')
-      return object;
+      return false;
     initMK(object);
-    var ctx = context || object, allEvents = object[sym].events, events = allEvents[name] || (allEvents[name] = []), l = events.length, domEvtNameRegExp = /([^\:\:]+)(::([^\(\)]+)?(\((.*)\))?)?/, defaultEvtData = {
+    var ctx = context || object, allEvents = object[sym].events, events = allEvents[name] || (allEvents[name] = []), l = events.length, defaultEvtData = {
         callback: callback,
         //_callback: callback._callback || callback,
         context: context,
@@ -1972,7 +2036,7 @@ matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtR
     for (i = 0; i < l; i++) {
       ev = events[i];
       if ((ev.callback == callback || ev.callback == callback._callback) && ev.context == context) {
-        return object;
+        return false;
       }
     }
     if (evtData) {
@@ -1987,7 +2051,7 @@ matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtR
       _evtData = defaultEvtData;
     }
     events.push(_evtData);
-    executed = domEvtNameRegExp.exec(name);
+    executed = domEvtReg.exec(name);
     if (executed && executed[2]) {
       core._addDOMListener(object, executed[3] || 'sandbox', executed[1], executed[5], callback, ctx, _evtData);
     } else if (specialEvtReg.test(name)) {
@@ -1996,9 +2060,9 @@ matreshka_dir_core_events_addlistener = function (core, initMK, sym, specialEvtR
     }
     core._fastTrigger(object, 'addevent:' + name, _evtData);
     core._fastTrigger(object, 'addevent', _evtData);
-    return object;
+    return true;
   };
-}(matreshka_dir_core_var_core, matreshka_dir_core_initmk, matreshka_dir_core_var_sym, matreshka_dir_core_var_specialevtreg);
+}(matreshka_dir_core_var_core, matreshka_dir_core_initmk, matreshka_dir_core_var_sym, matreshka_dir_core_var_specialevtreg, matreshka_dir_core_var_domevtreg);
 matreshka_dir_core_events_removelistener = function (core, sym) {
   core._removeListener = function (object, name, callback, context, evtData) {
     if (!object || typeof object != 'object' || !object[sym] || !object[sym].events)
@@ -2239,7 +2303,7 @@ matreshka_dir_core_events_adddomlistener = function (core, initMK, sym) {
     selector = selector || null;
     evtData = evtData || {};
     var domEvtHandler = function (domEvt) {
-        var node = this, $ = core.$, $nodes = $(node), evt = {
+        var node = this, $ = core.$, $nodes = $(node), mkArgs = domEvt.originalEvent ? domEvt.originalEvent.mkArgs : domEvt.mkArgs, evt = {
             self: object,
             node: node,
             $nodes: $nodes,
@@ -2261,25 +2325,23 @@ matreshka_dir_core_events_adddomlistener = function (core, initMK, sym) {
           node.setAttribute(randomID, randomID);
           is = '[' + randomID + '="' + randomID + '"] ' + selector;
           if ($(domEvt.target).is(is + ',' + is + ' *')) {
-            callback.call(context, evt);
+            callback.apply(context, mkArgs ? mkArgs : [evt]);
           }
           node.removeAttribute(randomID);
         } else {
-          callback.call(context, evt);
+          callback.apply(context, mkArgs ? mkArgs : [evt]);
         }
       }, fullEvtName = domEvtName + '.' + object[sym].id + key, bindHandler = function (evt) {
         evt && evt.$nodes && evt.$nodes.on(fullEvtName, domEvtHandler);
       }, unbindHandler = function (evt) {
         evt && evt.$nodes && evt.$nodes.off(fullEvtName, domEvtHandler);
       };
+    domEvtHandler._callback = callback;
     core._defineSpecial(object, key);
     bindHandler._callback = unbindHandler._callback = callback;
-    // minor but TODO
-    // wat if user adds same DOM listener twice or more?
-    // then bind/unbind will not be added but bindHandler will be called anyway
-    core._addListener(object, 'bind:' + key, bindHandler, context, evtData);
-    core._addListener(object, 'unbind:' + key, unbindHandler, context, evtData);
-    bindHandler({ $nodes: object[sym].special[key] && object[sym].special[key].$nodes });
+    if (core._addListener(object, 'bind:' + key, bindHandler, context, evtData) && core._addListener(object, 'unbind:' + key, unbindHandler, context, evtData)) {
+      bindHandler({ $nodes: object[sym].special[key] && object[sym].special[key].$nodes });
+    }
     return object;
   };
 }(matreshka_dir_core_var_core, matreshka_dir_core_initmk, matreshka_dir_core_var_sym);
@@ -2290,7 +2352,7 @@ matreshka_dir_core_events_removedomlistener = function (core, sym) {
     selector = selector || null;
     evtData = evtData || {};
     if (key && object[sym].special[key]) {
-      object[sym].special[key].$nodes.off(domEvtName + '.' + object[sym].id + key);
+      object[sym].special[key].$nodes.off(domEvtName + '.' + object[sym].id + key, callback);
       core._removeListener(object, 'bind:' + key, callback, context, evtData);
       core._removeListener(object, 'unbind:' + key, callback, context, evtData);
     }
@@ -2363,7 +2425,6 @@ matreshka_dir_matreshka_magic = function (core, sym) {
   return core;
 }(matreshka_dir_core_var_core, matreshka_dir_core_var_sym);
 matreshka_dir_matreshka_dynamic = function (magic, sym) {
-  var toArray = magic.toArray, extend = magic.extend;
   /*
   
   	This is the list of methods that inherited from magic. We need a way how to
@@ -2739,6 +2800,10 @@ matreshka_dir_matreshka_array_processrendering = function (sym, initMK, MK) {
         item.onRender && item.onRender(itemEvt);
         _this.onItemRender && _this.onItemRender(item, itemEvt);
         MK._fastTrigger(item, 'render', itemEvt);
+        // TODO make this code smarter, don't use setTimeout
+        item[sym].events.afterrender && setTimeout(function () {
+          MK._fastTrigger(item, 'afterrender', itemEvt);
+        }, 0);
       }
     }
     return node;
@@ -2825,7 +2890,7 @@ matreshka_dir_matreshka_array_processrendering = function (sym, initMK, MK) {
 }(matreshka_dir_core_var_sym, matreshka_dir_core_initmk, matreshka_dir_matreshkaclass);
 matreshka_dir_matreshka_array_triggermodify = function (MK, sym, processRendering) {
   return function (_this, evt, additional) {
-    var added = evt.added, removed = evt.removed, events = _this[sym].events, i;
+    var added = evt.added, removed = evt.removed, events = _this[sym].events, method = evt.method, modified = added.length || removed.length || method == 'sort' || method == 'reverse', i;
     if (!evt.silent) {
       if (additional) {
         events[additional] && MK._fastTrigger(_this, additional, evt);
@@ -2852,14 +2917,12 @@ matreshka_dir_matreshka_array_triggermodify = function (MK, sym, processRenderin
           }
         }
       }
-      if (added.length || removed.length) {
+      if (modified) {
         events.modify && MK._fastTrigger(_this, 'modify', evt);
       }
     }
-    if (added.length || removed.length) {
-      if (!evt.dontRender) {
-        processRendering(_this, evt);
-      }
+    if (modified && !evt.dontRender) {
+      processRendering(_this, evt);
     }
   };
 }(matreshka_dir_matreshkaclass, matreshka_dir_core_var_sym, matreshka_dir_matreshka_array_processrendering);
@@ -3111,16 +3174,6 @@ matreshka_dir_matreshka_array_native_static = function (MK) {
   };
 }(matreshka_dir_matreshkaclass);
 matreshka_dir_matreshka_array_custom_dynamic = function (sym, MK, processRendering, triggerModify, recreate, indexOf, initMK) {
-  function compare(a1, a2, i, l) {
-    if (a1.length != a2.length)
-      return false;
-    for (i = 0, l = a1.length; i < l; i++) {
-      if (a1[i] && a1[i].isMK ? !a1[i].eq(a2[i]) : a1[i] !== a2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
   return {
     mediateItem: function (itemMediator) {
       var _this = this, l = _this.length, i;
@@ -3263,7 +3316,7 @@ matreshka_dir_matreshka_array_custom_dynamic = function (sym, MK, processRenderi
         }
       }
       returns = array.splice(index, 1)[0] || null;
-      if (!compare(array, _this)) {
+      if (returns) {
         evt = evt || {};
         recreate(_this, array, evt);
         _evt = {
@@ -3373,8 +3426,8 @@ matreshka_dir_matreshka_arrayclass = function (MK, sym, nDynamic, nStatic, cDyna
       };
       MK.prototype._initMK.call(_this);
       MK._fastAddListener(_this, 'change:Model', changeModel);
-      MK._fastAddListener(_this, 'change:itemRenderer', function () {
-        _this.rerender({ forceRerender: true });
+      MK._fastAddListener(_this, 'change:itemRenderer', function (evt) {
+        _this.rerender({ forceRerender: evt && 'forceRerender' in evt ? evt.forceRerender : true });
       });
       changeModel();
       return _this;
@@ -3411,7 +3464,7 @@ matreshka_dir_amd_modules_matreshka_magic = function (magic) {
 matreshka = function (MK) {
   return MK;
 }(matreshka_dir_amd_modules_matreshka);
- matreshka.version="1.3.2";									(function () {
+ matreshka.version="1.4.0";									(function () {
 			// hack for systemjs builder
 			var d = "define";
 			// I don't know how to define modules with no dependencies (since we use AMDClean)
