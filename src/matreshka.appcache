@@ -1,5 +1,4 @@
 CACHE MANIFEST
-./
 index.html
 css/screen.css
 js/app.min.js
@@ -23,6 +22,8 @@ img/logos/habrahabr.svg
 img/twitter-icon.svg
 img/facebook-icon.svg
 
+FALLBACK:
+/ /index.html
 
 NETWORK:
 *
