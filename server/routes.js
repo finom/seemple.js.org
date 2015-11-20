@@ -5,6 +5,10 @@ let app = express();
 
 app.use(compression());
 
+app.use(express.static('dist/matreshka.appcache', {
+	maxAge: 0
+}));
+
 app.use(express.static('dist', {
 	maxAge: 10*24*60*60*1000
 }));
