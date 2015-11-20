@@ -19,7 +19,7 @@
 
 			<?js if(_class.instanceMembers['function'].length) {?>
 				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _class.instanceMembers.member.map(function(item) {return item.importance || 2})) || 2
+						Math.min.apply(null, _class.instanceMembers['function'].map(function(item) {return +item.importance || 2})) || 2
 					?>"><?js=self.lang.methods?></span></li>
 			<?js}?>
 			<?js _class.instanceMembers['function'].forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
@@ -58,7 +58,7 @@
 
 			<?js if(_class.instanceMembers.member.length) {?>
 				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _class.instanceMembers.member.map(function(item) {return item.importance || 2})) || 2
+						Math.min.apply(null, _class.instanceMembers.member.map(function(item) {return +item.importance || 2})) || 2
 					?>"><?js=self.lang.properties?></span></li>
 			<?js}?>
 
@@ -78,7 +78,7 @@
 
 			<?js if(_class.staticMembers['function'].length) {?>
 				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _class.instanceMembers.member.map(function(item) {return item.importance || 2})) || 2
+						Math.min.apply(null, _class.staticMembers['function'].map(function(item) {return +item.importance || 2})) || 2
 					?>"><?js=self.lang.static_methods?></span></li>
 			<?js}?>
 
@@ -99,7 +99,7 @@
 
 			<?js if(_class.staticMembers.member.length) {?>
 				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _class.instanceMembers.member.map(function(item) {return item.importance || 2})) || 2
+						Math.min.apply(null, _class.staticMembers.member.map(function(item) {return +item.importance || 2})) || 2
 					?>"><?js=self.lang.static_properties?></span></li>
 			<?js}?>
 			<?js _class.staticMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
