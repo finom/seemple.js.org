@@ -131,6 +131,7 @@ export default class Main extends MK.Object {
 
 	bindings() {
 		return this
+			.bindNode('demoProp', '.demo .in, .demo .out')
 			.bindNode({
 				sandbox: 'body',
 				win: window,

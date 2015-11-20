@@ -3,15 +3,19 @@
 		<img src="img/mk5-logo_matreshka.svg" class="mk-logo-matreshka">
 		<img src="img/mk5-logo_text.svg" class="mk-logo-text">
 		<span class="version">v{{ site.data.package.version }}</span>
-		<p class="slogan">Event-driven JavaScript фреймворк</p>
+		<div class="demo">
+			<output class="in">Событийно-ориентированный фреймворк</output>
+			<input type="text" class="out" value="Событийно-ориентированный фреймворк">
+			<pre class="prettyprint lang-html"><code>&lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
+&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
 
-		<pre class="prettyprint lang-html" style="max-width: 540px; margin: 0 auto; text-align: left;"><code>&lt;script src=&quot;matreshka.min.js&quot;&gt;&lt;/script&gt;
-&lt;input type=&quot;text&quot; class=&quot;my-input&quot;&gt;
+&lt;script src=&quot;matreshka.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 var app = new Matreshka();
-app.bindNode('x', '.my-input');
-app.x = 'Двустороннее связывание данных в JS? Серьезно?';
+app.bindNode('x', '.in, .out');
+app.x = 'Событийно-ориентированный фреймворк';
 &lt;/script&gt;</code></pre>
+		</div>
 
 		<p>
 			<a href="https://github.com/finom/matreshka/archive/v{{ site.data.package.version }}.zip" download class="download-btn">Скачать <i></i></a>

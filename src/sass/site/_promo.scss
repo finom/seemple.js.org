@@ -64,10 +64,44 @@
 
 	}
 
-	p.slogan {
-		font-size: 1.5rem;
-		margin-top: 1rem;
+	.demo {
+		width: 100%;
+		max-width: 540px;
+		min-width: 300px;
+		margin: 0 auto;
+		position: relative;
+
+		input, output {
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		output {
+			font-size: 1.5rem;
+			margin-top: 1rem;
+			display: block;
+		}
+
+		input {
+			margin-top: 1rem;
+			height: 2rem;
+			padding: 0 1rem;
+			border: 1px solid #ccc;
+
+			&:focus {
+				border-bottom: 1px solid #ccc;
+				box-shadow: none;
+			}
+		}
+
+		pre {
+			max-width: 540px;
+			margin: 0 auto;
+			text-align: left;
+		}
 	}
+
+
 
 	.download-btn, .github-btn {
 		vertical-align: top;
