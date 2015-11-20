@@ -116,6 +116,7 @@ nav {
 	}
 
 	hr {
+		display: none;
 		border-top: none;
 		border-bottom: 1px solid $gray-color;
 		margin-top: 22px;
@@ -148,7 +149,7 @@ nav {
 			margin-top: -3000px;
 		}
 
-		a[href^="#!Matreshka"] {
+		/*a[href^="#!Matreshka"] {
 			&::before {
 				color: #888;
 				margin-right: -3px;
@@ -163,7 +164,7 @@ nav {
 					content: '#';
 				}
 			}
-		}
+		}*/
 	}
 
 	.expand {
@@ -236,9 +237,17 @@ nav {
 	.nav-heading {
 		display: block;
 		line-height: 44px;
-		//padding-left: 20px;
 		text-align: center;
 		color: #777;
+		font-size: .9rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-top: 22px;
+	}
+
+	.submenu-wrapper .nav-heading {
+		padding-left: 20px;
+		margin-top: 0;
 	}
 
 	.doc-importance {

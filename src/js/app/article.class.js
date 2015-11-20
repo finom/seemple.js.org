@@ -54,7 +54,7 @@ export default class Article extends MK.Object {
 				var submenu = this.bound('submenu');
 				if (submenu) {
 					if (!this.expanded) {
-						submenu.style.marginTop = -44 * this.selectAll(':bound(submenu) a').length + 'px';
+						submenu.style.marginTop = -44 * this.selectAll(':bound(submenu) li').length + 'px';
 					} else {
 						submenu.style.marginTop = 0;
 						submenu.style.display = 'block';

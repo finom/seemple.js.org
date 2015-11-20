@@ -156,231 +156,6 @@ var app = new Application();</code></pre><p><strong>3.</strong> Это всё!</
 
 </article>
 
-<article class="item property" id="!Matreshka-$nodes" data-since="1.1"
-data-importance="2">
-	<h2>
-		<a href="#!Matreshka-$nodes">
-
-			<span class="memberof">Matreshka#</span>$nodes</a><span class="type">:
-				<span data-type="$nodes">$nodes</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 1.1.</p></div>
-	
-	<div class="summary"><p>Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.</p></div>
-	<div class="description"></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node');
-this.$nodes.myKey; // то же самое, что и $('.my-node')</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-$nodes" data-title="Свойство Matreshka-$nodes">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-$nodes"
-  title="Свойство Matreshka-$nodes"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka-$sandbox" data-since="0.4"
-data-importance="2">
-	<h2>
-		<a href="#!Matreshka-$sandbox">
-
-			<span class="memberof">Matreshka#</span>$sandbox</a><span class="type">:
-				<span data-type="$nodes">$nodes</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 0.4.</p></div>
-	
-	<div class="summary"><p>Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)</p></div>
-	<div class="description"></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('sandbox', '.app');
-this.$sandbox; // то же самое, что и $('.app')</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-$sandbox" data-title="Свойство Matreshka-$sandbox">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-$sandbox"
-  title="Свойство Matreshka-$sandbox"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka-isMK" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka-isMK">
-
-			<span class="memberof">Matreshka#</span>isMK</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p><code>isMK</code> всегда равен <code>true</code>. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса <a href="#!Matreshka">Matreshka</a></p></div>
-	<div class="description"></div>
-	
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(object.isMK);</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-isMK" data-title="Свойство Matreshka-isMK">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-isMK"
-  title="Свойство Matreshka-isMK"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka-nodes" data-since="1.1"
-data-importance="2">
-	<h2>
-		<a href="#!Matreshka-nodes">
-
-			<span class="memberof">Matreshka#</span>nodes</a><span class="type">:
-				<span data-type="node">node</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 1.1.</p></div>
-	
-	<div class="summary"><p>Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов.</p></div>
-	<div class="description"><p>Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством.  Для получения всех узлов, связанных с определенным свойством, используйте <a href="#!Matreshka-$nodes">Matreshka#$nodes</a>.</p></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node');
-this.nodes.myKey; // то же самое, что и $('.my-node')[0]</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-nodes" data-title="Свойство Matreshka-nodes">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-nodes"
-  title="Свойство Matreshka-nodes"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka-sandbox" data-since="0.4"
-data-importance="2">
-	<h2>
-		<a href="#!Matreshka-sandbox">
-
-			<span class="memberof">Matreshka#</span>sandbox</a><span class="type">:
-				<span data-type="node">node</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 0.4.</p></div>
-	
-	<div class="summary"><p>Свойство содержит HTML песочницу</p></div>
-	<div class="description"></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('sandbox', '.app');
-this.sandbox; // то же самое, что и $('.app')[0]</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-sandbox" data-title="Свойство Matreshka-sandbox">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-sandbox"
-  title="Свойство Matreshka-sandbox"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
 
 <article class="item method" id="!Matreshka-$(instance)" 
 data-importance="2">
@@ -500,7 +275,7 @@ data-importance="1">
         this.checked = !!v;
     }
 });</code></pre><p>После объявления привязки можно устанавливать значение свойства объекта самым привычным способом, а элемент (в данном случае, чекбокс) моментально изменит своё состояние. При клике на чекбокс, значение свойства тоже изменится на соответствующее.</p>
-<pre class="prettyprint source lang-js"><code>// устанавливает checked = false
+<pre class="prettyprint source lang-js"><code>// устанавливает checked = true
 this.myKey = true;</code></pre><blockquote>
 <p>Если значение свойства экземпляра класса не задано, Матрешка, после привязки, попробует извлечь это значение из HTML узла, используя <code>getValue</code>. Отменить это поведение можно передав свойство <code>assignDefaultValue: false</code> в объект события.</p>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element', binder, {
@@ -2857,9 +2632,8 @@ data-importance="2">
 	'custom': function(evt) { ... },
 	'click::x': function(evt) { ... },
 	'change:y': function(evt) { ... }
-});</code></pre><h5></h5>
-<pre class="prettyprint source lang-js"><code>Особенно круто этот способ вызова метода ``on`` выглядит с использованием синтаксиса ECMAScript 2015
-this.on({
+});</code></pre><h5><p>Особенно круто этот способ вызова метода <code>on</code> выглядит с использованием синтаксиса ECMAScript 2015</p></h5>
+<pre class="prettyprint source lang-js"><code>this.on({
 	'custom': evt => ...,
 	'click::x': evt => ...,
 	'change:y': evt => ...,
@@ -4841,27 +4615,27 @@ this.unbindNode(temporaryBindings);</code></pre>
 </article>
 
 
-<article class="item property" id="!Matreshka.defaultBinders" 
-data-importance="1">
+<article class="item property" id="!Matreshka-$nodes" data-since="1.1"
+data-importance="2">
 	<h2>
-		<a href="#!Matreshka.defaultBinders">
+		<a href="#!Matreshka-$nodes">
 
-			<span class="memberof">Matreshka.</span>defaultBinders</a><span class="type">:
-				<span data-type="array">array</span>
+			<span class="memberof">Matreshka#</span>$nodes</a><span class="type">:
+				<span data-type="$nodes">$nodes</span>
 			</span>
 
 		<span class="new-badge"></span>
 	</h2>
 	
-	<div class="summary"><p>Массив функций, возвращающих соответствующий байндер</p></div>
-	<div class="description"><p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> - массив функций, которые по очереди проверяют элемент на соответствие заданным в этих функциях правилам и возвращающих байндер (см. <span data-type="binder">binder</span>). Этот массив используется тогда, когда в метод <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> не был передан третий аргумент. Подробную информацию о привязках смотрите в документации к <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.</p></div>
+		<div class="since"><p>Добавлено в версии 1.1.</p></div>
+	
+	<div class="summary"><p>Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.</p></div>
+	<div class="description"></div>
 	
 <h4>Ссылки</h4>
 <ul class="see">
 	
 		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-		<li><a href="#!Matreshka.lookForBinder">Matreshka.lookForBinder</a>
 	
 </ul>
 
@@ -4869,64 +4643,85 @@ data-importance="1">
 	 
 	<h4>Примеры</h4>
   
-<h5><p>Кастомный чекбокс</p></h5>
-<pre class="prettyprint source lang-js"><code>// добавляем байндер в коллекцию байндеров
-MK.binders.customCheckbox = function() {
-	return {
-		on: 'click',
-		getValue: function() {
-			return $(this).hasClass('checked');
-		},
-		setValue: function( v ) {
-			$(this).toggleClass('checked', !!v);
-		},
-		initialize: function() {
-			$(this).toggleClass('checked');
-		}
-	}
-};
-
-// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
-MK.defaultBinders.unshift( function( element ) {
-	// проверяем, есть ли у элемента класс "custom-checkbox"
-	if($(element).hasClass('custom-checkbox')) {
-		// если проверка пройдена, возвращаем новый байндер
-		return MK.binders.customCheckbox();
-	}
-});
-
-// ...
-
-this.bindNode('myKey', '.custom-checkbox');</code></pre>
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node');
+this.$nodes.myKey; // то же самое, что и $('.my-node')</code></pre>
 	<div class="share-buttons">
     <a class="share-facebook"></a> <a class="share-twitter"></a>
 </div>
 
 
-<a class="comments" data-id="Matreshka.defaultBinders" data-title="Свойство Matreshka.defaultBinders">Задать вопрос<i></i></a>
+<a class="comments" data-id="Matreshka-$nodes" data-title="Свойство Matreshka-$nodes">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.defaultBinders"
-  title="Свойство Matreshka.defaultBinders"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-$nodes"
+  title="Свойство Matreshka-$nodes"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
 
 </article>
 
-<article class="item property" id="!Matreshka.isXDR" 
+<article class="item property" id="!Matreshka-$sandbox" data-since="0.4"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka-$sandbox">
+
+			<span class="memberof">Matreshka#</span>$sandbox</a><span class="type">:
+				<span data-type="$nodes">$nodes</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 0.4.</p></div>
+	
+	<div class="summary"><p>Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)</p></div>
+	<div class="description"></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindNode('sandbox', '.app');
+this.$sandbox; // то же самое, что и $('.app')</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka-$sandbox" data-title="Свойство Matreshka-$sandbox">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-$sandbox"
+  title="Свойство Matreshka-$sandbox"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka-isMK" 
 data-importance="3">
 	<h2>
-		<a href="#!Matreshka.isXDR">
+		<a href="#!Matreshka-isMK">
 
-			<span class="memberof">Matreshka.</span>isXDR</a><span class="type">:
+			<span class="memberof">Matreshka#</span>isMK</a><span class="type">:
 				<span data-type="boolean">boolean</span>
 			</span>
 
 		<span class="new-badge"></span>
 	</h2>
 	
-	<div class="summary"><p>Использует ли Матрешка хак с XDomainRequest. Другими словами, является ли текущий браузер Internet Explorer 8</p></div>
+	<div class="summary"><p><code>isMK</code> всегда равен <code>true</code>. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса <a href="#!Matreshka">Matreshka</a></p></div>
 	<div class="description"></div>
 	
 
@@ -4934,59 +4729,117 @@ data-importance="3">
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(Matreshka.isXDR);</code></pre>
+<pre class="prettyprint source lang-js"><code>alert(object.isMK);</code></pre>
 	<div class="share-buttons">
     <a class="share-facebook"></a> <a class="share-twitter"></a>
 </div>
 
 
-<a class="comments" data-id="Matreshka.isXDR" data-title="Свойство Matreshka.isXDR">Задать вопрос<i></i></a>
+<a class="comments" data-id="Matreshka-isMK" data-title="Свойство Matreshka-isMK">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.isXDR"
-  title="Свойство Matreshka.isXDR"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-isMK"
+  title="Свойство Matreshka-isMK"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
 
 </article>
 
-<article class="item property" id="!Matreshka.version" 
-data-importance="3">
+<article class="item property" id="!Matreshka-nodes" data-since="1.1"
+data-importance="2">
 	<h2>
-		<a href="#!Matreshka.version">
+		<a href="#!Matreshka-nodes">
 
-			<span class="memberof">Matreshka.</span>version</a><span class="type">:
-				<span data-type="string">string</span>
+			<span class="memberof">Matreshka#</span>nodes</a><span class="type">:
+				<span data-type="node">node</span>
 			</span>
 
 		<span class="new-badge"></span>
 	</h2>
 	
-	<div class="summary"><p>Версия Матрешки</p></div>
-	<div class="description"></div>
+		<div class="since"><p>Добавлено в версии 1.1.</p></div>
 	
+	<div class="summary"><p>Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов.</p></div>
+	<div class="description"><p>Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством.  Для получения всех узлов, связанных с определенным свойством, используйте <a href="#!Matreshka-$nodes">Matreshka#$nodes</a>.</p></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+</ul>
+
 
 	 
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(Matreshka.version);</code></pre>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-node');
+this.nodes.myKey; // то же самое, что и $('.my-node')[0]</code></pre>
 	<div class="share-buttons">
     <a class="share-facebook"></a> <a class="share-twitter"></a>
 </div>
 
 
-<a class="comments" data-id="Matreshka.version" data-title="Свойство Matreshka.version">Задать вопрос<i></i></a>
+<a class="comments" data-id="Matreshka-nodes" data-title="Свойство Matreshka-nodes">Задать вопрос<i></i></a>
 <!--<div class="comments-container"></div>-->
 <div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.version"
-  title="Свойство Matreshka.version"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-nodes"
+  title="Свойство Matreshka-nodes"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
 
 </article>
+
+<article class="item property" id="!Matreshka-sandbox" data-since="0.4"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka-sandbox">
+
+			<span class="memberof">Matreshka#</span>sandbox</a><span class="type">:
+				<span data-type="node">node</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 0.4.</p></div>
+	
+	<div class="summary"><p>Свойство содержит HTML песочницу</p></div>
+	<div class="description"></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindNode('sandbox', '.app');
+this.sandbox; // то же самое, что и $('.app')[0]</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka-sandbox" data-title="Свойство Matreshka-sandbox">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-sandbox"
+  title="Свойство Matreshka-sandbox"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 
 
 <article class="item method" id="!Matreshka.$(static)" 
@@ -7336,6 +7189,154 @@ data-importance="3">
 
 </article>
 
+
+<article class="item property" id="!Matreshka.defaultBinders" 
+data-importance="1">
+	<h2>
+		<a href="#!Matreshka.defaultBinders">
+
+			<span class="memberof">Matreshka.</span>defaultBinders</a><span class="type">:
+				<span data-type="array">array</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Массив функций, возвращающих соответствующий байндер</p></div>
+	<div class="description"><p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> - массив функций, которые по очереди проверяют элемент на соответствие заданным в этих функциях правилам и возвращающих байндер (см. <span data-type="binder">binder</span>). Этот массив используется тогда, когда в метод <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> не был передан третий аргумент. Подробную информацию о привязках смотрите в документации к <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.</p></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+		<li><a href="#!Matreshka.lookForBinder">Matreshka.lookForBinder</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5><p>Кастомный чекбокс</p></h5>
+<pre class="prettyprint source lang-js"><code>// добавляем байндер в коллекцию байндеров
+MK.binders.customCheckbox = function() {
+	return {
+		on: 'click',
+		getValue: function() {
+			return $(this).hasClass('checked');
+		},
+		setValue: function( v ) {
+			$(this).toggleClass('checked', !!v);
+		},
+		initialize: function() {
+			$(this).toggleClass('checked');
+		}
+	}
+};
+
+// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
+MK.defaultBinders.unshift( function( element ) {
+	// проверяем, есть ли у элемента класс "custom-checkbox"
+	if($(element).hasClass('custom-checkbox')) {
+		// если проверка пройдена, возвращаем новый байндер
+		return MK.binders.customCheckbox();
+	}
+});
+
+// ...
+
+this.bindNode('myKey', '.custom-checkbox');</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.defaultBinders" data-title="Свойство Matreshka.defaultBinders">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.defaultBinders"
+  title="Свойство Matreshka.defaultBinders"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.isXDR" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.isXDR">
+
+			<span class="memberof">Matreshka.</span>isXDR</a><span class="type">:
+				<span data-type="boolean">boolean</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Использует ли Матрешка хак с XDomainRequest. Другими словами, является ли текущий браузер Internet Explorer 8</p></div>
+	<div class="description"></div>
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>alert(Matreshka.isXDR);</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.isXDR" data-title="Свойство Matreshka.isXDR">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.isXDR"
+  title="Свойство Matreshka.isXDR"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.version" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.version">
+
+			<span class="memberof">Matreshka.</span>version</a><span class="type">:
+				<span data-type="string">string</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Версия Матрешки</p></div>
+	<div class="description"></div>
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>alert(Matreshka.version);</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.version" data-title="Свойство Matreshka.version">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.version"
+  title="Свойство Matreshka.version"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item ns" id="!Matreshka.binders">
 	<h2>
 		<a href="#!Matreshka.binders">
@@ -8543,43 +8544,6 @@ for(let item of mkObject) {
 
 </article>
 
-<article class="item property" id="!Matreshka.Object-isMKObject" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.Object-isMKObject">
-
-			<span class="memberof">Matreshka.Object#</span>isMKObject</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p>Свойство <code>isMKObject</code> всегда равно <code>true</code>. Оно используется для проверки, является ли объект экземпляром <a href="#!Matreshka.Object">Matreshka.Object</a>.</p></div>
-	<div class="description"></div>
-	
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(object.isMKObject);</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Object-isMKObject" data-title="Свойство Matreshka.Object-isMKObject">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Object-isMKObject"
-  title="Свойство Matreshka.Object-isMKObject"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
 
 <article class="item method" id="!Matreshka.Object-addDataKeys" 
 data-importance="1">
@@ -9592,6 +9556,45 @@ mkObject.toObject(); // возвращает {a: 1, b: 2}</code></pre>
 </article>
 
 
+<article class="item property" id="!Matreshka.Object-isMKObject" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.Object-isMKObject">
+
+			<span class="memberof">Matreshka.Object#</span>isMKObject</a><span class="type">:
+				<span data-type="boolean">boolean</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Свойство <code>isMKObject</code> всегда равно <code>true</code>. Оно используется для проверки, является ли объект экземпляром <a href="#!Matreshka.Object">Matreshka.Object</a>.</p></div>
+	<div class="description"></div>
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>alert(object.isMKObject);</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Object-isMKObject" data-title="Свойство Matreshka.Object-isMKObject">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Object-isMKObject"
+  title="Свойство Matreshka.Object-isMKObject"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+
+
 
 
 
@@ -9790,565 +9793,6 @@ this.shift_({
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array"
   title="Класс Matreshka.Array"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.Array-isMKArray" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.Array-isMKArray">
-
-			<span class="memberof">Matreshka.Array#</span>isMKArray</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p><code>isMKArray</code> всегда равен <code>true</code>. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса <a href="#!Matreshka.Array">Matreshka.Array</a></p></div>
-	<div class="description"></div>
-	
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(object.isMKArray);</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Array-isMKArray" data-title="Свойство Matreshka.Array-isMKArray">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-isMKArray"
-  title="Свойство Matreshka.Array-isMKArray"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.Array-itemRenderer" data-since="0.1"
-data-importance="1">
-	<h2>
-		<a href="#!Matreshka.Array-itemRenderer">
-
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>itemRenderer</a><span class="type">:
-				<span data-type="string">string</span> <span data-type="function">function</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 0.1.</p></div>
-	
-	<div class="summary"><p>HTML строка, селектор или функция, отвечающая за отрисовку элементов массива на странице</p></div>
-	<div class="description"><p>Свойство <code>itemRenderer</code> - это переопределяемое (виртуальное) свойство, которое позволяет рендерить элементы массива без участия программиста. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.</p>
-<h4>Куда вставляется созданный элемент?</h4><p>Для того, чтобы определить HTML контейнер, в который будут вставляться отрисованные HTML узлы, нужно определить <strong>контейнер</strong>. Для этого следует объявить HTML песочницу для массива либо связать специальный ключ <code>container</code> с HTML контейнером. Подробнее о привязках и песочнице см. <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.
-Пример использования песочницы в качестве контейнера:</p>
-<pre class="prettyprint source lang-html"><code>&lt;ul class=&quot;my-list&quot;>&lt;/ul></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    itemRenderer: '&lt;li>',
-    Model: MyModel,
-    constructor: function() {
-        // определяем песочницу
-        this.bindNode('sandbox', '.my-list');
-    }
-});</code></pre><p>Теперь все новосозданные узлы <code>&lt;li&gt;</code> попадут в узел <code>.my-list</code></p>
-<p>Если вы не хотите вставлять HTML узлы непосредственно в песочницу, можете связать ключ <code>container</code> с необходимым элементом. Такая логика нужна в том случае, если песочница не ограничена одними лишь элементами коллекции и включает в себя другие HTML узлы.</p>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;my-widget&quot;>
-    &lt;h1>This is my awesome list&lt;/h1>
-    &lt;ul class=&quot;my-list&quot;>&lt;/ul>
-&lt;/div></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    itemRenderer: '&lt;li>',
-    Model: MyModel,
-    constructor: function() {
-        // определяем песочницу
-        this.bindNode('sandbox', '.my-widget');
-        // определяем контейнер для HTML элементов
-        this.bindNode('container', '.my-list');
-    }
-});</code></pre><p>В примере выше HTML узлы будут вставляться в <code>.my-list</code> вместо <code>.my-widget</code>.</p>
-<p>Свойство <code>itemRenderer</code> поддерживает несколько вариантов определения, но все они должны содержать или возвращать единственный HTML узел.</p>
-<h4>HTML строка в качестве значения свойства</h4><p>Как видно из примера выше, <code>itemRenderer</code> может быть определен, как HTML строка.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>',
-    constructor: function() { ... }
-});</code></pre><h4>Селектор в качестве значения свойства</h4><p>На случай, если вы выносите шаблоны для элементов на HTML страницу, <code>itemRenderer</code> поддерживает селектор в качестве значения. В этом случае, <a href="#!Matreshka.Array">Matreshka.Array</a> будет искать HTML элемент в DOM дереве и извлечет <code>innerHTML</code> найденого элемента. В случае, если элемент не найден, бросается исключение. HTML текст от селектора отличается наличием  символа <code>&lt;</code> в строке.</p>
-<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;text/html&quot; id=&quot;be-cool-template&quot;>
-    &lt;div class=&quot;my-div&quot;>Be cool&lt;/div>
-&lt;/script></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel
-    itemRenderer: '#be-cool-template',
-    constructor: function() { ... }
-});</code></pre><h4>Функция в качестве значения свойства</h4><p>Использование функции в качестве значения свойства <code>itemRenderer</code> даёт дополнительную гибкость кода, если есть нужда динамически генерировать элемент для рендеринга. Функция может возвращать:</p>
-<p><strong>HTML строку</strong></p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: function() {
-        return '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>';
-    },
-    constructor: function() { ... }
-});</code></pre><p><strong>Селектор</strong></p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: function() {
-        return '#be-cool-template';
-    },
-    constructor: function() { ... }
-});</code></pre><p><strong>DOM узел</strong></p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    itemRenderer: function() {
-        return document.createElement('div');
-    }
-});</code></pre><p><strong>Handlebars.js в качестве шаблонизатора</strong></p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    // model - модель (экземпляр Matreshka.Object), который будет рендериться
-    itemRenderer: function(model) {
-        // получение и компилирование шаблона
-        var template = Handlebars
-            .compile($('#handlebarsTemplateSelector').html());
-        // подстановка значений модели в шаблон и его возвращение
-        return template(model);
-    }
-});</code></pre><h4>Переопределение родительского рендерера свойством <code>render</code></h4><p>Иногда удобно объявлять рендерер внутри класса <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>, как это делает <code>Backbone</code>. Свойство <code>renderer</code> переопределяет значение <code>itemRenderer</code>, если оно задано для дочернего элемента коллекции.</p>
-<pre class="prettyprint source lang-js"><code>var MyModel = Class({
-    'extends': MK.Object,
-    renderer: '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>',
-    constructor: function(data) { ... }
-});
-
-var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: '&lt;frameset>Not cool&lt;/frameset>',
-    constructor: function() { ... }
-});</code></pre><p>В этом случае, можно вовсе не указывать <code>itemRenderer</code>, так как <code>render</code> дочернего элемента перенимает все его возможности. Синтаксис остаётся такими же: можно использовать HTML, селектор или функцию.</p>
-<h4>Событие <code>render</code></h4><p>После того, как элемент вставлен в массив, а его HTML узел уже создан, но еще не вставлен в контейнер, генерируется событие <code>render</code> на вставленном элементе. После его генерации можно объявить привязки свойств к HTML узлам, содержащимся внутри вставленного.</p>
-<pre class="prettyprint source lang-html"><code>&lt;form class=&quot;my-form&quot;>&lt;/form></code></pre><pre class="prettyprint source lang-js"><code>var MyModel = Class({
-    'extends': MK.Object,
-    constructor: function(data) {
-        this.jset(data);
-
-        // ждем генерации события
-        this.on('render', function() {
-            this.bindNode('isChecked', ':sandbox .my-checkbox');
-            this.bindNode('text', ':sandbox .text',
-                MK.binders.html());
-        });
-    }
-});
-
-var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: '&lt;label>\
-        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>\
-        &lt;span class=&quot;text&quot;>&lt;/span>\
-    &lt;/label>',
-    constructor: function() {
-        this.bindNode('sandbox', '.my-form');
-        this.push({
-            isChecked: true,
-            text: 'Be cool'
-        }, {
-            isChecked: false,
-            text: 'Produce shitcode'
-        });
-    }
-});
-
-var app = new MyArray();</code></pre><p>Код выше создаст такое HTML дерево:</p>
-<pre class="prettyprint source lang-html"><code>&lt;form class=&quot;my-form&quot;>
-    &lt;label>
-        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>
-        &lt;span class=&quot;text&quot;>Be cool&lt;/span>
-    &lt;/label>
-    &lt;label>
-        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>
-        &lt;span class=&quot;text&quot;>Produce shitcode&lt;/span>
-    &lt;/label>
-&lt;/form></code></pre><p>И свяжет чекбоксы с соответствующими свойствaми <code>isChecked</code> и <code>text</code>. <a href="http://jsbin.com/zetuya/1/" target="_blank">Живой пример</a></p>
-<p>Не забывайте, что в Матрешке реализована возможность отлова всплывающих событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события <code>*@render</code> (см. документацию к <span data-type="eventNames">eventNames</span>).</p>
-<pre class="prettyprint source lang-js"><code>this.on('*@render', function(evt) {
-    alert('Child element is rendered');
-});</code></pre><blockquote>
-<p>Отрисованный HTML узел становится песочницей для вставленного элемента, позволяя использовать селектор <code>:sandbox</code> и другие возможности после рендеринга. Если элемент входит сразу в несколько коллекций, установите ему свойство <code>bindRenderedAsSandbox: false</code>, чтобы отменить это поведение.</p>
-<pre class="prettyprint source lang-js"><code>var MyModel = Class({
-    'extends': MK.Object,
-    bindRenderedAsSandbox: false,
-    // ...
-});</code></pre></blockquote>
-<h4>Событие <code>afterrender</code></h4><p>После срабатывания события <code>render</code> запускается нулевой таймер (<code>setTimeout(f, 0)</code>), вызывающий событие <code>afterrender</code>. Таким образом можно получить актуальные данные о позиции элемента на странице и другую информацию, которая доступна только тогда, когда DOM узел вставлен на страницу.</p>
-<pre class="prettyprint source lang-js"><code>var MyModel = Class({
-    'extends': MK.Object,
-    constructor: function(data) {
-        //...
-        this.on('afterrender', function() {
-            console.log('Computed style', getComputedStyle(this.sandbox));
-        });
-        //...
-    }
-});
-// ...</code></pre><h4><code>onItemRender</code> и <code>onRender</code></h4><p>Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод <a href="#!Matreshka.Array-onItemRender">Matreshka.Array#onItemRender</a>, который можно использовать вместо события <code>render</code>. В качестве альтернативы, у &quot;моделей&quot; вызывается метод <code>onRender</code>, так же позволяющий сделать код более &quot;плоским&quot; и избавиться от вложенных функций.</p>
-<pre class="prettyprint source"><code>
-```js
-var MyModel = Class({
-    'extends': MK.Object,
-    constructor: function(data) {
-        this.jset(data);
-    },
-    onRender: function(evt) {
-        this.bindNode('isChecked', ':sandbox .my-checkbox');
-        this.bindNode('text', ':sandbox .text',
-                MK.binders.html());
-    }
-});
-
-var MyArray = Class({
-    'extends': MK.Array,
-    Model: MyModel,
-    itemRenderer: '...`,
-    constructor: function() {
-        //...
-    },
-    onItemRender: function(item, evt) {
-        //...
-    }
-});
-
-var app = new MyArray();</code></pre><h4>Шаблонизатор</h4><p>Взглянув на примеры использования <a href="#!Matreshka.Array">Matreshka.Array</a> и <a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a> можно обратить внимание на то, что вся логика, отвечающая за двустороннюю и одностороннюю привязку данных заключена в JavaScript коде. Это одно из главных преимуществ Матрешки. Но когда разрабатываешь очень простую коллекцию, не включающую в себя сложную логику, массу привязок и пр. хотелось бы иметь более краткий вариант объявления привязок. Для этого, в <code>itemRenderer</code> может быть передан шаблон, включающий привязки. Начиная с версии 1.1, шаблонизатор включен по умолчанию.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: MK.Object,
-    itemRenderer: '&lt;label>\
-        &lt;input type=&quot;checkbox&quot; checked=&quot;&#123;{isChecked}}&quot;>&#123;{text}}\
-    &lt;/label>',
-    constructor: function() {
-        this.bindNode('sandbox', '.my-form');
-        this.push({
-            isChecked: true,
-            text: 'Be cool'
-        }, {
-            isChecked: false,
-            text: 'Produce shitcode'
-        });
-    }
-});
-
-var app = new MyArray();</code></pre><p>Пример выше полностью повторяет предыдущий, но не требует создания отдельного класса для Модели, так как нам не требуется отлавливать событие <code>render</code> и объявлять привязки вручную. <a href="http://jsbin.com/wabiyi/1/" target="_blank">Живой пример</a></p>
-<p>Обратите внимание:
-Скорость кода с шаблонизатором несколько ниже, чем без него. Это происходит из-за того, что анализ строки, перебор ключей в цикле (при использовании нескольких ключей в одном атрибуте), замена подстрок регулярным выражением и пр. требуют больше ресурсов. Шаблонизатор можно отключить двумя способами: установить свойство <a href="#!Matreshka.Array-useBindingsParser">Matreshka.Array#useBindingsParser</a>, как <code>false</code>, или не использовать синтаксис &#123;{KEY}} вовсе (шаблонизатор срабатывает только тогда, когда у узла или HTML строки есть двойные фигурные скобки).</p>
-<p>Шаблонизация реализована с помощью метода <a href="#!Matreshka-parseBindings">Matreshka#parseBindings</a>.</p>
-<h4>Отмена рендеринга</h4><p>Как видно выше, если у дочернего элемента задано свойство <code>render</code>, <code>Matreshka.Array</code> попробует его отрисовать. Для того, чтоб полностью отменить рендеринг для массива, присвойте свойству <code>renderIfPossible: false</code>.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    renderIfPossible: false,
-    // ...
-});</code></pre><h4>Перемещение объекта из одного массива в другой</h4><p>По умолчанию, при вставке объекта в массив Матрешка попытается его отрисовать, используя <code>itemRenderer</code> (если он еще не был отрисован).  Это даёт огромное преимущество в случаях, когда у вас на странице есть два или более списка, включающих в себя один и тот же объект. При изменении этого объекта, все списки моментально реагируют на изменение, обновляя DOM.</p>
-<p>Но иногда стоит задача перемещения объекта между коллекциями, не перерисовывая его заново. Для перемещения объекта из одного массива в другой, включая его песочницу, используйте флаг <code>moveSandbox</code>.</p>
-<pre class="prettyprint source lang-js"><code>this.push_( item, {
-    moveSandbox: true
-});</code></pre><h4>Переопределение <code>itemRenderer</code></h4><p>Начиная с версии 1.1, при переустановке свойства <code>itemRenderer</code>, коллекция автоматически перерисовывается.</p>
-<pre class="prettyprint source lang-js"><code>this.itemRenderer = '&lt;div>';</code></pre><p>Эта возможность полезна в том случае, когда разработчик желает загрузить шаблон с сервера.</p>
-<pre class="prettyprint source lang-js"><code>// пример jQuery.get
-jQuery.get('templates/template.html', function(data) {
-    this.itemRenderer = data;
-}.bind(this));
-
-// пример Fetch API
-fetch('templates/template.html')
-    .then(function(resp) {
-        return resp.text();
-    })
-    .then(function(data) {
-        this.itemRenderer = data;
-    }.bind(this));
-
-// пример Fetch API + ECMAScript 2015
-fetch('templates/template.html')
-    .then(resp => resp.text())
-    .then(data => this.itemRenderer = data);</code></pre><p>Для отрисовки только тех объектов, которые еще не были отрисованы, воспользуйтесь методом <a href="#!Matreshka-set">Matreshka#set</a> с флагом <code>forceRerender: false</code></p>
-<pre class="prettyprint source lang-js"><code>this.set('itemRenderer', renderer, {forceRerender: false});</code></pre><p>Такая необходимость может возникнуть тогда, когда вы используете серверный пререндеринг (см. <a href="#!Matreshka.Array-restore">Matreshka.Array#restore</a>), а шаблон подгружается динамически.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    constructor:  function() {
-        this
-            .bindNode('sandbox', '.some-node')
-            .restore();
-
-        jQuery.get('templates/template.html', function(data) {
-            this.set('itemRenderer', data, {forceRerender: false})
-        }.bind(this));
-    }
-});</code></pre><h4>Рендеринг коллекции, состоящей из обычных объектов</h4><p>В версии 1.1 самым большим нововведением фреймворка стала поддержка нативных объектов в методах <a href="#!Matreshka.bindNode">Matreshka.bindNode</a>, <a href="#!Matreshka.linkProps">Matreshka.linkProps</a>, <a href="#!Matreshka.mediate">Matreshka.mediate</a> и пр. Эта замечательная возможность не обошла стороной и рендеринг. Теперь не обязательно заботиться о том, чтобы элементы, входящие в коллекцию наследовались от класса <a href="#!Matreshka">Matreshka</a>.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    // Model не определена
-    itemRenderer: ...
-    onItemRender: function(item) {
-        MK.bindNode(item, 'x', ':sandbox .some-node');
-    }
-})</code></pre><p>Для того, чтоб удостовериться, что элементы, попадающие в массив - объекты (а не null, number и пр), можно присвоить свойству <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> значение <code>Object</code>, который является встроенным в JavaScript конструктором объектов.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    Model: Object,
-    itemRenderer: ...
-    constructor: function() {...}
-})</code></pre><p>Еще небольшой пример: рендеринг простого списка:</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    itemRenderer: '&lt;li>{{value}}&lt;/li>',
-    constructor: function() {
-        this.bindNode('sandbox', '.my-list');
-    }
-});
-
-var arr = new MyArray();
-arr.push({value: 'Item 1'}, {value: 'Item 2'});</code></pre></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
-	
-		<li><a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5><p>ECMAScript 2015</p></h5>
-<pre class="prettyprint source lang-js"><code>class MyArray extends MK.Array {
-	get itemRenderer() {
-		return '&lt;div>';
-	},
-	constructor() { ... }
-}</code></pre><h5><p>ECMAScript 7</p></h5>
-<pre class="prettyprint source lang-js"><code>class MyArray extends MK.Array {
-	itemRenderer = '&lt;div>';
-	constructor() { ... }
-}</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Array-itemRenderer" data-title="Свойство Matreshka.Array-itemRenderer">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-itemRenderer"
-  title="Свойство Matreshka.Array-itemRenderer"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.Array-renderIfPossible" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.Array-renderIfPossible">
-
-			<span class="memberof">Matreshka.Array#</span>renderIfPossible</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p>Свойство <code>renderIfPossible</code> отменяет рендеринг массива</p></div>
-	<div class="description"></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-	itemRenderer: '&lt;li>'
-    renderIfPossible: false,
-    // ...
-});</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Array-renderIfPossible" data-title="Свойство Matreshka.Array-renderIfPossible">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-renderIfPossible"
-  title="Свойство Matreshka.Array-renderIfPossible"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.Array-trackBy" data-since="1.2"
-data-importance="2">
-	<h2>
-		<a href="#!Matreshka.Array-trackBy">
-
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>trackBy</a><span class="type">:
-				<span data-type="string">string</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 1.2.</p></div>
-	
-	<div class="summary"><p>Свойство <code>trackBy</code> указывает на ключ идентификатора объектов, входящих в массив</p></div>
-	<div class="description"><p>В случае, если клиент и сервер активно обмениваются данными (например, списком пользователей), а объекты, входящие в массив имеют уникальный ID (например, идентификатор пользователя), то перерисовка всей коллекции с нуля не имеет смысла. После того, как сервер вернул новую коллекцию, намного рациональнее проверить, есть ли в коллекции объект с таким же ID и, если объект найден, обновить его. Таким образом, не создаётся новый объект (экземпляр <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>) и не рисуется новый DOM узел.</p>
-<p><code>trackBy</code> говорит о том, какой именно ключ модели является идентификатором. Используя это свойство работа приложения, в некоторых слуаях, получает серьезный прирост скорости при рендеринге огромных коллекций.</p>
-<p><code>trackBy</code> работает только при использовании метода <a href="#!Matreshka.Array-recreate">Matreshka.Array#recreate</a>, так как это единственный метод &quot;пересоздающий&quot; коллекцию заново.</p>
-<p>В примере ниже используется <code>_id</code> в качестве значения (значение может быть любым).</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    trackBy: '_id'
-    constructor: function() {
-        //,,,
-    }
-});
-
-var arr = new MyArray();
-
-// добавит три объекта в массив
-arr.recreate([
-    {_id: 0, name: 'Foo'},
-    {_id: 1, name: 'Bar'},
-    {_id: 2, name: 'Baz'}
-]);
-
-// удалит объект с идентификатором 0
-// добавит объект с идентификатором 3
-// обновит объект с идентификатором 1, обновив name: Bar -> BarNew
-// обновит объект с идентификатором 2, обновив name: Baz -> BazNew
-// пересортирует коллекцию в соответствие с переданным данным
-arr.recreate([
-    {_id: 1, name: 'BarNew'},
-    {_id: 3, name: 'Qux'},
-    {_id: 2, name: 'BazNew'}
-]);</code></pre><p>Свойство может содержать специальное значение <code>&quot;$index&quot;</code>, которое позволяет обновлять объект по индексу в коллекции.</p>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-    'extends': MK.Array,
-    trackBy: '$index'
-    constructor: function() {
-        //,,,
-    }
-});
-
-var arr = new MyArray();
-
-// добавит три объекта в массив
-arr.recreate([
-    {name: 'Foo'},
-    {name: 'Bar'},
-    {name: 'Baz'}
-]);
-
-// обновит все три объекта новыми данными
-// и добавит новый объект с именем Qux
-arr.recreate([
-    {name: 'NewFoo'},
-    {name: 'NewBar'},
-    {name: 'NewBaz'},
-    {name: 'Qux'}
-]);</code></pre></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka.Array-recreate">Matreshka.Array#recreate</a>
-	
-</ul>
-
-
-	  
-
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Array-trackBy" data-title="Свойство Matreshka.Array-trackBy">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-trackBy"
-  title="Свойство Matreshka.Array-trackBy"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.Array-useBindingsParser" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.Array-useBindingsParser">
-
-			<span class="memberof">Matreshka.Array#</span>useBindingsParser</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p>Свойство отключает парсер, если присвоить ему <code>false</code></p></div>
-	<div class="description"></div>
-	
-<h4>Ссылки</h4>
-<ul class="see">
-	
-		<li><a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a>
-	
-</ul>
-
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>var MyArray = Class({
-	'extends': MK.Array,
-	useBindingsParser: false,
-	itemRenderer: '&lt;li>{{property}}'
-});</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.Array-useBindingsParser" data-title="Свойство Matreshka.Array-useBindingsParser">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-useBindingsParser"
-  title="Свойство Matreshka.Array-useBindingsParser"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -11317,7 +10761,7 @@ data-importance="2">
     &lt;/script>
 &lt;/ul></code></pre><pre class="prettyprint source lang-js"><code>var MyModel = Class({
     'extends': MK.Object,
-    constructor: function() {
+    constructor: function(data) {
         this.addDataKeys('value');
         this.set(data);
     },
@@ -11580,6 +11024,566 @@ data-importance="3">
 </article>
 
 
+<article class="item property" id="!Matreshka.Array-isMKArray" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.Array-isMKArray">
+
+			<span class="memberof">Matreshka.Array#</span>isMKArray</a><span class="type">:
+				<span data-type="boolean">boolean</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p><code>isMKArray</code> всегда равен <code>true</code>. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса <a href="#!Matreshka.Array">Matreshka.Array</a></p></div>
+	<div class="description"></div>
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>alert(object.isMKArray);</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-isMKArray" data-title="Свойство Matreshka.Array-isMKArray">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-isMKArray"
+  title="Свойство Matreshka.Array-isMKArray"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.Array-itemRenderer" data-since="0.1"
+data-importance="1">
+	<h2>
+		<a href="#!Matreshka.Array-itemRenderer">
+
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>itemRenderer</a><span class="type">:
+				<span data-type="string">string</span> <span data-type="function">function</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 0.1.</p></div>
+	
+	<div class="summary"><p>HTML строка, селектор или функция, отвечающая за отрисовку элементов массива на странице</p></div>
+	<div class="description"><p>Свойство <code>itemRenderer</code> - это переопределяемое (виртуальное) свойство, которое позволяет рендерить элементы массива без участия программиста. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.</p>
+<h4>Куда вставляется созданный элемент?</h4><p>Для того, чтобы определить HTML контейнер, в который будут вставляться отрисованные HTML узлы, нужно определить <strong>контейнер</strong>. Для этого следует объявить HTML песочницу для массива либо связать специальный ключ <code>container</code> с HTML контейнером. Подробнее о привязках и песочнице см. <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.
+Пример использования песочницы в качестве контейнера:</p>
+<pre class="prettyprint source lang-html"><code>&lt;ul class=&quot;my-list&quot;>&lt;/ul></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    itemRenderer: '&lt;li>',
+    Model: MyModel,
+    constructor: function() {
+        // определяем песочницу
+        this.bindNode('sandbox', '.my-list');
+    }
+});</code></pre><p>Теперь все новосозданные узлы <code>&lt;li&gt;</code> попадут в узел <code>.my-list</code></p>
+<p>Если вы не хотите вставлять HTML узлы непосредственно в песочницу, можете связать ключ <code>container</code> с необходимым элементом. Такая логика нужна в том случае, если песочница не ограничена одними лишь элементами коллекции и включает в себя другие HTML узлы.</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;my-widget&quot;>
+    &lt;h1>This is my awesome list&lt;/h1>
+    &lt;ul class=&quot;my-list&quot;>&lt;/ul>
+&lt;/div></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    itemRenderer: '&lt;li>',
+    Model: MyModel,
+    constructor: function() {
+        // определяем песочницу
+        this.bindNode('sandbox', '.my-widget');
+        // определяем контейнер для HTML элементов
+        this.bindNode('container', '.my-list');
+    }
+});</code></pre><p>В примере выше HTML узлы будут вставляться в <code>.my-list</code> вместо <code>.my-widget</code>.</p>
+<p>Свойство <code>itemRenderer</code> поддерживает несколько вариантов определения, но все они должны содержать или возвращать единственный HTML узел.</p>
+<h4>HTML строка в качестве значения свойства</h4><p>Как видно из примера выше, <code>itemRenderer</code> может быть определен, как HTML строка.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>',
+    constructor: function() { ... }
+});</code></pre><h4>Селектор в качестве значения свойства</h4><p>На случай, если вы выносите шаблоны для элементов на HTML страницу, <code>itemRenderer</code> поддерживает селектор в качестве значения. В этом случае, <a href="#!Matreshka.Array">Matreshka.Array</a> будет искать HTML элемент в DOM дереве и извлечет <code>innerHTML</code> найденого элемента. В случае, если элемент не найден, бросается исключение. HTML текст от селектора отличается наличием  символа <code>&lt;</code> в строке.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;text/html&quot; id=&quot;be-cool-template&quot;>
+    &lt;div class=&quot;my-div&quot;>Be cool&lt;/div>
+&lt;/script></code></pre><pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel
+    itemRenderer: '#be-cool-template',
+    constructor: function() { ... }
+});</code></pre><h4>Функция в качестве значения свойства</h4><p>Использование функции в качестве значения свойства <code>itemRenderer</code> даёт дополнительную гибкость кода, если есть нужда динамически генерировать элемент для рендеринга. Функция может возвращать:</p>
+<p><strong>HTML строку</strong></p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: function() {
+        return '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>';
+    },
+    constructor: function() { ... }
+});</code></pre><p><strong>Селектор</strong></p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: function() {
+        return '#be-cool-template';
+    },
+    constructor: function() { ... }
+});</code></pre><p><strong>DOM узел</strong></p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    itemRenderer: function() {
+        return document.createElement('div');
+    }
+});</code></pre><p><strong>Handlebars.js в качестве шаблонизатора</strong></p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    // model - модель (экземпляр Matreshka.Object), который будет рендериться
+    itemRenderer: function(model) {
+        // получение и компилирование шаблона
+        var template = Handlebars
+            .compile($('#handlebarsTemplateSelector').html());
+        // подстановка значений модели в шаблон и его возвращение
+        return template(model);
+    }
+});</code></pre><h4>Переопределение родительского рендерера свойством <code>render</code></h4><p>Иногда удобно объявлять рендерер внутри класса <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>, как это делает <code>Backbone</code>. Свойство <code>renderer</code> переопределяет значение <code>itemRenderer</code>, если оно задано для дочернего элемента коллекции.</p>
+<pre class="prettyprint source lang-js"><code>var MyModel = Class({
+    'extends': MK.Object,
+    renderer: '&lt;div class=&quot;my-div&quot;>Be cool&lt;/div>',
+    constructor: function(data) { ... }
+});
+
+var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: '&lt;frameset>Not cool&lt;/frameset>',
+    constructor: function() { ... }
+});</code></pre><p>В этом случае, можно вовсе не указывать <code>itemRenderer</code>, так как <code>render</code> дочернего элемента перенимает все его возможности. Синтаксис остаётся такими же: можно использовать HTML, селектор или функцию.</p>
+<h4>Событие <code>render</code></h4><p>После того, как элемент вставлен в массив, а его HTML узел уже создан, но еще не вставлен в контейнер, генерируется событие <code>render</code> на вставленном элементе. После его генерации можно объявить привязки свойств к HTML узлам, содержащимся внутри вставленного.</p>
+<pre class="prettyprint source lang-html"><code>&lt;form class=&quot;my-form&quot;>&lt;/form></code></pre><pre class="prettyprint source lang-js"><code>var MyModel = Class({
+    'extends': MK.Object,
+    constructor: function(data) {
+        this.jset(data);
+
+        // ждем генерации события
+        this.on('render', function() {
+            this.bindNode('isChecked', ':sandbox .my-checkbox');
+            this.bindNode('text', ':sandbox .text',
+                MK.binders.html());
+        });
+    }
+});
+
+var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: '&lt;label>\
+        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>\
+        &lt;span class=&quot;text&quot;>&lt;/span>\
+    &lt;/label>',
+    constructor: function() {
+        this.bindNode('sandbox', '.my-form');
+        this.push({
+            isChecked: true,
+            text: 'Be cool'
+        }, {
+            isChecked: false,
+            text: 'Produce shitcode'
+        });
+    }
+});
+
+var app = new MyArray();</code></pre><p>Код выше создаст такое HTML дерево:</p>
+<pre class="prettyprint source lang-html"><code>&lt;form class=&quot;my-form&quot;>
+    &lt;label>
+        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>
+        &lt;span class=&quot;text&quot;>Be cool&lt;/span>
+    &lt;/label>
+    &lt;label>
+        &lt;input type=&quot;checkbox&quot; class=&quot;my-checkbox&quot;>
+        &lt;span class=&quot;text&quot;>Produce shitcode&lt;/span>
+    &lt;/label>
+&lt;/form></code></pre><p>И свяжет чекбоксы с соответствующими свойствaми <code>isChecked</code> и <code>text</code>. <a href="http://jsbin.com/zetuya/1/" target="_blank">Живой пример</a></p>
+<p>Не забывайте, что в Матрешке реализована возможность отлова всплывающих событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события <code>*@render</code> (см. документацию к <span data-type="eventNames">eventNames</span>).</p>
+<pre class="prettyprint source lang-js"><code>this.on('*@render', function(evt) {
+    alert('Child element is rendered');
+});</code></pre><blockquote>
+<p>Отрисованный HTML узел становится песочницей для вставленного элемента, позволяя использовать селектор <code>:sandbox</code> и другие возможности после рендеринга. Если элемент входит сразу в несколько коллекций, установите ему свойство <code>bindRenderedAsSandbox: false</code>, чтобы отменить это поведение.</p>
+<pre class="prettyprint source lang-js"><code>var MyModel = Class({
+    'extends': MK.Object,
+    bindRenderedAsSandbox: false,
+    // ...
+});</code></pre></blockquote>
+<h4>Событие <code>afterrender</code></h4><p>После срабатывания события <code>render</code> запускается нулевой таймер (<code>setTimeout(f, 0)</code>), вызывающий событие <code>afterrender</code>. Таким образом можно получить актуальные данные о позиции элемента на странице и другую информацию, которая доступна только тогда, когда DOM узел вставлен на страницу.</p>
+<pre class="prettyprint source lang-js"><code>var MyModel = Class({
+    'extends': MK.Object,
+    constructor: function(data) {
+        //...
+        this.on('afterrender', function() {
+            console.log('Computed style', getComputedStyle(this.sandbox));
+        });
+        //...
+    }
+});
+// ...</code></pre><h4><code>onItemRender</code> и <code>onRender</code></h4><p>Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод <a href="#!Matreshka.Array-onItemRender">Matreshka.Array#onItemRender</a>, который можно использовать вместо события <code>render</code>. В качестве альтернативы, у &quot;моделей&quot; вызывается метод <code>onRender</code>, так же позволяющий сделать код более &quot;плоским&quot; и избавиться от вложенных функций.</p>
+<pre class="prettyprint source"><code>
+```js
+var MyModel = Class({
+    'extends': MK.Object,
+    constructor: function(data) {
+        this.jset(data);
+    },
+    onRender: function(evt) {
+        this.bindNode('isChecked', ':sandbox .my-checkbox');
+        this.bindNode('text', ':sandbox .text',
+                MK.binders.html());
+    }
+});
+
+var MyArray = Class({
+    'extends': MK.Array,
+    Model: MyModel,
+    itemRenderer: '...`,
+    constructor: function() {
+        //...
+    },
+    onItemRender: function(item, evt) {
+        //...
+    }
+});
+
+var app = new MyArray();</code></pre><h4>Шаблонизатор</h4><p>Взглянув на примеры использования <a href="#!Matreshka.Array">Matreshka.Array</a> и <a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a> можно обратить внимание на то, что вся логика, отвечающая за двустороннюю и одностороннюю привязку данных заключена в JavaScript коде. Это одно из главных преимуществ Матрешки. Но когда разрабатываешь очень простую коллекцию, не включающую в себя сложную логику, массу привязок и пр. хотелось бы иметь более краткий вариант объявления привязок. Для этого, в <code>itemRenderer</code> может быть передан шаблон, включающий привязки. Начиная с версии 1.1, шаблонизатор включен по умолчанию.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: MK.Object,
+    itemRenderer: '&lt;label>\
+        &lt;input type=&quot;checkbox&quot; checked=&quot;&#123;{isChecked}}&quot;>&#123;{text}}\
+    &lt;/label>',
+    constructor: function() {
+        this.bindNode('sandbox', '.my-form');
+        this.push({
+            isChecked: true,
+            text: 'Be cool'
+        }, {
+            isChecked: false,
+            text: 'Produce shitcode'
+        });
+    }
+});
+
+var app = new MyArray();</code></pre><p>Пример выше полностью повторяет предыдущий, но не требует создания отдельного класса для Модели, так как нам не требуется отлавливать событие <code>render</code> и объявлять привязки вручную. <a href="http://jsbin.com/wabiyi/1/" target="_blank">Живой пример</a></p>
+<p>Обратите внимание:
+Скорость кода с шаблонизатором несколько ниже, чем без него. Это происходит из-за того, что анализ строки, перебор ключей в цикле (при использовании нескольких ключей в одном атрибуте), замена подстрок регулярным выражением и пр. требуют больше ресурсов. Шаблонизатор можно отключить двумя способами: установить свойство <a href="#!Matreshka.Array-useBindingsParser">Matreshka.Array#useBindingsParser</a>, как <code>false</code>, или не использовать синтаксис &#123;{KEY}} вовсе (шаблонизатор срабатывает только тогда, когда у узла или HTML строки есть двойные фигурные скобки).</p>
+<p>Шаблонизация реализована с помощью метода <a href="#!Matreshka-parseBindings">Matreshka#parseBindings</a>.</p>
+<h4>Отмена рендеринга</h4><p>Как видно выше, если у дочернего элемента задано свойство <code>render</code>, <code>Matreshka.Array</code> попробует его отрисовать. Для того, чтоб полностью отменить рендеринг для массива, присвойте свойству <code>renderIfPossible: false</code>.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    renderIfPossible: false,
+    // ...
+});</code></pre><h4>Перемещение объекта из одного массива в другой</h4><p>По умолчанию, при вставке объекта в массив Матрешка попытается его отрисовать, используя <code>itemRenderer</code> (если он еще не был отрисован).  Это даёт огромное преимущество в случаях, когда у вас на странице есть два или более списка, включающих в себя один и тот же объект. При изменении этого объекта, все списки моментально реагируют на изменение, обновляя DOM.</p>
+<p>Но иногда стоит задача перемещения объекта между коллекциями, не перерисовывая его заново. Для перемещения объекта из одного массива в другой, включая его песочницу, используйте флаг <code>moveSandbox</code>.</p>
+<pre class="prettyprint source lang-js"><code>this.push_( item, {
+    moveSandbox: true
+});</code></pre><h4>Переопределение <code>itemRenderer</code></h4><p>Начиная с версии 1.1, при переустановке свойства <code>itemRenderer</code>, коллекция автоматически перерисовывается.</p>
+<pre class="prettyprint source lang-js"><code>this.itemRenderer = '&lt;div>';</code></pre><p>Эта возможность полезна в том случае, когда разработчик желает загрузить шаблон с сервера.</p>
+<pre class="prettyprint source lang-js"><code>// пример jQuery.get
+jQuery.get('templates/template.html', function(data) {
+    this.itemRenderer = data;
+}.bind(this));
+
+// пример Fetch API
+fetch('templates/template.html')
+    .then(function(resp) {
+        return resp.text();
+    })
+    .then(function(data) {
+        this.itemRenderer = data;
+    }.bind(this));
+
+// пример Fetch API + ECMAScript 2015
+fetch('templates/template.html')
+    .then(resp => resp.text())
+    .then(data => this.itemRenderer = data);</code></pre><p>Для отрисовки только тех объектов, которые еще не были отрисованы, воспользуйтесь методом <a href="#!Matreshka-set">Matreshka#set</a> с флагом <code>forceRerender: false</code></p>
+<pre class="prettyprint source lang-js"><code>this.set('itemRenderer', renderer, {forceRerender: false});</code></pre><p>Такая необходимость может возникнуть тогда, когда вы используете серверный пререндеринг (см. <a href="#!Matreshka.Array-restore">Matreshka.Array#restore</a>), а шаблон подгружается динамически.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    constructor:  function() {
+        this
+            .bindNode('sandbox', '.some-node')
+            .restore();
+
+        jQuery.get('templates/template.html', function(data) {
+            this.set('itemRenderer', data, {forceRerender: false})
+        }.bind(this));
+    }
+});</code></pre><h4>Рендеринг коллекции, состоящей из обычных объектов</h4><p>В версии 1.1 самым большим нововведением фреймворка стала поддержка нативных объектов в методах <a href="#!Matreshka.bindNode">Matreshka.bindNode</a>, <a href="#!Matreshka.linkProps">Matreshka.linkProps</a>, <a href="#!Matreshka.mediate">Matreshka.mediate</a> и пр. Эта замечательная возможность не обошла стороной и рендеринг. Теперь не обязательно заботиться о том, чтобы элементы, входящие в коллекцию наследовались от класса <a href="#!Matreshka">Matreshka</a>.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    // Model не определена
+    itemRenderer: ...
+    onItemRender: function(item) {
+        MK.bindNode(item, 'x', ':sandbox .some-node');
+    }
+})</code></pre><p>Для того, чтоб удостовериться, что элементы, попадающие в массив - объекты (а не null, number и пр), можно присвоить свойству <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> значение <code>Object</code>, который является встроенным в JavaScript конструктором объектов.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    Model: Object,
+    itemRenderer: ...
+    constructor: function() {...}
+})</code></pre><p>Еще небольшой пример: рендеринг простого списка:</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    itemRenderer: '&lt;li>{{value}}&lt;/li>',
+    constructor: function() {
+        this.bindNode('sandbox', '.my-list');
+    }
+});
+
+var arr = new MyArray();
+arr.push({value: 'Item 1'}, {value: 'Item 2'});</code></pre></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+		<li><a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5><p>ECMAScript 2015</p></h5>
+<pre class="prettyprint source lang-js"><code>class MyArray extends MK.Array {
+	get itemRenderer() {
+		return '&lt;div>';
+	},
+	constructor() { ... }
+}</code></pre><h5><p>ECMAScript 7</p></h5>
+<pre class="prettyprint source lang-js"><code>class MyArray extends MK.Array {
+	itemRenderer = '&lt;div>';
+	constructor() { ... }
+}</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-itemRenderer" data-title="Свойство Matreshka.Array-itemRenderer">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-itemRenderer"
+  title="Свойство Matreshka.Array-itemRenderer"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.Array-renderIfPossible" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.Array-renderIfPossible">
+
+			<span class="memberof">Matreshka.Array#</span>renderIfPossible</a><span class="type">:
+				<span data-type="boolean">boolean</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Свойство <code>renderIfPossible</code> отменяет рендеринг массива</p></div>
+	<div class="description"></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+	itemRenderer: '&lt;li>'
+    renderIfPossible: false,
+    // ...
+});</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-renderIfPossible" data-title="Свойство Matreshka.Array-renderIfPossible">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-renderIfPossible"
+  title="Свойство Matreshka.Array-renderIfPossible"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.Array-trackBy" data-since="1.2"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka.Array-trackBy">
+
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>trackBy</a><span class="type">:
+				<span data-type="string">string</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 1.2.</p></div>
+	
+	<div class="summary"><p>Свойство <code>trackBy</code> указывает на ключ идентификатора объектов, входящих в массив</p></div>
+	<div class="description"><p>В случае, если клиент и сервер активно обмениваются данными (например, списком пользователей), а объекты, входящие в массив имеют уникальный ID (например, идентификатор пользователя), то перерисовка всей коллекции с нуля не имеет смысла. После того, как сервер вернул новую коллекцию, намного рациональнее проверить, есть ли в коллекции объект с таким же ID и, если объект найден, обновить его. Таким образом, не создаётся новый объект (экземпляр <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a>) и не рисуется новый DOM узел.</p>
+<p><code>trackBy</code> говорит о том, какой именно ключ модели является идентификатором. Используя это свойство работа приложения, в некоторых слуаях, получает серьезный прирост скорости при рендеринге огромных коллекций.</p>
+<p><code>trackBy</code> работает только при использовании метода <a href="#!Matreshka.Array-recreate">Matreshka.Array#recreate</a>, так как это единственный метод &quot;пересоздающий&quot; коллекцию заново.</p>
+<p>В примере ниже используется <code>_id</code> в качестве значения (значение может быть любым).</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    trackBy: '_id'
+    constructor: function() {
+        //,,,
+    }
+});
+
+var arr = new MyArray();
+
+// добавит три объекта в массив
+arr.recreate([
+    {_id: 0, name: 'Foo'},
+    {_id: 1, name: 'Bar'},
+    {_id: 2, name: 'Baz'}
+]);
+
+// удалит объект с идентификатором 0
+// добавит объект с идентификатором 3
+// обновит объект с идентификатором 1, обновив name: Bar -> BarNew
+// обновит объект с идентификатором 2, обновив name: Baz -> BazNew
+// пересортирует коллекцию в соответствие с переданным данным
+arr.recreate([
+    {_id: 1, name: 'BarNew'},
+    {_id: 3, name: 'Qux'},
+    {_id: 2, name: 'BazNew'}
+]);</code></pre><p>Свойство может содержать специальное значение <code>&quot;$index&quot;</code>, которое позволяет обновлять объект по индексу в коллекции.</p>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+    'extends': MK.Array,
+    trackBy: '$index'
+    constructor: function() {
+        //,,,
+    }
+});
+
+var arr = new MyArray();
+
+// добавит три объекта в массив
+arr.recreate([
+    {name: 'Foo'},
+    {name: 'Bar'},
+    {name: 'Baz'}
+]);
+
+// обновит все три объекта новыми данными
+// и добавит новый объект с именем Qux
+arr.recreate([
+    {name: 'NewFoo'},
+    {name: 'NewBar'},
+    {name: 'NewBaz'},
+    {name: 'Qux'}
+]);</code></pre></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka.Array-recreate">Matreshka.Array#recreate</a>
+	
+</ul>
+
+
+	  
+
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-trackBy" data-title="Свойство Matreshka.Array-trackBy">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-trackBy"
+  title="Свойство Matreshka.Array-trackBy"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.Array-useBindingsParser" 
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.Array-useBindingsParser">
+
+			<span class="memberof">Matreshka.Array#</span>useBindingsParser</a><span class="type">:
+				<span data-type="boolean">boolean</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+	<div class="summary"><p>Свойство отключает парсер, если присвоить ему <code>false</code></p></div>
+	<div class="description"></div>
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>var MyArray = Class({
+	'extends': MK.Array,
+	useBindingsParser: false,
+	itemRenderer: '&lt;li>{{property}}'
+});</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-useBindingsParser" data-title="Свойство Matreshka.Array-useBindingsParser">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-useBindingsParser"
+  title="Свойство Matreshka.Array-useBindingsParser"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+
 
 <article class="item method" id="!Matreshka.Array.from" data-since="1.1"
 data-importance="2">
@@ -11757,6 +11761,7 @@ data-importance="2">
   data-upload="false"></div>
 
 </article>
+
 
 
 

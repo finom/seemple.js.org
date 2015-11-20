@@ -30,9 +30,7 @@ After you've learned the most important API parts you can hardily start doing fa
 If you already know the quick-start basics, you can look at other methods and properties of Matreshka.
 
 ### [[i class="imp-level-3"]][[/i]] The third level - other methods and properties
-We've hidden rarely used parts (MAtreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.
-
-This issue has been resolved in this documentation. To start working with the framework confidently, you should study classes, properties and methods flagged as important [[i class="important"]][[/i]] (there are a little more than ten of them). Next, if you wish, you can gradually proceed to master the other methods which add the magic you couldn't even dream of into your JavaScript code (but look at the "cool" [[i class="cool"]][[/i]] methods first).
+We've hidden rarely used parts (Matreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.
 
 
 > This page can't do without the fantastic possibilities of HTML5. It is available offline for any device whether it is your computer or a mobile phone.

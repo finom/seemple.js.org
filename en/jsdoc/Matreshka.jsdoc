@@ -148,7 +148,7 @@ this.on({
 	'change:y': function(evt) { ... }
 });
 
-@example ECMAScript 2015
+@example <caption>ECMAScript 2015</caption>
 this.on({
 	'custom': evt => ...,
 	'click::x': evt => ...,
@@ -348,7 +348,7 @@ this.bindNode('myKey', '.my-checkbox', {
 
 After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state in no time. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
 ```js
-// sets checked = false
+// sets checked = true
 this.myKey = true;
 ```
 

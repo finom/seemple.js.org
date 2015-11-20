@@ -137,7 +137,11 @@ exports.publish = function(data, opts) {
 			important: 'Important',
 			see: 'Links',
 			cool: 'Cool method or property',
-			since: 'Available since'
+			since: 'Available since',
+			methods: 'Methods',
+			properties: 'Properties',
+			static_methods: 'Static Methods',
+			static_properties: 'Static Props'
 		},
 		ru: {
 			'class': 'Класс',
@@ -157,7 +161,11 @@ exports.publish = function(data, opts) {
 			important: 'Важно',
 			see: 'Ссылки',
 			cool: 'Крутой метод или свойство',
-			since: 'Добавлено в версии'
+			since: 'Добавлено в версии',
+			methods: 'Методы',
+			properties: 'Свойства',
+			static_methods: 'Статичные методы',
+			static_properties: 'Статичные свойства'
 		}
 	}[view.langName];
 

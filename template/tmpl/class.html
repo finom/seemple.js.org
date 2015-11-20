@@ -15,17 +15,19 @@
 	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
 	<?js print( this.partial( 'comments.html', { link: obj.longname, title: this.lang.class + ' ' + obj.longname }) ) ?>
 </article>
+
+<?js obj.instanceMembers['function'].forEach( function( member ) {
+	print( this.partial( 'method.html', member ) )
+}, this ); ?>
 <?js obj.instanceMembers.member.forEach( function( member ) {
 	print( this.partial( 'property.html', member ) )
 }, this ); ?>
-<?js obj.instanceMembers['function'].forEach( function( member ) {
+
+<?js obj.staticMembers['function'].forEach( function( member ) {
 	print( this.partial( 'method.html', member ) )
 }, this ); ?>
 <?js obj.staticMembers.member.forEach( function( member ) {
 	print( this.partial( 'property.html', member ) )
-}, this ); ?>
-<?js obj.staticMembers['function'].forEach( function( member ) {
-	print( this.partial( 'method.html', member ) )
 }, this ); ?>
 <?js if( obj.binders ) {
 	print( this.partial( 'ns.html', obj.binders ) )

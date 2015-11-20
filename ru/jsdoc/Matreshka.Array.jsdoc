@@ -876,7 +876,7 @@ this.recreate();
 ```js
 var MyModel = Class({
 	'extends': MK.Object,
-	constructor: function() {
+	constructor: function(data) {
 		this.addDataKeys('value');
 		this.set(data);
 	},
