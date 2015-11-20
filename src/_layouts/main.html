@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="matreshka.appcache">
+<html manifest="matreshka.appcache?1">
 	<head>
 		<title>{{ page.title }}</title>
 		<meta name="description" content="{{ page.description }}">
@@ -33,6 +33,16 @@
 		<meta name="theme-color" content="#8BC34A">
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
 		<meta property="og:image" content="http://matreshka.io/img/mk_logo.png">
+		<script>
+		if (window.applicationCache) {
+			applicationCache.addEventListener('updateready', function() {
+				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+					window.applicationCache.swapCache();
+					window.location.reload();
+				}
+			});
+		}
+		</script>
 		<style>
 			.loader {
 				position: fixed;
