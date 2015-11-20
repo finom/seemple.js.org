@@ -1,16 +1,19 @@
 import express from 'express';
 import fragments from './fragments';
 import compression from 'compression';
+import mime from 'mime-types';
+
 let app = express();
 
 app.use(compression());
 
-app.use(express.static('dist/matreshka.appcache', {
-	maxAge: 0
-}));
-
 app.use(express.static('dist', {
-	maxAge: 10*24*60*60*1000
+	maxAge: 24*60*60*1000,
+	setHeaders: function (res, path) {
+		if (mime.lookup(path) === 'text/cache-manifest') {
+			res.setHeader('Cache-Control', 'public, max-age=0')
+		}
+	}
 }));
 
 app.get(/(^\/forum(\/)?$)/, (req, res, next) => {
