@@ -34,11 +34,12 @@
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
 		<meta property="og:image" content="http://matreshka.io/img/mk_logo.png">
 		<script>
-		if (window.applicationCache) {
+		if (window.applicationCache && (!localStorage.reloadedTimeSpike || new Date().getTime() - localStorage.reloadedTimeSpike > 60*1000)) {
 			applicationCache.addEventListener('updateready', function() {
 				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 					window.applicationCache.swapCache();
 					window.location.reload();
+					localStorage.reloadedTimeSpike = new Date().getTime();
 				}
 			});
 		}
