@@ -125,7 +125,7 @@ export default class Article extends MK.Object {
 
 		return this
 			.bindNode({
-				menuItem: 'nav a[href="#' + this.id + '"]',
+				menuItem: g.app.select('nav a[href="#' + this.id + '"]'),
 				since: [':sandbox', MK.binders.dataset('since')],
 				isActive: [':bound(menuItem)', MK.binders.className('active')],
 				expanded: [':bound(menuItem)', MK.binders.className('expanded')],
