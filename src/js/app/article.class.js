@@ -46,7 +46,7 @@ export default class Article extends MK.Object {
 					window.open(url, 'Facebook', 'height=600,width=700');
 				}, //
 				'click::(.share-twitter)': evt => {
-					let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent('#matreshkajs ' + this.name +': ' + this.summary.substr(0, 60) + '...')}&url=${location.href}`;
+					let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent('#matreshkajs ' + this.name +': ' + this.summary.substr(0, 60) + '...')}&url=${encodeURIComponent(location.href)}`;
 					window.open(url, 'Twitter', 'height=600,width=700');
 				}
 			})
@@ -78,7 +78,7 @@ export default class Article extends MK.Object {
 					return previous;
 				} else {
 					do {
-						if (previous.since != unstableVersion && previous.importance <= importanceLevel) { 
+						if (previous.since != unstableVersion && previous.importance <= importanceLevel) {
 							return previous;
 						}
 					} while (previous = previous.previous)
@@ -146,7 +146,11 @@ export default class Article extends MK.Object {
 						return this.innerHTML.replace(/<wbr>/g, '');
 					}
 				}],
-				summary: [':sandbox .summary p', MK.binders.innerText()],
+				summary: [':sandbox .summary p', {
+					getValue() {
+						return this.textContent;
+					}
+				}],
 				importance: [':sandbox', {
 					getValue() {
 						return +this.getAttribute('data-importance');
