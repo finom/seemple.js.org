@@ -71,13 +71,14 @@ export default class Article extends MK.Object {
 				this, 'previous',
 				g.app, 'unstableVersion',
 				g.app, 'version',
-				g.app, 'articles'
-			], (previous, unstableVersion, version, articles) => {
-				if (!previous || version == 'unstable' || !articles) {
+				g.app, 'articles',
+				g.app, 'importanceLevel'
+			], (previous, unstableVersion, version, articles, importanceLevel) => {
+				if (!previous || !previous.importance || version == 'unstable' || !articles) {
 					return previous;
 				} else {
 					do {
-						if (previous.since != unstableVersion) { // app.globalImportance <= previous.importance
+						if (previous.since != unstableVersion && previous.importance <= importanceLevel) { 
 							return previous;
 						}
 					} while (previous = previous.previous)
@@ -87,13 +88,14 @@ export default class Article extends MK.Object {
 				this, 'next',
 				g.app, 'unstableVersion',
 				g.app, 'version',
-				g.app, 'articles'
-			], (next, unstableVersion, version, articles) => {
-				if (!next || version == 'unstable' || !articles) {
+				g.app, 'articles',
+				g.app, 'importanceLevel'
+			], (next, unstableVersion, version, articles, importanceLevel) => {
+				if (!next || !next.importance || version == 'unstable' || !articles) {
 					return next;
 				} else {
 					do {
-						if (next.since != unstableVersion) {
+						if (next.since != unstableVersion && next.importance <= importanceLevel) {
 							return next;
 						}
 					} while (next = next.next)
