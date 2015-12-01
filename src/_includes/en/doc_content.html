@@ -3942,12 +3942,12 @@ alert(this.x instanceof SubClass); // true
 alert(this.x.a); // 42</code></pre><h5><p>The use of <code>updateCallback</code>.</p></h5>
 <pre class="prettyprint source lang-js"><code>this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
-});</code></pre><h5><p>Getting parent. Besides data (the first argument), the link to the object which has called <code>setClassFor</code> is passed to the constructor of the creating class.</p></h5>
+});</code></pre><h5><p>Getting parent and key. Besides data (the first argument), two arguments are passed to class constructor: a link to an instance which has called <code>setClassFor</code> and a key of the property.</p></h5>
 <pre class="prettyprint source lang-js"><code>var MySubClass = Class({
 	'extends': Matreshka,
-	constructor: function(data, parent) {
-		// parent - is MyClass instance which
-		// has called setClassFor
+	constructor: function(data, parent, key) {
+		// parent - is MyClass instance
+		// key equals to "x"
 	}
 });
 
@@ -9964,7 +9964,7 @@ this.push_(1, 2, 3, {
 data-importance="1">
 	<h2>
 		<a href="#!Matreshka.Array-Model">
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>Model<wbr>(<span class="args">data, mkArray</span>)
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>Model<wbr>(<span class="args">data, mkArray, index</span>)
 				
 		</a> 
 		<span class="new-badge"></span>
@@ -10014,6 +10014,18 @@ data-importance="1">
 </td>
 					<td> An array where an item has been added to</td>
 				</tr>
+			 
+				<tr>
+					<td>
+						index
+						
+					</td>
+					 
+					<td>
+	<span data-type="number">number</span>
+</td>
+					<td> Current index of an instance in the parent array</td>
+				</tr>
 			
 		</tbody>
 	</table>
@@ -10037,7 +10049,7 @@ data-importance="1">
 var MyModel = Class({
 	// it is inherited from MK.Object
 	'extends': MK.Object,
-	constructor: function(data, parentArray) {
+	constructor: function(data, parentArray, index) {
 		// set passed properties by jset method
 		this.jset(data);
 		this.doSomething();
@@ -11777,7 +11789,7 @@ data-importance="2">
 data-importance="2">
 	<h2>
 		<a href="#!Class">
-			Class<wbr>(<span class="args">prototype</span>)
+			Class<wbr>(<span class="args">prototype, statics</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="class">class</span>
@@ -11822,6 +11834,20 @@ data-importance="2">
 </td>
 					<td> Methods and properties</td>
 				</tr>
+			 
+				<tr>
+					<td>
+						statics
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> Static methods and properties</td>
+				</tr>
 			
 		</tbody>
 	</table>
@@ -11859,7 +11885,18 @@ var D = Class({
 		// calling the parent method
 		C.prototype.method2.call(this, arguments);
 	}
-});</code></pre><h5><p>The usage of AMD (named modules)</p></h5>
+});</code></pre><h5><p>Passing an object with static methods and properties</p></h5>
+<pre class="prettyprint source lang-js"><code>var MyClass = Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp; // foo
+alert(MyClass.staticMethod()); // bar</code></pre><h5><p>The usage of AMD (named modules)</p></h5>
 <pre class="prettyprint source lang-js"><code>require.config({
 	paths: {
 		'xclass': 'path/to/matreshka.min',

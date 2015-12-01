@@ -3931,12 +3931,12 @@ alert(this.x instanceof SubClass); // true
 alert(this.x.a); // 42</code></pre><h5><p>Использование <code>updateCallback</code>.</p></h5>
 <pre class="prettyprint source lang-js"><code>this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
-});</code></pre><h5><p>Получение родителя. Кроме данных (первый аргумент), в конструктор создаваемого класса, передается ссылка на объект, вызвавший <code>setClassFor</code></p></h5>
+});</code></pre><h5><p>Получение родителя и ключа. Кроме данных (первый аргумент), в конструктор создаваемого класса, передается ссылка на объект, вызвавший <code>setClassFor</code> и ключ свойства</p></h5>
 <pre class="prettyprint source lang-js"><code>var MySubClass = Class({
 	'extends': Matreshka,
-	constructor: function(data, parent) {
-		// parent - это экземпляр MyClass,
-		// вызвавший setClassFor
+	constructor: function(data, parent, key) {
+		// parent - это экземпляр MyClass
+		// key - ключ ("х")
 	}
 });
 
@@ -9953,7 +9953,7 @@ this.push_(1, 2, 3, {
 data-importance="1">
 	<h2>
 		<a href="#!Matreshka.Array-Model">
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>Model<wbr>(<span class="args">data, mkArray</span>)
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Matreshka.Array#</span>Model<wbr>(<span class="args">data, mkArray, index</span>)
 				
 		</a> 
 		<span class="new-badge"></span>
@@ -10003,6 +10003,18 @@ data-importance="1">
 </td>
 					<td> Массив, в который добавили элемент</td>
 				</tr>
+			 
+				<tr>
+					<td>
+						index
+						
+					</td>
+					 
+					<td>
+	<span data-type="number">number</span>
+</td>
+					<td> Текущий индекс объекта в родительском массиве</td>
+				</tr>
 			
 		</tbody>
 	</table>
@@ -10026,7 +10038,7 @@ data-importance="1">
 var MyModel = Class({
 	// она наследуется от MK.Object
 	'extends': MK.Object,
-	constructor: function(data, parentArray) {
+	constructor: function(data, parentArray, index) {
 		// устанавливаем переданные свойства методом jset
 		this.jset(data);
 		this.doSomething();
@@ -11774,7 +11786,7 @@ data-importance="2">
 data-importance="2">
 	<h2>
 		<a href="#!Class">
-			Class<wbr>(<span class="args">prototype</span>)
+			Class<wbr>(<span class="args">prototype, statics</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="class">class</span>
@@ -11819,6 +11831,20 @@ data-importance="2">
 </td>
 					<td> Методы и свойства</td>
 				</tr>
+			 
+				<tr>
+					<td>
+						statics
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> Статичные методы и свойства</td>
+				</tr>
 			
 		</tbody>
 	</table>
@@ -11856,7 +11882,18 @@ var D = Class({
 		// вызов родительского метода
 		C.prototype.method2.call(this, arguments);
 	}
-});</code></pre><h5><p>Использование AMD (именованные модули)</p></h5>
+});</code></pre><h5><p>Передача объекта со статичными методами и свойствами</p></h5>
+<pre class="prettyprint source lang-js"><code>var MyClass = Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp; // foo
+alert(MyClass.staticMethod()); // bar</code></pre><h5><p>Использование AMD (именованные модули)</p></h5>
 <pre class="prettyprint source lang-js"><code>require.config({
 	paths: {
 		'xclass': 'path/to/matreshka.min',
@@ -12642,6 +12679,20 @@ magic.mediate(object, 'z', Number);
     //...
 });</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p>
 <p>Обратите внимание. Фреймворк Матрешка работает в Internet Explorer 8 благодаря хакам, возвращающим из конструктора объект <code>XDomainRequest</code>, вместо "чистого" JavaScript объекта. Так как MatreshkaMagic позволяет работать исключительно с произвольными объектами, поддeржка IE8 для MatreshkaMagic невозможна. Это значит, библиотека работает везде, включая IE9+.</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+<h3><a href="https://github.com/finom/matreshka/releases/tag/v1.4.1">Матрешка 1.4.1</a></h3><ul>
+<li>В функцию <a href="#!Class">Class</a> вторым аргументом можно передать объект со статичными свойствами и методами</li>
+<li><a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> получает индекс в качестве третьего аргумента</li>
+<li>Классы, использующиеся в <a href="#!Matreshka-setClassFor">Matreshka#setClassFor</a> получают ключ в качестве третьего аргумента</li>
+<li><a href="#!Matreshka-bound">Matreshka#bound</a> И <a href="#!Matreshka-$bound">Matreshka#$bound</a> поддерживают путь к ключу (например, <code>a.b.c.d</code>)</li>
+<li><a href="#!Matreshka.binders.file">Matreshka.binders.file</a> генерирует понятную ошибку, если <code>FileReader</code> не поддерживается браузером</li>
+<li>Улучшена производительность Балалайки</li>
+<li>Исправлен баг: <code>Matreshka.Array</code> не мог принудительно перерисовывать кастомные объекты</li>
+<li>Исправлен баг: <code>Matreshka.Array</code> не позволял перемещать песочницу между коллекциями</li>
+<li>Теперь можно удалять делегированные DOM события методом <a href="#!Matreshka-off">Matreshka#off</a></li>
+<li>Не использовать кастомную логику делегированных событий, если подключена jQuery</li>
+<li>Вся логика, отвечающая за делегированные DOM события перемещена в Балалайку</li>
+<li>Исправлены баги небраузерного окружения (некоторые фичи Матрешки можно использовать в nodejs)</li>
+</ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.4.0">Матрешка 1.4.0</a></h3><ul>
 <li>Стандартный байндер для тега <code>output</code> <a href="#!Matreshka.binders.output">Matreshka.binders.output</a></li>
 <li>Байндер <code>visibility</code> переименован в <a href="#!Matreshka.binders.display">Matreshka.binders.display</a> во избежания путаницы с CSS свойством <code>visibility</code> (старое название будет по-прежнему работать    )</li>
