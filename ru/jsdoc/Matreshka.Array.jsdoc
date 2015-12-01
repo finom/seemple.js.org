@@ -739,13 +739,15 @@ var app = new MyArray();
 
 @param {object} data - Данные, переданные в конструктор
 @param {matreshkaArray} mkArray - Массив, в который добавили элемент
+@param {number} index - Текущий индекс объекта в родительском массиве
+
 
 @example
 // определяем Модель
 var MyModel = Class({
 	// она наследуется от MK.Object
 	'extends': MK.Object,
-	constructor: function(data, parentArray) {
+	constructor: function(data, parentArray, index) {
 		// устанавливаем переданные свойства методом jset
 		this.jset(data);
 		this.doSomething();

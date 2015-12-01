@@ -5,6 +5,8 @@
 @desc The ``Class`` function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses a hack which allows to use accessors (getters and setters) using the ``Object.defineProperty`` function.
 
 @param {object} prototype - Methods and properties
+@param {object} [statics] - Static methods and properties
+
 @returns {class} class (a class constructor to be exact)
 @example
 var A = Class({
@@ -35,6 +37,20 @@ var D = Class({
 		C.prototype.method2.call(this, arguments);
 	}
 });
+
+@example <caption>Passing an object with static methods and properties</caption>
+var MyClass = Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp; // foo
+alert(MyClass.staticMethod()); // bar
+
 @example <caption>The usage of AMD (named modules)</caption>
 require.config({
 	paths: {

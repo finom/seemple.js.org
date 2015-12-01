@@ -3,7 +3,10 @@
 @importance 2
 @summary Реализация классов, основанная на прототипном наследовании
 @desc Функция ``Class`` позволяет использовать классическое ООП, основанное на классах. Для современных браузеров классы базируются на прототипном наследовании, а в Internet Explorer 8 используется хак, который разрешает использовать акцессоры (геттеры и сеттеры), с помощью функции Object.defineProperty.
+
 @param {object} prototype - Методы и свойства
+@param {object} [statics] - Статичные методы и свойства
+
 @returns {class} class (точнее, конструктор класса)
 @example
 var A = Class({
@@ -34,6 +37,20 @@ var D = Class({
 		C.prototype.method2.call(this, arguments);
 	}
 });
+
+@example <caption>Передача объекта со статичными методами и свойствами</caption>
+var MyClass = Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp; // foo
+alert(MyClass.staticMethod()); // bar
+
 @example <caption>Использование AMD (именованные модули)</caption>
 require.config({
 	paths: {
@@ -79,6 +96,7 @@ alert(this.instanceOf(MyClass));
 
 // для нормальных браузеров
 alert(this instanceof MyClass);
+
 */
 
 

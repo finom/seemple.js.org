@@ -1090,12 +1090,12 @@ alert(this.x.a); // 42
 this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
 });
-@example <caption>Getting parent. Besides data (the first argument), the link to the object which has called ``setClassFor`` is passed to the constructor of the creating class.</caption>
+@example <caption>Getting parent and key. Besides data (the first argument), two arguments are passed to class constructor: a link to an instance which has called ``setClassFor`` and a key of the property.</caption>
 var MySubClass = Class({
 	'extends': Matreshka,
-	constructor: function(data, parent) {
-		// parent - is MyClass instance which
-		// has called setClassFor
+	constructor: function(data, parent, key) {
+		// parent - is MyClass instance
+		// key equals to "x"
 	}
 });
 

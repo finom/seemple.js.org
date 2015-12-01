@@ -732,13 +732,14 @@ Use {@link Matreshka.Array#mediateItem} for more flexible control of an item cla
 
 @param {object} data - Data which have been passed to a constructor
 @param {matreshkaArray} mkArray - An array where an item has been added to
+@param {number} index - Current index of an instance in the parent array
 
 @example
 // define Model
 var MyModel = Class({
 	// it is inherited from MK.Object
 	'extends': MK.Object,
-	constructor: function(data, parentArray) {
+	constructor: function(data, parentArray, index) {
 		// set passed properties by jset method
 		this.jset(data);
 		this.doSomething();
