@@ -43,6 +43,11 @@
 				}
 			});
 		}
+
+		// remove loader on slow load
+		setTimeout(function() {
+			document.querySelector('.loader').className += ' hide';
+		}, 10000);
 		</script>
 		<style>
 			.loader {
