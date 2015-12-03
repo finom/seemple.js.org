@@ -103,6 +103,12 @@ export default class Main extends MK.Object {
 		}
 
 		this.loading = false;
+
+		setTimeout(() => {
+			let el = document.querySelector('.demo .in');
+			el.focus();
+			el.selectionStart = el.selectionEnd = el.value.length;
+		});
 	}
 
 	initDynamicStyles() {

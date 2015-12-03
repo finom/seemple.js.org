@@ -12139,7 +12139,7 @@ $.extend(myObject,{
   
 <h5></h5>
 <pre class="prettyprint source lang-js"><code>var eventHandler = function() {
-	console.log(arguments); 
+	console.log(arguments);
 }
 this.on('fyeah', eventHandler);
 this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'</code></pre>
@@ -12233,7 +12233,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'</code></
 	
 	<p>Event name or space-delimited list of event names.</p>
 <blockquote>
-<p>This is very brief list of event names. The full article about events is coming very soon. If you know Russian, take a look at  <a href="http://habrahabr.ru/company/matreshka/blog/267513/">this article</a>.</p>
+<p>This is very brief description of event names. The full article about events you can find at <a href="https://medium.com/@finom/matreshka-js-events-e35cc201c2cb">this article</a>.</p>
 </blockquote>
 <h5>Custom events.</h5><pre class="prettyprint source lang-js"><code>this.on('myevent', function() {...});
 this.trigger('myevent');</code></pre><h5><code>change:KEY</code> which is triggered every time when a property is changed.</h5><pre class="prettyprint source lang-js"><code>this.on('change:x', function(evt) {...});
@@ -12365,7 +12365,7 @@ this.on('*.b.*.d@change:e', function() {...});</code></pre><h5>Any combinations.
 	on: 'click',
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},
@@ -12381,7 +12381,7 @@ this.bindNode( 'a', '.my-checkbox', binder );</code></pre><h5></h5>
 	},
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},

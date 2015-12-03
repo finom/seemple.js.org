@@ -4,7 +4,7 @@ Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @param {...*} options - Any arguments
 @example
 var eventHandler = function() {
-	console.log(arguments); 
+	console.log(arguments);
 }
 this.on('fyeah', eventHandler);
 this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
@@ -37,7 +37,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 Event name or space-delimited list of event names.
 
-> This is very brief list of event names. The full article about events is coming very soon. If you know Russian, take a look at  [this article](http://habrahabr.ru/company/matreshka/blog/267513/).
+> This is very brief description of event names. The full article about events you can find at [this article](https://medium.com/@finom/matreshka-js-events-e35cc201c2cb).
 
 ##### Custom events.
 ```js
@@ -155,7 +155,7 @@ var binder = {
 	on: 'click',
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},
@@ -172,7 +172,7 @@ var binder = {
 	},
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},
