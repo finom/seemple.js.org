@@ -70,13 +70,13 @@ nav {
 
 		&.another-language {
 			font-weight: bold;
-			@extend .mdi-action-language;
+			//@extend .mdi-action-language;
 
 		}
 
-		&.forum-link {
+		/*&.forum-link {
 			@extend a[href*="//"], .mdi-communication-forum;
-		}
+		}*/
 
 		&:not([href]), &:not([href]):hover {
 			background-color: white;

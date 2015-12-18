@@ -84,6 +84,21 @@ main {
 
 	}
 
+	[id="!examples"] {
+		[href^="http://gh-embed.matreshka.io"] {
+			border-bottom: 1px dashed currentColor;
+			&::after {content: none;}
+		}
+
+		.list-item-number {
+			color: #bbb;
+		}
+
+		iframe {
+			margin-top: 1rem;
+		}
+	}
+
 	i[class|="imp-level"] {
 		display: inline-block;
 		vertical-align: middle;
@@ -91,7 +106,7 @@ main {
 		height: 1em;
 	}
 
-	section.api { 
+	section.api {
 		article {
 			h2 {
 				&::after {
@@ -228,7 +243,7 @@ main {
 				display: none!important;
 			}
 			&::before {
-				content: '← ';
+				content: '\2190 ';
 			}
 		}
 
@@ -238,7 +253,7 @@ main {
 				display: none!important;
 			}
 			&::after {
-				content: ' →';
+				content: ' \2192';
 			}
 		}
 	}
@@ -258,7 +273,7 @@ main {
 
 	div.summary {
 		&::before {
-			content: '—';
+			content: '\2014';
 			float: left;
 			padding-right: 4px;
 		}

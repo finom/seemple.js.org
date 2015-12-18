@@ -161,12 +161,10 @@ import Matreshka from 'path/to/matreshka';
 )))
 
 ## [Примеры](#!examples)
-1) [TodoMVC](http://gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages)
+[[span class="list-item-number"]]1.[[/span]] [TodoMVC](http://gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages) - список дел. ([Исходный код с аннотациями](http://finom.github.io/matreshka_todomvc_ru/docs/app.html))
 
-([исходный код с аннотациями](http://finom.github.io/matreshka_todomvc_ru/docs/app.html))
+[[span class="list-item-number"]]2.[[/span]] [TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages) - древовидный список неограниченной вложенности.
 
-2) [TreeView](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages)
+[[span class="list-item-number"]]3.[[/span]] [Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages) - простейший редактор Markdown (13 строк кода).
 
-3) [Markdown editor](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages)
-
-4) [Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages)
+[[span class="list-item-number"]]4.[[/span]] [Simple SoundCloud player](http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages) - поиск музыки, использующий SoundCloud API.

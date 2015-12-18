@@ -12,17 +12,17 @@ export default class Examples extends MK {
                 evt.preventDefault();
 
                 if(!target.classList.contains('initialized')) {
-                    target.parentNode.insertBefore($.create('iframe', {
+                    target.parentNode.appendChild($.create('iframe', {
                         src: target.href,
                         attributes: {
                             width: "100%",
                             height: "500",
                             frameborder: "0"
                         }
-                    }), target.nextSibling);
+                    }));
                     target.classList.add('initialized');
                 } else {
-                    target.nextSibling.classList.toggle('hide');
+                    target.parentNode.lastChild.classList.toggle('hide');
                 }
             })
     }

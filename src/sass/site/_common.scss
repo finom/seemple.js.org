@@ -28,7 +28,7 @@ $gray-color: rgba(0, 0, 0, 0.1);
 
 .hide {
 	display: none !important;
-} 
+}
 
 
 * { box-sizing: border-box; }
@@ -153,13 +153,24 @@ summary {
 }
 
 a[href*="//"] {
-	@extend .mdi, .mdi-action-open-in-new;
+	/*@extend .mdi, .mdi-action-open-in-new;
 	&::before {
 		vertical-align: middle;
 		margin-right: .3em;
 		font-size: 1.2em;
 		line-height: 1;
 		font-weight: normal;
+	}*/
+
+	&::after {
+		content: '\2197';
+	    font-weight: normal;
+	    vertical-align: middle;
+	    display: inline-block;
+	    line-height: 1em;
+	    font-size: .8em;
+	    margin-bottom: .2em;
+	    margin-left: .3em;
 	}
 }
 

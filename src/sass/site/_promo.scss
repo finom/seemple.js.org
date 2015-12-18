@@ -7,7 +7,11 @@
 	text-align: center;
 	font-weight: 300;
 
-	a::before { content: none; }
+	a::after { content: none; }
+
+	.pagination a::after {
+		content: ' \2192';
+	}
 
 	article {
 		padding-top: 100px;
@@ -258,6 +262,54 @@
 				filter: none;
 				opacity: 1;
 			}
+		}
+	}
+
+	.social {
+		margin-top: 40px;
+		& > a {
+			display: inline-block;
+			margin-left: 25px;
+			&:first-child {
+				margin-left: 0;
+			}
+			&::before {
+				content: '';
+				display: inline-block;
+				width: 18px;
+				height: 16px;
+				background-position: center right;
+				background-repeat: no-repeat;
+				margin-right: 6px;
+				vertical-align: top;
+				margin-top: 4px;
+			}
+		}
+
+
+		.social-twitter::before {
+			background-image: inline-image('icons/twitter.svg');
+		}
+
+		.social-vk::before {
+			background-image: inline-image('icons/vk.svg');
+		}
+
+		.social-forum::before {
+			background-image: inline-image('icons/forum.svg');
+		}
+
+		.social-gitter::before {
+			margin-top: 3px;
+			background-image: inline-image('icons/gitter.svg');
+		}
+
+		.social-fb {
+			margin-left: 18px;
+		}
+
+		.social-fb::before {
+			background-image: inline-image('icons/fb.svg');
 		}
 	}
 }
