@@ -13010,28 +13010,7 @@ magic.mediate(object, 'z', Number);
 <li>Balalaika переименована в bQuery по причине того, что 90% библиотеки переписано с нуля под нужды Матрешки.</li>
 <li>Многократное увеличение производительности метода <a href="#!Matreshka.Array-METHOD">splice</a> при рендеринге.</li>
 <li>Если в качестве <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> передать что-то отличное от <code>function</code> или <code>null</code>, генерируется исключение.</li>
-<li><p>Исправлен баг: конструктор класса, переданный в <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> в некоторых случаях получал неверный индекс.</p>
-</li>
-<li><p><code>setOnInit</code> argument is replaced by <code>eventOptions</code> object in <a href="http://matreshka.io/#!Matreshka-linkProps">Matreshka#linkProps</a> (older syntax still works). Look at the  renewed documentation for this method.</p>
-<ul>
-<li>Allowed to pass special flags or custom data to a property change handler.</li>
-<li>Added <code>debounce</code> flag which optimizes multiple changes of source properties.</li>
-<li>Added <code>setOnInit</code> flag</li>
-</ul>
-</li>
-<li>The list of supported flags for <a href="http://matreshka.io/#!Matreshka-bindNode">Matreshka#bindNode</a> is extended.<ul>
-<li>Added <code>debounce</code> flag which optimizes DOM handling.</li>
-<li>Fied issue <a href="https://github.com/matreshkajs/matreshka/issues/26">#26</a> via <code>deep: false</code> flag which turns on ignoring of dots in a property name.</li>
-</ul>
-</li>
-<li>The new method <a href="http://matreshka.io/#!Matreshka.deepFind">Matreshka.deepFind</a>.</li>
-<li>The new method <a href="http://matreshka.io/#!Matreshka-bindSandbox">Matreshka#bindSandbox</a></li>
-<li>Change default brackets for <a href="http://matreshka.io/#!Matreshka-parseBindings">Matreshka#parseBindings</a> via <a href="http://matreshka.io/#!Matreshka.parserBrackets">Matreshka.parserBrackets</a></li>
-<li>When data key is removed from <a href="http://matreshka.io/#!Matreshka.Object">Matreshka.Object</a> the <code>remove</code> and <code>modify</code> events are triggered.</li>
-<li>Balalaika is renamed to bQuery because 90% of original code has been rewritten.</li>
-<li>Improved performance of rendering when <a href="http://matreshka.io/#!Matreshka.Array#METHOD">Matreshka.Array#splice</a> is used.</li>
-<li>If non-function and non-null is passed as <a href="http://matreshka.io/#!Matreshka.Array#Model">Matreshka.Array#Model</a> throw error.</li>
-<li>Fixed bug: <a href="http://matreshka.io/#!Matreshka.Array#Model">Matreshka.Array#Model</a> constructor got wrong index in some cases.</li>
+<li>Исправлен баг: конструктор класса, переданный в <a href="#!Matreshka.Array-Model">Matreshka.Array#Model</a> в некоторых случаях получал неверный индекс.</li>
 </ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.4.1">Матрешка 1.4.1</a></h3><ul>
 <li>В функцию <a href="#!Class">Class</a> вторым аргументом можно передать объект со статичными свойствами и методами</li>
