@@ -11,6 +11,7 @@
 <h3><i class="imp-level-1"></i> The first level - the most important stuff</h3><p>After you've learned the most important API parts you can hardily start doing fantastic things. Classes, methods and properties marked with <i class="imp-level-1"></i> need to be learned primarily.</p>
 <h3><i class="imp-level-2"></i> The second level - recommended to learn</h3><p>If you already know the quick-start basics, you can look at other methods and properties of Matreshka.</p>
 <h3><i class="imp-level-3"></i> The third level - other methods and properties</h3><p>We've hidden rarely used parts (Matreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.</p>
+<p><strong>Warning</strong>. If you open a link to a method or a property of the third level of importance, the "Advanced mode" is turned on automatically.</p>
 <blockquote>
 <p>This page can't do without the fantastic possibilities of HTML5. It is available offline for any device whether it is your computer or a mobile phone.</p>
 <p><strong>Chrome for Android</strong>: enter the menu and click "Add to home screen"</p>
@@ -346,7 +347,12 @@ this.myKey = true;</code></pre><p>What should you do if you need to pass argumen
 };</code></pre><pre class="prettyprint source lang-js"><code>this.bindNode('myKey1', '.my-slider1', Matreshka.binders.uiSlider(0, 100));
 this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
 this.myKey1 = 42;
-this.myKey2 = 999;</code></pre><p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> OOB, starting with the version 0.3, has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>output</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p>
+this.myKey2 = 999;</code></pre><blockquote>
+<p>DOM changes are happening synchronously after every change of a property. You can &quot;debounce&quot; all changes passing <code>debounce: true</code> property to <code>eventOptions</code> argument. Look at <a href="#!Matreshka.debounce">Matreshka.debounce</a></p>
+</blockquote>
+<p>To change this</p>
+<p>Изменения DOM происходят синхронно, сразу после изменения свойства. Для того, чтоб DOM менялся после небольшой задержки только один раз, несмотря на то, как часто меняется свойство, передайте в аргумент <code>eventOptions</code> свойство <code>debounce: true</code>.</p>
+<p><a href="#!Matreshka.defaultBinders">Matreshka.defaultBinders</a> OOB, starting with the version 0.3, has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>output</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p>
 <pre class="prettyprint source lang-html"><code>&lt;input type=&quot;color&quot; class=&quot;my-color-input&quot;></code></pre><pre class="prettyprint source lang-js"><code>this.bindNode('myColor', '.my-color-input');
 this.myColor = '#66bb6a';</code></pre><p>Besides, after the binding, a new non-standard <code>:bound(KEY)</code> CSS selector is available for you.</p>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element');
@@ -370,6 +376,9 @@ this.on('click::myKey(.my-inner-element)', function() { ... });</code></pre><h4>
 <li>adds a new <code>:sandbox</code> selector for the <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>, <a href="#!Matreshka-select">Matreshka#select</a>, <a href="#!Matreshka-$">Matreshka#$</a> methods and others</li>
 <li>adds syntactic sugar for delegated DOM events in the <a href="#!Matreshka-on">Matreshka#on</a> method</li>
 </ul>
+<blockquote>
+<p>Also you can try <a href="#!Matreshka-bindSandbox">Matreshka#bindSandbox</a> which does the same thing but requires only one argument.</p>
+</blockquote>
 <pre class="prettyprint source lang-js"><code>// declare a sandbox
 this.bindNode('sandbox', '.my-sandbox');
 
@@ -388,7 +397,10 @@ console.log(this.$bound());
 console.log(this.$('.inner-node'));</code></pre><h4>Deep binding</h4><p>Since version 1.1, the <code>bindNode</code> method supports the new feature called &quot;deep binding&quot;. The method can bind DOM node to some property of nested object. For example, you have some nested object:</p>
 <pre class="prettyprint source lang-js"><code>this.a = {b: {c: {d: 42}}};</code></pre><p>And you want to bind some DOM node to <code>d</code>. The only thing you need is to pass a path to needed property and Matreshka will listen all changes throughout a tree of nested object by breaking a binding then re-creating it again:</p>
 <pre class="prettyprint source lang-js"><code>this.bindNode('a.b.c.d', '.my-node');</code></pre><p>When some changes appear in the nested tree <code>bindNode</code> catches them and recreates binding again.</p>
-<pre class="prettyprint source lang-js"><code>this.a.b = {c: {d: 41}};</code></pre></div>
+<pre class="prettyprint source lang-js"><code>this.a.b = {c: {d: 41}};</code></pre><blockquote>
+<p>This behavior is cancelable. You can set <code>deep: false</code> property for <code>eventOptions</code> object to ignore dot in a property name.</p>
+</blockquote>
+<p>Это поведение можно отменить, передав свойство <code>deep: false</code> в объект события (<code>eventOptions</code>), тогда точка в имени свойства будет проигнорирована.</p></div>
 	
 	<p>
 		<b>Returns</b> 
@@ -473,7 +485,7 @@ console.log(this.$('.inner-node'));</code></pre><h4>Deep binding</h4><p>Since ve
 					<td>
 	<span data-type="eventOptions">eventOptions</span>
 </td>
-					<td> An event object which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), ``"assignDefaultValue"`` or some custom data for event handlers.</td>
+					<td> An event object which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), ``"assignDefaultValue"`` (etract current node value), ``"debounce"`` (optimize DOM changes), ``"deep"`` (use "deep binding" or ignore a dot in a property name) or some custom data for event handlers.</td>
 				</tr>
 			
 		</tbody>
@@ -839,6 +851,106 @@ data-importance="2">
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka-bindOptionalNode"
   title="Method Matreshka-bindOptionalNode"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item method" id="!Matreshka-bindSandbox" data-since="1.5"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka-bindSandbox">
+			<span class="memberof">Matreshka#</span>bindSandbox<wbr>(<span class="args">node, eventOptions</span>)
+				
+		</a> 
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.5.</p></div>
+	
+	<div class="summary"><p>Binds a sandbox</p></div>
+	<div class="description"><p>Optimized method for quick <code>&quot;sandbox&quot;</code> declaration.</p></div>
+	
+	
+	<p>
+		<b>Fires</b> <span class="event">bind</span> <span class="event">bind:sandbox</span>
+
+	</p>
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						node
+						
+					</td>
+					 
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="node">node</span>
+
+	<span data-type="$node">$node</span>
+</td>
+					<td> A sandbox DOM node</td>
+				</tr>
+			 
+				<tr>
+					<td>
+						eventOptions
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					 
+					<td>
+	<span data-type="eventOptions">eventOptions</span>
+</td>
+					<td> Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)</td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+<h4>Links</h4>
+<ul class="see">
+	
+		<li><a href="#!Matreshka-bindNode">Matreshka#bindNode</a>
+	
+</ul>
+
+
+	 
+	<h4>Examples</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindSandbox('.my-element');</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka-bindSandbox" data-title="Method Matreshka-bindSandbox">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka-bindSandbox"
+  title="Method Matreshka-bindSandbox"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -1812,7 +1924,7 @@ data-importance="3">
 data-importance="1">
 	<h2>
 		<a href="#!Matreshka-linkProps">
-			<span class="memberof">Matreshka#</span>linkProps<wbr>(<span class="args">keys1, keys2, handler<span class="default-value">=function(v){return v}</span>, setOnInit<span class="default-value">=true</span></span>)
+			<span class="memberof">Matreshka#</span>linkProps<wbr>(<span class="args">targetKeys, sourceKeys, handler<span class="default-value">=function(v){return v}</span>, eventOptions</span>)
 				
 		</a> 
 		<span class="new-badge"></span>
@@ -1821,7 +1933,64 @@ data-importance="1">
 		<div class="since"><p>Available since 0.1.</p></div>
 	
 	<div class="summary"><p>Creates a dependency of one property value on values of others</p></div>
-	<div class="description"><p>The <code>linkProps</code> method creates a dependency of a property value (the first argument) on values of other properties (the second argument). The method is protected from circular references (for example, <code>a</code> depends on <code>b</code>, <code>b</code> depends on <code>c</code> and <code>c</code> depends on <code>a</code>) and if there is a calculation error, it does not block the page and does not throw an exception about the stack over-flow.</p></div>
+	<div class="description"><p>The <code>linkProps</code> method creates a dependency of a property value (target property, the first argument) on values of other properties (source properties, the second argument). The method is protected from circular references (for example, <code>a</code> depends on <code>b</code>, <code>b</code> depends on <code>c</code> and <code>c</code> depends on <code>a</code>) and if there is a calculation error, it does not block the page and does not throw an exception about the stack over-flow.</p>
+<p>In Matreshka 1.5 the <code>setOnInit</code> (4th argument) is replaced by <code>eventOptions</code> which gives more useful features to the method.</p>
+<h3>Passing data to a property-change event handler and passing of the special flags</h3><p>You can pass some data to <code>change:KEY</code> event handler via <code>eventOptions</code>.</p>
+<pre class="prettyprint source lang-js"><code>this.on('change:a', function(evt) {
+    alert(evt.foo); // 'bar'
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+    return b + c;
+}, {
+    foo: 'bar'
+});</code></pre><p>Besides, <code>eventOptions</code> allows you to pass special flags (eg. <code>silent: true</code>)</p>
+<pre class="prettyprint source lang-js"><code>this.on('change:a', function(evt) {
+    alert('foo');
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+    return b + c;
+}, {
+    silent: true
+});
+
+this.b = 1;</code></pre><p>In the example above when <code>linkProps</code> mechanism changes a source property, event handler isn't called.</p>
+<blockquote>
+<p>If the target property is changed in some other way eg via direct assignment (<code>this.a = 42</code>) then <code>change:KEY</code> handler still will be called.</p>
+</blockquote>
+<p>The full list of supported flags you can find at <a href="#!Matreshka-set">Matreshka#set</a>.</p>
+<h3>Immediate property calculation on  <code>linkProps</code> call</h3><p>By default, a property will be calculated immediately after <code>linkProps</code> is called.</p>
+<pre class="prettyprint source lang-js"><code>var handler = function(b, c) {
+    return b + c;
+};
+
+this.b = 1;
+this.c = 2;
+this.linkProps('a', 'b c', handler);
+alert(this.a); // 3</code></pre><p>To cancel this behavior pass <code>setOnInit: false</code> flag into the  <code>eventOptions</code> object. This flag is helpful when source properties aren't set yet and you don't want to get a &quot;bad&quot; value of the target property. In the example below <code>linkProps</code> is calculating a sum of <code>b</code> and <code>c</code> as <code>undefined + undefined</code> and  <code>a</code> becomes <code>NaN</code>.</p>
+<pre class="prettyprint source lang-js"><code>var handler = function(b, c) {
+    return b + c;
+};
+
+this.linkProps('a', 'b c', handler);
+alert(this.a); // NaN</code></pre><pre class="prettyprint source lang-js"><code>this.linkProps('a', 'b c', handler, {
+    setOnInit: false // everything is OK now
+});</code></pre><h3>Immediate calculation</h3><p>A process of recalculation of a target property is instantaneous and synchronous. That means every change of source property triggers <code>linkProps</code> mechanism immediately. Look at this example:</p>
+<pre class="prettyprint source lang-js"><code>var handler = function(b, c) {return b + c;};
+
+this.linkProps('a', 'b c', handler);
+this.b = 1;
+this.c = 2;</code></pre><p>The <code>handler</code> is going to be called thrice. The first call is on <code>linkProps</code> call (if <code>setOnInit</code> isn't used), the second call is on <code>b</code> assignment and the third call is on <code>c</code> assignment. This behavior is based on one idea: &quot;all reactions on every change have to occur consistently and predictably&quot;. If you want to optimize this behavior pass <code>debounce: true</code> property to the <code>eventOptions</code> object. Look at the <a href="#!Matreshka.debounce">Matreshka.debounce</a>.</p>
+<pre class="prettyprint source lang-js"><code>var handler = function(b, c) {
+    return b + c;
+};
+
+this.linkProps('a', 'b c', handler, {
+    debounce: true
+});
+this.b = 1;
+this.c = 2;</code></pre><p>In the example above the <code>handler</code> will be called only once after tiny delay.</p></div>
 	
 	
 
@@ -1840,7 +2009,7 @@ data-importance="1">
 			 
 				<tr>
 					<td>
-						keys1
+						targetKeys
 						
 					</td>
 					<td> 
@@ -1854,7 +2023,7 @@ data-importance="1">
 			 
 				<tr>
 					<td>
-						keys2
+						sourceKeys
 						
 					</td>
 					<td> 
@@ -1882,16 +2051,16 @@ data-importance="1">
 			 
 				<tr>
 					<td>
-						setOnInit
+						eventOptions
 						
 							<span class="signature">optional</span>
 						
 					</td>
-					<td> true
+					<td> 
 					<td>
-	<span data-type="boolean">boolean</span>
+	<span data-type="object">object</span>
 </td>
-					<td> Whether to set a property value immediately after declaring a dependency</td>
+					<td> An object which can contain some special flags or data for ``change:KEY`` handler (see above)</td>
 				</tr>
 			
 		</tbody>
@@ -1962,7 +2131,7 @@ alert(this.x); //42</code></pre>
 data-importance="1">
 	<h2>
 		<a href="#!Matreshka-linkProps(2)">
-			<span class="memberof">Matreshka#</span>linkProps<wbr>(<span class="args">keys, instancesAndKeys, handler<span class="default-value">=function(v){return v}</span>, setOnInit<span class="default-value">=true</span></span>)
+			<span class="memberof">Matreshka#</span>linkProps<wbr>(<span class="args">targetKeys, instancesAndKeys, handler<span class="default-value">=function(v){return v}</span>, eventOptions</span>)
 				
 		</a> 
 		<span class="new-badge"></span>
@@ -1990,7 +2159,7 @@ data-importance="1">
 			 
 				<tr>
 					<td>
-						keys
+						targetKeys
 						
 					</td>
 					<td> 
@@ -2030,16 +2199,16 @@ data-importance="1">
 			 
 				<tr>
 					<td>
-						setOnInit
+						eventOptions
 						
 							<span class="signature">optional</span>
 						
 					</td>
-					<td> true
+					<td> 
 					<td>
-	<span data-type="boolean">boolean</span>
+	<span data-type="object">object</span>
 </td>
-					<td> Whether to set a property value immediately after declaring a dependency</td>
+					<td> An object which can contain some special flags or data for ``change:KEY`` handler (see above)</td>
 				</tr>
 			
 		</tbody>
@@ -3256,7 +3425,10 @@ The result:
 </ol>
 <h4>Why do we need this method?</h4><p>In case if you develop a large form with standard HTML5 fields, the method will help you save time on declaring numerous bindings. Besides, <code>parseBindings</code> is useful in case of creating a very simple collection which doesn’t require implementation of a complicated <a href="#!Matreshka.Array-Model">model</a>.</p>
 <h4>Is it compatible with Matreshka ideology (&quot;all logic must be included into JavaScript file&quot;)?</h4><p>Yes, no cycles, conditional operators or any other logic are supported in the parser. Only declaration of simple bindings is available for a developer using <code>`parseBindings</code>.</p>
-<h4>Performance</h4><p>The method works a little slower than manual declaration of bindings with <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> method. You should bear that in mind while creating applications with very strict performance requirements. The speed decreases a little only during the process of binding. As for the rest, bindings work as fast as with <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.</p></div>
+<h4>Performance</h4><p>The method works a little slower than manual declaration of bindings with <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> method. You should bear that in mind while creating applications with very strict performance requirements. The speed decreases a little only during the process of binding. As for the rest, bindings work as fast as with <a href="#!Matreshka-bindNode">Matreshka#bindNode</a>.</p>
+<blockquote>
+<p>If you want to use something else instead of braces look at <a href="#!Matreshka.parserBrackets">Matreshka.parserBrackets</a></p>
+</blockquote></div>
 	
 	<p>
 		<b>Returns</b> 
@@ -4358,7 +4530,7 @@ data-importance="2">
 					<td>
 	<span data-type="eventOptions">eventOptions</span>
 </td>
-					<td> Eevent object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)</td>
+					<td> Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)</td>
 				</tr>
 			
 		</tbody>
@@ -4639,7 +4811,7 @@ data-importance="2">
 	
 		<div class="since"><p>Available since 1.1.</p></div>
 	
-	<div class="summary"><p>An object contains collections (jQuery, Zepto, Balalaika) of bound nodes for quick access.</p></div>
+	<div class="summary"><p>An object contains collections (jQuery, Zepto, bQuery) of bound nodes for quick access.</p></div>
 	<div class="description"></div>
 	
 <h4>Links</h4>
@@ -4686,7 +4858,7 @@ data-importance="2">
 	
 		<div class="since"><p>Available since 0.4.</p></div>
 	
-	<div class="summary"><p>The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)</p></div>
+	<div class="summary"><p>The property contains HTML sandbox as collection (jQuery, Zepto, bQuery)</p></div>
 	<div class="description"></div>
 	
 <h4>Links</h4>
@@ -4861,7 +5033,7 @@ data-importance="2">
 		<span class="new-badge"></span>
 	</h2>
 	
-	<div class="summary"><p>A library used by Matreshka (jQuery, Zepto, <a href="#!Matreshka.$b">Balalaika</a> or others)</p></div>
+	<div class="summary"><p>A library used by Matreshka (jQuery, Zepto, <a href="#!Matreshka.$b">bQuery</a> or others)</p></div>
 	<div class="description"></div>
 	
 	
@@ -4901,7 +5073,7 @@ data-importance="3">
 		<span class="new-badge"></span>
 	</h2>
 	
-	<div class="summary"><p>Built-in micro-library <a href="#!$b">Balalaika</a></p></div>
+	<div class="summary"><p>Built-in micro-library <a href="#!$b">bQuery</a></p></div>
 	<div class="description"></div>
 	
 	
@@ -5391,6 +5563,115 @@ for(var i = 0; i &lt; 100; i++) {
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.debounce"
   title="Method Matreshka.debounce"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item method" id="!Matreshka.deepFind" data-since="1.5"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.deepFind">
+			<span class="memberof">Matreshka.</span>deepFind<wbr>(<span class="args">object, path</span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="*">*</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.5.</p></div>
+	
+	<div class="summary"><p>Returns a property from nested object</p></div>
+	<div class="description"><p>The function allows to get a property value from nested object. It doesn't throw an error in case if one of objects in given path is not defined.</p></div>
+	
+	<p>
+		<b>Returns</b> 
+	<span data-type="*">*</span>
+
+		 - Property value or ``undefined``
+
+	</p>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						object
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> An object</td>
+				</tr>
+			 
+				<tr>
+					<td>
+						path
+						
+					</td>
+					 
+					<td>
+	<span data-type="string">string</span>
+</td>
+					<td> A path to a property</td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Examples</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>var obj = {
+		a: {
+			b: {
+				c: {
+					d: 42
+				}
+			}
+		}
+	},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // 42</code></pre><h5><p>Bad way</p></h5>
+<pre class="prettyprint source lang-js"><code>var obj = {},
+	d = obj.a.b.c.d; // exception</code></pre><h5><p><code>deepFind</code> returns <code>undefined</code>, if given path is &quot;broken&quot; and doesn't throw an exception</p></h5>
+<pre class="prettyprint source lang-js"><code>var obj = {},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // undefined</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.deepFind" data-title="Method Matreshka.deepFind">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.deepFind"
+  title="Method Matreshka.deepFind"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -7141,7 +7422,7 @@ data-importance="3">
 		<div class="since"><p>Available since 0.2.</p></div>
 	
 	<div class="summary"><p>Forces to use a definite DOM-library</p></div>
-	<div class="description"><p>By default, Matreshka uses a library which can be found by <code>window.$</code> reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library <a href="#!$b">Balalaika</a> is used.</p>
+	<div class="description"><p>By default, Matreshka uses a library which can be found by <code>window.$</code> reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library <a href="#!$b">bQuery</a> is used.</p>
 <p>The <a href="#!Matreshka.useAs$">Matreshka.useAs$</a> method makes Matreshka use a library you would like to use in spite of its absence in the global namespace or for a different reason (for example, if two different versions of jQuery are used on a page). It is desirable to launch the method before your code starts.</p></div>
 	
 	
@@ -7168,7 +7449,7 @@ data-importance="3">
 					<td>
 	<span data-type="function">function</span>
 </td>
-					<td> Any library (jQuery, Zepto, Balalaika or others)</td>
+					<td> Any library (jQuery, Zepto, bQuery or others)</td>
 				</tr>
 			
 		</tbody>
@@ -7304,6 +7585,47 @@ data-importance="3">
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.isXDR"
   title="Property Matreshka.isXDR"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item property" id="!Matreshka.parserBrackets" data-since="1.5"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.parserBrackets">
+
+			<span class="memberof">Matreshka.</span>parserBrackets</a><span class="type">:
+				<span data-type="object">object</span>
+			</span>
+
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.5.</p></div>
+	
+	<div class="summary"><p>Contains brackets for <a href="#!Matreshka-parseBindings">bindings parser</a></p></div>
+	<div class="description"><p><code>parserBrackets</code> object allows to change default behavior of the parser. It contains two properties:   <code>left</code> (left bracket, <code>&quot;&amp;#123;{&quot;</code> by default) and <code>right</code> (right bracket, <code>&quot;}}&quot;</code> by default)</p></div>
+	
+
+	 
+	<h4>Examples</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>Use syntax  ``[[=property]]`` instead of ``&#123;{property}}``
+MK.parserBrackets.left = '[[=';
+MK.parserBrackets.right = ']]';</code></pre>
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.parserBrackets" data-title="Property Matreshka.parserBrackets">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.parserBrackets"
+  title="Property Matreshka.parserBrackets"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -11900,10 +12222,10 @@ alert(MyClass.staticMethod()); // bar</code></pre><h5><p>The usage of AMD (named
 	paths: {
 		'xclass': 'path/to/matreshka.min',
 		'matreshka': 'path/to/matreshka.min',
-		'balalaika': 'path/to/matreshka.min'
+		'bquery': 'path/to/matreshka.min'
 	}
 });
-require(['xclass', 'matreshka', 'balalaika'], function(Class, MK, $) {
+require(['xclass', 'matreshka', 'bquery'], function(Class, MK, $) {
 	var MyClass = Class({
 		'extends': MK,
 		constructor: function() {
@@ -11966,8 +12288,8 @@ data-importance="2">
 	
 		<div class="since"><p>Available since 0.1.</p></div>
 	
-	<div class="summary"><p>Balalaika micro-library</p></div>
-	<div class="description"><p>Balalaika is a tiny (as of this writing -  605 bytes) jQuery-like library for working with DOM. It is inherited from <code>Array.prototype</code> and includes all the methods existing in native Array:</p>
+	<div class="summary"><p>bQuery micro-library</p></div>
+	<div class="description"><p>bQuery (previously called Balalaika) is a tiny jQuery-like library for working with DOM. It is inherited from <code>Array.prototype</code> and includes all the methods existing in native Array:</p>
 <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank">concat</a></li>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join" target="_blank">join</a></li>
@@ -11995,25 +12317,18 @@ data-importance="2">
 
 	
 	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="https://github.com/finom/balalaika" target="_blank">Balalaika on Github</a>
-	
-</ul>
-
 
 	 
 	<h4>Examples</h4>
   
 <h5><p>Adding DOM event listener</p></h5>
 <pre class="prettyprint source lang-js"><code>$('.my-selector').on('click.namespace', function() {
-    alert('I need my balalaika');
+    alert('hi');
 });</code></pre><h5><p>Removing DOM event listener</p></h5>
 <pre class="prettyprint source lang-js"><code>$('.my-selector').off('click.namespace');</code></pre><h5><p>The <code>is</code> method</p></h5>
 <pre class="prettyprint source lang-js"><code>$('.my-selector').on('click', function(evt) {
     if($(evt.target).is('.another-selector')) {
-        alert('I need my balalaika');
+        alert('hi');
     }
 });</code></pre><h5><p>The <code>extend</code> method (extension of one object by another one)</p></h5>
 <pre class="prettyprint source lang-js"><code>var myObject = {a: 1};
@@ -12203,15 +12518,15 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'</code></
 
 
 	
-<article class="item typedef" data-typedef="balalaika">
+<article class="item typedef" data-typedef="bQuery">
 	<i class="close-modal"></i>
 	<h2>
-		balalaika:
+		bQuery:
 			<span data-type="array">array</span>
 		
 	</h2>
 	
-	<p><a href="#!$b">Balalaika</a> collection</p>
+	<p><a href="#!$b">bQuery</a> collection</p>
 	
 	
 	
@@ -12667,6 +12982,8 @@ this.set('a', 2, eventOptions); // alerts "yeah"</code></pre>
 <li><a href="#!Matreshka.$b">Matreshka.$b</a></li>
 <li><a href="#!Matreshka.useAs$">Matreshka.useAs$</a></li>
 <li><a href="#!Matreshka.version">Matreshka.version</a></li>
+<li><a href="#!Matreshka.deepFind">Matreshka.deepFind</a></li>
+<li><a href="#!Matreshka.bindSandbox">Matreshka.bindSandbox</a></li>
 </ul>
 <p>The library is in the folder  <code>/magic/</code> of the repo at <a href="https://github.com/finom/matreshka">github</a>. Having added the script via script tag, <code>MatreshkaMagic</code> global var and its brief variant <code>magic</code> are available for the programmer. Var is an ordinary object with methods.</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src="magic/matreshka-magic.min.js">&lt;/script></code></pre><pre class="prettyprint source lang-js"><code>var object = {};
