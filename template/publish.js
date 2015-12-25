@@ -100,7 +100,7 @@ exports.publish = function(data, opts) {
 			if (item.kind !== 'class') {
 				(members[item.kind] = members[item.kind] || []).push(item);
 				item.params = item.params || item.properties || [];
-				iitem.params.forEach(function(item) {
+				item.params.forEach(function(item) {
 					item.description = mdParser(resolveLinks(item.description || '').replace(/&quot;/g, '"'));
 				})
 			}
