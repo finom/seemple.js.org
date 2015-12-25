@@ -49,7 +49,7 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$sandbox
 @importance 2
 @since 0.4
-@summary The property contains HTML sandbox as collection (jQuery, Zepto, Balalaika)
+@summary The property contains HTML sandbox as collection (jQuery, Zepto, bQuery)
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('sandbox', '.app');
@@ -73,7 +73,7 @@ this.sandbox; // the same as $('.app')[0]
 @member {$nodes} Matreshka#$nodes
 @importance 2
 @since 1.1
-@summary An object contains collections (jQuery, Zepto, Balalaika) of bound nodes for quick access.
+@summary An object contains collections (jQuery, Zepto, bQuery) of bound nodes for quick access.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
@@ -454,6 +454,12 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
+> DOM changes are happening synchronously after every change of a property. You can "debounce" all changes passing ``debounce: true`` property to ``eventOptions`` argument. Look at {@link Matreshka.debounce}
+
+To change this
+
+Изменения DOM происходят синхронно, сразу после изменения свойства. Для того, чтоб DOM менялся после небольшой задержки только один раз, несмотря на то, как часто меняется свойство, передайте в аргумент ``eventOptions`` свойство ``debounce: true``.
+
 {@link Matreshka.defaultBinders} OOB, starting with the version 0.3, has a support for **all form elements** without any exception: ``select`` (including ``multiple``), ``textarea``, ``output``, ``input`` (including all types from the specification of HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` and others). That means it is not necessary to designate a binder for standard elements.
 ```html
 <input type="color" class="my-color-input">
@@ -502,6 +508,7 @@ The definition of the sandbox adds lots of conveniences for you. For example:
 + adds a new ``:sandbox`` selector for the {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} methods and others
 + adds syntactic sugar for delegated DOM events in the {@link Matreshka#on} method
 
+> Also you can try {@link Matreshka#bindSandbox} which does the same thing but requires only one argument.
 
 ```js
 // declare a sandbox
@@ -538,6 +545,10 @@ When some changes appear in the nested tree ``bindNode`` catches them and recrea
 this.a.b = {c: {d: 41}};
 ```
 
+> This behavior is cancelable. You can set ``deep: false`` property for ``eventOptions`` object to ignore dot in a property name.
+
+Это поведение можно отменить, передав свойство ``deep: false`` в объект события (``eventOptions``), тогда точка в имени свойства будет проигнорирована.
+
 
 @see {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindOptionalNode}
@@ -550,7 +561,7 @@ this.a.b = {c: {d: 41}};
 @param {string|matreshka} key - A key (a property name)
 @param {string|node|$nodes} node - An HTML element which must be bound to a ``key``
 @param {binder} [binder] - A binder containing the following properties: ``on`` - which event must happen to an HTML node, informing that a user has changed something (for example, ``keyup`` or ``click``), ``getValue`` -  how to get a value from an HTML node, ``setValue`` - how to set a new value to a node and ``initialize`` - a function which is executed once after the initialization of binding. You can get more detailed information about binders in their documentation: see {@link #typedef-binder}.
-@param {eventOptions} [eventOptions] - An event object which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), ``"assignDefaultValue"`` or some custom data for event handlers.
+@param {eventOptions} [eventOptions] - An event object which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), ``"assignDefaultValue"`` (etract current node value), ``"debounce"`` (optimize DOM changes), ``"deep"`` (use "deep binding" or ignore a dot in a property name) or some custom data for event handlers.
 @returns {matreshka} self
 
 @example <caption>A custom checkbox. This example demonstrates the creation of custom element whose ``"checked"`` class is changed after clicking on it.</caption>
@@ -710,6 +721,21 @@ this.bindOptionalNode('myKey', '.my-element');
 */
 
 /**
+@method Matreshka#bindSandbox
+@fires bind
+@fires bind:sandbox
+@importance 3
+@since 1.5
+@summary Binds a sandbox
+@desc Optimized method for quick ``"sandbox"`` declaration.
+@param {string|node|$node} node - A sandbox DOM node
+@param {eventOptions} [eventOptions] -  Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
+@see {@link Matreshka#bindNode}
+@example
+this.bindSandbox('.my-element');
+*/
+
+/**
 @method Matreshka#unbindNode
 @importance 2
 @fires unbind
@@ -718,7 +744,7 @@ this.bindOptionalNode('myKey', '.my-element');
 @desc Using this method you can delete the binding between a property and HTML node, which has been added recently and no longer needed.
 @param {string|null} The key or a list of keys which are separated by spaces. If you pass ``null`` instead of the key, all bindings for the given instance will be deleted
 @param {string|node|$nodes} [node] - HTML node
-@param {eventOptions} [eventOptions] -  Eevent object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
+@param {eventOptions} [eventOptions] -  Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
 @returns {matreshka} self
 @example
 this.bindNode('myKey', '.my-element');
@@ -1234,11 +1260,109 @@ this.setClassFor({
 @importance 1
 @since 0.1
 @summary Creates a dependency of one property value on values of others
-@desc The ``linkProps`` method creates a dependency of a property value (the first argument) on values of other properties (the second argument). The method is protected from circular references (for example, ``a`` depends on ``b``, ``b`` depends on ``c`` and ``c`` depends on ``a``) and if there is a calculation error, it does not block the page and does not throw an exception about the stack over-flow.
-@param {string|array} keys1 - A property (properties) which depends on other ones
-@param {string|array} keys2 - Which properties the desired property (properties) is depended on
+@desc The ``linkProps`` method creates a dependency of a property value (target property, the first argument) on values of other properties (source properties, the second argument). The method is protected from circular references (for example, ``a`` depends on ``b``, ``b`` depends on ``c`` and ``c`` depends on ``a``) and if there is a calculation error, it does not block the page and does not throw an exception about the stack over-flow.
+
+In Matreshka 1.5 the ``setOnInit`` (4th argument) is replaced by ``eventOptions`` which gives more useful features to the method.
+
+### Passing data to a property-change event handler and passing of the special flags
+You can pass some data to ``change:KEY`` event handler via ``eventOptions``.
+
+```js
+this.on('change:a', function(evt) {
+	alert(evt.foo); // 'bar'
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+	return b + c;
+}, {
+	foo: 'bar'
+});
+```
+
+Besides, ``eventOptions`` allows you to pass special flags (eg. ``silent: true``)
+```js
+this.on('change:a', function(evt) {
+	alert('foo');
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+	return b + c;
+}, {
+	silent: true
+});
+
+this.b = 1;
+```
+
+In the example above when ``linkProps`` mechanism changes a source property, event handler isn't called.
+
+
+> If the target property is changed in some other way eg via direct assignment (``this.a = 42``) then ``change:KEY`` handler still will be called.
+
+The full list of supported flags you can find at {@link Matreshka#set}.
+
+### Immediate property calculation on  ``linkProps`` call
+
+By default, a property will be calculated immediately after ``linkProps`` is called.
+
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.b = 1;
+this.c = 2;
+this.linkProps('a', 'b c', handler);
+alert(this.a); // 3
+```
+
+To cancel this behavior pass ``setOnInit: false`` flag into the  ``eventOptions`` object. This flag is helpful when source properties aren't set yet and you don't want to get a "bad" value of the target property. In the example below ``linkProps`` is calculating a sum of ``b`` and ``c`` as ``undefined + undefined`` and  ``a`` becomes ``NaN``.
+
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.linkProps('a', 'b c', handler);
+alert(this.a); // NaN
+```
+
+```js
+this.linkProps('a', 'b c', handler, {
+	setOnInit: false // everything is OK now
+});
+```
+
+### Immediate calculation
+A process of recalculation of a target property is instantaneous and synchronous. That means every change of source property triggers ``linkProps`` mechanism immediately. Look at this example:
+
+```js
+var handler = function(b, c) {return b + c;};
+
+this.linkProps('a', 'b c', handler);
+this.b = 1;
+this.c = 2;
+```
+The ``handler`` is going to be called thrice. The first call is on ``linkProps`` call (if ``setOnInit`` isn't used), the second call is on ``b`` assignment and the third call is on ``c`` assignment. This behavior is based on one idea: "all reactions on every change have to occur consistently and predictably". If you want to optimize this behavior pass ``debounce: true`` property to the ``eventOptions`` object. Look at the {@link Matreshka.debounce}.
+
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.linkProps('a', 'b c', handler, {
+	debounce: true
+});
+this.b = 1;
+this.c = 2;
+```
+In the example above the ``handler`` will be called only once after tiny delay.
+
+
+@param {string|array} targetKeys - A property (properties) which depends on other ones
+@param {string|array} sourceKeys - Which properties the desired property (properties) is depended on
 @param {function} [handler=function(v){return v}] - A function which returns a new value
-@param {boolean} [setOnInit=true] - Whether to set a property value immediately after declaring a dependency
+@param {object} [eventOptions] - An object which can contain some special flags or data for ``change:KEY`` handler (see above)
 @example
 this.linkProps('greeting', 'name', function() {
 	return 'Hello, ' + this.name + '!';
@@ -1290,10 +1414,10 @@ alert(this.x); //42
 @variation 2
 @since 0.2
 @summary An additional possibility of the {@link Matreshka#linkProps} method: a dependency on property values of other instances
-@param {string|array} keys - A property (properties) which depends on other ones
+@param {string|array} targetKeys - A property (properties) which depends on other ones
 @param {array} instancesAndKeys - An array which contains instances (even elements) and their keys (uneven elements), which a desired property (properties) is depended on. This syntax which may seem strange is the consequence of JavaScript syntax constraints.
 @param {function} [handler=function(v){return v}] - A function which returns a new value
-@param {boolean} [setOnInit=true] - Whether to set a property value immediately after declaring a dependency
+@param {object} [eventOptions] - An object which can contain some special flags or data for ``change:KEY`` handler (see above)
 @example <caption>The ``sum`` property is a sum of ``a`` and ``b`` values of other instances and it is calculated every time on their changing</caption>
 anotherInstance1.a = 2;
 
@@ -1513,6 +1637,7 @@ Yes, no cycles, conditional operators or any other logic are supported in the pa
 #### Performance
 The method works a little slower than manual declaration of bindings with {@link Matreshka#bindNode} method. You should bear that in mind while creating applications with very strict performance requirements. The speed decreases a little only during the process of binding. As for the rest, bindings work as fast as with {@link Matreshka#bindNode}.
 
+> If you want to use something else instead of braces look at {@link Matreshka.parserBrackets}
 
 @param {string|node|$nodes} [node] - HTML string, selector, DOM node or collection of DOM nodes
 @returns {$nodes} A collection of DOM nodes (usually contained single node), which is passed to the method as an argument; or a sandbox, in case when there are no arguments are passed.

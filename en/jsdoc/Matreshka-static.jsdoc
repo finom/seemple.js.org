@@ -44,7 +44,7 @@ Class({
 @method Matreshka.$
 @importance 2
 @variation static
-@summary A library used by Matreshka (jQuery, Zepto, {@link Matreshka.$b Balalaika} or others)
+@summary A library used by Matreshka (jQuery, Zepto, {@link Matreshka.$b bQuery} or others)
 @example
 MK.$('.my-element');
 */
@@ -53,7 +53,7 @@ MK.$('.my-element');
 /**
 @method Matreshka.$b
 @importance 3
-@summary Built-in micro-library {@link $b Balalaika}
+@summary Built-in micro-library {@link $b bQuery}
 @example
 MK.$b('.my-element');
 */
@@ -64,10 +64,10 @@ MK.$b('.my-element');
 @importance 3
 @since 0.2
 @summary Forces to use a definite DOM-library
-@desc By default, Matreshka uses a library which can be found by ``window.$`` reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library {@link $b Balalaika} is used.
+@desc By default, Matreshka uses a library which can be found by ``window.$`` reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library {@link $b bQuery} is used.
 
 The {@link Matreshka.useAs$} method makes Matreshka use a library you would like to use in spite of its absence in the global namespace or for a different reason (for example, if two different versions of jQuery are used on a page). It is desirable to launch the method before your code starts.
-@param {function} $ - Any library (jQuery, Zepto, Balalaika or others)
+@param {function} $ - Any library (jQuery, Zepto, bQuery or others)
 @example
 Matreshka.useAs$(jQuery.noConflict());
 */
@@ -620,4 +620,50 @@ console.log(MK.toArray(object)); // ['a', 'b', 'c']
 @example <caption>Cloning array</caption>
 var arr = ['a', 'b', 'c'],
 	cloneArr = MK.toArray(arr);
+*/
+
+
+/**
+@method Matreshka.deepFind
+@importance 3
+@since 1.5
+@summary Returns a property from nested object
+@desc The function allows to get a property value from nested object. It doesn't throw an error in case if one of objects in given path is not defined.
+@param {object} object - An object
+@param {string} path - A path to a property
+@returns {*} Property value or ``undefined``
+@example
+var obj = {
+		a: {
+			b: {
+				c: {
+					d: 42
+				}
+			}
+		}
+	},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // 42
+
+@example <caption>Bad way</caption>
+var obj = {},
+	d = obj.a.b.c.d; // exception
+
+@example <caption>``deepFind`` returns ``undefined``, if given path is "broken" and doesn't throw an exception</caption>
+var obj = {},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // undefined
+*/
+
+/**
+@member {object} Matreshka.parserBrackets
+@importance 3
+@since 1.5
+@summary Contains brackets for {@link Matreshka#parseBindings bindings parser}
+@desc ``parserBrackets`` object allows to change default behavior of the parser. It contains two properties:   ``left`` (left bracket, ``"&#123;{"`` by default) and ``right`` (right bracket, ``"}}"`` by default)
+@example Use syntax  ``[[=property]]`` instead of ``&#123;{property}}``
+MK.parserBrackets.left = '[[=';
+MK.parserBrackets.right = ']]';
 */

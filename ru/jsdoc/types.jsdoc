@@ -4,7 +4,7 @@
 @param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени собыия
 @example
 var eventHandler = function() {
-	console.log(arguments); 
+	console.log(arguments);
 }
 this.on('fyeah', eventHandler);
 this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
@@ -29,8 +29,8 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 
 
 /**
-Коллекция {@link $b балалайки}
-@typedef {array} balalaika
+Коллекция {@link $b bQuery}
+@typedef {array} bQuery
 */
 
 
@@ -156,7 +156,7 @@ var binder = {
 	on: 'click',
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},
@@ -173,7 +173,7 @@ var binder = {
 	},
 	getValue: function(options) {
 		return this.value;
-	} 
+	}
 	setValue: function(v, options) {
 		this.value = v;
 	},

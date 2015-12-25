@@ -56,10 +56,10 @@ require.config({
 	paths: {
 		'xclass': 'path/to/matreshka.min',
 		'matreshka': 'path/to/matreshka.min',
-		'balalaika': 'path/to/matreshka.min'
+		'bquery': 'path/to/matreshka.min'
 	}
 });
-require(['xclass', 'matreshka', 'balalaika'], function(Class, MK, $) {
+require(['xclass', 'matreshka', 'bquery'], function(Class, MK, $) {
 	var MyClass = Class({
 		'extends': MK,
 		constructor: function() {
@@ -106,8 +106,8 @@ alert(this instanceof MyClass);
 @version 1.0
 @since 0.1
 @extends Array
-@summary Микро-библиотека Балалайка
-@desc Балалайка - это крошечная (на момент написания этой статьи 605 байт) jQuery-подобная библиотека для работы с DOM . Она наследуется от ``Array.prototype`` и включает в себя все методы, которые есть у массива:
+@summary Микро-библиотека bQuery
+@desc bQuery (старое название - "балалайка") - это компактная jQuery-подобная библиотека для работы с DOM. Она наследуется от ``Array.prototype`` и включает в себя все методы, которые есть у массива:
 
 <ul>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank">concat</a></li>
@@ -130,13 +130,11 @@ alert(this instanceof MyClass);
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 
-Кроме этого, она включает несколько собственных методов: ``on``, ``off``, ``is``, ``extend``, возможности парсинга HTML, отлов события DOM-ready и пр. Балалайка используется внутренними механизмами Матрешки тогда, когда на странице не подключена jQuery или другая jQuery-подобная библиотека.
-
-@see {@link https://github.com/finom/balalaika Балалайка на Github}
+Кроме этого, она включает несколько собственных методов: ``on``, ``off``, ``is``, ``extend``, возможности парсинга HTML, отлов события DOM-ready и пр. bQuery используется внутренними механизмами Матрешки тогда, когда на странице не подключена jQuery или другая jQuery-подобная библиотека.
 
 @example <caption>Создание обработчика события</caption>
 $('.my-selector').on('click.namespace', function() {
-    alert('I need my balalaika');
+    alert('hi');
 });
 
 @example <caption>Удаление обработчика</caption>
@@ -145,7 +143,7 @@ $('.my-selector').off('click.namespace');
 @example <caption>Метод ``is``</caption>
 $('.my-selector').on('click', function(evt) {
     if($(evt.target).is('.another-selector')) {
-        alert('I need my balalaika');
+        alert('hi');
     }
 });
 

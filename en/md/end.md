@@ -43,6 +43,8 @@ Some developers don’t need Matreshka’s abundant functionality, but they want
 - {@link Matreshka.$b}
 - {@link Matreshka.useAs$}
 - {@link Matreshka.version}
+- {@link Matreshka.deepFind}
+- {@link Matreshka.bindSandbox}
 
 The library is in the folder  ``/magic/`` of the repo at [github](https://github.com/finom/matreshka). Having added the script via script tag, ``MatreshkaMagic`` global var and its brief variant ``magic`` are available for the programmer. Var is an ordinary object with methods.
 

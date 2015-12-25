@@ -43,6 +43,8 @@
 - {@link Matreshka.$b}
 - {@link Matreshka.useAs$}
 - {@link Matreshka.version}
+- {@link Matreshka.deepFind}
+- {@link Matreshka.bindSandbox}
 
 Библиотека находится в папке ``/magic/`` репозитория на [github](https://github.com/finom/matreshka). Подключив скрипт с помощью тега ``script``, программисту доступна глобальная переменная ``MatreshkaMagic`` и её краткий вариант ``magic``. Переменная - это обычный объект с методами.
 
@@ -82,6 +84,42 @@ var magic = require('magic/matreshka-magic.min');
 
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
+
+### [Матрешка 1.5.0](https://github.com/finom/matreshka/releases/tag/v1.5.0)
+* Аргумент ``setOnInit`` заменен на объект ``eventOptions`` в методе {@link Matreshka#linkProps} (старый вариант по-прежнему будет работать). Смотрите обновленную документацию к методу.
+	* Добавлена поддержка возможности передачи специальных флагов или данных для обработчика изменения свойства, контроллируемого {@link Matreshka#linkProps}.
+	* Добавлен флаг ``debounce``, оптимизирующий многократные изменения свойств, от которых зависит целевое свойство
+	* Добавлен флаг ``setOnInit``
+* Расширен список флагов для {@link Matreshka.bindNode}.
+	* Добавлен флаг ``debounce``, оптимизирующий обращения к DOM
+	* Исправлена проблема [#26](https://github.com/matreshkajs/matreshka/issues/26) за счет флага ``deep: false``, который включает игнорирование точек в имени свойства.
+* Добавлен метод {@link Matreshka.deepFind}.
+* Добавлен метод {@link Matreshka#bindSandbox}
+* Теперь можно менять скобки {@link Matreshka#parseBindings парсера}, используя объект {@link Matreshka.parserBrackets}.
+* При удалении ключей, отвеающих за данные в {@link Matreshka.Object} генерируются события ``remove`` и ``modify``.
+* Balalaika переименована в bQuery по причине того, что 90% библиотеки переписано с нуля под нужды Матрешки.
+* Многократное увеличение производительности метода {@link Matreshka.Array#METHOD splice} при рендеринге.
+* Если в качестве {@link Matreshka.Array#Model} передать что-то отличное от ``function`` или ``null``, генерируется исключение.
+* Исправлен баг: конструктор класса, переданный в {@link Matreshka.Array#Model} в некоторых случаях получал неверный индекс.
+
+* ``setOnInit`` argument is replaced by ``eventOptions`` object in [Matreshka#linkProps](http://matreshka.io/#!Matreshka-linkProps) (older syntax still works). Look at the  renewed documentation for this method.
+
+	* Allowed to pass special flags or custom data to a property change handler.
+	* Added ``debounce`` flag which optimizes multiple changes of source properties.
+	* Added ``setOnInit`` flag
+* The list of supported flags for [Matreshka#bindNode](http://matreshka.io/#!Matreshka-bindNode) is extended.
+	* Added ``debounce`` flag which optimizes DOM handling.
+	* Fied issue [#26](https://github.com/matreshkajs/matreshka/issues/26) via ``deep: false`` flag which turns on ignoring of dots in a property name.
+* The new method [Matreshka.deepFind](http://matreshka.io/#!Matreshka.deepFind).
+* The new method [Matreshka#bindSandbox](http://matreshka.io/#!Matreshka-bindSandbox)
+* Change default brackets for [Matreshka#parseBindings](http://matreshka.io/#!Matreshka-parseBindings) via [Matreshka.parserBrackets](http://matreshka.io/#!Matreshka.parserBrackets)
+* When data key is removed from [Matreshka.Object](http://matreshka.io/#!Matreshka.Object) the ``remove`` and ``modify`` events are triggered.
+* Balalaika is renamed to bQuery because 90% of original code has been rewritten.
+* Improved performance of rendering when [Matreshka.Array#splice](http://matreshka.io/#!Matreshka.Array#METHOD) is used.
+* If non-function and non-null is passed as [Matreshka.Array#Model](http://matreshka.io/#!Matreshka.Array#Model) throw error.
+* Fixed bug: [Matreshka.Array#Model](http://matreshka.io/#!Matreshka.Array#Model) constructor got wrong index in some cases.
+
+
 
 ### [Матрешка 1.4.1](https://github.com/finom/matreshka/releases/tag/v1.4.1)
 * В функцию {@link Class} вторым аргументом можно передать объект со статичными свойствами и методами

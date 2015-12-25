@@ -29,8 +29,8 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 
 
 /**
-{@link $b Balalaika} collection
-@typedef {array} balalaika
+{@link $b bQuery} collection
+@typedef {array} bQuery
 */
 
 

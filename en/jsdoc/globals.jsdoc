@@ -56,10 +56,10 @@ require.config({
 	paths: {
 		'xclass': 'path/to/matreshka.min',
 		'matreshka': 'path/to/matreshka.min',
-		'balalaika': 'path/to/matreshka.min'
+		'bquery': 'path/to/matreshka.min'
 	}
 });
-require(['xclass', 'matreshka', 'balalaika'], function(Class, MK, $) {
+require(['xclass', 'matreshka', 'bquery'], function(Class, MK, $) {
 	var MyClass = Class({
 		'extends': MK,
 		constructor: function() {
@@ -104,8 +104,8 @@ alert(this instanceof MyClass);
 @importance 2
 @since 0.1
 @extends Array
-@summary Balalaika micro-library
-@desc Balalaika is a tiny (as of this writing -  605 bytes) jQuery-like library for working with DOM. It is inherited from ``Array.prototype`` and includes all the methods existing in native Array:
+@summary bQuery micro-library
+@desc bQuery (previously called Balalaika) is a tiny jQuery-like library for working with DOM. It is inherited from ``Array.prototype`` and includes all the methods existing in native Array:
 
 <ul>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank">concat</a></li>
@@ -130,11 +130,9 @@ alert(this instanceof MyClass);
 
 Besides, it includes several own methods: ``on``, ``off``, ``is``, ``extend``, HTML parsing feature, DOM-ready feature and others. Balalaika is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.
 
-@see {@link https://github.com/finom/balalaika Balalaika on Github}
-
 @example <caption>Adding DOM event listener</caption>
 $('.my-selector').on('click.namespace', function() {
-    alert('I need my balalaika');
+    alert('hi');
 });
 
 @example <caption>Removing DOM event listener</caption>
@@ -143,7 +141,7 @@ $('.my-selector').off('click.namespace');
 @example <caption>The ``is`` method</caption>
 $('.my-selector').on('click', function(evt) {
     if($(evt.target).is('.another-selector')) {
-        alert('I need my balalaika');
+        alert('hi');
     }
 });
 

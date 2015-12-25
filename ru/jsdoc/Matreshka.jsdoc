@@ -48,7 +48,7 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$sandbox
 @importance 2
 @since 0.4
-@summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, Balalaika)
+@summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, bQuery)
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('sandbox', '.app');
@@ -70,7 +70,7 @@ this.sandbox; // то же самое, что и $('.app')[0]
 @member {$nodes} Matreshka#$nodes
 @importance 2
 @since 1.1
-@summary Объект содержит коллекции (jQuery, Zepto, Balalaika) привязанных элементов для быстрого доступа.
+@summary Объект содержит коллекции (jQuery, Zepto, bQuery) привязанных элементов для быстрого доступа.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
@@ -455,6 +455,8 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
+> Изменения DOM происходят синхронно, сразу после изменения свойства. Для того, чтоб DOM менялся после небольшой задержки только один раз, несмотря на то, как часто меняется свойство, передайте в аргумент ``eventOptions`` свойство ``debounce: true``. См.  {@link Matreshka.debounce}.
+
 {@link Matreshka.defaultBinders} из коробки, начиная с версии 0.3, содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``,``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер вовсе не обязательно.
 ```html
 <input type="color" class="my-color-input">
@@ -504,6 +506,7 @@ this.bindNode('sandbox', '.my-sandbox');
 + Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} и других
 + Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
 
+> Для объявления песочницы можно воспользоваться методом {@link Matreshka#bindSandbox}, который требует только один аргумент.
 
 ```js
 // объявляем песочницу
@@ -540,6 +543,7 @@ this.bindNode('a.b.c.d', '.my-node');
 this.a.b = {c: {d: 41}};
 ```
 
+> Это поведение можно отменить, передав свойство ``deep: false`` в объект события (``eventOptions``), тогда точка в имени свойства будет проигнорирована.
 
 
 @see {@link Matreshka#unbindNode}
@@ -553,7 +557,7 @@ this.a.b = {c: {d: 41}};
 @param {string|matreshka} key - Ключ (имя свойства)
 @param {string|node|$nodes} node - HTML элемент, который должен быть связан со свойством экземпляра
 @param {binder} [binder] - Байндер (привязчик), содержащий следующие свойства: ``on`` - какое событие должно произойти на HTML элементе, говорящее о том, что пользователь что-то изменил (например, ``keyup`` или ``click``), ``getValue`` - как извлечь значение из HTML элемента, ``setValue`` - как установить новое значение элементу и ``initialize`` - функция, выполняющаяся однажды, при инициализации привязки. Более подробно о привязчиках можно найти в документации к ним: см. {@link #typedef-binder}.
-@param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (не генерировать события ``"bind"`` и ``"bind:KEY"``), ``"assignDefaultValue"`` или другие данные
+@param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (не генерировать события ``"bind"`` и ``"bind:KEY"``), ``"assignDefaultValue"`` (извлечь ли текущее значение элемента при привязке), ``debounce`` (оптимизировать ли изменения DOM), ``deep`` (использовать ли "глубокое связывание" или игнорировать точку в имени свойства) или другие данные
 @returns {matreshka} self
 
 @example <caption>Кастомный чекбокс. Этот пример демонстрирует создание кастомного элемента, по клику на который у него меняется класс ``"checked"``</caption>
@@ -705,6 +709,21 @@ this.bindNode([
 @see {@link Matreshka#bindNode}
 @example
 this.bindOptionalNode('myKey', '.my-element');
+*/
+
+/**
+@method Matreshka#bindSandbox
+@fires bind
+@fires bind:sandbox
+@importance 3
+@since 1.5
+@summary Привязывает песочницу
+@desc Оптимизированный метод для быстрого связывания свойства ``"sandbox"`` и элемента на странице.
+@param {string|node|$node} node - Элемент, который должен стать песочницей
+@param {eventOptions} [eventOptions] -  Объект события, в который можно передать какие-нибудь данные для обработчика или ключ ``"silent"``, который отключает генерацию событий ``"bind"`` и ``"bind:sandbox"``
+@see {@link Matreshka#bindNode}
+@example
+this.bindSandbox('.my-element');
 */
 
 /**
@@ -1192,10 +1211,104 @@ this.setClassFor({
 @since 0.1
 @summary Создает зависимость значения одного свойства от значений других
 @desc Метод ``linkProps`` создает зависимость значения свойства (первый аргумент) от значений других свойств (второй аргумент). Метод защищен от цикличных ссылок (например a зависит от b, b зависит от c, а c зависит от a) и при ошибке вычислений не блокирует страницу и не бросает исключение о переполнении стека.
-@param {string|array} keys1 - Свойство (свойства) которое зависит от других свойств
-@param {string|array} keys2 - От каких свойств зависит искомое свойство (свойства)
+
+В версии 1.5 аргумент ``setOnInit`` заменен на объект ``eventOptions`` (четвертый аргумент), включающий несколько дополнительных возможностей метода.
+
+### Передача данных в обработчик изменения свойства и передача специальных флагов
+Вы можете передать какие-нибудь данные в обработчик события изменения искомого свойства, используя аргумент ``eventOptions``.
+```js
+this.on('change:a', function(evt) {
+	alert(evt.foo); // 'bar'
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+	return b + c;
+}, {
+	foo: 'bar'
+});
+```
+
+Кроме этого в ``eventOptions``, можно передать и специальные флаги, например ``silent: true``.
+```js
+this.on('change:a', function(evt) {
+	alert('foo');
+});
+
+this.linkProps('a', 'b c', function(b, c) {
+	return b + c;
+}, {
+	silent: true
+});
+
+this.b = 1;
+```
+В примере выше, при изменении свойства механизмом ``linkProps``, обработчик изменения искомого свойства будет молчать.
+
+> Если изменить искомое свойство другим способом, например, присваиванием (``this.a = 42``), то, очевидно, обработчик будет вызван.
+
+Полный список поддерживаемых флагов можно найти в документации к методу {@link Matreshka#set}.
+
+
+
+### Вычисление свойства при вызове ``linkProps``
+
+По умолчанию, свойство будет вычислено сразу, при вызове ``linkProps``.
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.b = 1;
+this.c = 2;
+this.linkProps('a', 'b c', handler);
+alert(this.a); // 3
+```
+
+Для отмены этого поведения передайте в объект ``eventOptions`` свойство ``setOnInit: false``. Оно необходимо в тех случаях, когда свойства, от которых зависит искомое свойство еще не заданы, и вы не хотите, чтоб значением свойства стала какая-нибудь ерунда. В примере ниже ``linkProps`` вычислит сумму ``b`` и ``c`` как ``undefined + undefined`` и значением свойства ``a`` станет ``NaN``.
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.linkProps('a', 'b c', handler);
+alert(this.a); // NaN
+```
+
+```js
+this.linkProps('a', 'b c', handler, {
+	setOnInit: false // теперь всё хорошо
+});
+```
+
+### Мгновенное вычисление свойства
+
+Реакция на изменения свойств мгновенна и синхронна. Это значит, что при изменении свойста от которого зависит искомое свойство, вычисление второго произойдет моментально. Взгляните на пример:
+```js
+var handler = function(b, c) {return b + c;};
+
+this.linkProps('a', 'b c', handler);
+this.b = 1;
+this.c = 2;
+```
+Функция ``handler`` будет вызвана трижды. Первый раз - при вызове ``linkProps`` (если ``setOnInit`` не задан), второй раз - при изменении свойства ``b``, третий - при изменении свойства ``c``. Такое поведение обусловлено идеей о том, что все реакции на изменения должны происходить последовательно и предсказуемо. Для оптимизации этого поведения, передайте в объект ``eventOptions`` свойство ``debounce: true``. См. {@link Matreshka.debounce}.
+
+```js
+var handler = function(b, c) {
+	return b + c;
+};
+
+this.linkProps('a', 'b c', handler, {
+	debounce: true
+});
+this.b = 1;
+this.c = 2;
+```
+В примере выше функция ``handler`` будет вызвана только один раз после небольшой задержки.
+
+@param {string|array} targetKeys - Свойство (свойства) которое зависит от других свойств
+@param {string|array} sourceKeys - От каких свойств зависит искомое свойство (свойства)
 @param {function} [handler=function(v){return v}] - Функция, возвращающая новое значение
-@param {boolean} [setOnInit=true] - Установить ли значение свойства сразу после объявления зависимости
+@param {object} [eventOptions] - Объект, в который можно передать какие-нибудь данные для обработчика события, слушающего изменения ``targetKeys`` или специальные флаги (см. описание метода); кроме этого, к ``linkProps`` можно применить паттерн {@link Matreshka.debounce} для того, чтоб многократные изменения ``sourceKeys`` меняли ``targetKeys`` однократно.
 @example
 this.linkProps('greeting', 'name', function() {
 	return 'Hello, ' + this.name + '!';
@@ -1246,12 +1359,12 @@ alert(this.x); //42
 @importance 1
 @variation 2
 @since 0.2
-@summary Дополнительная возможность метода {@link Matreshka#linkProps}: зависимость от значений свойств других экземпляров
-@param {string|array} keys - Свойство (свойства) которое зависит от других свойств
-@param {array} instancesAndKeys - Массив, который содержит экземпляры (четные элементы) их ключи (нечетные элементы), от которых зависит искомое свойство (свойства). Такой, возможно, странный синтаксис является следствием ограничений синтаксиса JavaScript.
+@summary Дополнительная возможность метода {@link Matreshka#linkProps}: зависимость от значений свойств других объектов
+@param {string|array} targetKeys - Свойство (свойства) которое зависит от других свойств
+@param {array} instancesAndKeys - Массив, который содержит объекты (четные элементы) их ключи (нечетные элементы), от которых зависит искомое свойство (свойства). Такой, возможно, странный синтаксис является следствием ограничений синтаксиса JavaScript.
 @param {function} [handler=function(v){return v}] - Функция, возвращающая новое значение
-@param {boolean} [setOnInit=true] - Установить ли значение свойства сразу после объявления зависимости
-@example <caption>Свойство ``sum`` является суммой свойств ``a`` и ``b`` других экземпляров и вычисляется каждый раз при их изменении</caption>
+@param {object} [eventOptions] - См. {@link Matreshka#linkProps выше}
+@example <caption>Свойство ``sum`` является суммой свойств ``a`` и ``b`` других объектов и вычисляется каждый раз при их изменении</caption>
 anotherInstance1.a = 2;
 
 anotherInstance2.b = 3;
@@ -1523,6 +1636,9 @@ JS:
 @returns {$nodes} Коллекция DOM узлов (как правило, состоящая из одного элемента), переданная в функцию в качестве аргумента или, если аргументов нет, песочница
 @example <caption>Парсинг заданного узла</caption>
 this.parseBindings(node);
+
+> Если фигурные скобки не устраивают, поменяйте их на что-то другое, используя {@link Matreshka.parserBrackets}
+
 
 @example <caption>Парсинг узла по селектору</caption>
 this.parseBindings('.my-node');

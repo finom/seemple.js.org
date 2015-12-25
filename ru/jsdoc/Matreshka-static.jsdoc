@@ -44,7 +44,7 @@ Class({
 @method Matreshka.$
 @importance 2
 @variation static
-@summary Библиотека, используемая Матрешкой (jQuery, Zepto, {@link Matreshka.$b Balalaika} или др.)
+@summary Библиотека, используемая Матрешкой (jQuery, Zepto, {@link Matreshka.$b bQuery} или др.)
 @example
 MK.$('.my-element');
 */
@@ -53,7 +53,7 @@ MK.$('.my-element');
 /**
 @method Matreshka.$b
 @importance 3
-@summary Встроенная микро-библиотека {@link $b Балалайка}
+@summary Встроенная микро-библиотека {@link $b bQuery}
 @example
 MK.$b('.my-element');
 */
@@ -64,10 +64,10 @@ MK.$b('.my-element');
 @importance 3
 @since 0.2
 @summary Заставляет использовать определенную библиотеку для работы с DOM
-@desc По умолчанию, Матрешка использует в качестве библиотеки ту, которая находится по ссылке ``window.$``. Если такой переменной нет в глобальном пространстве имен, либо же она не включает в себя необходимый набор методов, то используется встроенная микро библиотека {@link $b Балалайка}.
+@desc По умолчанию, Матрешка использует в качестве библиотеки ту, которая находится по ссылке ``window.$``. Если такой переменной нет в глобальном пространстве имен, либо же она не включает в себя необходимый набор методов, то используется встроенная микро библиотека {@link $b bQuery}.
 
 Метод {@link Matreshka.useAs$} заставляет Матрешку использовать ту библиотеку, которую вы захотите использовать, не смотря на отсутствие таковой в глобальном пространстве имен или по другой причине (например, если используется две разных версии jQuery на странице). Желательно, чтобы метод был запущен перед объявлением какого-либо класса, так как никакой конвертации в объект новой библиотеки не происходит.
-@param {function} $ - Любая библиотека (jQuery, Zepto, Balalaika или др.)
+@param {function} $ - Любая библиотека (jQuery, Zepto, bQuery или др.)
 @todo Конвертировать все коллекции привязанных элементов в объект переданной библиотеки.
 @example
 Matreshka.useAs$(jQuery.noConflict());
@@ -622,4 +622,49 @@ console.log(MK.toArray(object)); // ['a', 'b', 'c']
 @example <caption>Клонирование масива</caption>
 var arr = ['a', 'b', 'c'],
 	cloneArr = MK.toArray(arr);
+*/
+
+/**
+@method Matreshka.deepFind
+@importance 3
+@since 1.5
+@summary Возвращает свойство во вложенном объекте
+@desc Функция позволяет обратиться к свойству вложенного объекта, не бросая исключение, если один из объектов в пути не определен.
+@param {object} object - Объект
+@param {string} path - Путь к свойству
+@returns {*} Значение свойства
+@example
+var obj = {
+		a: {
+			b: {
+				c: {
+					d: 42
+				}
+			}
+		}
+	},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // 42
+
+@example <caption>Прямое обращение бросает исключение</caption>
+var obj = {},
+	d = obj.a.b.c.d; // ошибка
+
+@example <caption>``deepFind`` возвращает ``undefined``, если путь "сломан" и не бросает исключение</caption>
+var obj = {},
+	d = MK.deepFind(obj, 'a.b.c.d');
+
+alert(d); // undefined
+*/
+
+/**
+@member {object} Matreshka.parserBrackets
+@importance 3
+@since 1.5
+@summary Содержит скобки для {@link Matreshka#parseBindings парсера}
+@desc Объект ``parserBrackets`` позволяет изменить стандартный синтаксис парсера привязок. Он содержит два свойства: ``left`` (левая скобка, по умолчанию ``"&#123;{"``) и ``right`` (правая скобка, по умолчанию ``"}}"``)
+@example Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо ``&#123;{property}}``
+MK.parserBrackets.left = '[[=';
+MK.parserBrackets.right = ']]';
 */

@@ -24,8 +24,8 @@ export default class Main extends MK.Object {
 				isOldIE: document.documentMode <= 9,
 				view: localStorage.view || 'all',
 				version: localStorage.version || 'stable',
-				unstableVersion: '1.5',
-				newVersions: ['1.2', '1.3', '1.4'],
+				unstableVersion: '1.6',
+				newVersions: ['1.3', '1.4', '1.5'],
 				hideTypoBadge: localStorage.hideTypoBadge,
 				isMobile: /mobile|android/i.test(navigator.userAgent),
 				importanceLevel: +localStorage.importanceLevel || 2

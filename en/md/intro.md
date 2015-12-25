@@ -32,6 +32,8 @@ If you already know the quick-start basics, you can look at other methods and pr
 ### [[i class="imp-level-3"]][[/i]] The third level - other methods and properties
 We've hidden rarely used parts (Matreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.
 
+**Warning**. If you open a link to a method or a property of the third level of importance, the "Advanced mode" is turned on automatically.
+
 
 > This page can't do without the fantastic possibilities of HTML5. It is available offline for any device whether it is your computer or a mobile phone.
 
