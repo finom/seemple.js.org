@@ -7591,15 +7591,14 @@ data-importance="3">
 		<div class="since"><p>Добавлено в версии 1.5.</p></div>
 	
 	<div class="summary"><p>Содержит скобки для <a href="#!Matreshka-parseBindings">парсера</a></p></div>
-	<div class="description"><p>Объект <code>parserBrackets</code> позволяет изменить стандартный синтаксис парсера привязок. Он содержит два свойства: <code>left</code> (левая скобка, по умолчанию <code>&quot;&amp;#123;{&quot;</code>) и <code>right</code> (правая скобка, по умолчанию <code>&quot;}}&quot;</code>)</p></div>
+	<div class="description"><p>Объект <code>parserBrackets</code> позволяет изменить стандартный синтаксис парсера привязок. Он содержит два свойства: <code>left</code> (левая скобка, по умолчанию &quot;&#123;{&quot;) и <code>right</code> (правая скобка, по умолчанию &quot;}}&quot;)</p></div>
 	
 
 	 
 	<h4>Примеры</h4>
   
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо ``&#123;{property}}``
-MK.parserBrackets.left = '[[=';
+<h5><p>Заменяет поведение парсера, используя синтаксис <code>[[=property]]</code> вместо &#123;{property}}</p></h5>
+<pre class="prettyprint source lang-js"><code>MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';</code></pre>
 	<div class="share-buttons">
     <a class="share-facebook"></a> <a class="share-twitter"></a>

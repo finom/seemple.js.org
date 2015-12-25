@@ -7606,15 +7606,14 @@ data-importance="3">
 		<div class="since"><p>Available since 1.5.</p></div>
 	
 	<div class="summary"><p>Contains brackets for <a href="#!Matreshka-parseBindings">bindings parser</a></p></div>
-	<div class="description"><p><code>parserBrackets</code> object allows to change default behavior of the parser. It contains two properties:   <code>left</code> (left bracket, <code>&quot;&amp;#123;{&quot;</code> by default) and <code>right</code> (right bracket, <code>&quot;}}&quot;</code> by default)</p></div>
+	<div class="description"><p><code>parserBrackets</code> object allows to change default syntax of the parser. It contains two properties:   <code>left</code> (left bracket, &quot;&#123;{&quot; by default) and <code>right</code> (right bracket, &quot;}}&quot; by default)</p></div>
 	
 
 	 
 	<h4>Examples</h4>
   
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>Use syntax  ``[[=property]]`` instead of ``&#123;{property}}``
-MK.parserBrackets.left = '[[=';
+<h5><p>Use syntax  <code>[[=property]]</code> instead of &#123;{property}}</p></h5>
+<pre class="prettyprint source lang-js"><code>MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';</code></pre>
 	<div class="share-buttons">
     <a class="share-facebook"></a> <a class="share-twitter"></a>

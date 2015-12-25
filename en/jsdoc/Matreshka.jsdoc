@@ -1264,7 +1264,7 @@ this.setClassFor({
 
 In Matreshka 1.5 the ``setOnInit`` (4th argument) is replaced by ``eventOptions`` which gives more useful features to the method.
 
-### Passing data to a property-change event handler and passing of the special flags
+### Passing data to a property-change event handler and special flags
 You can pass some data to ``change:KEY`` event handler via ``eventOptions``.
 
 ```js
