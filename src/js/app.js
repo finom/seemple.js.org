@@ -1,7 +1,7 @@
 import Main from './app/main.class';
 
 try {
-    module.exports = new Main();
+    window.app = new Main();
 } catch(e) {
 	let report = 'https://github.com/matreshkajs/matreshka.io/issues/new?title=Houston,%20we%20have%20a%20problem&body=userAgent: ' + encodeURIComponent(' ' + navigator.userAgent + '\nError: ' + e.message);
 
