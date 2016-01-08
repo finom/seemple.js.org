@@ -85,8 +85,12 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.5.2](https://github.com/finom/matreshka/releases/tag/v1.5.2)
+- ``parseBindings`` некорректно обрабатывал байндинги к радиокнопкам.
+- Обновлены зависимости. Теперь в тестах используется Babel 6.
+
 ### [Матрешка 1.5.1](https://github.com/finom/matreshka/releases/tag/v1.5.1)
-- Исправлен баг: в ``MK.Object`` отсутствует ``Symbol.iterator``. 
+- Исправлен баг: в ``MK.Object`` отсутствует ``Symbol.iterator``.
 
 ### [Матрешка 1.5.0](https://github.com/finom/matreshka/releases/tag/v1.5.0)
 * Аргумент ``setOnInit`` заменен на объект ``eventOptions`` в методе {@link Matreshka#linkProps} (старый вариант по-прежнему будет работать). Смотрите обновленную документацию к методу.
