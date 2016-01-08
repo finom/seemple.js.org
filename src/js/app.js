@@ -1,6 +1,7 @@
+import Main from './app/main.class';
+
 try {
-    var Main = require('./app/main.class');
-    module.exports = window.app = new Main();
+    module.exports = new Main();
 } catch(e) {
 	let report = 'https://github.com/matreshkajs/matreshka.io/issues/new?title=Houston,%20we%20have%20a%20problem&body=userAgent: ' + encodeURIComponent(' ' + navigator.userAgent + '\nError: ' + e.message);
 

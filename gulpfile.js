@@ -13,8 +13,7 @@ gulp.task('jekyll', cbc => {
 
 
 gulp.task('jsdoc', cbc => {
-    let jsdoc = require("gulp-jsdoc"),
-		cli = './node_modules/jsdoc/jsdoc.js',
+    let cli = './node_modules/.bin/jsdoc',
 		args = ['-t', './template'],
 		spawn = require('child_process').spawn,
 		fileNames = [
@@ -64,7 +63,7 @@ gulp.task('scripts', () => {
 			//debug: true
 		})
 		.transform(babelify.configure({
-			stage: 0
+			presets: ["es2015", "stage-0"]
 		}))
 		.bundle()
 		.on('error', handleError)
