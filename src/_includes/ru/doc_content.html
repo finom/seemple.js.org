@@ -87,10 +87,10 @@ var app = new Application();</code></pre><p><strong>3.</strong> Это всё!</
 <pre class="prettyprint source lang-js"><code>require(['path/to/matreshka'], function(Matreshka) {
     //...
 });</code></pre><p>Импорт в стиле EcmaScript6 (используя Babel)</p>
-<pre class="prettyprint source lang-js"><code>import Matreshka from 'path/to/matreshka';</code></pre></article><article id="!examples"><h2><a href="#!examples">Примеры</a></h2><p><span class="list-item-number">1.</span> <a href="http://gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages">TodoMVC</a> - список дел. (<a href="http://finom.github.io/matreshka_todomvc_ru/docs/app.html">Исходный код с аннотациями</a>)</p>
-<p><span class="list-item-number">2.</span> <a href="http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages">TreeView</a> - древовидный список неограниченной вложенности.</p>
-<p><span class="list-item-number">3.</span> <a href="http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages">Markdown editor</a> - простейший редактор Markdown (13 строк кода).</p>
-<p><span class="list-item-number">4.</span> <a href="http://gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.</p></article>
+<pre class="prettyprint source lang-js"><code>import Matreshka from 'path/to/matreshka';</code></pre></article><article id="!examples"><h2><a href="#!examples">Примеры</a></h2><p><span class="list-item-number">1.</span> <a href="//gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages">TodoMVC</a> - список дел. (<a href="//finom.github.io/matreshka_todomvc_ru/docs/app.html">Исходный код с аннотациями</a>)</p>
+<p><span class="list-item-number">2.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages">TreeView</a> - древовидный список неограниченной вложенности.</p>
+<p><span class="list-item-number">3.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages">Markdown editor</a> - простейший редактор Markdown (13 строк кода).</p>
+<p><span class="list-item-number">4.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.</p></article>
 </section>
 <section class="api">
 
@@ -13325,7 +13325,7 @@ getData();</code></pre><h3>Есть ли в Матрешке роутинг?</h3
         value = binder.getValue.call(node);
     });
 };</code></pre><p>Как видите, ничего сложного (для упрощения, функция не поддерживает связь многие-ко-многим).</p>
-<p>Пример работы функции можно посмотреть на <a href="http://jsbin.com/mabetap/7/edit?html,js,output">jsbin</a>.</p>
+<p>Пример работы функции можно посмотреть на <a href="//jsbin.com/mabetap/7/edit?html,js,output">jsbin</a>.</p>
 <h3>Поддерживает ли Матрешка серверный рендеринг?</h3><p>К сожалению, (возможно, пока) нет. Матрешка использует DOM шаблонизацию, которая требует наличия на сервере библиотеки, реализующей DOM API. Хорошим примером такой библиотеки является <a href="https://github.com/tmpvar/jsdom">jsdom</a>. Проблема в том, что к серверу присоединяется много клиентов, каждый из которых может запросить соверщенно разные страницы, генерирующиеся динамически. DOM шаблонизация работает заметно медленнее, чем HTML шаблонизация, где шаблоном выступает обычный текст, а не многочисленные DOM объеты.</p>
 <p>В качестве примера, можно привести серверный рендеринг React компонентов, которые тоже требуют DOM шаблонизатор. Как правило, эта задача решается хитрыми трюками и рекомендациями использовать кеширование шаблонов (что не всегда возможно, а если возможно, может вызвать утечки памяти). Даже используя лучшие практики и хитроумные решения, обычный текстовый HTML шаблонизатор (скажем, <a href="https://github.com/janl/mustache.js">mustache.js</a>) решит проблему многократно быстрее, а скорость на сервере, как известно, намного важне, чем на клиенте.</p>
 <p>Поэтому, на сегодняшний день, единственной рекомендацией к серверному рендерингу является перекладывание задачи генерации HTML строки на любой текстовый шаблонизатор. Оставим узкоспециализированные задачи выполнять инструментам, делающим это лучше всего.</p></article>

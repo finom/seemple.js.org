@@ -9,7 +9,7 @@ import Performance from './performance.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import prettify from '../lib/prettify';
-import embed from '../lib/embed-jsbin';
+//import embed from '../lib/embed-jsbin';
 import _dp from '../lib/details-polyfill';
 
 export default class Main extends MK.Object {
@@ -80,7 +80,7 @@ export default class Main extends MK.Object {
 		// have no time to make it work in tamplete, so let's shitcode!
 		for(let a of $('a')) {
 			let href = a.getAttribute('href');
-			if(href && href.indexOf('http') == 0) {
+			if(href && ~href.indexOf('//')) {
 				a.target = '_blank';
 			}
 		}
@@ -270,7 +270,7 @@ export default class Main extends MK.Object {
 					this.once('transitionend::navOverlay', evt => this.navOverlay = false);
 					this.navShown = false;
 				},
-				'click::([href*="jsbin.com"][href*="edit"])': evt => {
+				/*'click::([href*="jsbin.com"][href*="edit"])': evt => {
 					if (evt.target.classList.contains('embedded')) {
 						evt.target.nextSibling.classList.toggle('hide');
 					} else {
@@ -278,7 +278,7 @@ export default class Main extends MK.Object {
 					}
 
 					evt.preventDefault();
-				},
+				},*/
 				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true,
 				'change:hashValue change:articles': evt => {
 					let article = this.articles.filter(article => article.id === this.hashValue)[0];

@@ -128,7 +128,7 @@ window.bindNode = function bindNode(object, key, node, binder) {
 };
 ```
 As you see, it’s real easy (for simplicity, the function doesn’t  support  many-to-many binding).
-You can see the example of function working at [jsbin](http://jsbin.com/mabetap/7/edit?html,js,output)..
+You can see the example of function working at [jsbin](//jsbin.com/mabetap/7/edit?html,js,output)..
 
 
 ### Does Matreshka support the server rendering?
