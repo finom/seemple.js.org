@@ -2,7 +2,7 @@
 @function Class
 @importance 2
 @summary A class implementation based on the prototype inheritance
-@desc The ``Class`` function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses a hack which allows to use accessors (getters and setters) using the ``Object.defineProperty`` function.
+@desc The ``Class`` function allows to use the classic OOP based on classes.
 
 @param {object} prototype - Methods and properties
 @param {object} [statics] - Static methods and properties
@@ -48,7 +48,7 @@ var MyClass = Class({
 	}
 });
 
-alert(MyClass.staticProp; // foo
+alert(MyClass.staticProp); // foo
 alert(MyClass.staticMethod()); // bar
 
 @example <caption>The usage of AMD (named modules)</caption>
@@ -78,7 +78,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>The usage of the ``Class`` function is a must for IE8, but it is not required in other browsers. That is why Matreshka OOB supports any type of prototype inheritance including ECMAScript 2015 syntax.</caption>
+@example <caption>The usage of the ``Class`` function is not required. Matreshka OOB supports any type of prototype inheritance including ECMAScript 2015 syntax.</caption>
 class A extends B {
 	constructor() {
 		super();
@@ -90,12 +90,6 @@ class A extends B {
 	}
 }
 
-@example <caption>**The ``instanceOf`` method**. Instances of a class which has been created using the ``Class`` function include the ``instanceOf`` method that checks if an object is an instance of specified class. This method is necessary only when your application needs IE8 support.</caption>
-// for IE8 and other browsers
-alert(this.instanceOf(MyClass));
-
-// for ordinary browsers
-alert(this instanceof MyClass);
 */
 
 
@@ -128,7 +122,7 @@ alert(this instanceof MyClass);
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 
-Besides, it includes several own methods: ``on``, ``off``, ``is``, ``extend``, HTML parsing feature, DOM-ready feature and others. Balalaika is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.
+Besides, it includes several own methods: ``on``, ``off``, ``is``, ``extend``, HTML parsing feature, DOM-ready feature and others. bQuery is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.
 
 @example <caption>Adding DOM event listener</caption>
 $('.my-selector').on('click.namespace', function() {

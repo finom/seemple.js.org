@@ -76,17 +76,12 @@ var app = new Application();</code></pre><p><strong>3.</strong> Это всё!</
 <li><a href="#!Matreshka-bindNode">Метод Matreshka#bindNode</a></li>
 <li><a href="#!Matreshka-on">Метод Matreshka#on</a></li>
 <li><a href="#!Class">Функция Class</a></li>
-</ul></article><article id="!how-to-include"><h2><a href="#!how-to-include">Как подключить?</a></h2><p>Матрешка - самостоятельный фреймворк, не требующий никаких зависимостей. Но возможность использования уже не современных возможностей из стандарта ECMAScript5 в Internet Explorer 8 отсутствует. Поэтому, если вы поддерживаете IE8 в разрабатываемых вами приложениях, вам нужно подключить еще один JavaScript файл: <a href="https://github.com/es-shims/es5-shim">es5-shim</a> или любой другой полифил, реализующий возможности ECMAScript5.</p>
-<blockquote>
-<p>Внимание! Начиная с версии 1.1, работа Матрешки в Internet Explorer 8 не рекомендуется по причине того, что было добавлено слишком много методов, которые невозможно реализовать поддерживая этот браузер. Это значит, что автоматические тесты тоже не будут работать. Причина: восьмой "Осел" не поддерживает навешивание акцессоров на нативные объекты. Старые приложения (на основе Матрешки 1.0 и ниже) должны по-прежнему корректно работать. Если вам всё еще нужна поддержка IE8, просто не используйте методы старше версии 1.1, включительно. Теперь Матрешка сфокусирована на поддержке Internet Explorer 9+ и остальных браузеров.</p>
-</blockquote>
-<p>Подключение jQuery для всех браузеров - опционально (хотя, для IE8 рекомендуемо). Вместо этой библиотеки можете воспользоваться другой jQuery-подобной библиотекой, например, <a href="http://zeptojs.com/">Zepto</a>. Если вы вовсе не хотите использовать библиотек, отдавая предпочтение <a href="http://vanilla-js.com/">Vanilla.js</a>, Матрешка будет использовать встроенную микро-библиотеку, которая называется <a href="#$b">Балалайка</a>.</p>
-<pre class="prettyprint source lang-html"><code>&lt;!-- Обязательно для IE8 -->
-&lt;script src="js/es5-shim.min.js">&lt;/script>
+</ul></article><article id="!how-to-include"><h2><a href="#!how-to-include">Как подключить?</a></h2><p>Матрешка - самостоятельный фреймворк, не требующий никаких зависимостей. Но вы, при желании, можете использовать jQuery или Zepto в качестве библиотеки, которая будет использоваться Матрешкой для работы с DOM. Если jQuery или Zepto на странице нет, используется внутренняя компактная библиотека <a href="#$b">bQuery</a>.</p>
+<pre class="prettyprint source lang-html"><code>&lt;!-- никакой магии -->
 &lt;script src="js/matreshka.min.js">&lt;/script></code></pre><p>Кроме этого, Матрешка поддерживает AMD, например, require.js или almond</p>
 <pre class="prettyprint source lang-js"><code>require(['path/to/matreshka'], function(Matreshka) {
     //...
-});</code></pre><p>Импорт в стиле EcmaScript6 (используя Babel)</p>
+});</code></pre><p>Импорт в стиле ECMSScript 2015</p>
 <pre class="prettyprint source lang-js"><code>import Matreshka from 'path/to/matreshka';</code></pre></article><article id="!examples"><h2><a href="#!examples">Примеры</a></h2><p><span class="list-item-number">1.</span> <a href="//gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages">TodoMVC</a> - список дел. (<a href="//finom.github.io/matreshka_todomvc_ru/docs/app.html">Исходный код с аннотациями</a>)</p>
 <p><span class="list-item-number">2.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages">TreeView</a> - древовидный список неограниченной вложенности.</p>
 <p><span class="list-item-number">3.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages">Markdown editor</a> - простейший редактор Markdown (13 строк кода).</p>
@@ -131,7 +126,7 @@ var app = new Application();</code></pre><p><strong>3.</strong> Это всё!</
 	sayHello: function() {
 		alert("Hello World!");
 	}
-});</code></pre><h5><p>Матрешка использует прототипы для реализации наследования. Функция <a href="#!Class">Class</a> лишь вносит синтаксический сахар и добавляет хаки для Internet Explorer 8. Поэтому вы можете воспользоваться любым другим полюбившимся способом наследования, например, используя классы из ECMAScript 2015</p></h5>
+});</code></pre><h5><p>Матрешка использует прототипы для реализации наследования. Функция <a href="#!Class">Class</a> лишь вносит синтаксический сахар. Поэтому вы можете воспользоваться любым другим полюбившимся способом наследования, например, используя классы из ECMAScript 2015</p></h5>
 <pre class="prettyprint source lang-js"><code>class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();
@@ -1127,7 +1122,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Полностью переписывает дескриптор свойства, используя <code>Object.defineProperty</code></p></div>
-	<div class="description"><p>Обратите внимание, <code>Object.defineProperty</code> работает некорректно в Internet Explorer 8. Используйте метод только тогда, когда знаете, что делаете.</p></div>
+	<div class="description"><p>Используйте метод только тогда, когда знаете, что делаете.</p></div>
 	
 	<p>
 		<b>Возвращает</b> 
@@ -1305,7 +1300,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Устанавливает кастомный геттер для свойства</p></div>
-	<div class="description"><p>Этот метод позволяет установить геттер (getter), используя нативный метод <code>Object.defineProperty</code> и работает во всех браузерах, начиная с Internet Explorer 8. Возвращаемое значение свойства вычисляется при каждом обращении к свойству, поэтому более предпочтительным методом, с точки зрения производительности, является <a href="#!Matreshka-linkProps">Matreshka#linkProps</a>.</p></div>
+	<div class="description"><p>Этот метод позволяет установить геттер (getter), используя нативный метод <code>Object.defineProperty</code>. Возвращаемое значение свойства вычисляется при каждом обращении к свойству, поэтому более предпочтительным методом, с точки зрения производительности, является <a href="#!Matreshka-linkProps">Matreshka#linkProps</a>.</p></div>
 	
 	
 
@@ -1458,7 +1453,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Устанавливает кастомный сеттер для свойства</p></div>
-	<div class="description"><p>Этот метод позволяет установить сеттер (setter), используя нативный метод <code>Object.defineProperty</code> и работает во всех браузерах, начиная с Internet Explorer 8. При использовании этого метода следует иметь в виду, что он переписывает встроенный Матрешкой сеттер и, таким образом убирает возможность отлова событий, типа <code>change:КЛЮЧ</code>. Используйте этот метод только если точно знаете, что делаете. Медоды <a href="#!Matreshka-on">Matreshka#on</a> и <a href="#!Matreshka-mediate">Matreshka#mediate</a> безопасны с точки зрения стабильности создаваемого приложения, лучше используйте их.</p></div>
+	<div class="description"><p>Этот метод позволяет установить сеттер (setter), используя нативный метод <code>Object.defineProperty</code>. При использовании этого метода следует иметь в виду, что он переписывает встроенный Матрешкой сеттер и, таким образом убирает возможность отлова событий, типа <code>change:КЛЮЧ</code>. Используйте этот метод только если точно знаете, что делаете. Медоды <a href="#!Matreshka-on">Matreshka#on</a> и <a href="#!Matreshka-mediate">Matreshka#mediate</a> безопасны с точки зрения стабильности создаваемого приложения, лучше используйте их.</p></div>
 	
 	
 
@@ -1717,77 +1712,6 @@ this.x = 1;</code></pre>
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-delay"
   title="Метод Matreshka-delay"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item method" id="!Matreshka-eq" data-since="0.0.2"
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka-eq">
-			<span class="memberof">Matreshka#</span>eq<wbr>(<span class="args">object</span>)
-				
-		</a> 
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Добавлено в версии 0.0.2.</p></div>
-	
-	<div class="summary"><p>Проверяет экземпляр на равенство другому объекту</p></div>
-	<div class="description"><p>Internet Explorer 8 бросает исключение при попытке традиционного сравнения на равенство, используя <code>==</code> или <code>===</code>. Метод <code>.eq</code> решает эту проблему. Если поддержка IE8 не нужна, то метод использовать не обязательно.</p></div>
-	
-	
-
-	
-	<h4>Аргументы</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Имя
-				
-				<th>Тип
-				<th>Описание
-			</tr>
-		</thead>
-		<tbody>
-			 
-				<tr>
-					<td>
-						object
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>Объект, с которым нужно сравнить экземпляр</p></td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-	
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.eq(object); // true или false</code></pre><h5><p>Ошибка в IE8</p></h5>
-<pre class="prettyprint source lang-js"><code>this === object; //иногда IE8 выкидывает "Class doesn't support Automation"</code></pre>
-
-	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-eq" data-title="Метод Matreshka-eq">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka-eq"
-  title="Метод Matreshka-eq"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -6620,6 +6544,125 @@ MK.once(object, 'foo', function(evt) {
 
 </article>
 
+<article class="item method" id="!Matreshka.orderBy" data-since="1.6"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.orderBy">
+			<span class="memberof">Matreshka.</span>orderBy<wbr>(<span class="args">collection, keys, orders<span class="default-value">=asc</span></span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="array">array</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 1.6.</p></div>
+	
+	<div class="summary"><p>Сортирует переданный массив по значениям свойств объектов, которые в него входят</p></div>
+	<div class="description"><p>Этот статичный метод работает точно так же, как и метод <a href="https://lodash.com/docs#orderBy">orderBy из lodash</a>. Он принимает коллекцию (array-like объект) первым аргументом, ключ или массив ключей - вторым, порядок (asc/desc) или массив порядков - третьим.</p></div>
+	
+	<p>
+		<b>Возвращает</b> 
+	<span data-type="array">array</span>
+
+		 - Новый отсортированный массив
+
+	</p>
+	
+	
+
+	
+	<h4>Аргументы</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Имя
+				<th>По&nbsp;умолчанию
+				<th>Тип
+				<th>Описание
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						collection
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>Коллекция (array-like объект)</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						keys
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						orders
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					<td> asc
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>Порядок или массив порядков, соответствующих массиву ключей</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5><p>Пример из документации к lodash</p></h5>
+<pre class="prettyprint source lang-js"><code>var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+];
+
+// сортирует по значениям свойств `user` по возрастанию и значениям свойств `age` по убыванию
+MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.orderBy" data-title="Метод Matreshka.orderBy">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.orderBy"
+  title="Метод Matreshka.orderBy"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.parseBindings" data-since="1.1"
 data-importance="3">
 	<h2>
@@ -7533,43 +7576,6 @@ this.bindNode('myKey', '.custom-checkbox');</code></pre>
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.defaultBinders"
   title="Свойство Matreshka.defaultBinders"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.isXDR" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.isXDR">
-
-			<span class="memberof">Matreshka.</span>isXDR</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p>Использует ли Матрешка хак с XDomainRequest. Другими словами, является ли текущий браузер Internet Explorer 8</p></div>
-	<div class="description"></div>
-	
-
-	 
-	<h4>Примеры</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(Matreshka.isXDR);</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.isXDR" data-title="Свойство Matreshka.isXDR">Задать вопрос<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.isXDR"
-  title="Свойство Matreshka.isXDR"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -10740,6 +10746,113 @@ var app = new MyArray();</code></pre>
 
 </article>
 
+<article class="item method" id="!Matreshka.Array-orderBy" data-since="1.6"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka.Array-orderBy">
+			<span class="memberof">Matreshka.Array#</span>orderBy<wbr>(<span class="args">keys, orders<span class="default-value">=asc</span></span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="matreshkaArray">matreshkaArray</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 1.6.</p></div>
+	
+	<div class="summary"><p>Сортирует массив по значениям свойств объектов, которые в него входят</p></div>
+	<div class="description"><p>Метод использует <a href="#!Matreshka.sortBy">Matreshka.sortBy</a> для упорядочивания, и сортирует <code>this</code> вместо создания нового объекта.</p></div>
+	
+	<p>
+		<b>Возвращает</b> 
+	<span data-type="matreshkaArray">matreshkaArray</span>
+
+		 - self
+
+	</p>
+	
+	
+
+	
+	<h4>Аргументы</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Имя
+				<th>По&nbsp;умолчанию
+				<th>Тип
+				<th>Описание
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						keys
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						orders
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					<td> asc
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>Порядок или массив порядков, соответствующих массиву ключей</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.recreate([
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+]);
+
+// сортирует по значениям свойств `user` по возрастанию и значениям свойств `age` по убыванию
+this.orderBy(['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-orderBy" data-title="Метод Matreshka.Array-orderBy">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.Array-orderBy"
+  title="Метод Matreshka.Array-orderBy"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.Array-pull" data-since="0.1"
 data-importance="2">
 	<h2>
@@ -12111,7 +12224,7 @@ data-importance="2">
 	</h2>
 	
 	<div class="summary"><p>Реализация классов, основанная на прототипном наследовании</p></div>
-	<div class="description"><p>Функция <code>Class</code> позволяет использовать классическое ООП, основанное на классах. Для современных браузеров классы базируются на прототипном наследовании, а в Internet Explorer 8 используется хак, который разрешает использовать акцессоры (геттеры и сеттеры), с помощью функции Object.defineProperty.</p></div>
+	<div class="description"><p>Функция <code>Class</code> позволяет использовать классическое ООП, основанное на классаx.</p></div>
 	
 	<p>
 		<b>Возвращает</b> 
@@ -12233,7 +12346,7 @@ require(['path/to/matreshka.min'], function(MK) {
 			// ...
 		}
 	});
-});</code></pre><h5><p>Использование функции <code>Class</code> обязательно для IE8, но не требуется в других браузерах. Поэтому, Матрешка из коробки поддерживает любой вид прототипного наследования, в том числе и синтаксис ECMAScript 2015</p></h5>
+});</code></pre><h5><p>Матрешка поддерживает любой вид прототипного наследования, в том числе и классы из ECMAScript 2015</p></h5>
 <pre class="prettyprint source lang-js"><code>class A extends B {
 	constructor() {
 		super();
@@ -12243,12 +12356,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	sayHello() {
 		alert("Hello World!");
 	}
-}</code></pre><h5><p><strong>Метод <code>instanceOf</code></strong>. Экземпляры класса, созданного при помощи функции <code>Class</code> включают в себя метод <code>instanceOf</code>, проверяющий, является ли объект экземпляром заданного класса. Этот метод нужен только тогда, когда ваше приложение требует поддержки IE8</p></h5>
-<pre class="prettyprint source lang-js"><code>// для IE8 и остальных браузеров
-alert(this.instanceOf(MyClass));
-
-// для нормальных браузеров
-alert(this instanceof MyClass);</code></pre>
+}</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
 	<div class="share-buttons">
@@ -12988,8 +13096,51 @@ magic.mediate(object, 'z', Number);
 // и т. д.</code></pre><p>При использовании AMD или CJS, глобальные переменные не создаются:</p>
 <pre class="prettyprint source lang-js"><code>require(['magic/matreshka-magic.min'], function(magic) {
     //...
-});</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p>
-<p>Обратите внимание. Фреймворк Матрешка работает в Internet Explorer 8 благодаря хакам, возвращающим из конструктора объект <code>XDomainRequest</code>, вместо "чистого" JavaScript объекта. Так как MatreshkaMagic позволяет работать исключительно с произвольными объектами, поддeржка IE8 для MatreshkaMagic невозможна. Это значит, библиотека работает везде, включая IE9+.</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+});</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+<h3><a href="https://github.com/finom/matreshka/releases/tag/v1.6.0">Матрешка 1.6.0</a></h3><ul>
+<li>Новый метод для сортировки <code>Matreshka.Array</code>: <a href="#!Matreshka.Array-orderBy">Matreshka.Array#orderBy</a>.</li>
+<li>Новый статичный метод для сортировки произвольных массивов: <a href="#!Matreshka.orderBy">Matreshka.orderBy</a>.</li>
+<li>Убрана поддержка Internet Explorer 8.</li>
+<li>Метод <code>one</code> для библиотеки <a href="#!$b">bQuery</a>, возвращающий первый элемент из коллекции элементов.</li>
+<li>Вместо <code>Symbol(matreshka)</code> используется <code>WeakMap</code> для ассоциации объектов со служебными данными (событиями и пр.)</li>
+<li><code>itemRenderer</code> теперь кешируется (не парсит HTML каждый раз при рендеринге).</li>
+<li>Почти полностью переписана библиотека <a href="#!$b">bQuery</a>.</li>
+<li>Полностью переписана функция <a href="#!Class">Class</a>. Теперь она умеет наследовать свойства, использующие <code>Symbol</code> вместо ключей, а классы наследуются от <code>null</code> вместо <code>Object</code>.</li>
+<li>Убраны некоторые недокументированные возможности.</li>
+<li>Убраны полифилы <code>addEventListener</code> и <code>classList</code>.</li>
+<li>Если использовать встроенные классы без оператора <code>new</code>, генерируется исключение.</li>
+<li>Больше тестов (покрыто 92% кода)</li>
+<li>Исправлены баги:<ul>
+<li>Некорректная работа при использовании Zepto в качестве библиотеки.</li>
+<li>Селектор дочернего элемента в методах <code>select</code> и <code>selectAll</code> не работал.</li>
+<li>Некорректная работа <code>binders.file</code> при обработке нескольких файлов <code>input[type="file"][multiple]</code>.</li>
+<li>При использовании <code>Matreshka.Array#splice</code> новые элементы массива не конвертировались в <code>Model</code>.</li>
+<li>Другие мелкие исправления.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>The new method for <code>Matreshka.Array</code> sorting: <a href="//matreshka.io/#!Matreshka.Array-orderBy">Matreshka.Array#orderBy</a>.</li>
+<li>The new static method for sorting of any array-like objects <a href="//matreshka.io/#!Matreshka.orderBy">Matreshka.orderBy</a></li>
+<li>Get rid of Internet Explorer 8 support.</li>
+<li><code>one</code> method for <a href="//matreshka.io/#!$b">bQuery</a>, which returns the first found element.</li>
+<li>The  <code>WeakMap</code> is used insead of <code>Symbol(matreshka)</code> for association between objects and service data (events etc).</li>
+<li><code>itemRenderer</code> uses cache (doesn't parse HTML every time).</li>
+<li><a href="#!$b">bQuery</a> is rewritten.</li>
+<li><a href="#!Class">Class</a> is rewritten. Now it can inherit symbolic properties and classes are inherited from <code>null</code> instead of <code>Object</code>.</li>
+<li>Removed undocumented features.</li>
+<li>Removed DOM polyfills (<code>addEventListener</code> and <code>classList</code>).</li>
+<li>If classes are used without <code>new</code>, an exception is thrown.</li>
+<li>More tests (92% coverage).</li>
+<li>Bug fixes:<ul>
+<li>Zepto isn't worked as main DOM library.</li>
+<li>Child selector didn't work in <code>select</code> and <code>selectAll</code>.</li>
+<li><code>binders.file</code> didn't work correctly with <code>input[type="file"][multiple]</code>.</li>
+<li><code>Matreshka.Array#splice</code>: newly added objects wasn't converted to <code>Model</code>.</li>
+<li>Other minor fixes.</li>
+</ul>
+</li>
+</ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.5.2">Матрешка 1.5.2</a></h3><ul>
 <li><code>parseBindings</code> некорректно обрабатывал байндинги к радиокнопкам.</li>
 <li>Обновлены зависимости. Теперь в тестах используется Babel 6.</li>
@@ -13308,7 +13459,7 @@ magic.mediate(object, 'z', Number);
 }
 
 getData();</code></pre><h3>Есть ли в Матрешке роутинг?</h3><p>Нет. Как и в случае с AJAX, в интернете есть полно замечательных библитек, реализующих роутинг, например <a href="https://github.com/flatiron/director">director</a>.</p>
-<h3>Как работает Матрешка?</h3><p>Матрешка использует акцессоры (accessors), в частности, сеттеры (setters) для реализации двустороннего связывания данных и отлова событий изменения свойств. Эта технология существует достаточно давно (Internet Explorer 8 был первым браузером, который включал поддержку <code>Object.defineProperty</code>). Одной из главных особенностей сеттеров, является молниеносная скорость, сравнимая со скоростью работы с обычными свойствами. В производительности акцессоры выигрывают у других решений: <code>Object.observe</code> и, особенно, dirty-checking.</p>
+<h3>Как работает Матрешка?</h3><p>Матрешка использует акцессоры (accessors), в частности, сеттеры (setters) для реализации двустороннего связывания данных и отлова событий изменения свойств. Эта технология существует достаточно давно. Одной из главных особенностей сеттеров, является молниеносная скорость, сравнимая со скоростью работы с обычными свойствами. В производительности акцессоры выигрывают у других решений: <code>Object.observe</code> и, особенно, dirty-checking.</p>
 <p>В качестве примера того, как работает двустороннее связывание (в частности, функция <a href="#!Matreshka-bindNode">bindNode</a>), взгляните на этот код:</p>
 <pre class="prettyprint source lang-js"><code>window.bindNode = function bindNode(object, key, node, binder) {
     var value = object[key];

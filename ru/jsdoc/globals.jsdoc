@@ -2,7 +2,7 @@
 @function Class
 @importance 2
 @summary Реализация классов, основанная на прототипном наследовании
-@desc Функция ``Class`` позволяет использовать классическое ООП, основанное на классах. Для современных браузеров классы базируются на прототипном наследовании, а в Internet Explorer 8 используется хак, который разрешает использовать акцессоры (геттеры и сеттеры), с помощью функции Object.defineProperty.
+@desc Функция ``Class`` позволяет использовать классическое ООП, основанное на классаx.
 
 @param {object} prototype - Методы и свойства
 @param {object} [statics] - Статичные методы и свойства
@@ -48,7 +48,7 @@ var MyClass = Class({
 	}
 });
 
-alert(MyClass.staticProp; // foo
+alert(MyClass.staticProp); // foo
 alert(MyClass.staticMethod()); // bar
 
 @example <caption>Использование AMD (именованные модули)</caption>
@@ -78,7 +78,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	});
 });
 
-@example <caption>Использование функции ``Class`` обязательно для IE8, но не требуется в других браузерах. Поэтому, Матрешка из коробки поддерживает любой вид прототипного наследования, в том числе и синтаксис ECMAScript 2015</caption>
+@example <caption>Матрешка поддерживает любой вид прототипного наследования, в том числе и классы из ECMAScript 2015</caption>
 class A extends B {
 	constructor() {
 		super();
@@ -89,13 +89,6 @@ class A extends B {
 		alert("Hello World!");
 	}
 }
-
-@example <caption>**Метод ``instanceOf``**. Экземпляры класса, созданного при помощи функции ``Class`` включают в себя метод ``instanceOf``, проверяющий, является ли объект экземпляром заданного класса. Этот метод нужен только тогда, когда ваше приложение требует поддержки IE8</caption>
-// для IE8 и остальных браузеров
-alert(this.instanceOf(MyClass));
-
-// для нормальных браузеров
-alert(this instanceof MyClass);
 
 */
 

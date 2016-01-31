@@ -73,14 +73,6 @@ Matreshka.useAs$(jQuery.noConflict());
 */
 
 
-/**
-@member {boolean} Matreshka.isXDR
-@importance 3
-@summary If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8
-@example
-alert(Matreshka.isXDR);
-*/
-
 
 /**
 @member {array} Matreshka.defaultBinders
@@ -666,4 +658,30 @@ alert(d); // undefined
 @example <caption>Use syntax  ``[[=property]]`` instead of &#123;{property}}</caption>
 MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';
+*/
+
+
+/**
+@method Matreshka.orderBy
+@importance 3
+@since 1.6
+@summary Creates an array of elements, sorted by properties of its items
+@desc This static method works just like [orderBy from lodash](https://lodash.com/docs#orderBy). It accepts array-like object as the first arg, a key or a list of keys as the second arg and an order (asc/desc) or a list of orders as the third arg.
+
+
+@param {object} collection - A collection (array-like object)
+@param {string|string[]} keys - A key or a list of keys
+@param {string|string[]} [orders=asc] - An order or a list of orders corresponding to the list of keys
+@returns {array} The new sorted array
+@example <caption>A little example taken from lodash documentation</caption>
+var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+];
+
+// sort by `user` in ascending order and by `age` in descending order
+MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */

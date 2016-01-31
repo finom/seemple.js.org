@@ -75,15 +75,6 @@ Matreshka.useAs$(jQuery.noConflict());
 
 
 /**
-@member {boolean} Matreshka.isXDR
-@importance 3
-@summary Использует ли Матрешка хак с XDomainRequest. Другими словами, является ли текущий браузер Internet Explorer 8
-@example
-alert(Matreshka.isXDR);
-*/
-
-
-/**
 @member {array} Matreshka.defaultBinders
 @importance 1
 @enum {function}
@@ -667,4 +658,29 @@ alert(d); // undefined
 @example <caption>Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо &#123;{property}}</caption>
 MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';
+*/
+
+
+/**
+@method Matreshka.orderBy
+@importance 3
+@since 1.6
+@summary Сортирует переданный массив по значениям свойств объектов, которые в него входят
+@desc Этот статичный метод работает точно так же, как и метод [orderBy из lodash](https://lodash.com/docs#orderBy). Он принимает коллекцию (array-like объект) первым аргументом, ключ или массив ключей - вторым, порядок (asc/desc) или массив порядков - третьим.
+
+@param {object} collection - Коллекция (array-like объект)
+@param {string|string[]} keys - Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована
+@param {string|string[]} [orders=asc] - Порядок или массив порядков, соответствующих массиву ключей
+@returns {array} Новый отсортированный массив
+@example <caption>Пример из документации к lodash</caption>
+var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+];
+
+// сортирует по значениям свойств `user` по возрастанию и значениям свойств `age` по убыванию
+MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */

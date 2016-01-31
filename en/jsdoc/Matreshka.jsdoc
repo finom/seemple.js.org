@@ -24,7 +24,7 @@ var MyClass = Class({
 		alert("Hello World!");
 	}
 });
-@example <caption>Matreshka uses prototypes for implementing the inheritance. The {@link Class} function just brings in some syntactic sugar and adds some hacks for the Internet Explorer 8. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 2015</caption>
+@example <caption>Matreshka uses prototypes for implementing the inheritance. The {@link Class} function just brings in some syntactic sugar. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 2015</caption>
 class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();
@@ -481,10 +481,10 @@ And the syntax of possible event names is extended:
 ```js
 this.bindNode('myKey', '.my-element');
 
-// will catch the click on the .my-element element
+// will handle the click on the .my-element element
 this.on('click::myKey', function() { ... });
 
-// will catch the click on the .my-inner-element element
+// will handle the click on the .my-element .my-inner-element
 this.on('click::myKey(.my-inner-element)', function() { ... });
 ```
 
@@ -908,25 +908,10 @@ $('.app').find('.my-element')[0];
 
 
 /**
-@method Matreshka#eq
-@importance 3
-@since 0.0.2
-@summary Tests the instance for other object equality
-@desc Internet Explorer 8 throws an exception while attempting the traditional comparison for equality using ``==`` or ``===``. The ``.eq`` method solves this problem. If the support of IE8 is not necessary, the use of this method is not obligatory.
-@param {object} object - An object which an instance must be compared to
-@example
-this.eq(object); // true or false
-@example <caption>The exception in IE8</caption>
-// sometimes IE8 throws "Class doesn't support Automation"
-this === object;
-*/
-
-
-/**
 @method Matreshka#defineGetter
 @importance 3
 @summary Defines custom getter for a property
-@desc This method allows to define a getter using the native ``Object.defineProperty`` method and it works in all browsers starting with Internet Explorer 8. The returned property value is calculated on every accessing the property, that is why, from viewpoint of performance, the most preferred method is {@link Matreshka#linkProps}.
+@desc This method allows to define a getter using the native ``Object.defineProperty`` method. The returned property value is calculated on every accessing the property, that is why, from viewpoint of performance, the most preferred method is {@link Matreshka#linkProps}.
 @param {string} key - A key property which the getter is set for
 @param {function} getter - A getter function
 @example
@@ -955,7 +940,7 @@ this.defineGetter({
 @method Matreshka#defineSetter
 @importance 3
 @summary Defines a custom setter for a property
-@desc This method allows to define a setter using the ``Object.defineProperty`` native method and it works in all browsers starting with Internet Explorer 8. While using this method you should remember that it overrides a setter which has been built in by Matreshka and in this way it disables the opportunity to catch events like ``change:KEY``. Use this method if you are 100% sure what you are doing. The {@link Matreshka#on} and {@link Matreshka#mediate} methods are safe from viewpoint of stability of the application you create so it is better to use them.
+@desc This method allows to define a setter using the ``Object.defineProperty``. While using this method you should remember that it overrides a setter which has been built in by Matreshka and in this way it disables the opportunity to catch events like ``change:KEY``. Use this method if you are 100% sure what you are doing. The {@link Matreshka#on} and {@link Matreshka#mediate} methods are safe from viewpoint of stability of the application you create so it is better to use them.
 @param {string} key - A key which the setter is required to be defined for
 @param {function} setter - A setter function
 @example
@@ -983,7 +968,7 @@ this.defineSetter({
 @method Matreshka#define
 @importance 3
 @summary Overrides a property descriptor completely using ``Object.defineProperty``
-@desc Note, ``Object.defineProperty``  works incorrectly in Internet Explorer 8. Use this method only when you know what you are doing.
+@desc Use this method only when you know what you are doing.
 @param {string} key - A key
 @param {function} descriptor - A descriptor
 @returns {matreshka} self

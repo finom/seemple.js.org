@@ -30,7 +30,7 @@ After you've learned the most important API parts you can hardily start doing fa
 If you already know the quick-start basics, you can look at other methods and properties of Matreshka.
 
 ### [[i class="imp-level-3"]][[/i]] The third level - other methods and properties
-We've hidden rarely used parts (Matreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.
+We've hidden rarely used parts (Matreshka API is really rich). If you want to know everything about Matreshka, turn on "Advanced mode" checkbox from the menu.
 
 **Warning**. If you open a link to a method or a property of the third level of importance, the "Advanced mode" is turned on automatically.
 
@@ -151,16 +151,11 @@ class Application extends Matreshka {
 	"id": "!how-to-include"
 )))
 ## [How to include?](#!how-to-include)
-Matreshka is an independent framework that requires no dependencies. But the possibility of using capabilities from the ECMAScript 5 standard in the Internet Explorer 8 is absent. That's why if you support the IE8 in apps which you develop, you should add another JavaScript file: [es5-shim](https://github.com/es-shims/es5-shim) or any other polyfill that implements the possibilities of the ECMAScript 5.
+Matreshka is independent framework that requires no dependencies. But you can use jQuery or Zepto as a library which will be used by Matreshka for DOM manipulations. If jQuery or Zepto isn't found on a page, the tiny library called [bQuery](#!$b) will be used instead.
 
-> Warning! Starting version 1.1 Matreshka no longer focused on IE8 because there are too many new methods that will not work in this browser. That means automatic test will not work for this browser as well. The reason is: IE8 doesn't support accessors for native objects. Older application (based on Matreshka 1.0 and less) should work fine. If you still need IE8 support, you must not use methods of version 1.1 and above. Starting this vsesion Matreshka supports Internet Explorer 9+ and other browsers.
-
-Adding jQuery is optional for all browsers (though, it's recommended for IE8). Instead of this one, you can use another jQuery-like library, for example  [Zepto](http://zeptojs.com/). If you don't want to use any libraries at all, giving preference to [Vanilla.js](http://vanilla-js.com/), Matreshka will make use of the built-in micro-library which is called [Balalaika](#$b).
 
 
 ```html
-<!-- Required for IE8 -->
-<script src="js/es5-shim.min.js"></script>
 <script src="js/matreshka.min.js"></script>
 ```
 

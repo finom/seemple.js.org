@@ -74,7 +74,6 @@ var magic = require('magic/matreshka-magic.min');
 
 На момент написания этой документации, файл **matreshka-magic.min.js** занимает чуть меньше 30КБ в несжатом виде против 46КБ **matreshka.min.js**. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с ``magic`` или ``MatreshkaMagic`` на ``MK`` или ``Matreshka`` (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).
 
-Обратите внимание. Фреймворк Матрешка работает в Internet Explorer 8 благодаря хакам, возвращающим из конструктора объект ``XDomainRequest``, вместо "чистого" JavaScript объекта. Так как MatreshkaMagic позволяет работать исключительно с произвольными объектами, поддeржка IE8 для MatreshkaMagic невозможна. Это значит, библиотека работает везде, включая IE9+.
 
 
 
@@ -84,6 +83,46 @@ var magic = require('magic/matreshka-magic.min');
 
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
+
+### [Матрешка 1.6.0](https://github.com/finom/matreshka/releases/tag/v1.6.0)
+- Новый метод для сортировки ``Matreshka.Array``: {@link Matreshka.Array#orderBy}.
+- Новый статичный метод для сортировки произвольных массивов: {@link Matreshka.orderBy}.
+- Убрана поддержка Internet Explorer 8.
+- Метод ``one`` для библиотеки {@link $b bQuery}, возвращающий первый элемент из коллекции элементов.
+- Вместо ``Symbol(matreshka)`` используется ``WeakMap`` для ассоциации объектов со служебными данными (событиями и пр.)
+- ``itemRenderer`` теперь кешируется (не парсит HTML каждый раз при рендеринге).
+- Почти полностью переписана библиотека {@link $b bQuery}.
+- Полностью переписана функция {@link Class}. Теперь она умеет наследовать свойства, использующие ``Symbol`` вместо ключей, а классы наследуются от ``null`` вместо ``Object``.
+- Убраны некоторые недокументированные возможности.
+- Убраны полифилы ``addEventListener`` и ``classList``.
+- Если использовать встроенные классы без оператора ``new``, генерируется исключение.
+- Больше тестов (покрыто 92% кода)
+- Исправлены баги:
+	- Некорректная работа при использовании Zepto в качестве библиотеки.
+	- Селектор дочернего элемента в методах ``select`` и ``selectAll`` не работал.
+	- Некорректная работа ``binders.file`` при обработке нескольких файлов ``input[type="file"][multiple]``.
+	- При использовании ``Matreshka.Array#splice`` новые элементы массива не конвертировались в ``Model``.
+	- Другие мелкие исправления.
+
+
+- The new method for ``Matreshka.Array`` sorting: [Matreshka.Array#orderBy](//matreshka.io/#!Matreshka.Array-orderBy).
+- The new static method for sorting of any array-like objects [Matreshka.orderBy](//matreshka.io/#!Matreshka.orderBy)
+- Get rid of Internet Explorer 8 support.
+- ``one`` method for [bQuery](//matreshka.io/#!$b), which returns the first found element.
+- The  ``WeakMap`` is used insead of ``Symbol(matreshka)`` for association between objects and service data (events etc).
+- ``itemRenderer`` uses cache (doesn't parse HTML every time).
+- {@link $b bQuery} is rewritten.
+- {@link Class} is rewritten. Now it can inherit symbolic properties and classes are inherited from ``null`` instead of ``Object``.
+- Removed undocumented features.
+- Removed DOM polyfills (``addEventListener`` and ``classList``).
+- If classes are used without ``new``, an exception is thrown.
+- More tests (92% coverage).
+- Bug fixes:
+	- Zepto isn't worked as main DOM library.
+	- Child selector didn't work in ``select`` and ``selectAll``.
+	- ``binders.file`` didn't work correctly with ``input[type="file"][multiple]``.
+	- ``Matreshka.Array#splice``: newly added objects wasn't converted to ``Model``.
+	- Other minor fixes.
 
 ### [Матрешка 1.5.2](https://github.com/finom/matreshka/releases/tag/v1.5.2)
 - ``parseBindings`` некорректно обрабатывал байндинги к радиокнопкам.
@@ -431,7 +470,7 @@ getData();
 Нет. Как и в случае с AJAX, в интернете есть полно замечательных библитек, реализующих роутинг, например [director](https://github.com/flatiron/director).
 
 ### Как работает Матрешка?
-Матрешка использует акцессоры (accessors), в частности, сеттеры (setters) для реализации двустороннего связывания данных и отлова событий изменения свойств. Эта технология существует достаточно давно (Internet Explorer 8 был первым браузером, который включал поддержку ``Object.defineProperty``). Одной из главных особенностей сеттеров, является молниеносная скорость, сравнимая со скоростью работы с обычными свойствами. В производительности акцессоры выигрывают у других решений: ``Object.observe`` и, особенно, dirty-checking.
+Матрешка использует акцессоры (accessors), в частности, сеттеры (setters) для реализации двустороннего связывания данных и отлова событий изменения свойств. Эта технология существует достаточно давно. Одной из главных особенностей сеттеров, является молниеносная скорость, сравнимая со скоростью работы с обычными свойствами. В производительности акцессоры выигрывают у других решений: ``Object.observe`` и, особенно, dirty-checking.
 
 В качестве примера того, как работает двустороннее связывание (в частности, функция [bindNode](#!Matreshka-bindNode)), взгляните на этот код:
 ```js

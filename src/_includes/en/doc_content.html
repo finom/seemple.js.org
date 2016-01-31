@@ -80,14 +80,8 @@ var app = new Application();</code></pre><p><strong>3.</strong> That's it!</p>
 </ul></article><article id="!examples"><h2><a href="#!examples">Examples</a></h2><p><span class="list-item-number">1.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_todomvc/?ref=gh-pages">TodoMVC</a> - to-do list. (<a href="//matreshkajs.github.io/matreshka_todomvc/docs/app.html">Source code with annotations</a>)</p>
 <p><span class="list-item-number">2.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages">TreeView</a> - unlimited nesting depth.</p>
 <p><span class="list-item-number">3.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages">Markdown editor</a> - made with 13 lines of code.</p>
-<p><span class="list-item-number">4.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - music search via SoundCloud API.</p></article><article id="!how-to-include"><h2><a href="#!how-to-include">How to include?</a></h2><p>Matreshka is an independent framework that requires no dependencies. But the possibility of using capabilities from the ECMAScript 5 standard in the Internet Explorer 8 is absent. That's why if you support the IE8 in apps which you develop, you should add another JavaScript file: <a href="https://github.com/es-shims/es5-shim">es5-shim</a> or any other polyfill that implements the possibilities of the ECMAScript 5.</p>
-<blockquote>
-<p>Warning! Starting version 1.1 Matreshka no longer focused on IE8 because there are too many new methods that will not work in this browser. That means automatic test will not work for this browser as well. The reason is: IE8 doesn't support accessors for native objects. Older application (based on Matreshka 1.0 and less) should work fine. If you still need IE8 support, you must not use methods of version 1.1 and above. Starting this vsesion Matreshka supports Internet Explorer 9+ and other browsers.</p>
-</blockquote>
-<p>Adding jQuery is optional for all browsers (though, it's recommended for IE8). Instead of this one, you can use another jQuery-like library, for example  <a href="http://zeptojs.com/">Zepto</a>. If you don't want to use any libraries at all, giving preference to <a href="http://vanilla-js.com/">Vanilla.js</a>, Matreshka will make use of the built-in micro-library which is called <a href="#$b">Balalaika</a>.</p>
-<pre class="prettyprint source lang-html"><code>&lt;!-- Required for IE8 -->
-&lt;script src="js/es5-shim.min.js">&lt;/script>
-&lt;script src="js/matreshka.min.js">&lt;/script></code></pre><p>Besides, Matreshka supports AMD (require.js or almond)</p>
+<p><span class="list-item-number">4.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - music search via SoundCloud API.</p></article><article id="!how-to-include"><h2><a href="#!how-to-include">How to include?</a></h2><p>Matreshka is independent framework that requires no dependencies. But you can use jQuery or Zepto as a library which will be used by Matreshka for DOM manipulations. If jQuery or Zepto isn't found on a page, the tiny library called <a href="#$b">bQuery</a> will be used instead.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src="js/matreshka.min.js">&lt;/script></code></pre><p>Besides, Matreshka supports AMD (require.js or almond)</p>
 <pre class="prettyprint source lang-js"><code>require(['path/to/matreshka'], function(Matreshka) {
     //...
 });</code></pre><p>Import via ECMAScript 2015 (using <a href="http://babeljs.io/">Babel</a>)</p>
@@ -132,7 +126,7 @@ var app = new Application();</code></pre><p><strong>3.</strong> That's it!</p>
 	sayHello: function() {
 		alert("Hello World!");
 	}
-});</code></pre><h5><p>Matreshka uses prototypes for implementing the inheritance. The <a href="#!Class">Class</a> function just brings in some syntactic sugar and adds some hacks for the Internet Explorer 8. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 2015</p></h5>
+});</code></pre><h5><p>Matreshka uses prototypes for implementing the inheritance. The <a href="#!Class">Class</a> function just brings in some syntactic sugar. That's why you can use any other way of the inheritance you like, for example, using classes from ECMAScript 2015</p></h5>
 <pre class="prettyprint source lang-js"><code>class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();
@@ -1140,7 +1134,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Overrides a property descriptor completely using <code>Object.defineProperty</code></p></div>
-	<div class="description"><p>Note, <code>Object.defineProperty</code>  works incorrectly in Internet Explorer 8. Use this method only when you know what you are doing.</p></div>
+	<div class="description"><p>Use this method only when you know what you are doing.</p></div>
 	
 	<p>
 		<b>Returns</b> 
@@ -1318,7 +1312,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Defines custom getter for a property</p></div>
-	<div class="description"><p>This method allows to define a getter using the native <code>Object.defineProperty</code> method and it works in all browsers starting with Internet Explorer 8. The returned property value is calculated on every accessing the property, that is why, from viewpoint of performance, the most preferred method is <a href="#!Matreshka-linkProps">Matreshka#linkProps</a>.</p></div>
+	<div class="description"><p>This method allows to define a getter using the native <code>Object.defineProperty</code> method. The returned property value is calculated on every accessing the property, that is why, from viewpoint of performance, the most preferred method is <a href="#!Matreshka-linkProps">Matreshka#linkProps</a>.</p></div>
 	
 	
 
@@ -1472,7 +1466,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Defines a custom setter for a property</p></div>
-	<div class="description"><p>This method allows to define a setter using the <code>Object.defineProperty</code> native method and it works in all browsers starting with Internet Explorer 8. While using this method you should remember that it overrides a setter which has been built in by Matreshka and in this way it disables the opportunity to catch events like <code>change:KEY</code>. Use this method if you are 100% sure what you are doing. The <a href="#!Matreshka-on">Matreshka#on</a> and <a href="#!Matreshka-mediate">Matreshka#mediate</a> methods are safe from viewpoint of stability of the application you create so it is better to use them.</p></div>
+	<div class="description"><p>This method allows to define a setter using the <code>Object.defineProperty</code>. While using this method you should remember that it overrides a setter which has been built in by Matreshka and in this way it disables the opportunity to catch events like <code>change:KEY</code>. Use this method if you are 100% sure what you are doing. The <a href="#!Matreshka-on">Matreshka#on</a> and <a href="#!Matreshka-mediate">Matreshka#mediate</a> methods are safe from viewpoint of stability of the application you create so it is better to use them.</p></div>
 	
 	
 
@@ -1731,78 +1725,6 @@ this.x = 1;</code></pre>
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka-delay"
   title="Method Matreshka-delay"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item method" id="!Matreshka-eq" data-since="0.0.2"
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka-eq">
-			<span class="memberof">Matreshka#</span>eq<wbr>(<span class="args">object</span>)
-				
-		</a> 
-		<span class="new-badge"></span>
-	</h2>
-	
-		<div class="since"><p>Available since 0.0.2.</p></div>
-	
-	<div class="summary"><p>Tests the instance for other object equality</p></div>
-	<div class="description"><p>Internet Explorer 8 throws an exception while attempting the traditional comparison for equality using <code>==</code> or <code>===</code>. The <code>.eq</code> method solves this problem. If the support of IE8 is not necessary, the use of this method is not obligatory.</p></div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			 
-				<tr>
-					<td>
-						object
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object which an instance must be compared to</p></td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-	
-
-	 
-	<h4>Examples</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>this.eq(object); // true or false</code></pre><h5><p>The exception in IE8</p></h5>
-<pre class="prettyprint source lang-js"><code>// sometimes IE8 throws "Class doesn't support Automation"
-this === object;</code></pre>
-
-	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka-eq" data-title="Method Matreshka-eq">ASK A QUESTION<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka-eq"
-  title="Method Matreshka-eq"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -6635,6 +6557,125 @@ MK.once(object, 'foo', function(evt) {
 
 </article>
 
+<article class="item method" id="!Matreshka.orderBy" data-since="1.6"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.orderBy">
+			<span class="memberof">Matreshka.</span>orderBy<wbr>(<span class="args">collection, keys, orders<span class="default-value">=asc</span></span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="array">array</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.6.</p></div>
+	
+	<div class="summary"><p>Creates an array of elements, sorted by properties of its items</p></div>
+	<div class="description"><p>This static method works just like <a href="https://lodash.com/docs#orderBy">orderBy from lodash</a>. It accepts array-like object as the first arg, a key or a list of keys as the second arg and an order (asc/desc) or a list of orders as the third arg.</p></div>
+	
+	<p>
+		<b>Returns</b> 
+	<span data-type="array">array</span>
+
+		 - The new sorted array
+
+	</p>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				<th>Default
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						collection
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A collection (array-like object)</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						keys
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>A key or a list of keys</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						orders
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					<td> asc
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>An order or a list of orders corresponding to the list of keys</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Examples</h4>
+  
+<h5><p>A little example taken from lodash documentation</p></h5>
+<pre class="prettyprint source lang-js"><code>var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+];
+
+// sort by `user` in ascending order and by `age` in descending order
+MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.orderBy" data-title="Method Matreshka.orderBy">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.orderBy"
+  title="Method Matreshka.orderBy"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.parseBindings" data-since="1.1"
 data-importance="3">
 	<h2>
@@ -7548,43 +7589,6 @@ this.bindNode('myKey', '.custom-checkbox');</code></pre>
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.defaultBinders"
   title="Property Matreshka.defaultBinders"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-<article class="item property" id="!Matreshka.isXDR" 
-data-importance="3">
-	<h2>
-		<a href="#!Matreshka.isXDR">
-
-			<span class="memberof">Matreshka.</span>isXDR</a><span class="type">:
-				<span data-type="boolean">boolean</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<div class="summary"><p>If Matreshka uses a XDomainRequest hack. In other words, if the current browser is Internet Explorer 8</p></div>
-	<div class="description"></div>
-	
-
-	 
-	<h4>Examples</h4>
-  
-<h5></h5>
-<pre class="prettyprint source lang-js"><code>alert(Matreshka.isXDR);</code></pre>
-	<div class="share-buttons">
-    <a class="share-facebook"></a> <a class="share-twitter"></a>
-</div>
-
-
-<a class="comments" data-id="Matreshka.isXDR" data-title="Property Matreshka.isXDR">ASK A QUESTION<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.isXDR"
-  title="Property Matreshka.isXDR"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -10754,6 +10758,113 @@ var app = new MyArray();</code></pre>
 
 </article>
 
+<article class="item method" id="!Matreshka.Array-orderBy" data-since="1.6"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka.Array-orderBy">
+			<span class="memberof">Matreshka.Array#</span>orderBy<wbr>(<span class="args">keys, orders<span class="default-value">=asc</span></span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="matreshkaArray">matreshkaArray</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.6.</p></div>
+	
+	<div class="summary"><p>Sorts by properties of the items</p></div>
+	<div class="description"><p>The method uses <a href="#!Matreshka.sortBy">Matreshka.sortBy</a> for ordering and it's sorting <code>this</code> instead of creation of new array.</p></div>
+	
+	<p>
+		<b>Returns</b> 
+	<span data-type="matreshkaArray">matreshkaArray</span>
+
+		 - self
+
+	</p>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				<th>Default
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						keys
+						
+					</td>
+					<td> 
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>A key or a list of keys</p></td>
+				</tr>
+			 
+				<tr>
+					<td>
+						orders
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					<td> asc
+					<td>
+	<span data-type="string">string</span>
+
+	<span data-type="Array.<string>">Array.<string></span>
+</td>
+					<td> <p>An order or a list of orders corresponding to the list of keys</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Examples</h4>
+  
+<h5><p>A little example taken from lodash documentation</p></h5>
+<pre class="prettyprint source lang-js"><code>this.recreate([
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 34 },
+  { 'user': 'fred',   'age': 42 },
+  { 'user': 'barney', 'age': 36 }
+]);
+
+// sort by `user` in ascending order and by `age` in descending order
+this.orderBy(['user', 'age'], ['asc', 'desc']);
+// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.Array-orderBy" data-title="Method Matreshka.Array-orderBy">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.Array-orderBy"
+  title="Method Matreshka.Array-orderBy"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.Array-pull" data-since="0.1"
 data-importance="2">
 	<h2>
@@ -12118,7 +12229,7 @@ data-importance="2">
 	</h2>
 	
 	<div class="summary"><p>A class implementation based on the prototype inheritance</p></div>
-	<div class="description"><p>The <code>Class</code> function allows to use the classic OOP based on classes. For modern browsers classes are based on the prototype inheritance, but in Internet Explorer 8 it uses a hack which allows to use accessors (getters and setters) using the <code>Object.defineProperty</code> function.</p></div>
+	<div class="description"><p>The <code>Class</code> function allows to use the classic OOP based on classes.</p></div>
 	
 	<p>
 		<b>Returns</b> 
@@ -12240,7 +12351,7 @@ require(['path/to/matreshka.min'], function(MK) {
 			// ...
 		}
 	});
-});</code></pre><h5><p>The usage of the <code>Class</code> function is a must for IE8, but it is not required in other browsers. That is why Matreshka OOB supports any type of prototype inheritance including ECMAScript 2015 syntax.</p></h5>
+});</code></pre><h5><p>The usage of the <code>Class</code> function is not required. Matreshka OOB supports any type of prototype inheritance including ECMAScript 2015 syntax.</p></h5>
 <pre class="prettyprint source lang-js"><code>class A extends B {
 	constructor() {
 		super();
@@ -12250,12 +12361,7 @@ require(['path/to/matreshka.min'], function(MK) {
 	sayHello() {
 		alert("Hello World!");
 	}
-}</code></pre><h5><p><strong>The <code>instanceOf</code> method</strong>. Instances of a class which has been created using the <code>Class</code> function include the <code>instanceOf</code> method that checks if an object is an instance of specified class. This method is necessary only when your application needs IE8 support.</p></h5>
-<pre class="prettyprint source lang-js"><code>// for IE8 and other browsers
-alert(this.instanceOf(MyClass));
-
-// for ordinary browsers
-alert(this instanceof MyClass);</code></pre>
+}</code></pre>
 
 	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
 	<div class="share-buttons">
@@ -12994,8 +13100,7 @@ magic.mediate(object, 'z', Number);
 // and etc</code></pre><p>While using AMD or CJS, global vars aren’t being created:</p>
 <pre class="prettyprint source lang-js"><code>require(['magic/matreshka-magic.min'], function(magic) {
     //...
-});</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>As of writing this documentation,  <strong>matreshka-magic.min.js</strong>  file is a bit less than 30KB in the uncompressed form contrary to 46KB of <strong>matreshka.min.js</strong>. If it’s necessary to include all the framework to your project at some stage, you should just change paths to the script file and change the var names from <code>magic</code> or <code>MatreshkaMagic</code> to <code>MK</code> or <code>Matreshka</code> (it's only obligatory in case if you don’t use AMD or CJS in the project).</p>
-<p>Pay attention. Matreshka framework works in the Internet Explorer 8 thanks to the hacks returning <code>XDomainRequest</code> object from the constructor instead of the "clean" JavaScript object. As MatreshkaMagic allows to work with native objects only, the IE8 support for MatreshkaMagic is impossible. It means that the library works everywhere including IE9+.</p></article><article id="!faq"><h2><a href="#!faq">FAQ</a></h2><h3>Is there a wrapper over <code>XMLHttpRequest</code> (AJAX) in Matreshka?</h3><p>Nope. Firstly, there are a lot of wonderful libraries implementing communications with a server, such as  a one-time hot <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax</a>, a terrific library <a href="https://github.com/pyrsmk/qwest">qwest</a>, based on <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a> and many others.</p>
+});</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>As of writing this documentation,  <strong>matreshka-magic.min.js</strong>  file is a bit less than 30KB in the uncompressed form contrary to 46KB of <strong>matreshka.min.js</strong>. If it’s necessary to include all the framework to your project at some stage, you should just change paths to the script file and change the var names from <code>magic</code> or <code>MatreshkaMagic</code> to <code>MK</code> or <code>Matreshka</code> (it's only obligatory in case if you don’t use AMD or CJS in the project).</p></article><article id="!faq"><h2><a href="#!faq">FAQ</a></h2><h3>Is there a wrapper over <code>XMLHttpRequest</code> (AJAX) in Matreshka?</h3><p>Nope. Firstly, there are a lot of wonderful libraries implementing communications with a server, such as  a one-time hot <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax</a>, a terrific library <a href="https://github.com/pyrsmk/qwest">qwest</a>, based on <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a> and many others.</p>
 <p>Secondly, all browsers will probably get a native <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> support as an alternative to <code>XMLHttpRequest</code>. <code>fetch</code> has got a simpler and cleaner API, based on Promises and allowing to avoid a catastrophic number of callbacks as well as the necessity of remembering about API <code>XMLHttpRequest</code>. As <code>fetch</code> isn’t supported by all browsers yet, you can use a <a href="https://github.com/github/fetch">popular polyfill</a>.</p>
 <blockquote>
 <p>Promises and asynchronous functions from ECMAScript 7 specification give an opportunity to write JavaScript code of surpassing beauty:</p>
@@ -13008,7 +13113,7 @@ magic.mediate(object, 'z', Number);
 }
 
 getData();</code></pre><h3>Is there a routing in Matreshka?</h3><p>Nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example <a href="https://github.com/flatiron/director">director</a>.</p>
-<h3>How does Matreshka work?</h3><p>Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. This technology has existed for quite a long time (Internet Explorer 8 was the first browser to include <code>Object.defineProperty</code> support). One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as <code>Object.observe</code> and, especially, dirty-checking.</p>
+<h3>How does Matreshka work?</h3><p>Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as <code>Object.observe</code> and, especially, dirty-checking.</p>
 <p>As an example of how the two-way data binding works (<a href="#!Matreshka-bindNode">bindNode</a> function in particular), have a look at this code:</p>
 <pre class="prettyprint source lang-js"><code>window.bindNode = function bindNode(object, key, node, binder) {
     var value = object[key];

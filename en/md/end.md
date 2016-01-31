@@ -75,8 +75,6 @@ var magic = require('magic/matreshka-magic.min');
 
 As of writing this documentation,  **matreshka-magic.min.js**  file is a bit less than 30KB in the uncompressed form contrary to 46KB of **matreshka.min.js**. If it’s necessary to include all the framework to your project at some stage, you should just change paths to the script file and change the var names from ``magic`` or ``MatreshkaMagic`` to ``MK`` or ``Matreshka`` (it's only obligatory in case if you don’t use AMD or CJS in the project).
 
-Pay attention. Matreshka framework works in the Internet Explorer 8 thanks to the hacks returning ``XDomainRequest`` object from the constructor instead of the "clean" JavaScript object. As MatreshkaMagic allows to work with native objects only, the IE8 support for MatreshkaMagic is impossible. It means that the library works everywhere including IE9+.
-
 =======(((
 	"id": "!faq"
 )))
@@ -106,7 +104,7 @@ Nope. Similar to AJAX, there are lots of wonderful libraries implementing routin
 
 
 ### How does Matreshka work?
-Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. This technology has existed for quite a long time (Internet Explorer 8 was the first browser to include ``Object.defineProperty`` support). One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as ``Object.observe`` and, especially, dirty-checking.
+Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as ``Object.observe`` and, especially, dirty-checking.
 
 As an example of how the two-way data binding works ([bindNode](#!Matreshka-bindNode) function in particular), have a look at this code:
 
