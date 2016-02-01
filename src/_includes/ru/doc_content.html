@@ -76,7 +76,7 @@ var app = new Application();</code></pre><p><strong>3.</strong> Это всё!</
 <li><a href="#!Matreshka-bindNode">Метод Matreshka#bindNode</a></li>
 <li><a href="#!Matreshka-on">Метод Matreshka#on</a></li>
 <li><a href="#!Class">Функция Class</a></li>
-</ul></article><article id="!how-to-include"><h2><a href="#!how-to-include">Как подключить?</a></h2><p>Матрешка - самостоятельный фреймворк, не требующий никаких зависимостей. Но вы, при желании, можете использовать jQuery или Zepto в качестве библиотеки, которая будет использоваться Матрешкой для работы с DOM. Если jQuery или Zepto на странице нет, используется внутренняя компактная библиотека <a href="#$b">bQuery</a>.</p>
+</ul></article><article id="!how-to-include"><h2><a href="#!how-to-include">Как подключить?</a></h2><p>Матрешка - самостоятельный фреймворк, не требующий никаких зависимостей. Но вы, при желании, можете использовать jQuery или Zepto в качестве библиотеки, которая будет использоваться Матрешкой для работы с DOM. Если jQuery или Zepto на странице нет, используется внутренняя компактная библиотека <a href="#!$b">bQuery</a>.</p>
 <pre class="prettyprint source lang-html"><code>&lt;!-- никакой магии -->
 &lt;script src="js/matreshka.min.js">&lt;/script></code></pre><p>Кроме этого, Матрешка поддерживает AMD, например, require.js или almond</p>
 <pre class="prettyprint source lang-js"><code>require(['path/to/matreshka'], function(Matreshka) {
@@ -355,7 +355,7 @@ this.bindNode('myAnotherKey', ':bound(myKey) .my-inner-element');</code></pre><p
 // отловит клик на элементе .my-element
 this.on('click::myKey', function() { ... });
 
-// отловит клик на элементе .my-inner-element
+// отловит клик на элементе .my-element .my-inner-element
 this.on('click::myKey(.my-inner-element)', function() { ... });</code></pre><h4>Создание песочницы</h4><p><a href="#!Matreshka-bindNode">Matreshka#bindNode</a> умеет ассоциировать экземпляр класса с &quot;главным&quot; HTML элементом на странице, создавая так называемую <strong>песочницу</strong>. Это нужно для того, чтоб ограничить влияние экземпляра на HTML элементы, содержащиеся в другой песочнице (т. е. в другом HTML элементе). Для привязки песочницы используется специальное свойство <code>'sandbox'</code>.</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;my-sandbox&quot;>
     &lt;!-- your HTML code -->
@@ -1453,7 +1453,7 @@ data-importance="3">
 	</h2>
 	
 	<div class="summary"><p>Устанавливает кастомный сеттер для свойства</p></div>
-	<div class="description"><p>Этот метод позволяет установить сеттер (setter), используя нативный метод <code>Object.defineProperty</code>. При использовании этого метода следует иметь в виду, что он переписывает встроенный Матрешкой сеттер и, таким образом убирает возможность отлова событий, типа <code>change:КЛЮЧ</code>. Используйте этот метод только если точно знаете, что делаете. Медоды <a href="#!Matreshka-on">Matreshka#on</a> и <a href="#!Matreshka-mediate">Matreshka#mediate</a> безопасны с точки зрения стабильности создаваемого приложения, лучше используйте их.</p></div>
+	<div class="description"><p>Этот метод позволяет установить сеттер (setter), используя нативный метод <code>Object.defineProperty</code>. При использовании этого метода следует иметь в виду, что он переписывает встроенный Матрешкой сеттер и, таким образом убирает возможность отлова событий, типа <code>change:КЛЮЧ</code>. Используйте этот метод только если точно знаете, что делаете. Методы <a href="#!Matreshka-on">Matreshka#on</a> и <a href="#!Matreshka-mediate">Matreshka#mediate</a> безопасны с точки зрения стабильности создаваемого приложения, лучше используйте их.</p></div>
 	
 	
 
@@ -12321,7 +12321,7 @@ var D = Class({
 	}
 });
 
-alert(MyClass.staticProp; // foo
+alert(MyClass.staticProp); // foo
 alert(MyClass.staticMethod()); // bar</code></pre><h5><p>Использование AMD (именованные модули)</p></h5>
 <pre class="prettyprint source lang-js"><code>require.config({
 	paths: {
@@ -13116,28 +13116,6 @@ magic.mediate(object, 'z', Number);
 <li>Некорректная работа <code>binders.file</code> при обработке нескольких файлов <code>input[type="file"][multiple]</code>.</li>
 <li>При использовании <code>Matreshka.Array#splice</code> новые элементы массива не конвертировались в <code>Model</code>.</li>
 <li>Другие мелкие исправления.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>The new method for <code>Matreshka.Array</code> sorting: <a href="//matreshka.io/#!Matreshka.Array-orderBy">Matreshka.Array#orderBy</a>.</li>
-<li>The new static method for sorting of any array-like objects <a href="//matreshka.io/#!Matreshka.orderBy">Matreshka.orderBy</a></li>
-<li>Get rid of Internet Explorer 8 support.</li>
-<li><code>one</code> method for <a href="//matreshka.io/#!$b">bQuery</a>, which returns the first found element.</li>
-<li>The  <code>WeakMap</code> is used insead of <code>Symbol(matreshka)</code> for association between objects and service data (events etc).</li>
-<li><code>itemRenderer</code> uses cache (doesn't parse HTML every time).</li>
-<li><a href="#!$b">bQuery</a> is rewritten.</li>
-<li><a href="#!Class">Class</a> is rewritten. Now it can inherit symbolic properties and classes are inherited from <code>null</code> instead of <code>Object</code>.</li>
-<li>Removed undocumented features.</li>
-<li>Removed DOM polyfills (<code>addEventListener</code> and <code>classList</code>).</li>
-<li>If classes are used without <code>new</code>, an exception is thrown.</li>
-<li>More tests (92% coverage).</li>
-<li>Bug fixes:<ul>
-<li>Zepto isn't worked as main DOM library.</li>
-<li>Child selector didn't work in <code>select</code> and <code>selectAll</code>.</li>
-<li><code>binders.file</code> didn't work correctly with <code>input[type="file"][multiple]</code>.</li>
-<li><code>Matreshka.Array#splice</code>: newly added objects wasn't converted to <code>Model</code>.</li>
-<li>Other minor fixes.</li>
 </ul>
 </li>
 </ul>

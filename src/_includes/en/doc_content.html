@@ -10,7 +10,7 @@
 <p>This issue has been resolved in this documentation. We have split up the API into three parts.</p>
 <h3><i class="imp-level-1"></i> The first level - the most important stuff</h3><p>After you've learned the most important API parts you can hardily start doing fantastic things. Classes, methods and properties marked with <i class="imp-level-1"></i> need to be learned primarily.</p>
 <h3><i class="imp-level-2"></i> The second level - recommended to learn</h3><p>If you already know the quick-start basics, you can look at other methods and properties of Matreshka.</p>
-<h3><i class="imp-level-3"></i> The third level - other methods and properties</h3><p>We've hidden rarely used parts (Matreshka API is really rich). If you want to know about Matreshka everything, turn on "Advanced mode" checkbox from the menu.</p>
+<h3><i class="imp-level-3"></i> The third level - other methods and properties</h3><p>We've hidden rarely used parts (Matreshka API is really rich). If you want to know everything about Matreshka, turn on "Advanced mode" checkbox from the menu.</p>
 <p><strong>Warning</strong>. If you open a link to a method or a property of the third level of importance, the "Advanced mode" is turned on automatically.</p>
 <blockquote>
 <p>This page can't do without the fantastic possibilities of HTML5. It is available offline for any device whether it is your computer or a mobile phone.</p>
@@ -80,7 +80,7 @@ var app = new Application();</code></pre><p><strong>3.</strong> That's it!</p>
 </ul></article><article id="!examples"><h2><a href="#!examples">Examples</a></h2><p><span class="list-item-number">1.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_todomvc/?ref=gh-pages">TodoMVC</a> - to-do list. (<a href="//matreshkajs.github.io/matreshka_todomvc/docs/app.html">Source code with annotations</a>)</p>
 <p><span class="list-item-number">2.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages">TreeView</a> - unlimited nesting depth.</p>
 <p><span class="list-item-number">3.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages">Markdown editor</a> - made with 13 lines of code.</p>
-<p><span class="list-item-number">4.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - music search via SoundCloud API.</p></article><article id="!how-to-include"><h2><a href="#!how-to-include">How to include?</a></h2><p>Matreshka is independent framework that requires no dependencies. But you can use jQuery or Zepto as a library which will be used by Matreshka for DOM manipulations. If jQuery or Zepto isn't found on a page, the tiny library called <a href="#$b">bQuery</a> will be used instead.</p>
+<p><span class="list-item-number">4.</span> <a href="//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages">Simple SoundCloud player</a> - music search via SoundCloud API.</p></article><article id="!how-to-include"><h2><a href="#!how-to-include">How to include?</a></h2><p>Matreshka is independent framework that requires no dependencies. But you can use jQuery or Zepto as a library which will be used by Matreshka for DOM manipulations. If jQuery or Zepto isn't found on a page, the tiny library called <a href="#!$b">bQuery</a> will be used instead.</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src="js/matreshka.min.js">&lt;/script></code></pre><p>Besides, Matreshka supports AMD (require.js or almond)</p>
 <pre class="prettyprint source lang-js"><code>require(['path/to/matreshka'], function(Matreshka) {
     //...
@@ -355,10 +355,10 @@ this.myColor = '#66bb6a';</code></pre><p>Besides, after the binding, a new non-s
 this.bindNode('myAnotherKey', ':bound(myKey) .my-inner-element');</code></pre><p>And the syntax of possible event names is extended:</p>
 <pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-element');
 
-// will catch the click on the .my-element element
+// will handle the click on the .my-element element
 this.on('click::myKey', function() { ... });
 
-// will catch the click on the .my-inner-element element
+// will handle the click on the .my-element .my-inner-element
 this.on('click::myKey(.my-inner-element)', function() { ... });</code></pre><h4>The creation of a sandbox</h4><p><a href="#!Matreshka-bindNode">Matreshka#bindNode</a> can associate a class instance with the &quot;main&quot; HTML element on the page creating so-called <strong>sandbox</strong>. It is necessary to limit the instance influence on HTML nodes contained in another sandbox (i. e. inside another HTML node). A special property <code>'sandbox'</code> is used for binding a sandbox.</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;my-sandbox&quot;>
     &lt;!-- your HTML code -->
@@ -12326,7 +12326,7 @@ var D = Class({
 	}
 });
 
-alert(MyClass.staticProp; // foo
+alert(MyClass.staticProp); // foo
 alert(MyClass.staticMethod()); // bar</code></pre><h5><p>The usage of AMD (named modules)</p></h5>
 <pre class="prettyprint source lang-js"><code>require.config({
 	paths: {
@@ -12416,7 +12416,7 @@ data-importance="2">
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 
-<p>Besides, it includes several own methods: <code>on</code>, <code>off</code>, <code>is</code>, <code>extend</code>, HTML parsing feature, DOM-ready feature and others. Balalaika is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.</p></div>
+<p>Besides, it includes several own methods: <code>on</code>, <code>off</code>, <code>is</code>, <code>extend</code>, HTML parsing feature, DOM-ready feature and others. bQuery is used by the internal organs of Matreshka only when jQuery or another jQuery-like library is not enabled on a page.</p></div>
 	
 	
 
