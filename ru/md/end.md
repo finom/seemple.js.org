@@ -105,25 +105,6 @@ var magic = require('magic/matreshka-magic.min');
 	- Другие мелкие исправления.
 
 
-- The new method for ``Matreshka.Array`` sorting: [Matreshka.Array#orderBy](//matreshka.io/#!Matreshka.Array-orderBy).
-- The new static method for sorting of any array-like objects [Matreshka.orderBy](//matreshka.io/#!Matreshka.orderBy)
-- Get rid of Internet Explorer 8 support.
-- ``one`` method for [bQuery](//matreshka.io/#!$b), which returns the first found element.
-- The  ``WeakMap`` is used insead of ``Symbol(matreshka)`` for association between objects and service data (events etc).
-- ``itemRenderer`` uses cache (doesn't parse HTML every time).
-- {@link $b bQuery} is rewritten.
-- {@link Class} is rewritten. Now it can inherit symbolic properties and classes are inherited from ``null`` instead of ``Object``.
-- Removed undocumented features.
-- Removed DOM polyfills (``addEventListener`` and ``classList``).
-- If classes are used without ``new``, an exception is thrown.
-- More tests (92% coverage).
-- Bug fixes:
-	- Zepto isn't worked as main DOM library.
-	- Child selector didn't work in ``select`` and ``selectAll``.
-	- ``binders.file`` didn't work correctly with ``input[type="file"][multiple]``.
-	- ``Matreshka.Array#splice``: newly added objects wasn't converted to ``Model``.
-	- Other minor fixes.
-
 ### [Матрешка 1.5.2](https://github.com/finom/matreshka/releases/tag/v1.5.2)
 - ``parseBindings`` некорректно обрабатывал байндинги к радиокнопкам.
 - Обновлены зависимости. Теперь в тестах используется Babel 6.
