@@ -7084,6 +7084,94 @@ alert(this.x.a); // 42</code></pre>
 
 </article>
 
+<article class="item method" id="!Matreshka.setProto" data-since="1.7"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.setProto">
+			<span class="memberof">Matreshka.</span>setProto<wbr>(<span class="args">proto</span>)
+				
+		</a> 
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 1.7.</p></div>
+	
+	<div class="summary"><p>Позволяет установить прототип классу <code>Matreshka</code></p></div>
+	<div class="description"><p>Позволяет сделать так, чтоб класс <code>Matreshka</code> и все её потомки были наследниками другого класса (если точнее, наследниками указанного прототипа). Использование метода требует понимания прототипного наследования в JavaScript. Метод работает везде, кроме IE9 и IE10, так как в этих браузерах не предусмотрено свойство <code>__proto__</code> или метод <code>Object.setPrototypeOf</code>.</p></div>
+	
+	
+
+	
+	<h4>Аргументы</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Имя
+				
+				<th>Тип
+				<th>Описание
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						proto
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>Прототип</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>function F() {}
+
+F.prototype.someMethod = function() {
+	alert('yep');
+};
+
+Matreshka.setProto(F.prototype);
+// то же самое, что и
+// Object.setPrototypeOf(Matreshka.prototype, F.prototype);
+// или
+// Matreshka.prototype.__proto__ = F.prototype;
+
+var instance = new Matreshka;
+
+alert(instance instanceof F); // true
+
+instance.someMethod(); // 'yep'</code></pre><h5><p>Можно унаследовать класс <code>Matreshka</code> от чего угодно</p></h5>
+<pre class="prettyprint source lang-js"><code>// перенимает все возможности React.Component
+Matreshka.setProto(React.Component.prototype);</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.setProto" data-title="Метод Matreshka.setProto">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.setProto"
+  title="Метод Matreshka.setProto"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.to" data-since="1.1"
 data-importance="3">
 	<h2>
@@ -13097,6 +13185,12 @@ magic.mediate(object, 'z', Number);
 <pre class="prettyprint source lang-js"><code>require(['magic/matreshka-magic.min'], function(magic) {
     //...
 });</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+<h3><a href="https://github.com/finom/matreshka/releases/tag/v1.7.0">Матрешка 1.7.0</a></h3><ul>
+<li>Добавлен метод <a href="#!Matreshka.setProto">Matreshka.setProto</a>, позволяющий унаследовать прототип класса <code>Matreshka</code> от другого объекта.</li>
+<li>Исправлен баг, при котором узел, генерируемый <code>itemRenderer</code> обрамлялся тегом <code>span</code>, при использовании <code>jQuery</code>.</li>
+<li>Исправлен баг: если в метод <a href="#!Matreshka-select">Matreshka#select</a> передать аргумент нестрокового типа, возвращалась пустая коллекция, вместо <code>null</code>.</li>
+<li>Больше тестов.</li>
+</ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.6.0">Матрешка 1.6.0</a></h3><ul>
 <li>Новый метод для сортировки <code>Matreshka.Array</code>: <a href="#!Matreshka.Array-orderBy">Matreshka.Array#orderBy</a>.</li>
 <li>Новый статичный метод для сортировки произвольных массивов: <a href="#!Matreshka.orderBy">Matreshka.orderBy</a>.</li>

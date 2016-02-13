@@ -685,3 +685,39 @@ var users = [
 MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
 // → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */
+
+
+/**
+@method Matreshka.setProto
+@importance 3
+@since 1.7
+@summary Allows to set custom proto for ``Matreshka`` class
+@desc Allows to make possible to inherit Matreshka and all its descendants from another class (to be precise, from given prototype). The method requires good understanding of prototype inheritance in JavaScript. The method works everywhere except of IE9 and IE10 because these browsers don't provide nor ``Object.setPrototypeOf`` nor ``__proto__``.
+
+@param {object} proto - Prototype
+
+@example
+function F() {}
+
+F.prototype.someMethod = function() {
+	alert('yep');
+};
+
+Matreshka.setProto(F.prototype);
+// the same as
+// Object.setPrototypeOf(Matreshka.prototype, F.prototype);
+// or
+// Matreshka.prototype.__proto__ = F.prototype;
+
+var instance = new Matreshka;
+
+alert(instance instanceof F); // true
+
+instance.someMethod(); // 'yep'
+
+@example <caption>You can inherit ``Matreshka`` class from anything</caption>
+
+// gets all features of React.Component (yep, sounds crazy)
+Matreshka.setProto(React.Component.prototype);
+
+*/

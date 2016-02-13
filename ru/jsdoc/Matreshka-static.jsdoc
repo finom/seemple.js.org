@@ -684,3 +684,39 @@ var users = [
 MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
 // → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */
+
+
+/**
+@method Matreshka.setProto
+@importance 3
+@since 1.7
+@summary Позволяет установить прототип классу ``Matreshka``
+@desc Позволяет сделать так, чтоб класс ``Matreshka`` и все её потомки были наследниками другого класса (если точнее, наследниками указанного прототипа). Использование метода требует понимания прототипного наследования в JavaScript. Метод работает везде, кроме IE9 и IE10, так как в этих браузерах не предусмотрено свойство ``__proto__`` или метод ``Object.setPrototypeOf``.
+
+@param {object} proto - Прототип
+
+@example
+function F() {}
+
+F.prototype.someMethod = function() {
+	alert('yep');
+};
+
+Matreshka.setProto(F.prototype);
+// то же самое, что и
+// Object.setPrototypeOf(Matreshka.prototype, F.prototype);
+// или
+// Matreshka.prototype.__proto__ = F.prototype;
+
+var instance = new Matreshka;
+
+alert(instance instanceof F); // true
+
+instance.someMethod(); // 'yep'
+
+@example <caption>Можно унаследовать класс ``Matreshka`` от чего угодно</caption>
+
+// перенимает все возможности React.Component
+Matreshka.setProto(React.Component.prototype);
+
+*/

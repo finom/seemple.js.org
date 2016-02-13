@@ -7097,6 +7097,94 @@ alert(this.x.a); // 42</code></pre>
 
 </article>
 
+<article class="item method" id="!Matreshka.setProto" data-since="1.7"
+data-importance="3">
+	<h2>
+		<a href="#!Matreshka.setProto">
+			<span class="memberof">Matreshka.</span>setProto<wbr>(<span class="args">proto</span>)
+				
+		</a> 
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.7.</p></div>
+	
+	<div class="summary"><p>Allows to set custom proto for <code>Matreshka</code> class</p></div>
+	<div class="description"><p>Allows to make possible to inherit Matreshka and all its descendants from another class (to be precise, from given prototype). The method requires good understanding of prototype inheritance in JavaScript. The method works everywhere except of IE9 and IE10 because these browsers don't provide nor <code>Object.setPrototypeOf</code> nor <code>__proto__</code>.</p></div>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						proto
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>Prototype</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+
+	 
+	<h4>Examples</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>function F() {}
+
+F.prototype.someMethod = function() {
+	alert('yep');
+};
+
+Matreshka.setProto(F.prototype);
+// the same as
+// Object.setPrototypeOf(Matreshka.prototype, F.prototype);
+// or
+// Matreshka.prototype.__proto__ = F.prototype;
+
+var instance = new Matreshka;
+
+alert(instance instanceof F); // true
+
+instance.someMethod(); // 'yep'</code></pre><h5><p>You can inherit <code>Matreshka</code> class from anything</p></h5>
+<pre class="prettyprint source lang-js"><code>// gets all features of React.Component (yep, sounds crazy)
+Matreshka.setProto(React.Component.prototype);</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.setProto" data-title="Method Matreshka.setProto">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.setProto"
+  title="Method Matreshka.setProto"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!Matreshka.to" data-since="1.1"
 data-importance="3">
 	<h2>
