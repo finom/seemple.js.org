@@ -114,7 +114,7 @@ this.on('foo', function() {
 	alert('Custom Event is fired');
 });
 
-this.trigger( 'foo' );
+this.trigger('foo');
 @example <caption>Passing a context</caption>
 this.on('foo', function() {
 	alert(this.a); // 5
@@ -570,7 +570,7 @@ this.bindNode('myKey', '.custom-checkbox', {
 	getValue: function() {
 		return $(this).hasClass('checked');
 	},
-	setValue: function( v ) {
+	setValue: function(v) {
 		$(this).toggleClass('checked', !!v);
 	},
 	// initialize element behavior
@@ -603,7 +603,7 @@ Matreshka.binders.customCheckbox = function() {
 
 MK.defaultBinders.unshift(function(element) {
 	// check if the element has the "custom-checkbox" class
-	if($(element).hasClass('custom-checkbox') ) {
+	if($(element).hasClass('custom-checkbox')) {
 		// if checking is OK, return a new binder
 		return Matreshka.binders.customCheckbox();
 	}
@@ -1462,14 +1462,14 @@ this.on('change:myKey', function(eventOptions) {
 // the same as this['myKey'] = 3
 // or this.myKey = 3
 // alerts 3
-this.set( 'myKey', 3 );
+this.set('myKey', 3);
 @example <caption>Using ``eventOptions``</caption>
 this.on('change:myKey', function(eventOptions) {
 	alert(eventOptions.value);
 });
 
 // handler isn't called
-this.set( myKey', 4, {
+this.set('myKey', 4, {
 	silent: true
 });
 

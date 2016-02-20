@@ -1,12 +1,11 @@
 <section>
 <article id="!introduction"><h2><a href="#!introduction">Introduction</a></h2><p>Matreshka is a framework for massive and endlessly extending single page applications (within the Universe, of course), written in JavaScript. It allows you to build program architecture so that neither your team nor you can get confused in plentiful entities, logic described in HTML files, numerous restrictions of other frameworks and incomprehensible abstractions.</p>
-<p>Two-way data binding is implemented by <a href="#!Matrashka-bindNode">bindNode</a> method only and it does not require to change HTML, adding weird {% raw %}{{syntactic.constructions}}{% endraw %}. Having set a few rules, a programmer can continue to work with data and forget about a state of visible part of an application.</p>
+<p>Two-way data binding is implemented by <a href="#!Matrashka-bindNode">bindNode</a> method only and it does not require to change HTML, adding weird syntactic constructions. Having set a few rules, a programmer can continue to work with data and forget about a state of visible part of an application.</p>
 <blockquote>
 <p>The order is not important, you can declare binders after complete implementation of logic which is responsible for data.</p>
 </blockquote>
 <p>In Matreshka collections are represented by <a href="#!Matreshka.Array">Matreshka.Array</a> class, whose instances themselves render HTML while adding, deleting and changing its items. You can say that the framework X renders items of an array too, but in Matreshka this issue is resolved very simply and elegantly.</p>
-<p>Additionally, Matreshka is a framework which is very easy for understanding. Any developer, from a beginner who can write simple things in JavaScript to an experienced ninja, will handle it without any problems.</p>
-<p>Today is the year <script>document.write(new Date().getFullYear());</script> and it means that finally the time has come for the framework without any restrictions, strict rules or doubtful syntax. It is the time when you control the framework but framework doesn't control you!</p></article><article id="!getting-started"><h2><a href="#!getting-started">Getting started</a></h2><p>All popular frameworks include lots of convenient and interesting functions. The problem is that it is difficult for a beginner to understand where to start his training. A great number of functional possibilities of a given framework leads us to the reasonable question "Hey, do I have to learn all that?"</p>
+<p>Additionally, Matreshka is a framework which is very easy for understanding. Any developer, from a beginner who can write simple things in JavaScript to an experienced ninja, will handle it without any problems.</p></article><article id="!getting-started"><h2><a href="#!getting-started">Getting started</a></h2><p>All popular frameworks include lots of convenient and interesting functions. The problem is that it is difficult for a beginner to understand where to start his training. A great number of functional possibilities of a given framework leads us to the reasonable question "Hey, do I have to learn all that?"</p>
 <p>This issue has been resolved in this documentation. We have split up the API into three parts.</p>
 <h3><i class="imp-level-1"></i> The first level - the most important stuff</h3><p>After you've learned the most important API parts you can hardily start doing fantastic things. Classes, methods and properties marked with <i class="imp-level-1"></i> need to be learned primarily.</p>
 <h3><i class="imp-level-2"></i> The second level - recommended to learn</h3><p>If you already know the quick-start basics, you can look at other methods and properties of Matreshka.</p>
@@ -513,7 +512,7 @@ console.log(this.$('.inner-node'));</code></pre><h4>Deep binding</h4><p>Since ve
 	getValue: function() {
 		return $(this).hasClass('checked');
 	},
-	setValue: function( v ) {
+	setValue: function(v) {
 		$(this).toggleClass('checked', !!v);
 	},
 	// initialize element behavior
@@ -544,7 +543,7 @@ Matreshka.binders.customCheckbox = function() {
 
 MK.defaultBinders.unshift(function(element) {
 	// check if the element has the "custom-checkbox" class
-	if($(element).hasClass('custom-checkbox') ) {
+	if($(element).hasClass('custom-checkbox')) {
 		// if checking is OK, return a new binder
 		return Matreshka.binders.customCheckbox();
 	}
@@ -2615,7 +2614,7 @@ data-importance="1">
 	alert('Custom Event is fired');
 });
 
-this.trigger( 'foo' );</code></pre><h5><p>Passing a context</p></h5>
+this.trigger('foo');</code></pre><h5><p>Passing a context</p></h5>
 <pre class="prettyprint source lang-js"><code>this.on('foo', function() {
 	alert(this.a); // 5
 }, {a: 5});
@@ -3798,13 +3797,13 @@ data-importance="1">
 // the same as this['myKey'] = 3
 // or this.myKey = 3
 // alerts 3
-this.set( 'myKey', 3 );</code></pre><h5><p>Using <code>eventOptions</code></p></h5>
+this.set('myKey', 3);</code></pre><h5><p>Using <code>eventOptions</code></p></h5>
 <pre class="prettyprint source lang-js"><code>this.on('change:myKey', function(eventOptions) {
 	alert(eventOptions.value);
 });
 
 // handler isn't called
-this.set( myKey', 4, {
+this.set('myKey', 4, {
 	silent: true
 });</code></pre><h5><p>Passing custom data to a handler</p></h5>
 <pre class="prettyprint source lang-js"><code>this.on('change:myKey', function(eventOptions) {
@@ -13200,7 +13199,7 @@ magic.mediate(object, 'z', Number);
     console.log(data);
 }
 
-getData();</code></pre><h3>Is there a routing in Matreshka?</h3><p>Nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example <a href="https://github.com/flatiron/director">director</a>.</p>
+getData();</code></pre><h3>Is there a routing in Matreshka?</h3><p>Yep and nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example <a href="https://github.com/flatiron/director">director</a>. But for simple tasks and tasks of average complexity (99% of all projecs) you can use <a href="https://github.com/matreshkajs/matreshka-router">a plugin</a> which implements two-way data binding between URL and object properties. The plugin fits perfectly into the concept of Matreshka, adding to an app the easiest way of URL control ever.</p>
 <h3>How does Matreshka work?</h3><p>Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as <code>Object.observe</code> and, especially, dirty-checking.</p>
 <p>As an example of how the two-way data binding works (<a href="#!Matreshka-bindNode">bindNode</a> function in particular), have a look at this code:</p>
 <pre class="prettyprint source lang-js"><code>window.bindNode = function bindNode(object, key, node, binder) {

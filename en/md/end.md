@@ -100,8 +100,7 @@ getData();
 
 
 ### Is there a routing in Matreshka?
-Nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example [director](https://github.com/flatiron/director).
-
+Yep and nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example [director](https://github.com/flatiron/director). But for simple tasks and tasks of average complexity (99% of all projecs) you can use [a plugin](https://github.com/matreshkajs/matreshka-router) which implements two-way data binding between URL and object properties. The plugin fits perfectly into the concept of Matreshka, adding to an app the easiest way of URL control ever.
 
 ### How does Matreshka work?
 Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as ``Object.observe`` and, especially, dirty-checking.

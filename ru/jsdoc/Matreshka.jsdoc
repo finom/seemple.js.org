@@ -566,7 +566,7 @@ this.bindNode('myKey', '.custom-checkbox', {
 	getValue: function() {
 		return $(this).hasClass('checked');
 	},
-	setValue: function( v ) {
+	setValue: function(v) {
 		$(this).toggleClass('checked', !!v);
 	},
 	// инициализируем поведение элемента
@@ -586,11 +586,11 @@ Matreshka.binders.customCheckbox = function() {
 		getValue: function() {
 			return $(this).hasClass('checked');
 		},
-		setValue: function( v ) {
+		setValue: function(v) {
 			$(this).toggleClass('checked', !!v);
 		},
 		initialize: function() {
-			$(this).on( 'click', function() {
+			$(this).on('click', function() {
 				$(this).toggleClass('checked');
 			});
 		}
@@ -607,11 +607,11 @@ MK.defaultBinders.unshift(function(element) {
 
 this.bindNode('myKey', '.my-custom-checkbox');
 
-@example <caption>Событие ``"bind"``, которое генерируется после связывании любого свойства и HTML узла</caption>
+@example <caption>Событие ``"bind"``, которое генерируется после связывания любого свойства и HTML узла</caption>
 this.on('bind', function() { alert('ok!'); });
 this.bindNode('myKey', '.my-element'); // alerts "ok!"
 
-@example <caption>Событие ``"bind:KEY"``, которое генерируется при связыввании конкретного свойства и HTML узла</caption>
+@example <caption>Событие ``"bind:KEY"``, которое генерируется при связывании конкретного свойства и HTML узла</caption>
 this.on('bind:myKey', function() { alert('ok!'); });
 this.bindNode('myKey', '.my-element'); // alerts "ok!"
 
@@ -968,7 +968,7 @@ this.mediate('x', function(value) {
 	return String(value);
 });
 this.x = 1;
-alert( typeof this.x ); // "string"
+alert(typeof this.x); // "string"
 @example <caption>Список ключей, разделенных пробелами</caption>
 this.mediate('x y', function(value) {
 	return String(value);
@@ -1481,7 +1481,7 @@ this.remove('myKey', {
 @param {function} descriptor - Дескриптор
 @returns {matreshka} self
 @example <caption>Простой пример</caption>
-this.define( 'myKey', {
+this.define('myKey', {
 	get: function() { ... }
 	set: function() { ... }
 });
