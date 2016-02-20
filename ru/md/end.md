@@ -84,6 +84,9 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.7.1](https://github.com/finom/matreshka/releases/tag/v1.7.1)
+- Исправлена ошибка ``bindNode``: метод генерировал ошибку при передаче объекта ключ-нода.
+
 ### [Матрешка 1.7.0](https://github.com/finom/matreshka/releases/tag/v1.7.0)
 - Добавлен метод {@link Matreshka.setProto}, позволяющий унаследовать прототип класса ``Matreshka`` от другого объекта.
 - Исправлен баг, при котором узел, генерируемый ``itemRenderer`` обрамлялся тегом ``span``, при использовании ``jQuery``.
