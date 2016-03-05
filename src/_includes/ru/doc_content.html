@@ -8904,8 +8904,8 @@ data-importance="2">
 	<h4>Примеры</h4>
   
 <h5></h5>
-<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
-// ... пользователь дропает файл my-image.png в блок .my-file
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.drop-area', MK.binders.dropFiles('dataURL'));
+// ... пользователь дропает файл my-image.png в блок .drop-area
 this.on('change:myKey', function() {
 	console.log(this.myKey[0]);
 	// -->

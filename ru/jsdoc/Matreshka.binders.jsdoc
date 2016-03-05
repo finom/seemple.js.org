@@ -236,8 +236,8 @@ this.on('change:myKey', function() {
 @param {string} [readAs] - Значением аргумента ``readAs`` могут быть ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. Значение зависит от наличия соответствующих методов в интерфейсе ``FileReader``
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
-// ... пользователь дропает файл my-image.png в блок .my-file
+this.bindNode('myKey', '.drop-area', MK.binders.dropFiles('dataURL'));
+// ... пользователь дропает файл my-image.png в блок .drop-area
 this.on('change:myKey', function() {
 	console.log(this.myKey[0]);
 	// -->

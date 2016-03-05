@@ -238,9 +238,9 @@ this.on('change:myKey', function() {
 @param {string} [readAs] - ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods of the ``FileReader`` prototype
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
+this.bindNode('myKey', '.drop-area', MK.binders.dropFiles('dataURL'));
 // ... user drops one file called
-// "my-image.png" into .my-file block
+// "my-image.png" into .drop-area block
 this.on('change:myKey', function() {
 	console.log(this.myKey[0]);
 	// -->
