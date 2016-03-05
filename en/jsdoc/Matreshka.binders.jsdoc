@@ -200,7 +200,9 @@ If ``readAs`` argument isn’t set, input value gets into the bound property aft
 The file (native ``File``) or an array of files becomes the final value of the property in the presence of ``multiple`` attribute. At the same time the result of reading will get into the object of every file as ``readerResult`` property.
 
 @see {@link https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
-@param {string} [readAs] - ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods in ``FileReader`` interface
+@see {@link Matreshka.binders.dropFiles}
+
+@param {string} [readAs] - ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods of the ``FileReader`` prototype
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-file', MK.binders.file('dataURL'));
@@ -214,7 +216,40 @@ this.on('change:myKey', function() {
 	//	lastModifiedDate: ...
 	//	name: "my-image.png"
 	//	readerResult: "data:image/png;base64,iVBO..."
-	//		- result of file reading
+	//		- the result of file reading
+	//	size: 9378
+	//	type: "image/png"
+});
+*/
+
+
+/**
+@function Matreshka.binders.dropFiles
+@importance 2
+@since 1.8
+@summary Returns binder which allows to drop files from a file manager to given block.
+
+@desc After {@link Matreshka#bindNode} is called the HTML block gets needed DOM event listeners (eg, ``dragover`` and ``drop``). When user drops files from the file manager into the block, the property gets an array of dropped files as its value. As like {@link Matreshka.binders.file} the binder accepts one optional argument called ``readAs`` which says how the files need to be read by ``FileReader``: data URI, Blob... (the result of reading is placed in ``readerResult`` property of every file). If ``readAs`` isn't given, the property gets an array of files which wasn't read.
+
+
+@see {@link https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
+@see {@link Matreshka.binders.file}
+
+@param {string} [readAs] - ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods of the ``FileReader`` prototype
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
+// ... user drops one file called
+// "my-image.png" into .my-file block
+this.on('change:myKey', function() {
+	console.log(this.myKey[0]);
+	// -->
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..."
+	//		- the result of file reading
 	//	size: 9378
 	//	type: "image/png"
 });

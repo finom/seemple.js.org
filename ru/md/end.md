@@ -84,6 +84,17 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.8.0](https://github.com/finom/matreshka/releases/tag/v1.8.0)
+- Новый байндер {@link Matreshka.binders.dropFiles}, позволяющий перетаскивать файлы из файловой системы в блок.
+- Исправлена ошибка: делегированные события для селекторов, в которых есть запятая, работали некорректно (``click::key(.a, .b, .c)``).
+- Исправлен баг: опция ``assignDefaultProperty`` со значением ``true`` для {@link Matreshka#bindNode} не форсило извлечение значения свойства из элемента.
+- Класс ``Matreshka`` наследуется от ``Object.prototype`` вместо ``null`` (как в версиях < 1.6). Это исправляет проблему при которой ``__proto__`` был не виден, а автодополнение не работало в консоли инструментов разработчика.
+
+- The new binder [Matreshka.binders.dropFiles](//matreshka.io/#!Matreshka.binders.dropFiles) which allows to drop files to given block from file manager.
+- Fixed bug: delegated events didn't work correctly when a selector with commas is given (``click::key(.a, .b, .c)``).
+- Fixed bug: ``assignDefaultProperty: true`` for ``Matreshka#bindNode`` didn't force extraction of property value from given node.
+- The ``Matreshka`` class inherits from ``Object.prototype`` instead of ``null``. It fixes an issue of invisible ``__proto__`` and absense of an autocompletition in developer tools.
+
 ### [Матрешка 1.7.1](https://github.com/finom/matreshka/releases/tag/v1.7.1)
 - Исправлена ошибка ``bindNode``: метод генерировал ошибку при передаче объекта ключ-нода.
 

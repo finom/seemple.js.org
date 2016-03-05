@@ -153,7 +153,6 @@ import Matreshka from 'path/to/matreshka';
 =======(((
 	"id": "!examples"
 )))
-
 ## [Примеры](#!examples)
 [[span class="list-item-number"]]1.[[/span]] [TodoMVC](//gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages) - список дел. ([Исходный код с аннотациями](//finom.github.io/matreshka_todomvc_ru/docs/app.html))
 

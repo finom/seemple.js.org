@@ -7902,7 +7902,7 @@ data-importance="2">
 					<td>
 	<span data-type="boolean">boolean</span>
 </td>
-					<td> Если аргумент равен ``true``, то элемент прячется при ложном значении свойства, если равен ``false``, прячется при правдивом значении</td>
+					<td> <p>Если аргумент равен <code>true</code>, то элемент прячется при ложном значении свойства, если равен <code>false</code>, прячется при правдивом значении</p></td>
 				</tr>
 			
 		</tbody>
@@ -8242,7 +8242,7 @@ data-importance="3">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> Тип инпута</td>
+					<td> <p>Тип инпута</p></td>
 				</tr>
 			
 		</tbody>
@@ -8428,7 +8428,7 @@ data-importance="3">
 					<td>
 	<span data-type="boolean">boolean</span>
 </td>
-					<td> Является ли селект ``multiple``</td>
+					<td> <p>Является ли селект <code>multiple</code></p></td>
 				</tr>
 			
 		</tbody>
@@ -8612,7 +8612,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> Свойство ``style`` (camel-cased)</td>
+					<td> <p>Свойство <code>style</code> (camel-cased)</p></td>
 				</tr>
 			
 		</tbody>
@@ -8693,7 +8693,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> Свойство dataset</td>
+					<td> <p>Свойство dataset</p></td>
 				</tr>
 			
 		</tbody>
@@ -8778,7 +8778,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> Значением аргумента ``readAs`` могут быть ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. Значение зависит от наличия соответствующих методов в интерфейсе ``FileReader``</td>
+					<td> <p>Значением аргумента <code>readAs</code> могут быть <code>&quot;arrayBufer&quot;</code>, <code>&quot;binaryString&quot;</code>, <code>&quot;dataURL&quot;</code>, <code>&quot;text&quot;</code>. Значение зависит от наличия соответствующих методов в интерфейсе <code>FileReader</code></p></td>
 				</tr>
 			
 		</tbody>
@@ -8789,6 +8789,8 @@ data-importance="2">
 <ul class="see">
 	
 		<li><a href="https://developer.mozilla.org/en/docs/Web/API/FileReader" target="_blank">FileReader</a>
+	
+		<li><a href="#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a>
 	
 </ul>
 
@@ -8824,6 +8826,110 @@ this.on('change:myKey', function() {
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.file"
   title="Метод Matreshka.binders.file"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item method" id="!Matreshka.binders.dropFiles" data-since="1.8"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka.binders.dropFiles">
+			<span class="memberof">Matreshka.binders.</span>dropFiles<wbr>(<span class="args">readAs</span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="binder">binder</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Добавлено в версии 1.8.</p></div>
+	
+	<div class="summary"><p>Возвращает байндер, позволяющий перетаскивать файлы в заданный блок из файлового менеджера (drag'n'drop).</p></div>
+	<div class="description"><p>При связывании свойства и HTML блока при помощи <code>dropFiles</code>, на блок навешиваются необходимые обработчики DOM событий (<code>dragover</code> и <code>drop</code>). При перетаскивании файлов из файлового менеджера в блок, свойство получает массив с этими файлами в качестве значения. Как и в случае с <a href="#!Matreshka.binders.file">Matreshka.binders.file</a>, привязчику можно передать аргумент <code>readAs</code>, указывающий на то, каким образом следует читать дропнутые файлы с помощью <code>FileReader</code>: data URI, Blob... (результат чтения находится в свойстве  <code>readerResult</code> каждого файла). Если <code>readAs</code> не задан, свойство получает список файлов без их предварительного прочтения.</p></div>
+	
+	<p>
+		<b>Возвращает</b> 
+	<span data-type="binder">binder</span>
+
+		
+
+	</p>
+	
+	
+
+	
+	<h4>Аргументы</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Имя
+				
+				<th>Тип
+				<th>Описание
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						readAs
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					 
+					<td>
+	<span data-type="string">string</span>
+</td>
+					<td> <p>Значением аргумента <code>readAs</code> могут быть <code>&quot;arrayBufer&quot;</code>, <code>&quot;binaryString&quot;</code>, <code>&quot;dataURL&quot;</code>, <code>&quot;text&quot;</code>. Значение зависит от наличия соответствующих методов в интерфейсе <code>FileReader</code></p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+<h4>Ссылки</h4>
+<ul class="see">
+	
+		<li><a href="https://developer.mozilla.org/en/docs/Web/API/FileReader" target="_blank">FileReader</a>
+	
+		<li><a href="#!Matreshka.binders.file">Matreshka.binders.file</a>
+	
+</ul>
+
+
+	 
+	<h4>Примеры</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
+// ... пользователь дропает файл my-image.png в блок .my-file
+this.on('change:myKey', function() {
+	console.log(this.myKey[0]);
+	// -->
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..."
+	//	- результат считывания файла
+	//	size: 9378
+	//	type: "image/png"
+});</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.binders.dropFiles" data-title="Метод Matreshka.binders.dropFiles">Задать вопрос<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-ru:Matreshka.binders.dropFiles"
+  title="Метод Matreshka.binders.dropFiles"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>
@@ -13184,6 +13290,18 @@ magic.mediate(object, 'z', Number);
 <pre class="prettyprint source lang-js"><code>require(['magic/matreshka-magic.min'], function(magic) {
     //...
 });</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+<h3><a href="https://github.com/finom/matreshka/releases/tag/v1.8.0">Матрешка 1.8.0</a></h3><ul>
+<li>Новый байндер <a href="#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a>, позволяющий перетаскивать файлы из файловой системы в блок.</li>
+<li>Исправлена ошибка: делегированные события для селекторов, в которых есть запятая, работали некорректно (<code>click::key(.a, .b, .c)</code>).</li>
+<li>Исправлен баг: опция <code>assignDefaultProperty</code> со значением <code>true</code> для <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> не форсило извлечение значения свойства из элемента.</li>
+<li><p>Класс <code>Matreshka</code> наследуется от <code>Object.prototype</code> вместо <code>null</code> (как в версиях &lt; 1.6). Это исправляет проблему при которой <code>__proto__</code> был не виден, а автодополнение не работало в консоли инструментов разработчика.</p>
+</li>
+<li><p>The new binder <a href="//matreshka.io/#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a> which allows to drop files to given block from file manager.</p>
+</li>
+<li>Fixed bug: delegated events didn't work correctly when a selector with commas is given (<code>click::key(.a, .b, .c)</code>).</li>
+<li>Fixed bug: <code>assignDefaultProperty: true</code> for <code>Matreshka#bindNode</code> didn't force extraction of property value from given node.</li>
+<li>The <code>Matreshka</code> class inherits from <code>Object.prototype</code> instead of <code>null</code>. It fixes an issue of invisible <code>__proto__</code> and absense of an autocompletition in developer tools.</li>
+</ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.7.1">Матрешка 1.7.1</a></h3><ul>
 <li>Исправлена ошибка <code>bindNode</code>: метод генерировал ошибку при передаче объекта ключ-нода.</li>
 </ul>

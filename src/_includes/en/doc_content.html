@@ -7915,7 +7915,7 @@ data-importance="2">
 					<td>
 	<span data-type="boolean">boolean</span>
 </td>
-					<td> If the argument equals ``true``, the node is hidden when a property value is falsy; if it equals ``false``, it is hidden when the property value is truly.</td>
+					<td> <p>If the argument equals <code>true</code>, the node is hidden when a property value is falsy; if it equals <code>false</code>, it is hidden when the property value is truly.</p></td>
 				</tr>
 			
 		</tbody>
@@ -8255,7 +8255,7 @@ data-importance="3">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> Input type</td>
+					<td> <p>Input type</p></td>
 				</tr>
 			
 		</tbody>
@@ -8441,7 +8441,7 @@ data-importance="3">
 					<td>
 	<span data-type="boolean">boolean</span>
 </td>
-					<td> If select is ``multiple``</td>
+					<td> <p>If select is <code>multiple</code></p></td>
 				</tr>
 			
 		</tbody>
@@ -8625,7 +8625,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> A property of ``style`` object (camel-cased)</td>
+					<td> <p>A property of <code>style</code> object (camel-cased)</p></td>
 				</tr>
 			
 		</tbody>
@@ -8706,7 +8706,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> A property of ``dataset`` object</td>
+					<td> <p>A property of <code>dataset</code> object</p></td>
 				</tr>
 			
 		</tbody>
@@ -8791,7 +8791,7 @@ data-importance="2">
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> ``readAs`` argument value can be ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. The value depends on the presence of corresponding methods in ``FileReader`` interface</td>
+					<td> <p><code>readAs</code> argument value can be <code>&quot;arrayBufer&quot;</code>, <code>&quot;binaryString&quot;</code>, <code>&quot;dataURL&quot;</code>, <code>&quot;text&quot;</code>. The value depends on the presence of corresponding methods of the <code>FileReader</code> prototype</p></td>
 				</tr>
 			
 		</tbody>
@@ -8802,6 +8802,8 @@ data-importance="2">
 <ul class="see">
 	
 		<li><a href="https://developer.mozilla.org/en/docs/Web/API/FileReader" target="_blank">FileReader</a>
+	
+		<li><a href="#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a>
 	
 </ul>
 
@@ -8821,7 +8823,7 @@ this.on('change:myKey', function() {
 	//	lastModifiedDate: ...
 	//	name: "my-image.png"
 	//	readerResult: "data:image/png;base64,iVBO..."
-	//		- result of file reading
+	//		- the result of file reading
 	//	size: 9378
 	//	type: "image/png"
 });</code></pre>
@@ -8837,6 +8839,111 @@ this.on('change:myKey', function() {
 <div class="comments-container"
   href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.binders.file"
   title="Method Matreshka.binders.file"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
+<article class="item method" id="!Matreshka.binders.dropFiles" data-since="1.8"
+data-importance="2">
+	<h2>
+		<a href="#!Matreshka.binders.dropFiles">
+			<span class="memberof">Matreshka.binders.</span>dropFiles<wbr>(<span class="args">readAs</span>)
+				
+		</a> <span class="returns">→ 
+	<span data-type="binder">binder</span>
+</span>
+		<span class="new-badge"></span>
+	</h2>
+	
+		<div class="since"><p>Available since 1.8.</p></div>
+	
+	<div class="summary"><p>Returns binder which allows to drop files from a file manager to given block.</p></div>
+	<div class="description"><p>After <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> is called the HTML block gets needed DOM event listeners (eg, <code>dragover</code> and <code>drop</code>). When user drops files from the file manager into the block, the property gets an array of dropped files as its value. As like <a href="#!Matreshka.binders.file">Matreshka.binders.file</a> the binder accepts one optional argument called <code>readAs</code> which says how the files need to be read by <code>FileReader</code>: data URI, Blob... (the result of reading is placed in <code>readerResult</code> property of every file). If <code>readAs</code> isn't given, the property gets an array of files which wasn't read.</p></div>
+	
+	<p>
+		<b>Returns</b> 
+	<span data-type="binder">binder</span>
+
+		
+
+	</p>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			 
+				<tr>
+					<td>
+						readAs
+						
+							<span class="signature">optional</span>
+						
+					</td>
+					 
+					<td>
+	<span data-type="string">string</span>
+</td>
+					<td> <p><code>readAs</code> argument value can be <code>&quot;arrayBufer&quot;</code>, <code>&quot;binaryString&quot;</code>, <code>&quot;dataURL&quot;</code>, <code>&quot;text&quot;</code>. The value depends on the presence of corresponding methods of the <code>FileReader</code> prototype</p></td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+	
+<h4>Links</h4>
+<ul class="see">
+	
+		<li><a href="https://developer.mozilla.org/en/docs/Web/API/FileReader" target="_blank">FileReader</a>
+	
+		<li><a href="#!Matreshka.binders.file">Matreshka.binders.file</a>
+	
+</ul>
+
+
+	 
+	<h4>Examples</h4>
+  
+<h5></h5>
+<pre class="prettyprint source lang-js"><code>this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
+// ... user drops one file called
+// "my-image.png" into .my-file block
+this.on('change:myKey', function() {
+	console.log(this.myKey[0]);
+	// -->
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..."
+	//		- the result of file reading
+	//	size: 9378
+	//	type: "image/png"
+});</code></pre>
+
+	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
+	<div class="share-buttons">
+    <a class="share-facebook"></a> <a class="share-twitter"></a>
+</div>
+
+
+<a class="comments" data-id="Matreshka.binders.dropFiles" data-title="Method Matreshka.binders.dropFiles">ASK A QUESTION<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-en:Matreshka.binders.dropFiles"
+  title="Method Matreshka.binders.dropFiles"
   data-channel="Matreshka"
   data-show_online="false"
   data-upload="false"></div>

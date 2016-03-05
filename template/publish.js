@@ -108,8 +108,15 @@ exports.publish = function(data, opts) {
 
 		if (item.memberof === 'Matreshka.binders') {
 			result.binders.members.push(item);
+
+			item.params = item.params || item.properties || [];
+			item.params.forEach(function(item) {
+				item.description = mdParser(resolveLinks(item.description || '').replace(/&quot;/g, '"'));
+			});
 		}
 	});
+
+
 
 	result.intro = wrapArticles(fs.readFileSync(docPath + '/intro.md', 'utf8'));
 	result.end = wrapArticles(fs.readFileSync(docPath + '/end.md', 'utf8'));

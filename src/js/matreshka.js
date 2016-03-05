@@ -1,6 +1,6 @@
 ;(function(__root) {
 /*
-	Matreshka v1.6.0 (2016-02-01)
+	Matreshka v1.8.0 (2016-03-05)
 	JavaScript Framework by Andrey Gubanov
 	Released under the MIT license
 	More info: http://matreshka.io
@@ -35,9 +35,8 @@ matreshka_dir_xclass = function () {
         }
         return to;
       };
-    proto = Object.create(Parent ? Parent.prototype : null);
+    proto = Object.create(Parent ? Parent.prototype : {});
     assign(proto, prototype);
-    //proto.constructor = Constructor;
     if (staticProps && typeof staticProps == 'object') {
       assign(Constructor, staticProps);
     }
@@ -45,7 +44,6 @@ matreshka_dir_xclass = function () {
       return this instanceof Constructor;
     };
     Constructor.prototype = proto;
-    //proto.constructor = Constructor;
     if (this instanceof Class) {
       return new Constructor();
     } else {
@@ -206,6 +204,18 @@ matreshka_dir_core_bindings_binders = function (core) {
       } else {
         callback(filesArray);
       }
+    }, getReadAs = function (readAs) {
+      /* istanbul ignore if  */
+      if (typeof FileReader == 'undefined') {
+        throw Error('FileReader is not supported by this browser');
+      }
+      if (readAs) {
+        readAs = 'readAs' + readAs[0].toUpperCase() + readAs.slice(1);
+        if (!FileReader.prototype[readAs]) {
+          throw Error(readAs + ' is not supported by FileReader');
+        }
+      }
+      return readAs;
     }, binders;
   core.binders = binders = {
     innerHTML: function () {
@@ -400,11 +410,13 @@ matreshka_dir_core_bindings_binders = function (core) {
         return {
           on: 'change',
           getValue: function () {
-            return [].slice.call(this.options).filter(function (o) {
-              return o.selected;
-            }).map(function (o) {
-              return o.value;
-            });
+            var i = 0, options = this.options, result = [];
+            for (; options.length > i; i++) {
+              if (options[i].selected) {
+                result.push(options[i].value);
+              }
+            }
+            return result;
           },
           setValue: function (v) {
             v = typeof v == 'string' ? [v] : v;
@@ -447,34 +459,6 @@ matreshka_dir_core_bindings_binders = function (core) {
         }
       };
     },
-    file: function (readAs) {
-      if (typeof FileReader == 'undefined') {
-        throw Error('FileReader is not supported by this browser');
-      }
-      if (readAs) {
-        readAs = 'readAs' + readAs[0].toUpperCase() + readAs.slice(1);
-        if (!FileReader.prototype[readAs]) {
-          throw Error(readAs + ' is not supported by FileReader');
-        }
-      }
-      return {
-        on: function (callback) {
-          var handler = function () {
-            var files = this.files;
-            if (files.length) {
-              readFiles(files, readAs, callback);
-            } else {
-              callback([]);
-            }
-          };
-          this.addEventListener('change', handler);
-        },
-        getValue: function (evt) {
-          var files = evt.domEvent || [];
-          return this.multiple ? files : files[0] || null;
-        }
-      };
-    },
     style: function (property) {
       return {
         getValue: function () {
@@ -483,6 +467,48 @@ matreshka_dir_core_bindings_binders = function (core) {
         },
         setValue: function (v) {
           this.style[property] = v;
+        }
+      };
+    },
+    file: function (readAs) {
+      readAs = getReadAs(readAs);
+      return {
+        on: function (callback) {
+          this.addEventListener('change', function () {
+            var files = this.files;
+            if (files.length) {
+              readFiles(files, readAs, callback);
+            } else {
+              callback([]);
+            }
+          });
+        },
+        getValue: function (evt) {
+          var files = evt.domEvent || [];
+          return this.multiple ? files : files[0] || null;
+        }
+      };
+    },
+    dropFiles: function (readAs) {
+      readAs = getReadAs(readAs);
+      return {
+        on: function (callback) {
+          this.addEventListener('drop', function (evt) {
+            evt.preventDefault();
+            var files = evt.dataTransfer.files;
+            if (files.length) {
+              readFiles(files, readAs, callback);
+            } else {
+              callback([]);
+            }
+          });
+          this.addEventListener('dragover', function (evt) {
+            evt.preventDefault();
+            evt.dataTransfer.dropEffect = 'copy';
+          });
+        },
+        getValue: function (o) {
+          return o.domEvent || [];
         }
       };
     }
@@ -563,15 +589,17 @@ matreshka_dir_core_dom_lib_bquery = function () {
       }
       if (selector) {
         delegate = function (evt) {
-          var randomID = 'x' + String(Math.random()).split('.')[1], node = this, is;
+          var randomID = 'x' + String(Math.random()).split('.')[1], node = this, scopeSelector, is;
           node.setAttribute(randomID, randomID);
-          is = '[' + randomID + '="' + randomID + '"] ' + selector;
-          if ($b(evt.target).is(is + ',' + is + ' *')) {
+          scopeSelector = '[' + randomID + '="' + randomID + '"] ';
+          is = selector.split(',').map(function (sel) {
+            return scopeSelector + sel + ',' + scopeSelector + sel + ' *';
+          }).join(',');
+          if ($b(evt.target).is(is)) {
             handler.call(node, evt);
           }
           node.removeAttribute(randomID);
-        };  //delegate._callback = handler;
-            //handler = delegate;
+        };
       }
       names = names.split(/\s/);
       for (i = 0; i < names.length; i++) {
@@ -1205,15 +1233,11 @@ matreshka_dir_core_bindings_bindnode = function (core, map, initMK, util) {
     }
     return object;
   };
-  var bindSandbox = core.bindSandbox = function (object, node, evt, optional) {
+  var bindSandbox = core.bindSandbox = function (object, node, evt) {
     var $nodes = core.$(node), _evt, special, i;
     initMK(object);
     if (!$nodes.length) {
-      if (optional) {
-        return object;
-      } else {
-        throw Error('Binding error: node is missing for "sandbox".' + (typeof node == 'string' ? ' The selector is "' + node + '"' : ''));
-      }
+      throw Error('Binding error: node is missing for "sandbox".' + (typeof node == 'string' ? ' The selector is "' + node + '"' : ''));
     }
     special = core._defineSpecial(object, 'sandbox');
     special.$nodes = special.$nodes.length ? special.$nodes.add($nodes) : $nodes;
@@ -1346,7 +1370,7 @@ matreshka_dir_core_bindings_bindnode = function (core, map, initMK, util) {
         key: key,
         $nodes: $nodes,
         node: node
-      }, node = $nodes[index], isUndefined = typeof special.value == 'undefined', _binder, _evt, foundBinder, _options, i, domEvt, mkHandler;
+      }, node = $nodes[index], isUndefined = typeof special.value == 'undefined', _binder, _evt, foundBinder, _options, i, domEvt, mkHandler, val;
     if (binder === null) {
       _binder = {};
     } else {
@@ -1369,6 +1393,15 @@ matreshka_dir_core_bindings_bindnode = function (core, map, initMK, util) {
       }
       _binder.initialize.call(node, _options);
     }
+    if (_binder.getValue && (isUndefined && evt.assignDefaultValue !== false || evt.assignDefaultValue === true)) {
+      _evt = { fromNode: true };
+      for (i in evt) {
+        _evt[i] = evt[i];
+      }
+      val = _binder.getValue.call(node, options);
+      isUndefined = typeof val == 'undefined';
+      core.set(object, key, val, _evt);
+    }
     if (_binder.setValue) {
       mkHandler = function (evt) {
         var v = objectData.special[key].value,
@@ -1387,13 +1420,6 @@ matreshka_dir_core_bindings_bindnode = function (core, map, initMK, util) {
       }
       core._fastAddListener(object, '_runbindings:' + key, mkHandler, null, { node: node });
       !isUndefined && mkHandler();
-    }
-    if (_binder.getValue && (isUndefined && evt.assignDefaultValue !== false || evt.assignDefaultValue === true)) {
-      _evt = { fromNode: true };
-      for (i in evt) {
-        _evt[i] = evt[i];
-      }
-      core.set(object, key, _binder.getValue.call(node, options), _evt);
     }
     if (_binder.getValue && _binder.on) {
       domEvt = {
@@ -1458,17 +1484,17 @@ matreshka_dir_core_bindings_unbindnode = function (core, map, initMK) {
         }
         return object;
       }
-    }
-    indexOfDot = key.indexOf('.');
-    if (~indexOfDot) {
-      path = key.split('.');
-      var target = object;
-      for (i = 0; i < path.length - 1; i++) {
-        target = target[path[i]];
+      indexOfDot = key.indexOf('.');
+      if (~indexOfDot) {
+        path = key.split('.');
+        var target = object;
+        for (i = 0; i < path.length - 1; i++) {
+          target = target[path[i]];
+        }
+        core._undelegateListener(object, path.slice(0, path.length - 2), 'change:' + path[path.length - 2]);
+        unbindNode(target, path[path.length - 1], node, evt);
+        return object;
       }
-      core._undelegateListener(object, path.slice(0, path.length - 2), 'change:' + path[path.length - 2]);
-      unbindNode(target, path[path.length - 1], node, evt);
-      return object;
     }
     if (key === null) {
       for (key in objectData.special) {
@@ -1665,6 +1691,7 @@ matreshka_dir_core_bindings_parsebindings = function (core, map, initMK, util) {
       // in case user uses very old webkit-based browser
       /* istanbul ignore next */
       body = document.body;
+      /* istanbul ignore next */
       if (previous) {
         body.appendChild(previous);
         previous.insertAdjacentHTML('afterend', html);
@@ -1742,7 +1769,7 @@ matreshka_dir_core_bindings_getnodes = function (core, map, initMK, util) {
   }, core.select = function (object, s) {
     var sandbox, objectData = map.get(object);
     if (!objectData || typeof s != 'string')
-      return core.$();
+      return null;
     if (/:sandbox|:bound\(([^(]*)\)/.test(s)) {
       return selectNodes(object, s)[0] || null;
     } else {
@@ -2525,6 +2552,19 @@ matreshka_dir_matreshkaclass = function (Class, magic, dynamic, _static) {
     return result;
   };
   var MK = Class(dynamic, _static);
+  MK.setProto = function (proto) {
+    /* jshint proto: true */
+    var __proto__ = '__proto__', prototype = MK.prototype;
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(MK.prototype, proto);
+    } else {
+      if (!(__proto__ in MK.prototype)) {
+        Object.defineProperty(prototype, __proto__, Object.getOwnPropertyDescriptor(Object.prototype, __proto__));
+      }
+      MK.prototype[__proto__] = proto;
+    }
+    return MK;
+  };
   return magic.extend(MK.Matreshka = MK.prototype.Matreshka = MK, magic);
 }(matreshka_dir_xclass, matreshka_dir_matreshka_magic, matreshka_dir_matreshka_dynamic, matreshka_dir_matreshka_static);
 matreshka_dir_matreshka_object_dynamic = function (map, MK) {
@@ -2758,7 +2798,7 @@ matreshka_dir_matreshka_array_processrendering = function (map, initMK, MK) {
         if (/{{/.test(usedRenderer)) {
           hasBindings = true;
         }
-        usedRenderer = $.parseHTML(usedRenderer);
+        usedRenderer = $.parseHTML(MK.trim(usedRenderer));
         if (usedRenderer.length > 1) {
           wrapper = document.createElement('span');
           for (i = 0; i < usedRenderer.length; i++) {
@@ -3500,7 +3540,7 @@ matreshka_dir_amd_modules_matreshka = function (MK, MK_Object, MK_Array, MK_bind
 matreshka = function (MK) {
   return MK;
 }(matreshka_dir_amd_modules_matreshka);
- matreshka.version="1.6.0";									(function () {
+ matreshka.version="1.8.0";									(function () {
 			// hack for systemjs builder
 			var d = "define";
 			// I don't know how to define modules with no dependencies (since we use AMDClean)

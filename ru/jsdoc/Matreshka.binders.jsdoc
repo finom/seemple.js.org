@@ -200,6 +200,7 @@ this.myKey = 'cool value';
 
 Результирующим значением свойства становится файл (нативный ``File``) или массив файлов при наличии атрибута ``multiple``. При этом, результат чтения попадет в объект каждого файла в виде свойства ``readerResult``.
 @see {@link https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
+@see {@link Matreshka.binders.dropFiles}
 @param {string} [readAs] - Значением аргумента ``readAs`` могут быть ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. Значение зависит от наличия соответствующих методов в интерфейсе ``FileReader``
 @returns {binder}
 @example
@@ -208,6 +209,37 @@ this.bindNode('myKey', '.my-file', MK.binders.file('dataURL'));
 // выбирая my-image.png из файловой системы ...
 this.on('change:myKey', function() {
 	console.log(this.myKey);
+	// -->
+	// File
+	//	lastModified: 1383404384000
+	//	lastModifiedDate: ...
+	//	name: "my-image.png"
+	//	readerResult: "data:image/png;base64,iVBO..."
+	//	- результат считывания файла
+	//	size: 9378
+	//	type: "image/png"
+});
+*/
+
+
+/**
+@function Matreshka.binders.dropFiles
+@importance 2
+@since 1.8
+@summary Возвращает байндер, позволяющий перетаскивать файлы в заданный блок из файлового менеджера (drag'n'drop).
+
+@desc При связывании свойства и HTML блока при помощи ``dropFiles``, на блок навешиваются необходимые обработчики DOM событий (``dragover`` и ``drop``). При перетаскивании файлов из файлового менеджера в блок, свойство получает массив с этими файлами в качестве значения. Как и в случае с {@link Matreshka.binders.file}, привязчику можно передать аргумент ``readAs``, указывающий на то, каким образом следует читать дропнутые файлы с помощью ``FileReader``: data URI, Blob... (результат чтения находится в свойстве  ``readerResult`` каждого файла). Если ``readAs`` не задан, свойство получает список файлов без их предварительного прочтения.
+
+@see {@link https://developer.mozilla.org/en/docs/Web/API/FileReader FileReader}
+@see {@link Matreshka.binders.file}
+
+@param {string} [readAs] - Значением аргумента ``readAs`` могут быть ``"arrayBufer"``, ``"binaryString"``, ``"dataURL"``, ``"text"``. Значение зависит от наличия соответствующих методов в интерфейсе ``FileReader``
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-file', MK.binders.dropFiles('dataURL'));
+// ... пользователь дропает файл my-image.png в блок .my-file
+this.on('change:myKey', function() {
+	console.log(this.myKey[0]);
 	// -->
 	// File
 	//	lastModified: 1383404384000
