@@ -1,5 +1,6 @@
-import jsdom from "jsdom";
-import fs from 'fs';
+"use strict";
+let jsdom = require("jsdom");
+let fs = require('fs');
 let fragments = {
 	en: {},
 	ru: {}
@@ -19,7 +20,7 @@ for (let lang of Object.keys(fragments)) {
             }
 
 			function $(s, context) {
-				return [...( context || window.document ).querySelectorAll(s)]
+				return [].slice.call(( context || window.document ).querySelectorAll(s))
 			}
     	}
     });

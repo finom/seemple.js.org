@@ -13294,13 +13294,7 @@ magic.mediate(object, 'z', Number);
 <li>Новый байндер <a href="#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a>, позволяющий перетаскивать файлы из файловой системы в блок.</li>
 <li>Исправлена ошибка: делегированные события для селекторов, в которых есть запятая, работали некорректно (<code>click::key(.a, .b, .c)</code>).</li>
 <li>Исправлен баг: опция <code>assignDefaultProperty</code> со значением <code>true</code> для <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> не форсило извлечение значения свойства из элемента.</li>
-<li><p>Класс <code>Matreshka</code> наследуется от <code>Object.prototype</code> вместо <code>null</code> (как в версиях &lt; 1.6). Это исправляет проблему при которой <code>__proto__</code> был не виден, а автодополнение не работало в консоли инструментов разработчика.</p>
-</li>
-<li><p>The new binder <a href="//matreshka.io/#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a> which allows to drop files to given block from file manager.</p>
-</li>
-<li>Fixed bug: delegated events didn't work correctly when a selector with commas is given (<code>click::key(.a, .b, .c)</code>).</li>
-<li>Fixed bug: <code>assignDefaultProperty: true</code> for <code>Matreshka#bindNode</code> didn't force extraction of property value from given node.</li>
-<li>The <code>Matreshka</code> class inherits from <code>Object.prototype</code> instead of <code>null</code>. It fixes an issue of invisible <code>__proto__</code> and absense of an autocompletition in developer tools.</li>
+<li>Класс <code>Matreshka</code> наследуется от <code>Object.prototype</code> вместо <code>null</code> (как в версиях &lt; 1.6). Это исправляет проблему при которой <code>__proto__</code> был не виден, а автодополнение не работало в консоли инструментов разработчика.</li>
 </ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.7.1">Матрешка 1.7.1</a></h3><ul>
 <li>Исправлена ошибка <code>bindNode</code>: метод генерировал ошибку при передаче объекта ключ-нода.</li>
