@@ -84,6 +84,10 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.8.1](https://github.com/finom/matreshka/releases/tag/v1.8.1)
+- Исправлены некоторые проблемы в работе ``parseBindings``.
+- Исправлена проблема странного поведения ``MK.Array#restore`` в случае, когда renderer находится в песочнице.
+
 ### [Матрешка 1.8.0](https://github.com/finom/matreshka/releases/tag/v1.8.0)
 - Новый байндер {@link Matreshka.binders.dropFiles}, позволяющий перетаскивать файлы из файловой системы в блок.
 - Исправлена ошибка: делегированные события для селекторов, в которых есть запятая, работали некорректно (``click::key(.a, .b, .c)``).

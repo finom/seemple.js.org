@@ -13290,6 +13290,10 @@ magic.mediate(object, 'z', Number);
 <pre class="prettyprint source lang-js"><code>require(['magic/matreshka-magic.min'], function(magic) {
     //...
 });</code></pre><pre class="prettyprint source lang-js"><code>var magic = require('magic/matreshka-magic.min');</code></pre><p>На момент написания этой документации, файл <strong>matreshka-magic.min.js</strong> занимает чуть меньше 30КБ в несжатом виде против 46КБ <strong>matreshka.min.js</strong>. Если на каком-то этапе потребуется подключить весь фреймворк в проект, нужно лишь изменить пути к файлу скрипта и поменять имена переменных с <code>magic</code> или <code>MatreshkaMagic</code> на <code>MK</code> или <code>Matreshka</code> (второе обязательно только в том случае, если вы не используете AMD или CJS в проекте).</p></article><article id="!whats-new"><h2><a href="#!whats-new">Что нового?</a></h2><p>Не забывайте голосовать за новые возможности в <a href="https://trello.com/b/E5KcQESk/matreshka-js-features">trello</a>.</p>
+<h3><a href="https://github.com/finom/matreshka/releases/tag/v1.8.1">Матрешка 1.8.1</a></h3><ul>
+<li>Исправлены некоторые проблемы в работе <code>parseBindings</code>.</li>
+<li>Исправлена проблема странного поведения <code>MK.Array#restore</code> в случае, когда renderer находится в песочнице.</li>
+</ul>
 <h3><a href="https://github.com/finom/matreshka/releases/tag/v1.8.0">Матрешка 1.8.0</a></h3><ul>
 <li>Новый байндер <a href="#!Matreshka.binders.dropFiles">Matreshka.binders.dropFiles</a>, позволяющий перетаскивать файлы из файловой системы в блок.</li>
 <li>Исправлена ошибка: делегированные события для селекторов, в которых есть запятая, работали некорректно (<code>click::key(.a, .b, .c)</code>).</li>
