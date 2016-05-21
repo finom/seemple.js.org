@@ -84,6 +84,15 @@ var magic = require('magic/matreshka-magic.min');
 ## [Что нового?](#!whats-new)
 Не забывайте голосовать за новые возможности в [trello](https://trello.com/b/E5KcQESk/matreshka-js-features).
 
+### [Матрешка 1.9.0](https://github.com/finom/matreshka/releases/tag/v1.9.0)
+- Новый байндер {@link Matreshka.binders.dragOver}.
+- Немного изменен алгоритм избегания зацикливания ``linkProps``.
+- Исправлены баги:
+	- ``addDataKeys`` некорректно работал со случаем, когда передается много аргументов-строк.
+	- Аргумент ``getValue`` в байндерах всегда получал свойство ``node`` равное ``undefined``.
+	- ``bindNode``: нельзя было использовать одну и ту же пару элемент-ключ дважды.
+
+
 ### [Матрешка 1.8.1](https://github.com/finom/matreshka/releases/tag/v1.8.1)
 - Исправлены некоторые проблемы в работе ``parseBindings``.
 - Исправлена проблема странного поведения ``MK.Array#restore`` в случае, когда renderer находится в песочнице.
