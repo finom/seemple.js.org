@@ -653,7 +653,6 @@ this.bindNode({
 });
 
 @example <caption>Начиная с версии 1.1 синтаксис метода немного расширился: вместо элемента, можно передать массив, состоящий из элемента и байндера</caption>
-@example
 this.bindNode({
 	myKey1: ['.custom-checkbox', MK.binders.customCheckbox()],
 	myKey2: 'textarea',

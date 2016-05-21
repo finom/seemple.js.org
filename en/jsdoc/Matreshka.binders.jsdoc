@@ -170,7 +170,7 @@ this.bindNode('myKey', '.my-progres', MK.binders.text());
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-progres', MK.binders.style('backgroundColor'));
-this.myKey = 'red'; // background-color of ``.my-progress`` is red now
+this.myKey = 'red'; // background-color of .my-progress is red now
 */
 
 
@@ -253,4 +253,28 @@ this.on('change:myKey', function() {
 	//	size: 9378
 	//	type: "image/png"
 });
+*/
+
+
+/**
+@function Matreshka.binders.dragOver
+@importance 3
+@since 1.9
+@summary Makes given property equal to ``true`` when something is dragged over given node.
+@desk The binder is useful when you need to do something with the node (eg change className) if some draggable object (eg file) is dragged over the node.
+
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-node', MK.binders.dragOver());
+this.on('change:myKey', function() {
+	if(this.myKey) {
+		console.log('something is dragging over .my-node');
+	} else {
+		console.log('nothing is dragged over the node');
+	}
+});
+@example <caption>Add ``dragovered`` class name when file (or another draggable object) is dragged over ``.my-node``</caption>
+this.bindNode('myKey', '.my-node', MK.binders.dragOver());
+this.bindNode('myKey', '.my-node', MK.binders.className('dragovered'));
+
 */

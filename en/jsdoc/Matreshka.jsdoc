@@ -662,7 +662,6 @@ this.bindNode({
 });
 
 @example <caption>Starting version 1.1 the syntax of the method is extended: you can pass an array with node and binder instead of just a node</caption>
-@example
 this.bindNode({
 	myKey1: ['.custom-checkbox', MK.binders.customCheckbox()],
 	myKey2: 'textarea',

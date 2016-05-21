@@ -145,7 +145,7 @@ require(['path/to/matreshka'], function(Matreshka) {
 });
 ```
 
-Импорт в стиле ECMSScript 2015
+Импорт в стиле ECMAScript 2015
 ```js
 import Matreshka from 'path/to/matreshka';
 ```

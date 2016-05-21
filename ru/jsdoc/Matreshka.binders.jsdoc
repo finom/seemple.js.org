@@ -251,3 +251,26 @@ this.on('change:myKey', function() {
 	//	type: "image/png"
 });
 */
+
+/**
+@function Matreshka.binders.dragOver
+@importance 3
+@since 1.9
+@summary Возвращает байндер, меняющий заданное свойство в зависимости от того, перетаскивается ли что-нибудь пользователем (например, файл) над заданным элементом.
+@desc Байндер может пригодиться в том случае, если нужно что-нибудь сделать (например, изменить класс) с элементом над которым перетаскивают draggable объект.
+
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-node', MK.binders.dragOver());
+this.on('change:myKey', function() {
+	if(this.myKey) {
+		console.log('something is dragging over .my-node');
+	} else {
+		console.log('nothing is dragged over the node');
+	}
+});
+@example <caption>Добавление класса ``dragovered`` при перетаскивании файла (или другого draggable объекта) над элементом</caption>
+this.bindNode('myKey', '.my-node', MK.binders.dragOver());
+this.bindNode('myKey', '.my-node', MK.binders.className('dragovered'));
+
+*/
