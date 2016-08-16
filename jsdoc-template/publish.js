@@ -118,8 +118,8 @@ exports.publish = function(data, opts) {
 
 
 
-	result.intro = wrapArticles(fs.readFileSync(docPath + '/intro.md', 'utf8'));
-	result.end = wrapArticles(fs.readFileSync(docPath + '/end.md', 'utf8'));
+	//result.intro = wrapArticles(fs.readFileSync(docPath + '/intro.md', 'utf8'));
+	//result.end = wrapArticles(fs.readFileSync(docPath + '/end.md', 'utf8'));
 
 	var templatePath = opts.template,
 		view = new template.Template(templatePath + '/tmpl');

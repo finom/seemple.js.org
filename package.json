@@ -4,23 +4,26 @@
   "description": "Matreshka.js docs",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
-    "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-compass": "^2.1.0",
-    "gulp-jsdoc": "^0.1.5",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-sftp": "^0.1.5",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-streamify": "^1.0.2",
-    "gulp-uglify": "^1.5.1",
-    "gulp-util": "^3.0.7",
+    "babel-preset-stage-1": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "ejs-compiled-loader": "^2.1.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.22.0",
+    "install": "^0.8.1",
     "jsdoc": "^3.4.0",
-    "vinyl-source-stream": "^1.1.0"
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+    "jsdoc": "node script/jsdoc",
+    "bundle": "webpack"
+  },
+  "dependencies": {
+    "matreshka": "^1.8.0"
   }
 }
