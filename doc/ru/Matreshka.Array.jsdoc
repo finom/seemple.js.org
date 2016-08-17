@@ -997,26 +997,6 @@ arr.recreate([
 
 
 /**
-@method Matreshka.Array#toArray
-@importance 3
-@summary Конвертирует {@link Matreshka.Array} в обычный массив, но не конвертирует входящие в него элементы
-@returns {array}
-@example
-this.toArray();
-*/
-
-
-/**
-@method Matreshka.Array#toNative
-@importance 3
-@summary Делает то же самое, что и {@link Matreshka.Array#toArray}
-@returns {array}
-@example
-this.toNative();
-*/
-
-
-/**
 @method Matreshka.Array#rerender
 @importance 3
 @since 0.3

@@ -110,36 +110,6 @@ mkObject.hasOwnProperty('c'); // false
 
 
 /**
-@method Matreshka.Object#toObject
-@importance 3
-@summary Converts {@link Matreshka.Object} instance into an ordinary object, but it doesn't convert properties which are included in it.
-@returns {object}
-@example
-var mkObject = new MK.Object({
-	a: 1,
-	b: 2
-});
-
-mkObject.toObject(); // returns {a: 1, b: 2}
-*/
-
-
-/**
-@method Matreshka.Object#toNative
-@importance 3
-@summary Does the same as {@link Matreshka.Object#toObject}
-@returns {object}
-@example
-var mkObject = new MK.Object({
-	a: 1,
-	b: 2
-});
-
-mkObject.toNative(); // returns {a: 1, b: 2}
-*/
-
-
-/**
 @method Matreshka.Object#toJSON
 @importance 1
 @summary Converts an instance and {@link Matreshka.Object} internal properties into an ordinary object.
@@ -190,7 +160,7 @@ mkObject.keyOf(3); // null
 
 1\. Sets a specified value to a given property.
 
-2\. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toObject} and {@link Matreshka.Object#toJSON} methods).
+2\. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON} methods).
 
 Apart from that, the method works the same as {@link Matreshka#set}.
 

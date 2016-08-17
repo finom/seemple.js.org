@@ -46,30 +46,6 @@ alert(object.isMK);
 
 
 /**
-@member {$nodes} Matreshka#$sandbox
-@importance 2
-@since 0.4
-@summary The property contains HTML sandbox as collection (jQuery, Zepto, bQuery)
-@see {@link Matreshka#bindNode}
-@example
-this.bindNode('sandbox', '.app');
-this.$sandbox; // the same as $('.app')
-*/
-
-
-/**
-@member {node} Matreshka#sandbox
-@importance 2
-@since 0.4
-@summary The property contains HTML sandbox as DOM node
-@see {@link Matreshka#bindNode}
-@example
-this.bindNode('sandbox', '.app');
-this.sandbox; // the same as $('.app')[0]
-*/
-
-
-/**
 @member {$nodes} Matreshka#$nodes
 @importance 2
 @since 1.1
@@ -503,7 +479,6 @@ this.bindNode('sandbox', '.my-sandbox');
 
 The definition of the sandbox adds lots of conveniences for you. For example:
 + allows to use the {@link Matreshka#select} and {@link Matreshka#$} methods
-+ allows to use the {@link Matreshka#sandbox} and {@link Matreshka#$sandbox}
 + adds a new ``:sandbox`` selector for the {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} methods and others
 + adds syntactic sugar for delegated DOM events in the {@link Matreshka#on} method
 
@@ -1282,17 +1257,6 @@ this.on('change:sum', function() {
 });
 
 anotherInstance1.a = 5; // "this.sum equals 8"
-*/
-
-
-/**
-@method Matreshka#get
-@importance 3
-@summary Returns a value of property
-@param {string} key
-@example
-// the same as this['myKey'] or this.myKey
-this.get('myKey');
 */
 
 

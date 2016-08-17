@@ -1,13 +1,4 @@
 /**
-@member {string} Matreshka.version
-@importance 3
-@summary The version of Matreshka
-@example
-alert(Matreshka.version);
-*/
-
-
-/**
 @method Matreshka.Class
 @importance 2
 @since 0.2
@@ -141,17 +132,6 @@ console.log(Matreshka.lookForBinder($('input[type="text"]' )[0]));
 		}
 	}
 }
-*/
-
-
-/**
-@method Matreshka.randomString
-@importance 3
-@summary The function which returns a unique pseudo-random string.
-@desc The ``new Date().getTime`` and ``Math.random()`` functions are used for generating a string, so returned string is unique.
-@returns {string} A random string
-@example
-var id = MK.randomString();
 */
 
 
@@ -381,20 +361,6 @@ MK.selectAll(object, '.my-element');
 
 
 /**
-@method Matreshka.get
-@importance 3
-@since 1.1
-@summary Returns a value of property
-@desc This static method works the same as {@link Matreshka#get} and all its variations, but accepts any kind of JavaScript objects as first argument.
-@returns {*} A value
-@see {@link Matreshka#get}
-@example
-var object = {},
-	val = MK.get(object, 'x');
-*/
-
-
-/**
 @method Matreshka.set
 @importance 3
 @since 1.1
@@ -439,64 +405,6 @@ object.name = 'Arthur Philip Dent';
 
 
 /**
-@method Matreshka.toArray
-@importance 3
-@since 1.1
-@summary Converts any array-like object to native array.
-@desc The function works twice faster than ``Array.prototype.slice``.
-@param {object|array} arr - Any array-like object
-@returns {array} New array
-@example
-var object = {
-	0: 'a',
-	1: 'b',
-	2: 'c',
-	length: 3
-};
-
-console.log(MK.toArray(object)); // ['a', 'b', 'c']
-
-@example <caption>Cloning array</caption>
-var arr = ['a', 'b', 'c'],
-	cloneArr = MK.toArray(arr);
-*/
-
-
-/**
-@method Matreshka.deepFind
-@importance 3
-@since 1.5
-@summary Returns a property from nested object
-@desc The function allows to get a property value from nested object. It doesn't throw an error in case if one of objects in given path is not defined.
-@param {object} object - An object
-@param {string} path - A path to a property
-@returns {*} Property value or ``undefined``
-@example
-var obj = {
-		a: {
-			b: {
-				c: {
-					d: 42
-				}
-			}
-		}
-	},
-	d = MK.deepFind(obj, 'a.b.c.d');
-
-alert(d); // 42
-
-@example <caption>Bad way</caption>
-var obj = {},
-	d = obj.a.b.c.d; // exception
-
-@example <caption>``deepFind`` returns ``undefined``, if given path is "broken" and doesn't throw an exception</caption>
-var obj = {},
-	d = MK.deepFind(obj, 'a.b.c.d');
-
-alert(d); // undefined
-*/
-
-/**
 @member {object} Matreshka.parserBrackets
 @importance 3
 @since 1.5
@@ -505,40 +413,4 @@ alert(d); // undefined
 @example <caption>Use syntax  ``[[=property]]`` instead of &#123;{property}}</caption>
 MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';
-*/
-
-
-/**
-@method Matreshka.setProto
-@importance 3
-@since 1.7
-@summary Allows to set custom proto for ``Matreshka`` class
-@desc Allows to make possible to inherit Matreshka and all its descendants from another class (to be precise, from given prototype). The method requires good understanding of prototype inheritance in JavaScript. The method works everywhere except of IE9 and IE10 because these browsers don't provide nor ``Object.setPrototypeOf`` nor ``__proto__``.
-
-@param {object} proto - Prototype
-
-@example
-function F() {}
-
-F.prototype.someMethod = function() {
-	alert('yep');
-};
-
-Matreshka.setProto(F.prototype);
-// the same as
-// Object.setPrototypeOf(Matreshka.prototype, F.prototype);
-// or
-// Matreshka.prototype.__proto__ = F.prototype;
-
-var instance = new Matreshka;
-
-alert(instance instanceof F); // true
-
-instance.someMethod(); // 'yep'
-
-@example <caption>You can inherit ``Matreshka`` class from anything</caption>
-
-// gets all features of React.Component (yep, sounds crazy)
-Matreshka.setProto(React.Component.prototype);
-
 */

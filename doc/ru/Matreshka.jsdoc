@@ -44,27 +44,6 @@ class MyClass extends Matreshka {
 alert(object.isMK);
 */
 
-/**
-@member {$nodes} Matreshka#$sandbox
-@importance 2
-@since 0.4
-@summary Свойство содержит HTML песочницу в виде коллекции (jQuery, Zepto, bQuery)
-@see {@link Matreshka#bindNode}
-@example
-this.bindNode('sandbox', '.app');
-this.$sandbox; // то же самое, что и $('.app')
-*/
-
-/**
-@member {node} Matreshka#sandbox
-@importance 2
-@since 0.4
-@summary Свойство содержит HTML песочницу
-@see {@link Matreshka#bindNode}
-@example
-this.bindNode('sandbox', '.app');
-this.sandbox; // то же самое, что и $('.app')[0]
-*/
 
 /**
 @member {$nodes} Matreshka#$nodes
@@ -501,7 +480,6 @@ this.bindNode('sandbox', '.my-sandbox');
 
 Определение песочницы добавляет множество удобств программисту. Например:
 + Позволяет использовать методы {@link Matreshka#select} и {@link Matreshka#$}
-+ Позволяет использовать свойства {@link Matreshka#sandbox} и {@link Matreshka#$sandbox}
 + Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} и других
 + Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
 
@@ -1267,17 +1245,6 @@ this.on('change:sum', function() {
 });
 
 anotherInstance1.a = 5; // "this.sum равен 8"
-*/
-
-
-/**
-@method Matreshka#get
-@importance 3
-@summary Возвращает значение свойства
-@param {string} key
-@example
-// то же самое, что и this['myKey'] или this.myKey
-this.get('myKey');
 */
 
 

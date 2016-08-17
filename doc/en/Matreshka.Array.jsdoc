@@ -987,25 +987,6 @@ arr.recreate([
 @see {@link Matreshka.Array#recreate}
 */
 
-/**
-@method Matreshka.Array#toArray
-@importance 3
-@summary Converts {@link Matreshka.Array} into an ordinary array, but it does not convert items it contains.
-@returns {array}
-@example
-this.toArray();
-*/
-
-
-/**
-@method Matreshka.Array#toNative
-@importance 3
-@summary Does the same as {@link Matreshka.Array#toArray}
-@returns {array}
-@example
-this.toNative();
-*/
-
 
 /**
 @method Matreshka.Array#rerender
