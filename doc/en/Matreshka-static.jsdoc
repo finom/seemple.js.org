@@ -54,37 +54,17 @@ alert(MyClass.staticMethod()); // bar
 
 
 /**
-@method Matreshka.$
-@importance 2
-@variation static
-@summary A library used by Matreshka (jQuery, Zepto, {@link Matreshka.$b bQuery} or others)
-@example
-MK.$('.my-element');
-*/
-
-
-/**
-@method Matreshka.$b
-@importance 3
-@summary Built-in micro-library {@link $b bQuery}
-@example
-MK.$b('.my-element');
-*/
-
-
-/**
 @method Matreshka.useAs$
 @importance 3
 @since 0.2
 @summary Forces to use a definite DOM-library
-@desc By default, Matreshka uses a library which can be found by ``window.$`` reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library {@link $b bQuery} is used.
+@desc By default, Matreshka uses a library which can be found by ``window.$`` reference. If there is no such a variable in the global namespace or it does not include  a necessary set of methods, the built-in micro-library is used.
 
 The {@link Matreshka.useAs$} method makes Matreshka use a library you would like to use in spite of its absence in the global namespace or for a different reason (for example, if two different versions of jQuery are used on a page). It is desirable to launch the method before your code starts.
-@param {function} $ - Any library (jQuery, Zepto, bQuery or others)
+@param {function} $ - Any jQuery-like library (jQuery itself, Zepto, or ``null`` to use built-in micro library)
 @example
 Matreshka.useAs$(jQuery.noConflict());
 */
-
 
 
 /**

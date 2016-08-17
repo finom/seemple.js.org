@@ -49,7 +49,7 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$nodes
 @importance 2
 @since 1.1
-@summary Объект содержит коллекции (jQuery, Zepto, bQuery) привязанных элементов для быстрого доступа.
+@summary Объект содержит коллекции (jQuery, Zepto, инстанс встроенной микро-библиотеки, унаследованной от ``Array.prototype``) привязанных элементов для быстрого доступа.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');

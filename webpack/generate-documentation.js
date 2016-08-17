@@ -75,8 +75,7 @@ class Plugin {
             'Matreshka-static',
             'Matreshka.Object',
             'Matreshka.Array',
-            'Matreshka.binders',
-            'globals'
+            'Matreshka.binders'
         ].map(name => path.resolve(__dirname, this.options.srcFolder, `${language}/${name}.jsdoc`));
     }
 

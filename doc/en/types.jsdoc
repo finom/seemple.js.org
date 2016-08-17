@@ -29,12 +29,6 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 
 
 /**
-{@link $b bQuery} collection
-@typedef {array} bQuery
-*/
-
-
-/**
 Event name or space-delimited list of event names.
 
 > This is very brief description of event names. The full article about events you can find at [this article](https://medium.com/@finom/matreshka-js-events-e35cc201c2cb).

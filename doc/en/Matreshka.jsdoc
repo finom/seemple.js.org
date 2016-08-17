@@ -49,7 +49,7 @@ alert(object.isMK);
 @member {$nodes} Matreshka#$nodes
 @importance 2
 @since 1.1
-@summary An object contains collections (jQuery, Zepto, bQuery) of bound nodes for quick access.
+@summary An object contains collections (jQuery, Zepto, built-in micro-library instance inherited from ``Array.prototype``) of bound nodes for quick access.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
