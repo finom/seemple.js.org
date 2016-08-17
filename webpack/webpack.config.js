@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GenerateDocumentationPlugin = require('./generate-documentation');
 
-
 const resolve = (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
 
 module.exports = {
@@ -31,10 +30,8 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('style', 'css!sass')
             },
-            {
-                test: /\.html$/,
-                loader: 'ejs-compiled'
-            }
+            { test: /\.html$/, loader: 'ejs-compiled' },
+            { test: /\.md$/, loader: "html!markdown" }
         ]
     },
     plugins: [
@@ -42,8 +39,9 @@ module.exports = {
             allChunks: true
         }),
         new HtmlWebpackPlugin({
-            template: 'html/_layouts/main.html',
-            filename: 'tablo.html'
+            template: 'html/layout.html',
+            filename: 'index.html',
+            language: 'en'
         }),
         new GenerateDocumentationPlugin({
             srcFolder: resolve('doc/'),
