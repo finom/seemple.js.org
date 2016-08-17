@@ -230,19 +230,6 @@ this.shift_({
 alert(object.isMKArray);
 */
 
-/**
-@member {boolean} Matreshka.Array#useBindingsParser
-@importance 3
-@summary Свойство отключает парсер, если присвоить ему ``false``
-@see {@link Matreshka.Array#itemRenderer}
-@example
-var MyArray = Class({
-	'extends': MK.Array,
-	useBindingsParser: false,
-	itemRenderer: '<li>{{property}}'
-});
-*/
-
 
 /**
 @member {boolean} Matreshka.Array#renderIfPossible
@@ -552,9 +539,6 @@ var MyArray = Class({
 var app = new MyArray();
 ```
 Пример выше полностью повторяет предыдущий, но не требует создания отдельного класса для Модели, так как нам не требуется отлавливать событие ``render`` и объявлять привязки вручную. <a href="http://jsbin.com/wabiyi/1/" target="_blank">Живой пример</a>
-
-Обратите внимание:
-Скорость кода с шаблонизатором несколько ниже, чем без него. Это происходит из-за того, что анализ строки, перебор ключей в цикле (при использовании нескольких ключей в одном атрибуте), замена подстрок регулярным выражением и пр. требуют больше ресурсов. Шаблонизатор можно отключить двумя способами: установить свойство {@link Matreshka.Array#useBindingsParser}, как ``false``, или не использовать синтаксис &#123;{KEY}} вовсе (шаблонизатор срабатывает только тогда, когда у узла или HTML строки есть двойные фигурные скобки).
 
 Шаблонизация реализована с помощью метода {@link Matreshka#parseBindings}.
 
@@ -1016,24 +1000,6 @@ this.rerender({
 
 
 /**
-@method Matreshka.Array#hasOwnProperty
-@importance 3
-@summary Существует ли свойство в экземпляре (индекс или свойство ``length``)
-@returns {boolean}
-@example
-var mkArray = new MK.Array(42); // создает массив длиной 42
-
-mkArray.hasOwnProperty(5); // true
-
-mkArray.hasOwnProperty(100500); // false
-
-mkArray.hasOwnProperty('length'); // true
-
-mkArray.hasOwnProperty('blah'); // false
-*/
-
-
-/**
 @method Matreshka.Array#toJSON
 @importance 1
 @summary Конвертирует экземпляр и элементы, входящие в него в обычный массив
@@ -1078,20 +1044,6 @@ removed = this.pull(object2);
 alert(removed === object2); // true
 
 alert(this.length); // 2
-*/
-
-
-/**
-@method Matreshka.Array#each
-@importance 3
-@summary Работает точно так же, как и метод ``forEach``, который перебирает элементы массива
-@param {function} callback - Функция, запускаемая на каждой итерации
-@param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``callback``
-@returns {matreshkaArray} self
-@example
-this.each(function(item, index) {
-	console.log(index, item);
-});
 */
 
 

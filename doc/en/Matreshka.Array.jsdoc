@@ -231,18 +231,6 @@ this.shift_({
 alert(object.isMKArray);
 */
 
-/**
-@member {boolean} Matreshka.Array#useBindingsParser
-@importance 3
-@summary The property turns off the parser if it is assigned ``false``
-@see {@link Matreshka.Array#itemRenderer}
-@example
-var MyArray = Class({
-	'extends': MK.Array,
-	useBindingsParser: false,
-	itemRenderer: '<li>{{property}}</li>'
-});
-*/
 
 /**
 @member {boolean} Matreshka.Array#renderIfPossible
@@ -544,9 +532,6 @@ var MyArray = Class({
 var app = new MyArray();
 ```
 The example above is completely the same as the previous one, but it does not require to create a separate class for the Model as we do not have to catch the ``render`` event and to declare bindings manually. <a href="http://jsbin.com/wabiyi/1/" target="_blank">Live example</a>
-
-Pay attention:
-The code speed is lower with the template engine than without it. It happens because of complex logic that implements it. If you want to turn it off you need: assign false to the {@link Matreshka.Array#useBindingsParser} or just don't use &#123;{KEY}} syntax (the engine works only when a node or HTML string includes double braces).
 
 The template engine is powered by {@link Matreshka#parseBindings}.
 
@@ -1008,25 +993,6 @@ this.rerender({
 */
 
 
-
-/**
-@method Matreshka.Array#hasOwnProperty
-@importance 3
-@summary Returns ``true`` if a property is present in an instance (index or ``length`` property)
-@returns {boolean}
-@example
-var mkArray = new MK.Array(42); // creates the array of the length 42
-
-mkArray.hasOwnProperty(5); // true
-
-mkArray.hasOwnProperty(100500); // false
-
-mkArray.hasOwnProperty('length'); // true
-
-mkArray.hasOwnProperty('blah'); // false
-*/
-
-
 /**
 @method Matreshka.Array#toJSON
 @importance 1
@@ -1072,20 +1038,6 @@ removed = this.pull(object2);
 alert(removed === object2); // true
 
 alert(this.length); // 2
-*/
-
-
-/**
-@method Matreshka.Array#each
-@importance 3
-@summary Works the same as the ``forEach`` method which enumerates array items
-@param {function} callback - A function which is called on every iteration
-@param {*} [thisArg] - An object which is used as ``this`` on calling ``callback``
-@returns {matreshkaArray} self
-@example
-this.each(function(item, index) {
-	console.log(index, item);
-});
 */
 
 

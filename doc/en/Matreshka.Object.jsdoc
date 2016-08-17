@@ -90,26 +90,6 @@ var keys = this.keys();
 
 
 /**
-@method Matreshka.Object#hasOwnProperty
-@importance 3
-@summary Checks if there is a property which is responsible for data with given key in an instance.
-@param {string} key
-@returns {matreshkaObject} self
-@example
-var mkObject = new MK.Object({
-	a: 1,
-	b: 2
-});
-
-mkObject.hasOwnProperty('a'); // true
-
-mkObject.hasOwnProperty('b'); // true
-
-mkObject.hasOwnProperty('c'); // false
-*/
-
-
-/**
 @method Matreshka.Object#toJSON
 @importance 1
 @summary Converts an instance and {@link Matreshka.Object} internal properties into an ordinary object.

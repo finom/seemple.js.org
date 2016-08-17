@@ -91,26 +91,6 @@ var keys = this.keys();
 
 
 /**
-@method Matreshka.Object#hasOwnProperty
-@importance 3
-@summary Проверяет есть ли в экземпляре свойство, отвечающее за данные, с заданным ключом
-@param {string} key
-@returns {matreshkaObject} self
-@example
-var mkObject = new MK.Object({
-	a: 1,
-	b: 2
-});
-
-mkObject.hasOwnProperty('a'); // true
-
-mkObject.hasOwnProperty('b'); // true
-
-mkObject.hasOwnProperty('c'); // false
-*/
-
-
-/**
 @method Matreshka.Object#toJSON
 @importance 1
 @summary Конвертирует экземпляр и внутренние свойства {@link Matreshka.Object} в обычный объект
