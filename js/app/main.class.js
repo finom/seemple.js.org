@@ -5,7 +5,6 @@ import Typedefs from './typedefs.class';
 import Typo from './typo.class';
 import Notifier from './notifier.class';
 import Search from './search.class';
-import Performance from './performance.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import prettify from '../lib/prettify';
@@ -33,7 +32,6 @@ export default class Main extends MK.Object {
 				typo: Typo,
 				notifier: Notifier,
 				search: Search,
-				performance: Performance,
 				articles: Articles,
 				typedefs: Typedefs,
 				examples: Examples

@@ -1,0 +1,36 @@
+<%- include('nav.html') %>
+
+<main>
+	<%- include('promo.html') %>
+	<section>
+		<article id="!introduction">
+			<%- include('introduction.md') %>
+		</article>
+		<article id="!getting-started">
+			<%- include('getting-started.md') %>
+		</article>
+		<article id="!hello-world">
+			<%- include('hello-world.md') %>
+		</article>
+		<article id="!how-to-include">
+			<%- include('how-to-include.md') %>
+		</article>
+		<article id="!examples">
+			<%- include('examples.md') %>
+		</article>
+	</section>
+	<%- include('temp/doc_content.html') %>
+	<%- include('other.html') %>
+</main>
+<%- include('helpers.html') %>
+<script>
+	setTimeout(function() {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-12418613-4', 'auto');
+	    ga('send', 'pageview');
+	}, 0);
+</script>

@@ -31,7 +31,8 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style', 'css!sass')
             },
             { test: /\.html$/, loader: 'ejs-compiled' },
-            { test: /\.md$/, loader: "html!markdown" }
+            { test: /\.md$/, loader: "html!markdown" },
+            { test: /\.yaml$/,  loader: 'json!yaml' }
         ]
     },
     plugins: [
@@ -39,13 +40,18 @@ module.exports = {
             allChunks: true
         }),
         new HtmlWebpackPlugin({
-            template: 'html/layout.html',
+            template: './html/layout.html',
             filename: 'index.html',
             language: 'en'
         }),
+        new HtmlWebpackPlugin({
+            template: './html/layout.html',
+            filename: 'index.ru.html',
+            language: 'ru'
+        }),
         new GenerateDocumentationPlugin({
             srcFolder: resolve('doc/'),
-            getDestination: lang => resolve('temp/', lang)
+            getDestination: lang => resolve('html', lang, 'temp')
         }),
         new CopyWebpackPlugin([{
             from: resolve('static/'),
