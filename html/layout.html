@@ -2,7 +2,8 @@
 	var options = htmlWebpackPlugin.options;
 	var page = require('./' + options.language + '/page.yaml');
 	function include(name) {
-		var content = require('./' + options.language + '/' + name);
+		var path = require('path');
+		var content = require('./' + path.join(options.language, name));
 		return typeof content === 'function' ? content(data) : content;
 	}
 

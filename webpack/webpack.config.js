@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GenerateDocumentationPlugin = require('./generate-documentation');
+const sassAssetFunctions = require('node-sass-asset-functions')
 
 const resolve = (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
 
@@ -62,8 +63,8 @@ module.exports = {
         }])
     ],
     sassLoader: {
-        functions: require('node-sass-asset-functions')({
+        functions: sassAssetFunctions({
             images_path: 'sass/inlined-images',
-        }),
+        })
     }
 };
