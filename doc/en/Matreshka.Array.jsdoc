@@ -1113,7 +1113,7 @@ this.each(function(item, index) {
 @importance 2
 @since 1.6
 @summary Sorts by properties of the items
-@desc The method uses {@link Matreshka.sortBy} for ordering and it's sorting ``this`` instead of creation of new array.
+@desc This static method works almost like [orderBy from lodash](https://lodash.com/docs#orderBy). It accepts a key or a list of keys as the first arg and an order (asc/desc) or a list of orders as the second arg.
 
 @param {string|string[]} keys - A key or a list of keys
 @param {string|string[]} [orders=asc] - An order or a list of orders corresponding to the list of keys

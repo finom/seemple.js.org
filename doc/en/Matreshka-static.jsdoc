@@ -1,19 +1,4 @@
 /**
-@method Matreshka.extend
-@importance 3
-@summary A little additional function which extends one object by means of the other object properties
-@prop {object} o1
-@prop {...object} o2
-@returns {object} o1
-@example
-var o1 = {a: 3},
-	o2 = {b: 4};
-
-MK.extend(o1, o2);
-*/
-
-
-/**
 @member {string} Matreshka.version
 @importance 3
 @summary The version of Matreshka
@@ -111,34 +96,6 @@ MK.defaultBinders.unshift( function( element ) {
 // ...
 
 this.bindNode('myKey', '.custom-checkbox');
-*/
-
-
-/**
-@method Matreshka.noop
-@importance 3
-@summary An empty function which does nothing
-@example
-this.on('x', MK.noop);
-*/
-
-
-/**
-@method Matreshka.each
-@importance 3
-@summary Iterates any object running its every property through ``callback`` function
-@desc This static method is similar to the work of ``Array.prototype.forEach``.
-@param {object} o - An object
-@param {function} callback - A function which is launched on every iteration
-@param {*} [thisArg] - An object which is used as ``this`` on calling ``callback``
-@example
-var myObject = {
-	a: 1,
-	b: 2
-};
-MK.each(myObject, function(value, key) {
-	// ...
-});
 */
 
 
@@ -596,32 +553,6 @@ alert(d); // undefined
 @example <caption>Use syntax  ``[[=property]]`` instead of &#123;{property}}</caption>
 MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';
-*/
-
-
-/**
-@method Matreshka.orderBy
-@importance 3
-@since 1.6
-@summary Creates an array of elements, sorted by properties of its items
-@desc This static method works just like [orderBy from lodash](https://lodash.com/docs#orderBy). It accepts array-like object as the first arg, a key or a list of keys as the second arg and an order (asc/desc) or a list of orders as the third arg.
-
-
-@param {object} collection - A collection (array-like object)
-@param {string|string[]} keys - A key or a list of keys
-@param {string|string[]} [orders=asc] - An order or a list of orders corresponding to the list of keys
-@returns {array} The new sorted array
-@example <caption>A little example taken from lodash documentation</caption>
-var users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 34 },
-  { 'user': 'fred',   'age': 42 },
-  { 'user': 'barney', 'age': 36 }
-];
-
-// sort by `user` in ascending order and by `age` in descending order
-MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
-// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */
 
 

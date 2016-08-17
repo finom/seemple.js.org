@@ -1,19 +1,4 @@
 /**
-@method Matreshka.extend
-@importance 3
-@summary Небольшая вспомогательная функция, которая расширяет один объект свойствами другого объекта
-@prop {object} o1
-@prop {...object} o2
-@returns {object} o1
-@example
-var o1 = {a: 3},
-	o2 = {b: 4};
-
-MK.extend(o1, o2);
-*/
-
-
-/**
 @member {string} Matreshka.version
 @importance 3
 @summary Версия Матрешки
@@ -111,34 +96,6 @@ MK.defaultBinders.unshift( function( element ) {
 // ...
 
 this.bindNode('myKey', '.custom-checkbox');
-*/
-
-
-/**
-@method Matreshka.noop
-@importance 3
-@summary Пустая функция, которая ничего не делает
-@example
-this.on('x', MK.noop);
-*/
-
-
-/**
-@method Matreshka.each
-@importance 3
-@summary Итерирует любой объект, прогоняя каждое его свойство через функцию ``callback``
-@desc Этот статичный метод схож с работой ``Array.prototype.forEach``.
-@param {object} o - Объект
-@param {function} callback - Функция, запускаемая на каждой итерации
-@param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``callback``
-@example
-var myObject = {
-	a: 1,
-	b: 2
-};
-MK.each(myObject, function(value, key) {
-	// ...
-});
 */
 
 
@@ -597,31 +554,6 @@ alert(d); // undefined
 @example <caption>Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо &#123;{property}}</caption>
 MK.parserBrackets.left = '[[=';
 MK.parserBrackets.right = ']]';
-*/
-
-
-/**
-@method Matreshka.orderBy
-@importance 3
-@since 1.6
-@summary Сортирует переданный массив по значениям свойств объектов, которые в него входят
-@desc Этот статичный метод работает точно так же, как и метод [orderBy из lodash](https://lodash.com/docs#orderBy). Он принимает коллекцию (array-like объект) первым аргументом, ключ или массив ключей - вторым, порядок (asc/desc) или массив порядков - третьим.
-
-@param {object} collection - Коллекция (array-like объект)
-@param {string|string[]} keys - Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована
-@param {string|string[]} [orders=asc] - Порядок или массив порядков, соответствующих массиву ключей
-@returns {array} Новый отсортированный массив
-@example <caption>Пример из документации к lodash</caption>
-var users = [
-  { 'user': 'fred',   'age': 48 },
-  { 'user': 'barney', 'age': 34 },
-  { 'user': 'fred',   'age': 42 },
-  { 'user': 'barney', 'age': 36 }
-];
-
-// сортирует по значениям свойств `user` по возрастанию и значениям свойств `age` по убыванию
-MK.orderBy(users, ['user', 'age'], ['asc', 'desc']);
-// → [{"user":"barney","age":36},{"user":"barney","age":34},{"user":"fred","age":48},{"user":"fred","age":42}]
 */
 
 
