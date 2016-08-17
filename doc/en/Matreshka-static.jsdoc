@@ -515,55 +515,6 @@ MK.remove(object, 'x');
 
 
 /**
-@method Matreshka.define
-@importance 3
-@since 1.1
-@summary Overrides a property descriptor completely using ``Object.defineProperty``
-@desc This static method works the same as {@link Matreshka#define} and all its variations, but accepts any kind of JavaScript objects as first argument.
-@returns {object} The first argument
-@see {@link Matreshka#define}
-@example
-var object = {};
-MK.define(object, 'myKey', {
-	get: function() { ... }
-	set: function() { ... }
-});
-*/
-
-
-/**
-@method Matreshka.defineGetter
-@importance 3
-@since 1.1
-@summary Defines custom getter for a property
-@desc This static method works the same as {@link Matreshka#defineGetter} and all its variations, but accepts any kind of JavaScript objects as first argument.
-@returns {object} The first argument
-@see {@link Matreshka#defineGetter}
-@example
-var object = {};
-MK.defineGetter(object, 'myKey', function() {
-	return 42;
-});
-*/
-
-
-/**
-@method Matreshka.defineSetter
-@importance 3
-@since 1.1
-@summary Defines a custom setter for a property
-@desc This static method works the same as {@link Matreshka#defineSetter} and all its variations, but accepts any kind of JavaScript objects as first argument.
-@returns {object} The first argument
-@see {@link Matreshka#defineSetter}
-@example
-var object = {};
-MK.defineSetter(object, 'myKey', function() {
-	alert('setter is running');
-});
-*/
-
-
-/**
 @method Matreshka.parseBindings
 @importance 3
 @since 1.1
@@ -575,19 +526,6 @@ MK.defineSetter(object, 'myKey', function() {
 var object = {};
 var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
 object.name = 'Arthur Philip Dent';
-*/
-
-
-/**
-@method Matreshka.trim
-@importance 3
-@since 1.1
-@summary Strip whitespace from the beginning and end of a string
-@desc The method is usable when you're not sure does browser support ``String.prototype.trim``.
-@param {string} string - A string
-@returns {string} A result
-@example
-console.log(MK.trim('   hello world  ')); // "hello world"
 */
 
 

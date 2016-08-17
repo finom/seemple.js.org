@@ -516,55 +516,6 @@ MK.set(object, 'x', 42, {
 MK.remove(object, 'x');
 */
 
-
-/**
-@method Matreshka.define
-@importance 3
-@since 1.1
-@summary Полностью переписывает дескриптор свойства, используя ``Object.defineProperty``
-@desc Этот статичный метод работает так же, как и {@link Matreshka#define} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
-@see {@link Matreshka#define}
-@example
-var object = {};
-MK.define(object, 'myKey', {
-	get: function() { ... }
-	set: function() { ... }
-});
-*/
-
-
-/**
-@method Matreshka.defineGetter
-@importance 3
-@since 1.1
-@summary Устанавливает кастомный геттер для свойства
-@desc Этот статичный метод работает так же, как и {@link Matreshka#defineGetter} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
-@see {@link Matreshka#defineGetter}
-@example
-var object = {};
-MK.defineGetter(object, 'myKey', function() {
-	return 42;
-});
-*/
-
-
-/**
-@method Matreshka.defineSetter
-@importance 3
-@since 1.1
-@summary Устанавливает кастомный сеттер для свойства
-@desc Этот статичный метод работает так же, как и {@link Matreshka#defineSetter} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
-@see {@link Matreshka#defineSetter}
-@example
-var object = {};
-MK.defineSetter(object, 'myKey', function() {
-	alert('setter is running');
-});
-*/
-
 /**
 @method Matreshka.parseBindings
 @importance 3
@@ -577,18 +528,6 @@ MK.defineSetter(object, 'myKey', function() {
 var object = {};
 var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
 object.name = 'Arthur Philip Dent';
-*/
-
-/**
-@method Matreshka.trim
-@importance 3
-@since 1.1
-@summary Удаляет пробелы из начала и конца строки
-@desc Метод может быть полезен в том случае, если браузер не поддерживает ``String.prototype.trim``.
-@param {string} string - Строка
-@returns {string} Результат
-@example
-console.log(MK.trim('   hello world  ')); // "hello world"
 */
 
 
