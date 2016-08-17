@@ -384,54 +384,6 @@ MK.selectAll(object, '.my-element');
 
 
 /**
-@method Matreshka.bound
-@importance 3
-@since 1.1
-@summary Возвращает первый привязанный элемент или null
-@desc Этот статичный метод работает так же, как и {@link Matreshka#bound} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {node|null} Привязаннй элемент
-@see {@link Matreshka#bound}
-@example
-var object = {},
-	bound;
-MK.bindNode(object, 'x', '.my-node');
-bound = MK.bound(object, 'x');
-*/
-
-
-/**
-@method Matreshka.boundAll
-@importance 3
-@since 1.1
-@summary Возвращает коллекцию привязанных элементов
-@desc Этот статичный метод работает так же, как и {@link Matreshka#boundAll} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {$nodes} Привязанные элементы
-@see {@link Matreshka#boundAll}
-@example
-var object = {},
-	bound;
-MK.bindNode(object, 'x', '.my-node');
-bound = MK.boundAll(object, 'x');
-*/
-
-
-/**
-@method Matreshka.$bound
-@importance 3
-@since 1.1
-@summary Возвращает коллекцию привязанных элементов
-@desc Этот статичный метод работает так же, как и {@link Matreshka#$bound} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {$nodes} Привязанные элементы
-@see {@link Matreshka#$bound}
-@example
-var object = {},
-	bound;
-MK.bindNode(object, 'x', '.my-node');
-bound = MK.$bound(object, 'x');
-*/
-
-
-/**
 @method Matreshka.get
 @importance 3
 @since 1.1

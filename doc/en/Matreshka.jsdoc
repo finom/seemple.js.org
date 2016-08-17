@@ -503,7 +503,6 @@ this.bindNode('sandbox', '.my-sandbox');
 
 The definition of the sandbox adds lots of conveniences for you. For example:
 + allows to use the {@link Matreshka#select} and {@link Matreshka#$} methods
-+ allows to use the {@link Matreshka#bound} and {@link Matreshka#$bound} methods without specifying an argument
 + allows to use the {@link Matreshka#sandbox} and {@link Matreshka#$sandbox}
 + adds a new ``:sandbox`` selector for the {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} methods and others
 + adds syntactic sugar for delegated DOM events in the {@link Matreshka#on} method
@@ -520,9 +519,6 @@ this.bindNode('myKey', ':sandbox .my-element');
 // it is not required to specify a key
 // for the delegated events inside a sandbox
 this.on('click::(.my-button)', function() { ... });
-
-// will print a sandbox element into the console
-console.log(this.$bound());
 
 // will put the .inner-node element
 // which is inside the sandbox into the console
@@ -553,7 +549,6 @@ this.a.b = {c: {d: 41}};
 @see {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindOptionalNode}
 @see {@link Matreshka#$}
-@see {@link Matreshka#$bound}
 @see {@link Matreshka.binders}
 @see {@link Matreshka.defaultBinders}
 
@@ -816,45 +811,6 @@ this.unbindNode(temporaryBindings);
 
 
 /**
-@method Matreshka#boundAll
-@importance 3
-@summary Returns a collection of bound nodes by given key
-@param {string} [key] - The key of a property (or a list of keys separated by spaces), which bound elements we want to get. If no arguments are passed the method returns a sandbox.
-@returns {$nodes} Bound nodes
-@example
-this.bindNode('myKey', '.my-element');
-this.boundAll('myKey'); // will return $('.my-element')
-@example <caption>Getting sandbox node (you can use {@link Matreshka#$sandbox} property instead)</caption>
-this.bindNode('sandbox', '.app');
-this.boundAll(); // will return $('.app')
-*/
-
-
-/**
-@method Matreshka#$bound
-@importance 3
-@summary Does the same as {@link Matreshka#boundAll}
-@example
-this.$bound('myKey');
-*/
-
-
-/**
-@method Matreshka#bound
-@importance 3
-@summary Returns the first bound element or ``null``
-@param {string} [key] - A key of a property (or the list of the keys separated by spaces), which bound nodes we need to get. If no arguments are passed the method returns a sandbox.
-@returns {node|null} The bound element
-@example
-this.bindNode('myKey', '.my-element');
-this.bound('mykey'); // will return $('.my-element')[0]
-@example <caption>Getting sandbox node (you can use {@link Matreshka#sandbox} property instead)</caption>
-this.bindNode('sandbox', '.app');
-this.bound(); // will return $('.app')[0]
-*/
-
-
-/**
 @method Matreshka#selectAll
 @importance 2
 @summary Returns HTML nodes corresponding to a selector from the sandbox
@@ -865,7 +821,7 @@ this.bound(); // will return $('.app')[0]
 this.bindNode('sandbox', '.app');
 this.selectAll('.my-element');
 // the same as
-this.$bound().find('.my-element');
+this.$nodes.sandbox.find('.my-element');
 // the same as
 $('.app').find('.my-element');
 
@@ -873,7 +829,7 @@ $('.app').find('.my-element');
 this.bindNode('myKey', '.my-element');
 this.selectAll(':bound(myKey) .my-another-element');
 // the same as
-this.$bound('myKey').find('.my-another-element');
+this.$nodes.myKey.find('.my-another-element');
 // the same as
 $('.my-element').find('.my-another-element');
 */
@@ -900,7 +856,7 @@ this.$('.my-element');
 this.bindNode('sandbox', '.app');
 this.select('.my-element');
 // the same as
-this.bound().querySelector('.my-element');
+this.nodes.sandbox.querySelector('.my-element');
 // the same as
 $('.app').find('.my-element')[0];
 */

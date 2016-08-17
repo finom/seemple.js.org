@@ -501,7 +501,6 @@ this.bindNode('sandbox', '.my-sandbox');
 
 Определение песочницы добавляет множество удобств программисту. Например:
 + Позволяет использовать методы {@link Matreshka#select} и {@link Matreshka#$}
-+ Позволяет использовать методы {@link Matreshka#bound} и {@link Matreshka#$bound} без указания аргумента
 + Позволяет использовать свойства {@link Matreshka#sandbox} и {@link Matreshka#$sandbox}
 + Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} и других
 + Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
@@ -517,9 +516,6 @@ this.bindNode('myKey', ':sandbox .my-element');
 
 // для делегированных событий внутри песочницы не требуется указывать ключ
 this.on('click::(.my-button)', function() { ... });
-
-// выведет в консоль элемент песочницы
-console.log(this.$bound());
 
 // выведет в консоль элемент .inner-node, который находится внутри песочницы
 console.log(this.$('.inner-node'));
@@ -549,7 +545,6 @@ this.a.b = {c: {d: 41}};
 @see {@link Matreshka#unbindNode}
 @see {@link Matreshka#bindOptionalNode}
 @see {@link Matreshka#$}
-@see {@link Matreshka#$bound}
 @see {@link Matreshka.binders}
 @see {@link Matreshka.defaultBinders}
 
@@ -807,46 +802,6 @@ this.unbindNode(temporaryBindings);
 
 
 /**
-@method Matreshka#boundAll
-@importance 3
-@summary Возвращает коллекцию привязанных элементов
-@desc После привязки свойств и HTML элементов, можно получить коллекцию этих элементов с помощью метода ``boundAll``.
-@param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чьи привязанные элементы мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
-@returns {$nodes} Привязанные элементы
-@example
-this.bindNode('myKey', '.my-element');
-this.boundAll('myKey'); // вернет $('.my-element')
-@example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#$sandbox})</caption>
-this.bindNode('sandbox', '.app');
-this.boundAll(); // вернет $('.app')
-*/
-
-
-/**
-@method Matreshka#$bound
-@importance 3
-@summary Делает то же самое, что и {@link Matreshka#boundAll}
-@example
-this.$bound('myKey');
-*/
-
-
-/**
-@method Matreshka#bound
-@importance 3
-@summary Возвращает первый привязанный элемент или null
-@param {string} [key] - Ключ свойства (или список ключей, разделенных пробелами), чей привязанный элемент мы хотим получить. Если аргумент не передан, вернется элемент, являющийся песочницей для экземпляра
-@returns {node|null} Привязанный элемент
-@example
-this.bindNode('myKey', '.my-element');
-this.bound('mykey'); // вернет $('.my-element')[0]
-@example <caption>Возврат песочницы (вместо этого, можно использовать свойство {@link Matreshka#sandbox})</caption>
-this.bindNode('sandbox', '.app');
-this.bound(); // вернет $('.app')[0]
-*/
-
-
-/**
 @method Matreshka#selectAll
 @importance 2
 @summary Возвращает элементы из песочницы, соответствующие селектору
@@ -857,7 +812,7 @@ this.bound(); // вернет $('.app')[0]
 this.bindNode('sandbox', '.app');
 this.selectAll('.my-element');
 // то же самое, что и
-this.$bound().find('.my-element');
+this.$nodes.sandbox.find('.my-element');
 // и то же самое, что и
 $('.app').find('.my-element');
 
@@ -865,7 +820,7 @@ $('.app').find('.my-element');
 this.bindNode('myKey', '.my-element');
 this.selectAll(':bound(myKey) .my-another-element');
 // то же самое, что и
-this.$bound('myKey').find('.my-another-element');
+this.$nodes.myKey.find('.my-another-element');
 // и то же самое, что и
 $('.my-element').find('.my-another-element');
 */
@@ -892,7 +847,7 @@ this.$('.my-element');
 this.bindNode('sandbox', '.app');
 this.select('.my-element');
 // то же самое, что и
-this.bound().querySelector('.my-element');
+this.nodes.sandbox.querySelector('.my-element');
 // и то же самое, что и
 $('.app').find('.my-element')[0];
 */
