@@ -45,7 +45,7 @@ new MK.Object();
 // the same as new MK.Object().jset({a: 1, b: 2});
 new MK.Object({a: 1, b: 2});
 @example <caption>The inheritance.</caption>
-var MyClass = Class({
+var MyClass = MK.Class({
 	'extends': MK.Object,
 	constructor: function() {
 		this.sayHello();

@@ -15,7 +15,7 @@ var mk = new Matreshka;
 @example <caption>Краткая запись: MK вместо Matreshka</caption>
 var mk = new MK;
 @example <caption>Наследование</caption>
-var MyClass = Class({
+var MyClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function() {
 		this.sayHello();
@@ -910,7 +910,7 @@ this.mediate({
 @param {function} class - Класс, который вы хотите установить свойству
 @param {function} [updateCallback] - Функция, вызывающаяся при каждой попытке присвоить новые данные свойству, позволяющая кастомизировать логику обновления экземпляра класса новыми данными. Функция принимает два аргумента: текущее значение свойства (экземпляр класса) и данные, которые пытаются присвоить.
 @example
-var SubClass = Class({
+var SubClass = MK.Class({
 	// ...
 });
 
@@ -929,7 +929,7 @@ this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
 });
 @example <caption>Получение родителя и ключа. Кроме данных (первый аргумент), в конструктор создаваемого класса, передается ссылка на объект, вызвавший ``setClassFor`` и ключ свойства</caption>
-var MySubClass = Class({
+var MySubClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function(data, parent, key) {
 		// parent - это экземпляр MyClass
@@ -937,7 +937,7 @@ var MySubClass = Class({
 	}
 });
 
-var MyClass = Class({
+var MyClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function() {
 		this.setClassFor('x', MySubClass);

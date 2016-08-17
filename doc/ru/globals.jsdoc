@@ -51,45 +51,6 @@ var MyClass = Class({
 alert(MyClass.staticProp); // foo
 alert(MyClass.staticMethod()); // bar
 
-@example <caption>Использование AMD (именованные модули)</caption>
-require.config({
-	paths: {
-		'xclass': 'path/to/matreshka.min',
-		'matreshka': 'path/to/matreshka.min',
-		'bquery': 'path/to/matreshka.min'
-	}
-});
-require(['xclass', 'matreshka', 'bquery'], function(Class, MK, $) {
-	var MyClass = Class({
-		'extends': MK,
-		constructor: function() {
-			// ...
-		}
-	});
-});
-@example <caption>Использование AMD (безымянный модуль)</caption>
-// Матрешка содержит функции Class и $b, как статичные свойства
-require(['path/to/matreshka.min'], function(MK) {
-	var MyClass = MK.Class({
-		'extends': MK,
-		constructor: function() {
-			// ...
-		}
-	});
-});
-
-@example <caption>Матрешка поддерживает любой вид прототипного наследования, в том числе и классы из ECMAScript 2015</caption>
-class A extends B {
-	constructor() {
-		super();
-		this.sayHello();
-	}
-
-	sayHello() {
-		alert("Hello World!");
-	}
-}
-
 */
 
 

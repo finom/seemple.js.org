@@ -1,18 +1,55 @@
 /**
 @method Matreshka.Class
 @importance 2
-@since 0.2
-@summary A link to the {@link Class} global function
-@desc This way of using the ``Class`` function is usable when an application you develop uses {@link https://github.com/amdjs/amdjs-api/blob/master/AMD.md AMD}
+@summary A class implementation based on the prototype inheritance
+@desc The ``Class`` function allows to use the classic OOP when ECMAScript 2015 classes cannot be used somehow.
+
+@param {object} prototype - Methods and properties
+@param {object} [statics] - Static methods and properties
+
+@returns {class} class (a class constructor to be exact)
 @example
-MK.Class({
-	method: function() {}
+var A = MK.Class({
+	method1: function() { ... }
 });
 
-// the same as
-Class({
-	method: function() {}
+var B = MK.Class({
+	// B is inherited from A
+	'extends': A,
+	method2: function() { ... }
 });
+
+var C = MK.Class({
+	// С is inherited from B
+	'extends': B,
+	method2: function() {
+		// calling the parent method
+		B.prototype.method2.apply(this, arguments);
+	},
+	method3: function(a, b) { ... }
+});
+
+var D = MK.Class({
+	// D is inherited from C
+	'extends': C,
+	method3: function(a, b) {
+		// calling the parent method
+		C.prototype.method2.call(this, arguments);
+	}
+});
+
+@example <caption>Passing an object with static methods and properties</caption>
+var MyClass = MK.Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp); // foo
+alert(MyClass.staticMethod()); // bar
 */
 
 

@@ -15,7 +15,7 @@ var mk = new Matreshka();
 @example <caption>You can use ``MK`` variable instead of ``Matreshka``</caption>
 var mk = new MK();
 @example <caption>Inheritance</caption>
-var MyClass = Class({
+var MyClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function() {
 		this.sayHello();
@@ -918,7 +918,7 @@ While attempting to assign another value (an object or an array) to the property
 @param {function} class - Class you want to assign to the property
 @param {function} [updateCallback] - Function which is called at every attempt of assigning new data to the property, allowing to customize logic of class instance updating with new data. The function receives two arguments: the current property value (class instance) and data which are attempted to assign.
 @example
-var SubClass = Class({
+var SubClass = MK.Class({
 	// ...
 });
 
@@ -937,7 +937,7 @@ this.setClassFor('x', SubClass, function(instance, data) {
 	updateSomeHow(instance, data);
 });
 @example <caption>Getting parent and key. Besides data (the first argument), two arguments are passed to class constructor: a link to an instance which has called ``setClassFor`` and a key of the property.</caption>
-var MySubClass = Class({
+var MySubClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function(data, parent, key) {
 		// parent - is MyClass instance
@@ -945,7 +945,7 @@ var MySubClass = Class({
 	}
 });
 
-var MyClass = Class({
+var MyClass = MK.Class({
 	'extends': Matreshka,
 	constructor: function() {
 		this.setClassFor('x', MySubClass);

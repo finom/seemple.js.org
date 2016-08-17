@@ -217,7 +217,7 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 Класс (точнее, конструктор класса) возвращаемый функцией {@link Class}
 @typedef {function} class
 @example
-var MyClass = Class({
+var MyClass = MK.Class({
 	method: function() { ... }
 });
 */

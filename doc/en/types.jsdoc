@@ -216,7 +216,7 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 A class (more precisely constructor of a class) returned by {@link Class} function
 @typedef {function} class
 @example
-var MyClass = Class({
+var MyClass = MK.Class({
 	method: function() { ... }
 });
 */
