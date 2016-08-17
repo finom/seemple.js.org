@@ -38,7 +38,7 @@ main {
 					background-color: $secondary-color;
 					font-size: .6rem;
 					width: 140px;
-					@include transform(rotate(-45deg));
+					transform: rotate(-45deg);
 					position: absolute;
 					top: 7px;
 					left: -58px;

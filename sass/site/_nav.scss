@@ -9,13 +9,17 @@ nav {
 	top: 0;
 	height: 100%;
 	z-index: 3;
-	@include transform(translateX(0));
-	@include sidebar-animation(#{"transform, -webkit-transform"});
+	transform: translateX(0);
+	//@include sidebar-animation(#{"transform, -webkit-transform"});
+	//@include transition-property($property);
+	//@include transition-duration(.4s);
+	//@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+	transition: transform 1s ease-in-out;
 
-	@include box-shadow(0 2px 5px 0 rgba(#000,.16));
+	box-shadow: 0 2px 5px 0 rgba(#000,.16);
 
 	@media #{$medium-and-down} {
-		@include transform(translateX(-$sidenav-width));
+		transform: translateX(-$sidenav-width);
 	}
 
 	.view-switcher, .version-switcher {
@@ -136,9 +140,9 @@ nav {
 			}
 		}
 
-		@include transition-property(margin-top);
-		@include transition-duration(.1s);
-		@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+		transition-property: margin-top;
+		transition-duration: .1s;
+		transition-timing-function: ease-in-out;
 	}
 
 
@@ -285,7 +289,7 @@ body.nav-shown .nav-overlay {
 @media #{$medium-and-down} {
 	body.nav-shown {
 		nav {
-			@include transform(translateX(0));
+			transform: translateX(0);
 		}
 		.nav-overlay {
 			display: block;

@@ -7,7 +7,8 @@ import Notifier from './notifier.class';
 import Search from './search.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
-import prettify from '../lib/prettify';
+//import prettify from '../lib/prettify';
+import hljs from 'highlight.js';
 import _dp from '../lib/details-polyfill';
 
 export default class Main extends MK.Object {
@@ -82,6 +83,8 @@ export default class Main extends MK.Object {
 			}
 		}
 
+
+
 		this.initDynamicStyles();
 
 		// in ie10 code snippets are inlined
@@ -91,7 +94,11 @@ export default class Main extends MK.Object {
 			}
 		}
 
-		prettyPrint();
+		for(let block of $('code.lang-js, code.lang-html, pre.prettyprint.source')) {
+			hljs.highlightBlock(block);
+		}
+		//prettyPrint();
+
 
 		for(let article of this.articles) {
 			if(article.id === location.hash && article.importance > this.importanceLevel) {

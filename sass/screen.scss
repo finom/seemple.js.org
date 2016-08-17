@@ -1,18 +1,10 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+* {
+    margin: 0;
+    padding: 0;
+}
 
-
-
-/*@import "compass/reset";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transition";
-@import "compass/css3/transform";
-@import "compass/css3/text-shadow";*/
 @import "materialize";
-//@import "fonts";
-@import "prettify";
+@import "../node_modules/highlight.js/styles/default.css";
 @import "site/common";
 @import "site/promo";
 @import "site/main";

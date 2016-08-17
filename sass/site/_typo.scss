@@ -4,7 +4,7 @@ form.typo {
 	top: -100%;
 	opacity: 0;
 	z-index: 1001;
-	
+
 	h5 {
 		&::after {
 			content: 'by';
@@ -18,35 +18,35 @@ form.typo {
 			float: right;
 		}
 	}
-	
+
 	textarea {
 		@extend .materialize-textarea;
 	}
-	
+
 	button {
 		@extend .btn-flat;
 	}
-	
+
 	&.shown {
 		top: 10%;
 		opacity: 1;
 	}
-	
+
 	p.selection {
 		&::before, &::after {
 			content: '...';
 		}
 	}
-	
+
 	.cancel {
 		float: right;
 	}
-	
-	
-	@include transition-property(#{"opacity,top"});
-	@include transition-duration(.4s);
-	@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
-} 
+
+
+	transition-property: opacity, top;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+}
 
 
 .typo-overlay {
@@ -73,12 +73,12 @@ form.typo {
 	padding: 0 15px;
 	-webkit-transition: right  .5s, opacity .5s;
 	transition: right  .5s, opacity .5s;
-	
+
 	button {
 		color: black;
 		line-height: 1.2rem;
 	}
-	
+
 	.close {
 		@extend .mdi, .mdi-navigation-close;
 		position: absolute;

@@ -9,7 +9,7 @@ header {
 	font-size: 1.5rem;
 	z-index: 1;
 
-	@include box-shadow(0 1px 2px 0 rgba(#000,.3));
+	box-shadow: 0 1px 2px 0 rgba(#000,.3);
 
 	&.search-mode {
 		background-color: white;
@@ -164,8 +164,8 @@ header {
 		transform: translateY(-$header-height);
 	}
 
-	@include transition-property(#{"background-color, color, transform"});
-	@include transition-duration(.1s);
-	@include transition-timing-function(ease-in-out);
+	transition-property: background-color, color, transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
 
 }

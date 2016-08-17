@@ -11,7 +11,10 @@ module.exports = {
     devtool: 'source-map',
     context: resolve('./'),
     entry: {
-        app: './js/app',
+        app: [
+            'babel-polyfill',
+            './js/app'
+        ],
         style: './sass/screen.scss'
     },
     output: {
@@ -57,5 +60,10 @@ module.exports = {
             from: resolve('static/'),
             to: resolve('dist/')
         }])
-    ]
+    ],
+    sassLoader: {
+        functions: require('node-sass-asset-functions')({
+            images_path: 'sass/inlined-images',
+        }),
+    }
 };
