@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GenerateDocumentationPlugin = require('./generate-documentation');
 
 
-const resolve => (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
+const resolve = (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
 
 module.exports = {
     devtool: 'source-map',
