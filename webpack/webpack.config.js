@@ -54,6 +54,7 @@ module.exports = {
             language: 'ru'
         }),
         new GenerateDocumentationPlugin({
+            templateFolder: resolve('jsdoc-template/'),
             srcFolder: resolve('doc/'),
             getDestination: lang => resolve('html', lang, 'temp')
         }),

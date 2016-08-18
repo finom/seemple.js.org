@@ -141,42 +141,37 @@ this.on('x.y.z@click::(.my-selector)', function() {...});
 /**
 ``binder`` (байндер, привязчик) содержит всю информацию о том, как синхронизировать значение свойства с привязанным к нему DOM элементом. Для всех методов байндера контекст (``this``) - соответствующий DOM узел.
 @typedef {object} binder
-@property {string|function} [on] - DOM событие (или список событий, разделенных пробелами), после срабатывания которого извлекается состояние DOM элемента и устанавливается свойство. Кроме этого, значением свойства может быть функция, которая устанавливает обработчик произвольным образом.
-@property {function} [getValue] - Функция, которая отвечает за то, как извлечь значение (или "состояние") DOM элемента
+@property {string|function} [on] - Имя DOM события (или список имен событий, разделенных пробелами), после срабатывания которого извлекается состояние DOM элемента и устанавливается свойство. Кроме этого, значением свойства может быть функция, которая устанавливает обработчик произвольным образом.
+@property {function} [getValue] - Функция, которая отвечает за то, как извлечь состояние DOM элемента
 @property {function} [setValue] - Функция, которая отвечает за то, как установить значение свойства DOM элементу
 @property {function} [initialize] - Функция, которая запускается при инициализации привязки. Например, может быть использована для инициализации jQuery плагина.
+@property {function} [destroy] - Функция, которая вызывается после вызова метода ``unbindNode``. Если байндер достаточно сложен, ``destroy`` может содержать удаление логики, навешаной байндером
 @example
 var binder = {
 	on: 'click',
-	getValue: function(options) {
+	getValue: function(bindingOptions) {
 		return this.value;
 	}
-	setValue: function(v, options) {
+	setValue: function(v, bindingOptions) {
 		this.value = v;
 	},
-	initialize: function(options) {
-		alert('Binder is initialized. Initial input value=' + this.value);
+	initialize: function(bindingOptions) {
+		alert('A binding is initialized');
+	},
+	destroy: function(bindingOptions) {
+		alert('A binding is destroyed');
 	}
 };
 
 this.bindNode('a', '.my-checkbox', binder);
 @example
 var binder = {
-	on: function(callback) {
+	on: function(callback, bindingOptions) {
 		this.onclick = callback;
-	},
-	getValue: function(options) {
-		return this.value;
 	}
-	setValue: function(v, options) {
-		this.value = v;
-	},
-	initialize: function(options) {
-		alert('Binder is initialized. Initial input value=' + this.value);
-	}
+	// ...
 };
-
-this.bindNode('a', '.my-checkbox', binder);
+// ...
 */
 
 

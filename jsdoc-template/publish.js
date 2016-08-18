@@ -7,7 +7,7 @@ var fs = require('jsdoc/fs'),
 	cool = 'Matreshka#bindNode Matreshka#linkProps Matreshka#mediate Matreshka#on Matreshka#setClassFor Matreshka.Array#itemRenderer'.split(/\s+/);
 
 mdParser.setOptions({
-	smartLists: false
+	smartLists: false,
 })
 
 exports.publish = function(data, opts) {

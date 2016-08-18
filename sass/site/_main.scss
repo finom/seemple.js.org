@@ -184,13 +184,18 @@ main {
 
 	p {
 		margin-bottom: 1rem;
-		&:last-child {
-			margin-bottom: 0;
-		}
+
 		&:first-child {
 			margin-bottom: 1rem;
 		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
+
+
+
 
 	.signature, .memberof, .signature-class {
 		color: rgba(#000,.3);
@@ -269,6 +274,10 @@ main {
 		vertical-align: middle;
 		display: inline-block;
 		margin: 1px;
+	}
+
+	code {
+		color: #8959a8;
 	}
 
 	code.hljs {

@@ -1,11 +1,13 @@
 const path = require('path');
+const glob = require('glob');
 
 class Plugin {
     constructor(options) {
         this.options = options;
         this.languages = ['en', 'ru'];
-        this.allFileNames = this.getAllFileNames();
-        this.fileNamesByLanguage = this.getFileNamesByLanguage();
+        this.allDocFileNames = this.getAllDocFileNames();
+        this.docFileNamesByLanguage = this.getDocFileNamesByLanguage();
+        this.templateFileNames = glob.sync(`${options.templateFolder}/**/*`);
         this.prevTimestamps = {};
         this.startTime = Date.now();
 
@@ -21,7 +23,11 @@ class Plugin {
 
     afterCompile(compilation, callback) {
         // add files to watch list on every recompilation
-        compilation.fileDependencies.push(...this.allFileNames);
+        compilation.fileDependencies.push(
+            ...this.allDocFileNames,
+            ...this.templateFileNames
+        );
+
         callback();
     }
 
@@ -46,8 +52,18 @@ class Plugin {
     }
 
     renderChanged(changedFiles) {
+        const { templateFileNames } = this;
+
+        for(const changedFile of changedFiles) {
+            if(templateFileNames.includes(changedFile)) {
+                this.compileJSDocAll();
+                return;
+            }
+        }
+
+
         for(const language of this.languages) {
-            const languageFileNames = this.fileNamesByLanguage[language];
+            const languageFileNames = this.docFileNamesByLanguage[language];
 
             for(const changedFile of changedFiles) {
                 if(languageFileNames.includes(changedFile)) {
@@ -69,24 +85,30 @@ class Plugin {
         ].map(name => path.resolve(__dirname, this.options.srcFolder, `${language}/${name}.jsdoc`));
     }
 
-    getAllFileNames() {
-        const allFileNames = [];
+    getAllDocFileNames() {
+        const allDocFileNames = [];
 
         for(const language of this.languages) {
-            allFileNames.push(...this.getFileNames(language))
+            allDocFileNames.push(...this.getFileNames(language))
         }
 
-        return allFileNames;
+        return allDocFileNames;
     }
 
-    getFileNamesByLanguage() {
-        const fileNamesByLanguage = {};
+    getDocFileNamesByLanguage() {
+        const docFileNamesByLanguage = {};
 
         for(const language of this.languages) {
-            fileNamesByLanguage[language] = this.getFileNames(language);
+            docFileNamesByLanguage[language] = this.getFileNames(language);
         }
 
-        return fileNamesByLanguage;
+        return docFileNamesByLanguage;
+    }
+
+    compileJSDocAll() {
+        for(const language of this.languages) {
+            this.compileJSDoc(language);
+        }
     }
 
     compileJSDoc(language) {
@@ -94,9 +116,9 @@ class Plugin {
         const cli = './node_modules/.bin/jsdoc';
         const { spawn } = require('child_process');
         spawn(cli,
-            this.fileNamesByLanguage[language]
+            this.docFileNamesByLanguage[language]
                 .concat([
-                    '-t', './jsdoc-template',
+                    '-t', this.options.templateFolder,
                     '-d', this.options.getDestination(language)
                 ]),
             { stdio: 'inherit' }

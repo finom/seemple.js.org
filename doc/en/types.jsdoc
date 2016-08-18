@@ -140,10 +140,11 @@ this.on('x.y.z@click::(.my-selector)', function() {...});
 /**
 ``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as context (``this``)
 @typedef {object} binder
-@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when node state is changed. Besides, it accepts function as value if you need to catch change arbitrarily
+@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when node state is changed. Besides, it accepts a function as value if you need to catch change arbitrarily
 @property {function} [getValue] - A function which tells how to retrieve value (state) from HTML node when DOM event is fired
 @property {function} [setValue] - A function which tells how to change DOM node when property value is changed
-@property {function} [initialize] - A function which calls before binding is launched. For example it can initialize some jQuery plugin
+@property {function} [initialize] - A function which is called before binding is launched. For example it can initialize some jQuery plugin
+@property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` method
 @example
 var binder = {
 	on: 'click',
@@ -154,7 +155,10 @@ var binder = {
 		this.value = v;
 	},
 	initialize: function(options) {
-		alert('Binder is initialized. Initial input value=' + this.value);
+		alert('A binding is initialized');
+	},
+	destroy: function(options) {
+		alert('A binding is destroyed');
 	}
 };
 
@@ -164,18 +168,9 @@ var binder = {
 	on: function(callback) {
 		this.onclick = callback;
 	},
-	getValue: function(options) {
-		return this.value;
-	}
-	setValue: function(v, options) {
-		this.value = v;
-	},
-	initialize: function(options) {
-		alert('Binder is initialized. Initial input value=' + this.value);
-	}
+	// ...
 };
-
-this.bindNode( 'a', '.my-checkbox', binder );
+// ...
 */
 
 
