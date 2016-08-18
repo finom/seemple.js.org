@@ -133,35 +133,11 @@ main {
 	}
 
 	h1, h2, h3, h4 {
-		line-height: 1.5; // 1,35
 		font-weight: 300;
 		position: relative;
 
 		a {
 			color: $primary-color;
-			/*padding-left: 1.2em;
-			@extend .mdi, .mdi-content-link;
-			&::before {
-				display: none;
-				position: absolute;
-				left: 0;
-				color: rgba(#000,.5);
-				padding-right: 5px;
-			}
-
-			&:hover {
-				&::before {
-					display: inline-block;
-				}
-			}
-
-			@media #{$medium-and-down} {
-				&:hover {
-					&::before {
-						display: none;
-					}
-				}
-			}*/
 		}
 	}
 
@@ -192,8 +168,13 @@ main {
 		}
 	}
 
-	h3, h4 {
+	h3 {
 		font-size: 1.5rem;
+		margin-bottom: .5rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
 		margin-bottom: .5rem;
 	}
 
@@ -281,14 +262,17 @@ main {
 
 	.event {
 		padding: 3px 8px;
-		//color: white;
 		background-color: #f9f9f9;
 		border-radius: 2px;
-		//cursor: pointer;
 		font-size: 1rem;
 		font-family: monospace;
 		vertical-align: middle;
 		display: inline-block;
 		margin: 1px;
+	}
+
+	code.hljs {
+		border: 2px dashed #e0e0e0;
+		margin-bottom: 1rem;
 	}
 }

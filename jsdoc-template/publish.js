@@ -2,9 +2,13 @@
 var fs = require('jsdoc/fs'),
 	outdir = env.opts.destination,
 	template = require('jsdoc/template'),
-	mdParser = require('jsdoc/util/markdown').getParser(),
+	mdParser = require('marked'),
 	important = 'Matreshka Matreshka#on Matreshka#bindNode Matreshka#set Matreshka#trigger Matreshka.Object Matreshka.Object#toJSON Matreshka.Object#jset Matreshka.Array Matreshka.Array#Model Matreshka.Array#itemRenderer Matreshka.Array#METHOD Matreshka.Array#METHOD_'.split(/\s+/),
 	cool = 'Matreshka#bindNode Matreshka#linkProps Matreshka#mediate Matreshka#on Matreshka#setClassFor Matreshka.Array#itemRenderer'.split(/\s+/);
+
+mdParser.setOptions({
+	smartLists: false
+})
 
 exports.publish = function(data, opts) {
 	var origData = data().get(),

@@ -17,6 +17,7 @@
     "install": "^0.8.1",
     "jsdoc": "^3.4.0",
     "json-loader": "^0.5.4",
+    "marked": "^0.3.6",
     "node-sass": "^3.8.0",
     "node-sass-asset-functions": "0.0.9",
     "sass-loader": "^4.0.0",
@@ -26,7 +27,8 @@
   },
   "scripts": {
     "jsdoc": "node script/jsdoc",
-    "bundle": "webpack --config webpack/webpack.config.js"
+    "bundle": "webpack --config webpack/webpack.config.js",
+    "watch": "npm run bundle -- --watch"
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",

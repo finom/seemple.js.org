@@ -57,21 +57,11 @@ class Plugin {
         }
     }
 
-    /*getDefaultTimeStamps() {
-        const now = Date.now();
-        const defaultTimeStamps = {};
-
-        for(let fileName of this.allFileNames) {
-            defaultTimeStamps[fileName] = now;
-        }
-
-        return defaultTimeStamps;
-    }*/
-
     getFileNames(language) {
         return [
             'types',
             'Matreshka',
+            'Matreshka-calc',
             'Matreshka-static',
             'Matreshka.Object',
             'Matreshka.Array',
