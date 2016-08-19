@@ -244,6 +244,10 @@ main {
 		}
 	}
 
+	ol, ul {
+		list-style-position: inside;
+	}
+	
 	ul {
 		margin-bottom: 1rem;
 		li {
@@ -259,7 +263,7 @@ main {
 
 	div.summary {
 		margin-bottom: 1rem;
-		
+
 		&::before {
 			content: '\2014';
 			float: left;

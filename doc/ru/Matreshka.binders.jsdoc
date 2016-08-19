@@ -35,7 +35,7 @@ this.bindNode('myKey', '.my-element', MK.binders.html());
 @importance 2
 @since 0.1
 @summary Возвращает односторонний привязчик, меняющий видимость DOM элемент (используя ``style.display``), в зависимости от значения свойства экземпляра класса
-@param {boolean} [value=true] - Если аргумент равен ``true``, то элемент прячется при ложном значении свойства, если равен ``false``, прячется при правдивом значении
+@param {boolean} [switcher=true] - Если аргумент равен ``true``, то элемент прячется при ложном значении свойства, если равен ``false``, прячется при правдивом значении
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-element', MK.binders.display(true));
@@ -47,8 +47,9 @@ this.bindNode('myKey', '.my-element', MK.binders.display(false));
 @function Matreshka.binders.className
 @importance 2
 @since 0.1
-@summary Возвращает привязчик, который переключает имя класса DOM элемента в зависимости от значения свойства экземпляра класса. Если значение свойства нестрого равно ``true``, имя класса добавляется, в противном случае - убирается. Логику можно изменить, добавив восклицательный знак перед именем класса, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно ``false`` и наоборот.
+@summary Возвращает привязчик, который переключает имя класса DOM элемента в зависимости от значения свойства экземпляра класса. Если значение свойства нестрого равно ``true``, имя класса добавляется, в противном случае - убирается. Логику можно изменить, передав ``false`` вторым аргументом, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно ``false`` и наоборот.
 @param {string} className
+@param {boolean} [switcher=true]
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-element', MK.binders.className('blah'));
@@ -56,8 +57,8 @@ this.bindNode('myKey', '.my-element', MK.binders.className('blah'));
 this.myKey = true; // добавляет класс 'blah'
 
 this.myKey = false; // убирает класс 'blah'
-@example <caption>Использование восклицательного знака перед именем класса</caption>
-this.bindNode('myKey', '.my-element', MK.binders.className('!blah'));
+@example
+this.bindNode('myKey', '.my-element', MK.binders.className('blah', false));
 
 this.myKey = false; // добавляет класс 'blah'
 
