@@ -316,7 +316,7 @@ this.bindNode('x', node, binder, {
 @param {binder} [binder] - Байндер, содержащий свойства ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy``, см. {@link #typedef-binder}.
 @param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (чтоб не генерировать события ``"bind"`` и ``"bind:KEY"``), флаги, описанные выше или кастомные данные
 
-@returns {matreshka} self
+@returns {object} self
 */
 
 
@@ -331,6 +331,8 @@ this.bindNode('x', node, binder, {
 @param {object} keyElementPairs - (см. пример)
 @param {binder} [binder] - (см. выше)
 @param {eventOptions} [eventOptions] - (см. выше)
+
+@returns {object} self
 
 @example
 this.bindNode({
@@ -356,7 +358,9 @@ this.bindNode({
 Второй аргумент - общий объект события, расширяющий ``event`` для каждого байндинга (свойства из ``event`` приоритетнее).
 
 @param {array} batch - Массив байндингов
-@param {eventOptions} [commonEventOptions] - Общие для всех объектов события свойства
+@param {eventOptions} [commonEventOptions] - Общие для всех объектов события свойств
+
+@returns {object} self
 
 @example
 this.bindNode([{

@@ -25,10 +25,10 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
+@oldlink #!Matreshka-unbindNode(2)
 @importance 2
-@variation 2
+@variation key-element
 @summary Альтернативный синтаксис {@link Matreshka#unbindNode} "ключ-элемент" для {@link Matreshka#unbindNode}
-@see {@link Matreshka#bindNode(2)}
 @param {object} keyElementPairs (см. пример)
 @param {eventOptions} [eventOptions] (см. выше)
 @returns {matreshka} self
@@ -42,36 +42,44 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
+@oldlink #!Matreshka-unbindNode(3)
 @importance 2
-@variation 3
-@summary Альтернативный синтаксис {@link Matreshka#unbindNode} "большая куча аргументов"
-@see {@link Matreshka#bindNode(3)}
-@param {array} setOfArguments - Массив массивов аргументов (см. пример)
-@param {eventOptions} [eventOptions] (см. выше)
-@returns {matreshka} self
+@variation batch
+@summary  Альтернативный синтаксис, позволяющий удалить неограниченное количество байндингов одним вызовом метода.
+
+@desc Вариация метода позволяет передать масссив объектов, содержащих информацию об одном байндинге каждый. Элемент массива должен содержать следующие свойства:
+- ``key`` - имя свойства
+- ``node`` - элемент, для которого был объявле байндинг с ``key`` (не обязательно)
+
+Эта вариация метода удобна тем, что её синтаксис совпадает с одной из вариаций метода {@link Matreshka#bindNode}, позволяя присвоить  байндинги переменной для быстрого удаления.
+
+@param {array} batch - Массив байндингов
+@param {eventOptions} [eventOptions]  (см. выше)
+
 @example
-var temporaryBindings = [
-	[{
-		myKey1: '.my-element1'
-		myKey2: '.my-element2'
-	}],
-	[{
-		myKey3: '.my-element3'
-		myKey4: '.my-element4'
-	}, {
-		on: 'click',
-		getValue: function() { ... },
-		setValue: function() { ... }
-	}],
-	[{
-		myKey5: '.my-element5'
-		myKey6: '.my-element6'
-	}, {
-		on: 'somethingelse',
-		getValue: function() { ... },
-		setValue: function() { ... }
-	}]
-];
+const temporaryBindings = [{
+	key: 'a',
+	node: '.my-node',
+	binder: {
+		setValue(v) {
+			doSomething(v);
+		}
+	}
+}, {
+	key: 'b',
+	node: document.querySelectorAll('.bar')
+	event: {
+		foo: 'bar'
+	}
+}, {
+	key: 'c.d.e',
+	node: jQuery('.baz'),
+	binder: Matreshka.binders.html(),
+	event: {
+		silent: true,
+		exactKey: true
+	}
+}]
 
 this.bindNode(temporaryBindings);
 

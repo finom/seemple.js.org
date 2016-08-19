@@ -8,7 +8,7 @@
 @param {string|null} The key or a list of keys which are separated by spaces. If you pass ``null`` instead of the key, all bindings for the given instance will be deleted
 @param {string|node|$nodes} [node] - HTML node
 @param {eventOptions} [eventOptions] -  Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
-@returns {matreshka} self
+@returns {object} self
 @example
 this.bindNode('myKey', '.my-element');
 
@@ -24,13 +24,14 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
+@oldlink #!Matreshka-unbindNode(2)
 @importance 2
-@variation 2
-@summary Alternative syntax "key-element" for {@link Matreshka#unbindNode}
+@variation key-element
+@summary Alternative syntax "key-element" for ``unbindNode``
 @see {@link Matreshka#bindNode(2)}
 @param {object} keyElementPairs (see the example)
 @param {eventOptions} [eventOptions] (see above)
-@returns {matreshka} self
+@returns {object} self
 @example
 this.unbindNode({
 	myKey1: '.my-element1'
@@ -41,36 +42,45 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
+@oldlink #!Matreshka-unbindNode(3)
 @importance 2
-@variation 3
-@summary Alternative syntax "heap of arguments" for {@link Matreshka#unbindNode}
-@see {@link Matreshka#bindNode(3)}
-@param {array} setOfArguments - An array of arrays (see the example)
+@variation batch
+@summary Alternative syntax of the method which allows to easily unbind unlimited amount of bindings by single ``unbindNode`` call.
+
+@desc The variation makes possible to pass an array which includes objects with the following properties:
+
+- ``key`` - a property name
+- ``node`` - a node bound to ``key`` (optional)
+
+This variation is useful because it matches one variation of {@link Matreshka#bindNode} method, allowing to store bindings in a variable to easily remove them when needed.
+
+@param {array} batch - An array of bindings
 @param {eventOptions} [eventOptions] (see above)
-@returns {matreshka} self
+
 @example
-var temporaryBindings = [
-	[{
-		myKey1: '.my-element1'
-		myKey2: '.my-element2'
-	}],
-	[{
-		myKey3: '.my-element3'
-		myKey4: '.my-element4'
-	}, {
-		on: 'click',
-		getValue: function() { ... },
-		setValue: function() { ... }
-	}],
-	[{
-		myKey5: '.my-element5'
-		myKey6: '.my-element6'
-	}, {
-		on: 'somethingelse',
-		getValue: function() { ... },
-		setValue: function() { ... }
-	}]
-];
+const temporaryBindings = [{
+	key: 'a',
+	node: '.my-node',
+	binder: {
+		setValue(v) {
+			doSomething(v);
+		}
+	}
+}, {
+	key: 'b',
+	node: document.querySelectorAll('.bar')
+	event: {
+		foo: 'bar'
+	}
+}, {
+	key: 'c.d.e',
+	node: jQuery('.baz'),
+	binder: Matreshka.binders.html(),
+	event: {
+		silent: true,
+		exactKey: true
+	}
+}]
 
 this.bindNode(temporaryBindings);
 

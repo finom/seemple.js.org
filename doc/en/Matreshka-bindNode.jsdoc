@@ -321,7 +321,7 @@ this.bindNode('x', node, binder, {
 @param {string|node|$nodes} node - An HTML element which must be bound to a ``key``
 @param {binder} [binder] - A binder containing the following properties: ``on`` , ``getValue``, ``setValue``, ``initialize``, ``destroy``. You can get more detailed information about binders in their documentation: see {@link #typedef-binder}
 @param {eventOptions} [eventOptions] - An event options which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), flags described above or custom data
-@returns {matreshka} self
+@returns {object} self
 
 */
 
@@ -337,6 +337,8 @@ this.bindNode('x', node, binder, {
 @param {object} keyElementPairs - (see the example)
 @param {binder} [binder] - (see above)
 @param {eventOptions} [eventOptions] - (see above)
+
+@returns {object} self
 
 @example
 this.bindNode({
@@ -364,6 +366,8 @@ The second arg object includes common event options for all bindings and extends
 
 @param {array} batch - A batch of bindings
 @param {eventOptions} [commonEventOptions] - Common event options
+
+@returns {object} self
 
 @example
 this.bindNode([{
