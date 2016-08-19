@@ -1,5 +1,5 @@
 <?js var link = obj.longname.replace( '#', '-' ); ?>
-<article class="item method" id="!<?js= link ?>" <?js if(obj.since) {?>data-since="<?js= obj.since ?>"<?js } ?>
+<article class="item method" id="!<?js= link ?>"
 <?js if(obj.importance) {?>data-importance="<?js= obj.importance ?>"<?js } ?>>
 	<h2>
 		<a href="#!<?js= link ?>">
@@ -12,7 +12,6 @@
 				}).join( ', ' ) ?></span>)
 				<?js } else { ?>()<?js } ?>
 		</a> <?js= obj.returns ? '<span class="returns">→ ' + this.partial( 'params.html', obj.returns[0] ) + '</span>' : '' ?>
-		<span class="new-badge"></span>
 	</h2>
 	<?js if(obj.since) {?>
 		<div class="since"><p><?js= this.lang.since ?> <?js= obj.since ?>.</p></div>

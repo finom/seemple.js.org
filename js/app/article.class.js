@@ -128,12 +128,7 @@ export default class Article extends MK.Object {
 				menuItem: g.app.select('nav a[href="#' + this.id + '"]'),
 				since: [':sandbox', MK.binders.dataset('since')],
 				isActive: [':bound(menuItem)', MK.binders.className('active')],
-				expanded: [':bound(menuItem)', MK.binders.className('expanded')],
-				newVersions: [':sandbox', {
-					setValue(v) {
-						this.classList.toggle('new', ~v.indexOf(this.getAttribute('data-since')));
-					}
-				}]
+				expanded: [':bound(menuItem)', MK.binders.className('expanded')]
 			})
 			.bindOptionalNode({
 				commentsContainer: ':sandbox .comments-container',

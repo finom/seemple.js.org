@@ -12,39 +12,6 @@ main {
 	article {
 		padding-top: $header-height;
 		max-width: 700px;
-		.new-badge {
-			display: none;
-		}
-		&.new {
-			h2 a {
-				padding-left: 17px;
-			}
-			.new-badge {
-				height: 40px;
-				width: 40px;
-				//padding-right: 40px;
-				overflow: hidden;
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-				pointer-events: none;
-				&::after {
-					content: 'NEW';
-					display: inline-block;
-					text-align: center;
-					color: white;
-					font-weight: 400;
-					background-color: $secondary-color;
-					font-size: .6rem;
-					width: 140px;
-					transform: rotate(-45deg);
-					position: absolute;
-					top: 7px;
-					left: -58px;
-				}
-			}
-		}
 
 		.share-buttons {
 			float: right;
@@ -247,7 +214,7 @@ main {
 	ol, ul {
 		list-style-position: inside;
 	}
-	
+
 	ul {
 		margin-bottom: 1rem;
 		li {
