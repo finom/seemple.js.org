@@ -7,12 +7,14 @@ class Plugin {
         this.languages = ['en', 'ru'];
         this.allDocFileNames = this.getAllDocFileNames();
         this.docFileNamesByLanguage = this.getDocFileNamesByLanguage();
-        this.templateFileNames = glob.sync(`${options.templateFolder}/**/*`);
+        this.templateFileNames = glob.sync(
+            `${options.templateFolder}/**/*`
+        );
         this.prevTimestamps = {};
         this.startTime = Date.now();
 
         for(const language of this.languages) {
-            this.compileJSDoc(language);
+            this.compileJSDoc(language, true);
         }
     }
 
@@ -74,15 +76,9 @@ class Plugin {
     }
 
     getFileNames(language) {
-        return [
-            'types',
-            'Matreshka',
-            'Matreshka-calc',
-            'Matreshka-static',
-            'Matreshka.Object',
-            'Matreshka.Array',
-            'Matreshka.binders'
-        ].map(name => path.resolve(__dirname, this.options.srcFolder, `${language}/${name}.jsdoc`));
+        return glob.sync(
+            `${this.options.srcFolder}/${language}/*`
+        );
     }
 
     getAllDocFileNames() {
@@ -111,18 +107,26 @@ class Plugin {
         }
     }
 
-    compileJSDoc(language) {
+    compileJSDoc(language, isSync) {
         console.log(`Compiling docs for language ${language}`);
         const cli = './node_modules/.bin/jsdoc';
-        const { spawn } = require('child_process');
-        spawn(cli,
-            this.docFileNamesByLanguage[language]
+        const { spawn, spawnSync } = require('child_process');
+        const spawnFunction = isSync ? spawnSync : spawn;
+        const spawnResult = spawnFunction(cli,
+            [`${this.options.srcFolder}/${language}`]
                 .concat([
                     '-t', this.options.templateFolder,
                     '-d', this.options.getDestination(language)
                 ]),
             { stdio: 'inherit' }
-        ).on('close', () => console.log(`Done docs for language ${language}`));
+        )
+
+        if(spawnResult.on) {
+            // for asynchronous
+            spawnResult.on('close', () => console.log(`Done docs for language ${language}`));
+        } else {
+            console.log(`Done docs for language ${language}`);
+        }
     }
 }
 

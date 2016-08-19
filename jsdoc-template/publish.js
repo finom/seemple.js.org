@@ -55,6 +55,11 @@ exports.publish = function(data, opts) {
 
 		if (item.kind == 'typedef') {
 			result.typedefs.push(item);
+			if(item.properties) {
+				item.properties.forEach((property) => {
+					property.description = mdParser(property.description);
+				});
+			}
 		} else if (item.scope == 'global' && item.name !== 'Matreshka') {
 			result.globals.push(item);
 		}
@@ -196,6 +201,16 @@ exports.publish = function(data, opts) {
 		_class.staticMembers['function'] = _class.staticMembers['function'].sort(sortFunction);
 
 	}
+
+	// resorting classes
+	var classes = {
+		'Matreshka': result.classes['Matreshka'],
+		'Matreshka.Object': result.classes['Matreshka.Object'],
+		'Matreshka.Array': result.classes['Matreshka.Array']
+	};
+
+	result.classes = classes;
+
 
 	fs.writeFileSync(env.opts.destination + '/doc_menu.html', view.render('menu.html', result), 'utf8');
 	fs.writeFileSync(env.opts.destination + '/doc_content.html', view.render('content.html', result), 'utf8');

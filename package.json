@@ -21,6 +21,7 @@
     "marked": "^0.3.6",
     "node-sass": "^3.8.0",
     "node-sass-asset-functions": "0.0.9",
+    "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
@@ -28,7 +29,8 @@
   },
   "scripts": {
     "jsdoc": "node script/jsdoc",
-    "bundle": "webpack --config webpack/webpack.config.js",
+    "clear": "rimraf dist html/*/temp",
+    "bundle": "npm run clear && webpack --config webpack/webpack.config.js",
     "watch": "npm run bundle -- --watch"
   },
   "dependencies": {
