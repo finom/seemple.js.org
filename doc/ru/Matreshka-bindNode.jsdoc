@@ -96,16 +96,17 @@ this.bindNode('myKey', '.my-element');
 const checkboxBinder = () => {
 	return {
 		on: 'click',
-		getValue: function() {
+		getValue() {
 			return this.checked;
 		},
-		setValue: function(v) {
+		setValue(v) {
 			this.checked = !!v;
 		}
 	}
 };
 
-// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
+// метод unshift добавляет функцию
+// в начало массива Matreshka.defaultBinders
 Matreshka.defaultBinders.unshift(node => {
 	// проверяем, является ли элемент чекбоксом
 	if(node.tagName === 'INPUT' && node.type === 'checkbox') {
@@ -152,7 +153,7 @@ this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
 ```
 
 
-{@link Matreshka.defaultBinders} из коробки содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``,``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер не обязательно.
+{@link Matreshka.defaultBinders} из коробки содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``, ``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер не обязательно.
 ```html
 <input type="color" class="my-color-input">
 ```
@@ -185,7 +186,7 @@ this.on('click::myKey(.my-inner-element)', () => { ... });
 
 #### Создание песочницы
 
-{@link Matreshka#bindNode} умеет ассоциировать экземпляр класса с "главным" HTML элементом, создавая так называемую **песочницу**. Это нужно для того, чтоб ограничить влияние экземпляра на HTML элементы, содержащиеся в другой песочнице (т. е. в другом HTML элементе). Для привязки песочницы используется специальное свойство ``'sandbox'``.
+{@link Matreshka#bindNode} умеет ассоциировать экземпляр класса с "главным" HTML элементом, создавая так называемую **песочницу**. Это нужно для того, чтоб ограничить влияние объекта одним HTML элементом. Для привязки песочницы используется специальное свойство ``sandbox``.
 ```html
 <div class="my-sandbox">
 	<!-- your HTML code -->
@@ -201,7 +202,7 @@ this.bindNode('sandbox', '.my-sandbox');
 + Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$}
 + Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
 
-> Следует иметь в виду, что только один HTML элемент может быть связан со свойством ``sandbox``, иначе бросается ошибка. Для объявления песочницы можно воспользоваться методом {@link Matreshka#bindSandbox}. Перед тем, как объявить байндинг, метод удаляет предыдущий.
+> Следует иметь в виду, что только один HTML элемент может быть связан со свойством ``sandbox``, иначе бросается ошибка. Для объявления песочницы можно воспользоваться методом {@link Matreshka#bindSandbox}. Перед тем, как объявить байндинг, метод отвязывает предыдущую песочницу.
 
 ```js
 // объявляем песочницу
@@ -213,7 +214,8 @@ this.bindNode('myKey', ':sandbox .my-element');
 // для делегированных событий внутри песочницы не требуется указывать ключ
 this.on('click::(.my-button)', () => { ... });
 
-// выведет в консоль элемент .inner-node, который находится внутри песочницы
+// выведет в консоль элемент .inner-node,
+// который находится внутри песочницы
 console.log(this.$('.inner-node'));
 ```
 
@@ -228,7 +230,7 @@ this.on('bind:x', evt => {
 this.bindNode('x', node, binder, { foo: 'bar' });
 ```
 
-Для понимания важных тонкостей работы ``bindNode`` информация ниже обязательна к ознакомлению. При этом, имена флагов запоминать не обязательно.
+Для ознакомления с важными тонкостями работы ``bindNode`` информация ниже обязательна к ознакомлению. При этом, имена флагов запоминать не обязательно.
 
 #### Флаг ``exactKey=false``
 
@@ -244,7 +246,8 @@ const oldB = this.a.b;
 
 this.a.b = { c: 'baz' }; // обновит элемент значением baz
 
-oldB.c = 'fuu'; // элемент не обновится, так как связь с этой ветвью разорвана
+ // элемент не обновится, так как связь с этой ветвью разорвана
+oldB.c = 'fuu';
 ```
 
 В случае, если имя свойства должно быть использовано как есть, воспользуйтесь флагом ``exactKey`` со значением ``true``.
@@ -263,7 +266,7 @@ this['a.b.c'] = 'bar';
 
 #### Флаг ``setValueOnBind``
 
-При наличии у байндера ``setValue``, значение свойства будет установлено в качестве состояние элемента сразу после вызова ``bindNode`` при условии, если привязываемое свойство имеет значение отличное от ``undefined``. Для того, чтоб форсировать это поведение даже если свойство - ``undefined`` используйте флаг ``setValueOnBind`` со значением ``true``. Для отмены этого поведения, используйте тот же флаг со значением ``false``.
+При наличии у байндера ``setValue``, значение свойства будет установлено в качестве состояния элемента сразу после вызова ``bindNode`` при условии, если привязываемое свойство имеет значение отличное от ``undefined``. Для того, чтоб форсировать это поведение даже если свойство - ``undefined`` используйте флаг ``setValueOnBind`` со значением ``true``. Для отмены этого поведения, используйте тот же флаг со значением ``false``.
 
 #### Флаги ``debounceGetValue=true`` и ``debounceSetValue=true``
 
@@ -311,7 +314,7 @@ this.bindNode('x', node, binder, {
 @see {@link Matreshka.defaultBinders}
 
 
-@param {string|matreshka} key - Имя свойства
+@param {string} key - Имя свойства
 @param {string|node|$nodes} node - HTML элемент, который должен быть связан со свойством объекта
 @param {binder} [binder] - Байндер, содержащий свойства ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy``, см. {@link #typedef-binder}.
 @param {eventOptions} [eventOptions] - Объект события, в который можно передать ключ ``"silent"`` (чтоб не генерировать события ``"bind"`` и ``"bind:KEY"``), флаги, описанные выше или кастомные данные
@@ -322,9 +325,8 @@ this.bindNode('x', node, binder, {
 
 /**
 @method Matreshka#bindNode
-@oldlink #!Matreshka-bindNode(2)
 @importance 2
-@variation key-element
+@variation 2
 @summary Альтернативный синтаксис: возможность передать объект "ключ-элемент"
 @desc В метод {@link Matreshka#bindNode} можно передать объект с парами ключ-элемент, чтобы избежать многократного вызова метода и сократить код
 
@@ -344,9 +346,8 @@ this.bindNode({
 
 /**
 @method Matreshka#bindNode
-@oldlink #!Matreshka-bindNode(3)
 @importance 2
-@variation batch
+@variation 3
 @summary Альтернативный синтаксис, позволяющий объявить неограниченное количество байндингов одним вызовом метода.
 
 @desc Вариация метода позволяет передать масссив объектов, содержащих информацию об одном байндинге каждый. Элемент массива должен содержать следующие свойства:

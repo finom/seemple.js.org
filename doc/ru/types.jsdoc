@@ -149,16 +149,16 @@ this.on('x.y.z@click::(.my-selector)', function() {...});
 @example
 var binder = {
 	on: 'click',
-	getValue: function(bindingOptions) {
+	getValue(bindingOptions) {
 		return this.value;
 	}
-	setValue: function(v, bindingOptions) {
+	setValue(v, bindingOptions) {
 		this.value = v;
 	},
-	initialize: function(bindingOptions) {
+	initialize(bindingOptions) {
 		alert('A binding is initialized');
 	},
-	destroy: function(bindingOptions) {
+	destroy(bindingOptions) {
 		alert('A binding is destroyed');
 	}
 };
@@ -166,7 +166,7 @@ var binder = {
 this.bindNode('a', '.my-checkbox', binder);
 @example
 var binder = {
-	on: function(callback, bindingOptions) {
+	on(callback, bindingOptions) {
 		this.onclick = callback;
 	}
 	// ...

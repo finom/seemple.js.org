@@ -47,7 +47,7 @@ this.bindNode('myKey', '.my-checkbox', {
 });
 ```
 
-After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state in no time. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
+After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
 ```js
 // sets checked = true
 this.myKey = true;
@@ -77,7 +77,7 @@ this.bindNode('myKey', '.my-slider', {
 	// you can initialize the slider in any way,
 	// but 'initialize' function provides some syntactic sugar
 	initialize() {
-		$(this).slider({min: 0, max: 100});
+		$(this).slider({ min: 0, max: 100 });
 	}
 });
 ```
@@ -98,10 +98,10 @@ How to do it? You should add the function checking  your element against a set o
 const checkboxBinder = () => {
 	return {
 		on: 'click',
-		getValue: function() {
+		getValue() {
 			return this.checked;
 		},
-		setValue: function(v) {
+		setValue(v) {
 			this.checked = !!v;
 		}
 	}
@@ -125,7 +125,7 @@ this.myKey = true;
 What should you do if you need to pass arguments for initializing some plugin or a widget? You can call the function that returns a binder manually.
 
 ```js
-Matreshka.binders.uiSlider = (min, max) => {
+const uiSlider = (min, max) => {
 	return {
 		on: 'slide',
 		getValue() {
@@ -135,7 +135,7 @@ Matreshka.binders.uiSlider = (min, max) => {
 			$(this).slider('option', 'value', v);
 		},
 		initialize() {
-			$(this).slider({min: min, max: max});
+			$(this).slider({ min: min, max: max });
 		}
 	}
 };
@@ -178,16 +178,16 @@ And the syntax of possible event names is extended:
 this.bindNode('myKey', '.my-element');
 
 // will handle the click on the .my-element element
-this.on('click::myKey', function() { ... });
+this.on('click::myKey', () => { ... });
 
 // will handle the click on the .my-element .my-inner-element
-this.on('click::myKey(.my-inner-element)', function() { ... });
+this.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
-> If a node is not found ``"Bound element is missing"`` error is thrown. Check out {@link Matreshka#bindOptionalNode}.
+> If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link Matreshka#bindOptionalNode}.
 
 #### Sandbox definition
-{@link Matreshka#bindNode} can associate a class instance with the "main" HTML element on the page creating so-called **sandbox**. It is necessary to limit the instance influence on other HTML nodes. A special property ``'sandbox'`` is used for binding a sandbox.
+{@link Matreshka#bindNode} can associate a class instance with the "main" HTML element on the page creating so-called **sandbox**. It is necessary to limit the instance influence on other HTML nodes. A special property ``sandbox`` is used for binding a sandbox.
 ```html
 <div class="my-sandbox">
 	<!-- your HTML code -->
@@ -249,7 +249,8 @@ const oldB = this.a.b;
 
 this.a.b = { c: 'baz' }; // updates node by baz
 
-// node is not updated because the connection with the object subtree is destroyed
+// node is not updated because
+// the connection with the object subtree is destroyed
 oldB.c = 'fuu';
 ```
 
@@ -306,7 +307,7 @@ To cancel this behavior and use the binder as is, you can use ``useExactBinder``
 ```js
 this.bindNode('x', node, binder, {
 	useExactBinder: true
-})
+});
 ```
 
 @see {@link Matreshka#unbindNode}
@@ -328,9 +329,8 @@ this.bindNode('x', node, binder, {
 
 /**
 @method Matreshka#bindNode
-@oldlink #!Matreshka-bindNode(2)
 @importance 2
-@variation key-element
+@variation 2
 @summary Alternative syntax: "key-element" pairs
 @desc In the {@link Matreshka#bindNode} method an object with the key-element pairs can be passed to avoid multiple invocation of the method and reduce the code.
 
@@ -350,9 +350,8 @@ this.bindNode({
 
 /**
 @method Matreshka#bindNode
-@oldlink #!Matreshka-bindNode(3)
 @importance 2
-@variation batch
+@variation 3
 @summary Alternative syntax which makes possible to define unlimited amount of bindings per one ``bindNode`` call.
 
 @desc The method variation allows to pass an array of objects which need to include the following properties:

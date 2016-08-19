@@ -25,10 +25,9 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
-@oldlink #!Matreshka-unbindNode(2)
 @importance 2
-@variation key-element
-@summary Альтернативный синтаксис {@link Matreshka#unbindNode} "ключ-элемент" для {@link Matreshka#unbindNode}
+@variation 2
+@summary Альтернативный синтаксис ``unbindNode`` "ключ-элемент"
 @param {object} keyElementPairs (см. пример)
 @param {eventOptions} [eventOptions] (см. выше)
 @returns {matreshka} self
@@ -42,9 +41,8 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
-@oldlink #!Matreshka-unbindNode(3)
 @importance 2
-@variation batch
+@variation 3
 @summary  Альтернативный синтаксис, позволяющий удалить неограниченное количество байндингов одним вызовом метода.
 
 @desc Вариация метода позволяет передать масссив объектов, содержащих информацию об одном байндинге каждый. Элемент массива должен содержать следующие свойства:

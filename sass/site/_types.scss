@@ -1,5 +1,6 @@
 [data-type] {
-	padding: 3px 8px;
+	padding: 0 8px;
+    line-height: 2rem;
 	color: white;
 	background-color: $secondary-color;
 	border-radius: 2px;
@@ -14,5 +15,7 @@
 $types: matreshka, matreshkaObject, matreshkaArray, class, binder, node, "$nodes", object, eventOptions, array, eventHandler, function, string, eventNames, number, boolean, "*", null;
 
 @for $i from 1 through length($types) {
-	[data-type="#{nth($types, $i)}"] { background-color: hsl(360*$i/length($types), 38%, 57%); }
+	[data-type="#{nth($types, $i)}"] {
+		background-color: hsl(360*$i/length($types), 38%, 57%);
+	}
 }

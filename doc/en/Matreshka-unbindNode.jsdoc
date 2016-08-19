@@ -24,9 +24,8 @@ this.myKey = false;
 
 /**
 @method Matreshka#unbindNode
-@oldlink #!Matreshka-unbindNode(2)
 @importance 2
-@variation key-element
+@variation 2
 @summary Alternative syntax "key-element" for ``unbindNode``
 @see {@link Matreshka#bindNode(2)}
 @param {object} keyElementPairs (see the example)
@@ -42,9 +41,8 @@ this.unbindNode({
 
 /**
 @method Matreshka#unbindNode
-@oldlink #!Matreshka-unbindNode(3)
 @importance 2
-@variation batch
+@variation 3
 @summary Alternative syntax of the method which allows to easily unbind unlimited amount of bindings by single ``unbindNode`` call.
 
 @desc The variation makes possible to pass an array which includes objects with the following properties:
