@@ -1,0 +1,79 @@
+/**
+@method Matreshka#unbindNode
+@importance 2
+@fires unbind
+@fires unbind:KEY
+@summary Breaks a binding between given property and HTML node.
+@desc Using this method you can delete the binding between a property and HTML node, which has been added recently and no longer needed.
+@param {string|null} The key or a list of keys which are separated by spaces. If you pass ``null`` instead of the key, all bindings for the given instance will be deleted
+@param {string|node|$nodes} [node] - HTML node
+@param {eventOptions} [eventOptions] -  Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
+@returns {matreshka} self
+@example
+this.bindNode('myKey', '.my-element');
+
+// changes the property value and the state of the HTML element
+this.myKey = true;
+
+this.unbindNode('myKey', '.my-element');
+
+// only the property value is being changed now
+this.myKey = false;
+*/
+
+
+/**
+@method Matreshka#unbindNode
+@importance 2
+@variation 2
+@summary Alternative syntax "key-element" for {@link Matreshka#unbindNode}
+@see {@link Matreshka#bindNode(2)}
+@param {object} keyElementPairs (see the example)
+@param {eventOptions} [eventOptions] (see above)
+@returns {matreshka} self
+@example
+this.unbindNode({
+	myKey1: '.my-element1'
+	myKey1: '.my-element2'
+});
+*/
+
+
+/**
+@method Matreshka#unbindNode
+@importance 2
+@variation 3
+@summary Alternative syntax "heap of arguments" for {@link Matreshka#unbindNode}
+@see {@link Matreshka#bindNode(3)}
+@param {array} setOfArguments - An array of arrays (see the example)
+@param {eventOptions} [eventOptions] (see above)
+@returns {matreshka} self
+@example
+var temporaryBindings = [
+	[{
+		myKey1: '.my-element1'
+		myKey2: '.my-element2'
+	}],
+	[{
+		myKey3: '.my-element3'
+		myKey4: '.my-element4'
+	}, {
+		on: 'click',
+		getValue: function() { ... },
+		setValue: function() { ... }
+	}],
+	[{
+		myKey5: '.my-element5'
+		myKey6: '.my-element6'
+	}, {
+		on: 'somethingelse',
+		getValue: function() { ... },
+		setValue: function() { ... }
+	}]
+];
+
+this.bindNode(temporaryBindings);
+
+// these bindings are no longer needed
+this.unbindNode(temporaryBindings);
+*/
