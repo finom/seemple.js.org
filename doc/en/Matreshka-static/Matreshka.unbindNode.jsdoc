@@ -1,4 +1,3 @@
-
 /**
 @method Matreshka.unbindNode
 @module matreshka/unbindnode
@@ -9,6 +8,6 @@
 @returns {object} The first argument
 @see {@link Matreshka#unbindNode}
 @example
-var object = {};
-MK.unbindNode(object, 'x', '.my-node');
+const object = {};
+Matreshka.unbindNode(object, 'x', '.my-node');
 */

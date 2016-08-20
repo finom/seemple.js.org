@@ -7,6 +7,12 @@
 			<span class="signature-class"><?js= this.lang.class ?></span> <?js= obj.longname ?>
 		</a>
 	</h2>
+
+	<?js if(obj.module) { ?>
+	<p class="module">
+		<?js= this.lang.module ?>: <code>'<?js= obj.module ?>'</code>
+	</p>
+	<?js } ?>
 	<div class="description">
 		<?js= obj.description ?>
 	</div>

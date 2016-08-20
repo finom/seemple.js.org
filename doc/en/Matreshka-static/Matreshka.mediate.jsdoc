@@ -9,8 +9,8 @@
 @returns {object} The first argument
 @see {@link Matreshka#mediate}
 @example
-var object = {};
-MK.mediate(object, 'x', String);
+const object = {};
+Matreshka.mediate(object, 'x', String);
 object.x = 42;
 alert(typeof object.x); // string
 */

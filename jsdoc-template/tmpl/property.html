@@ -16,6 +16,11 @@
 
 		<span class="new-badge"></span>
 	</h2>
+	<?js if(obj.module) { ?>
+	<p class="module">
+		<?js= this.lang.module ?>: <code>'<?js= obj.module ?>'</code>
+	</p>
+	<?js } ?>
 	<div class="summary"><?js= obj.summary ?></div>
 	<div class="description"><?js= obj.description ?></div>
 	<?js print( this.partial( 'see.html', obj.see ) ) ?>

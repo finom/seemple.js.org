@@ -8,8 +8,8 @@
 @returns {object} The first argument
 @see {@link Matreshka#off}
 @example
-var object = {};
-MK.on(object, 'foo', function(evt) {
+const object = {};
+Matreshka.on(object, 'foo', evt => {
 	//...
 });
 

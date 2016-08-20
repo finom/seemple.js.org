@@ -19,7 +19,8 @@ module.exports = {
         properties: 'Properties',
         static_methods: 'Static Methods',
         static_properties: 'Static Props',
-        synonym: 'Synonym'
+        synonym: 'Synonym',
+        module: 'CommonJS module'
     },
     ru: {
         class: 'Класс',
@@ -41,6 +42,7 @@ module.exports = {
         properties: 'Свойства',
         static_methods: 'Статичные методы',
         static_properties: 'Статичные свойства',
-        synonym: 'Синоним'
+        synonym: 'Синоним',
+        module: 'Путь к модулю CommonJS'
     }
 };

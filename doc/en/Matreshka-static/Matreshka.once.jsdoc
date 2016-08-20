@@ -1,4 +1,3 @@
-
 /**
 @method Matreshka.once
 @module matreshka/once
@@ -9,8 +8,8 @@
 @returns {object} The first argument
 @see {@link Matreshka#once}
 @example
-var object = {};
-MK.once(object, 'foo', function(evt) {
+const object = {};
+Matreshka.once(object, 'foo', evt => {
 	//...
 });
 */

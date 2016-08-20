@@ -8,7 +8,9 @@
 @returns {$nodes} Resulting collection of DOM nodes
 @see {@link Matreshka#parseBindings}
 @example
-var object = {};
-var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
-object.name = 'Arthur Philip Dent';
+const object = {};
+const $node = Matreshka.parseBindings(object, `
+    <h3>Hello, {{name}}</h3>
+`);
+object.name = 'World';
 */

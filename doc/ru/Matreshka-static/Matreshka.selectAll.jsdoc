@@ -8,7 +8,7 @@
 @returns {$nodes}
 @see {@link Matreshka#selectAll}
 @example
-var object = {};
-MK.bindNode(object, 'sandbox', '.app');
-MK.selectAll(object, '.my-element');
+const object = {};
+Matreshka.bindNode(object, 'sandbox', '.app');
+Matreshka.selectAll(object, '.my-element');
 */

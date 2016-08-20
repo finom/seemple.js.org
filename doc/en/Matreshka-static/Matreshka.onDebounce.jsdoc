@@ -1,4 +1,3 @@
-
 /**
 @method Matreshka.onDebounce
 @module matreshka/ondebounce
@@ -9,8 +8,8 @@
 @returns {object} The first argument
 @see {@link Matreshka#onDebounce}
 @example
-var object = {};
-MK.onDebounce(object, 'foo', function(evt) {
+const object = {};
+Matreshka.onDebounce(object, 'foo', evt => {
 	//...
 });
 */

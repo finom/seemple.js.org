@@ -2,7 +2,7 @@
 @method Matreshka.Class
 @module matreshka/class
 @importance 2
-@summary A class implementation based on the prototype inheritance
+@summary An implementation of classes based on the prototype inheritance
 @desc The ``Class`` function allows to use the classic OOP when ECMAScript 2015 classes cannot be used somehow.
 
 @param {object} prototype - Methods and properties
@@ -10,41 +10,41 @@
 
 @returns {class} class (a class constructor to be exact)
 @example
-var A = MK.Class({
-	method1: function() { ... }
+const A = Matreshka.Class({
+	method1() { ... }
 });
 
-var B = MK.Class({
+const B = Matreshka.Class({
 	// B is inherited from A
-	'extends': A,
-	method2: function() { ... }
+	extends: A,
+	method2() { ... }
 });
 
-var C = MK.Class({
+const C = Matreshka.Class({
 	// С is inherited from B
-	'extends': B,
-	method2: function() {
+	extends: B,
+	method2() {
 		// calling the parent method
 		B.prototype.method2.apply(this, arguments);
 	},
 	method3: function(a, b) { ... }
 });
 
-var D = MK.Class({
+const D = Matreshka.Class({
 	// D is inherited from C
-	'extends': C,
-	method3: function(a, b) {
+	extends: C,
+	method3() {
 		// calling the parent method
 		C.prototype.method2.call(this, arguments);
 	}
 });
 
 @example <caption>Passing an object with static methods and properties</caption>
-var MyClass = MK.Class({
-	method: function() { ... }
+const MyClass = Matreshka.Class({
+	method() { ... }
 }, {
 	staticProp: 'foo',
-	staticMethod: function() {
+	staticMethod() {
 		return 'bar';
 	}
 });

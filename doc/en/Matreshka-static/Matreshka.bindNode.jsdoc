@@ -9,6 +9,6 @@
 @returns {object} The first argument
 @see {@link Matreshka#bindNode}
 @example
-var object = {};
-MK.bindNode(object, 'x', '.my-node');
+const object = {};
+Matreshka.bindNode(object, 'x', '.my-node');
 */

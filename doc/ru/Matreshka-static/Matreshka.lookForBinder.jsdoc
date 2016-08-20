@@ -1,24 +1,23 @@
-
 /**
 @method Matreshka.lookForBinder
 @module matreshka/lookforbinder
 @importance 3
-@desc Возвращает байндер, соответствующий элементу. Если таковой не найден, возвращает ``undefined``. Функция использует {@link Matreshka.defaultBinders}.
+@desc Возвращает байндер, соответствующий элементу. Если таковой не найден, возвращает ``undefined``. Функция перебирает {@link Matreshka.defaultBinders} для поиска байндера.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.defaultBinders}
 @param {node} node
-@returns {object} properties
+@returns {binder} binder
 @example
-console.log(Matreshka.lookForBinder($('input[type="text"]')[0]));
+console.log(Matreshka.lookForBinder(document.querySelector('input[type="text"]'));
 
-// вернет объект
+// вернет примерно такой объект
 {
-	on: 'keyup paste',
-	getValue: function() { return this.value; },
-	setValue: function(v) {
-		if( this.value != v ) {
-			this.value = v;
-		}
+	on: 'input',
+	getValue() {
+		return this.value;
+	},
+	setValue(v) {
+		this.value = v;
 	}
 }
 */

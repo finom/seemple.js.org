@@ -8,8 +8,8 @@
 @returns {object} The first argument
 @see {@link Matreshka#set}
 @example
-var object = {};
-MK.set(object, 'x', 42, {
+const object = {};
+Matreshka.set(object, 'x', 42, {
 	someOption: true
 });
 */

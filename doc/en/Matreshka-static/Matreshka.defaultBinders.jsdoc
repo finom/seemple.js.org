@@ -1,39 +1,27 @@
 /**
 @member {array} Matreshka.defaultBinders
 @module matreshka/defaultbinders
-@importance 1
+@importance 2
 @enum {function}
 @summary An array of functions which return a corresponding binder
-@desc {@link Matreshka.defaultBinders} - The array of functions which check an element in turn against given rules in these functions and return a binder (see {@link #typedef-binder}). This method is used when the third argument has not been passed to the {@link Matreshka#bindNode} method. See more detailed information about bindings in {@link Matreshka#bindNode} documentation.
+@desc ``defaultBinders`` is the array of functions which check an element in turn against given rules in these functions and return a binder (see {@link #typedef-binder}). This method is used when the third argument has not been passed to the {@link Matreshka#bindNode} method. See more detailed information about bindings in {@link Matreshka#bindNode} documentation.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.lookForBinder}
-@example <caption>A custom checkbox</caption>
-// add the binder to the collection of binders
-MK.binders.customCheckbox = function() {
-	return {
-		on: 'click',
-		getValue: function() {
-			return $(this).hasClass('checked');
-		},
-		setValue: function( v ) {
-			$(this).toggleClass('checked', !!v);
-		},
-		initialize: function() {
-			$(this).toggleClass('checked');
-		}
-	}
-};
 
-// unshift method adds a function to the beginning of the Matreshka.defaultBinders array
-MK.defaultBinders.unshift( function( element ) {
-	// check if the element has the "custom-checkbox" class name
-	if($(element).hasClass('custom-checkbox')) {
+@example
+Matreshka.defaultBinders.unshift(element => {
+	// check if the element has "foo" class name
+	if(element.classList.contains('foo')) {
 		// if checking is OK, return a new binder
-		return MK.binders.customCheckbox();
+		return {
+			on: ...,
+			getValue: ...,
+			setValue: ...
+		};
 	}
 });
 
 // ...
 
-this.bindNode('myKey', '.custom-checkbox');
+this.bindNode('myKey', '.foo.bar');
 */

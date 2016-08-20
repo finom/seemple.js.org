@@ -6,19 +6,19 @@
 @desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders}.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.defaultBinders}
-@param {node} node
-@returns {object} properties
+@param {node|$nodes} node
+@returns {binder} binder
 @example
-console.log(Matreshka.lookForBinder($('input[type="text"]' )[0]));
+console.log(Matreshka.lookForBinder(document.querySelector('input[type="text"]'));
 
-// will return the object
+// will return something like the following object
 {
-	on: 'keyup paste',
-	getValue: function() { return this.value; },
-	setValue: function(v) {
-		if( this.value != v ) {
-			this.value = v;
-		}
+	on: 'input',
+	getValue() {
+		return this.value;
+	},
+	setValue(v) {
+		this.value = v;
 	}
 }
 */

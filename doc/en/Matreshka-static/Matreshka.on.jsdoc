@@ -1,4 +1,3 @@
-
 /**
 @method Matreshka.on
 @module matreshka/on
@@ -9,10 +8,10 @@
 @returns {object} The first argument
 @see {@link Matreshka#on}
 @example
-var object = {};
-MK.on(object, 'foo', function(evt) {
+const object = {};
+Matreshka.on(object, 'foo', evt => {
 	alert(evt.hello);
 });
 
-MK.trigger(object, 'foo', {hello: 'World'});
+Matreshka.trigger(object, 'foo', { hello: 'World' });
 */

@@ -2,39 +2,27 @@
 /**
 @member {array} Matreshka.defaultBinders
 @module matreshka/defaultbinders
-@importance 1
+@importance 2
 @enum {function}
-@summary Массив функций, возвращающих соответствующий байндер
-@desc {@link Matreshka.defaultBinders} - массив функций, которые по очереди проверяют элемент на соответствие заданным в этих функциях правилам и возвращающих байндер (см. {@link #typedef-binder}). Этот массив используется тогда, когда в метод {@link Matreshka#bindNode} не был передан третий аргумент. Подробную информацию о привязках смотрите в документации к {@link Matreshka#bindNode}.
+@summary Массив функций, возвращающих соответствующий байндер или ``undefined``
+@desc ``defaultBinders`` - массив функций, которые по очереди проверяют элемент на соответствие заданным в этих функциях правилам и возвращающих байндер (см. {@link #typedef-binder}). Этот массив используется тогда, когда в метод {@link Matreshka#bindNode} не был передан третий аргумент. Подробную информацию о привязках смотрите в документации к {@link Matreshka#bindNode}.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.lookForBinder}
-@example <caption>Кастомный чекбокс</caption>
-// добавляем байндер в коллекцию байндеров
-MK.binders.customCheckbox = function() {
-	return {
-		on: 'click',
-		getValue: function() {
-			return $(this).hasClass('checked');
-		},
-		setValue: function( v ) {
-			$(this).toggleClass('checked', !!v);
-		},
-		initialize: function() {
-			$(this).toggleClass('checked');
-		}
-	}
-};
+@example
 
-// метод unshift добавляет функцию в начало массива Matreshka.defaultBinders
-MK.defaultBinders.unshift( function( element ) {
-	// проверяем, есть ли у элемента класс "custom-checkbox"
-	if($(element).hasClass('custom-checkbox')) {
+Matreshka.defaultBinders.unshift(element => {
+	// проверяем, есть ли у элемента класс "foo"
+	if(element.classList.contains('foo')) {
 		// если проверка пройдена, возвращаем новый байндер
-		return MK.binders.customCheckbox();
+		return {
+			on: ...,
+			getValue: ...,
+			setValue: ...
+		};
 	}
 });
 
 // ...
 
-this.bindNode('myKey', '.custom-checkbox');
+this.bindNode('myKey', '.foo.bar');
 */

@@ -1,17 +1,17 @@
 
 /**
-@method Matreshka.setClassFor
+@method Matreshka.instantiate
 @module matreshka/instantiate
 @importance 3
 @since 1.1
-@summary Sets class for a property.
-@desc This static method works the same as {@link Matreshka#setClassFor} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@summary Creates fixed class instance
+@desc This static method works the same as {@link Matreshka#instantiate} and all its variations, but accepts any kind of JavaScript objects as first argument.
 @returns {object} The first argument
-@see {@link Matreshka#setClassFor}
+@see {@link Matreshka#instantiate}
 @example
-var object = {};
-MK.setClassFor(object, 'x', SomeClass);
-object.x = {a: 42};
-alert(this.x instanceof SubClass); // true
+const object = {};
+Matreshka.instantiate(object, 'x', SomeClass);
+object.x = { a: 42 };
+alert(this.x instanceof SomeClass); // true
 alert(this.x.a); // 42
 */

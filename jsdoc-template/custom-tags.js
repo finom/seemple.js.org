@@ -3,7 +3,9 @@ module.exports.defineTags = dictionary => {
         'lang',
         'importance',
         'oldlink',
-        'synonym'
+        'synonym',
+        // we need to use @module as is because jsdoc doesn't allow to use both @name and @module
+        'module'
     ];
 
     const defineSimpleTag = tagName => {
