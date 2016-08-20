@@ -1,0 +1,13 @@
+/**
+@method Matreshka.select
+@importance 3
+@since 1.1
+@summary Возвращает элемент из песочницы, соответствующий селектору
+@desc Этот статичный метод работает так же, как и {@link Matreshka#select} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
+@returns {node|null}
+@see {@link Matreshka#select}
+@example
+var object = {};
+MK.bindNode(object, 'sandbox', '.app');
+MK.select(object, '.my-element');
+*/

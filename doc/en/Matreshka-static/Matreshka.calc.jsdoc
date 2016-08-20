@@ -1,0 +1,18 @@
+
+/**
+@method Matreshka.linkProps
+@importance 3
+@since 1.1
+@summary Creates a dependency of one property value on values of others
+@desc This static method works the same as {@link Matreshka#linkProps} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#linkProps}
+@example
+var object = {};
+MK.linkProps(object, 'sum', 'a b' function(a, b) {
+	return a + b;
+});
+object.a = 40;
+object.b = 2;
+alert(object.sum); // 42
+*/

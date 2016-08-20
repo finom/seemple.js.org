@@ -1,0 +1,12 @@
+/**
+@method Matreshka.bindOptionalNode
+@importance 3
+@since 1.1
+@summary Работает в точности так же, как и {@link Matreshka#bindNode} но не бросает исключение, если аргумент node - пустой массив, undefined или не существует
+@desc Этот статичный метод работает так же, как и {@link Matreshka#bindOptionalNode} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
+@returns {object} Первый аргумент
+@see {@link Matreshka#bindOptionalNode}
+@example
+var object = {};
+MK.bindOptionalNode(object, 'x', '.my-node');
+*/

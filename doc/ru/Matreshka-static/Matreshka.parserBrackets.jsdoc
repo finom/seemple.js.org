@@ -1,0 +1,10 @@
+/**
+@member {object} Matreshka.parserBrackets
+@importance 3
+@since 1.5
+@summary Содержит скобки для {@link Matreshka#parseBindings парсера}
+@desc Объект ``parserBrackets`` позволяет изменить стандартный синтаксис парсера привязок. Он содержит два свойства: ``left`` (левая скобка, по умолчанию "&#123;{") и ``right`` (правая скобка, по умолчанию "}}")
+@example <caption>Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо &#123;{property}}</caption>
+MK.parserBrackets.left = '[[=';
+MK.parserBrackets.right = ']]';
+*/

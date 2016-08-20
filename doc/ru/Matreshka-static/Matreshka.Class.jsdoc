@@ -1,0 +1,54 @@
+/**
+@method Matreshka.Class
+@importance 2
+@summary Реализация классов, основанная на прототипном наследовании
+@desc Функция ``Class`` позволяет использовать классическое ООП в тех случаях, когда нельзя воспользоваться ECMAScript 2015 classes.
+
+@param {object} prototype - Методы и свойства
+@param {object} [statics] - Статичные методы и свойства
+
+@returns {class} class (точнее, конструктор класса)
+@example
+var A = MK.Class({
+	method1: function() { ... }
+});
+
+var B = MK.Class({
+	// B наследуется от A
+	'extends': A,
+	method2: function() { ... }
+});
+
+var C = MK.Class({
+	// С наследуется от B
+	'extends': B,
+	method2: function() {
+		// вызов родительского метода
+		B.prototype.method2.apply(this, arguments);
+	},
+	method3: function(a, b) { ... }
+});
+
+var D = MK.Class({
+	// D наследуется от C
+	'extends': C,
+	method3: function(a, b) {
+		// вызов родительского метода
+		C.prototype.method2.call(this, arguments);
+	}
+});
+
+@example <caption>Передача объекта со статичными методами и свойствами</caption>
+var MyClass = MK.Class({
+	method: function() { ... }
+}, {
+	staticProp: 'foo',
+	staticMethod: function() {
+		return 'bar';
+	}
+});
+
+alert(MyClass.staticProp); // foo
+alert(MyClass.staticMethod()); // bar
+
+*/

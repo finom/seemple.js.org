@@ -1,0 +1,13 @@
+
+/**
+@method Matreshka.bindOptionalNode
+@importance 3
+@since 1.1
+@summary Works just the same as {@link Matreshka#bindNode} but it does not throw an exception if the node argument is an empty array, undefined or non-existent.
+@desc This static method works the same as {@link Matreshka#bindOptionalNode} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#bindOptionalNode}
+@example
+var object = {};
+MK.bindOptionalNode(object, 'x', '.my-node');
+*/

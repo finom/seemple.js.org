@@ -1,0 +1,13 @@
+/**
+@method Matreshka.parseBindings
+@importance 3
+@since 1.1
+@summary Парсит DOM дерево, объявляя привязки свойств, заключенных в двойные фигурные скобки.
+@desc Этот статичный метод работает так же, как и {@link Matreshka#parseBindings} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
+@returns {$nodes} Коллекция DOM узлов (как правило, состоящая из одного элемента), переданная в функцию в качестве аргумента или, если аргументов нет, песочница
+@see {@link Matreshka#parseBindings}
+@example
+var object = {};
+var $node = MK.parseBindings(object, '<h3>Hello, &#123;{name}}</h3>');
+object.name = 'Arthur Philip Dent';
+*/

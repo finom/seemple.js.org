@@ -1,0 +1,16 @@
+
+/**
+@method Matreshka.setClassFor
+@importance 3
+@since 1.1
+@summary Sets class for a property.
+@desc This static method works the same as {@link Matreshka#setClassFor} and all its variations, but accepts any kind of JavaScript objects as first argument.
+@returns {object} The first argument
+@see {@link Matreshka#setClassFor}
+@example
+var object = {};
+MK.setClassFor(object, 'x', SomeClass);
+object.x = {a: 42};
+alert(this.x instanceof SubClass); // true
+alert(this.x.a); // 42
+*/
