@@ -1,5 +1,6 @@
 /**
 @method Matreshka.Class
+@module matreshka/class
 @importance 2
 @summary Реализация классов, основанная на прототипном наследовании
 @desc Функция ``Class`` позволяет использовать классическое ООП в тех случаях, когда нельзя воспользоваться ECMAScript 2015 classes.

@@ -7,13 +7,13 @@ const localizations = require('./localizations');
 const parseExample = require('./parse-example');
 
 exports.publish = function(data, opts) {
-	var origData = data().get(),
-		variation = 0,
-		result = {
-			classes: {},
-			typedefs: [],
-			binders: null
-		};
+	const origData = data().get();
+	const result = {
+		classes: {},
+		typedefs: [],
+		binders: null
+	};
+	let variation = 0;
 
 	origData.forEach(function(item, index) {
 		delete item.meta;
@@ -56,9 +56,15 @@ exports.publish = function(data, opts) {
 		item.see = item.see || [];
 		item.properties = item.properties || [];
 
-		item.description = mdParser(resolveLinks(item.description || item.classdesc || '').replace(/&quot;/g, '"'));
+		item.description = mdParser(
+			resolveLinks(
+					item.description || item.classdesc || ''
+			).replace(/&quot;/g, '"')
+		);
 
-		item.summary = mdParser(resolveLinks(item.summary || ''));
+		item.summary = mdParser(
+			resolveLinks(item.summary || '')
+		);
 
 		item.examples = (item.examples || []).map(parseExample);
 

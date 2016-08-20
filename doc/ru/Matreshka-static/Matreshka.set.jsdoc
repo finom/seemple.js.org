@@ -1,5 +1,6 @@
 /**
 @method Matreshka.set
+@module matreshka/set
 @importance 3
 @since 1.1
 @summary Устанавливает значение свойства, позволяя передать объект события в качестве третьего аргумента

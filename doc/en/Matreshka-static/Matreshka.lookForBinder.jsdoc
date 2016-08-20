@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.lookForBinder
+@module matreshka/lookforbinder
 @importance 3
 @desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders}.
 @see {@link Matreshka#bindNode}

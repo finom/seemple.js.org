@@ -1,5 +1,6 @@
 /**
 @class Matreshka.Object
+@module matreshka/object
 @importance 1
 @classdesc ``Matreshka.Object`` is a class which is responsible for key-value data. Its goal is to separate service properties from data that can be passed to a server or kept in a local storage. The class is inherited from the {@link Matreshka} class and includes all its properties and methods.
 

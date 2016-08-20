@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.bindNode
+@module matreshka/bindnode
 @importance 3
 @since 1.1
 @summary Binds a property of an object to HTML node, implementing two-way data binding

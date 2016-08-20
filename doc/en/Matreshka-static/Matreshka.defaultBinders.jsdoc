@@ -1,6 +1,6 @@
-
 /**
 @member {array} Matreshka.defaultBinders
+@module matreshka/defaultbinders
 @importance 1
 @enum {function}
 @summary An array of functions which return a corresponding binder

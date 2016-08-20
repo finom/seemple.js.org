@@ -1,5 +1,6 @@
 /**
 @method Matreshka.select
+@module matreshka/select
 @importance 3
 @since 1.1
 @summary Возвращает элемент из песочницы, соответствующий селектору

@@ -1,5 +1,6 @@
 /**
 @method Matreshka.onDebounce
+@module matreshka/ondebounce
 @importance 3
 @since 1.1
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени

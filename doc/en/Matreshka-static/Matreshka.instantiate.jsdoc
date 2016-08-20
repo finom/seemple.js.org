@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.setClassFor
+@module matreshka/instantiate
 @importance 3
 @since 1.1
 @summary Sets class for a property.

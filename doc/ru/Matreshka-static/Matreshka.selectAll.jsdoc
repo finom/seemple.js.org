@@ -1,5 +1,6 @@
 /**
 @method Matreshka.selectAll
+@module matreshka/selectall
 @importance 3
 @since 1.1
 @summary Возвращает элементы из песочницы, соответствующие селектору

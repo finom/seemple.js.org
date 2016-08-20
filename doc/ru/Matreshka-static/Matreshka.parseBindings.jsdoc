@@ -1,5 +1,6 @@
 /**
 @method Matreshka.parseBindings
+@module matreshka/parsebindings
 @importance 3
 @since 1.1
 @summary Парсит DOM дерево, объявляя привязки свойств, заключенных в двойные фигурные скобки.

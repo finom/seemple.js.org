@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.to
+@module matreshka/tomatreshka
 @importance 3
 @since 1.1
 @summary The function, converting a random structure of objects and arrays into {@link Matreshka.Object} and {@link Matreshka.Array} instances.

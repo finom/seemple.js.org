@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.on
+@module matreshka/on
 @importance 3
 @since 1.1
 @summary Adds an event handler

@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.bindOptionalNode
+@module matreshka/bindoptionalnode
 @importance 3
 @since 1.1
 @summary Works just the same as {@link Matreshka#bindNode} but it does not throw an exception if the node argument is an empty array, undefined or non-existent.

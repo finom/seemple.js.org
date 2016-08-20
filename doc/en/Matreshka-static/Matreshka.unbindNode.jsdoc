@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.unbindNode
+@module matreshka/unbindnode
 @importance 3
 @since 1.1
 @summary Breaks a binding between given property and HTML node.

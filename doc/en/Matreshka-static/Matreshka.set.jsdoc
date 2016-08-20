@@ -1,5 +1,6 @@
 /**
 @method Matreshka.set
+@module matreshka/set
 @importance 3
 @since 1.1
 @summary Sets a property value allowing to pass an event object as the third argument

@@ -1,5 +1,6 @@
 /**
 @method Matreshka.Class
+@module matreshka/class
 @importance 2
 @summary A class implementation based on the prototype inheritance
 @desc The ``Class`` function allows to use the classic OOP when ECMAScript 2015 classes cannot be used somehow.

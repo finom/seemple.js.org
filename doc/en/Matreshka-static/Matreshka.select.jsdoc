@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.select
+@module matreshka/select
 @importance 3
 @since 1.1
 @summary Returns HTML node corresponding to a selector from a sandbox

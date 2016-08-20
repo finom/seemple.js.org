@@ -1,5 +1,6 @@
 /**
 @method Matreshka.remove
+@module matreshka/remove
 @importance 3
 @since 1.1
 @summary Deletes a property

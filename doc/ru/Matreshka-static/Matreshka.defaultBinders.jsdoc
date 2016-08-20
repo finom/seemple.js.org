@@ -1,6 +1,7 @@
 
 /**
 @member {array} Matreshka.defaultBinders
+@module matreshka/defaultbinders
 @importance 1
 @enum {function}
 @summary Массив функций, возвращающих соответствующий байндер

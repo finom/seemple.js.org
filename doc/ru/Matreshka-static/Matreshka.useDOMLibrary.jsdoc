@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.useAs$
+@module matreshka/usedomlibrary
 @importance 3
 @since 0.2
 @summary Заставляет использовать определенную библиотеку для работы с DOM

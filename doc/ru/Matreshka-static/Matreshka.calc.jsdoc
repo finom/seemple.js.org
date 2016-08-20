@@ -1,5 +1,6 @@
 /**
 @method Matreshka.linkProps
+@module matreshka/calc
 @importance 3
 @since 1.1
 @summary Создает зависимость значения одного свойства от значений других

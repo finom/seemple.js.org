@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.onDebounce
+@module matreshka/ondebounce
 @importance 3
 @since 1.1
 @summary Adds an event handler which is called only once during a definite period of time

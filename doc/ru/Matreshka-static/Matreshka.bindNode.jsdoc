@@ -1,5 +1,6 @@
 /**
 @method Matreshka.bindNode
+@module matreshka/bindnode
 @importance 3
 @since 1.1
 @summary Связывает свойство объекта с HTML элементом

@@ -1,5 +1,6 @@
 /**
 @class Matreshka.Array
+@module matreshka/array
 @importance 1
 @classdesc The ``Matreshka.Array`` serves as collection class in Matreshka framework. It is inherited from the {@link Matreshka} class, obtaining all parent possibilities without exception. Besides, ``Matreshka.Array`` has all methods that ordinary array has.
 

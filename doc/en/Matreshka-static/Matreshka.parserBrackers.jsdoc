@@ -1,5 +1,6 @@
 /**
 @member {object} Matreshka.parserBrackets
+@module matreshka/parserbrackets
 @importance 3
 @since 1.5
 @summary Contains brackets for {@link Matreshka#parseBindings bindings parser}

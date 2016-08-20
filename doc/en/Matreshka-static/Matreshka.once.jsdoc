@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.once
+@module matreshka/once
 @importance 3
 @since 1.1
 @summary Adds event handler which can be called only once

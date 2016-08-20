@@ -1,5 +1,6 @@
 /**
 @class Matreshka.Array
+@module matreshka/array
 @importance 1
 @classdesc Класс ``Matreshka.Array`` служит коллекцией во фреймворке Матрешка. Он наследуется от класса {@link Matreshka}, получая все без исключения возможности родителя. Кроме этого, ``Matreshka.Array`` имеет все методы, которые есть у обычного массива.
 

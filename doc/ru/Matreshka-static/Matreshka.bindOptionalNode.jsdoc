@@ -1,5 +1,6 @@
 /**
 @method Matreshka.bindOptionalNode
+@module matreshka/bindoptionalnode
 @importance 3
 @since 1.1
 @summary Работает в точности так же, как и {@link Matreshka#bindNode} но не бросает исключение, если аргумент node - пустой массив, undefined или не существует

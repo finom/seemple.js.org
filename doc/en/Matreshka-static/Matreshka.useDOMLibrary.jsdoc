@@ -1,5 +1,6 @@
 /**
 @method Matreshka.useAs$
+@module matreshka/usedomlibrary
 @importance 3
 @since 0.2
 @summary Forces to use a definite DOM-library

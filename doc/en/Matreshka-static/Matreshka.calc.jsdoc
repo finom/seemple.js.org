@@ -1,6 +1,7 @@
 
 /**
 @method Matreshka.linkProps
+@module matreshka/calc
 @importance 3
 @since 1.1
 @summary Creates a dependency of one property value on values of others
