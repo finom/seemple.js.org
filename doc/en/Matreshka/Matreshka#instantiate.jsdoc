@@ -5,7 +5,9 @@
 @importance 2
 @since 1.1
 @summary Creates fixed class instance
-@desc The method creates and fixes an instance of a class as given property value. When you try to override the property, instead of actual overriding, the instance is updated. Thus, we achieve integrity of an application, made on with Matreshka.
+@desc
+> Note that the method has {@link Matreshka.instantiate static alternative}.
+The method creates and fixes an instance of a class as given property value. When you try to override the property, instead of actual overriding, the instance is updated. Thus, we achieve integrity of an application, made on with Matreshka.
 
 > The method is an addon over {@link Matreshka#mediate} and it overrides a mediator.
 
@@ -24,6 +26,9 @@ While attempting to assign another value (an object or an array) to the property
 @param {string|array} key - Key or an array of keys
 @param {function} class - A class whose instance becomes the property value
 @param {function} [updateCallback] - A function which is called at every attempt of assigning new data to the property, allowing to customize logic of class instance updating with new data. The function receives two arguments: the current property value (class instance) and data which are attempted to assign.
+
+@returns {object} self
+
 @example
 class MyClass {
 	// ...
@@ -169,6 +174,9 @@ app.appData = {
 @summary Additional syntax for {@link Matreshka#instantiate}, which accepts key-class object as the first argument.
 @param {object} keyClassPairs - key-class object
 @param {function} [updateCallback] - A function which is called at every attempt of assigning new data to a property
+
+@returns {object} self
+
 @example
 this.instantiate({
 	x: Class1,

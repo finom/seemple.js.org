@@ -2,9 +2,7 @@
 var fs = require('jsdoc/fs'),
 	outdir = env.opts.destination,
 	template = require('jsdoc/template'),
-	mdParser = require('marked'),
-	important = 'Matreshka Matreshka#on Matreshka#bindNode Matreshka#set Matreshka#trigger Matreshka.Object Matreshka.Object#toJSON Matreshka.Object#jset Matreshka.Array Matreshka.Array#Model Matreshka.Array#itemRenderer Matreshka.Array#METHOD Matreshka.Array#METHOD_'.split(/\s+/),
-	cool = 'Matreshka#bindNode Matreshka#linkProps Matreshka#mediate Matreshka#on Matreshka#setClassFor Matreshka.Array#itemRenderer'.split(/\s+/);
+	mdParser = require('marked');
 
 mdParser.setOptions({
 	smartLists: false,
@@ -26,9 +24,6 @@ exports.publish = function(data, opts) {
 		delete item.___id;
 		delete item.___s;
 		delete item.tags;
-
-		item.important = !!~important.indexOf(item.longname.replace(/\(.*\)/, ''));
-		item.cool = !!~cool.indexOf(item.longname.replace(/\(.*\)/, ''));
 
 		if (item.kind == 'class' && item.longname !== "Class.Interface") {
 			result.classes[item.longname] = item;
@@ -153,9 +148,7 @@ exports.publish = function(data, opts) {
 			returns: 'Returns',
 			fires: 'Fires',
 			comments: 'ASK A QUESTION',
-			important: 'Important',
 			see: 'Links',
-			cool: 'Cool method or property',
 			methods: 'Methods',
 			properties: 'Properties',
 			static_methods: 'Static Methods',
@@ -176,9 +169,7 @@ exports.publish = function(data, opts) {
 			returns: 'Возвращает',
 			fires: 'Генерирует события',
 			comments: 'Задать вопрос',
-			important: 'Важно',
 			see: 'Ссылки',
-			cool: 'Крутой метод или свойство',
 			methods: 'Методы',
 			properties: 'Свойства',
 			static_methods: 'Статичные методы',

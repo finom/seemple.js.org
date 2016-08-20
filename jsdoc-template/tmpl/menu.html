@@ -10,7 +10,6 @@
 	>
 		<b><?js= _class.longname ?></b>
 
-		<i class="important" title="<?js=self.lang.important?>"></i>
 		<span class="expand"></span>
 		<span class="hidden-active-child"></span>
 	</a>
@@ -30,8 +29,6 @@
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
 						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
-						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
-						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 						<?js if( member.variations && member.variations.length ) { ?>
 							<span class="expand"></span>
 							<span class="hidden-active-child"></span>
@@ -70,8 +67,6 @@
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
 						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
-						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
-						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 					</a>
 				</li>
 			<?js } }); ?>
@@ -91,8 +86,6 @@
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
 						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
-						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
-						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 					</a>
 				</li>
 			<?js } }); ?>
@@ -111,8 +104,6 @@
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
 						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
 						<?js= member.name ?>
-						<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
-						<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 					</a>
 				</li>
 			<?js } }); ?>
@@ -152,7 +143,5 @@
 	<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>
 >
 	<?js= member.name ?>
-	<?js= member.important ? '<i class="important" title="'+self.lang.important+'"></i>' : '' ?>
-	<?js= member.cool ? '<i class="cool" title="'+self.lang.cool+'"></i>' : '' ?>
 </a>
 <?js}, this );?>
