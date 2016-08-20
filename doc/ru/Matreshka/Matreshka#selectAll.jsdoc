@@ -11,17 +11,19 @@
 @returns {$nodes}
 @example
 this.bindNode('sandbox', '.app');
-this.selectAll('.my-element');
+nodes = this.selectAll('.my-element');
 // то же самое, что и
-this.$nodes.sandbox.find('.my-element');
+nodes = this.$('.my-element'); // $ - ссылка на метод selectAll
+// то же самое, что и
+nodes = this.$nodes.sandbox.find('.my-element');
 // и то же самое, что и
-$('.app').find('.my-element');
+nodes = $('.app').find('.my-element');
 
 @example <caption>Селектор ``:bound(KEY)``</caption>
 this.bindNode('myKey', '.my-element');
-this.selectAll(':bound(myKey) .my-another-element');
+nodes = this.selectAll(':bound(myKey) .my-another-element');
 // то же самое, что и
-this.$nodes.myKey.find('.my-another-element');
+nodes = this.$nodes.myKey.find('.my-another-element');
 // и то же самое, что и
-$('.my-element').find('.my-another-element');
+nodes = $('.my-element').find('.my-another-element');
 */

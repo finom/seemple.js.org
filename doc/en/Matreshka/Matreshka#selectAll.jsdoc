@@ -12,19 +12,21 @@
 @returns {$nodes}
 @example
 this.bindNode('sandbox', '.app');
-this.selectAll('.my-element');
+nodes = this.selectAll('.my-element');
 // the same as
-this.$nodes.sandbox.find('.my-element');
+nodes = this.$('.my-element'); // $ is a short reference to selectAll
 // the same as
-$('.app').find('.my-element');
+nodes = this.$nodes.sandbox.find('.my-element');
+// the same as
+nodes = $('.app').find('.my-element');
 
 @example <caption>The ``:bound(KEY)`` selector</caption>
 this.bindNode('myKey', '.my-element');
-this.selectAll(':bound(myKey) .my-another-element');
+nodes = this.selectAll(':bound(myKey) .my-another-element');
 // the same as
-this.$nodes.myKey.find('.my-another-element');
+nodes = this.$nodes.myKey.find('.my-another-element');
 // the same as
-$('.my-element').find('.my-another-element');
+nodes = $('.my-element').find('.my-another-element');
 */
 
 

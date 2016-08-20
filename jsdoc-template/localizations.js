@@ -1,6 +1,6 @@
 module.exports = {
     en: {
-        'class': 'Class',
+        class: 'Class',
         method: 'Method',
         property: 'Property',
         namespace: 'Namespace',
@@ -9,19 +9,20 @@ module.exports = {
         examples: 'Examples',
         name: 'Name',
         type: 'Type',
-        'default': 'Default',
+        default: 'Default',
         details: 'Details',
         returns: 'Returns',
         fires: 'Fires',
-        comments: 'ASK A QUESTION',
+        comments: 'Ask a question',
         see: 'Links',
         methods: 'Methods',
         properties: 'Properties',
         static_methods: 'Static Methods',
-        static_properties: 'Static Props'
+        static_properties: 'Static Props',
+        synonym: 'Synonym'
     },
     ru: {
-        'class': 'Класс',
+        class: 'Класс',
         method: 'Метод',
         property: 'Свойство',
         namespace: 'Пространство имен',
@@ -30,7 +31,7 @@ module.exports = {
         examples: 'Примеры',
         name: 'Имя',
         type: 'Тип',
-        'default': 'По&nbsp;умолчанию',
+        default: 'По&nbsp;умолчанию',
         details: 'Описание',
         returns: 'Возвращает',
         fires: 'Генерирует события',
@@ -39,6 +40,7 @@ module.exports = {
         methods: 'Методы',
         properties: 'Свойства',
         static_methods: 'Статичные методы',
-        static_properties: 'Статичные свойства'
+        static_properties: 'Статичные свойства',
+        synonym: 'Синоним'
     }
 };
