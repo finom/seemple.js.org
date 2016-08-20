@@ -77,7 +77,7 @@ class Plugin {
 
     getFileNames(language) {
         return glob.sync(
-            `${this.options.srcFolder}/${language}/*`
+            `${this.options.srcFolder}/${language}/**/*.jsdoc`
         );
     }
 
@@ -113,7 +113,7 @@ class Plugin {
         const { spawn, spawnSync } = require('child_process');
         const spawnFunction = isSync ? spawnSync : spawn;
         const spawnResult = spawnFunction(cli,
-            [`${this.options.srcFolder}/${language}`]
+            this.docFileNamesByLanguage[language]
                 .concat([
                     '-t', this.options.templateFolder,
                     '-d', this.options.getDestination(language)
