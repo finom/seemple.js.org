@@ -1,7 +1,7 @@
 
 /**
 @method Matreshka#instantiate
-oldlink #!Matreshka-setClassFor
+@oldlink #!Matreshka-setClassFor
 @importance 2
 @since 1.1
 @summary Creates fixed class instance
@@ -11,10 +11,10 @@ oldlink #!Matreshka-setClassFor
 
 Class instance is being created during the call of ``instantiate`` method. The current property value becomes the first argument of the class constructor. Provisions should be made so that either undefined (if a property hasn't contained any data before), or an object you should do something with (for example, to extend class instance by object properties) will get into the class constructor.
 
-> It looks easy in practice: you create an ordinary class which almost always receives some data to be handled (for example, to use them in {@link Matreshka.Object#jset} method).
+> It looks easy in practice: you create an ordinary class which almost always receives some data to be handled (for example, to use them in {@link Matreshka.Object#setData} method).
 
 While attempting to assign another value (an object or an array) to the property, the inner mechanism of ``instantiate`` method performs the following instead of actual assignment:
-- If ``updateCallback`` function is given, the method launches it with two arguments: the current property value and the data which code is trying to assign.
+- If ``updateCallback`` function is given, the method launches it with two arguments: current property value and the data which code is trying to assign.
 - If given class is inherited from {@link Matreshka.Object}, the instance is updated with new data using {@link Matreshka.Object#setData} method.
 - If given class is inherited from {@link Matreshka.Array}, the instance is updated with new data using {@link Matreshka.Array#recreate} method.
 - If ``updateCallback`` function isn't given and class isn’t inherited from {@link Matreshka.Object} or {@link Matreshka.Array}, the instance is extended by object properties which code is trying to assign.
@@ -33,20 +33,21 @@ class MyClass {
 
 this.instantiate('x', MyClass);
 
-// trying to assign another value to property
+// trying to assign another value to x property
 this.x = { a: 42 };
 
-// this.x is still SubClass instance
+// this.x is still MyClass instance
 alert(this.x instanceof MyClass); // true
 alert(this.x.a); // 42
 @example <caption>The use of ``updateCallback``.</caption>
 this.instantiate('x', MyClass, (instance, data) => {
 	updateSomeHow(instance, data);
 });
-@example <caption>Getting a parent and property name. Besides data (the first argument), two arguments are passed to class constructor: a link to an instance which has called ``instantiate`` and the name of the property.</caption>
+@example <caption>Getting a parent and property name. Besides data (the first argument), two arguments are passed to class constructor: a reference to an instance which has called ``instantiate`` and a name of a property.</caption>
 class MyClass extends Matreshka {
 	constructor(data, parent, key) {
-		// parent is MyParentClass instance which is created this property
+		// parent is MyParentClass instance
+        // which is created x property
 		// key equals to "x"
 	}
 }
@@ -57,7 +58,7 @@ class MyParentClass extends Matreshka {
 	}
 });
 
-@example <caption>A non-standard way of using ``updateCallback`` for ignoring any changes of the property.</caption>
+@example <caption>A non-standard way of using ``updateCallback`` for ignoring any changes of a property.</caption>
 this.instantiate('x', MyClass, () => {});
 @example <caption>In case if your class doesn't support the use of ``new`` operator, use @link Matreshka#mediate} method instead of ``instantiate``.</caption>
 this.mediate('x', (data, currentValue) => {
@@ -65,7 +66,7 @@ this.mediate('x', (data, currentValue) => {
 		? Object.assign(currentValue, data)
 		: SomeLib.initInstance(SomeClass, data);
 });
-@example <caption>An abstract example with large nested data (for brevity, class instance fields syntax is used)</caption>
+@example <caption>An abstract example with nested data (for brevity, class instance fields syntax is used)</caption>
 // app.js
 class App extends Matreshka {
 	constructor(appData) {
@@ -136,12 +137,11 @@ var app = new App({
 	}]
 });
 
-// data can be serialized and passed to the server
+// data can be serialized and passed to a server
 JSON.stringify(app.appData);
 
-
 // next just to assign new data to appData property
-// yet the class structure won’t be changed
+// yet the object structure won’t be changed
 app.appData = {
 	settings: {
 		name: 'Petr Petrov',
@@ -162,12 +162,13 @@ app.appData = {
 
 /**
 @method Matreshka#instantiate
+@oldlink #!Matreshka-setClassFor(2)
 @importance 2
 @variation 2
 @since 1.1
 @summary Additional syntax for {@link Matreshka#instantiate}, which accepts key-class object as the first argument.
 @param {object} keyClassPairs - key-class object
-@param {function} [updateCallback] - Function which is called at every attempt of assigning new data to the property.
+@param {function} [updateCallback] - A function which is called at every attempt of assigning new data to a property
 @example
 this.instantiate({
 	x: Class1,

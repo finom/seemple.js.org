@@ -13,9 +13,6 @@
 				<?js } else { ?>()<?js } ?>
 		</a> <?js= obj.returns ? '<span class="returns">→ ' + this.partial( 'params.html', obj.returns[0] ) + '</span>' : '' ?>
 	</h2>
-	<?js if(obj.since) {?>
-		<div class="since"><p><?js= this.lang.since ?> <?js= obj.since ?>.</p></div>
-	<?js }?>
 	<div class="summary"><?js= obj.summary ?></div>
 	<div class="description"><?js= obj.description ?></div>
 	<?js if( obj.returns ) { ?>
