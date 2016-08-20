@@ -1,5 +1,6 @@
 /**
 @method Matreshka#selectAll
+@synonym Matreshka#$
 @importance 2
 @summary Возвращает элементы из песочницы, соответствующие селектору
 @desc После создания песочницы методом {@link Matreshka#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``.
@@ -23,14 +24,4 @@ this.selectAll(':bound(myKey) .my-another-element');
 this.$nodes.myKey.find('.my-another-element');
 // и то же самое, что и
 $('.my-element').find('.my-another-element');
-*/
-
-
-/**
-@method Matreshka#$
-@importance 2
-@variation instance
-@summary Делает то же самое, что и {@link Matreshka#selectAll}
-@example
-this.$('.my-element');
 */

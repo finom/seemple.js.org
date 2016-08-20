@@ -1,23 +1,19 @@
 "use strict";
-var fs = require('jsdoc/fs'),
-	outdir = env.opts.destination,
-	template = require('jsdoc/template'),
-	mdParser = require('marked');
-
-mdParser.setOptions({
-	smartLists: false,
-})
+const fs = require('jsdoc/fs');
+const outdir = env.opts.destination;
+const template = require('jsdoc/template');
+const mdParser = require('marked');
+const localizations = require('./localizations');
+const parseExample = require('./parse-example');
 
 exports.publish = function(data, opts) {
 	var origData = data().get(),
 		variation = 0,
 		result = {
-			globals: [],
 			classes: {},
 			typedefs: [],
 			binders: null
-		},
-		docPath = origData[0].meta.path + '/../md';
+		};
 
 	origData.forEach(function(item, index) {
 		delete item.meta;
@@ -25,7 +21,7 @@ exports.publish = function(data, opts) {
 		delete item.___s;
 		delete item.tags;
 
-		if (item.kind == 'class' && item.longname !== "Class.Interface") {
+		if (item.kind == 'class') {
 			result.classes[item.longname] = item;
 
 			item.staticMembers = {
@@ -55,8 +51,6 @@ exports.publish = function(data, opts) {
 					property.description = mdParser(property.description);
 				});
 			}
-		} else if (item.scope == 'global' && item.name !== 'Matreshka') {
-			result.globals.push(item);
 		}
 
 		item.see = item.see || [];
@@ -66,21 +60,7 @@ exports.publish = function(data, opts) {
 
 		item.summary = mdParser(resolveLinks(item.summary || ''));
 
-		item.examples = (item.examples || []).map(function(example) {
-			var execResult;
-			if (execResult = /<caption>([\s\S]*)<\/caption>([\s\S]+)/.exec(example)) {
-				var header = mdParser(execResult[1]);
-				var code = execResult[2]
-			} else {
-				header = '';
-				code = example;
-			}
-
-			return {
-				header: header,
-				code: code.replace(/^\s+/, '').replace(/</g, '&lt;')
-			};
-		});
+		item.examples = (item.examples || []).map(parseExample);
 
 		if (item.name === 'binders') {
 			result.binders = item;
@@ -90,8 +70,6 @@ exports.publish = function(data, opts) {
 		resolveAllLinks(item);
 
 		item.summary_plain = (item.summary || '').replace(/(<([^>]+)>)/ig, "");
-		item.importance = item.comment && /[\s\S]+@importance\s+(\d+)[\s\S]+/.exec(item.comment);//.replace(/[\s\S]+@importance\s+([a-z]+)\s[\s\S]+/g, '$1') : null;
-		item.importance = item.importance ? item.importance[1] : null;
 	});
 
 	result.classes.Matreshka.binders = result.binders;
@@ -120,75 +98,23 @@ exports.publish = function(data, opts) {
 		}
 	});
 
-
-
-	//result.intro = wrapArticles(fs.readFileSync(docPath + '/intro.md', 'utf8'));
-	//result.end = wrapArticles(fs.readFileSync(docPath + '/end.md', 'utf8'));
-
 	var templatePath = opts.template,
 		view = new template.Template(templatePath + '/tmpl');
 
 	fs.mkPath(outdir);
 
-	view.langName = result.classes.Matreshka.comment.replace(/[\s\S]+@lang\s+([a-z]+)\s[\s\S]+/g, '$1');
-
-	view.lang = {
-		en: {
-			'class': 'Class',
-			method: 'Method',
-			property: 'Property',
-			namespace: 'Namespace',
-			arguments: 'Arguments',
-			properties: 'Properties',
-			examples: 'Examples',
-			name: 'Name',
-			type: 'Type',
-			'default': 'Default',
-			details: 'Details',
-			returns: 'Returns',
-			fires: 'Fires',
-			comments: 'ASK A QUESTION',
-			see: 'Links',
-			methods: 'Methods',
-			properties: 'Properties',
-			static_methods: 'Static Methods',
-			static_properties: 'Static Props'
-		},
-		ru: {
-			'class': 'Класс',
-			method: 'Метод',
-			property: 'Свойство',
-			namespace: 'Пространство имен',
-			arguments: 'Аргументы',
-			properties: 'Свойства',
-			examples: 'Примеры',
-			name: 'Имя',
-			type: 'Тип',
-			'default': 'По&nbsp;умолчанию',
-			details: 'Описание',
-			returns: 'Возвращает',
-			fires: 'Генерирует события',
-			comments: 'Задать вопрос',
-			see: 'Ссылки',
-			methods: 'Методы',
-			properties: 'Свойства',
-			static_methods: 'Статичные методы',
-			static_properties: 'Статичные свойства'
-		}
-	}[view.langName];
+	view.lang = localizations[result.classes.Matreshka.lang];
 
 	for(var className in result.classes) {
 		var _class = result.classes[className];
 		var sortFunction = function(a, b) {
-			//console.log(a.longname);
 			return a.longname < b.longname ? -1 : 1;
 		};
 
-		_class.instanceMembers.member = _class.instanceMembers.member.sort(sortFunction);
-		_class.instanceMembers['function'] = _class.instanceMembers['function'].sort(sortFunction);
-		_class.staticMembers.member = _class.staticMembers.member.sort(sortFunction);
-		_class.staticMembers['function'] = _class.staticMembers['function'].sort(sortFunction);
-
+		_class.instanceMembers.member.sort(sortFunction);
+		_class.instanceMembers['function'].sort(sortFunction);
+		_class.staticMembers.member.sort(sortFunction);
+		_class.staticMembers['function'].sort(sortFunction);
 	}
 
 	// resorting classes
@@ -199,7 +125,6 @@ exports.publish = function(data, opts) {
 	};
 
 	result.classes = classes;
-
 
 	fs.writeFileSync(env.opts.destination + '/doc_menu.html', view.render('menu.html', result), 'utf8');
 	fs.writeFileSync(env.opts.destination + '/doc_content.html', view.render('content.html', result), 'utf8');
@@ -226,38 +151,4 @@ function resolveAllLinks(obj) {
 		}
 
 	return obj;
-}
-
-
-function wrapArticles(text) {
-	return resolveLinks(text
-		.split('=======').map(function(article) {
-			if(!article) return '';
-			let ex = /\(\(\(([\s\S]+)\)\)\)([\s\S]+)/.exec(article),
-				attrs,
-				attrsStr = '',
-				json;
-
-			if (ex) {
-				json = ex[1];
-				article = ex[2];
-				attrs = JSON.parse('{' + json + '}')
-			} else {
-				attrs = {};
-			}
-
-			for (let i in attrs) {
-				attrsStr += ' ' + i + '="' + attrs[i] + '"';
-			}
-
-			article = mdParser(article)
-				.replace(/\[\[/g, '<')
-				.replace(/\]\]/g, '>');
-
-			article = '<article' + attrsStr + '>' + article + '</article>';
-			article = article.replace(/&quot;/g, '"');
-
-			return article;
-		})
-		.join(''));
 }

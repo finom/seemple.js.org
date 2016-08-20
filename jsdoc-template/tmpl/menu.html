@@ -135,13 +135,3 @@
 		</ul>
 	</div>
 <?js } ?>
-<?js obj.globals.forEach( function( member ) {?>
-<a
-	href="#!<?js= member.longname ?>"
-	title="<?js= member.summary_plain?>"
-	<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
-	<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>
->
-	<?js= member.name ?>
-</a>
-<?js}, this );?>

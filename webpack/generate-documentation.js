@@ -115,6 +115,7 @@ class Plugin {
         const spawnResult = spawnFunction(cli,
             this.docFileNamesByLanguage[language]
                 .concat([
+                    '-c', `${this.options.templateFolder}/jsdoc-conf.json`,
                     '-t', this.options.templateFolder,
                     '-d', this.options.getDestination(language)
                 ]),

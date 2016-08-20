@@ -66,6 +66,6 @@ this.set({
 this.set({
 	myKey: 3
 }, {
-	myFlag: 'Jigurda'
+	myFlag: 'foo'
 });
 */
