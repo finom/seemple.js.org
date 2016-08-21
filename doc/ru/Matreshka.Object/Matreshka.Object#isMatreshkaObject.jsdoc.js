@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Object#isMKObject
+@member {boolean} Matreshka.Object#isMatreshkaObject
 @importance 3
-@summary Свойство ``isMKObject`` всегда равно ``true``. Оно используется для проверки, является ли объект экземпляром {@link Matreshka.Object}.
+@summary Свойство ``isMatreshkaObject`` всегда равно ``true`` для экземпляров {@link Matreshka.Object}.
 @example
-alert(object.isMKObject);
+console.log(object.isMatreshkaObject);
 */

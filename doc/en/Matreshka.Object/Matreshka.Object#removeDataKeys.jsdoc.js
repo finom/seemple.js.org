@@ -1,11 +1,11 @@
 /**
 @method Matreshka.Object#removeDataKeys
 @importance 2
-@summary Deletes keys from a list of keys which are responsible for data (but does not delete given properties)
-@param {string|array} keys - A key or keys which are separated by spaces or an array of keys
+@fires remove
+@fires modify
+@summary Deletes given property names from a list of property names which are responsible for data (but does not delete the properties)
+@param {string|array} keys - An array of property names or a list of args
 @returns {matreshkaObject} self
-@example
-this.removeDataKeys('a b');
 @example
 this.removeDataKeys(['a', 'b']);
 @example

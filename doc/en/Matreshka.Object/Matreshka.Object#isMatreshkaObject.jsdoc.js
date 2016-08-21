@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Object#isMKObject
+@member {boolean} Matreshka.Object#isMatreshkaObject
 @importance 3
-@summary The ``isMKObject`` property always equals ``true``. It is used for checking if an object is an instance of {@link Matreshka.Object}.
+@summary The ``isMatreshkaObject`` property always equals ``true`` for instances of {@link Matreshka.Object} class
 @example
-alert(object.isMKObject);
+console.log(object.isMatreshkaObject);
 */
