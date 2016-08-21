@@ -55,6 +55,7 @@ form.typo {
 }
 
 .typo-badge {
+	display: none; // hide it for noe
 	position: fixed;
 	top: calc(50% - 190px);
 	right: -45px;
