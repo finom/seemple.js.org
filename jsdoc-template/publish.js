@@ -5,8 +5,9 @@ const template = require('jsdoc/template');
 const mdParser = require('marked');
 const localizations = require('./localizations');
 const parseExample = require('./parse-example');
+const resolveLinksRecursively = require('./resolve-links-recursively');
 
-exports.publish = function(data, opts) {
+module.exports.publish = function(data, opts) {
 	const origData = data().get();
 	const result = {
 		classes: {},
@@ -26,12 +27,12 @@ exports.publish = function(data, opts) {
 
 			item.staticMembers = {
 				member: [],
-				'function': []
+				function: []
 			};
 
 			item.instanceMembers = {
 				member: [],
-				'function': []
+				function: []
 			};
 		}
 
@@ -43,8 +44,9 @@ exports.publish = function(data, opts) {
 			variation = 0;
 		}
 
+		resolveLinksRecursively(item);
 
-		if (item.kind == 'typedef') {
+		if (item.kind === 'typedef') {
 			result.typedefs.push(item);
 			if(item.properties) {
 				item.properties.forEach((property) => {
@@ -56,26 +58,20 @@ exports.publish = function(data, opts) {
 		item.see = item.see || [];
 		item.properties = item.properties || [];
 
-		item.description = mdParser(
-			resolveLinks(
-					item.description || item.classdesc || ''
-			).replace(/&quot;/g, '"')
-		);
+		item.description = item.description || item.classdesc || '';
+		item.description = mdParser(item.description.replace(/&quot;/g, '"'));
 
-		item.summary = mdParser(
-			resolveLinks(item.summary || '')
-		);
+		item.summary = item.summary ? mdParser(item.summary) : '';
 
-		item.examples = (item.examples || []).map(parseExample);
+		item.examples = item.examples ? item.examples.map(parseExample) : [];
 
 		if (item.name === 'binders') {
 			result.binders = item;
 			item.members = [];
 		}
 
-		resolveAllLinks(item);
-
-		item.summary_plain = (item.summary || '').replace(/(<([^>]+)>)/ig, "");
+		// getting rif od HTML
+		item.summary_plain = item.summary ? item.summary.replace(/(<([^>]+)>)/ig, "") : '';
 	});
 
 	result.classes.Matreshka.binders = result.binders;
@@ -89,7 +85,7 @@ exports.publish = function(data, opts) {
 				(members[item.kind] = members[item.kind] || []).push(item);
 				item.params = item.params || item.properties || [];
 				item.params.forEach(function(item) {
-					item.description = mdParser(resolveLinks(item.description || '').replace(/&quot;/g, '"'));
+					item.description = mdParser((item.description || '').replace(/&quot;/g, '"'));
 				})
 			}
 		}
@@ -99,7 +95,7 @@ exports.publish = function(data, opts) {
 
 			item.params = item.params || item.properties || [];
 			item.params.forEach(function(item) {
-				item.description = mdParser(resolveLinks(item.description || '').replace(/&quot;/g, '"'));
+				item.description = mdParser((item.description || '').replace(/&quot;/g, '"'));
 			});
 		}
 	});
@@ -118,43 +114,18 @@ exports.publish = function(data, opts) {
 		};
 
 		_class.instanceMembers.member.sort(sortFunction);
-		_class.instanceMembers['function'].sort(sortFunction);
+		_class.instanceMembers.function.sort(sortFunction);
 		_class.staticMembers.member.sort(sortFunction);
-		_class.staticMembers['function'].sort(sortFunction);
+		_class.staticMembers.function.sort(sortFunction);
 	}
 
 	// resorting classes
-	var classes = {
+	result.classes = {
 		'Matreshka': result.classes['Matreshka'],
 		'Matreshka.Object': result.classes['Matreshka.Object'],
 		'Matreshka.Array': result.classes['Matreshka.Array']
 	};
 
-	result.classes = classes;
-
 	fs.writeFileSync(env.opts.destination + '/doc_menu.html', view.render('menu.html', result), 'utf8');
 	fs.writeFileSync(env.opts.destination + '/doc_content.html', view.render('content.html', result), 'utf8');
 };
-
-function resolveLinks(text) { //{@link #typedef-binder}
-	return text
-		.replace(/{@link\s+#typedef-([A-Za-z]+)\s*}/g, function(_, type) {
-			return '<span data-type="' + type + '">' + type + '</span>';
-		})
-		.replace(/{@link\s+(\S+)\s*([\$A-zА-я .-]*)}/g, function(_, member, text) {
-
-			return ~member.indexOf('http')
-				? '<a href="' + member + '" target="_blank">' + (text || member) + '</a>'
-				: '<a href="#!' + member.replace(/#/g, '-') + '">' + (text || member) + '</a>';
-		});
-}
-
-function resolveAllLinks(obj) {
-	if (obj)
-		for (let i in obj) {
-			obj[i] = typeof obj[i] === 'string' ? resolveLinks(obj[i]) : obj[i];
-			obj[i] = typeof obj[i] === 'object' ? resolveAllLinks(obj[i]) : obj[i];
-		}
-
-	return obj;
-}
