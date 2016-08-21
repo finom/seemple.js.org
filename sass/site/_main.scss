@@ -13,42 +13,20 @@ main {
 		padding-top: $header-height;
 		max-width: 700px;
 
-		.share-buttons {
+		.make-patch-link {
 			float: right;
+			display: block;
 			margin-top: 1rem;
+			margin-left: 1rem;
 		}
 
-		.share-facebook, .share-twitter {
-			height: 2rem;
-			cursor: pointer;
-			background-repeat: no-repeat;
-			background-size: cover;
-			display: inline-block;
-		}
 
-		.share-facebook {
-			width: 2rem;
-			background-image: inline-image("facebook-icon.svg");
-		}
-
-		.share-twitter {
-			margin-left: .5rem;
-			background-image: inline-image("twitter-icon.svg");
-			width: 2rem*1.22;
-		}
-
-		@media #{$small-and-down} {
-			&.new {
-				h2 a {
-					padding-left: 0;
-				}
-				.new-badge {
-					display: none;
-				}
+		@media #{$medium-and-down} {
+			.make-patch-link {
+				float: none;
+				margin-left: 0;
 			}
 		}
-
-
 	}
 
 	[id="!examples"] {

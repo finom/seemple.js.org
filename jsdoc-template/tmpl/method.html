@@ -43,6 +43,8 @@
 	<?js print( this.partial( 'see.html', obj.see ) ) ?>
 	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
 
-	<!--<a href="//jsbin.com/iwovaj/74/embed?js,output">JSBIN</a>-->
-	<?js print( this.partial( 'comments.html', { link: link, title: this.lang.method + ' ' + link }) ) ?>
+	<?js print( this.partial( 'comments.html', Object.assign({
+		link: link,
+		title: this.lang.method + ' ' + link
+	}, obj))) ?>
 </article>

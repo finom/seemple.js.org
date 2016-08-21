@@ -21,5 +21,5 @@ module.exports = (dirname, item) => {
 
     checkExistence(path.resolve(root, relativeFilePath))
 
-    return 'https://github.com/matreshkajs/matreshka.io/blob/next/' + escapedFilePath + linenoSuffix;
+    return 'https://github.com/matreshkajs/matreshka.io/blob/master/' + escapedFilePath + linenoSuffix;
 }

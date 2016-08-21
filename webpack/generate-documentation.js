@@ -77,7 +77,7 @@ class Plugin {
 
     getFileNames(language) {
         return glob.sync(
-            `${this.options.srcFolder}/${language}/**/*.jsdoc`
+            `${this.options.srcFolder}/${language}/**/*.jsdoc.js`
         );
     }
 

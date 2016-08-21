@@ -20,7 +20,8 @@ module.exports = {
         static_methods: 'Static Methods',
         static_properties: 'Static Props',
         synonym: 'Synonym',
-        module: 'CommonJS module'
+        module: 'CommonJS module',
+        patchLinkText: 'Found an ussue in the article? Send a patch there.'
     },
     ru: {
         class: 'Класс',
@@ -43,6 +44,7 @@ module.exports = {
         static_methods: 'Статичные методы',
         static_properties: 'Статичные свойства',
         synonym: 'Синоним',
-        module: 'Путь к модулю CommonJS'
+        module: 'Путь к модулю CommonJS',
+        patchLinkText: 'Нашли ошибку в статье? Пришлите патч с иправлением.'
     }
 };
