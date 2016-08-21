@@ -1,0 +1,22 @@
+/**
+@namespace Matreshka.binders
+@module matreshka/binders
+@importance 1
+@desc The namespace for binders. This object can be extended by you so as not to make a mess of the global namespace.
+
+Take a little agreement into consideration: every property from the ``Matreshka.binders`` collection must be made as a function which returns a binder.
+@see {@link Matreshka#bindNode}
+@see {@link Matreshka.defaultBinders}
+@example
+MK.binders.myCoolBinder = function(var1, var2) {
+	return {
+		on: 'click',
+		getValue: function() { ... },
+		setValue: function() { ... },
+		initialize: function() { ... }
+	};
+};
+
+this.bindNode('myKey', '.my-element',
+	MK.binders.myCoolBinder('Hello', 'World'));
+*/

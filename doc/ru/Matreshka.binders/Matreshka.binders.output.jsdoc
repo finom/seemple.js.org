@@ -1,0 +1,10 @@
+/**
+@function Matreshka.binders.output
+@module matreshka/binders/output
+@importance 3
+@since 1.4
+@summary Возвращает привязчик, связывающий свойство экземпляра класса с элементом ``output``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@returns {binder}
+@example
+this.bindNode('myKey', '.my-output', MK.binders.output()));
+*/

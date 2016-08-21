@@ -27,7 +27,7 @@ const C = Matreshka.Class({
 		// calling the parent method
 		B.prototype.method2.apply(this, arguments);
 	},
-	method3: function(a, b) { ... }
+	method3(a, b) { ... }
 });
 
 const D = Matreshka.Class({

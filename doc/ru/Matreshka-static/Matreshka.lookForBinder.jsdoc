@@ -8,7 +8,10 @@
 @param {node} node
 @returns {binder} binder
 @example
-console.log(Matreshka.lookForBinder(document.querySelector('input[type="text"]'));
+const element = document.createElement('input');
+element.type = 'text';
+
+console.log(Matreshka.lookForBinder(element));
 
 // вернет примерно такой объект
 {

@@ -3,13 +3,16 @@
 @method Matreshka.lookForBinder
 @module matreshka/lookforbinder
 @importance 3
-@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders}.
+@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders} for the search.
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.defaultBinders}
-@param {node|$nodes} node
+@param {node} node
 @returns {binder} binder
 @example
-console.log(Matreshka.lookForBinder(document.querySelector('input[type="text"]'));
+const element = document.createElement('input');
+element.type = 'text';
+
+console.log(Matreshka.lookForBinder(element));
 
 // will return something like the following object
 {
