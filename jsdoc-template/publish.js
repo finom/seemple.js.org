@@ -6,6 +6,7 @@ const mdParser = require('marked');
 const localizations = require('./localizations');
 const parseExample = require('./parse-example');
 const resolveLinksRecursively = require('./resolve-links-recursively');
+const getGithubSourceLink = require('./get-github-source-link');
 
 module.exports.publish = function(data, opts) {
 	const origData = data().get();
@@ -17,6 +18,12 @@ module.exports.publish = function(data, opts) {
 	let variation = 0;
 
 	origData.forEach(function(item, index) {
+		if(item.kind === 'package') {
+			return;
+		}
+
+		item.githubSourceLink = getGithubSourceLink(__dirname, item);
+
 		delete item.meta;
 		delete item.___id;
 		delete item.___s;
