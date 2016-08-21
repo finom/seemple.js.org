@@ -3,8 +3,8 @@
 @module matreshka/binders/output
 @importance 3
 @since 0.3
-@summary Returns data binder which binds instance property to an ``output`` value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
+@summary Returns a binder which binds instance property to an ``output`` element value. It is not obligatory to use the binder directly because it is included in the {@link Matreshka.defaultBinders} list.
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-input', MK.binders.output());
+this.bindNode('myKey', '.my-output', Matreshka.binders.output());
 */

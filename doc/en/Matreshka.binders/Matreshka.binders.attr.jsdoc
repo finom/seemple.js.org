@@ -3,11 +3,11 @@
 @module matreshka/binders/attr
 @importance 2
 @since 0.3
-@summary Returns data binder which changes an attribute of DOM node depending on instance property value
+@summary Returns a binder which changes an attribute of DOM node depending on instance property value
 @param {string} attribute
 @returns {binder}
 @example
-this.bindNode('image', 'img.my-image', MK.binders.attr('src'));
+this.bindNode('image', 'img.my-image', Matreshka.binders.attr('src'));
 
 this.image = 'http://example.com/cats.jpg';
 */

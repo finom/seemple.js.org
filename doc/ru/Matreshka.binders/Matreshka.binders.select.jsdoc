@@ -3,9 +3,9 @@
 @module matreshka/binders/select
 @importance 3
 @since 0.3
-@summary Возвращает привязчик, связывающий свойство экземпляра с элементом ``select``. Напрямую привязчик использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@summary Возвращает байндер, связывающий свойство экземпляра с элементом ``select``. Напрямую байндер использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
 @param {boolean} [multiple=false] - Является ли селект ``multiple``
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-select', MK.binders.select(true));
+this.bindNode('myKey', '.my-select', Matreshka.binders.select(true));
 */

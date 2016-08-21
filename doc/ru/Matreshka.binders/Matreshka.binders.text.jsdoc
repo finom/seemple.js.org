@@ -3,9 +3,9 @@
 @module matreshka/binders/text
 @importance 2
 @since 1.1
-@summary Возвращает привязчик, меняющий ``textContent`` (текстовое содержимое) DOM элемента в зависимости от значения свойства экземпляра класса.
-@desc {@link Matreshka.binders.text} позволяет вывести содержимое свойства как есть и немного улучшает производительность из-за отсутствия необходимости браузеру парсить HTML.
+@summary Возвращает байндер, меняющий ``textContent`` (текстовое содержимое) DOM элемента в зависимости от значения свойства экземпляра класса.
+@desc ``Matreshka.binders.text`` позволяет вывести содержимое свойства как есть.
 @returns {binder}
 @example
-this.bindNode('myKey', '.my-node', MK.binders.text());
+this.bindNode('myKey', '.my-node', Matreshka.binders.text());
 */

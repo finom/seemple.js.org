@@ -3,11 +3,11 @@
 @module matreshka/binders/attr
 @importance 2
 @since 0.3
-@summary Возвращает привязчик, меняющий атрибут DOM элемента на значение свойства экземпляра класса
+@summary Возвращает байндер, меняющий атрибут DOM элемента на значение свойства экземпляра класса
 @param {string} attribute
 @returns {binder}
 @example
-this.bindNode('image', 'img.my-image', MK.binders.attr('src'));
+this.bindNode('image', 'img.my-image', Matreshka.binders.attr('src'));
 
 this.image = 'http://example.com/cats.jpg';
 */
