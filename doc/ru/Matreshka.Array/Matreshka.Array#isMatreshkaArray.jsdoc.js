@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Array#isMKArray
+@member {boolean} Matreshka.Array#isMatreshkaArray
 @importance 3
-@summary ``isMKArray`` всегда равен ``true``. Это свойство используется для того, чтоб определить, является ли объект экземпляром класса {@link Matreshka.Array}
+@summary ``isMatreshkaArray`` всегда равен ``true`` для экземпляров {@link Matreshka.Array}
 @example
-alert(object.isMKArray);
+console.log(object.isMatreshkaArray);
 */

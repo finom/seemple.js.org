@@ -4,8 +4,10 @@
 @abstract
 @since 0.1
 @summary HTML string, selector or function which is responsible for rendering DOM nodes of an array on a page.
-@param {matreshkaObject} model - An object, which will be rendered (in case you need to use some conditions)
-@desc The ``itemRenderer`` overridable property which allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) for inserted item and it is inserted into HTML container which is defined in an array.
+@param {object} item - An object, which will be rendered (in case you need to use some conditions)
+@desc The ``itemRenderer`` overridable property which allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
+
+> For brevity, the class fields syntax will be used in examples at this article.
 
 #### Where is created node inserted?
 In order to define HTML container where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Matreshka#bindNode}.
@@ -14,13 +16,12 @@ Sandbox usage as a container:
 <ul class="my-list"></ul>
 ```
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: '<li>',
-	Model: MyModel,
-	constructor: function() {
-		// define a sandbox
-		this.bindNode('sandbox', '.my-list');
+class MyArray extends Matreshka.Array {
+	itemRenderer = '<li>';
+	Model = MyModel;
+	constructor() {
+		// sandbox definition
+		super().bindNode('sandbox', '.my-list');
 	}
 });
 ```
@@ -33,18 +34,19 @@ If you do not want to insert HTML nodes straight into the sandbox, you can bind 
 	<ul class="my-list"></ul>
 </div>
 ```
+
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: '<li>',
-	Model: MyModel,
-	constructor: function() {
-		// define a sandbox
+class MyArray extends Matreshka.Array {
+	itemRenderer = '<li>';
+	Model = MyModel;
+	constructor() {
+        super();
+		// sandbox definition
 		this.bindNode('sandbox', '.my-widget');
-		// define a container for HTML nodes
+		// a definition of container for HTML nodes
 		this.bindNode('container', '.my-list');
 	}
-});
+}
 ```
 In the example above the HTML nodes will be inserted into ``.my-list`` instead of ``.my-widget``.
 
@@ -53,12 +55,11 @@ The ``itemRenderer`` property supports a few variants of defining, but they all 
 #### HTML string as property value
 As you can see from the example above ``itemRenderer`` can be defined as an HTML string.
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<div class="my-div">Be cool</div>',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = '<div class="my-div">Be cool</div>';
+	constructor() { ... }
+}
 ```
 
 #### A selector as property value
@@ -67,17 +68,16 @@ In case if you carry over the templates for the items to the HTML page, ``itemRe
 > HTML string is different from a selector due to the presence of the ``<`` symbol in a string.
 
 ```html
-<script type="text/html" id="be-cool-template">
+<script type="text/html" id="my-template">
 	<div class="my-div">Be cool</div>
 </script>
 ```
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel
-	itemRenderer: '#be-cool-template',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = '#my-template';
+	constructor() { ... }
+}
 ```
 
 #### A function as property value
@@ -85,97 +85,89 @@ The usage of a function as the ``itemRenderer`` property value gives an addition
 
 __HTML string__
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer() {
 		return '<div class="my-div">Be cool</div>';
-	},
-	constructor: function() { ... }
-});
+	}
+}
 ```
 
 __A selector__
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
+class MyArray extends Matreshka.Array {
 	itemRenderer: function() {
-		return '#be-cool-template';
-	},
-	constructor: function() { ... }
-});
+		return '#my-template';
+	}
+}
 ```
 
 __DOM node__
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer() {
 		return document.createElement('div');
 	}
-});
+}
 ```
 
 #### Parent renderer overriding by the ``render`` property
 Sometimes it is convenient to declare a renderer inside a {@link Matreshka.Array#Model model} class as ``Backbone`` does. The ``renderer`` property overrides the ``itemRenderer`` value if it is specified for a child item of a collection.
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	renderer: '<div class="my-div">Be cool</div>',
-	constructor: function( data ) { ... }
-});
+class MyModel extends Matreshka.Object {
+	renderer = '<div class="my-div">Be cool</div>';
+}
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<frameset>Not cool</frameset>',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel,
+	itemRenderer = '<frameset>Not cool</frameset>';
+	constructor() { ... }
+}
 ```
 In this case you do not have to designate ``itemRenderer`` at all because ``render`` of a child item adopts all its roles. The syntax remains the same:  HTML string, a selector or a function can be used.
 
-#### The  ``render`` event
-After an item has been inserted into an array and its HTML node has already been created but it hasn't been inserted into the container yet, the ``render`` event is fired on inserted item. After its triggering you can declare needed data bindings.
+#### ``render`` ``afterrender`` events
+After an item has been inserted into an array and its HTML node has already been created but it hasn't been inserted into array container yet, the ``render`` event is fired on inserted item. After its triggering you can declare needed data bindings.
+
+``afterrender`` is fired when HTML node is inserted into the container.
 
 ```html
 <form class="my-form"></form>
 ```
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		this.jset(data);
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
 
 		// wait for the event triggering
-		this.on('render', function() {
+		this.on('render', () => {
+            // define bindings
 			this.bindNode('isChecked', ':sandbox .my-checkbox');
 			this.bindNode('text', ':sandbox .text',
-				MK.binders.html());
+				Matreshka.binders.html());
 		});
 	}
 });
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<label>\
-		<input type="checkbox" class="my-checkbox">\
-		<span class="text"></span>\
-	</label>',
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = `<label>
+		<input type="checkbox" class="my-checkbox">
+		<span class="text"></span>
+	</label>`;
+	constructor() {
+        super();
 		this.bindNode('sandbox', '.my-form');
 		this.push({
 			isChecked: true,
-			text: 'Be cool'
+			text: 'Buy a raccoon'
 		}, {
 			isChecked: false,
-			text: 'Produce shitcode'
+			text: 'Sell the raccoon'
 		});
 	}
 });
 
-var app = new MyArray();
+const app = new MyArray();
 ```
 
 The code above will create the following HTML tree:
@@ -184,48 +176,33 @@ The code above will create the following HTML tree:
 <form class="my-form">
 	<label>
 		<input type="checkbox" class="my-checkbox">
-		<span class="text">Be cool</span>
+		<span class="text">Buy a raccoon</span>
 	</label>
 	<label>
 		<input type="checkbox" class="my-checkbox">
-		<span class="text">Produce shitcode</span>
+		<span class="text">Sell the raccoon</span>
 	</label>
 </form>
 ```
 
-And it will bind the checkboxes to the corresponding ``isChecked`` and ``text`` properties. <a href="http://jsbin.com/zetuya/1/" target="_blank">The live example</a>
+And it will bind the checkboxes to the corresponding ``isChecked`` and ``text`` properties.
 
 Remember, the opportunity of catching the delegated events is implemented in Matreshka. The array can catch an event of an item rendering itself, using the ``*@render`` event name (see the documentation of {@link #typedef-eventNames}).
 ```js
-this.on('*@render', function(evt) {
+this.on('*@render', () => {
 	alert('Child item is rendered');
 });
 ```
 
 > Rendered HTML node becomes a sandbox for inserted item allowing to use the ``:sandbox`` selector and some other possibilities after rendering. If an item enters a few collections at once,  set the ``bindRenderedAsSandbox: false`` property to it so as to cancel this behavior.
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	bindRenderedAsSandbox: false
+class MyModel extends Matreshka.Object {
+	bindRenderedAsSandbox = false;
 	// ...
 });
 ```
 
-#### The ``afterrender`` event
-After ``render`` event is fired Matreshka starts zero timer ``setTimeout(f, 0)`` which calls ``afterrender`` event. In this way you can get actual information about node position and another data which is available only when DOM node inserted to the ``document``.
-```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		//...
-		this.on('afterrender', function() {
-			console.log('Computed style', getComputedStyle(this.sandbox));
-		});
-		//...
-	}
-});
-// ...
-```
+===== stopped there
 
 #### ``onItemRender`` and ``onRender``
 

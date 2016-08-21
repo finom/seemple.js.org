@@ -4,8 +4,10 @@
 @abstract
 @since 0.1
 @summary HTML строка, селектор или функция, отвечающая за отрисовку элементов массива на странице
-@param {matreshkaObject} model - объект, который будет рендериться (на случай необходимости использования условий для рендеринга разных элементов в разных случаях)
-@desc Свойство ``itemRenderer`` - это переопределяемое (виртуальное) свойство, которое позволяет рендерить элементы массива без участия программиста. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. {@link Matreshka#bindNode}) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.
+@param {object} item - объект, который будет рендериться (на случай необходимости определения условий для рендеринга разных элементов в разных случаях)
+@desc Свойство ``itemRenderer`` - это переопределяемое (виртуальное) свойство, которое позволяет рендерить элементы массива без дополнительного кода. При вставке нового элемента в массив, автоматически создается HTML узел. Этот узел становится песочницей (см. {@link Matreshka#bindNode}) (это поведение можно отменить, см. ниже) для вставленного элемента и встраивается в HTML контейнер, определенный в массиве.
+
+> Для краткости, в примерах к этой статье, будут использоваться синтаксис class fields.
 
 #### Куда вставляется созданный элемент?
 Для того, чтобы определить HTML контейнер, в который будут вставляться отрисованные HTML узлы, нужно определить **контейнер**. Для этого следует объявить HTML песочницу для массива либо связать специальный ключ ``container`` с HTML контейнером. Подробнее о привязках и песочнице см. {@link Matreshka#bindNode}.
@@ -14,11 +16,11 @@
 <ul class="my-list"></ul>
 ```
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: '<li>',
-	Model: MyModel,
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer = '<li>';
+	Model = MyModel;
+	constructor() {
+        super();
 		// определяем песочницу
 		this.bindNode('sandbox', '.my-list');
 	}
@@ -34,204 +36,168 @@ var MyArray = MK.Class({
 </div>
 ```
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: '<li>',
-	Model: MyModel,
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer = '<li>';
+	Model = MyModel;
+	constructor() {
+        super();
 		// определяем песочницу
 		this.bindNode('sandbox', '.my-widget');
 		// определяем контейнер для HTML элементов
 		this.bindNode('container', '.my-list');
 	}
-});
+}
 ```
 В примере выше HTML узлы будут вставляться в ``.my-list`` вместо ``.my-widget``.
 
 Свойство ``itemRenderer`` поддерживает несколько вариантов определения, но все они должны содержать или возвращать единственный HTML узел.
+
 #### HTML строка в качестве значения свойства
 Как видно из примера выше, ``itemRenderer`` может быть определен, как HTML строка.
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<div class="my-div">Be cool</div>',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = '<div class="my-div">Be cool</div>';
+	constructor() { ... }
+}
 ```
 #### Селектор в качестве значения свойства
-На случай, если вы выносите шаблоны для элементов на HTML страницу, ``itemRenderer`` поддерживает селектор в качестве значения. В этом случае, {@link Matreshka.Array} будет искать HTML элемент в DOM дереве и извлечет ``innerHTML`` найденого элемента. В случае, если элемент не найден, бросается исключение. HTML текст от селектора отличается наличием  символа ``<`` в строке.
+На случай, если вы выносите шаблоны для элементов на HTML страницу, ``itemRenderer`` поддерживает селектор в качестве значения. В этом случае, {@link Matreshka.Array} будет искать HTML элемент в DOM дереве и извлечет ``innerHTML`` найденого элемента. В случае, если элемент не найден, бросается исключение.
+
+> HTML текст от селектора отличается наличием  символа ``<`` в строке.
+
 ```html
-<script type="text/html" id="be-cool-template">
+<script type="text/html" id="my-template">
 	<div class="my-div">Be cool</div>
 </script>
 ```
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel
-	itemRenderer: '#be-cool-template',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = '#my-template';
+	constructor() { ... }
+}
 ```
 #### Функция в качестве значения свойства
-Использование функции в качестве значения свойства ``itemRenderer`` даёт дополнительную гибкость кода, если есть нужда динамически генерировать элемент для рендеринга. Функция может возвращать:
+Использование функции в качестве значения свойства ``itemRenderer`` может пригодиться, когда есть нужда динамически генерировать элемент для рендеринга. Функция может возвращать:
 
-__HTML строку__
+**HTML строку**
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer() {
 		return '<div class="my-div">Be cool</div>';
-	},
-	constructor: function() { ... }
-});
+	}
+}
 ```
 
-__Селектор__
+**Селектор**
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
+class MyArray extends Matreshka.Array {
 	itemRenderer: function() {
-		return '#be-cool-template';
-	},
-	constructor: function() { ... }
-});
+		return '#my-template';
+	}
+}
 ```
 
-__DOM узел__
+**DOM узел**
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: function() {
+class MyArray extends Matreshka.Array {
+	itemRenderer() {
 		return document.createElement('div');
 	}
-});
-```
-
-__Handlebars.js в качестве шаблонизатора__
-```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	// model - модель (экземпляр Matreshka.Object), который будет рендериться
-	itemRenderer: function(model) {
-		// получение и компилирование шаблона
-        var template = Handlebars
-			.compile($('#handlebarsTemplateSelector').html());
-		// подстановка значений модели в шаблон и его возвращение
-        return template(model);
-	}
-});
+}
 ```
 
 #### Переопределение родительского рендерера свойством ``render``
-Иногда удобно объявлять рендерер внутри класса {@link Matreshka.Array#Model}, как это делает ``Backbone``. Свойство ``renderer`` переопределяет значение ``itemRenderer``, если оно задано для дочернего элемента коллекции.
+Иногда удобно объявлять рендерер внутри класса {@link Matreshka.Array#Model}, а не на уровне коллекции. Свойство ``renderer`` перекрывает значение ``itemRenderer``, если оно задано для элемента коллекции.
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	renderer: '<div class="my-div">Be cool</div>',
-	constructor: function(data) { ... }
-});
+class MyModel extends Matreshka.Object {
+	renderer = '<div class="my-div">Be cool</div>';
+}
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<frameset>Not cool</frameset>',
-	constructor: function() { ... }
-});
+class MyArray extends Matreshka.Array {
+	Model = MyModel,
+	itemRenderer = '<frameset>Not cool</frameset>';
+	constructor() { ... }
+}
 ```
 В этом случае, можно вовсе не указывать ``itemRenderer``, так как ``render`` дочернего элемента перенимает все его возможности. Синтаксис остаётся такими же: можно использовать HTML, селектор или функцию.
 
-#### Событие ``render``
-После того, как элемент вставлен в массив, а его HTML узел уже создан, но еще не вставлен в контейнер, генерируется событие ``render`` на вставленном элементе. После его генерации можно объявить привязки свойств к HTML узлам, содержащимся внутри вставленного.
+#### Событие ``render`` и ``afterrender``
+После того, как объект вставлен в массив, а его HTML узел уже создан, но еще не вставлен в контейнер, генерируется событие ``render`` на вставленном элементе. После его генерации можно объявить привязки свойств к HTML узлам, содержащимся внутри вставленного.
+
+``afterrender``, в свою оередь, генерируется после вставки HTML элемента в контейнер массива.
+
 ```html
 <form class="my-form"></form>
 ```
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		this.jset(data);
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
 
 		// ждем генерации события
-		this.on('render', function() {
+		this.on('render', () => {
+            // объявляем байндинги
 			this.bindNode('isChecked', ':sandbox .my-checkbox');
 			this.bindNode('text', ':sandbox .text',
-				MK.binders.html());
+				Matreshka.binders.html());
 		});
 	}
 });
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<label>\
-		<input type="checkbox" class="my-checkbox">\
-		<span class="text"></span>\
-	</label>',
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = `<label>
+		<input type="checkbox" class="my-checkbox">
+		<span class="text"></span>
+	</label>`;
+	constructor() {
+        super();
 		this.bindNode('sandbox', '.my-form');
 		this.push({
 			isChecked: true,
-			text: 'Be cool'
+			text: 'Buy a raccoon'
 		}, {
 			isChecked: false,
-			text: 'Produce shitcode'
+			text: 'Sell the raccoon'
 		});
 	}
 });
 
-var app = new MyArray();
+const app = new MyArray();
 ```
 Код выше создаст такое HTML дерево:
 ```html
 <form class="my-form">
 	<label>
 		<input type="checkbox" class="my-checkbox">
-		<span class="text">Be cool</span>
+		<span class="text">Buy a raccoon</span>
 	</label>
 	<label>
 		<input type="checkbox" class="my-checkbox">
-		<span class="text">Produce shitcode</span>
+		<span class="text">Sell the raccoon</span>
 	</label>
 </form>
 ```
-И свяжет чекбоксы с соответствующими свойствaми ``isChecked`` и ``text``. <a href="http://jsbin.com/zetuya/1/" target="_blank">Живой пример</a>
+И свяжет чекбоксы с соответствующими свойствaми ``isChecked`` и ``text``.
 
-Не забывайте, что в Матрешке реализована возможность отлова всплывающих событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события ``*@render`` (см. документацию к {@link #typedef-eventNames}).
+Не забывайте, что в Матрешке реализована возможность отлова делегированных событий. Т. е. сам массив может отловить событие рендеринга элемента, используя имя события ``*@render`` (см. документацию к {@link #typedef-eventNames}).
 ```js
-this.on('*@render', function(evt) {
+this.on('*@render', () => {
 	alert('Child element is rendered');
 });
 ```
 
 > Отрисованный HTML узел становится песочницей для вставленного элемента, позволяя использовать селектор ``:sandbox`` и другие возможности после рендеринга. Если элемент входит сразу в несколько коллекций, установите ему свойство ``bindRenderedAsSandbox: false``, чтобы отменить это поведение.
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	bindRenderedAsSandbox: false,
+class MyModel extends Matreshka.Object {
+	bindRenderedAsSandbox = false;
 	// ...
 });
 ```
 
-#### Событие ``afterrender``
-После срабатывания события ``render`` запускается нулевой таймер (``setTimeout(f, 0)``), вызывающий событие ``afterrender``. Таким образом можно получить актуальные данные о позиции элемента на странице и другую информацию, которая доступна только тогда, когда DOM узел вставлен на страницу.
-```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		//...
-		this.on('afterrender', function() {
-			console.log('Computed style', getComputedStyle(this.sandbox));
-		});
-		//...
-	}
-});
-// ...
-```
-
+===== stopped there
 
 #### ``onItemRender`` и ``onRender``
 Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод {@link Matreshka.Array#onItemRender}, который можно использовать вместо события ``render``. В качестве альтернативы, у "моделей" вызывается метод ``onRender``, так же позволяющий сделать код более "плоским" и избавиться от вложенных функций.

@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Array#isMKArray
+@member {boolean} Matreshka.Array#isMatreshkaArray
 @importance 3
-@summary ``isMKArray`` always equals ``true``. This property is used to define whether an object is an instance of the {@link Matreshka.Array} class.
+@summary The ``isMatreshkaArray`` property always equals ``true`` for instances of {@link Matreshka.Array} class
 @example
-alert(object.isMKArray);
+console.log(object.isMatreshkaArray);
 */
