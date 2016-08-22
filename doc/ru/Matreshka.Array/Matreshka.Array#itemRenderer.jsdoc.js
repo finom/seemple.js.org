@@ -57,7 +57,7 @@ class MyArray extends Matreshka.Array {
 ```js
 class MyArray extends Matreshka.Array {
 	Model = MyModel;
-	itemRenderer = '<div class="my-div">Be cool</div>';
+	itemRenderer = '<div class="my-div">foo</div>';
 	constructor() { ... }
 }
 ```
@@ -68,7 +68,7 @@ class MyArray extends Matreshka.Array {
 
 ```html
 <script type="text/html" id="my-template">
-	<div class="my-div">Be cool</div>
+	<div class="my-div">foo</div>
 </script>
 ```
 ```js
@@ -85,7 +85,7 @@ class MyArray extends Matreshka.Array {
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer() {
-		return '<div class="my-div">Be cool</div>';
+		return '<div class="my-div">foo</div>';
 	}
 }
 ```
@@ -112,12 +112,12 @@ class MyArray extends Matreshka.Array {
 Иногда удобно объявлять рендерер внутри класса {@link Matreshka.Array#Model}, а не на уровне коллекции. Свойство ``renderer`` перекрывает значение ``itemRenderer``, если оно задано для элемента коллекции.
 ```js
 class MyModel extends Matreshka.Object {
-	renderer = '<div class="my-div">Be cool</div>';
+	renderer = '<div class="my-div">foo</div>';
 }
 
 class MyArray extends Matreshka.Array {
 	Model = MyModel,
-	itemRenderer = '<frameset>Not cool</frameset>';
+	itemRenderer = '<frameset>bar</frameset>';
 	constructor() { ... }
 }
 ```
@@ -197,188 +197,136 @@ class MyModel extends Matreshka.Object {
 });
 ```
 
-===== stopped there
-
 #### ``onItemRender`` и ``onRender``
-Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод {@link Matreshka.Array#onItemRender}, который можно использовать вместо события ``render``. В качестве альтернативы, у "моделей" вызывается метод ``onRender``, так же позволяющий сделать код более "плоским" и избавиться от вложенных функций.
+Для улучшения читаемости кода в версии 1.1 появился виртуальный метод {@link Matreshka.Array#onItemRender}, который можно использовать вместо события ``render``. В качестве альтернативы, у "моделей" вызывается метод ``onRender``, так же позволяющий сделать код более "плоским" и избавиться от вложенных функций.
 
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		this.jset(data);
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
 	},
-	onRender: function(evt) {
+	onRender(evt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
 		this.bindNode('text', ':sandbox .text',
-				MK.binders.html());
+				Matreshka.binders.html());
 	}
-});
+}
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '...`,
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	Model = MyModel;
+	itemRenderer = '...';
+	constructor() {
 		//...
 	},
-	onItemRender: function(item, evt) {
+	onItemRender(item, evt) {
 		//...
 	}
-});
+}
 
-var app = new MyArray();
+const app = new MyArray();
 ```
 
 
 
 #### Шаблонизатор
-Взглянув на примеры использования {@link Matreshka.Array} и {@link Matreshka.Array#itemRenderer} можно обратить внимание на то, что вся логика, отвечающая за двустороннюю и одностороннюю привязку данных заключена в JavaScript коде. Это одно из главных преимуществ Матрешки. Но когда разрабатываешь очень простую коллекцию, не включающую в себя сложную логику, массу привязок и пр. хотелось бы иметь более краткий вариант объявления привязок. Для этого, в ``itemRenderer`` может быть передан шаблон, включающий привязки. Начиная с версии 1.1, шаблонизатор включен по умолчанию.
+Взглянув на примеры использования {@link Matreshka.Array} и {@link Matreshka.Array#itemRenderer} можно обратить внимание на то, что вся логика, отвечающая за двустороннюю и одностороннюю привязку данных заключена в JavaScript коде. Но когда разрабатываешь очень простую коллекцию, не включающую в себя сложную логику, массу привязок и пр. хотелось бы иметь более краткий вариант объявления привязок. Для этого, в ``itemRenderer`` может быть передан шаблон, включающий привязки, заключенные в фигурные скобки (см. {@link Matreshka#parseBindings}).
 
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MK.Object,
-	itemRenderer: '<label>\
-		<input type="checkbox" checked="&#123;{isChecked}}">&#123;{text}}\
-	</label>',
-	constructor: function() {
-		this.bindNode('sandbox', '.my-form');
-		this.push({
-			isChecked: true,
-			text: 'Be cool'
-		}, {
-			isChecked: false,
-			text: 'Produce shitcode'
-		});
-	}
-});
+class MyArray extends Matreshka.Array {
+	itemRenderer: `<label>
+		<input type="checkbox" checked="{{isChecked}}">{{text}}
+	</label>`
+	// ...
+}
 
 var app = new MyArray();
 ```
-Пример выше полностью повторяет предыдущий, но не требует создания отдельного класса для Модели, так как нам не требуется отлавливать событие ``render`` и объявлять привязки вручную. <a href="http://jsbin.com/wabiyi/1/" target="_blank">Живой пример</a>
-
-Шаблонизация реализована с помощью метода {@link Matreshka#parseBindings}.
-
 
 #### Отмена рендеринга
-Как видно выше, если у дочернего элемента задано свойство ``render``, ``Matreshka.Array`` попробует его отрисовать. Для того, чтоб полностью отменить рендеринг для массива, присвойте свойству ``renderIfPossible: false``.
+Как видно выше, если у дочернего элемента задано свойство ``render``, ``Matreshka.Array`` попробует его отрисовать. Для того, чтоб полностью отменить рендеринг для массива, присвойте свойству массива ``renderIfPossible`` значение ``false``.
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	renderIfPossible: false,
+class MyArray extends Matreshka.Array {
+	renderIfPossible = false;
 	// ...
-});
+}
 ```
 
 #### Перемещение объекта из одного массива в другой
-По умолчанию, при вставке объекта в массив Матрешка попытается его отрисовать, используя ``itemRenderer`` (если он еще не был отрисован).  Это даёт огромное преимущество в случаях, когда у вас на странице есть два или более списка, включающих в себя один и тот же объект. При изменении этого объекта, все списки моментально реагируют на изменение, обновляя DOM.
+По умолчанию, при вставке объекта в массив Матрешка попытается его отрисовать, используя ``itemRenderer``. Это даёт преимущество в случаях, когда у вас на странице есть два или более списка, включающих в себя один и тот же объект. При изменении этого объекта, все списки моментально реагируют на изменение, обновляя DOM.
 
 Но иногда стоит задача перемещения объекта между коллекциями, не перерисовывая его заново. Для перемещения объекта из одного массива в другой, включая его песочницу, используйте флаг ``moveSandbox``.
 ```js
-this.push_( item, {
+this.push_(item, {
 	moveSandbox: true
 });
 ```
 
 #### Переопределение ``itemRenderer``
-Начиная с версии 1.1, при переустановке свойства ``itemRenderer``, коллекция автоматически перерисовывается.
+При переустановке свойства ``itemRenderer``, коллекция автоматически перерисовывается.
 ```js
 this.itemRenderer = '<div>';
 ```
 Эта возможность полезна в том случае, когда разработчик желает загрузить шаблон с сервера.
 ```js
-// пример jQuery.get
-jQuery.get('templates/template.html', function(data) {
-	this.itemRenderer = data;
-}.bind(this));
-
-// пример Fetch API
-fetch('templates/template.html')
-	.then(function(resp) {
-		return resp.text();
-	})
-	.then(function(data) {
-		this.itemRenderer = data;
-	}.bind(this));
-
-// пример Fetch API + ECMAScript 2015
 fetch('templates/template.html')
 	.then(resp => resp.text())
-	.then(data => this.itemRenderer = data);
+	.then(data => {
+		this.itemRenderer = data;
+	});
 ```
 
-Для отрисовки только тех объектов, которые еще не были отрисованы, воспользуйтесь методом {@link Matreshka#set} с флагом ``forceRerender: false``
+Для отрисовки только тех объектов, которые еще не были отрисованы, воспользуйтесь методом {@link Matreshka#set} с флагом ``forceRerender`` со значением  ``false``
 ```js
-this.set('itemRenderer', renderer, {forceRerender: false});
+this.set('itemRenderer', renderer, {
+	forceRerender: false
+});
 ```
 Такая необходимость может возникнуть тогда, когда вы используете серверный пререндеринг (см. {@link Matreshka.Array#restore}), а шаблон подгружается динамически.
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	constructor:  function() {
-		this
+class MyArray extends Matreshka.Array {
+	constructor() {
+		super()
 			.bindNode('sandbox', '.some-node')
 			.restore();
 
-		jQuery.get('templates/template.html', function(data) {
-			this.set('itemRenderer', data, {forceRerender: false})
-		}.bind(this));
+		fetch('templates/template.html')
+			.then(resp => resp.text())
+			.then(data => {
+				this.set('itemRenderer', data, {
+					forceRerender: false
+				});
+			});
 	}
-});
+}
 ```
 
 #### Рендеринг коллекции, состоящей из обычных объектов
-В версии 1.1 самым большим нововведением фреймворка стала поддержка нативных объектов в методах {@link Matreshka.bindNode}, {@link Matreshka.linkProps}, {@link Matreshka.mediate} и пр. Эта замечательная возможность не обошла стороной и рендеринг. Теперь не обязательно заботиться о том, чтобы элементы, входящие в коллекцию наследовались от класса {@link Matreshka}.
+
+Объект, входящий в коллекцию, не обязательно должен быть экземпляром ``Matreshka``, можно рендерить любой объект. Байндинги для таких объектов можно объявить используя статичный метод {@link Matreshka.bindNode}.
+
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
+class MyArray extends Matreshka.Array {
 	// Model не определена
 	itemRenderer: ...
-	onItemRender: function(item) {
-		MK.bindNode(item, 'x', ':sandbox .some-node');
+	onItemRender(item) {
+		Matreshka.bindNode(item, 'x', ':sandbox .some-node');
 	}
 })
 ```
 
-Для того, чтоб удостовериться, что элементы, попадающие в массив - объекты (а не null, number и пр), можно присвоить свойству {@link Matreshka.Array#Model} значение ``Object``, который является встроенным в JavaScript конструктором объектов.
+Еще небольшой пример: рендеринг простого списка.
 ```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: Object,
-	itemRenderer: ...
-	constructor: function() {...}
-})
-```
-
-Еще небольшой пример: рендеринг простого списка:
-```js
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: '<li>{{value}}</li>',
-	constructor: function() {
-		this.bindNode('sandbox', '.my-list');
+class MyArray extends Matreshka.Array {
+	itemRenderer = '<li>{{value}}</li>';
+	constructor() {
+		super().bindNode('sandbox', '.my-list');
 	}
 });
 
-var arr = new MyArray();
-arr.push({value: 'Item 1'}, {value: 'Item 2'});
+const arr = new MyArray();
+arr.push({ value: 'Item 1' }, { value: 'Item 2' });
 ```
 
 @see {@link Matreshka#bindNode}
 @see {@link Matreshka.Array#Model}
-
-@example <caption>ECMAScript 2015</caption>
-class MyArray extends MK.Array {
-	get itemRenderer() {
-		return '<div>';
-	},
-	constructor() { ... }
-}
-
-@example <caption>ECMAScript 7</caption>
-class MyArray extends MK.Array {
-	itemRenderer = '<div>';
-	constructor() { ... }
-}
 */
