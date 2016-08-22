@@ -24,8 +24,8 @@
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 При этом, они работают точно так же, как и методы ``Array.prototype``. Есть лишь несколько оговорок:
-+ Метод ``forEach`` возвращает себя вместо ``undefined``
-+ Методы, которые в оригинальном виде возвращают новый массив (``splice``, ``slice``, ``filter``, ``map``...), в Матрешке возвращают новый экземпляр ``Matreshka.Array``.
+- Метод ``forEach`` возвращает себя вместо ``undefined``
+- Методы, которые в оригинальном виде возвращают новый массив (``splice``, ``slice``, ``filter``, ``map``...), возвращают новый экземпляр ``Matreshka.Array``.
 
 Кроме всего, методы генерируют события связанные с любой модификацией массива. Подробнее см. {@link Matreshka.Array}.
 
@@ -33,15 +33,15 @@
 @example
 this.push(1, 2, 3);
 @example
-var mapped = this
-	.forEach(function(value, index) {
+const mkArray = this
+	.forEach((value, index) => {
 		//...
 	})
-	.map( function(value, index) {
+	.map((value, index) => {
 		//...
-	})
-;
-alert(mapped.isMKArray);
+	});
+
+console.log(mkArray.isMatreshkaArray); // true
 @example
 this.reverse();
 */

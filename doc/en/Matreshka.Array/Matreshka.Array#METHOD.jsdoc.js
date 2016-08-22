@@ -24,24 +24,24 @@
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
 Yet they work the same as the ``Array.prototype``. There are only a few remarks:
-+ The ``forEach`` method returns an array itself instead of ``undefined``
-+ The methods which return a new array (``splice``, ``slice``, ``filter``, ``map``...) originally, in Matreshka they return a new ``Matreshka.Array`` instance.
+- The ``forEach`` method returns an array itself instead of ``undefined``
+- The methods which should return a new array (``splice``, ``slice``, ``filter``, ``map``...) return a new ``Matreshka.Array`` instance.
 
-Moreover, the methods generate the events which are fired on any array modification. For more detailed information look at {@link Matreshka.Array}.
+Moreover, the methods generate events which are fired on any array modification. For more detailed information look at {@link Matreshka.Array}.
 
 @see {@link Matreshka.Array#_METHOD}
 @example
 this.push(1, 2, 3);
 @example
-var mapped = this
-	.forEach(function(value, index) {
+const mkArray = this
+	.forEach((value, index) => {
 		//...
 	})
-	.map(function(value, index) {
+	.map((value, index) => {
 		//...
-	})
-;
-alert(mapped.isMKArray);
+	});
+
+console.log(mkArray.isMatreshkaArray); // true
 @example
 this.reverse();
 */

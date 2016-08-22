@@ -4,7 +4,7 @@
 @since 0.2
 @abstract
 @summary Свойство определяет класс элементов, которые будет содержать коллекция
-@desc При каждом добавлении элементов в массив, встроенный обработчик проверяет, является ли добавленный элемент экземпляром ``Model`` и конвертирует его в таковой, если проверка не пройдена. Это поведение очень напоминает поведение свойства ``model`` из ``Backbone.Collection``. Рекомендуется наследовать ``Model`` от класса {@link Matreshka.Object} или {@link Matreshka.Array} (на случай, если требуется получить коллекцию коллекций), чтоб получить возможность конвертации массива в обычный массив методом {@link Matreshka.Array#toJSON}.
+@desc При каждом добавлении элементов в массив, встроенный обработчик проверяет, является ли добавленный элемент экземпляром ``Model`` и конвертирует его в таковой, если проверка не пройдена. Рекомендуется наследовать ``Model`` от класса {@link Matreshka.Object} или {@link Matreshka.Array} (на случай, если требуется получить коллекцию коллекций), чтоб получить возможность конвертации массива в обычный массив методом {@link Matreshka.Array#toJSON}.
 
 Для более гибкого контроля класса элементов (например, если для одних элементов нужно использовать одну Модель, а для других - другую), используйте {@link Matreshka.Array#mediateItem}.
 
@@ -18,25 +18,23 @@
 
 @example
 // определяем Модель
-var MyModel = MK.Class({
-	// она наследуется от MK.Object
-	'extends': MK.Object,
-	constructor: function(data, parentArray, index) {
-		// устанавливаем переданные свойства методом jset
-		this.jset(data);
+class MyModel extends Matreshka.Object {
+	constructor(data, parentArray, index) {
+		super(data);
 		this.doSomething();
-	},
-	doSomething: function() { ... }
-});
+	}
+	doSomething() { ... }
+}
 
 // определяем класс для коллекции
-var MyArray = MK.Class({
-    'extends': MK.Array,
-    Model: MyModel
-});
+class MyArray extends Matreshka.Array {
+	get Model() {
+		return MyModel;
+	}
+}
 
 // создаем экземпляр класса
-var myArray = new MyArray();
+const myArray = new MyArray();
 
 // добавляем два элемента
 myArray.push({
@@ -45,22 +43,11 @@ myArray.push({
 }, {
     a: 3,
     b: 4
-})
+});
+
+console.log(myArray[0] instanceof MyModel); // true
+console.log(myArray[1] instanceof MyModel); // true
 
 // вернет [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
-
-@example <caption>``Model`` и ECMAScript 2015</caption>
-class MyArray extends MK.Array {
-	get Model() {
-		return MyModel;
-	}
-	constructor() { ... }
-}
-
-@example <caption>``Model`` и ECMAScript 7</caption>
-class MyArray extends MK.Array {
-	Model = MyModel;
-	constructor() { ... }
-}
 */

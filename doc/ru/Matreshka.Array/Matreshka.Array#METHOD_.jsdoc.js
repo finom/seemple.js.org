@@ -5,10 +5,9 @@
 @desc Ознакомившись с {@link Matreshka.Array#METHOD} становится понятно, что методы не поддерживают передачу объекта события, так как в точности повторяют синтаксис и количество аргументов встроенного ``Array``. Синтаксис ``МЕТОД_`` позволяет передать в обработчик события какие-нибудь данные либо установить служебные флаги, отвечающие за поведение массива после вызова метода.
 
 Список доступных флагов:
-+ ``silent: true`` - отключает генерацию событий
-+ ``dontRender: true`` - отключает {@link Matreshka.Array#itemRenderer рендеринг}
-+ ``skipMediator: true`` - отключает {@link Matreshka.Array#mediateItem медиаторы}
-
+- ``silent`` - отключает генерацию событий
+- ``dontRender`` - отключает {@link Matreshka.Array#itemRenderer рендеринг}
+- ``skipItemMediator`` - отключает {@link Matreshka.Array#mediateItem медиаторы}
 
 @see {@link Matreshka.Array#METHOD}
 @example
@@ -20,7 +19,7 @@ this.pop_({
     silent: true
 });
 @example
-this.on('modify', function(evt) {
+this.on('modify', evt => {
 	alert(evt.flag); // 42
 });
 

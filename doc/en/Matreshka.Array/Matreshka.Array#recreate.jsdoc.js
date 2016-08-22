@@ -7,8 +7,8 @@
 @fires addone
 @fires remove
 @fires removeone
-@summary Recreates the {@link Matreshka.Array} instance.
-@desc The method allows to convert any array (or an object which has ``"length"`` property) into the {@link Matreshka.Array} instance. If nothing has been passed as the first argument, the instance is cleansed.
+@summary Recreates the {@link Matreshka.Array} instance
+@desc The method allows to convert any array or array-like into the {@link Matreshka.Array} instance. If nothing has been passed as the first argument, the instance is cleansed.
 @param {array} [array] - An array or array-like object
 @param {eventOptions} [eventOptions] - An event object
 @returns {matreshkaArray} self

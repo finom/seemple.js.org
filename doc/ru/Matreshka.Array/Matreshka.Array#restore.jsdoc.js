@@ -22,28 +22,28 @@
 ```
 
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
 		this.addDataKeys('value');
-		this.set(data);
-	},
-	onRender: function() {
-		this.bindNode('value', ':sandbox', MK.binders.html())
+	}
+	onRender() {
+		this.bindNode('value', ':sandbox', Matreshka.binders.html())
 	}
 });
 
-var MyCollection = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: ':sandbox .renderer',
-	constructor: function() {
+class MyCollection extends Matreshka.Array {
+	get itemRenderer() {
+		return ':sandbox .renderer';
+	}
+	constructor() {
 		this
 			.bindNode('sandbox', '.collection-node')
 			.restore(':sandbox li');
 	}
 });
 
-var myCollection = new MyCollection();
+const myCollection = new MyCollection();
 myCollection.push({
 	value: 'Four'
 });
@@ -59,6 +59,4 @@ console.log(myCollection.toJSON());
 @param {selector} [selector] - Селектор
 @param {eventOptions} [eventOptions] - Объект события
 @returns {matreshkaArray} self
-@example
-this.restore();
 */

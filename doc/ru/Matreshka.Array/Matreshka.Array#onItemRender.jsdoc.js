@@ -4,36 +4,38 @@
 @abstract
 @since 1.1
 @summary Функция, которая запускается перед событием ``render``.
-@desc Для улучшения читаемости кода и небольшого выигрыша в скорости, в версии 1.1 появился виртуальный метод ``onItemRender``, который можно использовать в качестве замены события ``render``.
+@desc Виртуальный метод ``onItemRender`` можно использовать в качестве замены события ``render``.
 
-При этом, у отрисованного элемента вызывается метод ``onRender`` с единственным аргументом - объектом события.
+При этом, у отрисованного элемента вызывается виртуальный метод ``onRender`` с единственным аргументом - объектом события.
 
-@param {matreshka} item - отрисованный элемент коллекции
-@param {matreshka} renderEvt - объект события ``render``
+@param {object} item - отрисованный элемент коллекции
+@param {object} renderEvt - объект события ``render``
 
 @example
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		this.jset(data);
-	},
-	onRender: function(renderEvt) {
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
+	}
+	onRender(renderEvt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
-		this.bindNode('text', ':sandbox .text', MK.binders.html());
+		this.bindNode('text', ':sandbox .text', Matreshka.binders.html());
 	}
 });
 
-var MyArray = MK.Class({
-	'extends': MK.Array,
-	Model: MyModel,
-	itemRenderer: '<li>',
-	constructor: function() {
+class MyArray extends Matreshka.Array {
+	get Model() {
+		return MyModel;
+	}
+	itemRenderer() {
+		return '<li>'
+	}
+	constructor() {
 		this.bindNode('sandbox', '.my-form');
-	},
-	onItemRender: function(item, renderEvt) {
-		// тоже что-то сделать
+	}
+	onItemRender(item, renderEvt) {
+		// ...
 	}
 });
 
-var app = new MyArray();
+const app = new MyArray();
 */

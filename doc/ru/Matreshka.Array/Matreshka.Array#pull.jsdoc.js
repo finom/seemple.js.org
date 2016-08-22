@@ -6,31 +6,31 @@
 @fires remove
 @fires removeone
 @fires modify
-@summary Удаляет элемент с заданным индексом из массива и возвращает этот элемент. Начиная с версии 0.3, метод поддерживает удаляемый элемент в качестве аргумента.
-@param {string|number|*} index - Индекс элемента, который нужно удалить (число или строка) либо сам удаляемый элемент (не являющийся ни числом ни строкой)
-@param {eventOptions} [evtOptions] - Объект события на случай, если нужно передать в обработчик события какие-нибудь данные или установить флаг ``silent``, предотвращающий срабатывание события
+@summary Удаляет элемент по индексу или по значению
+@param {object|number} indexOrValue - Индекс элемента, который нужно удалить (число) либо удаляемый элемент (объект)
+@param {eventOptions} [eventOptions] - Объект события на случай, если нужно передать в обработчик события какие-нибудь данные или установить служебные флаги (например, ``silent``)
 @returns {*|null} Удаленный элемент или ``null``
 @example <caption>Передача индекса массива</caption>
-var removed;
+let removed;
 
 this.recreate(['a', 'b', 'c']);
 
 removed = this.pull(1);
 
-alert(removed); // 'b'
+console.log(removed); // 'b'
 
-alert(this.toString()); // 'a,c'
+console.log(this.join(',')); // 'a,c'
 @example <caption>Передача удаляемого элемента</caption>
-var object1 = {},
-	object2 = {},
-	object3 = {},
-	removed;
+const object1 = {};
+const object2 = {};
+const object3 = {};
+let removed;
 
 this.push(object1, object2, object3);
 
 removed = this.pull(object2);
 
-alert(removed === object2); // true
+console.log(removed === object2); // true
 
-alert(this.length); // 2
+console.log(this.length); // 2
 */

@@ -10,7 +10,7 @@
 @summary Пересоздает экземпляр {@link Matreshka.Array}
 @desc Метод позволяет конвертировать любой массив (или объект, подобный массиву) в экземпляр {@link Matreshka.Array}. Если ничего не передано в качестве первого аргумента, экземпляр очищается.
 @see {@link Matreshka.Array#trackBy}
-@param {array} [array] - Массив
+@param {array} [array] - Массив или массивоподобный объект
 @param {eventOptions} [eventOptions] - Объект события
 @returns {matreshkaArray} self
 @example

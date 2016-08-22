@@ -22,28 +22,28 @@
 ```
 
 ```js
-var MyModel = MK.Class({
-	'extends': MK.Object,
-	constructor: function(data) {
+class MyModel extends Matreshka.Object {
+	constructor(data) {
+		super(data);
 		this.addDataKeys('value');
-		this.set(data);
-	},
-	onRender: function() {
-		this.bindNode('value', ':sandbox', MK.binders.html())
+	}
+	onRender() {
+		this.bindNode('value', ':sandbox', Matreshka.binders.html())
 	}
 });
 
-var MyCollection = MK.Class({
-	'extends': MK.Array,
-	itemRenderer: ':sandbox .renderer',
-	constructor: function() {
+class MyCollection extends Matreshka.Array {
+	get itemRenderer() {
+		return ':sandbox .renderer';
+	}
+	constructor() {
 		this
 			.bindNode('sandbox', '.collection-node')
 			.restore(':sandbox li');
 	}
 });
 
-var myCollection = new MyCollection();
+const myCollection = new MyCollection();
 myCollection.push({
 	value: 'Four'
 });
@@ -54,11 +54,9 @@ console.log(myCollection.toJSON());
 
 If ``selector`` arg isn't passed then the collection will be restored from child nodes that placed in a container (``"container"`` or ``"sandbox"``).
 
-The method fires  ``"render"`` event and calls ``onRender`` and ``onItemRender`` functions (look at the {@link Matreshka.Array#onItemRender docs}) for every newly added item (similar to {@link Matreshka.Array#itemRenderer usual rendering}).
+The method fires  ``"render"`` event and calls ``onRender`` and ``onItemRender`` functions (look at the {@link Matreshka.Array#onItemRender docs}) for every newly added item similar to {@link Matreshka.Array#itemRenderer usual rendering}.
 
 @param {selector} [selector] - A selector
-@param {eventOptions} [eventOptions] - Event object
+@param {eventOptions} [eventOptions] - An event options
 @returns {matreshkaArray} self
-@example
-this.restore();
 */

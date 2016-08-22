@@ -4,18 +4,17 @@
 @since 0.1
 @see {@link Matreshka.Array#Model}
 @see {@link Matreshka#mediate}
-@summary Трансформирует значение элемента при вставке
-@desc Этот метод служит для того, чтоб установить типизацию для вставляемых элементов. Обратите внимание, метод переопределяет свойство {@link Matreshka.Array#Model}.
+@summary Трансформирует значение элементов массива
+@desc Этот метод служит для того, чтоб перехватить и трансформировать добавленные в массив элементы. Обратите внимание, метод переопределяет свойство {@link Matreshka.Array#Model}.
+@param {function} mediator - Функция, возвращающая трансформированный элемент массива
 @example
-// все элементы массива - числа
-this.mediateItem(Number);
+// все элементы массива - целые числа
+this.mediateItem(item => parseInt(item) || 0);
 @example
 this.push(1, 2, 3, 4, 5);
 
 // все элементы массива - строки
-this.mediateItem(function(value) {
-	return String(value);
-});
+this.mediateItem(String);
 
 this.push(6, 7);
 
@@ -23,8 +22,8 @@ this.unshift(true, {});
 
 // ["true", "[object Object]", "1", "2", "3", "4", "5", "6", "7"]
 console.log(mkArray.toJSON());
-@example <caption>Условная Модель</caption>
-this.mediateItem(function(item) {
+@example
+this.mediateItem(item => {
 	if(item.something) {
 		return new FirstModel(item);
 	} else {
