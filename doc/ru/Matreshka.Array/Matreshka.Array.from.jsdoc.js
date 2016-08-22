@@ -4,8 +4,8 @@
 @since 1.1
 @summary Метод создаёт новый экземпляр {@link Matreshka.Array} из массивоподобного или итерируемого объекта
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from Array.from}
-@param {object} arrayLike - Массивоподобный объект.
-@param {function} [mapFn] - Отображающая функция, вызываемая для каждого элемента массива.
+@param {object} arrayLike - Массивоподобный или итерируемый объект
+@param {function} [mapFn] - Отображающая функция, вызываемая для каждого элемента массива
 @param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``mapFn``
 @returns {matreshkaArray}
 @example

@@ -7,8 +7,6 @@
 
 The method can be useful in case when items have been added to the array before declaring a sandbox or a container.
 
-Чтоб заставить массив перерисоваться, независимо от наличия отрендеренных узлов (например, вы используете кастомный шаблонизатор в ``itemRenderer``), передайте в метод объект со свойством ``forceRerender`` равным ``true``.
-
 To force items rerender (eg you use custom template engine) pass a property ``forceRerender`` with ``true`` value to an event object.
 
 @param {eventOptions} [eventOptions] - An event options

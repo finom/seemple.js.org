@@ -4,12 +4,12 @@
 @abstract
 @since 1.1
 @summary A function which is called before ``"render"`` event
-@desc The virtual method can be used instead of ``"render"`` event handlet.
+@desc The virtual method can be used instead of ``"render"`` event handler.
 
 At the same time ``onRender`` method is called in a rendered item with the only argument - an event object.
 
 @param {object} item - A rendered node of a collection
-@param {object} renderEvt - ``"render"`` event object
+@param {object} renderEvent - ``"render"`` event object
 
 @example
 class MyModel extends Matreshka.Object {

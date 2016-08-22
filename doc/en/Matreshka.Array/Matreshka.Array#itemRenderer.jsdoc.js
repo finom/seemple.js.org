@@ -3,15 +3,16 @@
 @importance 1
 @abstract
 @since 0.1
-@summary HTML string, selector or function which is responsible for rendering DOM nodes of an array on a page
+@summary HTML string, a selector or a function which is responsible for rendering DOM nodes of an array on a page
 @param {object} item - An object, which will be rendered (in case you need to use some conditions)
-@desc The ``itemRenderer`` overridable property which allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
+@desc The ``itemRenderer`` overridable property allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
 
 > For brevity, the class fields syntax will be used in examples at this article.
 
 #### Where is created node inserted?
-In order to define HTML container where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Matreshka#bindNode}.
-Sandbox usage as a container:
+In order to define a place where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Matreshka#bindNode}.
+
+Rendering to a sandbox:
 ```html
 <ul class="my-list"></ul>
 ```
@@ -83,7 +84,7 @@ class MyArray extends Matreshka.Array {
 #### A function as property value
 The usage of a function as the ``itemRenderer`` property value gives an additional code flexibility if it is necessary to dynamically generate HTML node for rendering. A function can return:
 
-**HTML string**
+__HTML string__
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer() {
@@ -92,16 +93,16 @@ class MyArray extends Matreshka.Array {
 }
 ```
 
-**A selector**
+__A selector__
 ```js
 class MyArray extends Matreshka.Array {
-	itemRenderer: function() {
+	itemRenderer() {
 		return '#my-template';
 	}
 }
 ```
 
-**DOM node**
+__DOM node__
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer() {
@@ -110,7 +111,7 @@ class MyArray extends Matreshka.Array {
 }
 ```
 
-#### Parent renderer overriding by the ``render`` property
+#### Parent renderer overlapping by the ``render`` property
 Sometimes it is convenient to declare a renderer inside a {@link Matreshka.Array#Model model} class. The ``renderer`` property overlaps the ``itemRenderer`` value if it is specified for a child item of a collection.
 ```js
 class MyModel extends Matreshka.Object {
@@ -125,7 +126,7 @@ class MyArray extends Matreshka.Array {
 ```
 In this case you do not have to designate ``itemRenderer`` at all because ``render`` of a child item adopts all its roles. The syntax remains the same:  HTML string, a selector or a function can be used.
 
-#### ``render`` ``afterrender`` events
+#### ``render`` and ``afterrender`` events
 After an item has been inserted into an array and its HTML node has already been created but it hasn't been inserted into array container yet, the ``render`` event is fired on inserted item. After its triggering you can declare needed data bindings.
 
 ``afterrender`` is fired when HTML node is inserted into the container.
@@ -187,7 +188,7 @@ The code above will create the following HTML tree:
 
 And it will bind the checkboxes to the corresponding ``isChecked`` and ``text`` properties.
 
-Remember, the opportunity of listening delegated events is implemented in Matreshka. The array can catch an event of an item rendering, using the ``*@render`` event name (see the documentation of {@link #typedef-eventNames}).
+Remember, the opportunity of listening delegated events is implemented in Matreshka. The array can listen to an event of an item rendering, using the ``*@render`` event name (see the documentation of {@link #typedef-eventNames}).
 ```js
 this.on('*@render', () => {
 	alert('Child item is rendered');
@@ -256,7 +257,7 @@ class MyArray extends Matreshka.Array {
 ```
 
 #### Moving object across few collections
-By default, when you add an object to an array the Matreshka will try to render it using ``itemRenderer``. It gives a great advantage in cases when you have two or more lists which include the same object. The lists react instantly on any change in the object.
+By default, when you add an object to an array the framework will try to render it using ``itemRenderer``. It gives a great advantage in cases when you have two or more lists which include the same object. The lists react instantly on any change in the object.
 
 But sometimes you just need to move an object across few collections without re-rendering it again. If you need to move object to another collection including its sandbox use the ``moveSandbox`` flag while adding the new item to another array.
 
@@ -266,7 +267,7 @@ this.push_(item, {
 })
 ```
 
-#### Reassigning the ``itemRenderer``
+#### ``itemRenderer`` reassigning
 
 When you reassign ``itemRenderer`` a collection rerenders automatically.
 
@@ -274,7 +275,7 @@ When you reassign ``itemRenderer`` a collection rerenders automatically.
 this.itemRenderer = '<div class="new-renderer"></div>';
 ```
 
-This ability allows to load renderer from server.
+This ability allows to load renderer from a server.
 
 ```js
 fetch('templates/template.html')

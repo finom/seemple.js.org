@@ -20,7 +20,7 @@ class MyArray extends Matreshka.Array {
 	}
 });
 
-var arr = new MyArray();
+const arr = new MyArray();
 
 // adds 3 objects to the collection
 arr.recreate([

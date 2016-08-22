@@ -29,7 +29,7 @@ Yet they work the same as the ``Array.prototype``. There are only a few remarks:
 
 Moreover, the methods generate events which are fired on any array modification. For more detailed information look at {@link Matreshka.Array}.
 
-@see {@link Matreshka.Array#_METHOD}
+@see {@link Matreshka.Array#METHOD_}
 @example
 this.push(1, 2, 3);
 @example

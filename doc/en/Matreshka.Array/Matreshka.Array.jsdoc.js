@@ -27,7 +27,7 @@ this.pop_({
 
 #### A developer has an opportunity of catching any data modification
 
-**While using a methods adopted from built-in ``Array``, events with corresponding name are fired.** Calling the ``push`` method, the ``push`` event  is fired, calling the ``pull`` method, the ``pull`` event is fired,  calling the ``sort`` method, the ``sort`` event is fired, and so on.
+__While using a methods adopted from built-in ``Array``, events with corresponding name are fired.__ Calling the ``push`` method, the ``push`` event  is fired, calling the ``shift`` method, the ``shift`` event is fired,  calling the ``sort`` method, the ``sort`` event is fired, and so on.
 ```js
 this.on('push', evt => {
 	console.log('push is called');
@@ -36,7 +36,7 @@ this.on('push', evt => {
 this.push(1, 2, 3);
 ```
 
-**While adding items, the ``add`` and ``addone`` events are fired.** The first one is fired once on adding (for example, you have added few items using ``push`` and the event has been fired only once), the second one is fired once on every added item. On the ``add`` event triggering, an array of added items is passed to an event object as ``added`` property and on the ``addone`` triggering, each particular added item is passed to it as ``addedItem`` property.
+__While adding items, ``add`` and ``addone`` events are fired.__ The first one is fired once on adding (for example, you have added few items using ``push`` and the event has been fired only once), the second one is fired once on every added item. On the ``add`` event triggering, an array of added items is passed to an event object as ``added`` property and on the ``addone`` triggering, each particular added item is passed to it as ``addedItem`` property.
 ```js
 this.on('add', evt => {
 	console.log(evt.added); // [1,2,3]
@@ -45,7 +45,7 @@ this.on('add', evt => {
 this.push(1, 2, 3);
 ```
 ```js
-// the handler will be launched three times,
+// the handler will be called three times,
 // as three new item have been added to the array
 this.on('addone', evt => {
 	console.log(evt.addedItem); // 1 ... 2 ... 3
@@ -54,7 +54,7 @@ this.on('addone', evt => {
 this.push(1, 2, 3);
 ```
 
-**On removing items the same logic is observed**: ``remove`` triggers once even though several items have been removed (removed items are contained in the ``removed`` property) and the ``removeone`` event triggers for each removed item individually (removed item is contained in the ``removedItem`` property).
+__On removing items the same logic is observed__: ``remove`` triggers once even though several items have been removed (removed items are contained in the ``removed`` property) and the ``removeone`` event triggers for each removed item individually (removed item is contained in the ``removedItem`` property).
 
 ```js
 this.push(1, 2, 3, 4, 5);
@@ -76,7 +76,7 @@ this.on('removeone', evt => {
 
 this.splice(1, 3);
 ```
-**On every modification of an array the ``modify`` event is fired**, allowing to catch all changes in the array (adding, removing, re-sorting).
+__On every modification of an array the ``modify`` event is fired__, allowing to catch all changes in the array (adding, removing, re-sorting).
 ```js
 this.on('modify', evt => {
 	console.log(evt.added);
@@ -84,7 +84,7 @@ this.on('modify', evt => {
 });
 ```
 
-**``length`` is an ordinary property which can be bound to HTML node**  or you can listen changes using the ``change:length`` event name.
+__``length`` is an ordinary property which can be bound to HTML node__  or you can listen changes using the ``change:length`` event name.
 
 > For example, on adding three items using the ``push`` method with three arguments, the following events: ``push``, ``add``, ``addone`` (three times), ``modify``, ``change:length`` are fired.
 

@@ -8,8 +8,8 @@
 
 При этом, у отрисованного элемента вызывается виртуальный метод ``onRender`` с единственным аргументом - объектом события.
 
-@param {object} item - отрисованный элемент коллекции
-@param {object} renderEvt - объект события ``render``
+@param {object} item - Отрисованный элемент коллекции
+@param {object} renderEvent - Объект события ``render``
 
 @example
 class MyModel extends Matreshka.Object {

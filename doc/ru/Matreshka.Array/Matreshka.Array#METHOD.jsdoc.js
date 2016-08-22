@@ -29,7 +29,7 @@
 
 Кроме всего, методы генерируют события связанные с любой модификацией массива. Подробнее см. {@link Matreshka.Array}.
 
-@see {@link Matreshka.Array#_METHOD}
+@see {@link Matreshka.Array#METHOD_}
 @example
 this.push(1, 2, 3);
 @example
