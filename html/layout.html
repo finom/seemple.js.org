@@ -6,8 +6,14 @@
 		var content = require('./' + path.join(options.language, name));
 		return typeof content === 'function' ? content(data) : content;
 	}
+	var currentDate = new Date();
+	var updatedDate = [
+		currentDate.getDate(),
+		currentDate.getMonth() + 1,
+		currentDate.getFullYear()
+	].join('.')
 
-	data = { options: options, include: include, page: page };
+	data = { options: options, include: include, page: page, updatedDate: updatedDate };
 %>
 
 <!DOCTYPE html>
