@@ -325,46 +325,46 @@ this.a = 5;
 @since 2.0
 @summary Extra syntax for {@link Matreshka#calc}. Allows to define few calculated properties per single call of the method.
 
-@desc The first argument is an array of objects which include all information about single calculated property. An item includes:
+@desc The first argument is an object whose keys are property names and values are objects with the following data:
 
-- ``target`` - a name of a property whose value needs to be calculated;
 - ``source`` - which properties the target property is depended on;
-- ``handler`` - a function which returns a new value of the ``target`` (by default it equals to ``(value) => value``);
+- ``handler`` - a function which returns a new value of a property (by default it equals to ``(value) => value``);
 - ``event`` - event options.
 
 The second argument contains common event options which extend ``event`` of every item (properties of ``event`` have higher priority).
 
-``source`` can take any kind of views as {@link Matreshka#calc described above} (a string, an array of strings etc).
+``source`` can take any kind of look as {@link Matreshka#calc described above} (a string, an array of strings etc).
 
-@param {array} batch - An array of objects which include all information about calculated properties
+@param {array} batch - An object which includes all information about calculated properties
 @param {array} [commonEventOptions] - Event options which are common for all listed calculated properties
 
 @example
 
-this.calc([{
-    target: 'x',
-    source: ['a', 'b'],
-    handler: (a, b) => a + b
+this.calc({
+	x: {
+    	source: ['a', 'b'],
+    	handler: (a, b) => a + b
+	},
+	y: {
+	    source: {
+	        object: someObject,
+	        key: 'c'
+	    },
+	    event: {
+	        setOnInit: false
+	    }
+	},
+	z: {
+	    source: [{
+	        object: this,
+	        key: 'x'
+	    }, {
+	        object: someObject,
+	        key: 'd'
+	    }],
+	    handler: (x, d) => x + d
+	}
 }, {
-    target: 'y',
-    source: {
-        object: someObject,
-        key: 'c'
-    },
-    event: {
-        setOnInit: false
-    }
-}, {
-    target: 'z',
-    source: [{
-        object: this,
-        key: 'x'
-    }, {
-        object: someObject,
-        key: 'd'
-    }],
-    handler: (x, d) => x + d
-}], {
     debounceCalc: false
 });
 */
