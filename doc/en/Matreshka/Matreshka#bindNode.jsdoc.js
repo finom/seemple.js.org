@@ -330,19 +330,46 @@ this.bindNode('x', node, binder, {
 @method Matreshka#bindNode
 @importance 2
 @variation 2
-@summary Alternative syntax: "key-element" pairs
-@desc In the {@link Matreshka#bindNode} method an object with the key-element pairs can be passed to avoid multiple invocation of the method and reduce the code.
+@summary Alternative syntax: passing of an object
+@desc To the {@link Matreshka#bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys ofs the object are property names and values can get the following look:
 
-@param {object} keyElementPairs - (see the example)
+- A node
+- An object with properties ``node`` and ``binder``
+- An array of objects with properties ``node`` and ``binder``
+
+If ``binder`` arg is passed as the second argument then it wil be used as the binder for those elements for which a binder wasn't specified.
+
+@param {object} bindings - (see the example)
 @param {binder} [binder] - (see above)
 @param {eventOptions} [eventOptions] - (see above)
 
 @returns {object} self
 
 @example
+@example
 this.bindNode({
-	myKey1: '.custom-checkbox',
-	myKey2: 'textarea'
+	foo: '.custom-checkbox',
+	'bar.length': 'textarea'
+});
+
+@example
+this.bindNode({
+	foo: {
+		node: ':sandbox .aaa',
+		binder: Matreshka.binders.html()
+	},
+	bar: '.bbb',
+	baz: [{
+		node: '.ccc'
+	}, {
+		node: document.querySelector('.ddd'),
+		binder: Matreshka.binders.prop('baz')
+	}]
+}, {
+	// will be used as a binder for .bbb and .ccc
+	setValue(value) {
+		foo(value);
+	}
 });
 */
 

@@ -327,10 +327,15 @@ this.bindNode('x', node, binder, {
 @method Matreshka#bindNode
 @importance 2
 @variation 2
-@summary Альтернативный синтаксис: возможность передать объект "ключ-элемент"
-@desc В метод {@link Matreshka#bindNode} можно передать объект с парами ключ-элемент, чтобы избежать многократного вызова метода и сократить код
+@summary Альтернативный синтаксис: возможность передать объект
+@desc В метод {@link Matreshka#bindNode} можно передать объект чтобы избежать многократного вызова метода и сократить код. Ключи объекта - это имена привязываемых свойств, а значения могут быть следующими:
+- HTML элемент
+- Объект со свойствами ``node`` (HTML элемент) и ``binder``
+- Массив объектов со свойствами ``node`` (HTML элемент) и ``binder``
 
-@param {object} keyElementPairs - (см. пример)
+Если ``binder`` передан вторым аргументом, то он служит байндером для тех элементов, для которых байднер явно не указан.
+
+@param {object} bindings - (см. пример)
 @param {binder} [binder] - (см. выше)
 @param {eventOptions} [eventOptions] - (см. выше)
 
@@ -340,6 +345,26 @@ this.bindNode('x', node, binder, {
 this.bindNode({
 	foo: '.custom-checkbox',
 	'bar.length': 'textarea'
+});
+
+@example
+this.bindNode({
+	foo: {
+		node: ':sandbox .aaa',
+		binder: Matreshka.binders.html()
+	},
+	bar: '.bbb',
+	baz: [{
+		node: '.ccc'
+	}, {
+		node: document.querySelector('.ddd'),
+		binder: Matreshka.binders.prop('baz')
+	}]
+}, {
+	// will be used as a binder for .bbb and .ccc
+	setValue(value) {
+		foo(value);
+	}
 });
 */
 
