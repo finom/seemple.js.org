@@ -331,7 +331,7 @@ this.bindNode('x', node, binder, {
 @importance 2
 @variation 2
 @summary Alternative syntax: passing of an object
-@desc To the {@link Matreshka#bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys ofs the object are property names and values can get the following look:
+@desc To the {@link Matreshka#bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys of the object are property names and values can get the following look:
 
 - A node
 - An object with properties ``node`` and ``binder``
