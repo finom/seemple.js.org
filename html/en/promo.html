@@ -6,12 +6,12 @@
 		<div class="demo">
 			<output class="out">The easiest framework in the Universe</output>
 			<input type="text" class="in">
-			<pre class="prettyprint lang-html"><code>&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
+			<pre><code class="lang-html">&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
 &lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
 
 &lt;script src=&quot;matreshka.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
-var app = new Matreshka();
+const app = new Matreshka();
 app.bindNode('x', '.in, .out');
 app.x = 'The easiest framework in the Universe';
 &lt;/script&gt;</code></pre>

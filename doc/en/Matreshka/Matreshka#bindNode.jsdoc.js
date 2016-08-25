@@ -346,7 +346,6 @@ If ``binder`` arg is passed as the second argument then it wil be used as the bi
 @returns {object} self
 
 @example
-@example
 this.bindNode({
 	foo: '.custom-checkbox',
 	'bar.length': 'textarea'
