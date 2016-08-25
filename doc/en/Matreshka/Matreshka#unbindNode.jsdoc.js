@@ -26,15 +26,21 @@ this.myKey = false;
 @method Matreshka#unbindNode
 @importance 2
 @variation 2
-@summary Alternative syntax "key-element" for ``unbindNode``
-@see {@link Matreshka#bindNode(2)}
-@param {object} keyElementPairs (see the example)
+@summary Alternative syntax which allows to pass an object with bindings to ``unbindNode``. Look at {@link Matreshka#bindNode(2)} for more information
+@param {object} bindings (see the example)
 @param {eventOptions} [eventOptions] (see above)
 @returns {object} self
 @example
 this.unbindNode({
-	myKey1: '.my-element1'
-	myKey1: '.my-element2'
+	foo: '.aaa'
+	bar: {
+		node: '.bbb'
+	},
+	baz: [{
+		node: '.ccc'
+	}, {
+		node: '.ddd'
+	}]
 });
 */
 
