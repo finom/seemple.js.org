@@ -1,6 +1,6 @@
-Разработка и поддержка такого крупного проекта, а так же содержание документации в актуальном состоянии - это тяжелый труд, требующий сотен часов работы. Поэтому, если вы считаете, что фреймворк Matreshka стоит сил и времени, которые на него затрачены, помогите проекту финансово.
+Разработка и поддержка такого крупного проекта, а так же содержание документации в актуальном состоянии - это тяжелый труд, требующий сотен часов работы. Поэтому, если вы считаете, что фреймворк Matreshka.js стоит сил и времени, которые на него затрачены, помогите проекту финансово.
 
-### LiqPay (гривны, доллары, евро)
+### LiqPay (₴, $, €)
 
 <form method="POST" accept-charset="utf-8" action="https://www.liqpay.com/api/3/checkout">
 <input type="hidden" name="data" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6Ik1hdHJlc2hrYS5qcyBEb25hdGUiLCJ0eXBlIjoiZG9uYXRlIiwibGFuZ3VhZ2UiOiJlbiJ9" />
