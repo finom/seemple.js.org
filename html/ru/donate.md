@@ -8,7 +8,7 @@
 <input type="image" src="//static.liqpay.com/buttons/d1en.png" name="btn_text" />
 </form>
 
-### Яндекс.Деньги (рубли)
+### Яндекс.Деньги
 
 [410014482859514](https://money.yandex.ru/to/410014482859514/500)
 

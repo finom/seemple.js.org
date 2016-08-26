@@ -4,7 +4,9 @@
 	function include(name) {
 		var path = require('path');
 		var content = require('./' + path.join(options.language, name));
-		return typeof content === 'function' ? content(data) : content;
+		content = typeof content === 'function' ? content(data) : content;
+		content = require('../jsdoc-template/resolve-links')(content);
+		return content;
 	}
 	var currentDate = new Date();
 	var updatedDate = [
