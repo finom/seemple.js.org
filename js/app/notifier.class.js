@@ -1,7 +1,8 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import MatreshkaObject from 'matreshka/object';
+import $ from 'balajs';
 
-export default class extends MK.Object {
+export default class extends MatreshkaObject {
 	constructor() {
 		super()
 			.set({

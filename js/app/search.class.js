@@ -1,7 +1,8 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import MatreshkaArray from 'matreshka/array';
+import $ from 'balajs';
 
-export default class extends MK.Array {
+export default class extends MatreshkaArray {
 	Model = MK.Object;
 	itemRenderer = '<li>';
 	constructor(data) {

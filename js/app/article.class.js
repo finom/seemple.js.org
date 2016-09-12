@@ -1,7 +1,8 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import MatreshkaObject from 'matreshka/object';
+import $ from 'balajs';
 
-export default class Article extends MK.Object {
+export default class Article extends MatreshkaObject {
 	constructor(data) {
 		super(data)
 			.set('commentsShown', false)

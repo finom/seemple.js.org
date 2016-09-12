@@ -16,6 +16,6 @@ try {
 		document.querySelector('.view-switcher').innerHTML = 'Error loading the website <a href="'+report+'" style="padding: 0;">Report the issue</a>';
 		document.querySelector('.loader').classList.add('hide');
         document.querySelector('body').setAttribute('data-view', 'all');
-        console&&console.error&&console.error(e);
+        throw e;
 	}
 }

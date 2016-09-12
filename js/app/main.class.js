@@ -1,5 +1,6 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import MatreshkaObject from 'matreshka/object';
+import $ from 'balajs';
 import Articles from './articles.class';
 import Typedefs from './typedefs.class';
 import Typo from './typo.class';
@@ -7,11 +8,10 @@ import Notifier from './notifier.class';
 import Search from './search.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
-//import prettify from '../lib/prettify';
 import hljs from 'highlight.js';
 import _dp from '../lib/details-polyfill';
 
-export default class Main extends MK.Object {
+export default class Main extends MatreshkaObject {
 	constructor() {
 		g.app = super();
 
@@ -19,8 +19,6 @@ export default class Main extends MK.Object {
 			.bindings()
 			.events()
 			.set({
-				ieVersion: document.documentMode,
-				isOldIE: document.documentMode <= 9,
 				view: localStorage.view || 'all',
 				version: localStorage.version || 'stable',
 				unstableVersion: '1.9',
@@ -87,13 +85,6 @@ export default class Main extends MK.Object {
 
 		this.initDynamicStyles();
 
-		// in ie10 code snippets are inlined
-		if(this.ieVersion <= 10) {
-			for(let snippet of $('pre code')) {
-				snippet.innerHTML = snippet.innerHTML.replace(/\n/g, '<br>');
-			}
-		}
-
 		for(let block of $('code.lang-js, code.lang-html, pre.prettyprint.source')) {
 			hljs.highlightBlock(block);
 		}
@@ -157,7 +148,6 @@ export default class Main extends MK.Object {
 				navOverlay: ['.nav-overlay', MK.binders.className('!hide')],
 				hideTypoBadge: [':bound(typeBadge)', MK.binders.className('hide')],
 				htmlTitle: ['head title', MK.binders.innerHTML()],
-				isOldIE: [':bound(viewSwitcher)', MK.binders.visibility(false)],
 				hashValue: [':sandbox .another-language', {
 					setValue: function(v) {
 						this.href = this.href.split('#')[0] + '#' + v;

@@ -1,7 +1,8 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import Matreshka from 'matreshka/matreshka';
+import $ from 'balajs';
 
-export default class Examples extends MK {
+export default class Examples extends Matreshka {
     constructor() {
         super()
             .bindNode('sandbox', 'article[id="!examples"]')

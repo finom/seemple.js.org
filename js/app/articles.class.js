@@ -1,8 +1,9 @@
 import g from './globals';
-import {Matreshka as MK, balalaika as $} from 'matreshka';
+import MatreshkaArray from 'matreshka/array';
+import $ from 'balajs';
 import Article from './article.class';
 
-export default class Articles extends MK.Array {
+export default class Articles extends MatreshkaArray {
 	Model = Article;
 	constructor() {
 		super();
