@@ -1,9 +1,11 @@
 import g from './globals';
 import MatreshkaArray from 'matreshka/array';
+import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';
+import { className, html } from 'matreshka/binders';
 
 export default class extends MatreshkaArray {
-	Model = MK.Object;
+	Model = MatreshkaObject;
 	itemRenderer = '<li>';
 	constructor(data) {
 		var UP_KEY = 38,
@@ -17,7 +19,10 @@ export default class extends MatreshkaArray {
 				sandbox: 'header',
 				container: ':sandbox .search-results-dropdown',
 				search: ':sandbox .search',
-				searchMode: [':sandbox', MK.binders.className('search-mode')]
+				searchMode: {
+					node: ':sandbox',
+					binder: className('search-mode')
+				}
 			})
 			.on({
 				'click::(.show-search)': evt => {
@@ -30,8 +35,8 @@ export default class extends MatreshkaArray {
 				},
 				'*@render': evt => {
 					evt.self
-						.bindNode('header', ':sandbox', MK.binders.innerHTML())
-						.bindNode('isActive', ':sandbox', MK.binders.className('active'));
+						.bindNode('header', ':sandbox', html())
+						.bindNode('isActive', ':sandbox', className('active'));
 				},
 				'@click::sandbox': evt => {
 					this.searchMode = false;

@@ -10,6 +10,7 @@ import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
 import _dp from '../lib/details-polyfill';
+import { className, html, dataset } from 'matreshka/binders';
 
 export default class Main extends MatreshkaObject {
 	constructor() {
@@ -20,14 +21,11 @@ export default class Main extends MatreshkaObject {
 			.events()
 			.set({
 				view: localStorage.view || 'all',
-				version: localStorage.version || 'stable',
-				unstableVersion: '1.9',
-				newVersions: ['1.5', '1.6', '1.7'],
 				hideTypoBadge: localStorage.hideTypoBadge,
 				isMobile: /mobile|android/i.test(navigator.userAgent),
 				importanceLevel: +localStorage.importanceLevel || 2
 			})
-			.setClassFor({
+			.instantiate({
 				typo: Typo,
 				notifier: Notifier,
 				search: Search,
@@ -113,21 +111,10 @@ export default class Main extends MatreshkaObject {
 		let styleSheet = document.styleSheets[0];
 
 		styleSheet.insertRule(`
-			body[data-version="stable"] [data-since="${this.unstableVersion}"],
 			body[data-importance-level="1"] [data-importance="2"],
 			body[data-importance-level="1"] [data-importance="3"],
 			body[data-importance-level="2"] [data-importance="3"] {
 				display: none;
-			}`, styleSheet.cssRules.length);
-
-		styleSheet.insertRule(`article[data-since="${this.unstableVersion}"]::before {
-				content: '\\26A0   New since ${this.unstableVersion}';
-				color: #ef5350;
-			}`, styleSheet.cssRules.length);
-
-		styleSheet.insertRule(`nav a[data-since="${this.unstableVersion}"]::after {
-				content: '\\26A0';
-				color: #ef5350;
 			}`, styleSheet.cssRules.length);
 
 		return this;
@@ -141,64 +128,88 @@ export default class Main extends MatreshkaObject {
 				win: window,
 				typeBadge: ':sandbox .typo-badge',
 				viewSwitcher: 'nav .view-switcher',
-				versionSwitcher: 'nav .version-switcher',
-				navShown: ['body', MK.binders.className('nav-shown')],
-				isMobile: [':sandbox', MK.binders.className('mobile')],
-				loading: ['.loader', MK.binders.className('!hide')],
-				navOverlay: ['.nav-overlay', MK.binders.className('!hide')],
-				hideTypoBadge: [':bound(typeBadge)', MK.binders.className('hide')],
-				htmlTitle: ['head title', MK.binders.innerHTML()],
-				hashValue: [':sandbox .another-language', {
-					setValue: function(v) {
-						this.href = this.href.split('#')[0] + '#' + v;
+				navShown: {
+					node: 'body',
+					binder: className('nav-shown')
+				},
+				isMobile: {
+					node: ':sandbox',
+					binder: className('mobile')
+				},
+				loading: {
+					node: '.loader',
+					binder: className('!hide')
+				},
+				navOverlay: {
+					node: '.nav-overlay',
+					binder: className('!hide')
+				},
+				hideTypoBadge: {
+					node: ':bound(typeBadge)',
+					binder: className('hide')
+				},
+				htmlTitle: {
+					node: 'head title',
+					binder: html()
+				},
+				hashValue: [{
+					node: ':sandbox .another-language',
+					binder: {
+						setValue: function(v) {
+							this.href = this.href.split('#')[0] + '#' + v;
+						}
+					}
+				}, {
+					node: window,
+					binder: {
+						on: 'hashchange',
+						getValue: function() {
+							return location.hash.replace('#', '');
+						}
 					}
 				}],
-				version: [':sandbox', {
-					setValue(v) {
-						this.setAttribute('data-version', v);
+				mainTitle: {
+					node: 'title',
+					binder: {
+						getValue: function() {
+							return this.innerHTML;
+						}
 					}
-				}],
-				mainTitle: ['title', {
-					getValue: function() {
-						return this.innerHTML;
+				},
+				view: {
+					node: 'body',
+					binder: dataset('view')
+				},
+				importanceLevel: [{
+					node: ':sandbox .doc-importance input',
+					binder: {
+						getValue() {
+							return this.checked ? 3 : 2;
+						},
+						setValue(v) {
+							this.checked = v === 3;
+						}
 					}
-				}],
-
-				view: ['body', MK.binders.dataset('view')],
-				importanceLevel: [':sandbox .doc-importance input', {
-					getValue() {
-						return this.checked ? 3 : 2;
-					},
-					setValue(v) {
-						this.checked = v === 3;
-					}
+				}, {
+					node: ':sandbox',
+					binder: dataset('importanceLevel')
 				}]
 			})
 			.bindNode({
-				importanceLevel: [':sandbox', MK.binders.dataset('importanceLevel')],
-				hashValue: [window, {
-					on: 'hashchange',
-					getValue: function() {
-						return location.hash.replace('#', '');
-					}
-				}]
-			})
-			.bindNode({
-				view: ':bound(viewSwitcher)',
-				version: ':bound(versionSwitcher)'
+				view: ':bound(viewSwitcher)'
 			}, {
 				on: 'click',
 				getValue: function() {
 					return this.querySelector('.checked').getAttribute('data-value');
 				},
 				setValue: function(v) {
-					MK.$b(this.children).forEach(function(item) {
+					$(this.children).forEach(function(item) {
 						item.classList.toggle('checked', item.getAttribute('data-value') === v);
 					});
 				},
 				initialize: function() {
 					this.addEventListener('mousedown', function(evt) {
-						if (evt.target !== this) MK.$b(this.children).forEach(function(item) {
+						if (evt.target !== this) $(this.children).forEach(function(item) {
 							item.classList.toggle('checked', evt.target === item);
 						});
 					});
@@ -208,15 +219,14 @@ export default class Main extends MatreshkaObject {
 
 	events() {
 		return this
-			.onDebounce('scroll::win', function() {
+			.onDebounce('scroll::win', function() {if(typeof this === 'number') throw Error('this is not good')
 				if (this.view === 'all') {
 					var fromTop = window.pageYOffset,
 						fromLeft = window.pageXOffset,
 						cur = this.articles.filter(article => {
 							let el = article.sandbox;
-							return (article.since !== this.unstableVersion || this.version == 'unstable')
-								&& el.offsetTop < fromTop + 50
-								&& el.offsetWidth > 0 && el.offsetHeight > 0;
+							return (el.offsetTop < fromTop + 50
+								&& el.offsetWidth > 0 && el.offsetHeight > 0);
 						}),
 						hash;
 
@@ -244,14 +254,13 @@ export default class Main extends MatreshkaObject {
 					localStorage.view = this.view;
 
 					if (this.view === 'all') {
-						fromTop = this.articles.active ? this.articles.active.bound().offsetTop : 0;
+						fromTop = this.articles.active ? this.articles.active.nodes.sandbox.offsetTop : 0;
 					} else {
 						fromTop = 0;
 					}
 
 					scrollTo(fromLeft, fromTop);
 				},
-				'change:version': evt => localStorage.version = this.version,
 				'change:importanceLevel': evt => localStorage.importanceLevel = this.importanceLevel,
 				'click::(.show-nav)': evt => {
 					this.navOverlay = true;

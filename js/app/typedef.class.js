@@ -1,6 +1,7 @@
 import g from './globals';
 import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';
+import { dataset, className } from 'matreshka/binders';
 
 export default class extends MatreshkaObject {
 	constructor() {
@@ -8,7 +9,7 @@ export default class extends MatreshkaObject {
 	}
 
 	onRender() {
-		this.bindNode('typedef', ':sandbox', MK.binders.dataset('typedef'))
-			.bindNode('isShown', ':sandbox', MK.binders.className('shown'));
+		this.bindNode('typedef', ':sandbox', dataset('typedef'))
+			.bindNode('isShown', ':sandbox', className('shown'));
 	}
 }

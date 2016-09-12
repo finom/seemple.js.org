@@ -2,6 +2,7 @@ import g from './globals';
 import MatreshkaArray from 'matreshka/array';
 import $ from 'balajs';
 import Typedef from './typedef.class';
+import { className } from 'matreshka/binders';
 
 export default class extends MatreshkaArray {
 	Model = Typedef;
@@ -9,7 +10,7 @@ export default class extends MatreshkaArray {
 		super()
 			.restore('article[data-typedef]')
 			.bindNode('sandbox', 'body')
-			.bindNode('overlay', '.typedef-overlay', MK.binders.className('!hide'))
+			.bindNode('overlay', '.typedef-overlay', className('!hide'))
 			.bindNode('overlayOpaque', ':bound(overlay)', {
 				setValue: function(v) {
 					this.style.opacity = v ? .5 : 0;

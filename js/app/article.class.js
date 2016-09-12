@@ -1,6 +1,7 @@
 import g from './globals';
 import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';
+import { prop, dataset, html, display, className } from 'matreshka/binders';
 
 export default class Article extends MatreshkaObject {
 	constructor(data) {
@@ -18,7 +19,7 @@ export default class Article extends MatreshkaObject {
 					evt.preventDefault();
 				},
 				'change:isActive': evt => {
-					var node = this.bound('menuItem');
+					var node = this.nodes.menuItem;
 					while (node = node.parentNode) {
 						$('.submenu-wrapper').filter(function(wrapper) {
 							return wrapper.contains(node);
@@ -34,7 +35,7 @@ export default class Article extends MatreshkaObject {
 				},
 				'click::comment': evt => {
 					var url = document.location.origin + document.location.pathname + '#' + this.id,
-						commentsContainer = this.bound('commentsContainer');
+						commentsContainer = this.nodes.commentsContainer;
 
 					if (this.commentsShown = !this.commentsShown) {
 						commentsContainer.classList.add('muut');
@@ -43,7 +44,7 @@ export default class Article extends MatreshkaObject {
 				}
 			})
 			.on('render change:expanded', function() {
-				var submenu = this.bound('submenu');
+				var submenu = this.nodes.submenu;
 				if (submenu) {
 					if (!this.expanded) {
 						submenu.style.marginTop = -44 * this.selectAll(':bound(submenu) li').length + 'px';
@@ -57,59 +58,83 @@ export default class Article extends MatreshkaObject {
 
 	links() {
 		return this
-			.linkProps('ieVersion', [g.app, 'ieVersion'])
-			.linkProps('newVersions', [g.app, 'newVersions'])
-			.linkProps('_previous', [
-				this, 'previous',
-				g.app, 'unstableVersion',
-				g.app, 'version',
-				g.app, 'articles',
-				g.app, 'importanceLevel'
-			], (previous, unstableVersion, version, articles, importanceLevel) => {
-				if (!previous || !previous.importance || version == 'unstable' || !articles) {
-					return previous;
-				} else {
-					do {
-						if (previous.since != unstableVersion && previous.importance <= importanceLevel) {
+			.calc({
+				_previous: {
+					source: [{
+						object: this,
+						key: 'previous'
+					}, {
+						object: g.app,
+						key: 'articles'
+					}, {
+						object: g.app,
+						key: 'importanceLevel'
+					}],
+					handler: (previous, articles, importanceLevel) => {
+						if (!previous || !previous.importance || !articles) {
 							return previous;
+						} else {
+							do {
+								if (previous.importance <= importanceLevel) {
+									return previous;
+								}
+							} while (previous = previous.previous)
 						}
-					} while (previous = previous.previous)
-				}
-			})
-			.linkProps('_next', [
-				this, 'next',
-				g.app, 'unstableVersion',
-				g.app, 'version',
-				g.app, 'articles',
-				g.app, 'importanceLevel'
-			], (next, unstableVersion, version, articles, importanceLevel) => {
-				if (!next || !next.importance || version == 'unstable' || !articles) {
-					return next;
-				} else {
-					do {
-						if (next.since != unstableVersion && next.importance <= importanceLevel) {
+					}
+				},
+				_next: {
+					source: [{
+						object: this,
+						key: 'next'
+					}, {
+						object: g.app,
+						key: 'articles'
+					}, {
+						object: g.app,
+						key: 'importanceLevel'
+					}],
+					handler: (next, articles, importanceLevel) => {
+						if (!next || !next.importance || !articles) {
 							return next;
+						} else {
+							do {
+								if (next.importance <= importanceLevel) {
+									return next;
+								}
+							} while (next = next.next)
 						}
-					} while (next = next.next)
+					}
+				},
+				previousId: {
+					source: '_previous',
+					handler: function(previous) {
+						return previous ? previous.id : '';
+					}
+				},
+				nextId: {
+					source: '_next',
+					handler: function(next) {
+						return next ? next.id : '';
+					}
+				},
+				previousHeader: {
+					source: '_previous',
+					handler: function(previous) {
+						return previous ? previous.name : '';
+					}
+				},
+				nextHeader: {
+					source: '_next',
+					handler: function(next) {
+						return next ? next.name : '';
+					}
 				}
 			})
-			.linkProps('previousId', '_previous', function(previous) {
-				return previous ? previous.id : '';
-			})
-			.linkProps('nextId', '_next', function(next) {
-				return next ? next.id : '';
-			})
-			.linkProps('previousHeader', '_previous', function(previous) {
-				return previous ? previous.name : '';
-			})
-			.linkProps('nextHeader', '_next', function(next) {
-				return next ? next.name : '';
-			});
 	}
 
 	onRender() {
 		var paginationHTML = g.app.select('#pagination-template').innerHTML;
-		this.bindNode('id', ':sandbox', MK.binders.property('id'));
+		this.bindNode('id', ':sandbox', prop('id'));
 
 		if(!this.id) {
 			return;
@@ -118,35 +143,55 @@ export default class Article extends MatreshkaObject {
 		return this
 			.bindNode({
 				menuItem: g.app.select('nav a[href="#' + this.id + '"]'),
-				since: [':sandbox', MK.binders.dataset('since')],
-				isActive: [':bound(menuItem)', MK.binders.className('active')],
-				expanded: [':bound(menuItem)', MK.binders.className('expanded')]
+				since: {
+					node: ':sandbox',
+					binder: dataset('since')
+				},
+				isActive: {
+					node: ':bound(menuItem)',
+					binder: className('active')
+				},
+				expanded: {
+					node: ':bound(menuItem)',
+					binder: className('expanded')
+				}
 			})
 			.bindOptionalNode({
 				commentsContainer: ':sandbox .comments-container',
 				submenu: 'nav ul[data-submenu="' + this.id + '"]',
 				comment: ':sandbox .comments',
-				commentsShown: [':bound(commentsContainer)', MK.binders.visibility()],
-				ieVersion: [':sandbox .comments', MK.binders.className('hide')],
-				header: [':sandbox h2', {
-					getValue: function() {
-						return this.innerHTML.replace(/<wbr>/g, '');
+				commentsShown: {
+					node: ':bound(commentsContainer)',
+					binder: display()
+				},
+				header: {
+					node: ':sandbox h2',
+					binder:  {
+						getValue: function() {
+							return this.innerHTML.replace(/<wbr>/g, '');
+						}
 					}
-				}],
-				summary: [':sandbox .summary p', {
-					getValue() {
-						return this.textContent;
+				},
+				summary: {
+					node: ':sandbox .summary p',
+					binder: {
+						getValue() {
+							return this.textContent;
+						}
 					}
-				}],
-				importance: [':sandbox', {
-					getValue() {
-						return +this.getAttribute('data-importance');
+				},
+				importance: {
+					node: ':sandbox',
+					binder: {
+						getValue() {
+							return +this.getAttribute('data-importance');
+						}
 					}
-				}]
+				}
 			})
 			.bindNode('pagination', [
-				this.sandbox.insertBefore($(paginationHTML)[0], this.sandbox.firstChild),
-				this.sandbox.appendChild($(paginationHTML)[0])
+				this.nodes.sandbox.insertBefore($(paginationHTML)[0], this.nodes.sandbox.firstChild),
+				this.nodes.sandbox.appendChild($(paginationHTML)[0])
 			])
 			.bindNode('name', ':bound(menuItem)', {
 				getValue: function() {
@@ -164,7 +209,7 @@ export default class Article extends MatreshkaObject {
 			.bindNode({
 				nextHeader: ':bound(pagination) .next-page',
 				previousHeader: ':bound(pagination) .previous-page'
-			}, MK.binders.innerHTML());
+			}, html());
 	}
 
 }

@@ -1,6 +1,7 @@
 import g from './globals';
 import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';
+import { className, html } from 'matreshka/binders';
 
 export default class extends MatreshkaObject {
 	constructor() {
@@ -12,7 +13,7 @@ export default class extends MatreshkaObject {
 				pageName: 'entry.339184258'
 			})
 			.bindNode('sandbox', 'form.typo')
-			.bindNode('shown', ':sandbox', MK.binders.className('shown'))
+			.bindNode('shown', ':sandbox', className('shown'))
 			.bindNode({
 				selection: ':sandbox input.selection',
 				comment: ':sandbox textarea.comment',
@@ -29,7 +30,7 @@ export default class extends MatreshkaObject {
 					this.name = v;
 				}
 			})
-			.bindNode('overlay', '.typo-overlay', MK.binders.className('!hide'))
+			.bindNode('overlay', '.typo-overlay', className('!hide'))
 			.bindNode('overlayOpaque', ':bound(overlay)', {
 				setValue: function(v) {
 					this.style.opacity = v ? .5 : 0;
@@ -40,7 +41,7 @@ export default class extends MatreshkaObject {
 					this.action = v;
 				}
 			})
-			.bindNode('selection', ':sandbox p.selection', MK.binders.innerHTML())
+			.bindNode('selection', ':sandbox p.selection', html())
 			.on('submit::sandbox', function(evt) {
 				this.shown = false;
 			})

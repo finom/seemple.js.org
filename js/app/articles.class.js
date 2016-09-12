@@ -2,6 +2,7 @@ import g from './globals';
 import MatreshkaArray from 'matreshka/array';
 import $ from 'balajs';
 import Article from './article.class';
+import { html } from 'matreshka/binders';
 
 export default class Articles extends MatreshkaArray {
 	Model = Article;
@@ -16,10 +17,13 @@ export default class Articles extends MatreshkaArray {
 		});
 
 		this
-			.bindNode('header', 'header .inner', MK.binders.innerHTML())
+			.bindNode('header', 'header .inner', html())
 			.bindNode('win', window)
-			.linkProps('hashValue', [g.app, 'hashValue'])
-			.linkProps('header', 'active', function(active) {
+			.calc('hashValue', {
+				object: g.app,
+				key: 'hashValue'
+			})
+			.calc('header', 'active', function(active) {
 				return active ? active.header || g.app.mainTitle : g.app.mainTitle;
 			})
 			.on({
