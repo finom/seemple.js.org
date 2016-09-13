@@ -1,26 +1,25 @@
 import g from './globals';
 import Matreshka from 'matreshka/matreshka';
 import $ from 'balajs';
+import githubEmbed from 'github-embed';
 
 export default class Examples extends Matreshka {
     constructor() {
         super()
             .bindNode('sandbox', 'article[id="!examples"]')
-            .on('click::(a)', evt => {
-                let target = evt.target;
+            .on('click::(.example-link)', evt => {
+                const { target } = evt;
+                const { href } = target;
 
-                if(!~target.href.indexOf('gh-embed')) return;
                 evt.preventDefault();
 
                 if(!target.classList.contains('initialized')) {
-                    target.parentNode.appendChild($.create('iframe', {
-                        src: target.href,
-                        attributes: {
-                            width: "100%",
-                            height: "500",
-                            frameborder: "0"
-                        }
-                    }));
+                    const exampleMountBlock = target.parentNode.appendChild(document.createElement('div'))
+                    exampleMountBlock.style.width = "100%";
+                    exampleMountBlock.style.height = "500px";
+                    console.log(`${href}.gh-embed.json`)
+                    githubEmbed(exampleMountBlock, `${href}.gh-embed.json`)
+
                     target.classList.add('initialized');
                 } else {
                     target.parentNode.lastChild.classList.toggle('hide');

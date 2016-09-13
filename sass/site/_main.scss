@@ -30,17 +30,13 @@ main {
 	}
 
 	[id="!examples"] {
-		[href^="http://gh-embed.matreshka.io"] {
+		.example-link {
 			border-bottom: 1px dashed currentColor;
 			&::after {content: none;}
 		}
 
 		.list-item-number {
 			color: #bbb;
-		}
-
-		iframe {
-			margin-top: 1rem;
 		}
 	}
 

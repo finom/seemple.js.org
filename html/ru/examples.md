@@ -66,10 +66,18 @@ app.x = 'Hello World!';
 
 ### Другие примеры
 
-<span class="list-item-number">1.</span> [TodoMVC](//gh-embed.matreshka.io/v0/finom/matreshka_todomvc_ru/?ref=gh-pages) - список дел. ([Исходный код с аннотациями](//finom.github.io/matreshka_todomvc_ru/docs/app.html))
+<span class="list-item-number">1.</span>
+<a href="https://github.com/matreshkajs/matreshka_todomvc/tree/gh-pages/"
+class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/matreshka_todomvc/docs/app.html))
 
-<span class="list-item-number">2.</span> [TreeView](//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/treeview/?ref=gh-pages) - древовидный список неограниченной вложенности.
+<span class="list-item-number">2.</span>
+<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/treeview/"
+class="example-link">TreeView</a> - древовидный список неограниченной вложенности.
 
-<span class="list-item-number">3.</span> [Markdown editor](//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/markdown_editor/?ref=gh-pages) - простейший редактор Markdown (13 строк кода).
+<span class="list-item-number">3.</span>
+<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/markdown_editor/"
+class="example-link">Markdown editor</a> - простейший редактор Markdown (13 строк кода).
 
-<span class="list-item-number">4.</span> [Simple SoundCloud player](//gh-embed.matreshka.io/v0/matreshkajs/matreshka_examples/soundcloud_search/?ref=gh-pages) - поиск музыки, использующий SoundCloud API.
+<span class="list-item-number">4.</span>
+<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/soundcloud_search/"
+class="example-link">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.
