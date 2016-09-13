@@ -27,7 +27,7 @@ export default class extends MatreshkaArray {
 			.on({
 				'click::(.show-search)': evt => {
 					this.searchMode = true;
-					this.bound('search').focus();
+					this.nodes.search.focus();
 				},
 				'click::(.back)': evt => {
 					this.searchMode = false;
@@ -38,14 +38,14 @@ export default class extends MatreshkaArray {
 						.bindNode('header', ':sandbox', html())
 						.bindNode('isActive', ':sandbox', className('active'));
 				},
-				'@click::sandbox': evt => {
+				'*@click::sandbox': evt => {
 					this.searchMode = false;
 					this.search = '';
 					document.location.hash = this.active.id;
 				},
 				'*@mouseover::sandbox': evt => {
 					this.forEach(function(item) {
-						item.isActive = item.eq(evt.self);
+						item.isActive = item === evt.self;
 					});
 				},
 				'keydown::search': evt => {
@@ -62,7 +62,9 @@ export default class extends MatreshkaArray {
 
 							activeIndex = activeIndex < 0 ? this.length + activeIndex : activeIndex;
 							activeIndex %= this.length;
+
 							this.forEach(function(item, index) {
+								console.log(index, index === activeIndex)
 								item.isActive = index === activeIndex;
 							});
 
@@ -82,7 +84,7 @@ export default class extends MatreshkaArray {
 					if (search) {
 						search = search.toLowerCase();
 						this.recreate(g.app.articles
-							.toNative()
+							.toJSON(false)
 							.filter(function(article) {
 								search.toLowerCase()
 								return ~article.name.toLowerCase().indexOf(search) ||

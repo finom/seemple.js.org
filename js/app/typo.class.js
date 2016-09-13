@@ -30,7 +30,7 @@ export default class extends MatreshkaObject {
 					this.name = v;
 				}
 			})
-			.bindNode('overlay', '.typo-overlay', className('!hide'))
+			.bindNode('overlay', '.typo-overlay', className('hide', false))
 			.bindNode('overlayOpaque', ':bound(overlay)', {
 				setValue: function(v) {
 					this.style.opacity = v ? .5 : 0;

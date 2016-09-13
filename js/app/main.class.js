@@ -138,11 +138,11 @@ export default class Main extends MatreshkaObject {
 				},
 				loading: {
 					node: '.loader',
-					binder: className('!hide')
+					binder: className('hide', false)
 				},
 				navOverlay: {
 					node: '.nav-overlay',
-					binder: className('!hide')
+					binder: className('hide', false)
 				},
 				hideTypoBadge: {
 					node: ':bound(typeBadge)',
@@ -219,12 +219,12 @@ export default class Main extends MatreshkaObject {
 
 	events() {
 		return this
-			.onDebounce('scroll::win', function() {if(typeof this === 'number') throw Error('this is not good')
+			.onDebounce('scroll::win', function() {
 				if (this.view === 'all') {
 					var fromTop = window.pageYOffset,
 						fromLeft = window.pageXOffset,
 						cur = this.articles.filter(article => {
-							let el = article.sandbox;
+							let el = article.nodes.sandbox;
 							return (el.offsetTop < fromTop + 50
 								&& el.offsetWidth > 0 && el.offsetHeight > 0);
 						}),
