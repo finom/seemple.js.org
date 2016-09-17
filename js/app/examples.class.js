@@ -14,10 +14,9 @@ export default class Examples extends Matreshka {
                 evt.preventDefault();
 
                 if(!target.classList.contains('initialized')) {
-                    const exampleMountBlock = target.parentNode.appendChild(document.createElement('div'))
+                    const exampleMountBlock = target.parentNode.appendChild(document.createElement('div'));
                     exampleMountBlock.style.width = "100%";
                     exampleMountBlock.style.height = "500px";
-                    console.log(`${href}.gh-embed.json`)
                     githubEmbed(exampleMountBlock, `${href}.gh-embed.json`)
 
                     target.classList.add('initialized');
