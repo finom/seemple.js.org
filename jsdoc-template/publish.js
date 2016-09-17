@@ -23,6 +23,9 @@ module.exports.publish = function(data, opts) {
 		}
 
 		item.githubSourceLink = getGithubSourceLink(__dirname, item);
+		if (item.kind == 'class') {
+			console.log(item.githubSourceLink);
+		}
 
 		delete item.meta;
 		delete item.___id;

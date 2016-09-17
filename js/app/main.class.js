@@ -295,9 +295,7 @@ export default class Main extends MatreshkaObject {
 	muut() {
 		var script;
 		if (typeof jQuery === 'undefined' || !jQuery.fn.muut) {
-			document.body.appendChild($.create('script', {
-				src: '//cdn.muut.com/1/moot.min.js'
-			}));
+			document.body.appendChild(document.createElement('script')).src = '//cdn.muut.com/1/moot.min.js';
 		} else {
 			jQuery('.muut').muut();
 		}

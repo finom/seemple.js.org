@@ -48,7 +48,7 @@ export default class extends MatreshkaObject {
 			.on('change:shown', function(evt) {
 				if (evt.value) {
 					this.overlay = true;
-					this.delay(function() {
+					setTimeout(() => {
 						this.overlayOpaque = true;
 					});
 				} else {
