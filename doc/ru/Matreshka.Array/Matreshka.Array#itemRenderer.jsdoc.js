@@ -239,7 +239,7 @@ class MyArray extends Matreshka.Array {
 	// ...
 }
 
-var app = new MyArray();
+const app = new MyArray();
 ```
 
 #### Отмена рендеринга

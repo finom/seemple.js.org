@@ -74,6 +74,6 @@ this.parseBindings(node);
 this.parseBindings('.my-node');
 
 @example <caption>HTML string parsing</caption>
-var $node = this.parseBindings('<h3>Hello, {{name}}</h3>');
+const $node = this.parseBindings('<h3>Hello, {{name}}</h3>');
 this.name = 'Arthur Philip Dent';
 */
