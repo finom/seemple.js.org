@@ -4,7 +4,7 @@
       "user" : "finom",
       "host" : "matreshka.io",
       "ref"  : "origin/next",
-      "repo" : "git@github.com:matreshkajs/matreshka.io.git",
+      "repo" : "https://github.com/matreshkajs/matreshka.io.git",
       "path" : "~/web/matreshka.io",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
       "post-deploy" : "rm -rf node_modules && npm install && npm run build"
