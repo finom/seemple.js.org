@@ -105,9 +105,9 @@ export default class Main extends MatreshkaObject {
 			});
 		}
 
-		fetch('https://api.github.com/repos/matreshkajs/matreshka/tags')
+		fetch('https://api.github.com/repos/matreshkajs/matreshka/releases/latest')
 			.then(resp => resp.json())
-			.then(data => this.version = data[0].name);
+			.then(data => this.version = data.tag_name);
 
 	}
 
