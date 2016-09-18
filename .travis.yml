@@ -1,7 +1,22 @@
 language: node_js
+branches:
+  only:
+  - next
 node_js:
-- '0.11'
-- '0.10'
+- '6'
 before_install:
 - openssl aes-256-cbc -K $encrypted_5e41bf3d8c4c_key -iv $encrypted_5e41bf3d8c4c_iv
-  -in deploy_rsa.enc -out ../deploy_rsa -d
+  -in deploy_rsa.enc -out deploy_rsa -d
+addons:
+  ssh_known_hosts: matreshka.io
+before_deploy:
+- npm install -g pm2
+- eval "$(ssh-agent -s)"
+- chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
+- ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run deploy
+  on:
+    branch: master

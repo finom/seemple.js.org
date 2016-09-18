@@ -6,9 +6,10 @@
   "scripts": {
     "jsdoc": "node script/jsdoc",
     "clear": "rimraf dist html/*/temp",
-    "bundle": "npm run clear && webpack --config webpack/webpack.config.js",
+    "build": "npm run clear && webpack --config webpack/webpack.config.js",
     "watch": "PORT=8110 NODE_ENV=development npm run bundle -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
+    "deploy": "pm2 deploy ecosystem.json production",
     "develop": "npm-run-all --parallel watch serve-dist"
   },
   "devDependencies": {
