@@ -43,7 +43,6 @@ const plugins = [
 ];
 
 // TODO turn on dev server, for that documentation generator needs to be modified
-
 module.exports = {
     devtool: 'source-map',
     context: resolve('./'),
@@ -56,15 +55,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', 'css!sass')
-            },
+            { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') },
             { test: /\.html$/, loader: 'ejs-compiled' },
             { test: /\.md$/, loader: "html!markdown" },
             { test: /\.yaml$/,  loader: 'json!yaml' }

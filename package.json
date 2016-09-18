@@ -1,13 +1,12 @@
 {
   "name": "matreshka.io",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Matreshka.js website",
   "license": "MIT",
   "scripts": {
-    "jsdoc": "node script/jsdoc",
     "clear": "rimraf dist html/*/temp",
-    "build": "npm run clear && webpack --config webpack/webpack.config.js",
+    "build": "NODE_ENV=production npm run clear && webpack --config webpack/webpack.config.js",
     "watch": "PORT=8110 NODE_ENV=development npm run bundle -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
     "deploy": "pm2 deploy ecosystem.json production",
