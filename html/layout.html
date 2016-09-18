@@ -54,16 +54,6 @@
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
 		<meta property="og:image" content="http://matreshka.io/img/mk_logo.png">
 		<script>
-		if (window.applicationCache && (!localStorage.reloadedTimeSpike || new Date().getTime() - localStorage.reloadedTimeSpike > 60*1000)) {
-			applicationCache.addEventListener('updateready', function() {
-				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-					window.applicationCache.swapCache();
-					window.location.reload();
-					localStorage.reloadedTimeSpike = new Date().getTime();
-				}
-			});
-		}
-
 		// remove loader on slow load
 		setTimeout(function() {
 			document.querySelector('.loader').className += ' hide';
@@ -89,7 +79,7 @@
 		</style>
 		<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('js/sw.js').then(function() {
+			navigator.serviceWorker.register('sw.js').then(function() {
 				console.log('CLIENT: service worker registration complete.');
 			}, function() {
 				console.error(e);

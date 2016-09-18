@@ -1,11 +1,13 @@
 let __cacheName = 'SERVICE_WORKER_CACHE_VERSION';
 
 self.addEventListener('install', function(event) {
+    console.log('Service Worker install..');
     event.waitUntil(
         caches
         .open(__cacheName)
         .then(function(cache) {
             return cache.addAll(`
+                ./
                 css/fonts.css
                 css/style.css
                 img/mk5-logo_matreshka.svg
@@ -20,12 +22,13 @@ self.addEventListener('install', function(event) {
                 fonts/Roboto-Light.ttf
                 js/app.js
                 icons/favicon.ico
-          `.trim().split(/\s+/).map(item => `/v2/${item}`).concat('/'));
+          `.trim().split(/\s+/));
         })
         .then(() => {
             return caches.keys().then(function(cacheNames) {
                 return Promise.all(
                     cacheNames.map(function(cacheName) {
+                        console.log(__cacheName, cacheName, __cacheName !== cacheName)
                         if (__cacheName !== cacheName) {
                             return caches.delete(cacheName);
                         }
@@ -36,24 +39,9 @@ self.addEventListener('install', function(event) {
     )
 });
 
-/*self.addEventListener('activate', function(event) {
-    var cacheWhiteList = [];
-    event.waitUntil(
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(
-                cacheNames.map(function(cacheName) {
-                    if (__cacheName !== cacheName) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            )
-        })
-    )
-});*/
-
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request).then(function(cachedResponse) {
+        caches.match(event.request, { cacheName: __cacheName }).then(function(cachedResponse) {
             return cachedResponse || fetch(event.request);
         })
     );

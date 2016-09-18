@@ -10,7 +10,7 @@ const resolve = (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
 const { NODE_ENV, PORT } = process.env;
 
 const entry = {
-    app: [
+    'js/app': [
         './sass/screen.scss',
         'babel-polyfill',
         './js/app'
@@ -51,7 +51,7 @@ module.exports = {
     plugins,
     output: {
         path: resolve('dist/v2'),
-        filename: 'js/[name].js',
+        filename: '[name].js',
         libraryTarget: 'var'
     },
     module: {
