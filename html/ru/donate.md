@@ -4,7 +4,7 @@
 
 ### LiqPay (₴, $, €, ₽)
 
-<a href="https://www.liqpay.com/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6IkRvbmF0ZSIsInR5cGUiOiJkb25hdGUiLCJsYW5ndWFnZSI6ImVuIn0%3D&signature=mvTntsEXOtTvvQE%2FVT8Mej98KmA%3D" target="_blank"><img src="//static.liqpay.com/buttons/d1en.png"></a>
+<a href="https://www.liqpay.com/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6IkRvbmF0ZSIsInR5cGUiOiJkb25hdGUiLCJsYW5ndWFnZSI6ImVuIn0%3D&signature=mvTntsEXOtTvvQE%2FVT8Mej98KmA%3D" target="_blank"><img src="img/liqpay-donate-button.png"></a>
 
 ### Bitcoin Кошелек
 <a href="bitcoin:178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd">178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd</a>

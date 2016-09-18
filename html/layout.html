@@ -87,6 +87,15 @@
 				max-height: 90%;
 			}
 		</style>
+		<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('js/sw.js').then(function() {
+				console.log('CLIENT: service worker registration complete.');
+			}, function() {
+				console.error(e);
+			});
+		}
+		</script>
 	</head>
 	<body>
 		<div class="loader">

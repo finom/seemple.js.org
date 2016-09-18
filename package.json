@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "clear": "rimraf dist html/*/temp",
-    "build": "NODE_ENV=production npm run clear && webpack --config webpack/webpack.config.js",
-    "watch": "PORT=8110 NODE_ENV=development npm run bundle -- --watch",
+    "build": "npm run clear && webpack --config webpack/webpack.config.js",
+    "watch": "PORT=8110 NODE_ENV=development npm run build -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
     "deploy": "pm2 deploy ecosystem.json production",
     "develop": "npm-run-all --parallel watch serve-dist",
@@ -36,6 +36,7 @@
     "npm-run-all": "^3.1.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
+    "string-replace-loader": "^1.0.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "yaml-loader": "^0.4.0"

@@ -273,7 +273,7 @@ export default class Main extends MatreshkaObject {
 				'click::(.show-nav)': evt => {
 					this.navOverlay = true;
 
-					this.delay(function() {
+					setTimeout(() => {
 						this.navShown = true;
 					});
 				},

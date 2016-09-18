@@ -11,10 +11,11 @@ const { NODE_ENV, PORT } = process.env;
 
 const entry = {
     app: [
+        './sass/screen.scss',
         'babel-polyfill',
         './js/app'
     ],
-    style: './sass/screen.scss'
+    sw: './js/sw'
 };
 
 const plugins = [
@@ -55,10 +56,17 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
+            {
+                test: /\.js$/,
+                loaders: [
+                    'babel',
+                    `string-replace?search=SERVICE_WORKER_CACHE_VERSION&replace=${Date.now()}`
+                ],
+                exclude: /node_modules/
+            },
             { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') },
             { test: /\.html$/, loader: 'ejs-compiled' },
-            { test: /\.md$/, loader: "html!markdown" },
+            { test: /\.md$/, loader: "html?attrs=false!markdown" },
             { test: /\.yaml$/,  loader: 'json!yaml' }
         ]
     },
