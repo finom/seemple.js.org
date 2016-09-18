@@ -4,11 +4,7 @@
 
 ### LiqPay (₴, $, €, ₽)
 
-<form method="POST" accept-charset="utf-8" action="https://www.liqpay.com/api/3/checkout">
-<input type="hidden" name="data" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6Ik1hdHJlc2hrYS5qcyBEb25hdGUiLCJ0eXBlIjoiZG9uYXRlIiwibGFuZ3VhZ2UiOiJlbiJ9" />
-<input type="hidden" name="signature" value="TnNOjNuVaP7Qw47lycA1bJdK9kA=" />
-<input type="image" src="//static.liqpay.com/buttons/d1en.png" name="btn_text" />
-</form>
+<a href="https://www.liqpay.com/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6IkRvbmF0ZSIsInR5cGUiOiJkb25hdGUiLCJsYW5ndWFnZSI6ImVuIn0%3D&signature=mvTntsEXOtTvvQE%2FVT8Mej98KmA%3D" target="_blank"><img src="//static.liqpay.com/buttons/d1en.png"></a>
 
 ### Bitcoin Кошелек
 <a href="bitcoin:178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd">178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd</a>

@@ -105,6 +105,10 @@ export default class Main extends MatreshkaObject {
 			});
 		}
 
+		fetch('https://api.github.com/repos/matreshkajs/matreshka/tags')
+			.then(resp => resp.json())
+			.then(data => this.version = data[0].name);
+
 	}
 
 	initDynamicStyles() {
@@ -193,7 +197,11 @@ export default class Main extends MatreshkaObject {
 				}, {
 					node: ':sandbox',
 					binder: dataset('importanceLevel')
-				}]
+				}],
+				version: {
+					node: '#promo .version',
+					binder: html()
+				}
 			})
 			.bindNode({
 				view: ':bound(viewSwitcher)'

@@ -1,56 +1,89 @@
 ## [FAQ](#!faq)
-### Is there a wrapper over ``XMLHttpRequest`` (AJAX) in Matreshka?
-Nope. Firstly, there are a lot of wonderful libraries implementing communications with a server, such as  a one-time hot [jQuery.ajax](http://api.jquery.com/jquery.ajax/), a terrific library [qwest](https://github.com/pyrsmk/qwest), based on [Promises](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) and many others.
-
-Secondly, all browsers will probably get a native [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) support as an alternative to ``XMLHttpRequest``. ``fetch`` has got a simpler and cleaner API, based on Promises and allowing to avoid a catastrophic number of callbacks as well as the necessity of remembering about API ``XMLHttpRequest``. As ``fetch`` isn’t supported by all browsers yet, you can use a [popular polyfill](https://github.com/github/fetch).
-
-> Promises and asynchronous functions from ECMAScript 7 specification give an opportunity to write JavaScript code of surpassing beauty:
-
-```js
-async function getData() {
-	let resp = await fetch(someUrl);
-	let data = await resp.text();
-
-	console.log(data);
-}
-
-getData();
-```
-
-
-### Is there a routing in Matreshka?
-Yep and nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example [director](https://github.com/flatiron/director). But for simple tasks and tasks of average complexity (99% of all projecs) you can use [a plugin](https://github.com/matreshkajs/matreshka-router) which implements two-way data binding between URL and object properties. The plugin fits perfectly into the concept of Matreshka, adding to an app the easiest way of URL control ever.
 
 ### How does Matreshka work?
-Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as ``Object.observe`` and, especially, dirty-checking.
+Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing.
 
 As an example of how the two-way data binding works ([bindNode](#!Matreshka-bindNode) function in particular), have a look at this code:
 
 ```js
-window.bindNode = function bindNode(object, key, node, binder) {
-    var value = object[key];
+function bindNode(object, key, node, binder) {
+    const value = object[key];
     Object.defineProperty(object, key, {
-        get: function() {
+        get() {
             return value;
         },
-        set: function(v) {
+        set(v) {
             binder.setValue.call(node, v);
         }
     });
 
-    node.addEventListener(binder.on, function() {
+    node.addEventListener(binder.on, () => {
         value = binder.getValue.call(node);
     });
-};
+}
 ```
-As you see, it’s real easy (for simplicity, the function doesn’t  support  many-to-many binding).
-You can see the example of function working at [jsbin](//jsbin.com/mabetap/7/edit?html,js,output)..
+As you see, it’s real easy (for simplicity, the function doesn’t support many-to-many binding).
 
 
-### Does Matreshka support the server rendering?
+### Is there a routing in Matreshka.js?
 
-Unfortunately, not yet (for the time being). Matreshka uses DOM templating which requires the presence of the library, implementing DOM API on the server. [jsdom](https://github.com/tmpvar/jsdom) is a good example of such a library. The problem is that a lot of clients connect to the server and each of them can  request completely different pages which are generated dynamically. DOM templating works quite slower than HTML one, where an ordinary text is a template instead of numerous DOM objects.
+Yes. Check out [matreshka-router](https://github.com/matreshkajs/matreshka-router).
 
-The server rendering of React components which also require DOM template engine can be mentioned as an example. As a rule, this task is solved with the help of gimmicks and recommendations to use the template caching (which is not always possible, but if it’s possible it can cause memory leaks). Even using the best practices and smart solutions, an ordinary text HTML template engine (let’s say, [mustache.js](https://github.com/janl/mustache.js)) will solve the problem a lot faster, and the speed on the server is known to be more important than the one on the client.
+### How to pre-render an application on a server
 
-That’s why, currently, the only recommendation for the server rendering is passing the task of  HTML line generation to any text template engine. Let’s leave highly tailored tasks to be performed by the tools which do it best.
+For the app pre-rendering Matreshka.js can be used on Node.js (``window`` global object can be created via [jsdom](https://github.com/tmpvar/jsdom)) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.
+
+The task of client-side is to restore application state from HTML. {@link Matreshka#bindNode} extracts element value and assigns it to a property and {@link Matreshka.Array#restore} restores a state of a collection.
+
+### What is "debounce"
+
+At this page you often can see the phrase "micropattern debounce". This is widely used pattern which enforces that a function not be called again until a certain amount of time has passed without it being called. More info can be found [there](https://davidwalsh.name/javascript-debounce-function).
+
+### How should look like a big application?
+
+An application written with Matreshka.js usually represents one nested JavaScript object where every branch is {@link Matreshka} instance. The new branches are created using {@link Matreshka#instantiate} which ensures the integrity of the application and allows to replace a state of the application using ordinary assignment.
+
+
+### How to render one object at few collections
+
+The first thing: you need to set ``bindRenderedAsSandbox`` as ``false`` for an item class. It turns off automatic sandbox initialization for rendered object (two sandboxes for one object aren't allowed).
+
+The second thing: when ``render`` event is fired, check where the object is rendered. Parent array can be get using ``parentArray`` property of the event object.
+
+Example. You have ``User`` class and two collections ``UsersA`` and ``UsersB`` (their {@link Matreshka.Array#itemRenderer} can be different). For both collections ``User`` is a {@link Matreshka.Array#Model model}.
+
+```js
+class User extends Matreshka.Object {
+    constructor() {
+        super();
+
+        this.bindRenderedAsSandbox = false;
+
+        setInterval(() => {
+            // when "name" is changed
+            // both bound nodes also change
+            this.name = Math.random();
+        }, 5000);
+    }
+    onRender(evt) {
+        const { parentArray, node } = evt;
+
+        if(parentArray instanceof UsersA) {
+            this.bindNode({
+                // pseudo-sandbox creation for syntax sugar at selectors
+                // (not required)
+                nodeA: node,
+                name: ':bound(nodeA) .name',
+                email: ':bound(nodeA) .email',
+            });
+        } else if(parentArray instanceof UsersB) {
+            this.bindNode({
+                nodeB: node,
+                name: ':bound(nodeB) .user-name',
+            });
+        }
+    }
+}
+```
+
+Actually there are many ways to solve this problem. For example bindings can be declared at classes of the collections (an array will listen to ``render`` event of inserted objects)...

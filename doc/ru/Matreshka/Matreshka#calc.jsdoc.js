@@ -318,7 +318,7 @@ this.a = 5;
 
 /**
 @method Matreshka#calc
-@importance 3
+@importance 2
 @variation batch
 @since 2.0
 @summary Дополнительная возможность метода {@link Matreshka#calc}, позволяющая объявить несколько вычислимых свойств одним вызовом

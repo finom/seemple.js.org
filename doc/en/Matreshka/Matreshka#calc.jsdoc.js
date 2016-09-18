@@ -320,7 +320,7 @@ this.a = 5;
 
 /**
 @method Matreshka#calc
-@importance 3
+@importance 2
 @variation batch
 @since 2.0
 @summary Extra syntax for {@link Matreshka#calc}. Allows to define few calculated properties per single call of the method.
