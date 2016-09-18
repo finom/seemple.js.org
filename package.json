@@ -1,7 +1,8 @@
 {
-  "name": "matreshka_docs",
+  "name": "matreshka.io",
+  "private": true,
   "version": "1.0.0",
-  "description": "Matreshka.js docs",
+  "description": "Matreshka.js website",
   "license": "MIT",
   "scripts": {
     "jsdoc": "node script/jsdoc",
@@ -45,5 +46,15 @@
     "highlight.js": "^9.6.0",
     "markdown-loader": "^0.1.7",
     "matreshka": "^2.0.0-prealpha.34"
-  }
+},
+"repository": {
+  "type": "git",
+  "url": "https://github.com/matreshkajs/matreshka.io.git"
+},
+"keywords": [],
+"license": "MIT",
+"bugs": {
+  "url": "https://github.com/matreshkajs/matreshka.io/issues"
+},
+"homepage": "https://github.com/matreshkajs/matreshka.io#readme"
 }
