@@ -44,7 +44,7 @@
   "dependencies": {
     "babel-polyfill": "^6.13.0",
     "balajs": "^0.1.9",
-    "github-embed": "^0.1.12",
+    "github-embed": "^0.1.14",
     "highlight.js": "^9.6.0",
     "markdown-loader": "^0.1.7",
     "matreshka": "^2.0.0-prealpha.34"
