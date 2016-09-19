@@ -66,8 +66,8 @@ Cool, isn't it? Now you can work with the properties directly.
 * [Matreshka#on method](#!Matreshka-on)
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/matreshkajs/matreshka_todomvc/tree/gh-pages/"
-class="example-link">TodoMVC</a> - a to-do list. ([Source code with annotations](//matreshkajs.github.io/matreshka_todomvc/docs/app.html))
+<a href="https://github.com/matreshkajs/todomvc/tree/master/"
+class="example-link">TodoMVC</a> - a to-do list. ([Source code with annotations](//matreshkajs.github.io/todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
 <a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/treeview/"

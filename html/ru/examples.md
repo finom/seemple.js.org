@@ -70,8 +70,8 @@ app.x = 'Hello World!';
 ### Другие примеры
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/matreshkajs/matreshka_todomvc/tree/gh-pages/"
-class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/matreshka_todomvc/docs/app.html))
+<a href="https://github.com/matreshkajs/todomvc/tree/master/"
+class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
 <a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/treeview/"
