@@ -70,13 +70,13 @@ Cool, isn't it? Now you can work with the properties directly.
 class="example-link">TodoMVC</a> - a to-do list. ([Source code with annotations](//matreshkajs.github.io/todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/treeview/"
+<a href="https://github.com/matreshkajs/examples/tree/master/treeview/"
 class="example-link">TreeView</a> of unlimited nesting depth.
 
 <span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/markdown_editor/"
+<a href="https://github.com/matreshkajs/examples/tree/master/markdown_editor/"
 class="example-link">Markdown editor</a> made with few lines of code.
 
 <span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/soundcloud_search/"
+<a href="https://github.com/matreshkajs/examples/tree/master/soundcloud_search/"
 class="example-link">Simple SoundCloud player</a> -  music search via SoundCloud API.

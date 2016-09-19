@@ -74,13 +74,13 @@ app.x = 'Hello World!';
 class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/treeview/"
+<a href="https://github.com/matreshkajs/examples/tree/master/treeview/"
 class="example-link">TreeView</a> - древовидный список неограниченной вложенности.
 
 <span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/markdown_editor/"
+<a href="https://github.com/matreshkajs/examples/tree/master/markdown_editor/"
 class="example-link">Markdown editor</a> - простейший редактор Markdown (13 строк кода).
 
 <span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/matreshka_examples/tree/gh-pages/soundcloud_search/"
+<a href="https://github.com/matreshkajs/examples/tree/master/soundcloud_search/"
 class="example-link">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.
