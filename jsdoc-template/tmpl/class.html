@@ -19,7 +19,10 @@
 	<?js print( this.partial( 'arguments.html', obj.params ) ); ?>
 	<?js print( this.partial( 'see.html', obj.see ) ) ?>
 	<?js print( this.partial( 'examples.html', obj.examples ) ) ?>
-	<?js print( this.partial( 'comments.html', { link: obj.longname, title: this.lang.class + ' ' + obj.longname }) ) ?>
+	<?js print( this.partial( 'comments.html', Object.assign({}, obj, {
+		link: obj.longname,
+		title: this.lang.class + ' ' + obj.longname
+	})) ) ?>
 </article>
 
 <?js obj.instanceMembers['function'].forEach( function( member ) {

@@ -17,7 +17,7 @@ module.exports = (dirname, item) => {
     const relativePath = item.meta.path.replace(root, '');
     const relativeFilePath = path.join(relativePath, item.meta.filename);
     const linenoSuffix = item.meta.lineno !== 1 ? '#L' + item.meta.lineno : '';
-    const escapedFilePath = relativeFilePath.replace(/#/g, '%23')
+    const escapedFilePath = relativeFilePath.replace(/#/g, '%23');
 
     checkExistence(path.resolve(root, relativeFilePath))
 
