@@ -25,23 +25,17 @@ self.addEventListener('install', (event) => {
           `.trim().split(/\s+/));
         })
         .then(() => {
-
+            return caches.keys().then((cacheNames) => {
+                return Promise.all(
+                    cacheNames.map((cacheName) => {
+                        if (__cacheName !== cacheName) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                )
+            })
         })
     )
-});
-
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-      caches.keys().then((cacheNames) => {
-          return Promise.all(
-              cacheNames.map((cacheName) => {
-                  if (__cacheName !== cacheName) {
-                      return caches.delete(cacheName);
-                  }
-              })
-          )
-      })
-  );
 });
 
 self.addEventListener('fetch', (event) => {
@@ -49,5 +43,6 @@ self.addEventListener('fetch', (event) => {
         caches
         .match(event.request)
         .then(cachedResponse => cachedResponse || fetch(event.request))
+        .catch(() => fetch(event.request))
     );
 });
