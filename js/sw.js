@@ -1,4 +1,4 @@
-const __cacheName = 'SERVICE_WORKER_CACHE_VERSION';
+const __cacheName = 'test';
 
 self.addEventListener('install', (event) => {
     console.log('Service Worker install..');
