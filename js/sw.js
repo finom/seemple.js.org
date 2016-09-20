@@ -1,10 +1,10 @@
-const __cacheName = 'test';
+// SERVICE_WORKER_CACHE_VERSION - this string updates on every deploy
 
 self.addEventListener('install', (event) => {
     console.log('Service Worker install..');
     event.waitUntil(
         caches
-        .open(__cacheName)
+        .open('matreshka')
         .then((cache) => {
             return cache.addAll(`
                 ./
@@ -24,7 +24,7 @@ self.addEventListener('install', (event) => {
                 icons/favicon.ico
           `.trim().split(/\s+/));
         })
-        .then(() => {
+        /*.then(() => {
             return caches.keys().then((cacheNames) => {
                 return Promise.all(
                     cacheNames.map((cacheName) => {
@@ -34,7 +34,7 @@ self.addEventListener('install', (event) => {
                     })
                 )
             })
-        })
+        })*/
     )
 });
 
