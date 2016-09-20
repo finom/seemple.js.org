@@ -1,0 +1,25 @@
+<section class="other">
+    <article id="!caniuse">
+        <h2><a href="#!caniuse">Поддержка браузерами</a></h2>
+        <%- include('../caniuse.html') %>
+        <ul class="legend">
+            <li><span class="yep"></span> Тесты прошли успешно.
+            <li><span class="na"></span> Нет данных. Матрешка в этих браузерах не проверялась.
+            <li><span class="nope"></span> Некоторые тесты не пройдены.
+        </ul>
+        <p>
+            Обратите внимание:
+			<ul>
+				<li>
+					Поддержка чтения файлов <a href="#!Matreshka.binders.file">Matreshka.binders.file</a> не включена в таблицу. Она зависит от наличия в браузере <a href="https://developer.mozilla.org/ru/docs/Web/API/FileReader">FileReader API</a>. Узнать, поддерживает ли тот или иной браузер FileReader можно на <a href="http://caniuse.com/#feat=filereader">Caniuse</a>.
+				</li>
+				<li>
+					Поддержка установки прототипа класса <code>Matreshka</code> с помощью <a href="#!Matreshka.setProto">Matreshka.setProto</a> не включена в таблицу. Она зависит от наличия статичного метода <code>Object.setPrototypeOf</code> или свойства <code>__proto__</code>.
+				</li>
+			</ul>
+        </p>
+        <p>
+            Не нашли свой браузер? Откройте в нем <a href="http://matreshka.io/matreshka/test/SpecRunner.html">страницу с тестами</a>.
+        </p>
+    </article>
+</section>

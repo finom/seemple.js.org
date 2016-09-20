@@ -1,0 +1,41 @@
+<div class="perf-graph-wrapper hide" data-since="1.1">
+    <div class="perf-graph">
+        <div class="column mk">
+            <span class="fw-name">Matreshka</span>
+        </div>
+        <div class="column rt">
+            <div class="slower"><span></span>% медленнее</div>
+            <span class="fw-name">React</span>
+        </div>
+        <div class="column kk">
+            <div class="slower"><span></span>% медленнее</div>
+            <span class="fw-name">Knockout</span>
+        </div>
+        <div class="column ng">
+            <div class="slower"><span></span>% медленнее</div>
+            <span class="fw-name">Angular</span>
+        </div>
+    </div>
+
+    <label>Количество элементов коллекции</label>
+    <select class="perf-count">
+        <option value="10">10 элементов</option>
+        <option value="50">50 элементов</option>
+        <option value="100" selected>100 элементов</option>
+        <option value="500">500 элементов</option>
+        <option value="1000">1000 элементов</option>
+    </select>
+
+    <label>Браузер</label>
+    <select class="perf-browser">
+        <option value="chrome" selected>Chrome
+        <option value="firefox">Firefox
+        <option value="safari">Safari
+        <option value="ie">Internet Explorer
+    </select>
+
+    <p>
+        На основе <a class="benchmark-url" target="_blank">этого</a> бенчмарка<br><br>
+        А еще взгляните на <a href="http://mathieuancelin.github.io/js-repaint-perfs/matreshka/index.html">DMBON test</a>
+    </p>
+</div>

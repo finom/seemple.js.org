@@ -1,0 +1,32 @@
+<nav>
+	<span class="view-switcher">
+		<span data-value="all" class="checked">Всё сразу</span><span data-value="per-one">По одному</span>
+	</span>
+	<span class="version-switcher hide">
+		<span data-value="stable" class="checked">Стабильная</span><span data-value="unstable">1.1 Beta</span>
+	</span>
+	<span class="nav-heading">Старт</span>
+	<a href="#!home">Главная</a>
+	<a href="#!introduction">Введение</a>
+	<a href="#!website-instructions">О документации</a>
+	<a href="#!examples">Примеры</a>
+	<a href="#!donate">Donate</a>
+
+	<hr>
+	<span class="nav-heading">API</span>
+	<label class="doc-importance">
+		<input type="checkbox"> Продвинутый режим <a href="#!website-instructions">(?)</a>
+	</label>
+	<div class="api">
+		<%- include('temp/doc_menu.html') %>
+	</div>
+	<hr>
+	<span class="nav-heading">Информация</span>
+	<a href="#!faq">FAQ</a>
+	<hr>
+	<span class="nav-heading">Ссылки</span>
+	<a href="http://habrahabr.ru/company/matreshka/blog/254889/">Туториал</a>
+	<a href="http://habrahabr.ru/company/matreshka/blog/267513/">События</a>
+	<a href="//matreshka.io/v2" class="another-language"><i></i> English version</a>
+	<a>Обновлено <%= updatedDate %></a>
+</nav>
