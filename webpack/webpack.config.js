@@ -29,10 +29,16 @@ const plugins = [
     }),
     new HtmlWebpackPlugin({
         template: './html/layout.html',
+        filename: 'index.ua.html',
+        language: 'ua'
+    }),
+    new HtmlWebpackPlugin({
+        template: './html/layout.html',
         filename: 'index.ru.html',
         language: 'ru'
     }),
     new GenerateDocumentationPlugin({
+        languages: ['en', 'ua', 'ru'],
         templateFolder: resolve('jsdoc-template/'),
         srcFolder: resolve('doc/'),
         getDestination: lang => resolve('html', lang, 'temp')

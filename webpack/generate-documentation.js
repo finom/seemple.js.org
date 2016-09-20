@@ -4,7 +4,7 @@ const glob = require('glob');
 class Plugin {
     constructor(options) {
         this.options = options;
-        this.languages = ['en', 'ru'];
+        this.languages = options.languages;
         this.allDocFileNames = this.getAllDocFileNames();
         this.docFileNamesByLanguage = this.getDocFileNamesByLanguage();
         this.templateFileNames = glob.sync(

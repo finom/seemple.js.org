@@ -23,6 +23,29 @@ module.exports = {
         module: 'CommonJS module',
         patchLinkText: 'Found an ussue in the article? Send a patch there.'
     },
+    ua: {
+        class: 'Клас',
+        method: 'Метод',
+        property: 'Властивість',
+        namespace: 'Простір імен',
+        arguments: 'Аргументи',
+        properties: 'Властивості',
+        examples: 'Приклади',
+        name: 'Iм\'я',
+        type: 'Тип',
+        default: 'За&nbsp;замовчуванням',
+        details: 'Опис',
+        returns: 'Повертає',
+        fires: 'Генерує події',
+        comments: 'Задати питання',
+        see: 'Посилання',
+        methods: 'Методи',
+        static_methods: 'Статичні методи',
+        static_properties: 'Статичні властивості',
+        synonym: 'Синонім',
+        module: 'Шлях до модуля CommonJS',
+        patchLinkText: 'Знайшли помилку в статті? Надішліть патч з виправленням.'
+    },
     ru: {
         class: 'Класс',
         method: 'Метод',
@@ -40,11 +63,10 @@ module.exports = {
         comments: 'Задать вопрос',
         see: 'Ссылки',
         methods: 'Методы',
-        properties: 'Свойства',
         static_methods: 'Статичные методы',
         static_properties: 'Статичные свойства',
         synonym: 'Синоним',
         module: 'Путь к модулю CommonJS',
-        patchLinkText: 'Нашли ошибку в статье? Пришлите патч с иправлением.'
+        patchLinkText: 'Нашли ошибку в статье? Пришлите патч с исправлением.'
     }
 };

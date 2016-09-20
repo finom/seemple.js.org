@@ -2,18 +2,18 @@
 @class Matreshka
 @module matreshka/matreshka
 @importance 1
-@lang ru
+@lang ua
 @see {@link Matreshka.Class}
-@classdesc Класс ``Matreshka`` - ядро фреймворка Matreshka.js, от которого наследуются {@link Matreshka.Array}, {@link Matreshka.Object} и каждый класс создаваемого приложения. Он содержит основной функционал фреймворка: {@link Matreshka#mediate медиаторы}, {@link Matreshka#linkProps зависимости}, {@link Matreshka#bindNode привязки к DOM}, {@link Matreshka#on движок событий} и пр.
+@classdesc Клас `` Matreshka`` - це ядро ​​фреймворка Matreshka.js, від якого успадковуються {@link Matreshka.Array}, {@link Matreshka.Object} і кожен клас створюваного додатка. Він містить основний функціонал фреймворка: {@link Matreshka#mediate медіатори}, {@link Matreshka#calc залежності}, {@link Matreshka#bindNode прив'язки до DOM}, {@link Matreshka#on механізм подій} тощо.
 
-Как правило, этот класс, (как и {@link Matreshka.Array} и {@link Matreshka.Object}), не используются напрямую. Вместо этого, от него наследуются классы, создаваемые разработиком.
+Як правило, цей клас, (як і {@link Matreshka.Array} і {@link Matreshka.Object}), не використовуються безпосередньо. Замість цього, від нього успадковуються класи, створювані розробником.
 
-@example <caption>Создание экземпляра</caption>
+@example <caption>Створення екземпляру</caption>
 const mk = new Matreshka();
-@example <caption>Краткая запись: MK вместо Matreshka (для немодульного окружения)</caption>
+@example <caption>Короткий запис: ``MK`` замість ``Matreshka`` (для немодульного оточення)</caption>
 const mk = new MK();
 
-@example <caption>Наследование</caption>
+@example <caption>Спадкування</caption>
 class MyClass extends Matreshka {
 	constructor() {
 		this.sayHello();
@@ -22,7 +22,7 @@ class MyClass extends Matreshka {
 		alert("Hello World!");
 	}
 }
-@example <caption>Наследование при помощи функции {@link Matreshka.Class}</caption>
+@example <caption>Спадкування за допомогою функції {@link Matreshka.Class}</caption>
 const MyClass = Matreshka.Class({
 	'extends': Matreshka,
 	constructor() {
