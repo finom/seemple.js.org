@@ -1,11 +1,11 @@
-let __cacheName = 'SERVICE_WORKER_CACHE_VERSION';
+const __cacheName = 'SERVICE_WORKER_CACHE_VERSION';
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
     console.log('Service Worker install..');
     event.waitUntil(
         caches
         .open(__cacheName)
-        .then(function(cache) {
+        .then((cache) => {
             return cache.addAll(`
                 ./
                 css/fonts.css
@@ -25,9 +25,9 @@ self.addEventListener('install', function(event) {
           `.trim().split(/\s+/));
         })
         .then(() => {
-            return caches.keys().then(function(cacheNames) {
+            return caches.keys().then((cacheNames) => {
                 return Promise.all(
-                    cacheNames.map(function(cacheName) {
+                    cacheNames.map((cacheName) => {
                         if (__cacheName !== cacheName) {
                             return caches.delete(cacheName);
                         }
@@ -38,7 +38,7 @@ self.addEventListener('install', function(event) {
     )
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches
         .match(event.request, { cacheName: __cacheName })
