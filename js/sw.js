@@ -7,6 +7,7 @@ self.addEventListener('install', (event) => {
         .open(__cacheName)
         .then((cache) => {
             return cache.addAll(`
+                ./
                 css/fonts.css
                 css/style.css
                 img/mk5-logo_matreshka.svg
@@ -21,20 +22,26 @@ self.addEventListener('install', (event) => {
                 fonts/Roboto-Light.ttf
                 js/app.js
                 icons/favicon.ico
-          `.trim().split(/\s+/).map(item => `/v2/${item}`).concat('/v2/'));
+          `.trim().split(/\s+/));
         })
         .then(() => {
-            return caches.keys().then((cacheNames) => {
-                return Promise.all(
-                    cacheNames.map((cacheName) => {
-                        if (__cacheName !== cacheName) {
-                            return caches.delete(cacheName);
-                        }
-                    })
-                )
-            })
+
         })
     )
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+      caches.keys().then((cacheNames) => {
+          return Promise.all(
+              cacheNames.map((cacheName) => {
+                  if (__cacheName !== cacheName) {
+                      return caches.delete(cacheName);
+                  }
+              })
+          )
+      })
+  );
 });
 
 self.addEventListener('fetch', (event) => {
