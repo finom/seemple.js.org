@@ -7,7 +7,7 @@ self.addEventListener('install', (event) => {
         .open(__cacheName)
         .then((cache) => {
             return cache.addAll(`
-                ./
+                .
                 css/fonts.css
                 css/style.css
                 img/mk5-logo_matreshka.svg
