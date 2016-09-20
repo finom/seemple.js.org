@@ -288,6 +288,10 @@ setTimeout(() => {
 
 Как говорилось выше, к изменению свойств и изменению состояния элемента применяется микропаттерн debounce. Это не касается самого момента связывания. При вызове ``bindNode`` установка состояния элемента или его извлечение с изменением свойства происходит синхронно. ``debounceSetValueOnBind`` и ``debounceGetValueOnBind`` установленные как ``true`` вклюают debounce и для этих процессов.
 
+#### Флаги ``debounceSetValueDelay=0`` и ``debounceGetValueDelay=0``
+
+Эти флаги позволяют указать задержку debounce. ``debounceSetValueDelay`` задаётся при использовании ``debounceSetValue`` и ``debounceSetValueOnBind``, ``debounceGetValueDelay`` при использовании ``debounceGetValue`` и ``debounceGetValueOnBind``.
+
 #### Флаг ``useExactBinder=false``
 
 Даже если в метод ``bindNode`` передать конкретный байндер, фреймворк попытается отыскать байндер из {@link Matreshka.defaultBinder} и расширить его свойствами переданного объекта. Такая возможность позволяет использовать дефолтный байндер, который частично переопределен.

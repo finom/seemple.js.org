@@ -258,6 +258,10 @@ console.log(this.a); // undefined
 
 In real world ``debounceCalcOnInit`` flag is unlikely to be useful. Just keep in mind that you can enable "total debounce" if needed.
 
+#### A flag ``debounceCalcDelay=0``
+
+The flag can be used to set debounce delay when ``debounceCalc`` or ``debounceCalcOnInit`` is set as ``true``.
+
 #### A flag ``setOnInit=true``
 
 It is known that target property gets new value after ``calc`` is called. To cancel this behavior and don't calculate a property immediately use ``setOnInit`` with ``false`` value.

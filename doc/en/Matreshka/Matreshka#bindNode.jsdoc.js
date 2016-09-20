@@ -291,6 +291,10 @@ To cancel this behavior (eg initiate synchronous binding) use ``debounceSetValue
 
 As described above ``bindNode`` uses debounce pattern on property change and on bound node change. This doesn't apply to a moment when ``bindNode`` is called. To remind, when the method is called a property or a node is changed immediately. When ``debounceGetValueOnBind`` and/or ``debounceSetValueOnBind`` are set to ``true`` then debounce is turned on for binding initialization as well.
 
+#### Flags ``debounceSetValueDelay=0`` и ``debounceGetValueDelay=0``
+
+These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when ``debounceSetValue`` or ``debounceSetValueOnBind`` is ``true``, ``debounceGetValueDelay`` is used when ``debounceGetValue`` or ``debounceGetValueOnBind`` is true.
+
 #### A flag ``useExactBinder=false``
 
 Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link Matreshka.defaultBinder} and extend it by properties of passed object. This feature makes possible to use partially re-defined default binder.
