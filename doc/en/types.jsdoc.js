@@ -3,7 +3,7 @@ Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @callback eventHandler
 @param {...*} options - Any arguments
 @example
-var eventHandler = function() {
+const eventHandler = () => {
 	console.log(arguments);
 }
 this.on('fyeah', eventHandler);
@@ -35,54 +35,54 @@ Event name or space-delimited list of event names.
 
 ##### Custom events.
 ```js
-this.on('myevent', function() {...});
+this.on('myevent', () => {...});
 this.trigger('myevent');
 ```
 
 ##### ``change:KEY`` which is triggered every time when a property is changed.
 ```js
-this.on('change:x', function(evt) {...});
+this.on('change:x', evt => {...});
 this.x = 42;
 ```
 
 ##### ``beforechange:KEY``  which is triggered every time before a property is changed.
 ```js
-this.on('beforechange:x', function(evt) {...});
+this.on('beforechange:x', evt => {...});
 this.x = 42;
 ```
 
 ##### ``bind:KEY`` and ``bind`` which are triggered after data binding.
 ```js
 //for any property
-this.on('bind', function(evt) {...});
+this.on('bind', evt => {...});
 //for "x" property
-this.on('bind:x', function(evt) {...});
+this.on('bind:x', evt => {...});
 this.bindNode('x', '.my-node');
 ```
 
 ##### ``delete:KEY`` and ``delete`` which are triggered after property removal.
 ```js
 //for any property
-this.on('delete', function(evt) {...});
+this.on('delete', evt => {...});
 //for "x" property
-this.on('delete:x', function(evt) {...});
+this.on('delete:x', evt => {...});
 this.remove('x');
 ```
 
 ##### ``addevent:NAME`` and ``addevent`` which are triggered on event initialization.
 ```js
 //for any event
-this.on('addevent', function(evt) {...});
+this.on('addevent', evt => {...});
 //for "someevent" event
-this.on('addevent:someevent', function(evt) {...});
+this.on('addevent:someevent', evt => {...});
 //the line below fires "addevent" and "addevent:someevent"
-this.on('someevent', function(evt) {...});
+this.on('someevent', evt => {...});
 ```
 
 ##### ``DOM_EVENT::KEY``, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node bound to the KEY.
 ```js
 this.bindNode('x', '.my-div');
-this.on('click::x', function(evt) {
+this.on('click::x', evt => {
 	alert('clicked ".my-div"');
 });
 ```
@@ -95,7 +95,7 @@ this.on('click::x', function(evt) {
 ```
 ```js
 this.bindNode('x', '.my-div');
-this.on('click::x(.my-button)', function(evt) {
+this.on('click::x(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
@@ -104,34 +104,34 @@ this.on('click::x(.my-button)', function(evt) {
 
 ```js
 this.bindNode('sandbox', '.my-div');
-this.on('click::(.my-button)', function(evt) {
+this.on('click::(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
 The same as:
 ```js
 this.bindNode('sandbox', '.my-div');
-this.on('click::sandbox(.my-button)', function(evt) {
+this.on('click::sandbox(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
 
 ##### Delegated events: ``PATH@EVENT``, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.
 ```js
-this.on('a@someevent', function() {...});
-this.on('a.b.c@change:d', function() {...});
+this.on('a@someevent', () => {...});
+this.on('a.b.c@change:d', () => {...});
 ```
 
 If you need to listen an event of every item of {@link Matreshka.Array} or every data key of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific  key.
 
 ```js
-this.on('*@someevent', function() {...});
-this.on('*.b.*.d@change:e', function() {...});
+this.on('*@someevent', () => {...});
+this.on('*.b.*.d@change:e', () => {...});
 ```
 
 ##### Any combinations. All events described above can be combined.
 ```js
-this.on('x.y.z@click::(.my-selector)', function() {...});
+this.on('x.y.z@click::(.my-selector)', () => {...});
 ```
 @typedef {string} eventNames
 */
@@ -146,7 +146,7 @@ this.on('x.y.z@click::(.my-selector)', function() {...});
 @property {function} [initialize] - A function which is called before binding is launched. For example it can initialize some jQuery plugin
 @property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` method
 @example
-var binder = {
+const binder = {
 	on: 'click',
 	getValue(options) {
 		return this.value;
@@ -164,8 +164,8 @@ var binder = {
 
 this.bindNode('a', '.my-checkbox', binder);
 @example
-var binder = {
-	on: function(callback) {
+const binder = {
+	on(callback) {
 		this.onclick = callback;
 	},
 	// ...
@@ -179,21 +179,21 @@ Event object
 @typedef {object} eventOptions
 @desc An object which can contain service flags or custom data which will be passed to an event handler
 @example
-var eventOptions = {silent: true};
+const eventOptions = {silent: true};
 
 this.a = 1;
 
-this.on('change:a', function() {
+this.on('change:a', () => {
 	alert('a is changed');
 });
 
 this.set('a', 2, eventOptions); // no alert
 @example
-var eventOptions = {f: 'yeah'};
+const eventOptions = {f: 'yeah'};
 
 this.a = 1;
 
-this.on('change:a', function(eventOptions) {
+this.on('change:a', eventOptions => {
 	alert(eventOptions.f);
 });
 
@@ -205,8 +205,8 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 A class (more precisely constructor of a class) returned by {@link Class} function
 @typedef {function} class
 @example
-var MyClass = MK.Class({
-	method: function() { ... }
+const MyClass = MK.Class({
+	method() { ... }
 });
 */
 

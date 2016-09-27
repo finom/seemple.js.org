@@ -3,7 +3,7 @@
 @callback eventHandler
 @param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени собыия
 @example
-var eventHandler = function() {
+const eventHandler = () => {
 	console.log(arguments);
 }
 this.on('fyeah', eventHandler);
@@ -35,54 +35,54 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 
 ##### Произвольные события
 ```js
-this.on('myevent', function() {...});
+this.on('myevent', () => {...});
 this.trigger('myevent');
 ```
 
 ##### ``change:KEY``, вызывающееся, когда свойство меняется
 ```js
-this.on('change:x', function(evt) {...});
+this.on('change:x', evt => {...});
 this.x = 42;
 ```
 
 ##### ``beforechange:KEY``, вызывающееся перед изменением свойства
 ```js
-this.on('beforechange:x', function(evt) {...});
+this.on('beforechange:x', evt => {...});
 this.x = 42;
 ```
 
 ##### ``bind:KEY`` и ``bind``, вызывающееся после связывания данных
 ```js
 //для всех свойств
-this.on('bind', function(evt) {...});
+this.on('bind', evt => {...});
 //для свойства "x"
-this.on('bind:x', function(evt) {...});
+this.on('bind:x', evt => {...});
 this.bindNode('x', '.my-node');
 ```
 
 ##### ``delete:KEY`` и ``delete``, вызывающееся при удалении свойства
 ```js
 //для всех свойств
-this.on('delete', function(evt) {...});
+this.on('delete', evt => {...});
 //для свойства "x"
-this.on('delete:x', function(evt) {...});
+this.on('delete:x', evt => {...});
 this.remove('x');
 ```
 
 ##### ``addevent:NAME`` и ``addevent``, вызывающееся при инициализации события
 ```js
 //для всех событий
-this.on('addevent', function(evt) {...});
+this.on('addevent', evt => {...});
 //для события "someevent"
-this.on('addevent:someevent', function(evt) {...});
+this.on('addevent:someevent', evt => {...});
 //генерирует события "addevent" и "addevent:someevent"
-this.on('someevent', function(evt) {...});
+this.on('someevent', evt => {...});
 ```
 
 ##### ``DOM_EVENT::KEY``, где DOM_EVENT - имя DOM события, KEY - ключ. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, связанным с KEY.
 ```js
 this.bindNode('x', '.my-div');
-this.on('click::x', function(evt) {
+this.on('click::x', evt => {
 	alert('clicked ".my-div"');
 });
 ```
@@ -96,7 +96,7 @@ this.on('click::x', function(evt) {
 ```
 ```js
 this.bindNode('x', '.my-div');
-this.on('click::x(.my-button)', function(evt) {
+this.on('click::x(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
@@ -105,34 +105,34 @@ this.on('click::x(.my-button)', function(evt) {
 
 ```js
 this.bindNode('sandbox', '.my-div');
-this.on('click::(.my-button)', function(evt) {
+this.on('click::(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
 То же самое, что и:
 ```js
 this.bindNode('sandbox', '.my-div');
-this.on('click::sandbox(.my-button)', function(evt) {
+this.on('click::sandbox(.my-button)', evt => {
 	alert('clicked ".my-button"');
 });
 ```
 
 ##### Делегированные события ``PATH@EVENT``, где PATH - путь к объекту, события которого мы желаем прослушивать, EVENT - имя события.
 ```js
-this.on('a@someevent', function() {...});
-this.on('a.b.c@change:d', function() {...});
+this.on('a@someevent', () => {...});
+this.on('a.b.c@change:d', () => {...});
 ```
 
 При возникновении необходимости слушать изменения во всех элементах {@link Matreshka.Array} или во всех ключах, отвечающих за данные {@link Matreshka.Object}, вместо имени свойства можно указать звездочку "*".
 ```js
-this.on('*@someevent', function() {...});
-this.on('*.b.*.d@change:e', function() {...});
+this.on('*@someevent', () => {...});
+this.on('*.b.*.d@change:e', () => {...});
 ```
 
 #### Всевозможные комбинации
 Все приведенные выше варианты синтаксиса можно комбинировать произвольным способом.
 ```js
-this.on('x.y.z@click::(.my-selector)', function() {...});
+this.on('x.y.z@click::(.my-selector)', () => {...});
 ```
 @typedef {string} eventNames
 */
@@ -147,7 +147,7 @@ this.on('x.y.z@click::(.my-selector)', function() {...});
 @property {function} [initialize] - Функция, которая запускается при инициализации привязки. Например, может быть использована для инициализации jQuery плагина.
 @property {function} [destroy] - Функция, которая вызывается после вызова метода ``unbindNode``. Если байндер достаточно сложен, ``destroy`` может содержать удаление логики, навешаной байндером
 @example
-var binder = {
+const binder = {
 	on: 'click',
 	getValue(bindingOptions) {
 		return this.value;
@@ -165,7 +165,7 @@ var binder = {
 
 this.bindNode('a', '.my-checkbox', binder);
 @example
-var binder = {
+const binder = {
 	on(callback, bindingOptions) {
 		this.onclick = callback;
 	}
@@ -180,21 +180,21 @@ var binder = {
 @typedef {object} eventOptions
 @desc Это обычный объект, которй может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
 @example
-var eventOptions = {silent: true};
+const eventOptions = {silent: true};
 
 this.a = 1;
 
-this.on('change:a', function() {
+this.on('change:a', () => {
 	alert('a is changed');
 });
 
 this.set('a', 2, eventOptions); // no alert
 @example
-var eventOptions = {f: 'yeah'};
+const eventOptions = {f: 'yeah'};
 
 this.a = 1;
 
-this.on('change:a', function(eventOptions) {
+this.on('change:a', eventOptions => {
 	alert(eventOptions.f);
 });
 
@@ -206,8 +206,8 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 Класс (точнее, конструктор класса) возвращаемый функцией {@link Class}
 @typedef {function} class
 @example
-var MyClass = MK.Class({
-	method: function() { ... }
+const MyClass = MK.Class({
+	method() { ... }
 });
 */
 
