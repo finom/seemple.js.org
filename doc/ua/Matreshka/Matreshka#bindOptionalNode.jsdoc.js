@@ -2,9 +2,9 @@
 @method Matreshka#bindOptionalNode
 @importance 2
 @since 0.3
-@summary Работает в точности так же, как и {@link Matreshka#bindNode} но не бросает исключение, если аргумент ``node`` - пустой массив, ``undefined`` или не существует
+@summary Працює в точності так само, як і {@link Matreshka#bindNode} але не кидає виняток, якщо аргумент ``node`` - порожній масив, ``undefined`` або не існує
 
-@desc > У метода есть {@link Matreshka.bindOptionalNode статичный аналог}.
+@desc > У метода є {@link Matreshka.bindOptionalNode статичный аналог}.
 
 @see {@link Matreshka#bindNode}
 @example

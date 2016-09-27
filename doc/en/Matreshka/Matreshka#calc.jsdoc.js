@@ -300,6 +300,7 @@ this.calc('greeting', 'name', name => `Hello, ${name}!`);
 
 this.name = 'World';
 
+// ... in a moment
 alert(this.greeting); // 'Hello, World!'
 
 @example <caption>The calculation of the rectangle perimeter with two sides known (and the calculation of the sides with the perimeter known)</caption>
