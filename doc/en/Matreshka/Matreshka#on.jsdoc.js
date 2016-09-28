@@ -30,7 +30,7 @@ this.on('foo', () => {
 
 this.trigger('foo');
 @example <caption>Passing a context</caption>
-this.on('foo', () => {
+this.on('foo', function() {
 	alert(this.a); // 5
 }, { a: 5 });
 

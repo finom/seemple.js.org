@@ -3,21 +3,20 @@
 @importance 2
 @fires addevent
 @fires addevent:NAME
-@summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
-@desc Метод позволяет добавить обработчик события на экземпляр класса {@link Matreshka}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Matreshka#on}.
+@summary Додає обробник події, що викликається лише одного разу за певний проміжок часу
+@desc Метод дозволяє додати обробник події на екземпляр класу {@link Matreshka}, усуваючи "деренчання" обробника. Функція може бути викликана лише один раз за певний проміжок часу. В іншому, метод працює так само, як і {@link Matreshka#on}.
 
-> У метода есть {@link Matreshka.onDebounce  статичный аналог}.
+> У метода є {@link Matreshka.onDebounce статичний аналог}.
 
 @see {@link Matreshka#on}
 @see {@link Matreshka#once}
 @see {@link Matreshka#off}
 @see {@link Matreshka#trigger}
-@see {@link http://habrahabr.ru/post/60957/ Статья на Хабре о микропаттерне debounce}
-@param {eventNames} names - Имя события или несколько имен, разделенных пробелом  (например, ``"change:x ajaxcomplete change:y"``).
-@param {eventHandler} callback - Функция, которая вызывается по событию
-@param {number} [debounceDelay=0] - Задержка
-@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчик будет вызван немедленно после инициализации
-@param {object} [context] - Контекст обработчика. Другими словами, ``this`` при вызове ``callback``
+@param {eventNames} names -  Ім'я події або кілька імен, розділених пробілом (наприклад, <code>"change:x ajaxcomplete change:y" </code>)
+@param {eventHandler} callback - Функція, яка викликається за подією
+@param {number} [debounceDelay=0] - Затримка
+@param {boolean} [triggerOnInit=false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробник буде викликаний негайно після ініціалізації
+@param {object} [context] - Контекст обробника
 @returns {object} self
 @example
 this.onDebounce('change:x', () => {
@@ -37,13 +36,13 @@ for(let i = 0; i < 100; i++) {
 @importance 2
 @variation 2
 @since 1.1
-@summary Альтернативный синтаксис: пары "событие-обработчик"
-@desc В метод {@link Matreshka#onDebounce} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+@summary Альтернативний синтаксис: пари "подія-обробник"
+@desc У метод {@link Matreshka#onDebounce} можна передати об'єкт з парами подія-обробник, щоб уникнути багаторазового виклику методу і скоротити код.
 @see {@link Matreshka#on(2)}
-@param {object} evtnameHandlerObject - Объект с обработчиками событий
-@param {number} [debounceDelay=0] - Задержка
-@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчики будут вызван немедленно после инициализации
-@param {object} [context] - Контекст обработчиков
+@param {object} evtnameHandlerObject - Об'єкт з обробниками подій
+@param {number} [debounceDelay=0] - Затримка
+@param {boolean} [triggerOnInit=false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробники будуть викликаний негайно після ініціалізації
+@param {object} [context] - Контекст обробників
 @returns {object} self
 @example
 this.onDebounce({

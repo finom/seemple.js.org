@@ -31,9 +31,9 @@ this.on('foo', () => {
 
 this.trigger('foo');
 @example <caption>Передача контекста</caption>
-this.on('foo', () => {
+this.on('foo', function() {
 	alert(this.a); // 5
-}, {a: 5});
+}, { a: 5 });
 
 this.trigger('foo', 'Hello world');
 @example <caption>Вызов обработчика сразу после инициализации</caption>

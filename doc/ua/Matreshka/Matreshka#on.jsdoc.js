@@ -3,26 +3,25 @@
 @importance 1
 @fires addevent
 @fires addevent:NAME
-@summary Добавляет обработчик события
-@desc Метод {@link Matreshka#on} добавляет обработчик события для экземпляра класса ``Matreshka``. Полный список возможных событий с описанием см. здесь: {@link #typedef-eventNames}.
+@summary Додає обробник події
+@desc Метод {@link Matreshka#on} додає обробник події для екземпляра класу ``Matreshka``. Повний список можливих подій з описом см. Тут: {@link #typedef-eventNames}.
 
-> Обратите внимание, что у метода есть {@link Matreshka.on статичный аналог}, который работает в точности так же, но принимает любой объект в качестве первого аргумента, cдвигая остальные аргументы вправо.
+> Зверніть увагу, що у методва є {@link Matreshka.on статичний аналог}, який працює в точності так само, але приймає будь-який об'єкт в якості першого аргументу, зсуваючи інші аргументи вправо.
 ```js
 const on = require('matreshka/on');
 const object = {};
 on(object, names, callback, triggerOnInit, context);
-// вместо this.on(names, callback, triggerOnInit, context);
+// Замість this.on(names, callback, triggerOnInit, context);
 ```
-
 
 @see {@link Matreshka#onDebounce}
 @see {@link Matreshka#once}
 @see {@link Matreshka#off}
 @see {@link Matreshka#trigger}
-@param {eventNames} names - Имя события или несколько имен, разделенных пробелом  (например, ``"change:x ajaxcomplete change:y"``)
-@param {eventHandler} callback - Функция, которая вызывается по событию
-@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчик будет вызван немедленно после инициализации.
-@param {object} [context] - Контекст обработчика. Другими словами, ``this`` при вызове ``callback``
+@param {eventNames} names - Ім'я події або кілька імен, розділених пробілом (наприклад, ``"change:x ajaxcomplete change:y"``)
+@param {eventHandler} callback - Функція, яка викликається за подією
+@param {boolean} [triggerOnInit = false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробник буде викликаний негайно після ініціалізації.
+@param {object} [context] - Контекст обробника. Іншими словами, ``this`` при виклику ``callback``
 @returns {object} self
 @example
 this.on('foo', () => {
@@ -30,14 +29,14 @@ this.on('foo', () => {
 });
 
 this.trigger('foo');
-@example <caption>Передача контекста</caption>
-this.on('foo', () => {
+@example <caption>Передача контексту</caption>
+this.on('foo', function() {
 	alert(this.a); // 5
-}, {a: 5});
+}, { a: 5 });
 
 this.trigger('foo', 'Hello world');
-@example <caption>Вызов обработчика сразу после инициализации</caption>
-//Выводит на экран "bar" сиюсекундно и ждет события "foo"
+@example <caption>Виклик обробника відразу після ініціалізації</caption>
+// Виводить на екран "bar" моментально і чекає на подію "foo"
 this.on('foo', () => {
 	alert('bar');
 }, true);
@@ -49,12 +48,12 @@ this.on('foo', () => {
 @importance 2
 @variation 2
 @since 1.1
-@summary Альтернативный синтаксис: пары "событие-обработчик"
-@desc В метод {@link Matreshka#on} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+@summary Альтернативний синтаксис: пари "подія-обробник"
+@desc У метод {@link Matreshka#on} можна передати об'єкт з парами подія-обробник, щоб уникнути багаторазового виклику методу і скоротити код.
 
-@param {object} evtnameHandlerObject - Объект с событиями
-@param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчики будут вызван немедленно после инициализации
-@param {object} [context] - Контекст обработчика
+@param {object} evtnameHandlerObject - Об'єкт з подіями
+@param {boolean} [triggerOnInit = false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробники будуть викликані негайно після ініціалізації
+@param {object} [context] - Контекст обробника
 @returns {object} self
 
 @example
