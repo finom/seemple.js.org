@@ -19,13 +19,13 @@ this.off('change:x bind');
 @example <caption>The deletion of all events</caption>
 this.off();
 @example <caption>The deletion of an event with definite handler</caption>
-var handler = function() {
+const handler = function() {
 	//...
 }
 this.on('change:x', handler);
 this.off('change:x', handler);
 @example <caption>The deletion of an event with definite context</caption>
-var object = {};
+const object = {};
 this.on('change:x', handler, object);
 this.off('change:x', handler, object);
 */

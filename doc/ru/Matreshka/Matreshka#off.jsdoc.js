@@ -18,13 +18,13 @@ this.off('change:x bind');
 @example <caption>Удаление всех событий</caption>
 this.off();
 @example <caption>Удаление события с определенным обработчиком</caption>
-var handler = function() {
+const handler = function() {
 	//...
 }
 this.on('change:x', handler);
 this.off('change:x', handler);
 @example <caption>Удаление события с определенным контекстом</caption>
-var object = {};
+const object = {};
 this.on('change:x', handler, object);
 this.off('change:x', handler, object);
 */

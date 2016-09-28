@@ -2,21 +2,21 @@
 @member {$nodes} Matreshka#$nodes
 @importance 3
 @since 1.1
-@summary Объект содержит коллекции (jQuery, Zepto, инстанс встроенной микро-библиотеки, унаследованной от ``Array.prototype``) привязанных элементов для быстрого доступа.
+@summary Об'єкт містить колекції (jQuery, Zepto, інстанси вбудованої мікро-бібліотеки, успадкованої від ``Array.prototype``) прив'язаних елементів для швидкого доступу.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
-this.$nodes.myKey; // то же самое, что и $('.my-node')
+this.$nodes.myKey; // Те ж саме, що і $('.my-node')
 */
 
 /**
 @member {node} Matreshka#nodes
 @importance 3
 @since 1.1
-@summary Объект содержит привязанные элементы для быстрого доступа, в виде отдельных DOM узлов.
-@desc Обратите внимание, каждое свойство объекта содержит первый узел из связанных с соотвутствующим свойством. Для получения всех узлов, связанных с определенным свойством, используйте {@link Matreshka#$nodes}.
+@summary Об'єкт містить прив'язані елементи для швидкого доступу, у вигляді окремих DOM вузлів.
+@desc Зверніть увагу, кожна властивість об'єкта містить перший вузол з пов'язаних з соотвутствующий властивістю. Для отримання всіх вузлів, пов'язаних з певною властивістю, використовуйте {@link Matreshka#$nodes}.
 @see {@link Matreshka#bindNode}
 @example
 this.bindNode('myKey', '.my-node');
-this.nodes.myKey; // то же самое, что и $('.my-node')[0]
+this.nodes.myKey; // Те ж саме, що і $('.my-node')[0]
 */
