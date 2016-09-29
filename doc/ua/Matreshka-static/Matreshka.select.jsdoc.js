@@ -3,9 +3,9 @@
 @module matreshka/select
 @importance 3
 @since 1.1
-@summary Возвращает элемент из песочницы, соответствующий селектору
-@desc Этот статичный метод работает так же, как и {@link Matreshka#select} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {node|null} найденный элемент
+@summary Повертає елемент з пісочниці, відповідний селектору
+@desc Цей статичний метод працює так само, як і {@link Matreshka#select} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
+@returns {node|null} знайдений елемент
 @see {@link Matreshka#select}
 @example
 const object = {};

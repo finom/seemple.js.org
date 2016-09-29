@@ -4,8 +4,8 @@
 @module matreshka/tomatreshka
 @importance 3
 @since 1.1
-@summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Matreshka.Object} и {@link Matreshka.Array}
-@returns {matreshka} новосозданный экземпляр Матрешки
+@summary Функція, яка конвертує довільну структуру об'єктів і масивів в екземпляри {@link Matreshka.Object} та {@link Matreshka.Array}
+@returns {matreshka} новостворений екземпляр ``Matreshka``
 @example
 const mk = Matreshka.toMatreshka({
 	a: 1,

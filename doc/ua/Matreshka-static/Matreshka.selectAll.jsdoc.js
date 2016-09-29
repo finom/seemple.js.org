@@ -3,8 +3,8 @@
 @module matreshka/selectall
 @importance 3
 @since 1.1
-@summary Возвращает элементы из песочницы, соответствующие селектору
-@desc Этот статичный метод работает так же, как и {@link Matreshka#selectAll} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
+@summary Повертає елементи з пісочниці, відповідні селектору
+@desc Цей статичний метод працює так само, як і {@link Matreshka#selectAll} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
 @returns {$nodes} найденные элементы
 @see {@link Matreshka#selectAll}
 @example

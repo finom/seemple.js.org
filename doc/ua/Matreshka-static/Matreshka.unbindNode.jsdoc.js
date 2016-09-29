@@ -3,9 +3,9 @@
 @module matreshka/unbindnode
 @importance 3
 @since 1.1
-@summary Разрывает связь между свойством и HTML элементом
-@desc Этот статичный метод работает так же, как и {@link Matreshka#unbindNode} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
+@summary Розриває зв'язок між властивістю і HTML елементом
+@desc Цей статичний метод працює так само, як і {@link Matreshka#unbindNode} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
+@returns {object} Перший аргумент
 @see {@link Matreshka#unbindNode}
 @example
 const object = {};

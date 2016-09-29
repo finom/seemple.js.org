@@ -3,9 +3,9 @@
 @module matreshka/parserbrackets
 @importance 3
 @since 1.5
-@summary Содержит скобки для {@link Matreshka#parseBindings парсера}
-@desc Объект ``parserBrackets`` позволяет изменить стандартный синтаксис парсера привязок. Он содержит два свойства: ``left`` (левая скобка, по умолчанию "{{") и ``right`` (правая скобка, по умолчанию "}}")
-@example <caption>Заменяет поведение парсера, используя синтаксис ``[[=property]]`` вместо ``{{property}}``</caption>
+@summary Містить дужки для {@link Matreshka#parseBindings парсера}
+@desc Об'єкт ``parserBrackets`` дозволяє змінити стандартний синтаксис парсеру прив'язок. Він містить дві властивості: ``left`` (ліва дужка, за замовчуванням "{{") і ``right`` (права дужка, за замовчуванням "}}")
+@example <caption>Замінює поведінку парсеру, використовуючи синтаксис ``[[=property]]`` замість ``{{property}}`` </caption>
 Matreshka.parserBrackets.left = '[[=';
 Matreshka.parserBrackets.right = ']]';
 */
