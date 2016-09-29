@@ -3,9 +3,9 @@
 @module matreshka/bindoptionalnode
 @importance 3
 @since 1.1
-@summary Связывает элемент со свойством, но не бросает исключение, если аргумент node - пустой массив, ``undefined`` или не существует
-@desc Этот статичный метод работает так же, как и {@link Matreshka#bindOptionalNode} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
+@summary Пов'язує елемент із властивістю, але не кидає виняток, якщо аргумент node - порожній масив, ``undefined`` або не існує
+@desc Цей статичний метод працює так само, як і {@link Matreshka#bindOptionalNode} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
+@returns {object} Перший аргумент
 @see {@link Matreshka#bindOptionalNode}
 @example
 const object = {};

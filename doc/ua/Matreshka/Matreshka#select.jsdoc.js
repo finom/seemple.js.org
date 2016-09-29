@@ -1,18 +1,18 @@
 /**
 @method Matreshka#select
 @importance 2
-@summary Возвращает элемент из песочницы, соответствующий селектору
-@desc Метод очень похож на {@link Matreshka#selectAll}, но возвращает лишь один элемент или ``null``
+@summary Повертає елемент з пісочниці, відповідний селектору
+@desc Метод дуже схожий на {@link Matreshka#selectAll}, але повертає лише один елемент або ``null``
 
-> У метода есть {@link Matreshka.select статичный аналог}.
+> У метода є {@link Matreshka.select статичний аналог}.
 
 @param {string} selector - Селектор
 @returns {node|null}
 @example
 this.bindNode('sandbox', '.app');
 this.select('.my-element');
-// то же самое, что и
+// те ж саме, що і
 this.nodes.sandbox.querySelector('.my-element');
-// и то же самое, что и
+// те ж саме, що і
 $('.app').find('.my-element')[0];
 */

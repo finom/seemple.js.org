@@ -3,17 +3,17 @@
 @importance 3
 @fires delete
 @fires delete:KEY
-@summary Удаляет свойство
+@summary Видаляє властивість
 
-@desk > У метода есть {@link Matreshka.remove статичный аналог}.
+@desk > У метода є {@link Matreshka.remove статичний аналог}.
 
-@param {string} key - Имя свойства или массив имен свойств, которые следует удалить
-@param {eventOptions} [eventOptions] - Объект события
+@param {string} key - Им'я властивості або масив имен властивостей, які треба видалити
+@param {eventOptions} [eventOptions] - Об'ект події
 @returns {matreshka} self
 @example
 this.remove('myKey');
 this.remove(['myKey1', 'myKey2']);
-@example <caption>Использование ``eventOptions``</caption>
+@example <caption>Використання ``eventOptions``</caption>
 this.remove('myKey', {
 	silent: true
 });

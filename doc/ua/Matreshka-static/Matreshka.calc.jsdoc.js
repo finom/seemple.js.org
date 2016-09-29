@@ -4,9 +4,9 @@
 @oldlink #!Matreshka.linkProps
 @importance 3
 @since 1.1
-@summary Создает зависимость значения одного свойства от значений других
-@desc Этот статичный метод работает так же, как и {@link Matreshka#calc} и все его вариации, но принимает в качестве первого аргумента любой JavaScript объект.
-@returns {object} Первый аргумент
+@summary Створює залежність значення одної властивості від значень інших
+@desc Цей статичний метод працює так само, як і {@link Matreshka#calc} та всі його варіації, але приймає в якості першого аргументу будь JavaScript об'єкт.
+@returns {object} Перший аргумент
 @see {@link Matreshka#calc}
 @example
 const object = {};

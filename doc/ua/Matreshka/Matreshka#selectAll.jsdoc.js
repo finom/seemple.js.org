@@ -2,28 +2,27 @@
 @method Matreshka#selectAll
 @synonym Matreshka#$
 @importance 2
-@summary Возвращает элементы из песочницы, соответствующие селектору
-@desc После создания песочницы методом {@link Matreshka#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``.
+@summary Повертає єлементі з пісочниці, відповідні селектору
+@desc Після створення пісочниці методом {@link Matreshka#bindNode}, можна отримувати і використовувати елементи, що знаходяться в ній. Крім цього, метод підтримує кастомний селектор ``:bound(KEY)``.
 
-> У метода есть {@link Matreshka.selectAll статичный аналог}.
-
+> У метода є {@link Matreshka.selectAll статичний аналог}.
 @param {string} selector - Cелектор
 @returns {$nodes}
 @example
 this.bindNode('sandbox', '.app');
 nodes = this.selectAll('.my-element');
-// то же самое, что и
-nodes = this.$('.my-element'); // $ - ссылка на метод selectAll
-// то же самое, что и
+// те ж саме, що і
+nodes = this.$('.my-element'); // $ - посилання на метод selectAll
+// те ж саме, що і
 nodes = this.$nodes.sandbox.find('.my-element');
-// и то же самое, что и
+// те ж саме, що і
 nodes = $('.app').find('.my-element');
 
 @example <caption>Селектор ``:bound(KEY)``</caption>
 this.bindNode('myKey', '.my-element');
 nodes = this.selectAll(':bound(myKey) .my-another-element');
-// то же самое, что и
+// те ж саме, що і
 nodes = this.$nodes.myKey.find('.my-another-element');
-// и то же самое, что и
+// те ж саме, що і
 nodes = $('.my-element').find('.my-another-element');
 */

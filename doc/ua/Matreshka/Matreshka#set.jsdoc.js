@@ -5,45 +5,45 @@
 @fires change:KEY
 @fires beforechange
 @fires beforechange:KEY
-@summary Устанавливает значение свойства, позволяя передать объект события в качестве третьего аргумента
-@desc Список поддерживаемых флагов:
-+ ``silent`` - не вызывать события ``change`` и ``change:KEY``
-+ ``silentHTML`` - не менять состояние привязанных элементов
-+ ``force`` - вызвать события ``change`` и ``change:KEY`` даже если значение свойства не изменилось
-+ ``forceHTML`` - изменить состояние привязанного элемента, даже если значение свойства не изменилось. Эта опция нужна, если привязанный элемент был отрисован после привязки (например, в ``select`` были добавлены теги ``option``)
-+ ``skipMediator`` - предотвращает трансформацию свойства медиатором (см. {@link Matreshka#mediate})
-+ ``skipCalc`` - предотвращает работу зависимостей, созданных с помощью {@link Matreshka#calc}
+@summary Встановлює значення властивості, дозволяючи передати об'єкт події в якості третьої аргументу
+@desc Список підтримуваних прапорів:
++ ``silent`` - не викликати події ``change`` і ``change:KEY``
++ ``silentHTML`` - не змінювати стан прив'язаних елементів
++ ``force`` - викликати події ``change`` і ``change:KEY`` навіть якщо значення властивості не змінилося
++ ``forceHTML`` - змінити стан прив'язаного елемента, навіть якщо значення властивості не змінилося. Ця опція потрібна, якщо прив'язаний елемент був відмальований після прив'язки (наприклад, в ``select`` були додані теги ``option``)
++ ``skipMediator`` - запобігає трансформацію властивості медіатором (див. {@link Matreshka#mediate})
++ ``skipCalc`` - запобігає роботу залежностей, створених за допомогою {@link Matreshka#calc}
 
-> У метода есть {@link Matreshka.set статичный аналог}.
+> У метода є {@link Matreshka.set статичний аналог}.
 
 @param {string} key - Ключ
-@param {*} value - Значение
-@param {eventOptions} [eventOptions] - Объект события
+@param {*} value - Значення
+@param {eventOptions} [eventOptions] - Об'єкт події
 @example
-this.on('change:myKey', evt => {
+this.on('change: myKey', evt => {
 	alert(evt.value);
 });
 
-// то же самое, что и this['myKey'] = 3
-// или this.myKey = 3
-// выводит на экран 3
+// Те ж саме, що і this['myKey'] = 3
+// або this.myKey = 3
+// виводить на екран 3
 this.set('myKey', 3);
-@example <caption>Используя ``eventOptions``</caption>
+@example <caption>Використання ``eventOptions``</caption>
 this.on('change:myKey', evt => {
 	alert(evt.value);
 });
 
-// alert не срабатывает
+// alert не спрацює
 this.set('myKey', 4, {
 	silent: true
 });
 
-@example <caption>Передача произвольных данных в обработчик</caption>
+@example <caption>Передача даних в обробник</caption>
 this.on('change:myKey', evt => {
 	alert(evt.myCustomFlag);
 });
 
-// выводит на экран 42
+// Виводить на екран 42
 this.set('myKey', 4, {
 	myCustomFlag: 42
 });
@@ -54,15 +54,15 @@ this.set('myKey', 4, {
 @method Matreshka#set
 @importance 1
 @variation 2
-@summary Альтернативный синтаксис метода {@link Matreshka#set} "ключ-значение"
-@param {object} keyValuePairs - Объект, содержащий пары ключ-значение
-@param {eventOptions} [eventOptions] - Объект события
+@summary Альтернативний синтаксис методу {@link Matreshka#set} "ключ-значення"
+@param {object} keyValuePairs - Об'єкт, що містить пари ключ-значення
+@param {eventOptions} [eventOptions] - Об'єкт події
 @example
 this.set({
 	myKey1: 1,
 	myKey2: 2
 });
-@example <caption>Передача ``eventOptions`` в качестве второго аргумента</caption>
+@example <caption>Передача ``eventOptions`` в якості второго аргумента</caption>
 this.set({
 	myKey: 3
 }, {

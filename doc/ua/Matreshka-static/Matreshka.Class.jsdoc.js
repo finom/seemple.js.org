@@ -2,44 +2,44 @@
 @method Matreshka.Class
 @module matreshka/class
 @importance 2
-@summary Реализация классов, основанная на прототипном наследовании
-@desc Функция ``Class`` позволяет использовать классическое ООП в тех случаях, когда нельзя воспользоваться синтаксисом ECMAScript 2015 classes.
+@summary Реалізація класів, заснована на прототипному спадкуванні
+@desc Функція ``Class`` дозволяє використовувати класичне ООП в тих випадках, коли немає можливості скористатися синтаксисом ECMAScript 2015 classes.
 
-@param {object} prototype - Методы и свойства
-@param {object} [statics] - Статичные методы и свойства
+@param {object} prototype - Методи та властивості
+@param {object} [statics] - Статичні методи та властивості
 
-@returns {class} class (точнее, конструктор класса)
+@returns {class} клас (точніше, конструктор класу)
 @example
 const A = Matreshka.Class({
 	method1() { ... }
 });
 
 const B = Matreshka.Class({
-	// B наследуется от A
+	// B успадковується від A
 	extends: A,
 	method2() { ... }
 });
 
 const C = Matreshka.Class({
-	// С наследуется от B
+	// С успадковується від B
 	extends: B,
 	method2() {
-		// вызов родительского метода
+		// виклик батьківського методу
 		B.prototype.method2.apply(this, arguments);
 	},
 	method3(a, b) { ... }
 });
 
 const D = Matreshka.Class({
-	// D наследуется от C
+	// D успадковується від C
 	extends: C,
 	method3(a, b) {
-		// вызов родительского метода
+		// виклик батьківського методу
 		C.prototype.method2.call(this, arguments);
 	}
 });
 
-@example <caption>Передача объекта со статичными методами и свойствами</caption>
+@example <caption>Передача об'єкта зі статичними методами і властивостями</caption>
 const MyClass = Matreshka.Class({
 	method() { ... }
 }, {

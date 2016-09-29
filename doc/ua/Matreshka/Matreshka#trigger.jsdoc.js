@@ -1,17 +1,17 @@
 /**
 @method Matreshka#trigger
 @importance 1
-@summary Генерирует событие
-@desc После добавление обработчиков событий с помощью метода {@link Matreshka#on}, {@link Matreshka#onDebounce} или {@link Matreshka#once}, событие можно генерировать вручную с помощью этого метода.
+@summary Генерує подію
+@desc Після додавання обробників подій за допомогою методу {@link Matreshka#on}, {@link Matreshka#onDebounce} або {@link Matreshka#once}, подія може бути сгенерована вручну за допомогою цього методу.
 
-> Обратите внимание, что у метода есть {@link Matreshka.trigger статичный аналог}.
+> Зверніть увагу, що у метода є {@link Matreshka.trigger статичний аналог}.
 
 @see {@link Matreshka#on}
 @see {@link Matreshka#once}
 @see {@link Matreshka#onDebounce}
 @see {@link Matreshka#off}
-@param {eventNames} [names] - Имя события или несколько имен, разделенных пробелом
-@param {...*} [arg] - Аргументы, которые будут переданы обработчикам
+@param {eventNames} [names] - Ім'я події або кілька імен, розділених пробілом
+@param {...*} [arg] - Аргументи, які будуть передані обробникам
 @returns {object} self
 @example
 this.on('foo bar', (a, b, c) => {
