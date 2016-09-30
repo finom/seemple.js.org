@@ -9,7 +9,7 @@
 @param {string|array} keys - Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована
 @param {string|array} [orders=asc] - Порядок или массив порядков, соответствующих массиву ключей
 @returns {matreshkaArray} self
-@example <caption>Небольшой пример, позаимствованый из позаимствованный lodash</caption>
+@example
 this.recreate([
     { 'user': 'fred',   'age': 48 },
     { 'user': 'barney', 'age': 34 },

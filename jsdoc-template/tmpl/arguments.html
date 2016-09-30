@@ -1,8 +1,8 @@
-<?js if( obj && obj.length ) { 
+<?js if( obj && obj.length ) {
 	var hasDefault = obj.some( function( arg ) {
 		return arg.defaultvalue;
 	});
-	
+
 	var hasDescription = obj.some( function( arg ) {
 		return arg.description;
 	});
@@ -18,7 +18,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?js obj.forEach( function( arg ) { ?> 
+			<?js obj.forEach( function( arg ) { ?>
 				<tr>
 					<td>
 						<?js= arg.name ?>
@@ -26,7 +26,7 @@
 							<span class="signature">optional</span>
 						<?js} ?>
 					</td>
-					<?js= hasDefault ? '<td>' : '' ?> <?js= arg.defaultvalue ?>
+					<?js= hasDefault ? '<td>' : '' ?> <code><?js= arg.defaultvalue ?></code>
 					<td><?js print( this.partial( 'params.html', arg ) ); ?></td>
 					<?js= hasDescription ? '<td>' : '' ?> <?js= arg.description ?></td>
 				</tr>

@@ -3,13 +3,13 @@
 @importance 2
 @abstract
 @since 1.1
-@summary Функция, которая запускается перед событием ``render``.
-@desc Виртуальный метод ``onItemRender`` можно использовать в качестве замены события ``render``.
+@summary Функція, яка запускається перед подією ``render``.
+@desc Віртуальний метод ``onItemRender`` можна використовувати в якості заміни події ``render``.
 
-При этом, у отрисованного элемента вызывается виртуальный метод ``onRender`` с единственным аргументом - объектом события.
+При цьому, у вставленого айтема викликається віртуальний метод ``onRender`` з єдиним аргументом - об'єктом події.
 
-@param {object} item - Отрисованный элемент коллекции
-@param {object} renderEvent - Объект события ``render``
+@param {object} item - Елемент колекції
+@param {object} renderEvent - Об'єкт події ``render``
 
 @example
 class MyModel extends Matreshka.Object {

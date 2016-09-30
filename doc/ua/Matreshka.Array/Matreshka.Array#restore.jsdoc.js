@@ -6,11 +6,11 @@
 @fires modify
 @fires add
 @fires addone
-@summary Воссоздаёт {@link Matreshka.Array} из HTML узлов на странице.
-@desc В случае, если коллекция заранее отрисована на странице (например, с помощью сервера), метод может воссоздать коллекцию из отрендеренных HTML узлов.
+@summary Відтворює {@link Matreshka.Array} з HTML вузлів на сторінці.
+@desc У разі, якщо колекція заздалегідь відмальована на сторінці (наприклад, за допомогою сервера), метод може відтворити колекцію з HTML вузлів.
 
 ```html
-<!-- One, Two, Three заранее отрисованы -->
+<!-- One, Two, Three заздалегідь відмальовані -->
 <ul class="collection-node">
 	<li>One</li>
 	<li>Two</li>
@@ -52,11 +52,11 @@ console.log(myCollection.toJSON());
 // [{value: 'One'}, {value: 'Two'}, {value: 'Three'}, {value: 'Four'}]
 ```
 
-Если аргумент ``selector`` не задан, то коллекция будет воссоздана из элементов, входящих в контейнер (``"container"`` или ``"sandbox"``).
+Якщо аргумент ``selector`` не заданий, то колекція буде відтворена з елементів, що входять в контейнер (``"container"`` або ``"sandbox"``).
 
-При воссоздании, на каждом элементе массива генерируется событие ``render`` и вызываются методы ``onRender`` и ``onItemRender`` (см {@link Matreshka.Array#onItemRender документацию}), как и при {@link Matreshka.Array#itemRenderer обычном рендеринге}.
+При відтворенні, на кожному елементі масиву генерується подія ``render`` і викликаються методи ``onRender`` і ``onItemRender`` (див {@link Matreshka.Array#onItemRender документацію}), як і при {@link Matreshka.Array#itemRenderer звичайному рендерингу}.
 
 @param {selector} [selector] - Селектор
-@param {eventOptions} [eventOptions] - Объект события
+@param {eventOptions} [eventOptions] - Об'єкт події
 @returns {matreshkaArray} self
 */

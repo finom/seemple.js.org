@@ -3,7 +3,7 @@
 @module matreshka/binders/attr
 @importance 2
 @since 0.3
-@summary Возвращает байндер, меняющий атрибут DOM элемента на значение свойства экземпляра класса
+@summary Повертає байндер, який змінює атрибут DOM елемента на значення властивості об'єкту
 @param {string} attribute
 @returns {binder}
 @example

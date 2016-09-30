@@ -72,6 +72,11 @@ module.exports.publish = function(data, opts) {
 
 		item.examples = item.examples ? item.examples.map(parseExample) : [];
 
+		if(item.returns && item.returns.length) {
+			const { description } = item.returns[0];
+			item.returns[0].description = description ? mdParser(description) : ''
+		}
+
 		if (item.name === 'binders') {
 			result.binders = item;
 			item.members = [];

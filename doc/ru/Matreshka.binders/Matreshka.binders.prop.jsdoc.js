@@ -3,7 +3,7 @@
 @module matreshka/binders/prop
 @importance 2
 @since 0.3
-@summary Возвращает байндер, меняющий свойство DOM элемента на значение свойства экземпляра класса
+@summary Возвращает байндер, меняющий свойство DOM элемента на значение свойства объекта
 @param {string} property
 @returns {binder}
 @example

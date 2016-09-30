@@ -3,21 +3,20 @@
 @importance 1
 @since 0.2
 @abstract
-@summary Свойство определяет класс элементов, которые будет содержать коллекция
-@desc При каждом добавлении элементов в массив, встроенный обработчик проверяет, является ли добавленный элемент экземпляром ``Model`` и конвертирует его в таковой, если проверка не пройдена. Рекомендуется наследовать ``Model`` от класса {@link Matreshka.Object} или {@link Matreshka.Array} (на случай, если требуется получить коллекцию коллекций), чтоб получить возможность конвертации массива в обычный массив методом {@link Matreshka.Array#toJSON}.
+@summary Властивість визначає клас елементів, які буде містити колекція
+@desc При кожному додаванні елементів в масив, вбудований обробник перевіряє, чи є доданий елемент екземпляром ``Model`` і конвертує його в такий, якщо перевірка не пройдена. Рекомендується наслідувати ``Model`` від класу {@link Matreshka.Object} або {@link Matreshka.Array} (на випадок, якщо потрібно отримати колекцію колекцій), щоб отримати можливість конвертації масиву в звичайний масив методом {@link Matreshka.Array#toJSON}.
 
-Для более гибкого контроля класса элементов (например, если для одних элементов нужно использовать одну Модель, а для других - другую), используйте {@link Matreshka.Array#mediateItem}.
+Для більш гнучкого контролю класу елементів (наприклад, якщо для одних елементів потрібно використовувати одну "модель", а для інших - іншу), використовуйте {@link Matreshka.Array#mediateItem}.
 
 @see {@link Matreshka.Array#mediateItem}
 @see {@link Matreshka.Array#itemRenderer}
 
-@param {object} data - Данные, переданные в конструктор
-@param {matreshkaArray} mkArray - Массив, в который добавили элемент
-@param {number} index - Текущий индекс объекта в родительском массиве
-
+@param {object} data - Дані, передані в конструктор
+@param {matreshkaArray} mkArray - Масив, в який додали елемент
+@param {number} index - Поточний індекс об'єкта в батьківському масиві
 
 @example
-// определяем Модель
+// визначаємо "модель"
 class MyModel extends Matreshka.Object {
 	constructor(data, parentArray, index) {
 		super(data);
@@ -26,17 +25,17 @@ class MyModel extends Matreshka.Object {
 	doSomething() { ... }
 }
 
-// определяем класс для коллекции
+// визначаємо клас для колекції
 class MyArray extends Matreshka.Array {
 	get Model() {
 		return MyModel;
 	}
 }
 
-// создаем экземпляр класса
+// створюємо екземпляр класу
 const myArray = new MyArray();
 
-// добавляем два элемента
+// додаємо два елементи
 myArray.push({
     a: 1,
     b: 2
@@ -48,6 +47,6 @@ myArray.push({
 console.log(myArray[0] instanceof MyModel); // true
 console.log(myArray[1] instanceof MyModel); // true
 
-// вернет [{ a: 1, b: 2 }, { a: 3, b: 4 }]
+// поверне [{ a: 1, b: 2 }, { a: 3, b: 4 }]
 myArray.toJSON();
 */

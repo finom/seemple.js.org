@@ -3,7 +3,7 @@
 @module matreshka/binders/prop
 @importance 2
 @since 0.3
-@summary Returns a binder which changes given property of DOM node depending on instance property value.
+@summary Returns a binder which changes given property of DOM node depending on an object property value.
 @param {string} property
 @returns {binder}
 @example

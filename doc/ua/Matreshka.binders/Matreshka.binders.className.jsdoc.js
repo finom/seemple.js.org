@@ -3,7 +3,7 @@
 @module matreshka/binders/classname
 @importance 2
 @since 0.1
-@summary Возвращает байндер, который переключает имя класса DOM элемента в зависимости от значения свойства экземпляра класса. Если значение свойства нестрого равно ``true``, имя класса добавляется, в противном случае - убирается. Логику можно изменить, передав ``false`` вторым аргументом, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно ``false`` и наоборот.
+@summary Повертає байндер, який перемикає ім'я класу DOM елемента в залежності від значення властивості об'єкта. Якщо значення властивості нестрого дорівнює ``true``, ім'я класу додається, в іншому випадку - забирається. Логіку можна змінити, передавши ``false`` другим аргументом, і, таким чином, ім'я класу буде додаватися, коли значення властивості нестрого дорівнює ``false`` і навпаки.
 @param {string} className
 @param {boolean} [bool=true]
 @returns {binder}
@@ -11,14 +11,14 @@
 this.bindNode('myKey', '.my-element',
         Matreshka.binders.className('blah'));
 
-this.myKey = true; // добавляет класс 'blah'
+this.myKey = true; // додає клас 'blah'
 
-this.myKey = false; // убирает класс 'blah'
+this.myKey = false; // вбирає клас 'blah'
 @example
 this.bindNode('myKey', '.my-element',
         Matreshka.binders.className('blah', false));
 
-this.myKey = false; // добавляет класс 'blah'
+this.myKey = false; // додає клас 'blah'
 
-this.myKey = true; // убирает класс 'blah'
+this.myKey = true; // вбирає клас 'blah'
 */

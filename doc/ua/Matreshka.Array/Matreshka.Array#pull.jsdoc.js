@@ -6,11 +6,11 @@
 @fires remove
 @fires removeone
 @fires modify
-@summary Удаляет элемент по индексу или по значению
-@param {object|number} indexOrValue - Индекс элемента, который нужно удалить (число) либо удаляемый элемент (объект)
-@param {eventOptions} [eventOptions] - Объект события на случай, если нужно передать в обработчик события какие-нибудь данные или установить служебные флаги (например, ``silent``)
-@returns {*|null} Удаленный элемент или ``null``
-@example <caption>Передача индекса массива</caption>
+@summary Видаляє елемент за індексом або за значенням
+@param {object|number} indexOrValue - Індекс елемента, який потрібно видалити або видаляємий об'єкт
+@param {eventOptions} [eventOptions] - Об'єкт події на випадок, якщо потрібно передати в обробник події якісь дані або встановити службові прапори (наприклад, ``silent``)
+@returns {*|null} Видалений елемент або ``null``
+@example <caption>Передача індексу масиву</caption>
 let removed;
 
 this.recreate(['a', 'b', 'c']);
@@ -20,7 +20,7 @@ removed = this.pull(1);
 console.log(removed); // 'b'
 
 console.log(this.join(',')); // 'a,c'
-@example <caption>Передача удаляемого элемента</caption>
+@example <caption>Передача видаляємого об'єкту</caption>
 const object1 = {};
 const object2 = {};
 const object3 = {};
