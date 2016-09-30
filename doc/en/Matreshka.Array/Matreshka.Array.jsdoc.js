@@ -6,7 +6,9 @@
 @classdesc The ``Matreshka.Array`` serves as collection class in Matreshka framework. It is inherited from the {@link Matreshka} class, obtaining all parent possibilities without exception. Besides, ``Matreshka.Array`` has all methods that ordinary array has.
 
 #### All the methods which have been adopted from the built-in Array work like their originals
-A programmer familiar to the methods of native ``Array`` can understand immediately by means of which method adds (``push``, ``unshift``, ``splice``), deletes (``pop``, ``shift``, ``splice``), sorts (``sort``, ``reverse``) items etc. An exception from this rule is the ``forEach`` method which in its original form always returns ``undefined`` and in case with {@link Matreshka.Array} it returns ``this`` for the chained call possibility. For the reason that methods work exactly the same as original ones, they are not presented in this documentation separately but they are gathered in the {@link Matreshka.Array#METHOD} section.
+A programmer familiar to the methods of native ``Array`` can understand immediately by means of which method adds (``push``, ``unshift``, ``splice``), deletes (``pop``, ``shift``, ``splice``), sorts (``sort``, ``reverse``) items etc.
+
+For the reason that methods work the same as original ones (with a few exceptions), they are not presented in this documentation separately but they are gathered in the {@link Matreshka.Array#METHOD} section.
 ```js
 this.push(1, 2, 3);
 this.pop();
