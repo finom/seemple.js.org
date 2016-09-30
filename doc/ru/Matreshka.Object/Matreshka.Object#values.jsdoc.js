@@ -1,6 +1,7 @@
 /**
 @method Matreshka.Object#values
-@importance 2
+@since 2.0.0
+@importance 3
 @summary Возвращает массив значений свойств, отвечающих за данные
 @returns {array} values
 @example

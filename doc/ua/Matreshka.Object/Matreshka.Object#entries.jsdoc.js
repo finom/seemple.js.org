@@ -1,6 +1,7 @@
 /**
 @method Matreshka.Object#entries
-@importance 2
+@since 2.0.0
+@importance 3
 @summary Повертає масив пар імен і значень властивостей, що відповідають за дані
 @returns {array} entries
 @example
