@@ -5,7 +5,7 @@
 @example
 const eventHandler = () => {
 	console.log(arguments);
-}
+};
 this.on('fyeah', eventHandler);
 this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 */
@@ -14,17 +14,26 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 Экземпляр класса {@link Matreshka}
 @typedef {object} matreshka
+@example
+const mk = new Matreshka();
+obj.calc('a', 'b');
 */
 
 /**
 Экземпляр класса {@link Matreshka.Object}
 @typedef {object} matreshkaObject
+@example
+const obj = new Matreshka.Object({ foo: 'x' });
+obj.setData({ bar: 'y' });
 */
 
 
 /**
 Экземпляр класса {@link Matreshka.Array}
 @typedef {object} matreshkaArray
+@example
+const arr = new Matreshka.Array(1, 2, 3);
+arr.push(4);
 */
 
 
@@ -51,35 +60,17 @@ this.on('beforechange:x', evt => {...});
 this.x = 42;
 ```
 
-##### ``bind:KEY`` и ``bind``, вызывающееся после связывания данных
-```js
-//для всех свойств
-this.on('bind', evt => {...});
-//для свойства "x"
-this.on('bind:x', evt => {...});
-this.bindNode('x', '.my-node');
-```
-
-##### ``delete:KEY`` и ``delete``, вызывающееся при удалении свойства
-```js
-//для всех свойств
-this.on('delete', evt => {...});
-//для свойства "x"
-this.on('delete:x', evt => {...});
-this.remove('x');
-```
-
 ##### ``addevent:NAME`` и ``addevent``, вызывающееся при инициализации события
 ```js
-//для всех событий
+// для всех событий
 this.on('addevent', evt => {...});
-//для события "someevent"
+// для события "someevent"
 this.on('addevent:someevent', evt => {...});
-//генерирует события "addevent" и "addevent:someevent"
+// генерирует события "addevent" и "addevent:someevent"
 this.on('someevent', evt => {...});
 ```
 
-##### ``DOM_EVENT::KEY``, где DOM_EVENT - имя DOM события, KEY - ключ. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, связанным с KEY.
+##### ``DOM_EVENT::KEY``, где DOM_EVENT - имя DOM события, KEY - ключ. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, который связан с KEY.
 ```js
 this.bindNode('x', '.my-div');
 this.on('click::x', evt => {
@@ -87,7 +78,7 @@ this.on('click::x', evt => {
 });
 ```
 
-##### ``DOM_EVENT::KEY(SELECTOR)``, где DOM_EVENT - имя DOM события, KEY - ключ, SELECTOR - селектор.  Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, который соответствует селектору SELECTOR, и находится в элементе, который связан со свойством KEY.
+##### ``DOM_EVENT::KEY(SELECTOR)``, где DOM_EVENT - имя DOM события, KEY - ключ, SELECTOR - селектор. Генерируется тогда, когда событие DOM_EVENT срабатывает на элементе, который соответствует селектору SELECTOR, и находится в элементе, который связан со свойством KEY.
 
 ```html
 <div class="my-div">
@@ -123,7 +114,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-При возникновении необходимости слушать изменения во всех элементах {@link Matreshka.Array} или во всех ключах, отвечающих за данные {@link Matreshka.Object}, вместо имени свойства можно указать звездочку "*".
+При возникновении необходимости слушать изменения во всех элементах {@link Matreshka.Array} или во всех свойствах, отвечающих за данные {@link Matreshka.Object}, вместо имени свойства можно указать звездочку "*".
 ```js
 this.on('*@someevent', () => {...});
 this.on('*.b.*.d@change:e', () => {...});
@@ -180,7 +171,7 @@ const binder = {
 @typedef {object} eventOptions
 @desc Это обычный объект, которй может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
 @example
-const eventOptions = {silent: true};
+const eventOptions = { silent: true };
 
 this.a = 1;
 
@@ -190,7 +181,7 @@ this.on('change:a', () => {
 
 this.set('a', 2, eventOptions); // no alert
 @example
-const eventOptions = {f: 'yeah'};
+const eventOptions = { f: 'yeah' };
 
 this.a = 1;
 
@@ -203,10 +194,14 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-Класс (точнее, конструктор класса) возвращаемый функцией {@link Class}
+Класс созданный при помощи синтаксиса ECMAScript 2015 либо возвращаемый функцией {@link Matreshka.Class}
 @typedef {function} class
 @example
-const MyClass = MK.Class({
+class MyClass {
+	method() { ... }
+};
+@example
+const MyClass = Matreshka.Class({
 	method() { ... }
 });
 */
@@ -215,50 +210,75 @@ const MyClass = MK.Class({
 /**
 DOM узел
 @typedef node
+const node = document.querySelector('.foo');
 */
 
 /**
-Коллекция DOM узлов. Например, jQuery-элемент(ы)
+Коллекция DOM узлов. Например, jQuery.
 @typedef $nodes
+@example
+const $nodes = $('.foo');
 */
 
 
 /**
 Строка
 @typedef string
+@example
+const foo = 'bar';
 */
 
 /**
 Логический тип
 @typedef boolean
+@example
+const bool = true;
 */
 
 /**
 Число
 @typedef number
+@example
+const num = 42;
 */
 
 /**
 Объект
 @typedef object
+@example
+const obj = {
+	foo: 'x',
+	['bar']: 'y'
+};
 */
 
 /**
 Массив
 @typedef array
+@example
+const arr = ['foo', undefined, null, () => {}];
 */
 
 /**
 Функция
 @typedef function
+@example
+function comeOnBarbieLetsGoParty() {
+	alert("I'm a Barbie girl, in a Barbie world");
+}
 */
 
 /**
 null
 @typedef null
+@example
+const x = null;
 */
 
 /**
 Любой тип
 @typedef *
+@example
+let whatever = 'foo';
+whatever = 42;
 */

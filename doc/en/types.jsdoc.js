@@ -5,7 +5,7 @@ Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @example
 const eventHandler = () => {
 	console.log(arguments);
-}
+};
 this.on('fyeah', eventHandler);
 this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 */
@@ -14,17 +14,23 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 {@link Matreshka} instance
 @typedef {object} matreshka
+const mk = new Matreshka();
+obj.calc('a', 'b');
 */
 
 /**
 {@link Matreshka.Object} instance
 @typedef {object} matreshkaObject
+const obj = new Matreshka.Object({ foo: 'x' });
+obj.setData({ bar: 'y' });
 */
 
 
 /**
 {@link Matreshka.Array} instance
 @typedef {object} matreshkaArray
+const arr = new Matreshka.Array(1, 2, 3);
+arr.push(4);
 */
 
 
@@ -45,41 +51,23 @@ this.on('change:x', evt => {...});
 this.x = 42;
 ```
 
-##### ``beforechange:KEY``  which is triggered every time before a property is changed.
+##### ``beforechange:KEY`` which is triggered every time before a property is changed.
 ```js
 this.on('beforechange:x', evt => {...});
 this.x = 42;
 ```
 
-##### ``bind:KEY`` and ``bind`` which are triggered after data binding.
-```js
-//for any property
-this.on('bind', evt => {...});
-//for "x" property
-this.on('bind:x', evt => {...});
-this.bindNode('x', '.my-node');
-```
-
-##### ``delete:KEY`` and ``delete`` which are triggered after property removal.
-```js
-//for any property
-this.on('delete', evt => {...});
-//for "x" property
-this.on('delete:x', evt => {...});
-this.remove('x');
-```
-
 ##### ``addevent:NAME`` and ``addevent`` which are triggered on event initialization.
 ```js
-//for any event
+// for any event
 this.on('addevent', evt => {...});
-//for "someevent" event
+// for "someevent" event
 this.on('addevent:someevent', evt => {...});
-//the line below fires "addevent" and "addevent:someevent"
+// the line below fires "addevent" and "addevent:someevent"
 this.on('someevent', evt => {...});
 ```
 
-##### ``DOM_EVENT::KEY``, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node bound to the KEY.
+##### ``DOM_EVENT::KEY``, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node which is bound to the KEY.
 ```js
 this.bindNode('x', '.my-div');
 this.on('click::x', evt => {
@@ -122,7 +110,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-If you need to listen an event of every item of {@link Matreshka.Array} or every data key of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific  key.
+If you need to listen an event of every item of {@link Matreshka.Array} or every data property of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific property name.
 
 ```js
 this.on('*@someevent', () => {...});
@@ -138,26 +126,26 @@ this.on('x.y.z@click::(.my-selector)', () => {...});
 
 
 /**
-``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as context (``this``)
+``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as its context (``this``)
 @typedef {object} binder
-@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when node state is changed. Besides, it accepts a function as value if you need to customize listener definition
-@property {function} [getValue] - A function which tells how to retrieve value (state) from HTML node when DOM event is fired
-@property {function} [setValue] - A function which tells how to change DOM node when property value is changed
-@property {function} [initialize] - A function which is called before binding is launched. For example it can initialize some jQuery plugin
+@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize your listener definition
+@property {function} [getValue] - A function which tells how to retrieve a value (state) from HTML node when DOM event is fired
+@property {function} [setValue] - A function which tells how to change DOM node when the property value is changed
+@property {function} [initialize] - A function which is called before binding is launched. For example it can initialize jQuery plugin or something else
 @property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` method
 @example
 const binder = {
 	on: 'click',
-	getValue(options) {
+	getValue(bindingOptions) {
 		return this.value;
 	},
-	setValue(v, options) {
+	setValue(v, bindingOptions) {
 		this.value = v;
 	},
-	initialize(options) {
+	initialize(bindingOptions) {
 		alert('A binding is initialized');
 	},
-	destroy(options) {
+	destroy(bindingOptions) {
 		alert('A binding is destroyed');
 	}
 };
@@ -165,7 +153,7 @@ const binder = {
 this.bindNode('a', '.my-checkbox', binder);
 @example
 const binder = {
-	on(callback) {
+	on(callback, bindingOptions) {
 		this.onclick = callback;
 	},
 	// ...
@@ -175,11 +163,11 @@ const binder = {
 
 
 /**
-Event object
+An event object
 @typedef {object} eventOptions
 @desc An object which can contain service flags or custom data which will be passed to an event handler
 @example
-const eventOptions = {silent: true};
+const eventOptions = { silent: true };
 
 this.a = 1;
 
@@ -189,7 +177,7 @@ this.on('change:a', () => {
 
 this.set('a', 2, eventOptions); // no alert
 @example
-const eventOptions = {f: 'yeah'};
+const eventOptions = { f: 'yeah' };
 
 this.a = 1;
 
@@ -202,62 +190,92 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-A class (more precisely constructor of a class) returned by {@link Class} function
+A class made using ECMAScript 2015 syntax or returned by {@link Matreshka.Class} function
 @typedef {function} class
 @example
-const MyClass = MK.Class({
+class MyClass {
+	method() { ... }
+};
+@example
+const MyClass = Matreshka.Class({
 	method() { ... }
 });
 */
 
 
 /**
-DOM node
+A DOM node
 @typedef node
+@example
+const node = document.querySelector('.foo');
 */
 
 /**
-DOM nodes collection. For example, jQuery-node(s)
+DOM nodes collection. For example, jQuery instance.
 @typedef $nodes
+@example
+const $nodes = $('.foo');
 */
 
 
 /**
-String
+A string
 @typedef string
+@example
+const foo = 'bar';
 */
 
 /**
-Boolean
+A boolean
 @typedef boolean
+@example
+const bool = true;
 */
 
 /**
-Number
+A number
 @typedef number
+@example
+const num = 42;
 */
 
 /**
-Object
+An object
 @typedef object
+@example
+const obj = {
+	foo: 'x',
+	['bar']: 'y'
+};
 */
 
 /**
-Array
+An array
 @typedef array
+@example
+const arr = ['foo', undefined, null, () => {}];
 */
 
 /**
-Function
+A function
 @typedef function
+@example
+function comeOnBarbieLetsGoParty() {
+	alert("I'm a Barbie girl, in a Barbie world");
+}
 */
 
 /**
 null
 @typedef null
+@example
+const x = null;
 */
 
 /**
 Any type
 @typedef *
+@example
+let whatever = 'foo';
+whatever = 42;
 */
