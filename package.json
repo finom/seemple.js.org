@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "clear": "rimraf dist html/*/temp",
+    "test": "echo 'No test specified'",
     "build": "npm run clear && webpack --config webpack/webpack.config.js",
     "watch": "PORT=8110 NODE_ENV=development npm run build -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
