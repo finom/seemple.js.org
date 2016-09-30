@@ -211,10 +211,11 @@ const node = document.querySelector('.foo');
 */
 
 /**
-DOM nodes collection. For example, jQuery instance.
+DOM nodes collection. For example, jQuery instance or NodeList.
 @typedef $nodes
 @example
-const $nodes = $('.foo');
+let $nodes = $('.foo');
+$nodes = document.querySelectorAll('.bar');
 */
 
 

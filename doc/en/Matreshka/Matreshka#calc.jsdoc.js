@@ -292,7 +292,7 @@ console.log(this.a); // 2
 @param {string} target - A property which needs to be calculated
 @param {string|array} source - Which properties the target property is depended on
 @param {function} [handler=(v)=>v] - A function which returns a new value
-@param {object} [eventOptions] - An object which can contain some special flags or data for ``change:KEY`` handler (see above)
+@param {eventOptions} [eventOptions] - An object which can contain some special flags or data for ``change:KEY`` handler (see above)
 
 @example
 
@@ -341,7 +341,7 @@ The second argument contains common event options which extend ``event`` of ever
 ``source`` can take any kind of look as {@link Matreshka#calc described above} (a string, an array of strings etc).
 
 @param {array} batch - An object which includes all information about calculated properties
-@param {array} [commonEventOptions] - Event options which are common for all listed calculated properties
+@param {eventOptions} [commonEventOptions] - Event options which are common for all listed calculated properties
 
 @example
 

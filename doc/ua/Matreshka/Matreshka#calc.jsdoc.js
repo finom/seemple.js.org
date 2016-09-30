@@ -289,7 +289,7 @@ console.log(this.a); // 2
 @param {string} target - Ім'я властивості яка залежить від інших властивостей
 @param {string|array} source - Від яких властивостей залежить шукана властивість (див. опис вище)
 @param {function} [handler=(v)=>v] - Функція, що повертає нове значення
-@param {object} [eventOptions] - Об'єкт, в який можна передати якісь дані для обробника події, який слухає зміни ``target`` або спеціальні прапори (див. опис методу)
+@param {eventOptions} [eventOptions] - Об'єкт, в який можна передати якісь дані для обробника події, який слухає зміни ``target`` або спеціальні прапори (див. опис методу)
 
 @example
 this.calc('greeting', 'name', name => `Hello, ${name}!`);
@@ -337,7 +337,7 @@ this.a = 5;
 ``source`` може приймати будь-який вид {@link Matreshka#calc опис вище} (рядок, масив рядків, об'єкт з властивостями ``key`` і ``object``, масив таких об'єктів).
 
 @param {array} batch - Об'єкт містить інформацію про обчислюваних властивості
-@param {array} [commonEventOptions] - Загальні властивості для об'єктів події
+@param {eventOptions} [commonEventOptions] - Загальні властивості для об'єктів події
 
 @example
 this.calc({

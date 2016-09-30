@@ -1,7 +1,7 @@
 /**
 Функция-обработчик события. Принимает любые аргументы, переданные в {@link Matreshka#trigger}
 @callback eventHandler
-@param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени собыия
+@param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени события
 @example
 const eventHandler = () => {
 	console.log(arguments);
@@ -169,7 +169,7 @@ const binder = {
 /**
 Объект события
 @typedef {object} eventOptions
-@desc Это обычный объект, которй может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
+@desc Это обычный объект, который может содержать служебные флаги или произвольные данные, которые попадут в обработчик события
 @example
 const eventOptions = { silent: true };
 
@@ -210,14 +210,16 @@ const MyClass = Matreshka.Class({
 /**
 DOM узел
 @typedef node
+@example
 const node = document.querySelector('.foo');
 */
 
 /**
-Коллекция DOM узлов. Например, jQuery.
+Коллекция DOM узлов. Например, jQuery или NodeList.
 @typedef $nodes
 @example
-const $nodes = $('.foo');
+let $nodes = $('.foo');
+$nodes = document.querySelectorAll('.bar');
 */
 
 
