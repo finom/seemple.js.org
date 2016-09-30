@@ -1,8 +1,8 @@
 /**
 @method Matreshka.Array#METHOD
 @importance 1
-@summary Любой метод из ``Array.prototype``
-@desc {@link Matreshka.Array} включает в себя все методы, входящие в нативный JavaScript массив:
+@summary Будь-який метод iз ``Array.prototype``
+@desc {@link Matreshka.Array} включає в себе всі методи, що входять в нативний JavaScript масив:
 <ul>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank">concat</a></li>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join" target="_blank">join</a></li>
@@ -23,11 +23,11 @@
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">map</a></li>
 	<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">some</a></li>
 </ul>
-При этом, они работают точно так же, как и методы ``Array.prototype``. Есть лишь несколько оговорок:
-- Метод ``forEach`` возвращает себя вместо ``undefined``
-- Методы, которые в оригинальном виде возвращают новый массив (``splice``, ``slice``, ``filter``, ``map``...), возвращают новый экземпляр ``Matreshka.Array``.
+При цьому, вони працюють точно так же, як і методи `` Array.prototype``. Є лише кілька застережень:
+- Метод `` forEach`` повертає себе замість ``undefined``
+- Методи, які в оригінальному вигляді повертають новий масив (``splice``, ``slice``, ``filter``, ``map`` ...), повертають новий екземпляр ``Matreshka.Array``.
 
-Кроме всего, методы генерируют события связанные с любой модификацией массива. Подробнее см. {@link Matreshka.Array}.
+Крім усього, методи генерують події пов'язані з будь-якою модифікацією масиву. Детальніше див. {@link Matreshka.Array}.
 
 @see {@link Matreshka.Array#METHOD_}
 @example
