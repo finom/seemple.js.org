@@ -3,11 +3,11 @@
 @module matreshka/binders/style
 @importance 2
 @since 1.1
-@summary Возвращает байндер, меняющий заданное свойство стиля DOM элемента в зависимости от значения свойства экземпляра класса.
-@param {string} property - Свойство ``style`` (camel-cased)
+@summary Повертає байндер, який змінює задану властивість стилю DOM елемента в залежності від значення властивості об'єкта.
+@param {string} property - Властивість ``style`` (camel-cased)
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-node',
     Matreshka.binders.style('backgroundColor'));
-this.myKey = 'red'; // цвет фона .my-node стал красным
+this.myKey = 'red'; // колір фону .my-node став червоним
 */

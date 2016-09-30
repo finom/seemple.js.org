@@ -6,48 +6,47 @@
 @fires change:KEY
 @fires modify
 @fires set
-@summary Устанавливает значение свойству и добавляет его имя в список имен, отвечающих за данные
-@desc Этот метод делает две вещи:
+@summary Встановлює значення властивості і додає його ім'я в список імен властивостей, що відповідають за дані
+@desc Цей метод робить дві речі:
 
-1. Устанавливает заданное значение заданному свойству.
+1. Встановлює значення заданої властивості.
 
-2. Добавляет ключ свойства в список данных, что делает свойство доступным для использования в методах {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON}).
+2. Додає ключ властивості в список даних, що робить властивість доступною для використання в методах {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON}) та інших.
 
-> Если передать флаг ``replaceData``, утановленный как ``true`` объект события, то остальные свойства будут удалены из списка свойств, отвечающих за данные.
+> Якщо передати прапор ``replaceData``, встановлений як ``true``, в об'єкт події, то інші властивості будуть вилучені зі списку властивостей, що відповідають за дані.
 
-В остальном, метод работает так же, как и {@link Matreshka#set}.
-
+В іншому, метод працює так само, як і {@link Matreshka#set}.
 @see {@link Matreshka#set}
 
 @param {string} key - Ключ
-@param {*} value - Значение
-@param {eventOptions} [eventOptions] - Объект события
+@param {*} value - Значення
+@param {eventOptions} [eventOptions] - Об'єкт події
 
 @returns {matreshkaObject} self
 
 @example
 this.setData('a', 1).setData('b', 2);
 
-// присваиваем свойству 'c' тройку,
-// но не добавляем ключ 'c' в список ключей, отвечающих за данные
+// Присвоювання властивості 'c' трійку,
+// але не додаємо ключ 'c' в список ключів, що відповідають за дані
 this.set('c', 3);
 
 this.each((value, key) => {
 	console.log(key, value);
 });
 
-// выводит 'a' 1 и 'b' 2
+// виводить 'a' 1 і 'b' 2
 
-console.log(this.keys()); // выводит ['a', 'b']
+console.log(this.keys()); // виводить ['a', 'b']
 
-console.log(this.toJSON()); // выводит { a: 1, b: 2 }
+console.log(this.toJSON()); // виводить { a: 1, b: 2 }
 
-@example <caption>После использования  метода ``setData`` со свойством можно работать, как с обычным свойством</caption>
+@example <caption>Після використання методу ``setData`` з властивістю можна працювати, як із звичайною властивістю</caption>
 this.setData('a', 1).setData('b', 2);
 this.set('a', 3);
 this.b = 4;
 
-@example <caption>Использование альтернативного имени метода: ``jset``</caption>
+@example <caption>Використання альтернативного імені методу: ``jset``</caption>
 this.jset('a', 1);
 */
 
@@ -55,9 +54,9 @@ this.jset('a', 1);
 @method Matreshka.Object#setData
 @importance 1
 @variation 2
-@summary Альтернативный синтаксис метода {@link Matreshka.Object#setData}, который использует объект ключ-значение для установки нескольких свойств сразу
-@param {object} keyValuePairs - Объект ключ-значение
-@param {eventOptions} evtOpts - Объект события
+@summary Альтернативний синтаксис методу {@link Matreshka.Object#setData}, який приймає об'єкт ключ-значення для встановлення декількох властивостей одночасно
+@param {object} keyValuePairs - Об'єкт ключ-значення
+@param {eventOptions} evtOpts - Об'єкт події
 
 @returns {matreshkaObject} self
 
@@ -66,7 +65,7 @@ this.setData({
 	a: 1,
 	b: 2
 });
-@example <caption>Если передать флаг ``replaceData``, утановленный как ``true`` в объект события, то свойства, которые не входят в переданный объект, будут удалены из списка свойств, отвечающих за данные</caption>
+@example <caption>Якщо передати прапор ``replaceData``, встановлений як ``true`` в об'єкт події, то властивості, які не входять до переданого об'єкту, будуть вилучені зі списку властивостей, що відповідають за дані</caption>
 this
 	.addDataKeys(['a', 'b', 'c'])
 	.setData({

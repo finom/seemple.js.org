@@ -3,16 +3,16 @@
 @module matreshka/binders/prop
 @importance 2
 @since 0.3
-@summary Возвращает байндер, меняющий свойство DOM элемента на значение свойства экземпляра класса
+@summary Повертає байндер, який змінює властивість DOM елемента на значення властивості об'єкта
 @param {string} property
 @returns {binder}
 @example
 this.bindNode('disabled', '.my-button',
     Matreshka.binders.prop('disabled'));
 
-// устанавливает свойство disabled = true для элемента
+// встановлює властивість disabled = true для елемента
 this.disabled = true;
 
-// устанавливает свойство disabled = false для элемента
+// встановлює властивість disabled = false для елемента
 this.disabled = false;
 */

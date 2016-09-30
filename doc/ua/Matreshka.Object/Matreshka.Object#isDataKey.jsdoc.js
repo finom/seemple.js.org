@@ -1,9 +1,9 @@
 /**
 @method Matreshka.Object#isDataKey
 @importance 2
-@summary Проверяет, входит ли строка в список ключей, отвечающих за данные
+@summary Перевіряє, чи входить строка до списку імен властивостей, що відповідають за дані
 @param {string} key
-@returns {boolean} результат проверки
+@returns {boolean} результат перевірки
 @example
 console.log(this.isDataKey('a'));
 */

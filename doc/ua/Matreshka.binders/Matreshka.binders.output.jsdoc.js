@@ -3,7 +3,7 @@
 @module matreshka/binders/output
 @importance 3
 @since 1.4
-@summary Возвращает байндер, связывающий свойство экземпляра класса с элементом ``output``. Напрямую байндер использовать не обязательно, так как он входит в список {@link Matreshka.defaultBinders}.
+@summary Повертає байндер, що зв'язує властивість об'єкта з елементом ``output``. Безпосередньо байндер використовувати не обов'язково, так як він входить в список {@link Matreshka.defaultBinders}.
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-output', Matreshka.binders.output());

@@ -1,10 +1,10 @@
 /**
 @method Matreshka.Object#each
 @importance 2
-@summary Перебирает свойства, отвечающие за данные
-@desc Метод очень похож на ``Array.prototype.forEach`` и является альтернативой циклу for..of.
-@param {function} callback - Функция, которая вызывается на каждой итерации
-@param {*} [thisArg] - Контекст функции
+@summary Перебирає властивості, що відповідають за дані
+@desc Метод дуже схожий на ``Array.prototype.forEach`` і є альтернативою циклу for..of.
+@param {function} callback - Функція, яка викликається на кожній ітерації
+@param {*} [thisArg] - Контекст функції
 @returns {matreshkaObject} self
 @example
 this

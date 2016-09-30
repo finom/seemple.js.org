@@ -1,8 +1,8 @@
 /**
 @method Matreshka.Object#toJSON
 @importance 1
-@summary Конвертирует экземпляр {@link Matreshka.Object} в обычный объект
-@desc Метод работает рекурсивно, вызывая ``toJSON`` для всех свойств, у которых есть метод с таким именем. Для отмены рекурсии передайте ``false`` первым аргументом.
+@summary Конвертує екземпляр {@link Matreshka.Object} в звичайний об'єкт
+@desc Метод працює рекурсивно, викликаючи ``toJSON`` для всіх властивостей, у яких є метод з таким ім'ям. Для скасування рекурсії передайте ``false`` першим аргументом.
 @param {boolean} [recursive=true]
 @returns {object}
 @example
@@ -15,9 +15,9 @@ const mkObject = new Matreshka.Object({
 	})
 });
 
-// возвращает {a: 1, b: 2, c: { d: 3, e: 4 }}
+// повертає {a: 1, b: 2, c: { d: 3, e: 4 }}
 console.log(mkObject.toJSON());
 
-// возвращает {a: 1, b: 2, c: MatreshkaObject}
+// повертає {a: 1, b: 2, c: MatreshkaObject}
 console.log(mkObject.toJSON(false));
 */
