@@ -38,13 +38,13 @@ this.on('foo', evt => {
     doSomething();
 });
 // ->
-this.on('foo', function(evt) => {
+this.on('foo', function(evt) {
     doSomething();
 });
 ```
 
 ```js
-class Foo extrnds Bar {
+class Foo extends Bar {
     method() {
         // ...
     }

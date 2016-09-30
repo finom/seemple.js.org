@@ -11,6 +11,6 @@ The development and support of such big project and keeping the documentation in
 <a href="bitcoin:178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd">178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd</a>
 
 ### Become a sponsor
-If you want to support the project continuously, send a letter to the author of Matreshka.js: [andrey.a.gubanov@gmail.com](mailto:andrey.a.gubanov@gmail.com).
+If you want to support the project continuously, send a letter to the author of Matreshka.js: [andrey@gubanov.eu](mailto:andrey@gubanov.eu).
 
-(unfortunately it's not possible to use PayPal)
+(unfortunately it's not possible to accept PayPal)

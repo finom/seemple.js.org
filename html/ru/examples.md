@@ -40,7 +40,7 @@ class Application extends Matreshka {
         this.bindNode('x', '.my-input');
 
         // связываем свойство x и блок с классом my-output
-        this.bindNode('x', '.my-output', htmlBinder);
+        this.bindNode('x', '.my-output', htmlBinder());
 
         // слушаем изменения свойства x
         this.on('change:x', () =>
@@ -57,10 +57,6 @@ const app = new Application();
 ```js
 app.x = 'Hello World!';
 ```
-
-> "Matreshka.js - это чудо" (один из активных пользователей фреймворка)
-
-
 
 #### Ссылки
 * [Класс Matreshka](#!Matreshka)
@@ -79,7 +75,7 @@ class="example-link">TreeView</a> - древовидный список неог
 
 <span class="list-item-number">3.</span>
 <a href="https://github.com/matreshkajs/examples/tree/master/markdown_editor/"
-class="example-link">Markdown editor</a> - простейший редактор Markdown (13 строк кода).
+class="example-link">Markdown editor</a> - простейший редактор Markdown.
 
 <span class="list-item-number">4.</span>
 <a href="https://github.com/matreshkajs/examples/tree/master/soundcloud_search/"

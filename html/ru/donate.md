@@ -10,4 +10,5 @@
 <a href="bitcoin:178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd">178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd</a>
 
 ### Стать спонсором
-Если вы хотите оказывать постоянную помощь, пишите автору фреймворка: [andrey.a.gubanov@gmail.com](mailto:andrey.a.gubanov@gmail.com).
+Если вы хотите оказывать постоянную помощь, пишите автору фреймворка:
+[andrey@gubanov.eu](mailto:andrey@gubanov.eu).

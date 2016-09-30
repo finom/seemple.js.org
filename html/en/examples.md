@@ -39,7 +39,7 @@ class Application extends Matreshka {
         this.bindNode('x', '.my-input');
 
         // bind the property x and the ".my-output" block
-        this.bindNode('x', '.my-output', htmlBinder);
+        this.bindNode('x', '.my-output', htmlBinder());
 
 		// if the property "х" has changed,
 		// inform about it in the console

@@ -35,9 +35,11 @@ For the app pre-rendering Matreshka.js can be used on Node.js (``window`` global
 
 The task of client-side is to restore application state from HTML. {@link Matreshka#bindNode} extracts element value and assigns it to a property and {@link Matreshka.Array#restore} restores a state of a collection.
 
+
 ### What is "debounce"
 
 At this page you often can see the phrase "micropattern debounce". This is widely used pattern which enforces that a function not be called again until a certain amount of time has passed without it being called. More info can be found [there](https://davidwalsh.name/javascript-debounce-function).
+
 
 ### How should look like a big application?
 
