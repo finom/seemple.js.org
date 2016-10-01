@@ -1,32 +1,29 @@
 <nav>
 	<span class="view-switcher">
-		<span data-value="all" class="checked">Всё сразу</span><span data-value="per-one">По одному</span>
-	</span>
-	<span class="version-switcher hide">
-		<span data-value="stable" class="checked">Стабильная</span><span data-value="unstable">1.1 Beta</span>
+		<span data-value="all" class="checked">Все відразу</span><span data-value="per-one">По одному</span>
 	</span>
 	<span class="nav-heading">Старт</span>
-	<a href="#!home">Главная</a>
-	<a href="#!introduction">Введение</a>
-	<a href="#!website-instructions">О документации</a>
-	<a href="#!examples">Примеры</a>
+	<a href="#!home">Головна</a>
+	<a href="#!introduction">Вступ</a>
+	<a href="#!website-instructions">Про документацію</a>
+	<a href="#!examples">Приклади</a>
 	<a href="#!donate">Donate</a>
 
 	<hr>
 	<span class="nav-heading">API</span>
 	<label class="doc-importance">
-		<input type="checkbox"> Продвинутый режим <a href="#!website-instructions">(?)</a>
+		<input type="checkbox"> Розширений режим <a href="#!website-instructions">(?)</a>
 	</label>
 	<div class="api">
 		<%- include('temp/doc_menu.html') %>
 	</div>
 	<hr>
-	<span class="nav-heading">Информация</span>
+	<span class="nav-heading">Інформація</span>
 	<a href="#!faq">FAQ</a>
 	<hr>
-	<span class="nav-heading">Ссылки</span>
-	<a href="http://habrahabr.ru/company/matreshka/blog/254889/">Туториал</a>
-	<a href="http://habrahabr.ru/company/matreshka/blog/267513/">События</a>
+	<span class="nav-heading">Посилання</span>
+	<a href="https://github.com/matreshkajs/matreshka/wiki/Matreshka.js:-From-simple-to-simple">Tutorial</a>
+	<a href="https://github.com/matreshkajs/matreshka/wiki/Matreshka.js:-Events">Events</a>
 	<a href="//matreshka.io/v2" class="another-language"><i></i> English version</a>
-	<a>Обновлено <%= updatedDate %></a>
+	<a>Оновлено <%= updatedDate %></a>
 </nav>

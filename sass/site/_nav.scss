@@ -22,7 +22,7 @@ nav {
 		transform: translateX(-$sidenav-width);
 	}
 
-	.view-switcher, .version-switcher {
+	.view-switcher {
 		-moz-border-radius: 3px;
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
@@ -47,10 +47,6 @@ nav {
 				cursor: default;
 			}
 		}
-	}
-
-	.version-switcher {
-		margin-top: 0;
 	}
 
 	a {
