@@ -74,13 +74,13 @@ class="example-link">TodoMVC</a> - список справ. ([Код з анот
 class="example-link">TreeView</a> - деревовидний список необмеженої вкладеності.
 
 <span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/examples/tree/master/markdown_editor/"
+<a href="https://github.com/matreshkajs/examples/tree/master/markdown-editor/"
 class="example-link">Markdown editor</a> - найпростіший редактор Markdown.
 
 <span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/examples/tree/master/soundcloud_search/"
+<a href="https://github.com/matreshkajs/examples/tree/master/soundcloud-search/"
 class="example-link">Simple SoundCloud player</a> - пошук музики, що використовує SoundCloud API.
 
 <span class="list-item-number">5.</span>
-<a href="https://github.com/matreshkajs/examples/tree/master/contact_list/"
+<a href="https://github.com/matreshkajs/examples/tree/master/contact-list/"
 class="example-link">Contact List</a> - дозволяє додавати, видаляти, сортувати, змінювати і шукати контакти.
