@@ -44,7 +44,7 @@ class Application extends Matreshka {
 		// if the property "х" has changed,
 		// inform about it in the console
         this.on('change:x', () =>
-            console.log(`x изменен на "${this.x}"`));
+            console.log(`x is changed to "${this.x}"`));
     }
 }
 
