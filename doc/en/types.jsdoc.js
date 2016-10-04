@@ -14,6 +14,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
 /**
 {@link Matreshka} instance
 @typedef {object} matreshka
+@example
 const mk = new Matreshka();
 obj.calc('a', 'b');
 */
@@ -21,6 +22,7 @@ obj.calc('a', 'b');
 /**
 {@link Matreshka.Object} instance
 @typedef {object} matreshkaObject
+@example
 const obj = new Matreshka.Object({ foo: 'x' });
 obj.setData({ bar: 'y' });
 */
@@ -29,6 +31,7 @@ obj.setData({ bar: 'y' });
 /**
 {@link Matreshka.Array} instance
 @typedef {object} matreshkaArray
+@example
 const arr = new Matreshka.Array(1, 2, 3);
 arr.push(4);
 */
