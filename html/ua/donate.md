@@ -1,14 +1,21 @@
 ## [Donate](#!donate)
 
-Розробка такого великого проекту та підтримка документації в актуальному стані - це важка праця, що вимагає сотень годин роботи. Тому, якщо ви вважаєте, що фреймворк Matreshka.js вартий сил та часу, які на нього витрачені, допоможіть проекту фінансово.
+Розробка такого великого проекту, та підтримка тримовної документації - це важка праця, що вимагає сотень годин роботи. При цьому, проект завжди буде абсолютно безкоштовним для використання в будь-яких, в тому числі, комерційних проектах.
 
-### LiqPay (₴, $, €, ₽)
+Якщо ваша компанія використовує Matreshka.js, фінансова підтримка проекту буде гарантією того, що проект буде активно розвиватися. Якщо ви індивідуальний розробник, навіть невелика допомога позитивно впливає на розвиток фреймворку.
 
-<a href="https://www.liqpay.com/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6IkRvbmF0ZSIsInR5cGUiOiJkb25hdGUiLCJsYW5ndWFnZSI6ImVuIn0%3D&signature=mvTntsEXOtTvvQE%2FVT8Mej98KmA%3D" target="_blank"><img src="img/liqpay-donate-button.png"></a>
+### Patreon (постійна підтримка)
 
-### Bitcoin гаманець
+<a href="https://www.patreon.com/finom" target="_blank" class="no-arrow">
+    <img src="img/patreon-medium-button.png" height="50">
+</a>
+
+### LiqPay (одноразова допомога)
+
+<a href="https://www.liqpay.com/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTE1MzAxOTQ4NjA2IiwiYW1vdW50IjoiMjAwIiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6IkRvbmF0ZSIsInR5cGUiOiJkb25hdGUiLCJsYW5ndWFnZSI6ImVuIn0%3D&signature=mvTntsEXOtTvvQE%2FVT8Mej98KmA%3D" target="_blank" class="no-arrow"><img src="img/liqpay-donate-button.png"></a>
+
+### Bitcoin (одноразова допомога)
 <a href="bitcoin:178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd">178QKqoyk1yXi9SoyFCv66cW3P7YmiCxAd</a>
 
-### Стати спонсором
-Якщо ви хочете надавати постійну допомогу, пишіть автору фреймворка:
-[andrey@gubanov.eu](mailto:andrey@gubanov.eu).
+### Інші способи допомогти
+Якщо жоден із способів, запропонованих вище, не підходить, пишіть автору фреймворка на [andrey@gubanov.eu](mailto:andrey@gubanov.eu).

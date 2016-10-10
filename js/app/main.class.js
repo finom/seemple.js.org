@@ -10,7 +10,7 @@ import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
 import _dp from '../lib/details-polyfill';
-import { className, html, dataset } from 'matreshka/binders';
+import { className, html, dataset, display } from 'matreshka/binders';
 
 export default class Main extends MatreshkaObject {
 	constructor() {
@@ -107,8 +107,10 @@ export default class Main extends MatreshkaObject {
 
 		fetch('https://api.github.com/repos/matreshkajs/matreshka/releases/latest')
 			.then(resp => resp.json())
-			.then(data => this.version = data.tag_name);
+			.then(data => this.version = data.tag_name || 2)
+			.catch(() => this.version = 2);
 
+		this.initPatreon();
 	}
 
 	initDynamicStyles() {
@@ -306,6 +308,49 @@ export default class Main extends MatreshkaObject {
 			document.body.appendChild(document.createElement('script')).src = '//cdn.muut.com/1/moot.min.js';
 		} else {
 			jQuery('.muut').muut();
+		}
+	}
+
+	async initPatreon() {
+
+		const query = 'select * from json where url="https://api.patreon.com/user/4153815"';
+		const resp = await (
+			await fetch(`https://query.yahooapis.com/v1/public/yql?q=${encodeURI(query)}&format=json`)
+		).json();
+
+		const { query: { results = JSON.parse(localStorage.patreonRespResults || 'null') } } = resp;
+
+		this.bindNode({
+			patreonGoal: [{
+				node: ':sandbox .patreon-support',
+				binder: display(false)
+			}, {
+				node: ':sandbox .patreon-backed',
+				binder: display(true)
+			}, {
+				node: ':sandbox .patreon-goal',
+				binder: html()
+			}],
+			patreonSum: {
+				node: ':sandbox .patreon-sum',
+				binder: html()
+			}
+		});
+
+		if(results) {
+			localStorage.patreonRespResults = JSON.stringify(results);
+			const { json: { linked } } = results;
+			const sum = +linked.filter(item => item.type === 'campaign')[0].pledge_sum;
+			const goals = linked.filter(item => item.type === 'goal').map(item => +item.amount).sort();
+
+			for(const goal of goals) {
+				if(sum < goal) {console.log(goal)
+					return this.set({
+						patreonSum: Math.round(sum/100),
+						patreonGoal: Math.round(goal/100)
+					});
+				}
+			}
 		}
 	}
 }
