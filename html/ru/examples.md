@@ -16,8 +16,8 @@
 		<div class="my-output"></div>
 
 		<script
-          src="http://cdn.jsdelivr.net/matreshka/latest/matreshka.min.js">
-        </script>
+		  src="https://matreshkajs.github.io/matreshka/matreshka.min.js">
+		</script>
 
 		<script src="js/app.js"></script>
 	</body>

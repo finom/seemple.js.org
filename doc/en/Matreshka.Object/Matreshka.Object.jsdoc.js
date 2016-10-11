@@ -37,7 +37,7 @@ On add or change of data properties ``set`` and ``modify`` events are fired. On 
 
 ```js
 this.on('modify', () => {
-	alert('Object is modified');
+	alert('an object is modified');
 });
 ```
 @param {object} [data] - Data
@@ -66,7 +66,7 @@ const MyClass = Matreshka.Class({
 });
 
 @example <caption>Data enumerating, using for..of</caption>
-const mkObject = new MK.Object({ a: 1, b: 2 });
+const mkObject = new Matreshka.Object({ a: 1, b: 2 });
 for(let item of mkObject) {
 	console.log(item); // 1 .. 2
 }

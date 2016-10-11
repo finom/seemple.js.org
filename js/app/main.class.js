@@ -9,7 +9,6 @@ import Search from './search.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
-import _dp from '../lib/details-polyfill';
 import { className, html, dataset, display } from 'matreshka/binders';
 
 export default class Main extends MatreshkaObject {
@@ -344,7 +343,7 @@ export default class Main extends MatreshkaObject {
 			const goals = linked.filter(item => item.type === 'goal').map(item => +item.amount).sort();
 
 			for(const goal of goals) {
-				if(sum < goal) {console.log(goal)
+				if(sum < goal) {
 					return this.set({
 						patreonSum: Math.round(sum/100),
 						patreonGoal: Math.round(goal/100)

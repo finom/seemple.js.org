@@ -114,7 +114,7 @@ new Matreshka.Array('Hi', { a: 'b' });
 @example <caption>Наследование</caption>
 class MyClass extends Matreshka.Array {
 	constructor(items) {
-		super(items).sayHello();
+		super(...items).sayHello();
 	}
 	sayHello() {
 		alert("Hello World!");

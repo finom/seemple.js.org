@@ -14,7 +14,7 @@ const html = Matreshka.binders.html;
 // ...
 this.bindNode('x', node, html());
 ```
-Or import them as CJS module:
+Or import them as CJS/ES2015 module:
 ```js
 // import few binders per once
 import { html, text, prop } from 'matreshka/binders';

@@ -273,7 +273,7 @@ this.calc('a', 'b', b => b * 2, {
 
 console.log(this.a); // undefined
 
-// but if this.b, is changed the target property will be calculated
+// but if this.b is changed the target property will be calculated
 this.b = 1;
 ```
 

@@ -8,13 +8,13 @@
 
 ### Who needs such framework?
 
-> Matreshka.js fills the gap between junior and senior
+> Matreshka.js fills the gap between a junior and a senior
 
-- For those who is new at web development, wishing to master the development of single-page application
-- For full-stack devs, for which front-end development is in second place after the back-end
+- For those who is new at JavaScript, wishing to master the development of single-page applications
+- For full-stack devs, for whom front-end development is in the second place after the back-end
 - For all those who are not satisfied with the current order of things in the universe of web development
 
-### Which business needs are solved by Matreshka.js framework?
+### What's the business need solved by Matreshka.js framework?
 
 It is not a secret that the barrier to entry into the web development is becoming higher, the list of requirements to a developer is bigger, a number of dependencies in projects may be up to several hundred. Despite the fact that the studying of JavaScript is very popular today, the demand for developers who can accomplish tasks successfully is greater than the supply.
 
@@ -22,4 +22,4 @@ Due to extreme simplicity of the framework, even novice web developers can quick
 
 ### It is only for beginners?
 
-Two things that present Matreshka.js as a simple framework is a direct pointing of bound DOM nodes when declaring a two-way data binding and an absence of any restrictions on requirements for architecture and design patterns. In other aspects Matreshka.js is a modern general-purpose framework developed using today's technologies. At least Matreshka.js may cause real interest because it uses the full potential of getters and setters in JavaScript.
+Two things that present Matreshka.js as a simple framework are use of selectors of bound DOM nodes when declaring a two-way data binding and an absence of any restrictions on requirements of an architecture and design patterns. In other aspects Matreshka.js is a modern general-purpose framework developed using today's technologies. At least, Matreshka.js may cause an interest because it uses the full potential of getters and setters in JavaScript.

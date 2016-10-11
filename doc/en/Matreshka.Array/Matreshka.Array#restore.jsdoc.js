@@ -7,7 +7,7 @@
 @fires add
 @fires addone
 @summary Restores {@link Matreshka.Array} instance from existing HTML nodes on a page.
-@desc In case if a collection is pre-rendered on the page (eg via webserver), the method can restore collection from existing HTML nodes.
+@desc In case if a collection is pre-rendered on the page (e. g. via webserver), the method can restore the collection from existing HTML nodes.
 
 ```html
 <!-- One, Two, Three are prerendered -->

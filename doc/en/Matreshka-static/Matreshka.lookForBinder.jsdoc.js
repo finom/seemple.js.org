@@ -13,7 +13,7 @@ element.type = 'text';
 
 console.log(Matreshka.lookForBinder(element));
 
-// will return something like the following object
+// will return something similar to the following object
 {
 	on: 'input',
 	getValue() {

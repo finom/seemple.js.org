@@ -58,13 +58,8 @@ The result:
 #### Why do we need this method?
 In case if you develop a large form with standard HTML5 fields, the method will help you save time on declaring numerous bindings. Besides, ``parseBindings`` is useful in case of creating a very simple collection which doesn’t require implementation of a complicated {@link Matreshka.Array#Model model}.
 
-#### Is it compatible with Matreshka ideology ("all logic must be included into JavaScript file")?
-Yes, no cycles, conditional operators or any other logic are supported in the parser. Only declaration of simple bindings is available for a developer using ``parseBindings``.
-
-
-
 @param {string|node|$nodes} node - HTML string, selector, DOM node or collection of DOM nodes
-@param {eventOptions} [eventOptions] - Event options which will be passed to all calls of {@link Matreshka#bindNode}
+@param {eventOptions} [eventOptions] - Event options which will be passed to all internal calls of {@link Matreshka#bindNode}
 @returns {$nodes} A collection of DOM nodes, which is passed to the method as an argument.
 
 @example <caption>Parsing of given node</caption>

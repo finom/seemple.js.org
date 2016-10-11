@@ -5,7 +5,7 @@
 @fires change:KEY
 @fires beforechange
 @fires beforechange:KEY
-@summary Sets a property value allowing to pass an event object as the third argument
+@summary Sets a property value allowing to pass event options object as the third argument
 @desc The list of the supported flags:
 + ``silent`` -  do not call the ``change`` and ``change:KEY`` events
 + ``silentHTML`` - do not change states of bound HTML nodes
@@ -18,7 +18,7 @@
 
 @param {string} key - A key
 @param {*} value - A value
-@param {eventOptions} [eventOptions] - An event object
+@param {eventOptions} [eventOptions] - Event options
 @example
 this.on('change:myKey', evt => {
 	alert(evt.value);

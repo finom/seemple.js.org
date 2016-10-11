@@ -10,7 +10,7 @@
 > The method has {@link Matreshka.bindSandbox static alternative}
 
 @param {string|node|$nodes} node - A sandbox DOM node
-@param {eventOptions} [eventOptions] -  An event object
+@param {eventOptions} [eventOptions] -  An event options
 @see {@link Matreshka#bindNode}
 @example
 this.bindSandbox('.my-element');

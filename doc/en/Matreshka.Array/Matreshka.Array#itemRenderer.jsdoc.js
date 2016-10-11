@@ -7,7 +7,7 @@
 @param {object} item - An object, which will be rendered (in case you need to use some conditions)
 @desc The ``itemRenderer`` overridable property allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
 
-> For brevity, the class fields syntax will be used in examples at this article.
+> For brevity, the "class fields" syntax will be used in examples at this article.
 
 #### Where is created node inserted?
 In order to define a place where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Matreshka#bindNode}.
@@ -53,7 +53,7 @@ In the example above the HTML nodes will be inserted into ``.my-list`` instead o
 
 The ``itemRenderer`` property supports a few variants of defining, but they all must contain or return the only HTML node.
 
-#### HTML string as property value
+#### HTML string as a property value
 
 ```js
 class MyArray extends Matreshka.Array {
@@ -63,8 +63,8 @@ class MyArray extends Matreshka.Array {
 }
 ```
 
-#### A selector as property value
-In case if you carry over the templates for the items to the HTML page, ``itemRenderer`` supports the selector as value. When this occurs, {@link Matreshka.Array} will search for HTML node in DOM tree and it will extract ``innerHTML`` of found node. In case if a node is not found, an exception will be thrown.
+#### A selector as a property value
+In case if you carry over the templates for the items to the HTML page, ``itemRenderer`` supports the selector as a value. When this occurs, {@link Matreshka.Array} will search for HTML node in DOM tree and it will extract ``innerHTML`` of found node. In case if a node is not found, an exception will be thrown.
 
 > HTML string is different from a selector due to the presence of the ``<`` symbol in a string.
 
@@ -81,7 +81,7 @@ class MyArray extends Matreshka.Array {
 }
 ```
 
-#### A function as property value
+#### A function as a property value
 The usage of a function as the ``itemRenderer`` property value gives an additional code flexibility if it is necessary to dynamically generate HTML node for rendering. A function can return:
 
 __HTML string__
@@ -188,7 +188,7 @@ The code above will create the following HTML tree:
 
 And it will bind the checkboxes to the corresponding ``isChecked`` and ``text`` properties.
 
-Remember, the opportunity of listening delegated events is implemented in Matreshka. The array can listen to an event of an item rendering, using the ``*@render`` event name (see the documentation of {@link #typedef-eventNames}).
+Remember, the opportunity of listening delegated events is implemented in the framework. The array can listen to an event of an item rendering, using the ``*@render`` event name (see the documentation of {@link #typedef-eventNames}).
 ```js
 this.on('*@render', () => {
 	alert('Child item is rendered');
@@ -233,7 +233,7 @@ class MyArray extends Matreshka.Array {
 const app = new MyArray();
 ```
 
-#### The template engine
+#### A template engine
 If you have a look at the examples of using {@link Matreshka.Array} and {@link Matreshka.Array#itemRenderer}, you can notice that all logic which is responsible for the two-way and one-way data binding is contained in JavaScript code. But when you develop a very simple collection which does not include complicated logic, lots of bindings, etc, you would like to have a shorter variant of the binding declaration. A template including bindings (see {@link Matreshka#parseBindings}) can be passed to ``itemRenderer`` for that.
 
 ```js
@@ -256,7 +256,7 @@ class MyArray extends Matreshka.Array {
 }
 ```
 
-#### Moving object across few collections
+#### Moving an object across few collections
 By default, when you add an object to an array the framework will try to render it using ``itemRenderer``. It gives a great advantage in cases when you have two or more lists which include the same object. The lists react instantly on any change in the object.
 
 But sometimes you just need to move an object across few collections without re-rendering it again. If you need to move object to another collection including its sandbox use the ``moveSandbox`` flag while adding the new item to another array.
@@ -325,7 +325,7 @@ class MyArray extends Matreshka.Array {
 })
 ```
 
-One more little example: the rendering of simple list:
+One more little example: the rendering of a simple list:
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer = '<li>{{value}}</li>';

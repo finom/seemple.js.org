@@ -3,11 +3,12 @@ Event handler. Takes any arguments passed to {@link Matreshka#trigger}
 @callback eventHandler
 @param {...*} options - Any arguments
 @example
-const eventHandler = () => {
-	console.log(arguments);
+const eventHandler = (...args) => {
+	console.log(args);
 };
 this.on('fyeah', eventHandler);
-this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
+// logs 'foo', 'bar', 'baz'
+this.trigger('fyeah', 'foo', 'bar', 'baz');
 */
 
 
@@ -40,8 +41,6 @@ arr.push(4);
 /**
 Event name or space-delimited list of event names.
 
-> This is very brief description of event names. The full article about events you can find at [this article](https://medium.com/@finom/matreshka-js-events-e35cc201c2cb).
-
 ##### Custom events.
 ```js
 this.on('myevent', () => {...});
@@ -60,7 +59,7 @@ this.on('beforechange:x', evt => {...});
 this.x = 42;
 ```
 
-##### ``addevent:NAME`` and ``addevent`` which are triggered on event initialization.
+##### ``addevent:NAME`` and ``addevent`` which are triggered on event add.
 ```js
 // for any event
 this.on('addevent', evt => {...});
@@ -68,6 +67,16 @@ this.on('addevent', evt => {...});
 this.on('addevent:someevent', evt => {...});
 // the line below fires "addevent" and "addevent:someevent"
 this.on('someevent', evt => {...});
+```
+
+##### ``removeevent:NAME`` and ``removeevent`` which are triggered on event remove.
+```js
+// for any event
+this.on('removeevent', evt => {...});
+// for "someevent" event
+this.on('removeevent:someevent', evt => {...});
+// the line below fires "removeevent" and "removeevent:someevent"
+this.off('someevent', evt => {...});
 ```
 
 ##### ``DOM_EVENT::KEY``, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node which is bound to the KEY.
@@ -131,7 +140,7 @@ this.on('x.y.z@click::(.my-selector)', () => {...});
 /**
 ``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as its context (``this``)
 @typedef {object} binder
-@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize your listener definition
+@property {string|function} [on] - DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize a listener definition
 @property {function} [getValue] - A function which tells how to retrieve a value (state) from HTML node when DOM event is fired
 @property {function} [setValue] - A function which tells how to change DOM node when the property value is changed
 @property {function} [initialize] - A function which is called before binding is launched. For example it can initialize jQuery plugin or something else

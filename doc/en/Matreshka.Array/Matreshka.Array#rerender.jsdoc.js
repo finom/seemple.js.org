@@ -7,7 +7,7 @@
 
 The method can be useful in case when items have been added to the array before declaring a sandbox or a container.
 
-To force items rerender (eg you use custom template engine) pass a property ``forceRerender`` with ``true`` value to an event object.
+To force items rerender (e. g. you use custom template engine) pass a property ``forceRerender`` with ``true`` value to an event object.
 
 @param {eventOptions} [eventOptions] - An event options
 @returns {matreshkaArray} self

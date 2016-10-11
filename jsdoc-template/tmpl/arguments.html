@@ -26,7 +26,7 @@
 							<span class="signature">optional</span>
 						<?js} ?>
 					</td>
-					<?js= hasDefault ? '<td>' : '' ?> <code><?js= arg.defaultvalue ?></code>
+					<?js= hasDefault ? '<td><code>' + (arg.defaultvalue || '') + '</code>' : '' ?> 
 					<td><?js print( this.partial( 'params.html', arg ) ); ?></td>
 					<?js= hasDescription ? '<td>' : '' ?> <?js= arg.description ?></td>
 				</tr>

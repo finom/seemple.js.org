@@ -2,8 +2,8 @@
 @method Matreshka#selectAll
 @synonym Matreshka#$
 @importance 2
-@summary Returns HTML nodes corresponding to a selector from the sandbox
-@desc After sandbox creation by the {@link Matreshka#bindNode} method, you can get and use HTML nodes which are located in it. Besides, the method supports the ``:bound(KEY)`` selector.
+@summary Returns HTML nodes corresponding to a selector from a sandbox
+@desc After sandbox declaration using {@link Matreshka#bindNode} method, you can get its descendants. Besides, the method supports the ``:bound(KEY)`` selector.
 
 > The method has {@link Matreshka.selectAll static alternative}
 

@@ -3,11 +3,12 @@
 @callback eventHandler
 @param {...*} options - будь-які аргументи, передані в виклик {@link Matreshka#trigger} після імені події
 @example
-const eventHandler = () => {
-	console.log(arguments);
+const eventHandler = (...args) => {
+	console.log(args);
 };
 this.on('fyeah', eventHandler);
-this.trigger('fyeah', 'foo', 'bar', 'baz'); // logs 'foo', 'bar', 'baz'
+// logs 'foo', 'bar', 'baz'
+this.trigger('fyeah', 'foo', 'bar', 'baz');
 */
 
 
@@ -67,6 +68,17 @@ this.on('addevent:someevent', evt => {...});
 // генерує події "addevent" та "addevent:someevent"
 this.on('someevent', evt => {...});
 ```
+
+##### ``removeevent:NAME`` і ``removeevent``, що викликаються, коли обробник події видаляється
+```js
+// для всіх подій
+this.on('removeevent', evt => {...});
+// для події "someevent"
+this.on('removeevent:someevent', evt => {...});
+// генерує події "removeevent" та "removeevent:someevent"
+this.off('someevent', evt => {...});
+```
+
 
 ##### ``DOM_EVENT::KEY``, де DOM_EVENT - це им'я DOM події, KEY - ключ. Генерується тоді, коли подія DOM_EVENT спрацьовує на елементі, який пов'язаний з KEY.
 ```js

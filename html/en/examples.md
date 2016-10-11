@@ -10,13 +10,13 @@ Writing your first application is very easy. You should:
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>My first Matreshka application</title>
+		<title>My first Matreshka.js application</title>
 	</head>
 	<body>
 		<input type="text" class="my-input">
 		<div class="my-output"></div>
 		<script
-		  src="http://cdn.jsdelivr.net/matreshka/latest/matreshka.min.js">
+		  src="https://matreshkajs.github.io/matreshka/matreshka.min.js">
 		</script>
 		<script src="js/app.js"></script>
 	</body>
@@ -24,18 +24,18 @@ Writing your first application is very easy. You should:
 ```
 
 
-**2\.** Create application class at **js/app.js**
+**2\.** Create the application class at **js/app.js**
 
 ```js
 // store html binder in a short variable
 const htmlBinder = Matreshka.binders.html;
 
-// create a class that inherits Matreshka
+// create the class which inherits Matreshka
 class Application extends Matreshka {
     constructor() {
         super();
 
-        // bind the property x and the text field
+        // bind a property x and the text field
         this.bindNode('x', '.my-input');
 
         // bind the property x and the ".my-output" block
@@ -58,7 +58,7 @@ Now you can open the developer's console (by pressing F12) and write:
 ```js
 app.x = 'Hello World!';
 ```
-Cool, isn't it? Now you can work with the properties directly.
+Cool, isn't it? You can work with such magical properties directly.
 
 #### Links
 * [Matreshka Class](#!Matreshka)
@@ -84,3 +84,5 @@ class="example-link">Simple SoundCloud player</a> - music search via SoundCloud 
 <span class="list-item-number">5.</span>
 <a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/contact-list/"
 class="example-link">Contact List</a> - allows to add, remove, sort, search and change contacts.
+
+[Other examples](https://github.com/matreshkajs/examples-and-tutorials/)

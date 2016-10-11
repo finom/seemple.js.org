@@ -92,7 +92,7 @@ As observed in this documentation, the third argument is not obligatory for the 
 ```js
 this.bindNode('myKey', '.my-element');
 ```
-How to do it? You should add the function checking  your element against a set of rules to the beginning of the {@link Matreshka.defaultBinders} array.
+How to do it? You should add a function checking  your element against a set of rules to the beginning of the {@link Matreshka.defaultBinders} array.
 ```js
 const checkboxBinder = () => {
 	return {
@@ -176,10 +176,10 @@ And the syntax of possible event names is extended:
 ```js
 this.bindNode('myKey', '.my-element');
 
-// will handle the click on the .my-element element
+// will handle the click on the '.my-element' element
 this.on('click::myKey', () => { ... });
 
-// will handle the click on the .my-element .my-inner-element
+// will handle the click on the '.my-element .my-inner-element'
 this.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
@@ -285,7 +285,7 @@ setTimeout(() => {
 });
 ```
 
-To cancel this behavior (eg initiate synchronous binding) use ``debounceSetValue`` and/or ``debounceGetValue`` flags with ``false`` value.
+To cancel this behavior (e. g. initiate synchronous binding) use ``debounceSetValue`` and/or ``debounceGetValue`` flags with ``false`` value.
 
 #### Flags ``debounceSetValueOnBind=false`` and ``debounceGetValueOnBind=false``
 
@@ -297,9 +297,9 @@ These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when 
 
 #### A flag ``useExactBinder=false``
 
-Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link Matreshka.defaultBinder} and extend it by properties of passed object. This feature makes possible to use partially re-defined default binder.
+Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link Matreshka.defaultBinder} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
 
-For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with the ``"input"`` value for this kind of node. It means that a value of an instance property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event,  you will have to pass the object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
+For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the instance property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
 
 ```js
 this.bindNode('myKey', '.my-input', { on: 'blur' });

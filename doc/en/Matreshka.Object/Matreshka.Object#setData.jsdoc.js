@@ -6,12 +6,12 @@
 @fires change:KEY
 @fires modify
 @fires set
-@summary Sets a property and adds property name to a list of property names which are responsible for data.
+@summary Sets a property and adds property name to a list of property names which are responsible for data
 @desc This method does two things:
 
 1. Sets a specified value to a given property.
 
-2. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON} methods.
+2. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON} and other methods.
 
 
 > When  ``replaceData`` flag is set as ``true`` then all other properties will be removed from the list of data properties.
