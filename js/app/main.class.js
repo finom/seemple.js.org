@@ -11,6 +11,9 @@ import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
 import { className, html, dataset, display } from 'matreshka/binders';
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 export default class Main extends MatreshkaObject {
 	constructor() {
 		g.app = super();

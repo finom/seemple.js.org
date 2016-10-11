@@ -45,8 +45,10 @@
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "balajs": "^0.1.9",
+    "es6-promise": "^4.0.5",
     "github-embed": "^0.1.14",
     "highlight.js": "^9.7.0",
+    "isomorphic-fetch": "^2.2.1",
     "markdown-loader": "^0.1.7",
     "matreshka": "^2.0.0-prealpha.34"
   },

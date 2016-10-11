@@ -84,5 +84,3 @@ class="example-link">Simple SoundCloud player</a> - music search via SoundCloud 
 <span class="list-item-number">5.</span>
 <a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/contact-list/"
 class="example-link">Contact List</a> - allows to add, remove, sort, search and change contacts.
-
-[Other examples](https://github.com/matreshkajs/examples-and-tutorials/)
