@@ -117,7 +117,7 @@ Matreshka.defaultBinders.unshift(node ​​=> {
 });
 ```
 ```js
-this.bindNode ('myKey', '.my-checkbox');
+this.bindNode('myKey', '.my-checkbox');
 this.myKey = true;
 ```
 
@@ -247,7 +247,7 @@ const oldB = this.a.b;
 
 this.a.b = { c: 'baz' }; // Оновить елемент значенням baz
 
-// Елемент не оновиться, оскільки він більш пов'язаний з цією гілкою
+// Елемент не оновиться, оскільки він більше не пов'язаний з цією гілкою
 oldB.c = 'fuu';
 ```
 
