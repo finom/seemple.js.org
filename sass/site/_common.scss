@@ -147,6 +147,12 @@ h1, h2, h3, h4, h5, h6 {}
 
 body .gitter-open-chat-button {
 	background-color: #8BC34A;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+
+	&:hover {
+		background-color: #71a437;
+	}
 }
 
 body .gitter-chat-embed {
