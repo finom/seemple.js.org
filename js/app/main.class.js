@@ -319,13 +319,18 @@ export default class Main extends MatreshkaObject {
 
 		const { query: { results = JSON.parse(localStorage.patreonRespResults || 'null') } } = resp;
 
+		this.set({
+			patreonSum: null,
+			patreonGoal: null
+		});
+
 		this.bindNode({
 			patreonGoal: [{
 				node: ':sandbox .patreon-support',
-				binder: display(false)
+				binder: className('hide', true)
 			}, {
 				node: ':sandbox .patreon-backed',
-				binder: display(true)
+				binder: className('hide', false)
 			}, {
 				node: ':sandbox .patreon-goal',
 				binder: html()

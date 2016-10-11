@@ -1,5 +1,12 @@
 {
 	"name": "Matreshka.js",
+	"name": "Matreshka.js documentation",
+	"short_name": "Matreshka.js",
+	"description": "The easiest framework in the Universe",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#8BC34A",
 	"icons": [
 		{
 			"src": "icons\/android-chrome-36x36.png",

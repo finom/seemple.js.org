@@ -56,7 +56,7 @@ module.exports = {
     entry,
     plugins,
     output: {
-        path: resolve('dist/v2'),
+        path: resolve('dist'),
         filename: '[name].js',
         libraryTarget: 'var'
     },
