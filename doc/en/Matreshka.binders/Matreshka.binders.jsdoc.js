@@ -4,7 +4,7 @@
 @importance 1
 @desc A namespace for binders. Out of the box it contains general-purpose binders and can be extended by you so as not to make a mess of the global namespace.
 
-Take a little agreement into consideration: every property from the ``Matreshka.binders`` collection must be made as a function which returns a binder.
+Take a little agreement into consideration: every property from the ``Matreshka.binders`` namespace must be made as a function which returns a binder (such functions usually called "binder creators").
 
 > At this documentation the properties from ``Matreshka.binders`` are used directly. But to make your code more readable it's recommended to assign them to a variable.
 
