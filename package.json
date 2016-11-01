@@ -50,7 +50,7 @@
     "highlight.js": "^9.7.0",
     "isomorphic-fetch": "^2.2.1",
     "markdown-loader": "^0.1.7",
-    "matreshka": "^2.0.0"
+    "matreshka": "^2.0.2"
   },
   "repository": {
     "type": "git",
