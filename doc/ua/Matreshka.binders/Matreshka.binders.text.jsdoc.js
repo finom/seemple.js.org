@@ -13,5 +13,6 @@ this.myKey = 'foo'; // встановить textContent элемента як "f
 @example <caption>Використання ``mappingFn``</caption>
 this.bindNode('myKey', '.my-element',
     Matreshka.binders.text(value => `Hello, ${value}`));
+    
 this.myKey = 'foo'; // встановить textContent элемента як "Hello, foo"
 */
