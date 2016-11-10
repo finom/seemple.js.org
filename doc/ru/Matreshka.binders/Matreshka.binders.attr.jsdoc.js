@@ -4,10 +4,18 @@
 @importance 2
 @since 0.3
 @summary Возвращает байндер, меняющий атрибут DOM элемента на значение свойства объекта
-@param {string} attribute
+@desc Значение свойства можно преобразить с помощью переданной функции ``mappingFn``.
+@param {string} attribute - Имя атрибута
+@param {function} [mappingFn] - Отображающая функция
 @returns {binder}
 @example
 this.bindNode('image', 'img.my-image', Matreshka.binders.attr('src'));
 
 this.image = 'http://example.com/cats.jpg';
+
+@example <caption>Использование отображающей функции</caption>
+this.bindNode('myKey', '.my-node',
+    Matreshka.binders.attr('foo', value => `Hello, ${value}`));
+
+this.myKey = 'World'; // атрибут foo имеет значение "Hello, World"
 */

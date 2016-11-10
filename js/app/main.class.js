@@ -1,3 +1,4 @@
+// legacy code starts there
 import g from './globals';
 import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';

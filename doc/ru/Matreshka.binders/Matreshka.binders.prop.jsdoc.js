@@ -4,7 +4,9 @@
 @importance 2
 @since 0.3
 @summary Возвращает байндер, меняющий свойство DOM элемента на значение свойства объекта
-@param {string} property
+@desc Значение свойства можно преобразить с помощью переданной функции ``mappingFn``.
+@param {string} property - Имя свойства
+@param {function} [mappingFn] - Отображающая функция
 @returns {binder}
 @example
 this.bindNode('disabled', '.my-button',
@@ -15,4 +17,9 @@ this.disabled = true;
 
 // устанавливает свойство disabled = false для элемента
 this.disabled = false;
+@example <caption>Использование отображающей функции</caption>
+this.bindNode('myProp', '.my-node'
+    Matreshka.binders.prop('foo', value => `Hello, ${value}`));
+
+this.myProp = 'World'; // свойство елемента foo имеет значение "Hello, World"
 */
