@@ -1,4 +1,4 @@
-# [matreshka.io](http://matreshka.io) source code [![Dependency Status](https://david-dm.org/matreshkajs/matreshka.io.svg)](https://david-dm.org/matreshkajs/matreshka.io) [![devDependency Status](https://david-dm.org/matreshkajs/matreshka.io/dev-status.svg)](https://david-dm.org/matreshkajs/matreshka.io#info=devDependencies) [![Build Status](https://travis-ci.org/matreshkajs/matreshka.io.svg?branch=next)](https://travis-ci.org/matreshkajs/matreshka.io)
+# [matreshka.io](http://matreshka.io) source code [![Build Status](https://travis-ci.org/matreshkajs/matreshka.io.svg)](https://travis-ci.org/matreshkajs/matreshka.io)
 
 <p align="center"><img src="http://i.imgur.com/42Lyr6F.png"></p>
 
