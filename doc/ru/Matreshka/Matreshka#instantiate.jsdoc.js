@@ -57,7 +57,7 @@ class MyClass extends Matreshka {
 	}
 }
 
-const MyParentClass etends Matreshka {
+const MyParentClass extends Matreshka {
     constructor() {
         this.instantiate('x', MyClass);
     }
@@ -86,7 +86,7 @@ class AppData extends Matreshka.Object {
 		super(data)
 			.instantiate({
 				friends: Friends,
-				settins: Settings
+				settings: Settings
 			});
 	}
 }
