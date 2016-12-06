@@ -153,7 +153,7 @@ const binder = {
 	on: 'click',
 	getValue(bindingOptions) {
 		return this.value;
-	}
+	},
 	setValue(v, bindingOptions) {
 		this.value = v;
 	},
