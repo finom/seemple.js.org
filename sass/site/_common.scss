@@ -144,21 +144,24 @@ a[href*="//"] {
 
 h1, h2, h3, h4, h5, h6 {}
 
+body {
+	padding-bottom: 1rem;
+	.gitter-open-chat-button {
+		background-color: #8BC34A;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		padding: 0.5rem 2rem ;
 
-body .gitter-open-chat-button {
-	background-color: #8BC34A;
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
+		@media #{$small-and-down} {
+			display: none;
+		}
 
-	@media #{$small-and-down} {
-		display: none;
+		&:hover {
+			background-color: #71a437;
+		}
 	}
 
-	&:hover {
-		background-color: #71a437;
+	.gitter-chat-embed {
+		border: 0;
 	}
-}
-
-body .gitter-chat-embed {
-	border: 0;
 }

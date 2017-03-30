@@ -98,7 +98,7 @@ export default class Main extends MatreshkaObject {
 			}
 		}
 
-		this.loading = false;
+		// this.loading = false;
 
 		if(location.hash == '#!home') {
 			setTimeout(() => {
@@ -112,8 +112,6 @@ export default class Main extends MatreshkaObject {
 			.then(resp => resp.json())
 			.then(data => this.version = data.tag_name || 2)
 			.catch(() => this.version = 2);
-
-		this.initPatreon();
 	}
 
 	initDynamicStyles() {
@@ -132,8 +130,9 @@ export default class Main extends MatreshkaObject {
 	bindings() {
 		return this
 			.bindNode('demoProp', '.demo .in, .demo .out')
+			.bindNode({sandbox: 'body',})
 			.bindNode({
-				sandbox: 'body',
+
 				win: window,
 				typeBadge: ':sandbox .typo-badge',
 				viewSwitcher: 'nav .view-switcher',
@@ -311,54 +310,6 @@ export default class Main extends MatreshkaObject {
 			document.body.appendChild(document.createElement('script')).src = '//cdn.muut.com/1/moot.min.js';
 		} else {
 			jQuery('.muut').muut();
-		}
-	}
-
-	async initPatreon() {
-
-		const query = 'select * from json where url="https://api.patreon.com/user/4153815"';
-		const resp = await (
-			await fetch(`https://query.yahooapis.com/v1/public/yql?q=${encodeURI(query)}&format=json`)
-		).json();
-
-		const { query: { results = JSON.parse(localStorage.patreonRespResults || 'null') } } = resp;
-
-		this.set({
-			patreonSum: null,
-			patreonGoal: null
-		});
-
-		this.bindNode({
-			patreonGoal: [{
-				node: ':sandbox .patreon-support',
-				binder: className('hide', true)
-			}, {
-				node: ':sandbox .patreon-backed',
-				binder: className('hide', false)
-			}, {
-				node: ':sandbox .patreon-goal',
-				binder: html()
-			}],
-			patreonSum: {
-				node: ':sandbox .patreon-sum',
-				binder: html()
-			}
-		});
-
-		if(results) {
-			localStorage.patreonRespResults = JSON.stringify(results);
-			const { json: { linked } } = results;
-			const sum = +linked.filter(item => item.type === 'campaign')[0].pledge_sum;
-			const goals = linked.filter(item => item.type === 'goal').map(item => +item.amount).sort();
-
-			for(const goal of goals) {
-				if(sum < goal) {
-					return this.set({
-						patreonSum: Math.round(sum/100),
-						patreonGoal: Math.round(goal/100)
-					});
-				}
-			}
 		}
 	}
 }

@@ -19,7 +19,8 @@ const entry = {
 };
 
 const plugins = [
-    new ExtractTextPlugin('css/style.css', {
+    new ExtractTextPlugin({
+        filename: 'css/style.css',
         allChunks: true
     }),
     new HtmlWebpackPlugin({
@@ -61,24 +62,40 @@ module.exports = {
         libraryTarget: 'var'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loaders: [
-                    'babel',
-                    `string-replace?search=SERVICE_WORKER_CACHE_VERSION&replace=${Date.now()}`
-                ],
+                use: [{
+                    loader: 'babel-loader',
+                }, {
+                    loader: 'string-replace-loader',
+                    options: {
+                        search: 'SERVICE_WORKER_CACHE_VERSION',
+                        replace: Date.now(),
+                    }
+                }],
                 exclude: /node_modules/
             },
-            { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') },
-            { test: /\.html$/, loader: 'ejs-compiled' },
-            { test: /\.md$/, loader: "html?attrs=false!markdown" },
-            { test: /\.yaml$/,  loader: 'json!yaml' }
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        { loader: 'css-loader' },
+                        { loader: 'sass-loader', options: {
+                            functions: sassAssetFunctions({
+                                images_path: 'sass/inlined-images',
+                            })
+                        }
+                    }],
+                })
+            },
+            { test: /\.html$/, use: { loader: 'ejs-compiled-loader' } },
+            {
+                test: /\.md$/,
+                use: [{ loader: "html-loader", options: { attrs: false } },'markdown-loader']
+            },
+            { test: /\.yaml$/,  use: ['json-loader', 'yaml-loader'] }
         ]
     },
-    sassLoader: {
-        functions: sassAssetFunctions({
-            images_path: 'sass/inlined-images',
-        })
-    }
 };
