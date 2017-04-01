@@ -1,5 +1,5 @@
 import Main from './app/main.class';
-alert(334);
+
 try {
     window.app = new Main();
 } catch(e) {
