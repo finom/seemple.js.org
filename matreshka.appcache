@@ -1,0 +1,25 @@
+CACHE MANIFEST
+index.html
+css/style.css
+css/fonts.css
+js/app.js
+js/app.js.map
+fonts/Roboto-Light.ttf
+fonts/Roboto-Regular.ttf
+fonts/Roboto-Bold.ttf
+fonts/Material-Design-Icons.ttf
+img/todomvc.png
+img/mk5-logo_matreshka.svg
+img/mk5-logo_text.svg
+
+img/liqpay-donate-button.png
+img/patreon-medium-button.png
+
+FALLBACK:
+/ /index.html
+
+NETWORK:
+*
+
+#####
+# ddd

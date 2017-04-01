@@ -19,7 +19,7 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html  manifest="matreshka.appcache">
 
 	<head>
 		<title><%= page.title %></title>
@@ -52,6 +52,15 @@
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
 		<meta property="og:image" content="http://matreshka.io/img/mk_logo.png">
 		<script>
+		if (window.applicationCache) {
+			applicationCache.addEventListener('updateready', function() {
+				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+					window.applicationCache.update();
+					window.applicationCache.swapCache();
+					window.location.reload();
+				}
+			});
+		}
 		// remove loader on slow load
 		setTimeout(function() {
 			document.querySelector('.loader').className += ' hide';

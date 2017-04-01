@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -50,6 +51,18 @@ const plugins = [
     new webpack.optimize.UglifyJsPlugin({
         sourceMap: true
     }),
+    () => {
+        const dest = path.join(__dirname, '../dist');
+        fs.mkdirSync(dest);
+        fs.writeFileSync(
+            path.join(dest, './matreshka.appcache'),
+            fs.readFileSync(
+                path.join(__dirname, '../matreshka.appcache'),
+                { encoding: 'utf-8' }
+            ).replace('#####', `#${new Date().toString()}`),
+            { encoding: 'utf-8' }
+        );
+    },
 ];
 
 // TODO turn on dev server, for that documentation generator needs to be modified
@@ -98,7 +111,7 @@ module.exports = {
                 test: /\.md$/,
                 use: [{ loader: "html-loader", options: { attrs: false } },'markdown-loader']
             },
-            { test: /\.yaml$/,  use: ['json-loader', 'yaml-loader'] }
+            { test: /\.yaml$/,  use: ['json-loader', 'yaml-loader'] },
         ]
     },
 };
