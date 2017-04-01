@@ -10,7 +10,7 @@
     "build": "npm run clear && webpack --config webpack/webpack.config.js",
     "watch": "PORT=8110 NODE_ENV=development npm run build -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
-    "deploy": "pm2 deploy ecosystem.json production",
+    "deploy": "pm2 deploy ecosystem.json production --force",
     "develop": "npm-run-all --parallel watch serve-dist",
     "upgrade": "ncu -u -a && yarn install"
   },
