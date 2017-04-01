@@ -89,8 +89,6 @@ export default class Main extends MatreshkaObject {
 		for(let block of $('code.lang-js, code.lang-html, pre.prettyprint.source')) {
 			hljs.highlightBlock(block);
 		}
-		//prettyPrint();
-
 
 		for(let article of this.articles) {
 			if(article.id === location.hash && article.importance > this.importanceLevel) {
@@ -98,7 +96,7 @@ export default class Main extends MatreshkaObject {
 			}
 		}
 
-		// this.loading = false;
+		this.loading = false;
 
 		if(location.hash == '#!home') {
 			setTimeout(() => {

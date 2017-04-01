@@ -14,8 +14,7 @@ const entry = {
         './sass/screen.scss',
         'babel-polyfill',
         './js/app'
-    ],
-    sw: './js/sw'
+    ]
 };
 
 const plugins = [
@@ -47,7 +46,10 @@ const plugins = [
     new CopyWebpackPlugin([{
         from: resolve('static/'),
         to: resolve('dist/')
-    }])
+    }]),
+    new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true
+    }),
 ];
 
 // TODO turn on dev server, for that documentation generator needs to be modified
@@ -59,7 +61,8 @@ module.exports = {
     output: {
         path: resolve('dist'),
         filename: '[name].js',
-        libraryTarget: 'var'
+        libraryTarget: 'var',
+        chunkFilename: 'js/[id].js'
     },
     module: {
         rules: [
@@ -74,7 +77,7 @@ module.exports = {
                         replace: Date.now(),
                     }
                 }],
-                exclude: /node_modules/
+                exclude: /\/node_modules\/(?!balajs\/)/
             },
             {
                 test: /\.scss$/,

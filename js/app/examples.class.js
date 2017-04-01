@@ -1,7 +1,6 @@
 import g from './globals';
 import Matreshka from 'matreshka/matreshka';
 import $ from 'balajs';
-import githubEmbed from 'github-embed';
 
 export default class Examples extends Matreshka {
     constructor() {
@@ -17,9 +16,12 @@ export default class Examples extends Matreshka {
                     const exampleMountBlock = target.parentNode.appendChild(document.createElement('div'));
                     exampleMountBlock.style.width = "100%";
                     exampleMountBlock.style.height = "500px";
-                    githubEmbed(exampleMountBlock, `${href}.gh-embed.json`)
 
-                    target.classList.add('initialized');
+                    import('github-embed').then((githubEmbed) => {
+                        githubEmbed(exampleMountBlock, `${href}.gh-embed.json`)
+
+                        target.classList.add('initialized');
+                    });
                 } else {
                     target.parentNode.lastChild.classList.toggle('hide');
                 }
