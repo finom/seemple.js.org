@@ -5,7 +5,7 @@
       "host" : "188.166.42.252",
       "ref"  : "origin/master",
       "repo" : "https://github.com/matreshkajs/matreshka.io.git",
-      "path" : "~/web/matreshka.io",
+      "path" : "/home/finom/web/matreshka.io",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
       "post-deploy" : "rm -rf node_modules && npm install --unsafe-perm node-sass && npm install && npm run build"
     },
