@@ -12,7 +12,7 @@
     "serve-dist": "http-server dist -o -s -d -p 8110",
     "deploy": "pm2 deploy ecosystem.json production --force",
     "develop": "npm-run-all --parallel watch serve-dist",
-    "upgrade": "ncu -u -a && yarn install"
+    "upgrade": "ncu -u -a && npm install"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
