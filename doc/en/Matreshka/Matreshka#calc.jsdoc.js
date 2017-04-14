@@ -302,6 +302,8 @@ this.calc('a', ['b', 'c'], (b, c) => {
 			resolve(a + b)
 		}, 1000);
 	});
+}, {
+	promiseCalc: true
 });
 
 this.b = 1;
@@ -318,6 +320,8 @@ this.calc('response', 'data', async (data) => {
 	});
 
 	return resp.json();
+}, {
+	promiseCalc: true
 });
 ```
 
