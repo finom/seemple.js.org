@@ -289,6 +289,38 @@ this.calc('a', 'foo.bar.baz', fooBarBaz => fooBarBaz * 2, {
 console.log(this.a); // 2
 ```
 
+#### A flag ``promiseCalc=false``
+
+This flag allows to return ``Promise`` instance from the calculating function. Target property gets its value from resolved promise.
+
+> Warning! ``Promise`` cannot be canceled. Use the ``promiseCalc`` feature carefully and don't allow multiple calls of heavy functions.
+
+```js
+this.calc('a', ['b', 'c'], (b, c) => {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve(a + b)
+		}, 1000);
+	});
+});
+
+this.b = 1;
+this.c = 2;
+
+// "a" will be changed in a second
+```
+
+```js
+this.calc('response', 'data', async (data) => {
+	const resp = await fetch(url, {
+		method: 'post',
+		body: data
+	});
+
+	return resp.json();
+});
+```
+
 @param {string} target - A property which needs to be calculated
 @param {string|array} source - Which properties the target property is depended on
 @param {function} [handler=(v)=>v] - A function which returns a new value

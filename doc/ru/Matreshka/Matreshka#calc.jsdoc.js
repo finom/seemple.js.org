@@ -287,6 +287,38 @@ this.calc('a', 'foo.bar.baz', fooBarBaz => fooBarBaz * 2, {
 console.log(this.a); // 2
 ```
 
+#### Флаг ``promiseCalc=false``
+
+Этот флаг позволяет использовать экземпляры ``Promise`` внутри функции, вычисляющей значение. Значением искомого свойства становится результат успешного выполнения промиса.
+
+> Внимание! ``Promise`` невозможно отменить. Используйте возможность ``promiseCalc`` аккуратно и не допускайте многократного вызова тяжелых функций.
+
+```js
+this.calc('a', ['b', 'c'], (b, c) => {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve(a + b)
+		}, 1000);
+	});
+});
+
+this.b = 1;
+this.c = 2;
+
+// "a" изменится через секунду
+```
+
+```js
+this.calc('response', 'data', async (data) => {
+	const resp = await fetch(url, {
+		method: 'post',
+		body: data
+	});
+
+	return resp.json();
+});
+```
+
 @param {string} target - Имя свойства которое зависит от других свойств
 @param {string|array} source - От каких свойств зависит искомое свойство (см. описание выше)
 @param {function} [handler=(v)=>v] - Функция, возвращающая новое значение

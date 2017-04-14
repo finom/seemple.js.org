@@ -286,6 +286,38 @@ this.calc('a', 'foo.bar.baz', fooBarBaz => fooBarBaz * 2, {
 console.log(this.a); // 2
 ```
 
+#### Прапор ``promiseCalc=false``
+
+Цей прапор дозволяє використовувати екземпляри ``Promise`` всередині функції, що обчислює значення. Значенням шуканої властивості стає результат успішного виконання промісу.
+
+> Увага! ``Promise`` неможливо скасувати. Використовуйте можливість ``promiseCalc`` акуратно та не допускайте багаторазового виклику складних функцій.
+
+```js
+this.calc('a', ['b', 'c'], (b, c) => {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve(a + b)
+		}, 1000);
+	});
+});
+
+this.b = 1;
+this.c = 2;
+
+// "a" буде змінений через секунду
+```
+
+```js
+this.calc('response', 'data', async (data) => {
+	const resp = await fetch(url, {
+		method: 'post',
+		body: data
+	});
+
+	return resp.json();
+});
+```
+
 @param {string} target - Ім'я властивості яка залежить від інших властивостей
 @param {string|array} source - Від яких властивостей залежить шукана властивість (див. опис вище)
 @param {function} [handler=(v)=>v] - Функція, що повертає нове значення
