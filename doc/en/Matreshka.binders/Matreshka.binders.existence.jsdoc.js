@@ -3,7 +3,7 @@
 @module matreshka/binders/existence
 @importance 2
 @since 2.3
-@summary Returns a binder which controls an existence of DOM node (using ``style.display``) at DOM tree depending on an object property value
+@summary Returns a binder which controls an existence of DOM node at DOM tree depending on an object property value
 @desc The binder works the same way as {@link Matreshka.binders.display}, but instead of visibility change the existence at page DOM is changed. The binder is useful for:
 
 - Big appications: show one or another page depending on route state;
