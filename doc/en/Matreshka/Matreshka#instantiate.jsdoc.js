@@ -19,7 +19,7 @@ While attempting to assign another value (an object or an array) to the property
 - If ``updateCallback`` function is given, the method calls it with two arguments: current property value and the data which code is trying to assign.
 - If given class is inherited from {@link Matreshka.Object}, the instance is updated with new data using {@link Matreshka.Object#setData} method.
 - If given class is inherited from {@link Matreshka.Array}, the instance is updated with new data using {@link Matreshka.Array#recreate} method.
-- If ``updateCallback`` function isn't given and the class isn’t inherited from {@link Matreshka.Object} or {@link Matreshka.Array}, the instance is extended by object properties which is trying to to be assigned.
+- If ``updateCallback`` function isn't given and the class isn’t inherited from {@link Matreshka.Object} or {@link Matreshka.Array}, the instance is extended by object properties which is trying to be assigned.
 
 > A feature of this method is an absence of limitations on the class source. Any function-constructor that can be initialized using ``new`` operator and not only {@link Matreshka}'s successors can act as a class.
 
@@ -85,7 +85,7 @@ class App extends Matreshka {
 class AppData extends Matreshka.Object {
 	constructor(data) {
 		super(data)
-			.inatantiate({
+			.instantiate({
 				friends: Friends,
 				settins: Settings
 			});
