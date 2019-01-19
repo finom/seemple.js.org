@@ -4,7 +4,7 @@
 @importance 2
 @since 0.3
 @summary Returns a binder which changes an attribute of DOM node depending on an object property value
-@desc The property value can be transformed using ``mappingFn`` argument.
+@desc The value can be transformed using ``mappingFn`` argument.
 @param {string} attribute - Attribute name
 @param {function} [mappingFn] - Mapping function
 @returns {binder}
