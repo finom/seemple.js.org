@@ -66,21 +66,21 @@ app.x = 'Hello World!';
 ### Другие примеры
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/matreshkajs/todomvc/tree/master/"
-class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/todomvc/docs/app.html))
+<a href="https://github.com/matreshkajs/matreshka-todomvc/tree/master/"
+class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/matreshka-todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/treeview/"
+<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/treeview/"
 class="example-link">TreeView</a> - древовидный список неограниченной вложенности.
 
 <span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/markdown-editor/"
+<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/markdown-editor/"
 class="example-link">Markdown editor</a> - простейший редактор Markdown.
 
 <span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/soundcloud-search/"
+<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/soundcloud-search/"
 class="example-link">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.
 
 <span class="list-item-number">5.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/contact-list/"
+<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/contact-list/"
 class="example-link">Contact List</a> - позволяет добавлять, удалять, сортировать, менять и искать контакты.
