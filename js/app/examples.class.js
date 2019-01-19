@@ -17,7 +17,7 @@ export default class Examples extends Matreshka {
                     exampleMountBlock.style.width = "100%";
                     exampleMountBlock.style.height = "500px";
 
-                    import('github-embed').then((githubEmbed) => {
+                    import('github-embed').then(({default:githubEmbed}) => {
                         githubEmbed(exampleMountBlock, `${href}.gh-embed.json`)
 
                         target.classList.add('initialized');
