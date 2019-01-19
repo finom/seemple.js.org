@@ -25,10 +25,10 @@ class Plugin {
 
     afterCompile(compilation, callback) {
         // add files to watch list on every recompilation
-        compilation.fileDependencies.push(
-            ...this.allDocFileNames,
-            ...this.templateFileNames
-        );
+        [
+          ...this.allDocFileNames,
+          ...this.templateFileNames
+        ].forEach(name => compilation.fileDependencies.add(name))
 
         callback();
     }
