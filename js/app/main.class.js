@@ -86,7 +86,7 @@ export default class Main extends MatreshkaObject {
 
 		this.initDynamicStyles();
 
-		for(let block of $('code.lang-js, code.lang-html, pre.prettyprint.source')) {
+		for(let block of $('code.lang-js, code.lang-html, code.language-js, code.language-html, pre.prettyprint.source')) {
 			hljs.highlightBlock(block);
 		}
 
