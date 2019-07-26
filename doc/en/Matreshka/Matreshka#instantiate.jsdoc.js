@@ -101,7 +101,7 @@ class Friend extends Matreshka.Object {
 
 // friends.js
 class Friends extends Matreshka.Array {
-	Model = Friend;
+	get Model() { return Friend; }
 	trackBy = 'id';
 	constructor(data) {
 		super(...data);

@@ -19,7 +19,7 @@ Rendering to a sandbox:
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer = '<li>';
-	Model = MyModel;
+	get Model() { return MyModel; }
 	constructor() {
 		// sandbox definition
 		super().bindNode('sandbox', '.my-list');
@@ -39,7 +39,7 @@ If you do not want to insert HTML nodes straight into the sandbox, you can bind 
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer = '<li>';
-	Model = MyModel;
+	get Model() { return MyModel; }
 	constructor() {
         super();
 		// sandbox definition
@@ -57,7 +57,7 @@ The ``itemRenderer`` property supports a few variants of defining, but they all 
 
 ```js
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '<div class="my-div">foo</div>';
 	constructor() { ... }
 }
@@ -75,7 +75,7 @@ In case if you carry over the templates for the items to the HTML page, ``itemRe
 ```
 ```js
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '#my-template';
 	constructor() { ... }
 }
@@ -150,7 +150,7 @@ class MyModel extends Matreshka.Object {
 });
 
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = `<label>
 		<input type="checkbox" class="my-checkbox">
 		<span class="text"></span>
@@ -220,7 +220,7 @@ class MyModel extends Matreshka.Object {
 }
 
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '...';
 	constructor() {
 		//...

@@ -18,7 +18,7 @@
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer = '<li>';
-	Model = MyModel;
+	get Model() { return MyModel; }
 	constructor() {
         super();
 		// визначаємо пісочницю
@@ -38,7 +38,7 @@ class MyArray extends Matreshka.Array {
 ```js
 class MyArray extends Matreshka.Array {
 	itemRenderer = '<li>';
-	Model = MyModel;
+	get Model() { return MyModel; }
 	constructor() {
         super();
 		// визначаємо пісочницю
@@ -56,7 +56,7 @@ class MyArray extends Matreshka.Array {
 Як видно з прикладу вище, ``itemRenderer`` може бути визначений, як HTML строка.
 ```js
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '<div class="my-div">foo</div>';
 	constructor() { ... }
 }
@@ -73,7 +73,7 @@ class MyArray extends Matreshka.Array {
 ```
 ```js
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '#my-template';
 	constructor() { ... }
 }
@@ -147,7 +147,7 @@ class MyModel extends Matreshka.Object {
 });
 
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = `<label>
 		<input type="checkbox" class="my-checkbox">
 		<span class="text"></span>
@@ -213,7 +213,7 @@ class MyModel extends Matreshka.Object {
 }
 
 class MyArray extends Matreshka.Array {
-	Model = MyModel;
+	get Model() { return MyModel; }
 	itemRenderer = '...';
 	constructor() {
 		//...
