@@ -7,7 +7,7 @@
   "scripts": {
     "clear": "rimraf dist html/*/temp",
     "test": "echo 'No test specified'",
-    "build": "npm run clear && webpack --config webpack/webpack.config.js --mode production",
+    "build": "webpack --config webpack/webpack.config.js --mode production",
     "watch": "PORT=8110 NODE_ENV=development npm run build -- --watch",
     "serve-dist": "http-server dist -o -s -d -p 8110",
     "deploy": "npm run clear && deploy-to-git",
