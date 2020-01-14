@@ -29,12 +29,12 @@ const plugins = [
     }),
     new HtmlWebpackPlugin({
         template: './html/layout.html',
-        filename: 'index.ua.html',
+        filename: 'ua/index.html',
         language: 'ua'
     }),
     new HtmlWebpackPlugin({
         template: './html/layout.html',
-        filename: 'index.ru.html',
+        filename: 'ru/index.html',
         language: 'ru'
     }),
     new GenerateDocumentationPlugin({
