@@ -1,12 +1,12 @@
 /**
-@method Matreshka.Array#restore
+@method Seemple.Array#restore
 @importance 2
 @since 1.3
 @fires recreate
 @fires modify
 @fires add
 @fires addone
-@summary Воссоздаёт {@link Matreshka.Array} из HTML узлов на странице.
+@summary Воссоздаёт {@link Seemple.Array} из HTML узлов на странице.
 @desc В случае, если коллекция заранее отрисована на странице (например, с помощью сервера), метод может воссоздать коллекцию из отрендеренных HTML узлов.
 
 ```html
@@ -22,17 +22,17 @@
 ```
 
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 		this.addDataKeys('value');
 	}
 	onRender() {
-		this.bindNode('value', ':sandbox', Matreshka.binders.html())
+		this.bindNode('value', ':sandbox', Seemple.binders.html())
 	}
 });
 
-class MyCollection extends Matreshka.Array {
+class MyCollection extends Seemple.Array {
 	get itemRenderer() {
 		return ':sandbox .renderer';
 	}
@@ -54,9 +54,9 @@ console.log(myCollection.toJSON());
 
 Если аргумент ``selector`` не задан, то коллекция будет воссоздана из элементов, входящих в контейнер (``"container"`` или ``"sandbox"``).
 
-При воссоздании, на каждом элементе массива генерируется событие ``render`` и вызываются методы ``onRender`` и ``onItemRender`` (см {@link Matreshka.Array#onItemRender документацию}), как и при {@link Matreshka.Array#itemRenderer обычном рендеринге}.
+При воссоздании, на каждом элементе массива генерируется событие ``render`` и вызываются методы ``onRender`` и ``onItemRender`` (см {@link Seemple.Array#onItemRender документацию}), как и при {@link Seemple.Array#itemRenderer обычном рендеринге}.
 
 @param {selector} [selector] - Селектор
 @param {eventOptions} [eventOptions] - Объект события
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 */

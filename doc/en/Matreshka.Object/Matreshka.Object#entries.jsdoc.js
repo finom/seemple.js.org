@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#entries
+@method Seemple.Object#entries
 @since 2.0.0
 @importance 3
 @summary Returns an array of ``[key, value]`` pairs of properties which are responsible for data

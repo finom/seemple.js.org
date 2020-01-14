@@ -1,6 +1,6 @@
 /**
-@method Matreshka.Class
-@module matreshka/class
+@method Seemple.Class
+@module seemple/class
 @importance 2
 @summary Реалізація класів, заснована на прототипному спадкуванні
 @desc Функція ``Class`` дозволяє використовувати класичне ООП в тих випадках, коли немає можливості скористатися синтаксисом ECMAScript 2015 classes.
@@ -10,17 +10,17 @@
 
 @returns {class} клас (точніше, конструктор класу)
 @example
-const A = Matreshka.Class({
+const A = Seemple.Class({
 	method1() { ... }
 });
 
-const B = Matreshka.Class({
+const B = Seemple.Class({
 	// B успадковується від A
 	extends: A,
 	method2() { ... }
 });
 
-const C = Matreshka.Class({
+const C = Seemple.Class({
 	// С успадковується від B
 	extends: B,
 	method2() {
@@ -30,7 +30,7 @@ const C = Matreshka.Class({
 	method3(a, b) { ... }
 });
 
-const D = Matreshka.Class({
+const D = Seemple.Class({
 	// D успадковується від C
 	extends: C,
 	method3(a, b) {
@@ -40,7 +40,7 @@ const D = Matreshka.Class({
 });
 
 @example <caption>Передача об'єкта зі статичними методами і властивостями</caption>
-const MyClass = Matreshka.Class({
+const MyClass = Seemple.Class({
 	method() { ... }
 }, {
 	staticProp: 'foo',

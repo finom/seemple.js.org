@@ -1,6 +1,6 @@
 /**
-@function Matreshka.binders.prop
-@module matreshka/binders/prop
+@function Seemple.binders.prop
+@module seemple/binders/prop
 @importance 2
 @since 0.3
 @summary Возвращает байндер, меняющий свойство DOM элемента на значение свойства объекта
@@ -10,7 +10,7 @@
 @returns {binder}
 @example
 this.bindNode('disabled', '.my-button',
-    Matreshka.binders.prop('disabled'));
+    Seemple.binders.prop('disabled'));
 
 // устанавливает свойство disabled = true для элемента
 this.disabled = true;
@@ -19,7 +19,7 @@ this.disabled = true;
 this.disabled = false;
 @example <caption>Использование отображающей функции</caption>
 this.bindNode('myProp', '.my-node'
-    Matreshka.binders.prop('foo', value => `Hello, ${value}`));
+    Seemple.binders.prop('foo', value => `Hello, ${value}`));
 
 this.myProp = 'World'; // свойство елемента foo имеет значение "Hello, World"
 */

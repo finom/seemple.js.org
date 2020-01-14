@@ -1,11 +1,11 @@
 /**
-@method Matreshka#remove
+@method Seemple#remove
 @importance 3
 @fires delete
 @fires delete:KEY
 @summary Deletes a property
 
-@desk > The method has {@link Matreshka.remove static alternative}
+@desk > The method has {@link Seemple.remove static alternative}
 
 @param {string} key - A property name or an array of names to remove
 @param {eventOptions} [eventOptions] - An event options

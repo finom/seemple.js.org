@@ -1,13 +1,13 @@
 /**
-@method Matreshka.unbindNode
-@module matreshka/unbindnode
+@method Seemple.unbindNode
+@module seemple/unbindnode
 @importance 3
 @since 1.1
 @summary Breaks a binding between given property and HTML node
-@desc This static method works the same as {@link Matreshka#unbindNode} and all its variations, but accepts any kind of JavaScript object as first argument.
+@desc This static method works the same as {@link Seemple#unbindNode} and all its variations, but accepts any kind of JavaScript object as first argument.
 @returns {object} The first argument
-@see {@link Matreshka#unbindNode}
+@see {@link Seemple#unbindNode}
 @example
 const object = {};
-Matreshka.unbindNode(object, 'x', '.my-node');
+Seemple.unbindNode(object, 'x', '.my-node');
 */

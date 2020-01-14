@@ -1,17 +1,17 @@
 /**
-@method Matreshka#onDebounce
+@method Seemple#onDebounce
 @importance 2
 @fires addevent
 @fires addevent:NAME
 @summary Добавляет обработчик события, вызываемый лишь однажды за определенный промежуток времени
-@desc Метод позволяет добавить обработчик события на экземпляр класса {@link Matreshka}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Matreshka#on}.
+@desc Метод позволяет добавить обработчик события на экземпляр класса {@link Seemple}, устраняя "дребезжание" обработчика. Функция может быть вызвана лишь один раз за определенный промежуток времени. В остальном, метод работает так же, как и {@link Seemple#on}.
 
-> У метода есть {@link Matreshka.onDebounce  статичный аналог}.
+> У метода есть {@link Seemple.onDebounce  статичный аналог}.
 
-@see {@link Matreshka#on}
-@see {@link Matreshka#once}
-@see {@link Matreshka#off}
-@see {@link Matreshka#trigger}
+@see {@link Seemple#on}
+@see {@link Seemple#once}
+@see {@link Seemple#off}
+@see {@link Seemple#trigger}
 @see {@link http://habrahabr.ru/post/60957/ Статья на Хабре о микропаттерне debounce}
 @param {eventNames} names - Имя события или несколько имен, разделенных пробелом  (например, ``"change:x ajaxcomplete change:y"``).
 @param {eventHandler} callback - Функция, которая вызывается по событию
@@ -33,13 +33,13 @@ for(let i = 0; i < 100; i++) {
 
 
 /**
-@method Matreshka#onDebounce
+@method Seemple#onDebounce
 @importance 2
 @variation 2
 @since 1.1
 @summary Альтернативный синтаксис: пары "событие-обработчик"
-@desc В метод {@link Matreshka#onDebounce} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
-@see {@link Matreshka#on(2)}
+@desc В метод {@link Seemple#onDebounce} можно передать объект с парами событие-обработчик, чтобы избежать многократного вызова метода и сократить код.
+@see {@link Seemple#on(2)}
 @param {object} evtnameHandlerObject - Объект с обработчиками событий
 @param {number} [debounceDelay=0] - Задержка
 @param {boolean} [triggerOnInit=false] - Если аргумент ``triggerOnInit`` равен ``true``, то обработчики будут вызван немедленно после инициализации

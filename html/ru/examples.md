@@ -1,7 +1,7 @@
 ## [Примеры](#!examples)
 
 ### Hello World
-Написать первое приложение с помощью фреймворка Matreshka.js очень просто.
+Написать первое приложение с помощью фреймворка Seemple.js очень просто.
 
 **1\.** Создайте HTML файл со следующим содержимым
 
@@ -9,14 +9,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Моё первое приложение на базе Matreshka.js</title>
+		<title>Моё первое приложение на базе Seemple.js</title>
 	</head>
 	<body>
 		<input type="text" class="my-input">
 		<div class="my-output"></div>
 
 		<script
-		  src="https://matreshkajs.github.io/matreshka/matreshka.min.js">
+		  src="https://seemplejs.github.io/seemple/seemple.min.js">
 		</script>
 
 		<script src="js/app.js"></script>
@@ -29,10 +29,10 @@
 
 ```js
 // сохраняем html байндер в переменную с коротким именем
-const htmlBinder = Matreshka.binders.html;
+const htmlBinder = Seemple.binders.html;
 
-// создаём класс, который наследуется от Matreshka
-class Application extends Matreshka {
+// создаём класс, который наследуется от Seemple
+class Application extends Seemple {
     constructor() {
         super();
 
@@ -59,28 +59,28 @@ app.x = 'Hello World!';
 ```
 
 #### Ссылки
-* [Класс Matreshka](#!Matreshka)
-* [Метод Matreshka#bindNode](#!Matreshka-bindNode)
-* [Метод Matreshka#on](#!Matreshka-on)
+* [Класс Seemple](#!Seemple)
+* [Метод Seemple#bindNode](#!Seemple-bindNode)
+* [Метод Seemple#on](#!Seemple-on)
 
 ### Другие примеры
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/matreshkajs/matreshka-todomvc/tree/master/"
-class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//matreshkajs.github.io/matreshka-todomvc/docs/app.html))
+<a href="https://github.com/seemplejs/seemple-todomvc/tree/master/"
+class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//seemplejs.github.io/seemple-todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
-<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/treeview/"
+<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/treeview/"
 class="example-link">TreeView</a> - древовидный список неограниченной вложенности.
 
 <span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/markdown-editor/"
+<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/markdown-editor/"
 class="example-link">Markdown editor</a> - простейший редактор Markdown.
 
 <span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/soundcloud-search/"
+<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/soundcloud-search/"
 class="example-link">Simple SoundCloud player</a> - поиск музыки, использующий SoundCloud API.
 
 <span class="list-item-number">5.</span>
-<a href="https://github.com/matreshkajs/matreshka-examples-and-tutorials/tree/master/contact-list/"
+<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/contact-list/"
 class="example-link">Contact List</a> - позволяет добавлять, удалять, сортировать, менять и искать контакты.

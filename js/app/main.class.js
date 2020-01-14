@@ -1,6 +1,6 @@
 // legacy code starts there
 import g from './globals';
-import MatreshkaObject from 'matreshka/object';
+import SeempleObject from 'seemple/object';
 import $ from 'balajs';
 import Articles from './articles.class';
 import Typedefs from './typedefs.class';
@@ -10,12 +10,12 @@ import Search from './search.class';
 import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
-import { className, html, dataset, display } from 'matreshka/binders';
+import { className, html, dataset, display } from 'seemple/binders';
 
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-export default class Main extends MatreshkaObject {
+export default class Main extends SeempleObject {
 	constructor() {
 		g.app = super();
 
@@ -50,9 +50,9 @@ export default class Main extends MatreshkaObject {
 		location.hash = location.hash || '!home';
 
 		if (~location.hash.indexOf('comments')) {
-			 // #!/matreshka/comments/matreshka-ru%23matreshka::unread
-			 // #!/matreshka/comments/matreshka-ru:matreshka-bindnode::unread
-			var threadID = location.hash.replace(/#!\/matreshka\/comments\/matreshka-\S{2}(?:%23|:)(.*)::unread/, '$1').toLowerCase(),
+			 // #!/seemple/comments/seemple-ru%23seemple::unread
+			 // #!/seemple/comments/seemple-ru:seemple-bindnode::unread
+			var threadID = location.hash.replace(/#!\/seemple\/comments\/seemple-\S{2}(?:%23|:)(.*)::unread/, '$1').toLowerCase(),
 				commentArticle,
 				commentsContainer;
 
@@ -106,7 +106,7 @@ export default class Main extends MatreshkaObject {
 			});
 		}
 
-		fetch('https://api.github.com/repos/matreshkajs/matreshka/releases/latest')
+		fetch('https://api.github.com/repos/seemplejs/seemple/releases/latest')
 			.then(resp => resp.json())
 			.then(data => this.version = data.tag_name || 2)
 			.catch(() => this.version = 2);

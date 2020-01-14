@@ -1,6 +1,6 @@
 /**
-@method Matreshka.Class
-@module matreshka/class
+@method Seemple.Class
+@module seemple/class
 @importance 2
 @summary An implementation of classes based on the prototype inheritance
 @desc The ``Class`` function allows to use the classic OOP when ECMAScript 2015 classes cannot be used somehow.
@@ -10,17 +10,17 @@
 
 @returns {class} class (a class constructor to be exact)
 @example
-const A = Matreshka.Class({
+const A = Seemple.Class({
 	method1() { ... }
 });
 
-const B = Matreshka.Class({
+const B = Seemple.Class({
 	// B is inherited from A
 	extends: A,
 	method2() { ... }
 });
 
-const C = Matreshka.Class({
+const C = Seemple.Class({
 	// С is inherited from B
 	extends: B,
 	method2() {
@@ -30,7 +30,7 @@ const C = Matreshka.Class({
 	method3(a, b) { ... }
 });
 
-const D = Matreshka.Class({
+const D = Seemple.Class({
 	// D is inherited from C
 	extends: C,
 	method3() {
@@ -40,7 +40,7 @@ const D = Matreshka.Class({
 });
 
 @example <caption>Passing an object with static methods and properties</caption>
-const MyClass = Matreshka.Class({
+const MyClass = Seemple.Class({
 	method() { ... }
 }, {
 	staticProp: 'foo',

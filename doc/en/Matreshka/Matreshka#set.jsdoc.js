@@ -1,5 +1,5 @@
 /**
-@method Matreshka#set
+@method Seemple#set
 @importance 1
 @fires change
 @fires change:KEY
@@ -11,10 +11,10 @@
 + ``silentHTML`` - do not change states of bound HTML nodes
 + ``force`` - call the ``change`` and ``change:KEY`` events even though the property value has not been changed
 + ``forceHTML`` - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some ``option`` tags have been added to ``select`` tag)
-+ ``skipMediator`` - prevents the property transformation by a mediator (see {@link Matreshka#mediate})
-+ ``skipCalc`` - prevents the work of dependencies created with {@link Matreshka#calc}
++ ``skipMediator`` - prevents the property transformation by a mediator (see {@link Seemple#mediate})
++ ``skipCalc`` - prevents the work of dependencies created with {@link Seemple#calc}
 
-> The method has {@link Matreshka.set static alternative}.
+> The method has {@link Seemple.set static alternative}.
 
 @param {string} key - A key
 @param {*} value - A value
@@ -51,9 +51,9 @@ this.set('myKey', 4, {
 
 
 /**
-@method Matreshka#set
+@method Seemple#set
 @variation 2
-@summary Alternative "key-value" syntax of the {@link Matreshka#set} method
+@summary Alternative "key-value" syntax of the {@link Seemple#set} method
 @param {object} keyValuePairs - An object containing key-value pairs
 @param {eventOptions} [eventOptions] - An event object
 @example

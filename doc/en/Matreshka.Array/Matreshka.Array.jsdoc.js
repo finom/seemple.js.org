@@ -1,14 +1,14 @@
 /**
-@class Matreshka.Array
-@module matreshka/array
-@inherits Matreshka
+@class Seemple.Array
+@module seemple/array
+@inherits Seemple
 @importance 1
-@classdesc The ``Matreshka.Array`` serves as collection class in Matreshka framework. It is inherited from the {@link Matreshka} class, obtaining all parent possibilities without exception. Besides, ``Matreshka.Array`` has all methods that ordinary array has.
+@classdesc The ``Seemple.Array`` serves as collection class in Seemple framework. It is inherited from the {@link Seemple} class, obtaining all parent possibilities without exception. Besides, ``Seemple.Array`` has all methods that ordinary array has.
 
 #### All the methods which have been adopted from the built-in Array work like their originals
 A programmer familiar to the methods of native ``Array`` can understand immediately by means of which method adds (``push``, ``unshift``, ``splice``), deletes (``pop``, ``shift``, ``splice``), sorts (``sort``, ``reverse``) items etc.
 
-For the reason that methods work the same as original ones (with a few exceptions), they are not presented in this documentation separately but they are gathered in the {@link Matreshka.Array#METHOD} section.
+For the reason that methods work the same as original ones (with a few exceptions), they are not presented in this documentation separately but they are gathered in the {@link Seemple.Array#METHOD} section.
 ```js
 this.push(1, 2, 3);
 this.pop();
@@ -16,7 +16,7 @@ this.pop();
 
 #### All methods adopted from built-in ``Array`` which modify an array can be called with an event object passing
 
-The ``method_`` syntax is used for this, where underscore at the end of a method name means that the last argument is an event object. Such methods are not given in this documentation because it is necessary to remember their syntax only. See {@link Matreshka.Array#METHOD_}.
+The ``method_`` syntax is used for this, where underscore at the end of a method name means that the last argument is an event object. Such methods are not given in this documentation because it is necessary to remember their syntax only. See {@link Seemple.Array#METHOD_}.
 ```js
 this.push_(1, 2, 3, {
 	silent: true
@@ -91,22 +91,22 @@ __``length`` is an ordinary property which can be bound to HTML node__  or you c
 > For example, on adding three items using the ``push`` method with three arguments, the following events: ``push``, ``add``, ``addone`` (three times), ``modify``, ``change:length`` are fired.
 
 #### Model
-The {@link Matreshka.Array#Model} property specifies a class of items that an array contains. It is recommended to inherit ``Model`` from the {@link Matreshka.Object} class or the {@link Matreshka.Array} one (in case if it is necessary to get a collection of collections) in order to get the opportunity of converting an array into an ordinary one recursively by using the {@link Matreshka.Array#toJSON} method.
+The {@link Seemple.Array#Model} property specifies a class of items that an array contains. It is recommended to inherit ``Model`` from the {@link Seemple.Object} class or the {@link Seemple.Array} one (in case if it is necessary to get a collection of collections) in order to get the opportunity of converting an array into an ordinary one recursively by using the {@link Seemple.Array#toJSON} method.
 
 #### Automatic rendering
-``Matreshka.Array`` can render HTML nodes on a page automatically in any modifications of an array. The {@link Matreshka.Array#itemRenderer} property is used for that. You do not have to worry about rebuilding the HTML tree, ``Matreshka.Array`` does it for you. For detailed information read the documentation of {@link Matreshka.Array#itemRenderer}.
+``Seemple.Array`` can render HTML nodes on a page automatically in any modifications of an array. The {@link Seemple.Array#itemRenderer} property is used for that. You do not have to worry about rebuilding the HTML tree, ``Seemple.Array`` does it for you. For detailed information read the documentation of {@link Seemple.Array#itemRenderer}.
 
-@see {@link Matreshka.Array#itemRenderer}
-@see {@link Matreshka.Array#Model}
+@see {@link Seemple.Array#itemRenderer}
+@see {@link Seemple.Array#Model}
 
 @example <caption>An instance creation</caption>
-new Matreshka.Array();
+new Seemple.Array();
 @example <caption>An instance creation with length specifying</caption>
-new Matreshka.Array(42);
+new Seemple.Array(42);
 @example <caption>Items passing on creation</caption>
-new Matreshka.Array('Hi', {a: 'b'});
+new Seemple.Array('Hi', {a: 'b'});
 @example <caption>The inheritance</caption>
-class MyClass extends Matreshka.Array {
+class MyClass extends Seemple.Array {
 	constructor(items) {
 		super(...items).sayHello();
 	}
@@ -115,9 +115,9 @@ class MyClass extends Matreshka.Array {
 	}
 }
 
-@example <caption>The inheritance using {@link Matreshka.Class} function</caption>
-const MyClass = Matreshka.Class({
-	extends: Matreshka.Array,
+@example <caption>The inheritance using {@link Seemple.Class} function</caption>
+const MyClass = Seemple.Class({
+	extends: Seemple.Array,
 	constructor(items) {
 		this.recreate(items).sayHello();
 	},

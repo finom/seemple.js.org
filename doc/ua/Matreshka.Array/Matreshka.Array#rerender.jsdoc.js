@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#rerender
+@method Seemple.Array#rerender
 @importance 3
 @since 0.3
 @summary Перемальовує DOM вузли об'єктів, що входять в масив
@@ -9,7 +9,7 @@
 
 Щоб змусити масив перемалюватися, незалежно від наявності відрендерених вузлів (наприклад, ви використовуєте кастомний шаблонізатор в ``itemRenderer``), передайте в метод об'єкт з властивістю ``forceRerender`` рівною ``true``.
 @param {eventOptions} [eventOptions] - Об'єкт події
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 @example
 this.rerender({
 	forceRerender: true

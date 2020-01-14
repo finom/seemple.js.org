@@ -1,14 +1,14 @@
 /**
-@method Matreshka#calc
+@method Seemple#calc
 @importance 1
-@oldlink #!Matreshka-linkProps, #!Matreshka-linkProps(2)
+@oldlink #!Seemple-linkProps, #!Seemple-linkProps(2)
 @since 2.0
 @summary Creates a dependency of one property value on values of others
 @desc ``calc`` creates a dependency of a property (``target`` argument) on values of other properties (``source`` argument). When source property is changed, ``target`` is re-calculated automatically.
 
-> Note that the method has {@link Matreshka.calc static alternative}, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.
+> Note that the method has {@link Seemple.calc static alternative}, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.
 ```js
-const calc = require('matreshka/calc');
+const calc = require('seemple/calc');
 const object = {};
 calc(object, target, source, handler, eventOptions);
 // instead of this.calc(target, source, handler, eventOptions);
@@ -166,7 +166,7 @@ console.log(this.a); // 3
 
 As you may noticed, arguments of ``handler`` function always follow the same order as source properties appear.
 
-In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use {@link Matreshka#set} method with ``skipCalc`` flag.
+In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use {@link Seemple#set} method with ``skipCalc`` flag.
 
 ```js
 this.calc('a', 'b', handler);
@@ -360,11 +360,11 @@ this.a = 5;
 
 
 /**
-@method Matreshka#calc
+@method Seemple#calc
 @importance 2
 @variation batch
 @since 2.0
-@summary Extra syntax for {@link Matreshka#calc}. Allows to define few calculated properties per single call of the method.
+@summary Extra syntax for {@link Seemple#calc}. Allows to define few calculated properties per single call of the method.
 
 @desc The first argument is an object whose keys are property names and values are objects with the following data:
 
@@ -374,7 +374,7 @@ this.a = 5;
 
 The second argument contains common event options which extend ``event`` of every item (properties of ``event`` have higher priority).
 
-``source`` can take any kind of look as {@link Matreshka#calc described above} (a string, an array of strings etc).
+``source`` can take any kind of look as {@link Seemple#calc described above} (a string, an array of strings etc).
 
 @param {array} batch - An object which includes all information about calculated properties
 @param {eventOptions} [commonEventOptions] - Event options which are common for all listed calculated properties

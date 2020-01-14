@@ -1,17 +1,17 @@
 /**
-@method Matreshka.off
-@module matreshka/off
+@method Seemple.off
+@module seemple/off
 @importance 3
 @since 1.1
 @summary Видаляє обробник події
-@desc Цей статичний метод працює так само, як і {@link Matreshka#off} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
+@desc Цей статичний метод працює так само, як і {@link Seemple#off} та всі його варіації, але приймає в якості першого аргументу будь-який JavaScript об'єкт.
 @returns {object} Перший аргумент
-@see {@link Matreshka#off}
+@see {@link Seemple#off}
 @example
 const object = {};
-Matreshka.on(object, 'foo', evt => {
+Seemple.on(object, 'foo', evt => {
 	//...
 });
 
-Matreshka.off(object, 'foo');
+Seemple.off(object, 'foo');
 */

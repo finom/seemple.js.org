@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#isDataKey
+@method Seemple.Object#isDataKey
 @importance 2
 @summary Перевіряє, чи входить строка до списку імен властивостей, що відповідають за дані
 @param {string} key

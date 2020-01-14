@@ -1,14 +1,14 @@
 /**
-@method Matreshka.Array.of
+@method Seemple.Array.of
 @importance 2
 @since 1.1
-@summary Метод создаёт новый экземпляр {@link Matreshka.Array} из произвольного числа агрументов, вне зависимости от числа или типа аргумента
+@summary Метод создаёт новый экземпляр {@link Seemple.Array} из произвольного числа агрументов, вне зависимости от числа или типа аргумента
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/of Array.of}
-@returns {matreshkaArray}
+@returns {seempleArray}
 @example
-const mkArray = Matreshka.Array.of(1, 2, 3, 4);
+const mkArray = Seemple.Array.of(1, 2, 3, 4);
 @example <caption>Наследование метода</caption>
-class MyClass extends Matreshka.Array {
+class MyClass extends Seemple.Array {
     // ...
 }
 

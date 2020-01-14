@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#keys
+@method Seemple.Object#keys
 @importance 2
 @summary Повертає масив імен властивостей, що відповідають за дані
 @returns {array} keys

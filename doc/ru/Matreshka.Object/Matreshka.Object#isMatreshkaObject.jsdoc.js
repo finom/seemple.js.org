@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Object#isMatreshkaObject
+@member {boolean} Seemple.Object#isSeempleObject
 @importance 3
-@summary Свойство ``isMatreshkaObject`` всегда равно ``true`` для экземпляров {@link Matreshka.Object}.
+@summary Свойство ``isSeempleObject`` всегда равно ``true`` для экземпляров {@link Seemple.Object}.
 @example
-console.log(object.isMatreshkaObject);
+console.log(object.isSeempleObject);
 */

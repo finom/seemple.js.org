@@ -1,10 +1,10 @@
 /**
-@member {boolean} Matreshka.Array#renderIfPossible
+@member {boolean} Seemple.Array#renderIfPossible
 @importance 3
 @summary The ``renderIfPossible`` property cancels the array rendering if it equals ``false``
-@see {@link Matreshka.Array#itemRenderer}
+@see {@link Seemple.Array#itemRenderer}
 @example
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
     get renderIfPossible() {
         return false;
     }

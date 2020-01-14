@@ -1,15 +1,15 @@
 /**
-@method Matreshka#trigger
+@method Seemple#trigger
 @importance 1
 @summary Генерирует событие
-@desc После добавление обработчиков событий с помощью метода {@link Matreshka#on}, {@link Matreshka#onDebounce} или {@link Matreshka#once}, событие можно генерировать вручную с помощью этого метода.
+@desc После добавление обработчиков событий с помощью метода {@link Seemple#on}, {@link Seemple#onDebounce} или {@link Seemple#once}, событие можно генерировать вручную с помощью этого метода.
 
-> Обратите внимание, что у метода есть {@link Matreshka.trigger статичный аналог}.
+> Обратите внимание, что у метода есть {@link Seemple.trigger статичный аналог}.
 
-@see {@link Matreshka#on}
-@see {@link Matreshka#once}
-@see {@link Matreshka#onDebounce}
-@see {@link Matreshka#off}
+@see {@link Seemple#on}
+@see {@link Seemple#once}
+@see {@link Seemple#onDebounce}
+@see {@link Seemple#off}
 @param {eventNames} [names] - Имя события или несколько имен, разделенных пробелом
 @param {...*} [arg] - Аргументы, которые будут переданы обработчикам
 @returns {object} self

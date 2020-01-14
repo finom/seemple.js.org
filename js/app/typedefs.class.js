@@ -1,10 +1,10 @@
 import g from './globals';
-import MatreshkaArray from 'matreshka/array';
+import SeempleArray from 'seemple/array';
 import $ from 'balajs';
 import Typedef from './typedef.class';
-import { className } from 'matreshka/binders';
+import { className } from 'seemple/binders';
 
-export default class extends MatreshkaArray {
+export default class extends SeempleArray {
 	Model = Typedef;
 	constructor() {
 		super()

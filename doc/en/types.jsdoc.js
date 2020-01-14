@@ -1,5 +1,5 @@
 /**
-Event handler. Takes any arguments passed to {@link Matreshka#trigger}
+Event handler. Takes any arguments passed to {@link Seemple#trigger}
 @callback eventHandler
 @param {...*} options - Any arguments
 @example
@@ -13,27 +13,27 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');
 
 
 /**
-{@link Matreshka} instance
-@typedef {object} matreshka
+{@link Seemple} instance
+@typedef {object} seemple
 @example
-const mk = new Matreshka();
+const mk = new Seemple();
 obj.calc('a', 'b');
 */
 
 /**
-{@link Matreshka.Object} instance
-@typedef {object} matreshkaObject
+{@link Seemple.Object} instance
+@typedef {object} seempleObject
 @example
-const obj = new Matreshka.Object({ foo: 'x' });
+const obj = new Seemple.Object({ foo: 'x' });
 obj.setData({ bar: 'y' });
 */
 
 
 /**
-{@link Matreshka.Array} instance
-@typedef {object} matreshkaArray
+{@link Seemple.Array} instance
+@typedef {object} seempleArray
 @example
-const arr = new Matreshka.Array(1, 2, 3);
+const arr = new Seemple.Array(1, 2, 3);
 arr.push(4);
 */
 
@@ -122,7 +122,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-If you need to listen an event of every item of {@link Matreshka.Array} or every data property of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific property name.
+If you need to listen an event of every item of {@link Seemple.Array} or every data property of {@link Seemple.Object}, you can use an asterisk "*" instead of specific property name.
 
 ```js
 this.on('*@someevent', () => {...});
@@ -202,14 +202,14 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-A class made using ECMAScript 2015 syntax or returned by {@link Matreshka.Class} function
+A class made using ECMAScript 2015 syntax or returned by {@link Seemple.Class} function
 @typedef {function} class
 @example
 class MyClass {
 	method() { ... }
 };
 @example
-const MyClass = Matreshka.Class({
+const MyClass = Seemple.Class({
 	method() { ... }
 });
 */

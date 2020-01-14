@@ -1,5 +1,5 @@
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @fires unbind
 @fires unbind:KEY
@@ -23,10 +23,10 @@ this.myKey = false;
 
 
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @variation 2
-@summary Alternative syntax which allows to pass an object with bindings to ``unbindNode``. Look at {@link Matreshka#bindNode(2)} for more information
+@summary Alternative syntax which allows to pass an object with bindings to ``unbindNode``. Look at {@link Seemple#bindNode(2)} for more information
 @param {object} bindings (see the example)
 @param {eventOptions} [eventOptions] (see above)
 @returns {object} self
@@ -46,7 +46,7 @@ this.unbindNode({
 
 
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @variation 3
 @summary Alternative syntax of the method which allows to easily unbind unlimited amount of bindings by single ``unbindNode`` call.
@@ -56,7 +56,7 @@ this.unbindNode({
 - ``key`` - a property name
 - ``node`` - a node bound to ``key`` (optional)
 
-This variation is useful because it matches one variation of {@link Matreshka#bindNode} method, allowing to store bindings in a variable to easily remove them when needed.
+This variation is useful because it matches one variation of {@link Seemple#bindNode} method, allowing to store bindings in a variable to easily remove them when needed.
 
 @param {array} batch - An array of bindings
 @param {eventOptions} [eventOptions] (see above)
@@ -79,7 +79,7 @@ const temporaryBindings = [{
 }, {
 	key: 'c.d.e',
 	node: jQuery('.baz'),
-	binder: Matreshka.binders.html(),
+	binder: Seemple.binders.html(),
 	event: {
 		silent: true,
 		exactKey: true

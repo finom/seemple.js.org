@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#isDataKey
+@method Seemple.Object#isDataKey
 @importance 2
 @summary Checks if given string a name of data property
 @param {string} key

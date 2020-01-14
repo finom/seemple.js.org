@@ -1,18 +1,18 @@
 /**
-@method Matreshka#off
+@method Seemple#off
 @importance 1
 @fires removeevent
 @fires removeevent:NAME
 @summary Удаляет обработчик события
 @desc Удаляет созданный ранее обработчик. Все три аргумента опциональны. Вы можете удалить как все события (не передавая ни одного аргумента), так и отдельные (передав только имя события, передав имя события и обработчик, передав и имя события, и обработчик, и контекст)
-@see {@link Matreshka#on}
-@see {@link Matreshka#once}
-@see {@link Matreshka#onDebounce}
-@see {@link Matreshka#trigger}
+@see {@link Seemple#on}
+@see {@link Seemple#once}
+@see {@link Seemple#onDebounce}
+@see {@link Seemple#trigger}
 @param {eventNames} [names] - Разделенный пробелами список имен событий (например, ``"change:x ajaxcomplete change:y"``)
 @param {eventHandler} [callback] - Функция-обработчик
 @param {object} [context] - Контекст
-@returns {matreshka} self
+@returns {seemple} self
 @example
 this.off('change:x bind');
 @example <caption>Удаление всех событий</caption>

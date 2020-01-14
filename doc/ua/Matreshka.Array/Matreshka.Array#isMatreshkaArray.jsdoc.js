@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka.Array#isMatreshkaArray
+@member {boolean} Seemple.Array#isSeempleArray
 @importance 3
-@summary ``isMatreshkaArray`` завжди дорівнює ``true`` для экземплярів {@link Matreshka.Array}
+@summary ``isSeempleArray`` завжди дорівнює ``true`` для экземплярів {@link Seemple.Array}
 @example
-console.log(object.isMatreshkaArray);
+console.log(object.isSeempleArray);
 */

@@ -1,7 +1,7 @@
 /**
-Функция-обработчик события. Принимает любые аргументы, переданные в {@link Matreshka#trigger}
+Функция-обработчик события. Принимает любые аргументы, переданные в {@link Seemple#trigger}
 @callback eventHandler
-@param {...*} options - любые аргументы, переданные в вызов {@link Matreshka#trigger} после имени события
+@param {...*} options - любые аргументы, переданные в вызов {@link Seemple#trigger} после имени события
 @example
 const eventHandler = (...args) => {
 	console.log(args);
@@ -13,27 +13,27 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');
 
 
 /**
-Экземпляр класса {@link Matreshka}
-@typedef {object} matreshka
+Экземпляр класса {@link Seemple}
+@typedef {object} seemple
 @example
-const mk = new Matreshka();
+const mk = new Seemple();
 obj.calc('a', 'b');
 */
 
 /**
-Экземпляр класса {@link Matreshka.Object}
-@typedef {object} matreshkaObject
+Экземпляр класса {@link Seemple.Object}
+@typedef {object} seempleObject
 @example
-const obj = new Matreshka.Object({ foo: 'x' });
+const obj = new Seemple.Object({ foo: 'x' });
 obj.setData({ bar: 'y' });
 */
 
 
 /**
-Экземпляр класса {@link Matreshka.Array}
-@typedef {object} matreshkaArray
+Экземпляр класса {@link Seemple.Array}
+@typedef {object} seempleArray
 @example
-const arr = new Matreshka.Array(1, 2, 3);
+const arr = new Seemple.Array(1, 2, 3);
 arr.push(4);
 */
 
@@ -41,7 +41,7 @@ arr.push(4);
 /**
 Имя события или несколько имен, разделенных пробелами.
 
-> Здесь представлен краткий список событий с небольшими примерами. Для получения полной информации, прочтите [эту статью на Хабре](http://habrahabr.ru/company/matreshka/blog/267513/).
+> Здесь представлен краткий список событий с небольшими примерами. Для получения полной информации, прочтите [эту статью на Хабре](http://habrahabr.ru/company/seemple/blog/267513/).
 
 ##### Произвольные события
 ```js
@@ -125,7 +125,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-При возникновении необходимости слушать изменения во всех элементах {@link Matreshka.Array} или во всех свойствах, отвечающих за данные {@link Matreshka.Object}, вместо имени свойства можно указать звездочку "*".
+При возникновении необходимости слушать изменения во всех элементах {@link Seemple.Array} или во всех свойствах, отвечающих за данные {@link Seemple.Object}, вместо имени свойства можно указать звездочку "*".
 ```js
 this.on('*@someevent', () => {...});
 this.on('*.b.*.d@change:e', () => {...});
@@ -205,14 +205,14 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-Класс созданный при помощи синтаксиса ECMAScript 2015 либо возвращаемый функцией {@link Matreshka.Class}
+Класс созданный при помощи синтаксиса ECMAScript 2015 либо возвращаемый функцией {@link Seemple.Class}
 @typedef {function} class
 @example
 class MyClass {
 	method() { ... }
 };
 @example
-const MyClass = Matreshka.Class({
+const MyClass = Seemple.Class({
 	method() { ... }
 });
 */

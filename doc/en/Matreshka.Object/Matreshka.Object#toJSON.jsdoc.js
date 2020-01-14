@@ -1,15 +1,15 @@
 /**
-@method Matreshka.Object#toJSON
+@method Seemple.Object#toJSON
 @importance 1
 @summary Converts an instance and its internal properties into an ordinary object
 @desc The method works recursively, calling ``toJSON`` for all internal properties which have such method. To cancel this behavior pass ``false`` as the only argument.
 @param {boolean} [recursive=true]
 @returns {object}
 @example
-const mkObject = new Matreshka.Object({
+const mkObject = new Seemple.Object({
 	a: 1,
 	b: 2,
-	c: new Matreshka.Object({
+	c: new Seemple.Object({
 		d: 3,
 		e: 4
 	})
@@ -18,6 +18,6 @@ const mkObject = new Matreshka.Object({
 // returns {a: 1, b: 2, c: { d: 3, e: 4 }}
 console.log(mkObject.toJSON());
 
-// returns {a: 1, b: 2, c: MatreshkaObject}
+// returns {a: 1, b: 2, c: SeempleObject}
 console.log(mkObject.toJSON(false));
 */

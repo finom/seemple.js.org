@@ -7882,7 +7882,7 @@ a[href*="//"]::after {
 #promo img {
   max-width: 90%;
 }
-#promo .mk-logo-matreshka {
+#promo .mk-logo-seemple {
   height: 133px;
 }
 #promo .mk-logo-text {
@@ -8181,10 +8181,10 @@ main article .share-twitter {
     display: none;
   }
 }
-main [id="!examples"] [href^="http://gh-embed.matreshka.io"] {
+main [id="!examples"] [href^="http://gh-embed.seemple.io"] {
   border-bottom: 1px dashed currentColor;
 }
-main [id="!examples"] [href^="http://gh-embed.matreshka.io"]::after {
+main [id="!examples"] [href^="http://gh-embed.seemple.io"]::after {
   content: none;
 }
 main [id="!examples"] .list-item-number {
@@ -8449,7 +8449,7 @@ nav ul ul a {
 nav .submenu-wrapper {
   position: relative;
   overflow: hidden;
-  		/*a[href^="#!Matreshka"] {
+  		/*a[href^="#!Seemple"] {
   			&::before {
   				color: #888;
   				margin-right: -3px;
@@ -8744,15 +8744,15 @@ header.hidden {
   margin: 1px;
 }
 
-[data-type="matreshka"] {
+[data-type="seemple"] {
   background-color: #bb8368;
 }
 
-[data-type="matreshkaObject"] {
+[data-type="seempleObject"] {
   background-color: #bb9f68;
 }
 
-[data-type="matreshkaArray"] {
+[data-type="seempleArray"] {
   background-color: #bbbb68;
 }
 

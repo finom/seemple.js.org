@@ -1,14 +1,14 @@
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 1
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
-@desc {@link Matreshka#bindNode} is the only method of the {@link Matreshka} class  which is responsible for changing DOM (except array renderer). It creates a bridge between value of a property and state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this method, it isn't necessary to monitor the synchronizations between model and view.
+@desc {@link Seemple#bindNode} is the only method of the {@link Seemple} class  which is responsible for changing DOM (except array renderer). It creates a bridge between value of a property and state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this method, it isn't necessary to monitor the synchronizations between model and view.
 
-> Note that the method has {@link Matreshka.bindNode static alternative}, which works just the same but accepts any object as the first argument, shifting rest arguments to the right.
+> Note that the method has {@link Seemple.bindNode static alternative}, which works just the same but accepts any object as the first argument, shifting rest arguments to the right.
 ```js
-const bindNode = require('matreshka/bindnode');
+const bindNode = require('seemple/bindnode');
 const object = {};
 bindNode(object, key, node, binder, eventOptions);
 // instead of this.bindNode(key, node, binder, eventOptions);
@@ -88,11 +88,11 @@ this.myKey = 42;
 
 It looks easy but you may ask a question: "What should I do to avoid writing these rules every time?". Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets (see the example above).
 
-As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` method (see below). This problem is solved by the {@link Matreshka.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
+As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` method (see below). This problem is solved by the {@link Seemple.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
 ```js
 this.bindNode('myKey', '.my-element');
 ```
-How to do it? You should add a function checking  your element against a set of rules to the beginning of the {@link Matreshka.defaultBinders} array.
+How to do it? You should add a function checking  your element against a set of rules to the beginning of the {@link Seemple.defaultBinders} array.
 ```js
 const checkboxBinder = () => {
 	return {
@@ -107,8 +107,8 @@ const checkboxBinder = () => {
 };
 
 // the unshift method adds the function
-// to the beginning of the Matreshka.defaultBinders array
-Matreshka.defaultBinders.unshift(node => {
+// to the beginning of the Seemple.defaultBinders array
+Seemple.defaultBinders.unshift(node => {
 	// check if the element is a checkbox
 	if(node.tagName == 'INPUT' && node.type == 'checkbox') {
 		// if checking is OK, return a new binder
@@ -146,16 +146,16 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
-For global access to the binder you can add new property to {@link Matreshka.binders}.
+For global access to the binder you can add new property to {@link Seemple.binders}.
 ```js
-Matreshka.binders.uiSlider = uiSlider;
+Seemple.binders.uiSlider = uiSlider;
 // ...
-this.bindNode('myKey1', '.my-slider1', Matreshka.binders.uiSlider(0, 100));
-this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
+this.bindNode('myKey1', '.my-slider1', Seemple.binders.uiSlider(0, 100));
+this.bindNode('myKey2', '.my-slider2', Seemple.binders.uiSlider(1, 1000));
 ```
 
 
-{@link Matreshka.defaultBinders} OOB has a support for **all form elements** without any exception: ``select`` (including ``multiple``), ``textarea``, ``output``, ``input`` (including all types from the specification of HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` and others). That means it is not necessary to designate a binder for standard elements.
+{@link Seemple.defaultBinders} OOB has a support for **all form elements** without any exception: ``select`` (including ``multiple``), ``textarea``, ``output``, ``input`` (including all types from the specification of HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` and others). That means it is not necessary to designate a binder for standard elements.
 ```html
 <input type="color" class="my-color-input">
 ```
@@ -183,10 +183,10 @@ this.on('click::myKey', () => { ... });
 this.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
-> If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link Matreshka#bindOptionalNode}.
+> If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link Seemple#bindOptionalNode}.
 
 #### Sandbox definition
-{@link Matreshka#bindNode} can associate a class instance with the "main" HTML element on the page creating so-called **sandbox**. It is necessary to limit the instance influence on other HTML nodes. A special property ``sandbox`` is used for binding a sandbox.
+{@link Seemple#bindNode} can associate a class instance with the "main" HTML element on the page creating so-called **sandbox**. It is necessary to limit the instance influence on other HTML nodes. A special property ``sandbox`` is used for binding a sandbox.
 ```html
 <div class="my-sandbox">
 	<!-- your HTML code -->
@@ -198,11 +198,11 @@ this.bindNode('sandbox', '.my-sandbox');
 ```
 
 The definition of the sandbox adds lots of conveniences for you. For example:
-+ allows to use the {@link Matreshka#select} and {@link Matreshka#$} methods
-+ adds a new ``:sandbox`` selector for the {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$} methods and others
-+ adds syntactic sugar for delegated DOM events in the {@link Matreshka#on} method
++ allows to use the {@link Seemple#select} and {@link Seemple#$} methods
++ adds a new ``:sandbox`` selector for the {@link Seemple#bindNode}, {@link Seemple#select}, {@link Seemple#$} methods and others
++ adds syntactic sugar for delegated DOM events in the {@link Seemple#on} method
 
-> Keep in mind that you can bind only one sandbox element to ``sandbox`` property. You can try {@link Matreshka#bindSandbox} which does the same thing but removes previous binding.
+> Keep in mind that you can bind only one sandbox element to ``sandbox`` property. You can try {@link Seemple#bindSandbox} which does the same thing but removes previous binding.
 
 ```js
 // declare a sandbox
@@ -236,7 +236,7 @@ To understand important features of ``bindNode`` it is required to read informat
 
 #### A flag ``exactKey=false``
 
-If ``key`` string includes a dot then such string will be interpreted as a path to a property of nested object. Matreshka will listen all changes of given object tree.
+If ``key`` string includes a dot then such string will be interpreted as a path to a property of nested object. Seemple will listen all changes of given object tree.
 
 ```js
 this.a = { b: { c: 'foo' } };
@@ -297,7 +297,7 @@ These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when 
 
 #### A flag ``useExactBinder=false``
 
-Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link Matreshka.defaultBinder} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
+Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link Seemple.defaultBinder} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
 
 For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the instance property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
 
@@ -313,15 +313,15 @@ this.bindNode('x', node, binder, {
 });
 ```
 
-@see {@link Matreshka#unbindNode}
-@see {@link Matreshka#bindOptionalNode}
-@see {@link Matreshka#bindSandbox}
-@see {@link Matreshka#$}
-@see {@link Matreshka.binders}
-@see {@link Matreshka.defaultBinders}
+@see {@link Seemple#unbindNode}
+@see {@link Seemple#bindOptionalNode}
+@see {@link Seemple#bindSandbox}
+@see {@link Seemple#$}
+@see {@link Seemple.binders}
+@see {@link Seemple.defaultBinders}
 
 
-@param {string|matreshka} key - A property name
+@param {string|seemple} key - A property name
 @param {string|node|$nodes} node - An HTML element which must be bound to a ``key``
 @param {binder} [binder] - A binder containing the following properties: ``on`` , ``getValue``, ``setValue``, ``initialize``, ``destroy``. You can get more detailed information about binders in their documentation: see {@link #typedef-binder}
 @param {eventOptions} [eventOptions] - An event options which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), flags described above or custom data
@@ -331,11 +331,11 @@ this.bindNode('x', node, binder, {
 
 
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 2
 @variation 2
 @summary Alternative syntax: passing of an object
-@desc To the {@link Matreshka#bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys of the object are property names and values can get the following look:
+@desc To the {@link Seemple#bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys of the object are property names and values can get the following look:
 
 - A node
 - An object with properties ``node`` and ``binder``
@@ -359,14 +359,14 @@ this.bindNode({
 this.bindNode({
 	foo: {
 		node: ':sandbox .aaa',
-		binder: Matreshka.binders.html()
+		binder: Seemple.binders.html()
 	},
 	bar: '.bbb',
 	baz: [{
 		node: '.ccc'
 	}, {
 		node: document.querySelector('.ddd'),
-		binder: Matreshka.binders.prop('baz')
+		binder: Seemple.binders.prop('baz')
 	}]
 }, {
 	// will be used as a binder for .bbb and .ccc
@@ -378,7 +378,7 @@ this.bindNode({
 
 
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 2
 @variation 3
 @summary Alternative syntax which makes possible to define unlimited amount of bindings per one ``bindNode`` call.
@@ -415,7 +415,7 @@ this.bindNode([{
 }, {
 	key: 'c.d.e',
 	node: jQuery('.baz'),
-	binder: Matreshka.binders.html(),
+	binder: Seemple.binders.html(),
 	event: {
 		silent: true,
 		exactKey: true

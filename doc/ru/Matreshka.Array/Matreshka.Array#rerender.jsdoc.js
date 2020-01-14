@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#rerender
+@method Seemple.Array#rerender
 @importance 3
 @since 0.3
 @summary Перерисовывает DOM узлы элементов, входящих в массив
@@ -9,7 +9,7 @@
 
 Чтоб заставить массив перерисоваться, независимо от наличия отрендеренных узлов (например, вы используете кастомный шаблонизатор в ``itemRenderer``), передайте в метод объект со свойством ``forceRerender`` равным ``true``.
 @param {eventOptions} [eventOptions] - Объект события
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 @example
 this.rerender({
 	forceRerender: true

@@ -1,19 +1,19 @@
 /**
-@method Matreshka.Array.from
+@method Seemple.Array.from
 @importance 2
 @since 1.1
-@summary Метод створює новий екземпляр {@link Matreshka.Array} з масивоподібного або ітеруємого об'єкта
+@summary Метод створює новий екземпляр {@link Seemple.Array} з масивоподібного або ітеруємого об'єкта
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from Array.from}
 @param {object} arrayLike - Массивоподібний або ітеруємий об'єкт
 @param {function} [mapFn] - Відображаюча функція, що викликається для кожного елемента масиву
 @param {*} [thisArg] - Об'єкт, який використовується в якості ``this`` при виклику ``mapFn``
-@returns {matreshkaArray}
+@returns {seempleArray}
 @example
-const mkArray = Matreshka.Array.from([1, 2, 3, 4]);
+const mkArray = Seemple.Array.from([1, 2, 3, 4]);
 @example
-const mkArray = Matreshka.Array.from([1, 2, 3, 4], item => item * 2);
+const mkArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);
 @example <caption>Спадкування методу</caption>
-class MyClass extends Matreshka.Array {
+class MyClass extends Seemple.Array {
     // ...
 }
 

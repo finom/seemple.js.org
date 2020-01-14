@@ -22,7 +22,7 @@
 
 ### Мова програмування
 
-У прикладах на цій сторінці використовується синтаксис, відповідний до специфікації ECMAScript 2015 (класи, стрілочні функції, цикли for..of, let/const). Ті, хто не використовує транспайлери (інструменти, які конвертують новий JavaScript в старий) і, в той же час, змушені підтримувати застарілі браузери, можуть замінити ``const`` і ``let`` на ``var``, arrow function на function expression, а класи, на виклик функції {@link Matreshka.Class}. При цьому, звичайно, потрібно розуміти різницю між старим синтаксисом і новим.
+У прикладах на цій сторінці використовується синтаксис, відповідний до специфікації ECMAScript 2015 (класи, стрілочні функції, цикли for..of, let/const). Ті, хто не використовує транспайлери (інструменти, які конвертують новий JavaScript в старий) і, в той же час, змушені підтримувати застарілі браузери, можуть замінити ``const`` і ``let`` на ``var``, arrow function на function expression, а класи, на виклик функції {@link Seemple.Class}. При цьому, звичайно, потрібно розуміти різницю між старим синтаксисом і новим.
 
 ```js
 const foo = 1;
@@ -66,14 +66,14 @@ var Foo = Class({
 ```js
 // кожну статичну властивість будь-якого об'єкта
 // або функції можна імпортувати в вигляді модуля
-const MatreshkaArray = require('matreshka/array');
-const propBinder = require('matreshka/binders/prop');
-const bindNode = require('matreshka/bindNode');
+const SeempleArray = require('seemple/array');
+const propBinder = require('seemple/binders/prop');
+const bindNode = require('seemple/bindNode');
 ```
 
 Імпорт головного модуля підтягне весь фреймворк. Як правило, це не потрібно.
 ```js
-const Matreshka = require('matreshka');
+const Seemple = require('seemple');
 ```
 
-> Модуль класу Matreshka, без ``binders``, ``Array`` и ``Object`` знаходиться за адресою ``'matreshka/matreshka'``
+> Модуль класу Seemple, без ``binders``, ``Array`` и ``Object`` знаходиться за адресою ``'seemple/seemple'``

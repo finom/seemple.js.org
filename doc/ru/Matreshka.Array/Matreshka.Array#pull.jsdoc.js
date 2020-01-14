@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#pull
+@method Seemple.Array#pull
 @importance 2
 @since 0.1
 @fires pull

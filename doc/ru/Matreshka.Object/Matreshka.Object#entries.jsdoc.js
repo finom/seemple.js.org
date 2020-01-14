@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#entries
+@method Seemple.Object#entries
 @since 2.0.0
 @importance 3
 @summary Возвращает массив пар имен и значений свойств, отвечающих за данные

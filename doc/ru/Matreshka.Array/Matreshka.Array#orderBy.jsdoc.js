@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#orderBy
+@method Seemple.Array#orderBy
 @importance 2
 @fires sort
 @since 1.6
@@ -8,7 +8,7 @@
 
 @param {string|array} keys - Ключ свойства или массив нескольких ключей, по которым коллекция будет отсортирована
 @param {string|array} [orders=asc] - Порядок или массив порядков, соответствующих массиву ключей
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 @example
 this.recreate([
     { 'user': 'fred',   'age': 48 },

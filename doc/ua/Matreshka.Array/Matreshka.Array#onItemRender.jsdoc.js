@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#onItemRender
+@method Seemple.Array#onItemRender
 @importance 2
 @abstract
 @since 1.1
@@ -12,17 +12,17 @@
 @param {object} renderEvent - Об'єкт події ``render``
 
 @example
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 	}
 	onRender(renderEvt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
-		this.bindNode('text', ':sandbox .text', Matreshka.binders.html());
+		this.bindNode('text', ':sandbox .text', Seemple.binders.html());
 	}
 });
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() {
 		return MyModel;
 	}

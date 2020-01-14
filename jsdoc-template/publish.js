@@ -86,7 +86,7 @@ module.exports.publish = function(data, opts) {
 		item.summary_plain = item.summary ? item.summary.replace(/(<([^>]+)>)/ig, "") : '';
 	});
 
-	result.classes.Matreshka.binders = result.binders;
+	result.classes.Seemple.binders = result.binders;
 
 	origData.forEach(function(item) {
 		var _class,
@@ -102,7 +102,7 @@ module.exports.publish = function(data, opts) {
 			}
 		}
 
-		if (item.memberof === 'Matreshka.binders') {
+		if (item.memberof === 'Seemple.binders') {
 			result.binders.members.push(item);
 
 			item.params = item.params || item.properties || [];
@@ -117,7 +117,7 @@ module.exports.publish = function(data, opts) {
 
 	fs.mkPath(outdir);
 
-	view.lang = localizations[result.classes.Matreshka.lang];
+	view.lang = localizations[result.classes.Seemple.lang];
 
 	for(var className in result.classes) {
 		var _class = result.classes[className];
@@ -133,9 +133,9 @@ module.exports.publish = function(data, opts) {
 
 	// resorting classes
 	result.classes = {
-		'Matreshka': result.classes['Matreshka'],
-		'Matreshka.Object': result.classes['Matreshka.Object'],
-		'Matreshka.Array': result.classes['Matreshka.Array']
+		'Seemple': result.classes['Seemple'],
+		'Seemple.Object': result.classes['Seemple.Object'],
+		'Seemple.Array': result.classes['Seemple.Array']
 	};
 
 	fs.writeFileSync(env.opts.destination + '/doc_menu.html', view.render('menu.html', result), 'utf8');

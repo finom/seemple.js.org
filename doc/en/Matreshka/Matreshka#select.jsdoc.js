@@ -1,10 +1,10 @@
 /**
-@method Matreshka#select
+@method Seemple#select
 @importance 2
 @summary Returns HTML node corresponding to a selector from a sandbox
-@desc The method is very similar to {@link Matreshka#selectAll}, but it returns only one element or ``null``.
+@desc The method is very similar to {@link Seemple#selectAll}, but it returns only one element or ``null``.
 
-> The method has {@link Matreshka.select static alternative}
+> The method has {@link Seemple.select static alternative}
 
 @param {string} selector - A selector
 @returns {node|null}

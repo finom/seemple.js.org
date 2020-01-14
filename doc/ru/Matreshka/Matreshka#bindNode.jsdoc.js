@@ -1,14 +1,14 @@
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 1
 @fires bind
 @fires bind:KEY
 @summary Связывает свойство объекта с HTML элементом
-@desc {@link Matreshka#bindNode} - это единственный метод класса {@link Matreshka}, отвечающий за изменения DOM. Он создаёт мост между значением свойства и состоянием HTML элемента на странице: от простого инпута до сложного виджета (сложность элементов не ограничена).  После связывания свойства экземпляра и HTML элемента не нужно больше следить за синхронизацией данных и представления.
+@desc {@link Seemple#bindNode} - это единственный метод класса {@link Seemple}, отвечающий за изменения DOM. Он создаёт мост между значением свойства и состоянием HTML элемента на странице: от простого инпута до сложного виджета (сложность элементов не ограничена).  После связывания свойства экземпляра и HTML элемента не нужно больше следить за синхронизацией данных и представления.
 
-> Обратите внимание, что у метода есть {@link Matreshka.bindNode статичный аналог}, который работает в точности так же, но принимает любой целевой объект в качестве первого аргумента, cдвигая остальные аргументы вправо.
+> Обратите внимание, что у метода есть {@link Seemple.bindNode статичный аналог}, который работает в точности так же, но принимает любой целевой объект в качестве первого аргумента, cдвигая остальные аргументы вправо.
 ```js
-const bindNode = require('matreshka/bindnode');
+const bindNode = require('seemple/bindnode');
 const object = {};
 bindNode(object, key, node, binder, eventOptions);
 // вместо this.bindNode(key, node, binder, eventOptions);
@@ -87,11 +87,11 @@ this.myKey = 42;
 
 Выглядит просто, но вы, скорее всего, задаётесь вопросом: "Как сделать так, чтоб мне не пришлось каждый раз прописывать эти правила?".  Действительно, на странице может быть очень много однотипных элементов: текстовых полей, выпадающих меню, новых полей из спецификации HTML5, могут быть и сторонние виджеты (о чем говорит пример выше).
 
-Как видно из документации к аргументам метода ``bindNode``, третий аргумент не обязателен. Этот вопрос решает массив {@link Matreshka.defaultBinders}, который содержит функции, проверяющие HTML элемент на соответствие заданным правилам и возвращающие соответствующий байндер или ``undefined``. Появляется возможность многократно сократить код, вынося правила привязки в отдельную часть вашего кода, а для привязки использовать синтаксис без третьего аргумента:
+Как видно из документации к аргументам метода ``bindNode``, третий аргумент не обязателен. Этот вопрос решает массив {@link Seemple.defaultBinders}, который содержит функции, проверяющие HTML элемент на соответствие заданным правилам и возвращающие соответствующий байндер или ``undefined``. Появляется возможность многократно сократить код, вынося правила привязки в отдельную часть вашего кода, а для привязки использовать синтаксис без третьего аргумента:
 ```js
 this.bindNode('myKey', '.my-element');
 ```
-Как это сделать? Нужно добавить функцию, проверяющую ваш элемент на соответствие некоторым правилам в начало массива {@link Matreshka.defaultBinders}.
+Как это сделать? Нужно добавить функцию, проверяющую ваш элемент на соответствие некоторым правилам в начало массива {@link Seemple.defaultBinders}.
 ```js
 const checkboxBinder = () => {
 	return {
@@ -106,8 +106,8 @@ const checkboxBinder = () => {
 };
 
 // метод unshift добавляет функцию
-// в начало массива Matreshka.defaultBinders
-Matreshka.defaultBinders.unshift(node => {
+// в начало массива Seemple.defaultBinders
+Seemple.defaultBinders.unshift(node => {
 	// проверяем, является ли элемент чекбоксом
 	if(node.tagName === 'INPUT' && node.type === 'checkbox') {
 		// если проверка пройдена, возвращаем новый байндер
@@ -144,16 +144,16 @@ this.myKey1 = 42;
 this.myKey2 = 999;
 ```
 
-Для глобального доступа к байндеру, можно расширить {@link Matreshka.binders}.
+Для глобального доступа к байндеру, можно расширить {@link Seemple.binders}.
 ```js
-Matreshka.binders.uiSlider = uiSlider;
+Seemple.binders.uiSlider = uiSlider;
 // ...
-this.bindNode('myKey1', '.my-slider1', Matreshka.binders.uiSlider(0, 100));
-this.bindNode('myKey2', '.my-slider2', Matreshka.binders.uiSlider(1, 1000));
+this.bindNode('myKey1', '.my-slider1', Seemple.binders.uiSlider(0, 100));
+this.bindNode('myKey2', '.my-slider2', Seemple.binders.uiSlider(1, 1000));
 ```
 
 
-{@link Matreshka.defaultBinders} из коробки содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``, ``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер не обязательно.
+{@link Seemple.defaultBinders} из коробки содержит поддержку **всех без исключения** HTML элементов форм: ``select`` (включая ``multiple``), ``textarea``, ``output``, ``input`` (в том числе и все типы из спецификации HTML5: ``text``, ``checkbox``, ``radio``, ``range``, ``number``, ``date``, ``search``, ``time``, ``datetime``, ``datetime-local``, ``color`` и остальных). Это значит, что для стандартных элементов указывать байндер не обязательно.
 ```html
 <input type="color" class="my-color-input">
 ```
@@ -182,11 +182,11 @@ this.on('click::myKey', () => { ... });
 this.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
-> Если элемент не найден, бросается исключение ``"Bound element is missing"``. Для того, чтоб избежать ошибки используйте метод {@link Matreshka#bindOptionalNode}
+> Если элемент не найден, бросается исключение ``"Bound element is missing"``. Для того, чтоб избежать ошибки используйте метод {@link Seemple#bindOptionalNode}
 
 #### Создание песочницы
 
-{@link Matreshka#bindNode} умеет ассоциировать экземпляр класса с "главным" HTML элементом, создавая так называемую **песочницу**. Это нужно для того, чтоб ограничить влияние объекта одним HTML элементом. Для привязки песочницы используется специальное свойство ``sandbox``.
+{@link Seemple#bindNode} умеет ассоциировать экземпляр класса с "главным" HTML элементом, создавая так называемую **песочницу**. Это нужно для того, чтоб ограничить влияние объекта одним HTML элементом. Для привязки песочницы используется специальное свойство ``sandbox``.
 ```html
 <div class="my-sandbox">
 	<!-- your HTML code -->
@@ -198,11 +198,11 @@ this.bindNode('sandbox', '.my-sandbox');
 ```
 
 Определение песочницы добавляет множество удобств программисту. Например:
-+ Позволяет использовать методы {@link Matreshka#select} и {@link Matreshka#$}
-+ Добавляет новый селектор ``:sandbox`` в методах {@link Matreshka#bindNode}, {@link Matreshka#select}, {@link Matreshka#$}
-+ Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Matreshka#on}
++ Позволяет использовать методы {@link Seemple#select} и {@link Seemple#$}
++ Добавляет новый селектор ``:sandbox`` в методах {@link Seemple#bindNode}, {@link Seemple#select}, {@link Seemple#$}
++ Добавляет синтаксический сахар для делегированных DOM событий в методе {@link Seemple#on}
 
-> Следует иметь в виду, что только один HTML элемент может быть связан со свойством ``sandbox``, иначе бросается ошибка. Для объявления песочницы можно воспользоваться методом {@link Matreshka#bindSandbox}. Перед тем, как объявить байндинг, метод отвязывает предыдущую песочницу.
+> Следует иметь в виду, что только один HTML элемент может быть связан со свойством ``sandbox``, иначе бросается ошибка. Для объявления песочницы можно воспользоваться методом {@link Seemple#bindSandbox}. Перед тем, как объявить байндинг, метод отвязывает предыдущую песочницу.
 
 ```js
 // объявляем песочницу
@@ -294,7 +294,7 @@ setTimeout(() => {
 
 #### Флаг ``useExactBinder=false``
 
-Даже если в метод ``bindNode`` передать конкретный байндер, фреймворк попытается отыскать байндер из {@link Matreshka.defaultBinder} и расширить его свойствами переданного объекта. Такая возможность позволяет использовать дефолтный байндер, который частично переопределен.
+Даже если в метод ``bindNode`` передать конкретный байндер, фреймворк попытается отыскать байндер из {@link Seemple.defaultBinder} и расширить его свойствами переданного объекта. Такая возможность позволяет использовать дефолтный байндер, который частично переопределен.
 
 Например, мы хотим связать ``input[type="text"]`` со свойством. По умолчанию, стандартный байндер для этого элемента содержит свойство ``"on"`` со значением ``"input"``. Это значит, что значение свойства экземпляра и состояние элемента будут синхронизированы сразу после ввода или удаления символа пользователем. В случае, если вы хотите, чтоб синхронизация происходила по DOM событию ``"blur"``, вам потребуется передать третьим аргументом объект, содержащий единственное свойство ``"on"``. Этот объект объединится со стандартным байндером, сохранив при этом значения ``getValue`` и ``setValue``.
 
@@ -310,12 +310,12 @@ this.bindNode('x', node, binder, {
 })
 ```
 
-@see {@link Matreshka#unbindNode}
-@see {@link Matreshka#bindOptionalNode}
-@see {@link Matreshka#bindSandbox}
-@see {@link Matreshka#$}
-@see {@link Matreshka.binders}
-@see {@link Matreshka.defaultBinders}
+@see {@link Seemple#unbindNode}
+@see {@link Seemple#bindOptionalNode}
+@see {@link Seemple#bindSandbox}
+@see {@link Seemple#$}
+@see {@link Seemple.binders}
+@see {@link Seemple.defaultBinders}
 
 
 @param {string} key - Имя свойства
@@ -328,11 +328,11 @@ this.bindNode('x', node, binder, {
 
 
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 2
 @variation 2
-@summary Альтернативный синтаксис {@link Matreshka#bindNode}: возможность передать объект с байндингами
-@desc В метод {@link Matreshka#bindNode} можно передать объект чтобы избежать многократного вызова метода и сократить код. Ключи объекта - это имена привязываемых свойств, а значения могут быть следующими:
+@summary Альтернативный синтаксис {@link Seemple#bindNode}: возможность передать объект с байндингами
+@desc В метод {@link Seemple#bindNode} можно передать объект чтобы избежать многократного вызова метода и сократить код. Ключи объекта - это имена привязываемых свойств, а значения могут быть следующими:
 - HTML элемент
 - Объект со свойствами ``node`` (HTML элемент) и ``binder``
 - Массив объектов со свойствами ``node`` (HTML элемент) и ``binder``
@@ -355,14 +355,14 @@ this.bindNode({
 this.bindNode({
 	foo: {
 		node: ':sandbox .aaa',
-		binder: Matreshka.binders.html()
+		binder: Seemple.binders.html()
 	},
 	bar: '.bbb',
 	baz: [{
 		node: '.ccc'
 	}, {
 		node: document.querySelector('.ddd'),
-		binder: Matreshka.binders.prop('baz')
+		binder: Seemple.binders.prop('baz')
 	}]
 }, {
 	// will be used as a binder for .bbb and .ccc
@@ -374,7 +374,7 @@ this.bindNode({
 
 
 /**
-@method Matreshka#bindNode
+@method Seemple#bindNode
 @importance 2
 @variation 3
 @summary Альтернативный синтаксис, позволяющий объявить неограниченное количество байндингов одним вызовом метода.
@@ -410,7 +410,7 @@ this.bindNode([{
 }, {
 	key: 'c.d.e',
 	node: jQuery('.baz'),
-	binder: Matreshka.binders.html(),
+	binder: Seemple.binders.html(),
 	event: {
 		silent: true,
 		exactKey: true

@@ -1,5 +1,5 @@
 /**
-@method Matreshka#set
+@method Seemple#set
 @importance 1
 @fires change
 @fires change:KEY
@@ -11,10 +11,10 @@
 + ``silentHTML`` - не менять состояние привязанных элементов
 + ``force`` - вызвать события ``change`` и ``change:KEY`` даже если значение свойства не изменилось
 + ``forceHTML`` - изменить состояние привязанного элемента, даже если значение свойства не изменилось. Эта опция нужна, если привязанный элемент был отрисован после привязки (например, в ``select`` были добавлены теги ``option``)
-+ ``skipMediator`` - предотвращает трансформацию свойства медиатором (см. {@link Matreshka#mediate})
-+ ``skipCalc`` - предотвращает работу зависимостей, созданных с помощью {@link Matreshka#calc}
++ ``skipMediator`` - предотвращает трансформацию свойства медиатором (см. {@link Seemple#mediate})
++ ``skipCalc`` - предотвращает работу зависимостей, созданных с помощью {@link Seemple#calc}
 
-> У метода есть {@link Matreshka.set статичный аналог}.
+> У метода есть {@link Seemple.set статичный аналог}.
 
 @param {string} key - Ключ
 @param {*} value - Значение
@@ -51,10 +51,10 @@ this.set('myKey', 4, {
 
 
 /**
-@method Matreshka#set
+@method Seemple#set
 @importance 1
 @variation 2
-@summary Альтернативный синтаксис метода {@link Matreshka#set} "ключ-значение"
+@summary Альтернативный синтаксис метода {@link Seemple#set} "ключ-значение"
 @param {object} keyValuePairs - Объект, содержащий пары ключ-значение
 @param {eventOptions} [eventOptions] - Объект события
 @example

@@ -1,11 +1,11 @@
 /**
-@method Matreshka#selectAll
-@synonym Matreshka#$
+@method Seemple#selectAll
+@synonym Seemple#$
 @importance 2
 @summary Returns HTML nodes corresponding to a selector from a sandbox
-@desc After sandbox declaration using {@link Matreshka#bindNode} method, you can get its descendants. Besides, the method supports the ``:bound(KEY)`` selector.
+@desc After sandbox declaration using {@link Seemple#bindNode} method, you can get its descendants. Besides, the method supports the ``:bound(KEY)`` selector.
 
-> The method has {@link Matreshka.selectAll static alternative}
+> The method has {@link Seemple.selectAll static alternative}
 
 @param {string} selector - A selector
 @returns {$nodes}
@@ -30,10 +30,10 @@ nodes = $('.my-element').find('.my-another-element');
 
 
 /**
-@method Matreshka#$
+@method Seemple#$
 @importance 2
 @variation instance
-@summary Does the same as {@link Matreshka#selectAll}
+@summary Does the same as {@link Seemple#selectAll}
 @example
 this.$('.my-element');
 */

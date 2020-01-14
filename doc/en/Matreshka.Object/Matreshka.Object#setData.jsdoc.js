@@ -1,6 +1,6 @@
 /**
-@method Matreshka.Object#setData
-@synonym Matreshka.Object#jset
+@method Seemple.Object#setData
+@synonym Seemple.Object#jset
 @importance 1
 @fires change
 @fires change:KEY
@@ -11,20 +11,20 @@
 
 1. Sets a specified value to a given property.
 
-2. Adds a key to data keys list which it makes property available for using in the {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON} and other methods.
+2. Adds a key to data keys list which it makes property available for using in the {@link Seemple.Object#each}, {@link Seemple.Object#keys}, {@link Seemple.Object#toJSON} and other methods.
 
 
 > When  ``replaceData`` flag is set as ``true`` then all other properties will be removed from the list of data properties.
 
-Apart from that, the method works the same as {@link Matreshka#set}.
+Apart from that, the method works the same as {@link Seemple#set}.
 
-@see {@link Matreshka#set}
+@see {@link Seemple#set}
 
 @param {string} key - A key
 @param {*} value - A value
 @param {eventOptions} [eventOptions] - An event options
 
-@returns {matreshkaObject} self
+@returns {seempleObject} self
 
 @example
 this.setData('a', 1).setData('b', 2);
@@ -42,7 +42,7 @@ console.log(this.keys()); // displays  ['a', 'b']
 
 console.log(this.toJSON()); // displays  { a: 1, b: 2 }
 
-@example <caption>After using the {@link Matreshka.Object#setData} method, you can work with a property like with an ordinary one</caption>
+@example <caption>After using the {@link Seemple.Object#setData} method, you can work with a property like with an ordinary one</caption>
 this.setData('a', 1).setData('b', 2);
 this.set('a', 3);
 this.b = 4;
@@ -52,14 +52,14 @@ this.jset('a', 1);
 */
 
 /**
-@method Matreshka.Object#setData
+@method Seemple.Object#setData
 @importance 1
 @variation 2
-@summary Alternative syntax of the {@link Matreshka.Object#setData} method that uses a "key-value" object for setting several properties at once
+@summary Alternative syntax of the {@link Seemple.Object#setData} method that uses a "key-value" object for setting several properties at once
 @param {object} keyValuePairs - A key-value object
 @param {eventOptions} evtOpts - A event object
 
-@returns {matreshkaObject} self
+@returns {seempleObject} self
 
 @example
 this.setData({

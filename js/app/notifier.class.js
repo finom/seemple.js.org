@@ -1,8 +1,8 @@
 import g from './globals';
-import MatreshkaObject from 'matreshka/object';
+import SeempleObject from 'seemple/object';
 import $ from 'balajs';
 
-export default class extends MatreshkaObject {
+export default class extends SeempleObject {
 	constructor() {
 		super()
 			.set({

@@ -1,13 +1,13 @@
 /**
-@method Matreshka.toMatreshka
-@oldlink #!Matreshka.to
-@module matreshka/tomatreshka
+@method Seemple.toSeemple
+@oldlink #!Seemple.to
+@module seemple/toseemple
 @importance 3
 @since 1.1
-@summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Matreshka.Object} и {@link Matreshka.Array}
-@returns {matreshka} новосозданный экземпляр ``Matreshka``
+@summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Seemple.Object} и {@link Seemple.Array}
+@returns {seemple} новосозданный экземпляр ``Seemple``
 @example
-const mk = Matreshka.toMatreshka({
+const mk = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2

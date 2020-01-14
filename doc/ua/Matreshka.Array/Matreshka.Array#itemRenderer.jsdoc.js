@@ -1,22 +1,22 @@
 /**
-@member {string|function} Matreshka.Array#itemRenderer
+@member {string|function} Seemple.Array#itemRenderer
 @importance 1
 @abstract
 @since 0.1
 @summary HTML строка, селектор або функція, яка відповідає за рендерінг элементів масива на сторінці
 @param {object} item - об'єкт, який буде рендериться (на випадок необхідності визначення умов для рендеринга різних елементів в різних випадках)
-@desc Властивість ``itemRenderer`` - це перевизначаєма (віртуальна) властивість, яка дозволяє рендерити айтеми масиву без додаткового коду. При вставці нового об'єкта в масив, автоматично створюється HTML елемент. Цей елемент стає пісочницею (див. {@link Matreshka#bindNode}) (цю поведінку можна скасувати, див. нижче) для вставленого об'єкта і вставляється в HTML контейнер, визначений у масиві.
+@desc Властивість ``itemRenderer`` - це перевизначаєма (віртуальна) властивість, яка дозволяє рендерити айтеми масиву без додаткового коду. При вставці нового об'єкта в масив, автоматично створюється HTML елемент. Цей елемент стає пісочницею (див. {@link Seemple#bindNode}) (цю поведінку можна скасувати, див. нижче) для вставленого об'єкта і вставляється в HTML контейнер, визначений у масиві.
 
 > Для скорочення, в прикладах до цієї статті буде використовуватися синтаксис class fields.
 
 #### Куди вставляється створений елемент?
-Для того, щоб визначити місце, в яке будуть вставлятися відмальовані HTML вузли, потрібно визначити **контейнер **. Для цього слід оголосити HTML пісочницю для масиву або зв'язати спеціальний ключ ``container`` з HTML контейнером. Детальніше про привязки і пісочницю див. {@link Matreshka#bindNode}.
+Для того, щоб визначити місце, в яке будуть вставлятися відмальовані HTML вузли, потрібно визначити **контейнер **. Для цього слід оголосити HTML пісочницю для масиву або зв'язати спеціальний ключ ``container`` з HTML контейнером. Детальніше про привязки і пісочницю див. {@link Seemple#bindNode}.
 Приклад використання пісочниці як контейнера:
 ```html
 <ul class="my-list"></ul>
 ```
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>';
 	get Model() { return MyModel; }
 	constructor() {
@@ -36,7 +36,7 @@ class MyArray extends Matreshka.Array {
 </div>
 ```
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>';
 	get Model() { return MyModel; }
 	constructor() {
@@ -55,14 +55,14 @@ class MyArray extends Matreshka.Array {
 #### HTML строка в якості значення властивості
 Як видно з прикладу вище, ``itemRenderer`` може бути визначений, як HTML строка.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '<div class="my-div">foo</div>';
 	constructor() { ... }
 }
 ```
 #### Селектор в якості значення властивості
-На випадок, якщо ви виносите шаблони для елементів на HTML сторінку, ``itemRenderer`` підтримує селектор в якості значення. У цьому випадку, {@link Matreshka.Array} буде шукати HTML елемент в DOM дереві і витягне ``innerHTML`` знайденого елемента. У разі, якщо елемент не знайдений, кидається виняток.
+На випадок, якщо ви виносите шаблони для елементів на HTML сторінку, ``itemRenderer`` підтримує селектор в якості значення. У цьому випадку, {@link Seemple.Array} буде шукати HTML елемент в DOM дереві і витягне ``innerHTML`` знайденого елемента. У разі, якщо елемент не знайдений, кидається виняток.
 
 > HTML текст від селектора відрізняється наявністю символу ``<``.
 
@@ -72,7 +72,7 @@ class MyArray extends Matreshka.Array {
 </script>
 ```
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '#my-template';
 	constructor() { ... }
@@ -83,7 +83,7 @@ class MyArray extends Matreshka.Array {
 
 __HTML строку__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer() {
 		return '<div class="my-div">foo</div>';
 	}
@@ -92,7 +92,7 @@ class MyArray extends Matreshka.Array {
 
 __Селектор__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer: function() {
 		return '#my-template';
 	}
@@ -101,7 +101,7 @@ class MyArray extends Matreshka.Array {
 
 __DOM вузол__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer() {
 		return document.createElement('div');
 	}
@@ -109,13 +109,13 @@ class MyArray extends Matreshka.Array {
 ```
 
 #### Перекриття батьківського рендерера властивістю ``render``
-Іноді зручно оголошувати рендерер в класі {@link Matreshka.Array#Model}, а не на рівні колекції. Властивість ``renderer`` перекриває значення ``itemRenderer``, якщо вона задана для елемента колекції.
+Іноді зручно оголошувати рендерер в класі {@link Seemple.Array#Model}, а не на рівні колекції. Властивість ``renderer`` перекриває значення ``itemRenderer``, якщо вона задана для елемента колекції.
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	renderer = '<div class="my-div">foo</div>';
 }
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	Model = MyModel,
 	itemRenderer = '<frameset>bar</frameset>';
 	constructor() { ... }
@@ -132,7 +132,7 @@ class MyArray extends Matreshka.Array {
 <form class="my-form"></form>
 ```
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 
@@ -141,12 +141,12 @@ class MyModel extends Matreshka.Object {
             // оголошуємо біндінги
 			this.bindNode('isChecked', ':sandbox .my-checkbox');
 			this.bindNode('text', ':sandbox .text',
-				Matreshka.binders.html());
+				Seemple.binders.html());
 		});
 	}
 });
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = `<label>
 		<input type="checkbox" class="my-checkbox">
@@ -182,7 +182,7 @@ const app = new MyArray();
 ```
 І зв'яже чекбокси з відповідними властивостями ``isChecked`` і ``text``.
 
-Не забувайте, що в Matreshka.js реалізована можливість вилову делегованих подій. Тобто сам масив може відловити подію рендеринга айтема, використовуючи ім'я події ``*@render`` (див. документацію до {@link #typedef-eventNames}).
+Не забувайте, що в Seemple.js реалізована можливість вилову делегованих подій. Тобто сам масив може відловити подію рендеринга айтема, використовуючи ім'я події ``*@render`` (див. документацію до {@link #typedef-eventNames}).
 ```js
 this.on('*@render', () => {
 	alert('Child element is rendered');
@@ -191,28 +191,28 @@ this.on('*@render', () => {
 
 > HTML елемент стає пісочницею для вставленого об'єкту дозволяючи використовувати селектор ``:sandbox`` і інші можливості після рендеринга. Якщо об'єкт входить відразу в кілька колекцій, встановіть йому властивість ``bindRenderedAsSandbox: false``, щоб скасувати цю поведінку.
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	bindRenderedAsSandbox = false;
 	// ...
 });
 ```
 
 #### ``onItemRender`` та ``onRender``
-Для поліпшення коду в одній з попередніх версій з'явився віртуальний метод {@link Matreshka.Array#onItemRender}, який можна використовувати замість події ``render``. В якості альтернативи, у "моделей" викликається метод ``onRender``, що так само дозволяє зробити код більш "плоским" і позбутися вкладених функцій.
+Для поліпшення коду в одній з попередніх версій з'явився віртуальний метод {@link Seemple.Array#onItemRender}, який можна використовувати замість події ``render``. В якості альтернативи, у "моделей" викликається метод ``onRender``, що так само дозволяє зробити код більш "плоским" і позбутися вкладених функцій.
 
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 	}
 	onRender(evt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
 		this.bindNode('text', ':sandbox .text',
-				Matreshka.binders.html());
+				Seemple.binders.html());
 	}
 }
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '...';
 	constructor() {
@@ -229,10 +229,10 @@ const app = new MyArray();
 
 
 #### Шаблонізатор
-Поглянувши на приклади використання {@link Matreshka.Array} і {@link Matreshka.Array#itemRenderer} можна звернути увагу на те, що вся логіка, що відповідає за двосторонню і односторонню прив'язку даних укладена в JavaScript коді. Але коли розробляєш дуже просту колекцію, яка не включає в себе складну логіку, масу прив'язок та ін. хотілося б мати більш короткий варіант оголошення прив'язок. Для цього, в ``itemRenderer`` може бути переданий шаблон, що включає прив'язки, укладені у фігурні дужки (див. {@link Matreshka#parseBindings}).
+Поглянувши на приклади використання {@link Seemple.Array} і {@link Seemple.Array#itemRenderer} можна звернути увагу на те, що вся логіка, що відповідає за двосторонню і односторонню прив'язку даних укладена в JavaScript коді. Але коли розробляєш дуже просту колекцію, яка не включає в себе складну логіку, масу прив'язок та ін. хотілося б мати більш короткий варіант оголошення прив'язок. Для цього, в ``itemRenderer`` може бути переданий шаблон, що включає прив'язки, укладені у фігурні дужки (див. {@link Seemple#parseBindings}).
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer: `<label>
 		<input type="checkbox" checked="{{isChecked}}">{{text}}
 	</label>`
@@ -243,16 +243,16 @@ const app = new MyArray();
 ```
 
 #### Скасування рендеринга
-Як видно вище, якщо у дочірнього елемента задано властивість ``render``, ``Matreshka.Array`` спробує його змалювати. Для того, щоб повністю скасувати рендеринг для масиву, надайте властивості масиву ``renderIfPossible`` значення ``false``.
+Як видно вище, якщо у дочірнього елемента задано властивість ``render``, ``Seemple.Array`` спробує його змалювати. Для того, щоб повністю скасувати рендеринг для масиву, надайте властивості масиву ``renderIfPossible`` значення ``false``.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	renderIfPossible = false;
 	// ...
 }
 ```
 
 #### Переміщення об'єкта з одного масиву в інший
-За замовчуванням, при вставці об'єкта в масив Matreshka.js спробує його змалювати, використовуючи ``itemRenderer``. Це дає перевагу у випадках, коли у вас на сторінці є два або більше контейнерів, що включають в себе елементи прив'язані до одного і того же об'єкту. При зміні об'єкта, всі елементи реагують на зміну, оновлюючи DOM.
+За замовчуванням, при вставці об'єкта в масив Seemple.js спробує його змалювати, використовуючи ``itemRenderer``. Це дає перевагу у випадках, коли у вас на сторінці є два або більше контейнерів, що включають в себе елементи прив'язані до одного і того же об'єкту. При зміні об'єкта, всі елементи реагують на зміну, оновлюючи DOM.
 
 Але іноді стоїть завдання переміщення об'єкта між колекціями, не перемальовуючи його заново. Для переміщення об'єкта з одного масиву в інший, включаючи його пісочницю, використовуйте прапор ``moveSandbox``.
 ```js
@@ -275,16 +275,16 @@ fetch('templates/template.html')
 	});
 ```
 
-Для рендеринга тільки тих об'єктів, які ще не були намальовані, скористайтеся методом {@link Matreshka#set} з прапором ``forceRerender`` зі значенням ``false``
+Для рендеринга тільки тих об'єктів, які ще не були намальовані, скористайтеся методом {@link Seemple#set} з прапором ``forceRerender`` зі значенням ``false``
 
 ```js
 this.set('itemRenderer', renderer, {
 	forceRerender: false
 });
 ```
-Така необхідність може виникнути тоді, коли ви використовуєте серверний пререндерінг (див. {@link Matreshka.Array#restore}), а шаблон завантажується динамічно.
+Така необхідність може виникнути тоді, коли ви використовуєте серверний пререндерінг (див. {@link Seemple.Array#restore}), а шаблон завантажується динамічно.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	constructor() {
 		super()
 			.bindNode('sandbox', '.some-node')
@@ -303,21 +303,21 @@ class MyArray extends Matreshka.Array {
 
 #### Рендерінг колекції, що складається зі звичайних об'єктів
 
-Об'єкт, що входить в колекцію, не обов'язково повинен бути екземпляром ``Matreshka``, можна рендерити будь-який об'єкт. Байндінги для таких об'єктів можна оголосити використовуючи статичний метод {@link Matreshka.bindNode}.
+Об'єкт, що входить в колекцію, не обов'язково повинен бути екземпляром ``Seemple``, можна рендерити будь-який об'єкт. Байндінги для таких об'єктів можна оголосити використовуючи статичний метод {@link Seemple.bindNode}.
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	// Model не визначена
 	itemRenderer: ...
 	onItemRender(item) {
-		Matreshka.bindNode(item, 'x', ':sandbox .some-node');
+		Seemple.bindNode(item, 'x', ':sandbox .some-node');
 	}
 })
 ```
 
 Ще невеликий приклад: рендеринг простого списку.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>{{value}}</li>';
 	constructor() {
 		super().bindNode('sandbox', '.my-list');
@@ -328,6 +328,6 @@ const arr = new MyArray();
 arr.push({ value: 'Item 1' }, { value: 'Item 2' });
 ```
 
-@see {@link Matreshka#bindNode}
-@see {@link Matreshka.Array#Model}
+@see {@link Seemple#bindNode}
+@see {@link Seemple.Array#Model}
 */

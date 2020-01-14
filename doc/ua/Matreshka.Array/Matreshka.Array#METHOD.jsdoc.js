@@ -1,8 +1,8 @@
 /**
-@method Matreshka.Array#METHOD
+@method Seemple.Array#METHOD
 @importance 1
 @summary Будь-який метод iз ``Array.prototype``
-@desc {@link Matreshka.Array} включає в себе всі методи, що входять в нативний JavaScript масив:
+@desc {@link Seemple.Array} включає в себе всі методи, що входять в нативний JavaScript масив:
 
 - [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 - [pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
@@ -33,12 +33,12 @@
 
 При цьому, вони працюють точно так же, як і методи `` Array.prototype``. Є лише кілька застережень:
 - Метод `` forEach`` повертає себе замість ``undefined``
-- Методи, які в оригінальному вигляді повертають новий масив (``splice``, ``slice``, ``filter``, ``map`` ...), повертають новий екземпляр ``Matreshka.Array``.
+- Методи, які в оригінальному вигляді повертають новий масив (``splice``, ``slice``, ``filter``, ``map`` ...), повертають новий екземпляр ``Seemple.Array``.
 - Методи ``keys``, ``values`` та ``entries`` повертають масив замість ітератора.
 
-Крім усього, методи генерують події пов'язані з будь-якою модифікацією масиву. Детальніше див. {@link Matreshka.Array}.
+Крім усього, методи генерують події пов'язані з будь-якою модифікацією масиву. Детальніше див. {@link Seemple.Array}.
 
-@see {@link Matreshka.Array#METHOD_}
+@see {@link Seemple.Array#METHOD_}
 @example
 this.push(1, 2, 3);
 @example
@@ -50,7 +50,7 @@ const mkArray = this
 		//...
 	});
 
-console.log(mkArray.isMatreshkaArray); // true
+console.log(mkArray.isSeempleArray); // true
 @example
 this.reverse();
 */

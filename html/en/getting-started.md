@@ -7,10 +7,10 @@ This issue has been resolved in this documentation. We have split up the API int
 After you've learned the most important API parts you can hardily start doing fantastic things. Classes, methods and properties marked with [[i class="imp-level-1"]][[/i]] need to be learned primarily.
 
 ### [[i class="imp-level-2"]][[/i]] The second level - recommended to learn
-If you already know the quick-start basics, you can look at other methods and properties of Matreshka.
+If you already know the quick-start basics, you can look at other methods and properties of Seemple.
 
 ### [[i class="imp-level-3"]][[/i]] The third level - other methods and properties
-We've hidden rarely used parts (Matreshka API is really rich). If you want to know everything about Matreshka, turn on "Advanced mode" checkbox from the menu.
+We've hidden rarely used parts (Seemple API is really rich). If you want to know everything about Seemple, turn on "Advanced mode" checkbox from the menu.
 
 **Warning**. If you open a link to a method or a property of the third level of importance, the "Advanced mode" is turned on automatically.
 
@@ -23,4 +23,4 @@ We've hidden rarely used parts (Matreshka API is really rich). If you want to kn
 
 > **Any other devices**: just bookmark the page
 
-> Now the documentation to Matreshka can be read without the Internet connection. If the page lags (noticed in Android 4.2), switch over to the mode "One By One".
+> Now the documentation to Seemple can be read without the Internet connection. If the page lags (noticed in Android 4.2), switch over to the mode "One By One".

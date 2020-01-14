@@ -1,8 +1,8 @@
 import g from './globals';
-import Matreshka from 'matreshka/matreshka';
+import Seemple from 'seemple/seemple';
 import $ from 'balajs';
 
-export default class Examples extends Matreshka {
+export default class Examples extends Seemple {
     constructor() {
         super()
             .bindNode('sandbox', 'article[id="!examples"]')

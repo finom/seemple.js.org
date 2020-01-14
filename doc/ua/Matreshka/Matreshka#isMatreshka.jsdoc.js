@@ -1,7 +1,7 @@
 /**
-@member {boolean} Matreshka#isMatreshka
+@member {boolean} Seemple#isSeemple
 @importance 3
-@summary ``isMatreshka`` завжди дорівнює ``true`` для экземплярів {@link Matreshka}
+@summary ``isSeemple`` завжди дорівнює ``true`` для экземплярів {@link Seemple}
 @example
-alert(object.isMatreshka);
+alert(object.isSeemple);
 */

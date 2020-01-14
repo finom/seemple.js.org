@@ -1,11 +1,11 @@
 /**
-@method Matreshka.Array#mediateItem
+@method Seemple.Array#mediateItem
 @importance 2
 @since 0.1
-@see {@link Matreshka.Array#Model}
-@see {@link Matreshka#mediate}
+@see {@link Seemple.Array#Model}
+@see {@link Seemple#mediate}
 @summary Transforms an item value
-@desc This method is used to transform ``Matreshka.Array`` items. Note that calling of this method overrides the {@link Matreshka.Array#Model} property.
+@desc This method is used to transform ``Seemple.Array`` items. Note that calling of this method overrides the {@link Seemple.Array#Model} property.
 @param {function} mediator - A function which should return transformed value of an item
 @example
 // all the array items are integers

@@ -1,6 +1,6 @@
 /**
-@method Matreshka.Object#setData
-@synonym Matreshka.Object#jset
+@method Seemple.Object#setData
+@synonym Seemple.Object#jset
 @importance 1
 @fires change
 @fires change:KEY
@@ -11,18 +11,18 @@
 
 1. Встановлює значення заданої властивості.
 
-2. Додає ключ властивості в список даних, що робить властивість доступною для використання в методах {@link Matreshka.Object#each}, {@link Matreshka.Object#keys}, {@link Matreshka.Object#toJSON}) та інших.
+2. Додає ключ властивості в список даних, що робить властивість доступною для використання в методах {@link Seemple.Object#each}, {@link Seemple.Object#keys}, {@link Seemple.Object#toJSON}) та інших.
 
 > Якщо передати прапор ``replaceData``, встановлений як ``true``, в об'єкт події, то інші властивості будуть вилучені зі списку властивостей, що відповідають за дані.
 
-В іншому, метод працює так само, як і {@link Matreshka#set}.
-@see {@link Matreshka#set}
+В іншому, метод працює так само, як і {@link Seemple#set}.
+@see {@link Seemple#set}
 
 @param {string} key - Ключ
 @param {*} value - Значення
 @param {eventOptions} [eventOptions] - Об'єкт події
 
-@returns {matreshkaObject} self
+@returns {seempleObject} self
 
 @example
 this.setData('a', 1).setData('b', 2);
@@ -51,14 +51,14 @@ this.jset('a', 1);
 */
 
 /**
-@method Matreshka.Object#setData
+@method Seemple.Object#setData
 @importance 1
 @variation 2
-@summary Альтернативний синтаксис методу {@link Matreshka.Object#setData}, який приймає об'єкт ключ-значення для встановлення декількох властивостей одночасно
+@summary Альтернативний синтаксис методу {@link Seemple.Object#setData}, який приймає об'єкт ключ-значення для встановлення декількох властивостей одночасно
 @param {object} keyValuePairs - Об'єкт ключ-значення
 @param {eventOptions} evtOpts - Об'єкт події
 
-@returns {matreshkaObject} self
+@returns {seempleObject} self
 
 @example
 this.setData({

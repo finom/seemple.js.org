@@ -1,11 +1,11 @@
 /**
-@method Matreshka.Array#mediateItem
+@method Seemple.Array#mediateItem
 @importance 2
 @since 0.1
-@see {@link Matreshka.Array#Model}
-@see {@link Matreshka#mediate}
+@see {@link Seemple.Array#Model}
+@see {@link Seemple#mediate}
 @summary Трансформирует значение элементов массива
-@desc Этот метод служит для того, чтоб перехватить и трансформировать добавленные в массив элементы. Обратите внимание, метод переопределяет свойство {@link Matreshka.Array#Model}.
+@desc Этот метод служит для того, чтоб перехватить и трансформировать добавленные в массив элементы. Обратите внимание, метод переопределяет свойство {@link Seemple.Array#Model}.
 @param {function} mediator - Функция, возвращающая трансформированный элемент массива
 @example
 // все элементы массива - целые числа

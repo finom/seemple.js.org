@@ -1,7 +1,7 @@
 /**
-Функція-обробник події. Приймає будь-які аргументи, передані в {@link Matreshka#trigger}
+Функція-обробник події. Приймає будь-які аргументи, передані в {@link Seemple#trigger}
 @callback eventHandler
-@param {...*} options - будь-які аргументи, передані в виклик {@link Matreshka#trigger} після імені події
+@param {...*} options - будь-які аргументи, передані в виклик {@link Seemple#trigger} після імені події
 @example
 const eventHandler = (...args) => {
 	console.log(args);
@@ -13,27 +13,27 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');
 
 
 /**
-Екземпляр класу {@link Matreshka}
-@typedef {object} matreshka
+Екземпляр класу {@link Seemple}
+@typedef {object} seemple
 @example
-const mk = new Matreshka();
+const mk = new Seemple();
 obj.calc('a', 'b');
 */
 
 /**
-Екземпляр класу {@link Matreshka.Object}
-@typedef {object} matreshkaObject
+Екземпляр класу {@link Seemple.Object}
+@typedef {object} seempleObject
 @example
-const obj = new Matreshka.Object({ foo: 'x' });
+const obj = new Seemple.Object({ foo: 'x' });
 obj.setData({ bar: 'y' });
 */
 
 
 /**
-Екземпляр класу {@link Matreshka.Array}
-@typedef {object} matreshkaArray
+Екземпляр класу {@link Seemple.Array}
+@typedef {object} seempleArray
 @example
-const arr = new Matreshka.Array(1, 2, 3);
+const arr = new Seemple.Array(1, 2, 3);
 arr.push(4);
 */
 
@@ -123,7 +123,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-При виникненні необхідності слухати зміни в усіх елементах {@link Matreshka.Array} або у всіх властивостях, що відповідають за дані {@link Matreshka.Object}, замість імені властивості можна вказати зірочку "*".
+При виникненні необхідності слухати зміни в усіх елементах {@link Seemple.Array} або у всіх властивостях, що відповідають за дані {@link Seemple.Object}, замість імені властивості можна вказати зірочку "*".
 ```js
 this.on('*@someevent', () => {...});
 this.on('*.b.*.d@change:e', () => {...});
@@ -203,14 +203,14 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-Клас створений за допомогою синтаксису ECMAScript 2015 або повернений функцією {@link Matreshka.Class}
+Клас створений за допомогою синтаксису ECMAScript 2015 або повернений функцією {@link Seemple.Class}
 @typedef {function} class
 @example
 class MyClass {
 	method() { ... }
 };
 @example
-const MyClass = Matreshka.Class({
+const MyClass = Seemple.Class({
 	method() { ... }
 });
 */

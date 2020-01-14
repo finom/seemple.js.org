@@ -1,12 +1,12 @@
 /**
-@method Matreshka.Array#restore
+@method Seemple.Array#restore
 @importance 2
 @since 1.3
 @fires recreate
 @fires modify
 @fires add
 @fires addone
-@summary Restores {@link Matreshka.Array} instance from existing HTML nodes on a page.
+@summary Restores {@link Seemple.Array} instance from existing HTML nodes on a page.
 @desc In case if a collection is pre-rendered on the page (e. g. via webserver), the method can restore the collection from existing HTML nodes.
 
 ```html
@@ -22,17 +22,17 @@
 ```
 
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 		this.addDataKeys('value');
 	}
 	onRender() {
-		this.bindNode('value', ':sandbox', Matreshka.binders.html())
+		this.bindNode('value', ':sandbox', Seemple.binders.html())
 	}
 });
 
-class MyCollection extends Matreshka.Array {
+class MyCollection extends Seemple.Array {
 	get itemRenderer() {
 		return ':sandbox .renderer';
 	}
@@ -54,9 +54,9 @@ console.log(myCollection.toJSON());
 
 If ``selector`` arg isn't passed then the collection will be restored from child nodes that placed in a container (``"container"`` or ``"sandbox"``).
 
-The method fires  ``"render"`` event and calls ``onRender`` and ``onItemRender`` functions (look at the {@link Matreshka.Array#onItemRender docs}) for every newly added item similar to {@link Matreshka.Array#itemRenderer usual rendering}.
+The method fires  ``"render"`` event and calls ``onRender`` and ``onItemRender`` functions (look at the {@link Seemple.Array#onItemRender docs}) for every newly added item similar to {@link Seemple.Array#itemRenderer usual rendering}.
 
 @param {selector} [selector] - A selector
 @param {eventOptions} [eventOptions] - An event options
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 */

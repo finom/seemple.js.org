@@ -1,16 +1,16 @@
 /**
-@method Matreshka.Array#toJSON
+@method Seemple.Array#toJSON
 @importance 1
-@summary Конвертирует экземпляр {@link Matreshka.Array} в обычный массив
+@summary Конвертирует экземпляр {@link Seemple.Array} в обычный массив
 @desc Метод работает рекурсивно, вызывая ``toJSON`` для входящих объектов, у которых есть метод с таким именем. Для отмены рекурсии передайте ``false`` первым аргументом.
 @param {boolean} [recursive=true]
 @returns {array}
 @example
-const mkArray = new Matreshka.Array([1, 2, new MatreshkaArray(3, 4)]);
+const mkArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
 
 // возвращает [1, 2, [3, 4]]
 console.log(mkArray.toJSON());
 
-// возвращает [1, 2, MatreshkaArray]
+// возвращает [1, 2, SeempleArray]
 console.log(mkArray.toJSON(false));
 */

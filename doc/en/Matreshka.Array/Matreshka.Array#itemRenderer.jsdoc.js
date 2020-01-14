@@ -1,23 +1,23 @@
 /**
-@member {string|function} Matreshka.Array#itemRenderer
+@member {string|function} Seemple.Array#itemRenderer
 @importance 1
 @abstract
 @since 0.1
 @summary HTML string, a selector or a function which is responsible for rendering DOM nodes of an array on a page
 @param {object} item - An object, which will be rendered (in case you need to use some conditions)
-@desc The ``itemRenderer`` overridable property allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Matreshka#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
+@desc The ``itemRenderer`` overridable property allows to render corresponded HTML nodes of items of an array without a programmer's participation. On a new item insertion into an array, HTML node is created automatically. This node becomes a sandbox (see. {@link Seemple#bindNode}) (this behavior can be canceled, read below) for inserted item and it is inserted into HTML container which is defined in an array.
 
 > For brevity, the "class fields" syntax will be used in examples at this article.
 
 #### Where is created node inserted?
-In order to define a place where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Matreshka#bindNode}.
+In order to define a place where rendered HTML nodes will be inserted, it is necessary to define a **container**. HTML sandbox should be declared for an array or a special ``container`` key should be bound to the HTML container for that.  Read more detailed information about bindings and sandboxes in {@link Seemple#bindNode}.
 
 Rendering to a sandbox:
 ```html
 <ul class="my-list"></ul>
 ```
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>';
 	get Model() { return MyModel; }
 	constructor() {
@@ -37,7 +37,7 @@ If you do not want to insert HTML nodes straight into the sandbox, you can bind 
 ```
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>';
 	get Model() { return MyModel; }
 	constructor() {
@@ -56,7 +56,7 @@ The ``itemRenderer`` property supports a few variants of defining, but they all 
 #### HTML string as a property value
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '<div class="my-div">foo</div>';
 	constructor() { ... }
@@ -64,7 +64,7 @@ class MyArray extends Matreshka.Array {
 ```
 
 #### A selector as a property value
-In case if you carry over the templates for the items to the HTML page, ``itemRenderer`` supports the selector as a value. When this occurs, {@link Matreshka.Array} will search for HTML node in DOM tree and it will extract ``innerHTML`` of found node. In case if a node is not found, an exception will be thrown.
+In case if you carry over the templates for the items to the HTML page, ``itemRenderer`` supports the selector as a value. When this occurs, {@link Seemple.Array} will search for HTML node in DOM tree and it will extract ``innerHTML`` of found node. In case if a node is not found, an exception will be thrown.
 
 > HTML string is different from a selector due to the presence of the ``<`` symbol in a string.
 
@@ -74,7 +74,7 @@ In case if you carry over the templates for the items to the HTML page, ``itemRe
 </script>
 ```
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '#my-template';
 	constructor() { ... }
@@ -86,7 +86,7 @@ The usage of a function as the ``itemRenderer`` property value gives an addition
 
 __HTML string__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer() {
 		return '<div class="my-div">foo</div>';
 	}
@@ -95,7 +95,7 @@ class MyArray extends Matreshka.Array {
 
 __A selector__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer() {
 		return '#my-template';
 	}
@@ -104,7 +104,7 @@ class MyArray extends Matreshka.Array {
 
 __DOM node__
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer() {
 		return document.createElement('div');
 	}
@@ -112,13 +112,13 @@ class MyArray extends Matreshka.Array {
 ```
 
 #### Parent renderer overlapping by the ``render`` property
-Sometimes it is convenient to declare a renderer inside a {@link Matreshka.Array#Model model} class. The ``renderer`` property overlaps the ``itemRenderer`` value if it is specified for a child item of a collection.
+Sometimes it is convenient to declare a renderer inside a {@link Seemple.Array#Model model} class. The ``renderer`` property overlaps the ``itemRenderer`` value if it is specified for a child item of a collection.
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	renderer = '<div class="my-div">foo</div>';
 }
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	Model = MyModel,
 	itemRenderer = '<frameset>bar</frameset>';
 	constructor() { ... }
@@ -135,7 +135,7 @@ After an item has been inserted into an array and its HTML node has already been
 <form class="my-form"></form>
 ```
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 
@@ -144,12 +144,12 @@ class MyModel extends Matreshka.Object {
             // define bindings
 			this.bindNode('isChecked', ':sandbox .my-checkbox');
 			this.bindNode('text', ':sandbox .text',
-				Matreshka.binders.html());
+				Seemple.binders.html());
 		});
 	}
 });
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = `<label>
 		<input type="checkbox" class="my-checkbox">
@@ -197,7 +197,7 @@ this.on('*@render', () => {
 
 > Rendered HTML node becomes a sandbox for inserted item allowing to use the ``:sandbox`` selector and some other possibilities after rendering. If an item enters a few collections at once, set the ``bindRenderedAsSandbox`` property to ``false`` for an item to cancel this behavior.
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	bindRenderedAsSandbox = false;
 	// ...
 });
@@ -205,21 +205,21 @@ class MyModel extends Matreshka.Object {
 
 #### ``onItemRender`` and ``onRender``
 
-To improve the readability of code there is a virtual method called {@link Matreshka.Array#onItemRender}, which can be used instead of ``render`` event. As second alternative, the ``onRender`` can be used for a "model".
+To improve the readability of code there is a virtual method called {@link Seemple.Array#onItemRender}, which can be used instead of ``render`` event. As second alternative, the ``onRender`` can be used for a "model".
 
 ```js
-class MyModel extends Matreshka.Object {
+class MyModel extends Seemple.Object {
 	constructor(data) {
 		super(data);
 	},
 	onRender(evt) {
 		this.bindNode('isChecked', ':sandbox .my-checkbox');
 		this.bindNode('text', ':sandbox .text',
-				Matreshka.binders.html());
+				Seemple.binders.html());
 	}
 }
 
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get Model() { return MyModel; }
 	itemRenderer = '...';
 	constructor() {
@@ -234,10 +234,10 @@ const app = new MyArray();
 ```
 
 #### A template engine
-If you have a look at the examples of using {@link Matreshka.Array} and {@link Matreshka.Array#itemRenderer}, you can notice that all logic which is responsible for the two-way and one-way data binding is contained in JavaScript code. But when you develop a very simple collection which does not include complicated logic, lots of bindings, etc, you would like to have a shorter variant of the binding declaration. A template including bindings (see {@link Matreshka#parseBindings}) can be passed to ``itemRenderer`` for that.
+If you have a look at the examples of using {@link Seemple.Array} and {@link Seemple.Array#itemRenderer}, you can notice that all logic which is responsible for the two-way and one-way data binding is contained in JavaScript code. But when you develop a very simple collection which does not include complicated logic, lots of bindings, etc, you would like to have a shorter variant of the binding declaration. A template including bindings (see {@link Seemple#parseBindings}) can be passed to ``itemRenderer`` for that.
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer: `<label>
 		<input type="checkbox" checked="{{isChecked}}">{{text}}
 	</label>`
@@ -248,9 +248,9 @@ const app = new MyArray();
 ```
 
 #### The cancellation of rendering
-As is seen from above  if the ``render`` property of the child item is specified, ``Matreshka.Array`` will try to render it. In order to completely cancel rendering for an array, set a property  ``renderIfPossible`` of ``Matreshka.Array`` instance as ``false``.
+As is seen from above  if the ``render`` property of the child item is specified, ``Seemple.Array`` will try to render it. In order to completely cancel rendering for an array, set a property  ``renderIfPossible`` of ``Seemple.Array`` instance as ``false``.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	renderIfPossible = false;
 	// ...
 }
@@ -285,15 +285,15 @@ fetch('templates/template.html')
 	});
 ```
 
-To render the only objects which aren't yet rendered use {@link Matreshka#set} with ``forceRerender`` flag set to ``false``.
+To render the only objects which aren't yet rendered use {@link Seemple#set} with ``forceRerender`` flag set to ``false``.
 ```js
 this.set('itemRenderer', renderer, {
 	forceRerender: false
 });
 ```
-It's useful when you use server prerendering (look at the {@link Matreshka.Array#restore}) and template needs to be loaded asynchronously.
+It's useful when you use server prerendering (look at the {@link Seemple.Array#restore}) and template needs to be loaded asynchronously.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	constructor() {
 		super()
 			.bindNode('sandbox', '.some-node')
@@ -313,21 +313,21 @@ class MyArray extends Matreshka.Array {
 
 #### Rendering of a collection that contains any kind of object
 
-It's not obligatory to fill an array with only ``Matreshka`` instances, you can render any kind of object. Bindings for such objects can be defined using static method {@link Matreshka.bindNode}.
+It's not obligatory to fill an array with only ``Seemple`` instances, you can render any kind of object. Bindings for such objects can be defined using static method {@link Seemple.bindNode}.
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	// Model is not given
 	itemRenderer: ...
 	onItemRender(item) {
-		Matreshka.bindNode(item, 'x', ':sandbox .some-node');
+		Seemple.bindNode(item, 'x', ':sandbox .some-node');
 	}
 })
 ```
 
 One more little example: the rendering of a simple list:
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	itemRenderer = '<li>{{value}}</li>';
 	constructor() {
 		super().bindNode('sandbox', '.my-list');
@@ -338,6 +338,6 @@ const arr = new MyArray();
 arr.push({ value: 'Item 1' }, { value: 'Item 2' });
 ```
 
-@see {@link Matreshka#bindNode}
-@see {@link Matreshka.Array#Model}
+@see {@link Seemple#bindNode}
+@see {@link Seemple.Array#Model}
 */

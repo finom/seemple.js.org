@@ -1,23 +1,23 @@
 /**
-@method Matreshka#on
+@method Seemple#on
 @importance 1
 @fires addevent
 @fires addevent:NAME
 @summary Додає обробник події
-@desc Метод {@link Matreshka#on} додає обробник події для екземпляра класу ``Matreshka``. Повний список можливих подій з описом см. Тут: {@link #typedef-eventNames}.
+@desc Метод {@link Seemple#on} додає обробник події для екземпляра класу ``Seemple``. Повний список можливих подій з описом см. Тут: {@link #typedef-eventNames}.
 
-> Зверніть увагу, що у методва є {@link Matreshka.on статичний аналог}, який працює в точності так само, але приймає будь-який об'єкт в якості першого аргументу, зсуваючи інші аргументи вправо.
+> Зверніть увагу, що у методва є {@link Seemple.on статичний аналог}, який працює в точності так само, але приймає будь-який об'єкт в якості першого аргументу, зсуваючи інші аргументи вправо.
 ```js
-const on = require('matreshka/on');
+const on = require('seemple/on');
 const object = {};
 on(object, names, callback, triggerOnInit, context);
 // Замість this.on(names, callback, triggerOnInit, context);
 ```
 
-@see {@link Matreshka#onDebounce}
-@see {@link Matreshka#once}
-@see {@link Matreshka#off}
-@see {@link Matreshka#trigger}
+@see {@link Seemple#onDebounce}
+@see {@link Seemple#once}
+@see {@link Seemple#off}
+@see {@link Seemple#trigger}
 @param {eventNames} names - Ім'я події або кілька імен, розділених пробілом (наприклад, ``"change:x ajaxcomplete change:y"``)
 @param {eventHandler} callback - Функція, яка викликається за подією
 @param {boolean} [triggerOnInit = false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробник буде викликаний негайно після ініціалізації.
@@ -44,12 +44,12 @@ this.on('foo', () => {
 
 
 /**
-@method Matreshka#on
+@method Seemple#on
 @importance 2
 @variation 2
 @since 1.1
 @summary Альтернативний синтаксис: пари "подія-обробник"
-@desc У метод {@link Matreshka#on} можна передати об'єкт з парами подія-обробник, щоб уникнути багаторазового виклику методу і скоротити код.
+@desc У метод {@link Seemple#on} можна передати об'єкт з парами подія-обробник, щоб уникнути багаторазового виклику методу і скоротити код.
 
 @param {object} evtnameHandlerObject - Об'єкт з подіями
 @param {boolean} [triggerOnInit = false] - Якщо аргумент ``triggerOnInit`` дорівнює ``true``, то обробники будуть викликані негайно після ініціалізації

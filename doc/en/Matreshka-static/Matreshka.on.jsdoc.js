@@ -1,17 +1,17 @@
 /**
-@method Matreshka.on
-@module matreshka/on
+@method Seemple.on
+@module seemple/on
 @importance 3
 @since 1.1
 @summary Adds an event handler
-@desc This static method works the same as {@link Matreshka#on} and all its variations, but accepts any kind of JavaScript object as first argument.
+@desc This static method works the same as {@link Seemple#on} and all its variations, but accepts any kind of JavaScript object as first argument.
 @returns {object} The first argument
-@see {@link Matreshka#on}
+@see {@link Seemple#on}
 @example
 const object = {};
-Matreshka.on(object, 'foo', evt => {
+Seemple.on(object, 'foo', evt => {
 	alert(evt.hello);
 });
 
-Matreshka.trigger(object, 'foo', { hello: 'World' });
+Seemple.trigger(object, 'foo', { hello: 'World' });
 */

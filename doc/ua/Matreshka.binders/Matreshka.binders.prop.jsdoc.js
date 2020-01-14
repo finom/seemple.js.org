@@ -1,6 +1,6 @@
 /**
-@function Matreshka.binders.prop
-@module matreshka/binders/prop
+@function Seemple.binders.prop
+@module seemple/binders/prop
 @importance 2
 @since 0.3
 @summary Повертає байндер, який змінює властивість DOM елемента на значення властивості об'єкта
@@ -10,7 +10,7 @@
 @returns {binder}
 @example
 this.bindNode('disabled', '.my-button',
-    Matreshka.binders.prop('disabled'));
+    Seemple.binders.prop('disabled'));
 
 // встановлює властивість disabled = true для елемента
 this.disabled = true;
@@ -19,7 +19,7 @@ this.disabled = true;
 this.disabled = false;
 @example <caption>Використання ``mappingFn``</caption>
 this.bindNode('myProp', '.my-node'
-    Matreshka.binders.prop('foo', value => `Hello, ${value}`));
+    Seemple.binders.prop('foo', value => `Hello, ${value}`));
 
 this.myProp = 'World'; // властивість елемента foo має значення "Hello, World"
 */

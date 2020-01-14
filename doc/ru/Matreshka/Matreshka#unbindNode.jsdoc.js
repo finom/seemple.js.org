@@ -1,5 +1,5 @@
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @fires unbind
 @fires unbind:KEY
@@ -8,7 +8,7 @@
 @param {string|null} key - Ключ или список ключей, разделенных пробелами. Если вместо ключа передать null, удалятся все привязки для данного экземпляра
 @param {string|node|$nodes} [node] - HTML элемент, с которым свойство больше не хочет иметь дела
 @param {eventOptions} [eventOptions] -  Объект события, в который можно передать какие-нибудь данные для обработчика или ключ ``"silent"``, который отключает генерацию событий ``"unbind"`` и ``"unbind:KEY"``
-@returns {matreshka} self
+@returns {seemple} self
 @example
 this.bindNode('myKey', '.my-element');
 
@@ -23,13 +23,13 @@ this.myKey = false;
 
 
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @variation 2
-@summary Альтернативный синтаксис ``unbindNode``, позволяющий передать объект с байндингами. См. {@link Matreshka#bindNode(2)}
+@summary Альтернативный синтаксис ``unbindNode``, позволяющий передать объект с байндингами. См. {@link Seemple#bindNode(2)}
 @param {object} bindings (см. пример)
 @param {eventOptions} [eventOptions] (см. выше)
-@returns {matreshka} self
+@returns {seemple} self
 @example
 this.unbindNode({
 	foo: '.aaa'
@@ -46,7 +46,7 @@ this.unbindNode({
 
 
 /**
-@method Matreshka#unbindNode
+@method Seemple#unbindNode
 @importance 2
 @variation 3
 @summary  Альтернативный синтаксис, позволяющий удалить неограниченное количество байндингов одним вызовом метода.
@@ -55,7 +55,7 @@ this.unbindNode({
 - ``key`` - имя свойства
 - ``node`` - элемент, для которого был объявле байндинг с ``key`` (не обязательно)
 
-Эта вариация метода удобна тем, что её синтаксис совпадает с одной из вариаций метода {@link Matreshka#bindNode}, позволяя присвоить  байндинги переменной для быстрого удаления.
+Эта вариация метода удобна тем, что её синтаксис совпадает с одной из вариаций метода {@link Seemple#bindNode}, позволяя присвоить  байндинги переменной для быстрого удаления.
 
 @param {array} batch - Массив байндингов
 @param {eventOptions} [eventOptions]  (см. выше)
@@ -78,7 +78,7 @@ const temporaryBindings = [{
 }, {
 	key: 'c.d.e',
 	node: jQuery('.baz'),
-	binder: Matreshka.binders.html(),
+	binder: Seemple.binders.html(),
 	event: {
 		silent: true,
 		exactKey: true

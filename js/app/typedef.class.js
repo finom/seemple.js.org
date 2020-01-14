@@ -1,9 +1,9 @@
 import g from './globals';
-import MatreshkaObject from 'matreshka/object';
+import SeempleObject from 'seemple/object';
 import $ from 'balajs';
-import { dataset, className } from 'matreshka/binders';
+import { dataset, className } from 'seemple/binders';
 
-export default class extends MatreshkaObject {
+export default class extends SeempleObject {
 	constructor() {
 		super();
 	}

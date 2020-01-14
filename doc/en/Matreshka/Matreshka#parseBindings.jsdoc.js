@@ -1,9 +1,9 @@
 /**
-@method Matreshka#parseBindings
+@method Seemple#parseBindings
 @importance 2
 @since 1.1
 @summary Parses DOM tree, declaring property bindings on which are double braced.
-@desc Starting with 1.1 version, Matreshka includes a simple DOM parser that handles double braced syntactic constructions. ``parseBindings`` method receives HTML string, DOM node or selector corresponding to DOM node as the first argument.
+@desc Starting with 1.1 version, Seemple includes a simple DOM parser that handles double braced syntactic constructions. ``parseBindings`` method receives HTML string, DOM node or selector corresponding to DOM node as the first argument.
 
 As the method is DOM template engine (and not HTML-replace parser), all child DOM nodes of the passed element remain in their same state (for example, DOM events aren’t erased).
 
@@ -43,23 +43,23 @@ JS: this.x = true;
 href attribute value will depend on "category"
 and "someObject.page" value (one-way data binding)
 JS:
- this.category = 'matreshka';
+ this.category = 'seemple';
  this.someObject = { page: 42 };
 -->
 <a href="http://example.com/{{category}}/{{someObject.page}}">A link</a>
 <!--
 The result:
-<a href="http://example.com/matreshka/42">A link</a>
+<a href="http://example.com/seemple/42">A link</a>
 -->
 ```
 
-> If you want to use something else instead of braces look at {@link Matreshka.parserBrackets}
+> If you want to use something else instead of braces look at {@link Seemple.parserBrackets}
 
 #### Why do we need this method?
-In case if you develop a large form with standard HTML5 fields, the method will help you save time on declaring numerous bindings. Besides, ``parseBindings`` is useful in case of creating a very simple collection which doesn’t require implementation of a complicated {@link Matreshka.Array#Model model}.
+In case if you develop a large form with standard HTML5 fields, the method will help you save time on declaring numerous bindings. Besides, ``parseBindings`` is useful in case of creating a very simple collection which doesn’t require implementation of a complicated {@link Seemple.Array#Model model}.
 
 @param {string|node|$nodes} node - HTML string, selector, DOM node or collection of DOM nodes
-@param {eventOptions} [eventOptions] - Event options which will be passed to all internal calls of {@link Matreshka#bindNode}
+@param {eventOptions} [eventOptions] - Event options which will be passed to all internal calls of {@link Seemple#bindNode}
 @returns {$nodes} A collection of DOM nodes, which is passed to the method as an argument.
 
 @example <caption>Parsing of given node</caption>

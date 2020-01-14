@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Object#values
+@method Seemple.Object#values
 @since 2.0.0
 @importance 3
 @summary Повертає масив значень властивостей, що відповідають за дані

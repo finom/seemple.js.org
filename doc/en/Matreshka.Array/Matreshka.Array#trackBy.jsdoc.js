@@ -1,17 +1,17 @@
 /**
-@member {string} Matreshka.Array#trackBy
+@member {string} Seemple.Array#trackBy
 @importance 2
 @since 1.2
 @abstract
 @summary ``trackBy`` property indicates a key of unique IDs for collection items
-@desc In case if a client and a server activelly communicate with each other and collection items have unique IDs, then redrawing entire collection from scratch does not make sense. After the server respond with new collection, much better to check does the old collection contain objects which have the corresponding identifiers. If object ID from new collection matches object ID from old one, old object will be updated and used again. That means a new object (new instance of {@link Matreshka.Array#Model}) will not be created and new DOM node will not be rendered.
+@desc In case if a client and a server activelly communicate with each other and collection items have unique IDs, then redrawing entire collection from scratch does not make sense. After the server respond with new collection, much better to check does the old collection contain objects which have the corresponding identifiers. If object ID from new collection matches object ID from old one, old object will be updated and used again. That means a new object (new instance of {@link Seemple.Array#Model}) will not be created and new DOM node will not be rendered.
 
-``trackBy`` works only using {@link Matreshka.Array#recreate} because ``recreate`` is the only method which recreates collection from scratch.
+``trackBy`` works only using {@link Seemple.Array#recreate} because ``recreate`` is the only method which recreates collection from scratch.
 
 In examples below ``_id`` key is used as identifier (you can use any other key).
 
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get trackBy() {
 		return '_id';
 	}
@@ -44,7 +44,7 @@ arr.recreate([
 
 ``trackBy`` can have ``"$index"`` value, allowing to update objects by their index in collection.
 ```js
-class MyArray extends Matreshka.Array {
+class MyArray extends Seemple.Array {
 	get trackBy() {
 		return '$index';
 	}
@@ -73,5 +73,5 @@ arr.recreate([
 ]);
 ```
 
-@see {@link Matreshka.Array#recreate}
+@see {@link Seemple.Array#recreate}
 */

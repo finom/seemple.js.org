@@ -1,13 +1,13 @@
 /**
-@method Matreshka#mediate
+@method Seemple#mediate
 @importance 2
 @since 0.1
 @summary Трансформує значення властивості при його зміні
 @desc Цей метод використовується для перетворення значення властивості при його зміні. Наприклад, вам потрібно, щоб значення властивості завжди було або певного типу, або цілим числом, або бути не менше нуля і не більше ста тощо.
 
-> Зверніть увагу, що у метода є {@link Matreshka.mediate статичний аналог}, який працює в точності так само, але приймає будь-який об'єкт в якості першого аргументу, зсуваючи інші аргументи вправо.
+> Зверніть увагу, що у метода є {@link Seemple.mediate статичний аналог}, який працює в точності так само, але приймає будь-який об'єкт в якості першого аргументу, зсуваючи інші аргументи вправо.
 ```js
-const mediate = require('matreshka/mediate');
+const mediate = require('seemple/mediate');
 const object = {};
 mediate(object, key, mediator);
 // Замість this.mediate(key, mediator);
@@ -26,11 +26,11 @@ this.mediate(['x', 'y'], value => String(value));
 
 
 /**
-@method Matreshka#mediate
+@method Seemple#mediate
 @importance 2
 @variation 2
 @since 0.1
-@summary Альтернативный синтаксис методу {@link Matreshka#mediate}, приймаючий в якості аргументу об'єкт "ключ-медіатор"
+@summary Альтернативный синтаксис методу {@link Seemple#mediate}, приймаючий в якості аргументу об'єкт "ключ-медіатор"
 @param {object} keyMediatorPairs - Об'ект із властивостями ключ-медіатор
 @example
 this.mediate({

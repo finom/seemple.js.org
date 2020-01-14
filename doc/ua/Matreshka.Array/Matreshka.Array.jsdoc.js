@@ -1,15 +1,15 @@
 /**
-@class Matreshka.Array
-@module matreshka/array
-@inherits Matreshka
+@class Seemple.Array
+@module seemple/array
+@inherits Seemple
 @importance 1
-@classdesc Клас ``Matreshka.Array`` служить колекцією в Matreshka.js. Він успадковується від класу {@link Matreshka} і включає всі його властивості та методи. Крім цього, ``Matreshka.Array`` має всі методи, які є у звичайного масиву, тим самим спрощуючи вивчення його можливостей.
+@classdesc Клас ``Seemple.Array`` служить колекцією в Seemple.js. Він успадковується від класу {@link Seemple} і включає всі його властивості та методи. Крім цього, ``Seemple.Array`` має всі методи, які є у звичайного масиву, тим самим спрощуючи вивчення його можливостей.
 
 #### Всі методи, запозичені у вбудованого Array працюють аналогічно їх оригіналам
 
 Програміст, знайомий з методами нативного `` Array`` відразу може зрозуміти, яким методом можна додати елемент (``push``, ``unshift``, ``splice``), яким видалити (``pop``, ``shift``, ``splice``), яким впорядкувати (``sort``, ``reverse``) тощо.
 
-У зв'язку з тим, що методи працюють так само, як і оригінальні (з невеликими винятками), вони не приведені в цій документації окремо, а виведені в розділ {@link Matreshka.Array#METHOD}.
+У зв'язку з тим, що методи працюють так само, як і оригінальні (з невеликими винятками), вони не приведені в цій документації окремо, а виведені в розділ {@link Seemple.Array#METHOD}.
 ```js
 this.push(1, 2, 3);
 this.pop();
@@ -17,7 +17,7 @@ this.pop();
 
 #### Всі методи, запозичені у вбудованого Array, які модифікують масив можуть бути викликані з передачею об'єкта події
 
-Для цього використовується синтаксис ``метод_``, де нижнє підкреслення в кінці імені методу означає, що останнім аргументом є об'єкт події. Такі методи не наведено в цій документації, так як потрібно запам'ятати тільки їх синтаксис. Див. {@link Matreshka.Array#METHOD_}.
+Для цього використовується синтаксис ``метод_``, де нижнє підкреслення в кінці імені методу означає, що останнім аргументом є об'єкт події. Такі методи не наведено в цій документації, так як потрібно запам'ятати тільки їх синтаксис. Див. {@link Seemple.Array#METHOD_}.
 ```js
 this.push_(1, 2, 3, {
 	silent: true
@@ -96,22 +96,22 @@ __``length`` - це звичайне свойство__ яке можна пов
 > Наприклад, при додаванні трьох елементів за допомогою методу ``push``, генеруються наступні події: ``push``, ``add``, ``addone`` (тричі), ``modify``, ``change:length``.
 
 #### Model
-Властивість {@link Matreshka.Array#Model} визначає клас елементів, які буде містити колекція. Рекомендується наслідувати ``Model`` від класу {@link Matreshka.Object} або {@link Matreshka.Array} (на випадок, якщо потрібно отримати колекцію колекцій), щоб отримати можливість конвертації масиву в звичайний масив рекурсивно методом {@link Matreshka.Array#toJSON}.
+Властивість {@link Seemple.Array#Model} визначає клас елементів, які буде містити колекція. Рекомендується наслідувати ``Model`` від класу {@link Seemple.Object} або {@link Seemple.Array} (на випадок, якщо потрібно отримати колекцію колекцій), щоб отримати можливість конвертації масиву в звичайний масив рекурсивно методом {@link Seemple.Array#toJSON}.
 
 #### Автоматичний рендеринг
-``Matreshka.Array`` вміє автоматично відмальовувати елементи на сторінці при будь-яких модифікаціях масиву. За подробицями зверніться до документації {@link Matreshka.Array#itemRenderer}.
+``Seemple.Array`` вміє автоматично відмальовувати елементи на сторінці при будь-яких модифікаціях масиву. За подробицями зверніться до документації {@link Seemple.Array#itemRenderer}.
 
-@see {@link Matreshka.Array#itemRenderer}
-@see {@link Matreshka.Array#Model}
+@see {@link Seemple.Array#itemRenderer}
+@see {@link Seemple.Array#Model}
 
 @example <caption>Створення екземпляра з нульовою довжиною</caption>
-new Matreshka.Array();
+new Seemple.Array();
 @example <caption>Створення екземпляра із зазначенням довжини</caption>
-new Matreshka.Array(42);
+new Seemple.Array(42);
 @example <caption>Передача елементів при створенні</caption>
-new Matreshka.Array('Hi', { a: 'b' });
+new Seemple.Array('Hi', { a: 'b' });
 @example <caption>Спадкування</caption>
-class MyClass extends Matreshka.Array {
+class MyClass extends Seemple.Array {
 	constructor(items) {
 		super(...items).sayHello();
 	}
@@ -120,9 +120,9 @@ class MyClass extends Matreshka.Array {
 	}
 }
 
-@example <caption>Спадкування, використовуючи функцію {@link Matreshka.Class}</caption>
-const MyClass = Matreshka.Class({
-	extends: Matreshka.Array,
+@example <caption>Спадкування, використовуючи функцію {@link Seemple.Class}</caption>
+const MyClass = Seemple.Class({
+	extends: Seemple.Array,
 	constructor(items) {
 		this.recreate(items).sayHello();
 	},

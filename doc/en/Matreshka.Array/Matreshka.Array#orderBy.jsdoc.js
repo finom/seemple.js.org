@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#orderBy
+@method Seemple.Array#orderBy
 @importance 2
 @fires sort
 @since 1.6
@@ -8,7 +8,7 @@
 
 @param {string|array} keys - A key or a list of keys
 @param {string|array} [orders=asc] - An order or a list of orders corresponding to the list of keys
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 
 @example <caption>A little example taken from lodash documentation</caption>
 this.recreate([

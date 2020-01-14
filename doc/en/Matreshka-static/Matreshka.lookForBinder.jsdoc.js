@@ -1,17 +1,17 @@
 /**
-@method Matreshka.lookForBinder
-@module matreshka/lookforbinder
+@method Seemple.lookForBinder
+@module seemple/lookforbinder
 @importance 3
-@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Matreshka.defaultBinders} for the search.
-@see {@link Matreshka#bindNode}
-@see {@link Matreshka.defaultBinders}
+@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link Seemple.defaultBinders} for the search.
+@see {@link Seemple#bindNode}
+@see {@link Seemple.defaultBinders}
 @param {node} node
 @returns {binder} binder
 @example
 const element = document.createElement('input');
 element.type = 'text';
 
-console.log(Matreshka.lookForBinder(element));
+console.log(Seemple.lookForBinder(element));
 
 // will return something similar to the following object
 {

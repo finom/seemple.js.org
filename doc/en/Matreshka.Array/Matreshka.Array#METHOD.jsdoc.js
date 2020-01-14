@@ -1,8 +1,8 @@
 /**
-@method Matreshka.Array#METHOD
+@method Seemple.Array#METHOD
 @importance 1
 @summary Any method from ``Array.prototype``
-@desc {@link Matreshka.Array} includes all the methods existing in the native JavaScript Array:
+@desc {@link Seemple.Array} includes all the methods existing in the native JavaScript Array:
 
 - [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 - [pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
@@ -33,12 +33,12 @@
 
 Yet they work the same as the ``Array.prototype``. There are only a few remarks:
 - The ``forEach`` method returns an array itself instead of ``undefined``
-- The methods which should return a new array (``splice``, ``slice``, ``filter``, ``map``...) return a new ``Matreshka.Array`` instance.
+- The methods which should return a new array (``splice``, ``slice``, ``filter``, ``map``...) return a new ``Seemple.Array`` instance.
 - The ``keys``, ``values`` and ``entries`` methods return an array instead of an iterator.
 
-Moreover, the methods generate events which are fired on any array modification. For more detailed information look at {@link Matreshka.Array}.
+Moreover, the methods generate events which are fired on any array modification. For more detailed information look at {@link Seemple.Array}.
 
-@see {@link Matreshka.Array#METHOD_}
+@see {@link Seemple.Array#METHOD_}
 @example
 this.push(1, 2, 3);
 @example
@@ -50,7 +50,7 @@ const mkArray = this
 		//...
 	});
 
-console.log(mkArray.isMatreshkaArray); // true
+console.log(mkArray.isSeempleArray); // true
 @example
 this.reverse();
 */

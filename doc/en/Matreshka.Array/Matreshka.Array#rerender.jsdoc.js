@@ -1,5 +1,5 @@
 /**
-@method Matreshka.Array#rerender
+@method Seemple.Array#rerender
 @importance 3
 @since 0.3
 @summary Rerenders DOM nodes of items which are included into an instance
@@ -10,7 +10,7 @@ The method can be useful in case when items have been added to the array before 
 To force items rerender (e. g. you use custom template engine) pass a property ``forceRerender`` with ``true`` value to an event object.
 
 @param {eventOptions} [eventOptions] - An event options
-@returns {matreshkaArray} self
+@returns {seempleArray} self
 @example
 this.rerender({
 	forceRerender: true

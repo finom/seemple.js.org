@@ -84,9 +84,9 @@ module.exports = {
                     use: [
                         { loader: 'css-loader' },
                         { loader: 'sass-loader', options: {
-                            functions: sassAssetFunctions({
+                            sassOptions: {functions: sassAssetFunctions({
                                 images_path: 'sass/inlined-images',
-                            })
+                            })}
                         }
                     }],
                 })

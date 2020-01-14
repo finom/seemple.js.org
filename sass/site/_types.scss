@@ -12,7 +12,7 @@
 	margin: 1px;
 }
 
-$types: matreshka, matreshkaObject, matreshkaArray, class, binder, node, "$nodes", object, eventOptions, array, eventHandler, function, string, eventNames, number, boolean, "*", null;
+$types: seemple, seempleObject, seempleArray, class, binder, node, "$nodes", object, eventOptions, array, eventHandler, function, string, eventNames, number, boolean, "*", null;
 
 @for $i from 1 through length($types) {
 	[data-type="#{nth($types, $i)}"] {

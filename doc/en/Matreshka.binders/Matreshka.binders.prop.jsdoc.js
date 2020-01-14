@@ -1,6 +1,6 @@
 /**
-@function Matreshka.binders.prop
-@module matreshka/binders/prop
+@function Seemple.binders.prop
+@module seemple/binders/prop
 @importance 2
 @since 0.3
 @summary Returns a binder which changes given property of DOM node depending on an object property value
@@ -10,7 +10,7 @@
 @returns {binder}
 @example
 this.bindNode('disabled', '.my-button',
-        Matreshka.binders.prop('disabled'));
+        Seemple.binders.prop('disabled'));
 
 // sets disabled = true property for the node
 this.disabled = true;
@@ -19,7 +19,7 @@ this.disabled = true;
 this.disabled = false;
 @example <caption>The usage of mapping function</caption>
 this.bindNode('myProp', '.my-node'
-    Matreshka.binders.prop('foo', value => `Hello, ${value}`));
+    Seemple.binders.prop('foo', value => `Hello, ${value}`));
     
 // foo property of the element now has value "Hello, World"
 this.myProp = 'World';

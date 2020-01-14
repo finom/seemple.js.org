@@ -1,13 +1,13 @@
 /**
-@method Matreshka#mediate
+@method Seemple#mediate
 @importance 2
 @since 0.1
 @summary Transforms property value on its changing
 @desc This method is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
 
-> Note that the method has {@link Matreshka.mediate static alternative}, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.
+> Note that the method has {@link Seemple.mediate static alternative}, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.
 ```js
-const mediate = require('matreshka/mediate');
+const mediate = require('seemple/mediate');
 const object = {};
 mediate(object, key, mediator);
 // instead of this.mediate(key, mediator);
@@ -31,11 +31,11 @@ this.mediate(['x', 'y'], value => String(value));
 
 
 /**
-@method Matreshka#mediate
+@method Seemple#mediate
 @importance 2
 @variation 2
 @since 0.1
-@summary Alternative syntax of the {@link Matreshka#mediate} method which accepts "key-mediator" object as an argument
+@summary Alternative syntax of the {@link Seemple#mediate} method which accepts "key-mediator" object as an argument
 @param {object} keyMediatorPairs - An object with key-mediator properties
 @example
 this.mediate({

@@ -1,10 +1,10 @@
 import g from './globals';
-import MatreshkaArray from 'matreshka/array';
+import SeempleArray from 'seemple/array';
 import $ from 'balajs';
 import Article from './article.class';
-import { html } from 'matreshka/binders';
+import { html } from 'seemple/binders';
 
-export default class Articles extends MatreshkaArray {
+export default class Articles extends SeempleArray {
 	Model = Article;
 	constructor() {
 		super();

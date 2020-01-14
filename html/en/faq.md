@@ -1,9 +1,9 @@
 ## [FAQ](#!faq)
 
-### How does Matreshka work?
-Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing.
+### How does Seemple work?
+Seemple uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing.
 
-As an example of how the two-way data binding works ([bindNode](#!Matreshka-bindNode) function in particular), have a look at this code:
+As an example of how the two-way data binding works ([bindNode](#!Seemple-bindNode) function in particular), have a look at this code:
 
 ```js
 function bindNode(object, key, node, binder) {
@@ -25,15 +25,15 @@ function bindNode(object, key, node, binder) {
 As you see, it’s real easy (for simplicity, the function doesn’t support many-to-many binding).
 
 
-### Is there a routing in Matreshka.js?
+### Is there a routing in Seemple.js?
 
-Yes. Check out [matreshka-router](https://github.com/matreshkajs/matreshka-router).
+Yes. Check out [seemple-router](https://github.com/seemplejs/seemple-router).
 
 ### How to pre-render an application on a server
 
-For the app pre-rendering Matreshka.js can be used on Node.js (``window`` global object can be created via [jsdom](https://github.com/tmpvar/jsdom)) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.
+For the app pre-rendering Seemple.js can be used on Node.js (``window`` global object can be created via [jsdom](https://github.com/tmpvar/jsdom)) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.
 
-The task of client-side is to restore application state from HTML. {@link Matreshka#bindNode} extracts element value and assigns it to a property and {@link Matreshka.Array#restore} restores a state of a collection.
+The task of client-side is to restore application state from HTML. {@link Seemple#bindNode} extracts element value and assigns it to a property and {@link Seemple.Array#restore} restores a state of a collection.
 
 
 ### What is "debounce"
@@ -43,7 +43,7 @@ At this page you often can see the phrase "micropattern debounce". This is widel
 
 ### How should look like a big application?
 
-An application written with Matreshka.js usually represents one nested JavaScript object where every branch is {@link Matreshka} instance. The new branches are created using {@link Matreshka#instantiate} which ensures the integrity of the application and allows to replace a state of the application using ordinary assignment.
+An application written with Seemple.js usually represents one nested JavaScript object where every branch is {@link Seemple} instance. The new branches are created using {@link Seemple#instantiate} which ensures the integrity of the application and allows to replace a state of the application using ordinary assignment.
 
 
 ### How to render one object at few collections
@@ -52,10 +52,10 @@ The first thing: you need to set ``bindRenderedAsSandbox`` as ``false`` for an i
 
 The second thing: when ``render`` event is fired, check where the object is rendered. Parent array can be get using ``parentArray`` property of the event object.
 
-Example. You have ``User`` class and two collections ``UsersA`` and ``UsersB`` (their {@link Matreshka.Array#itemRenderer} can be different). For both collections ``User`` is a {@link Matreshka.Array#Model model}.
+Example. You have ``User`` class and two collections ``UsersA`` and ``UsersB`` (their {@link Seemple.Array#itemRenderer} can be different). For both collections ``User`` is a {@link Seemple.Array#Model model}.
 
 ```js
-class User extends Matreshka.Object {
+class User extends Seemple.Object {
     constructor() {
         super();
 

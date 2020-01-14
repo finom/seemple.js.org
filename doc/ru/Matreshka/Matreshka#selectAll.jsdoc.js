@@ -1,11 +1,11 @@
 /**
-@method Matreshka#selectAll
-@synonym Matreshka#$
+@method Seemple#selectAll
+@synonym Seemple#$
 @importance 2
 @summary Возвращает элементы из песочницы, соответствующие селектору
-@desc После создания песочницы методом {@link Matreshka#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``.
+@desc После создания песочницы методом {@link Seemple#bindNode}, можно получать и использовать элементы, находящиеся в ней. Кроме этого, метод поддерживает  селектор ``:bound(KEY)``.
 
-> У метода есть {@link Matreshka.selectAll статичный аналог}.
+> У метода есть {@link Seemple.selectAll статичный аналог}.
 
 @param {string} selector - Cелектор
 @returns {$nodes}

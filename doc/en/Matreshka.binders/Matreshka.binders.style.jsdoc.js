@@ -1,6 +1,6 @@
 /**
-@function Matreshka.binders.style
-@module matreshka/binders/style
+@function Seemple.binders.style
+@module seemple/binders/style
 @importance 2
 @since 1.1
 @summary Returns a binder which changes given style property of bound DOM node depending on an object property value
@@ -10,12 +10,12 @@
 @returns {binder}
 @example
 this.bindNode('myKey', '.my-progres',
-        Matreshka.binders.style('backgroundColor'));
+        Seemple.binders.style('backgroundColor'));
 this.myKey = 'red'; // background-color of .my-progress is red now
 
 @example <caption>The usage of mapping function</caption>
 this.bindNode('myKey', '.my-element',
-  Matreshka.binders.style('backgroundImage', value => `url("${value}")`));
+  Seemple.binders.style('backgroundImage', value => `url("${value}")`));
   
 this.myKey = 'cats.jpg'; // backgroundImage now equals to "url("cats.jpg")"
 */

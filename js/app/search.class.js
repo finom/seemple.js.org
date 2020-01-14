@@ -1,11 +1,11 @@
 import g from './globals';
-import MatreshkaArray from 'matreshka/array';
-import MatreshkaObject from 'matreshka/object';
+import SeempleArray from 'seemple/array';
+import SeempleObject from 'seemple/object';
 import $ from 'balajs';
-import { className, html } from 'matreshka/binders';
+import { className, html } from 'seemple/binders';
 
-export default class extends MatreshkaArray {
-	Model = MatreshkaObject;
+export default class extends SeempleArray {
+	Model = SeempleObject;
 	itemRenderer = '<li>';
 	constructor(data) {
 		var UP_KEY = 38,

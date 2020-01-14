@@ -1,11 +1,11 @@
 /**
-@method Matreshka.Object#keyOf
+@method Seemple.Object#keyOf
 @importance 2
 @summary Ищет заданное значение свойства среди свойств, отвечающих за данные, и возвращает имя первого совпавшего свойства, если такое значение найдено
 @prop {*} value - значение любого типа, которое следует найти среди данных
 @returns {string|null} имя свойства
 @example
-const mkObject = new Matreshka.Object({
+const mkObject = new Seemple.Object({
 	a: 1,
 	b: 2
 });

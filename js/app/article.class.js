@@ -1,9 +1,9 @@
 import g from './globals';
-import MatreshkaObject from 'matreshka/object';
+import SeempleObject from 'seemple/object';
 import $ from 'balajs';
-import { prop, dataset, html, display, className } from 'matreshka/binders';
+import { prop, dataset, html, display, className } from 'seemple/binders';
 
-export default class Article extends MatreshkaObject {
+export default class Article extends SeempleObject {
 	constructor(data) {
 		super(data)
 			.set('commentsShown', false)

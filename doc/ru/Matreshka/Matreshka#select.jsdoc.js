@@ -1,10 +1,10 @@
 /**
-@method Matreshka#select
+@method Seemple#select
 @importance 2
 @summary Возвращает элемент из песочницы, соответствующий селектору
-@desc Метод очень похож на {@link Matreshka#selectAll}, но возвращает лишь один элемент или ``null``
+@desc Метод очень похож на {@link Seemple#selectAll}, но возвращает лишь один элемент или ``null``
 
-> У метода есть {@link Matreshka.select статичный аналог}.
+> У метода есть {@link Seemple.select статичный аналог}.
 
 @param {string} selector - Селектор
 @returns {node|null}
