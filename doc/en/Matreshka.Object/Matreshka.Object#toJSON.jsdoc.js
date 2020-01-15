@@ -6,7 +6,7 @@
 @param {boolean} [recursive=true]
 @returns {object}
 @example
-const mkObject = new Seemple.Object({
+const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2,
 	c: new Seemple.Object({
@@ -16,8 +16,8 @@ const mkObject = new Seemple.Object({
 });
 
 // returns {a: 1, b: 2, c: { d: 3, e: 4 }}
-console.log(mkObject.toJSON());
+console.log(seempleObject.toJSON());
 
 // returns {a: 1, b: 2, c: SeempleObject}
-console.log(mkObject.toJSON(false));
+console.log(seempleObject.toJSON(false));
 */

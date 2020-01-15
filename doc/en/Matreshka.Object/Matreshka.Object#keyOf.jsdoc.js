@@ -5,16 +5,16 @@
 @prop {*} value - A value of any type which should be found among data keys
 @returns {string|null}
 @example
-const mkObject = new Seemple.Object({
+const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2
 });
 
-mkObject.c = 3;
+seempleObject.c = 3;
 
-mkObject.keyOf(1); // 'a'
+seempleObject.keyOf(1); // 'a'
 
-mkObject.keyOf(2); // 'b'
+seempleObject.keyOf(2); // 'b'
 
-mkObject.keyOf(3); // null
+seempleObject.keyOf(3); // null
 */

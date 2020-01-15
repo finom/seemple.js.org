@@ -6,7 +6,7 @@
 @summary The function, converting any nested tree of objects and arrays into {@link Seemple.Object} and {@link Seemple.Array} instances
 @returns {seemple} a newly created instance of ``Seemple``
 @example
-const mk = Seemple.toSeemple({
+const seemple = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2

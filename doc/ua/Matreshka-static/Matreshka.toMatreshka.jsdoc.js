@@ -7,7 +7,7 @@
 @summary Функція, яка конвертує довільну структуру об'єктів і масивів в екземпляри {@link Seemple.Object} та {@link Seemple.Array}
 @returns {seemple} новостворений екземпляр ``Seemple``
 @example
-const mk = Seemple.toSeemple({
+const seemple = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2

@@ -9,9 +9,9 @@
 @param {*} [thisArg] - Объект, который используется в качестве ``this`` при вызове ``mapFn``
 @returns {seempleArray}
 @example
-const mkArray = Seemple.Array.from([1, 2, 3, 4]);
+const seempleArray = Seemple.Array.from([1, 2, 3, 4]);
 @example
-const mkArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);
+const seempleArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);
 @example <caption>Наследование метода</caption>
 class MyClass extends Seemple.Array {
     // ...

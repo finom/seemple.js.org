@@ -9,9 +9,7 @@
 This class usually isn't used directly. Instead, it is inherited by other classes.
 
 @example <caption>Creating of an instance</caption>
-const mk = new Seemple();
-@example <caption>You can use ``MK`` variable instead of ``Seemple``</caption>
-const mk = new MK();
+const seemple = new Seemple();
 
 @example <caption>Inheritance</caption>
 class MyClass extends Seemple {
@@ -24,7 +22,7 @@ class MyClass extends Seemple {
 }
 
 @example <caption>Inheritance using {@link Seemple.Class}</caption>
-const MyClass = MK.Class({
+const MyClass = Seemple.Class({
 	'extends': Seemple,
 	constructor() {
 		this.sayHello();

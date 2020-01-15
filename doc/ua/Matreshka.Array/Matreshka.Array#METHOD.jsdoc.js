@@ -42,7 +42,7 @@
 @example
 this.push(1, 2, 3);
 @example
-const mkArray = this
+const seempleArray = this
 	.forEach((value, index) => {
 		//...
 	})
@@ -50,7 +50,7 @@ const mkArray = this
 		//...
 	});
 
-console.log(mkArray.isSeempleArray); // true
+console.log(seempleArray.isSeempleArray); // true
 @example
 this.reverse();
 */

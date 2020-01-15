@@ -108,8 +108,8 @@ export default class Main extends SeempleObject {
 
 		fetch('https://api.github.com/repos/seemplejs/seemple/releases/latest')
 			.then(resp => resp.json())
-			.then(data => this.version = data.tag_name || 2)
-			.catch(() => this.version = 2);
+			.then(data => this.version = data.tag_name || '')
+			.catch(() => this.version = '');
 	}
 
 	initDynamicStyles() {

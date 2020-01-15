@@ -66,8 +66,8 @@ const MyClass = Seemple.Class({
 });
 
 @example <caption>Data enumerating, using for..of</caption>
-const mkObject = new Seemple.Object({ a: 1, b: 2 });
-for(let item of mkObject) {
+const seempleObject = new Seemple.Object({ a: 1, b: 2 });
+for(let item of seempleObject) {
 	console.log(item); // 1 .. 2
 }
 */

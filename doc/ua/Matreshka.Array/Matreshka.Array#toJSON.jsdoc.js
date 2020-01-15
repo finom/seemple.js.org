@@ -6,11 +6,11 @@
 @param {boolean} [recursive=true]
 @returns {array}
 @example
-const mkArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
+const seempleArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
 
 // повертає [1, 2, [3, 4]]
-console.log(mkArray.toJSON());
+console.log(seempleArray.toJSON());
 
 // повертає [1, 2, SeempleArray]
-console.log(mkArray.toJSON(false));
+console.log(seempleArray.toJSON(false));
 */

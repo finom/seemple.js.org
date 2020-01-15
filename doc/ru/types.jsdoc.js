@@ -16,7 +16,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');
 Экземпляр класса {@link Seemple}
 @typedef {object} seemple
 @example
-const mk = new Seemple();
+const seemple = new Seemple();
 obj.calc('a', 'b');
 */
 

@@ -9,9 +9,7 @@
 Как правило, этот класс, (как и {@link Seemple.Array} и {@link Seemple.Object}), не используются напрямую. Вместо этого, от него наследуются классы, создаваемые разработчиком.
 
 @example <caption>Создание экземпляра</caption>
-const mk = new Seemple();
-@example <caption>Краткая запись: ``MK`` вместо ``Seemple`` (для немодульного окружения)</caption>
-const mk = new MK();
+const seemple = new Seemple();
 
 @example <caption>Наследование</caption>
 class MyClass extends Seemple {

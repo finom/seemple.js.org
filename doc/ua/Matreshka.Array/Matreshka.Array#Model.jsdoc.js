@@ -12,7 +12,7 @@
 @see {@link Seemple.Array#itemRenderer}
 
 @param {object} data - Дані, передані в конструктор
-@param {seempleArray} mkArray - Масив, в який додали елемент
+@param {seempleArray} seempleArray - Масив, в який додали елемент
 @param {number} index - Поточний індекс об'єкта в батьківському масиві
 
 @example

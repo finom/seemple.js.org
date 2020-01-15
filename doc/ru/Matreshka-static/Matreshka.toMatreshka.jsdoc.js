@@ -7,7 +7,7 @@
 @summary Функция, конвертирующая произвольную структуру объектов и массивов в экземпляры {@link Seemple.Object} и {@link Seemple.Array}
 @returns {seemple} новосозданный экземпляр ``Seemple``
 @example
-const mk = Seemple.toSeemple({
+const seemple = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2

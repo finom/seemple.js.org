@@ -6,7 +6,7 @@
 @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/of Array.of}
 @returns {seempleArray}
 @example
-const mkArray = Seemple.Array.of(1, 2, 3, 4);
+const seempleArray = Seemple.Array.of(1, 2, 3, 4);
 @example <caption>Inheritance of the method</caption>
 class MyClass extends Seemple.Array {
     // ...

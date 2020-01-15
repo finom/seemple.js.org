@@ -42,8 +42,8 @@ this.on('modify', () => {
 @param {object} [data] - Дані, що входять в новий екземпляр
 @inherits Seemple
 @example <caption>Створення екземпляра з двома властивостями-даними</caption>
-// те ж саме, що і new MK.Object().setData({ a: 1, b: 2 });
-new MK.Object({ a: 1, b: 2 });
+// те ж саме, що і new Seemple.Object().setData({ a: 1, b: 2 });
+new Seemple.Object({ a: 1, b: 2 });
 
 @example <caption>Спадкування</caption>
 class MyClass extends Seemple.Object {
@@ -65,8 +65,8 @@ const MyClass = Seemple.Class({
 	}
 });
 @example <caption>Перебір даних, використовуючи цикл for..of</caption>
-const mkObject = new Seemple.Object({ a: 1, b: 2 });
-for(let item of mkObject) {
+const seempleObject = new Seemple.Object({ a: 1, b: 2 });
+for(let item of seempleObject) {
 	console.log(item); // 1 .. 2
 }
 */

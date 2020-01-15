@@ -12,7 +12,7 @@ Use {@link Seemple.Array#mediateItem} for more flexible control of an item class
 @see {@link Seemple.Array#itemRenderer}
 
 @param {object} data - Data which have been passed to a constructor
-@param {seempleArray} mkArray - An array where an item has been added to
+@param {seempleArray} seempleArray - An array where an item has been added to
 @param {number} index - Current index of an instance in the parent array
 
 @example

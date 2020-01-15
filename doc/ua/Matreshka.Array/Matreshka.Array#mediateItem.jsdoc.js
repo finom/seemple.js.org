@@ -21,7 +21,7 @@ this.push(6, 7);
 this.unshift(true, {});
 
 // ["true", "[object Object]", "1", "2", "3", "4", "5", "6", "7"]
-console.log(mkArray.toJSON());
+console.log(seempleArray.toJSON());
 @example
 this.mediateItem(item => {
 	if(item.something) {
