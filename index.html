@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Seemple.js 2</title>
-		<meta name="description" content="Seemple.js 2 - The easiest framework in the Universe">
+		<title>Seemple.js</title>
+		<meta name="description" content="Seemple.js - A simple JavaScript framework">
 		<meta name="viewport" content="initial-scale=1, width=device-width">
 		<meta charset="UTF-8">
 		<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
@@ -1504,20 +1504,19 @@
 
 
 	<span class="nav-heading">Other languages</span>
-	<a href="//ua.seemple.io/" class="another-language"><i></i> Українською</a>
-	<a href="//ru.seemple.io/" class="another-language"><i></i> На русском</a>
-	<a>Last update 14.1.2020</a>
+	<a href="/ua/" class="another-language"><i></i> Українською</a>
+	<a href="/ru/" class="another-language"><i></i> На русском</a>
+	<a>Last update 15.1.2020</a>
 </nav>
 
 
 <main>
 	<section id="promo">
 	<article id="!home">
-		<img src="img/mk5-logo_seemple.svg" class="mk-logo-seemple">
-		<img src="img/mk5-logo_text.svg" class="mk-logo-text">
-		<span class="version">2</span>
+		<img src="/logo/seemple-full-horizontal.svg" class="logo-seemple">
+		<span class="version"></span>
 		<div class="demo">
-			<output class="out">A simple framework for single-page applications creation</output>
+			<output class="out">A framework for single-page applications creation</output>
 			<input type="text" class="in">
 			<pre><code class="lang-html">&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
 &lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
@@ -1526,7 +1525,7 @@
 &lt;script&gt;
 const app = new Seemple();
 app.bindNode('x', '.in, .out');
-app.x = 'A simple framework for single-page applications creation';
+app.x = 'A framework for single-page applications creation';
 &lt;/script&gt;</code></pre>
 		</div>
 		<p>
@@ -1534,11 +1533,7 @@ app.x = 'A simple framework for single-page applications creation';
 			<a href="https://github.com/finom/seemple" class="github-btn">Github <i></i></a>
 		</p>
 
-		<div class="social">
-			<a href="https://twitter.com/seemplejs" class="social-twitter">seemplejs</a>
-			<a href="//seemple.io/forum" class="social-forum">Forum</a>
-			<a href="https://gitter.im/seemplejs/seemple" class="social-gitter">Chat on Gitter</a>
-		</div>
+		<div class="social"></div>
 
 		<div class="sponsors hide">
 			<h3>Some logos</h3>
@@ -1741,12 +1736,7 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
     <h4><p>Creating of an instance</p>
 </h4>
 
-<pre><code class="lang-js">const mk = new Seemple();</code></pre>
-
-    <h4><p>You can use <code>MK</code> variable instead of <code>Seemple</code></p>
-</h4>
-
-<pre><code class="lang-js">const mk = new MK();</code></pre>
+<pre><code class="lang-js">const seemple = new Seemple();</code></pre>
 
     <h4><p>Inheritance</p>
 </h4>
@@ -1763,7 +1753,7 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
     <h4><p>Inheritance using <a href="#!Seemple.Class">Seemple.Class</a></p>
 </h4>
 
-<pre><code class="lang-js">const MyClass = MK.Class({
+<pre><code class="lang-js">const MyClass = Seemple.Class({
 	'extends': Seemple,
 	constructor() {
 		this.sayHello();
@@ -7388,7 +7378,7 @@ data-importance="3">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mk = Seemple.toSeemple({
+<pre><code class="lang-js">const seemple = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2
@@ -9191,8 +9181,8 @@ new Seemple.Object({ a: 1, b: 2 });</code></pre>
     <h4><p>Data enumerating, using for..of</p>
 </h4>
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({ a: 1, b: 2 });
-for(let item of mkObject) {
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({ a: 1, b: 2 });
+for(let item of seempleObject) {
 	console.log(item); // 1 .. 2
 }</code></pre>
 
@@ -9607,18 +9597,18 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2
 });
 
-mkObject.c = 3;
+seempleObject.c = 3;
 
-mkObject.keyOf(1); // 'a'
+seempleObject.keyOf(1); // 'a'
 
-mkObject.keyOf(2); // 'b'
+seempleObject.keyOf(2); // 'b'
 
-mkObject.keyOf(3); // null</code></pre>
+seempleObject.keyOf(3); // null</code></pre>
 
  
 
@@ -10114,7 +10104,7 @@ data-importance="1">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2,
 	c: new Seemple.Object({
@@ -10124,10 +10114,10 @@ data-importance="1">
 });
 
 // returns {a: 1, b: 2, c: { d: 3, e: 4 }}
-console.log(mkObject.toJSON());
+console.log(seempleObject.toJSON());
 
 // returns {a: 1, b: 2, c: SeempleObject}
-console.log(mkObject.toJSON(false));</code></pre>
+console.log(seempleObject.toJSON(false));</code></pre>
 
  
 
@@ -10466,7 +10456,7 @@ data-importance="1">
 
 <pre><code class="lang-js">this.push(1, 2, 3);</code></pre>
 
-<pre><code class="lang-js">const mkArray = this
+<pre><code class="lang-js">const seempleArray = this
 	.forEach((value, index) => {
 		//...
 	})
@@ -10474,7 +10464,7 @@ data-importance="1">
 		//...
 	});
 
-console.log(mkArray.isSeempleArray); // true</code></pre>
+console.log(seempleArray.isSeempleArray); // true</code></pre>
 
 <pre><code class="lang-js">this.reverse();</code></pre>
 
@@ -10567,7 +10557,7 @@ this.push_(1, 2, 3, {
 data-importance="1">
 	<h2>
 		<a href="#!Seemple.Array-Model">
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Seemple.Array#</span>Model<wbr>(<span class="args">data, mkArray, index</span>)
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Seemple.Array#</span>Model<wbr>(<span class="args">data, seempleArray, index</span>)
 				
 		</a> 
 	</h2>
@@ -10609,7 +10599,7 @@ data-importance="1">
 			
 				<tr>
 					<td>
-						mkArray
+						seempleArray
 						
 					</td>
 					 
@@ -10776,7 +10766,7 @@ this.push(6, 7);
 this.unshift(true, {});
 
 // ["true", "[object Object]", "1", "2", "3", "4", "5", "6", "7"]
-console.log(mkArray.toJSON());</code></pre>
+console.log(seempleArray.toJSON());</code></pre>
 
 <pre><code class="lang-js">this.mediateItem(item => {
 	if(item.something) {
@@ -11570,13 +11560,13 @@ data-importance="1">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mkArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
+<pre><code class="lang-js">const seempleArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
 
 // returns [1, 2, [3, 4]]
-console.log(mkArray.toJSON());
+console.log(seempleArray.toJSON());
 
 // returns [1, 2, SeempleArray]
-console.log(mkArray.toJSON(false));</code></pre>
+console.log(seempleArray.toJSON(false));</code></pre>
 
  
 
@@ -12170,9 +12160,9 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.from([1, 2, 3, 4]);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.from([1, 2, 3, 4]);</code></pre>
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);</code></pre>
 
     <h4><p>Inheritance of the method</p>
 </h4>
@@ -12240,7 +12230,7 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.of(1, 2, 3, 4);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.of(1, 2, 3, 4);</code></pre>
 
     <h4><p>Inheritance of the method</p>
 </h4>
@@ -12356,7 +12346,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');</code></pre>
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const mk = new Seemple();
+<pre><code class="lang-js">const seemple = new Seemple();
 obj.calc('a', 'b');</code></pre>
 
  
@@ -13057,13 +13047,6 @@ whatever = 42;</code></pre>
 	</section>
 
 </main>
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-    room: 'seemplejs/seemple'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
 <div class="typo-badge">
 	<span class="close" title="Больше не показывать"></span>
 	Found a typo?  <br> Select it and press <br>

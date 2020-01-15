@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Seemple.js 2 українською</title>
-		<meta name="description" content="Seemple.js 2 - найпростіший JavaScript фреймворк у Всесвіті">
+		<title>Seemple.js українською</title>
+		<meta name="description" content="Seemple.js - дуже сімпл фреймворк для створення односторінкових веб додатків">
 		<meta name="viewport" content="initial-scale=1, width=device-width">
 		<meta charset="UTF-8">
 		<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
@@ -1492,21 +1492,20 @@
 
 
 	<span class="nav-heading">Інщі мови</span>
-	<a href="//seemple.io/" class="another-language"><i></i> In English</a>
-	<a href="//ru.seemple.io/" class="another-language"><i></i> На русском</a>
+	<a href="/" class="another-language"><i></i> In English</a>
+	<a href="/ru/" class="another-language"><i></i> На русском</a>
 
-	<a>Оновлено 14.1.2020</a>
+	<a>Оновлено 15.1.2020</a>
 </nav>
 
 
 <main>
 	<section id="promo">
 	<article id="!home">
-		<img src="img/mk5-logo_seemple.svg" class="mk-logo-seemple">
-		<img src="img/mk5-logo_text.svg" class="mk-logo-text">
-		<span class="version">2</span>
+		<img src="/logo/seemple-full-horizontal.svg" class="logo-seemple">
+		<span class="version"></span>
 		<div class="demo">
-			<output class="out">Простий фреймворк для створення односторінкових веб додатків</output>
+			<output class="out">Рілі сімпл фреймворк для створення односторінкових веб додатків</output>
 			<input type="text" class="in">
 			<pre><code class="lang-html">&lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
 &lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
@@ -1515,7 +1514,7 @@
 &lt;script&gt;
 const app = new Seemple();
 app.bindNode('x', '.in, .out');
-app.x = 'Простий фреймворк для створення односторінкових веб додатків';
+app.x = 'Рілі сімпл фреймворк для створення односторінкових веб додатків';
 &lt;/script&gt;</code></pre>
 		</div>
 
@@ -1524,11 +1523,7 @@ app.x = 'Простий фреймворк для створення однос�
 			<a href="https://github.com/finom/seemple" class="github-btn">Github <i></i></a>
 		</p>
 
-		<div class="social">
-			<a href="https://twitter.com/seemplejs" class="social-twitter">seemplejs</a>
-			<a href="//ua.seemple.io/forum" class="social-forum">Форум</a>
-			<a href="https://gitter.im/seemplejs/ua" class="social-gitter">Чат в Gitter</a>
-		</div>
+		<div class="social"></div>
 
 		<div class="sponsors hide">
 			<h3>Спонсори</h3>
@@ -1733,12 +1728,7 @@ class="example-link">Contact List</a> - дозволяє додавати, ви�
     <h4><p>Створення екземпляру</p>
 </h4>
 
-<pre><code class="lang-js">const mk = new Seemple();</code></pre>
-
-    <h4><p>Короткий запис: <code>MK</code> замість <code>Seemple</code> (для немодульного оточення)</p>
-</h4>
-
-<pre><code class="lang-js">const mk = new MK();</code></pre>
+<pre><code class="lang-js">const seemple = new Seemple();</code></pre>
 
     <h4><p>Спадкування</p>
 </h4>
@@ -7329,7 +7319,7 @@ data-importance="3">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mk = Seemple.toSeemple({
+<pre><code class="lang-js">const seemple = Seemple.toSeemple({
 	a: 1,
 	b: {
 		c: 2
@@ -9100,8 +9090,8 @@ this.toJSON();</code></pre>
     <h4><p>Створення екземпляра з двома властивостями-даними</p>
 </h4>
 
-<pre><code class="lang-js">// те ж саме, що і new MK.Object().setData({ a: 1, b: 2 });
-new MK.Object({ a: 1, b: 2 });</code></pre>
+<pre><code class="lang-js">// те ж саме, що і new Seemple.Object().setData({ a: 1, b: 2 });
+new Seemple.Object({ a: 1, b: 2 });</code></pre>
 
     <h4><p>Спадкування</p>
 </h4>
@@ -9131,8 +9121,8 @@ new MK.Object({ a: 1, b: 2 });</code></pre>
     <h4><p>Перебір даних, використовуючи цикл for..of</p>
 </h4>
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({ a: 1, b: 2 });
-for(let item of mkObject) {
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({ a: 1, b: 2 });
+for(let item of seempleObject) {
 	console.log(item); // 1 .. 2
 }</code></pre>
 
@@ -9548,18 +9538,18 @@ data-importance="2">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2
 });
 
-mkObject.c = 3;
+seempleObject.c = 3;
 
-mkObject.keyOf(1); // 'a'
+seempleObject.keyOf(1); // 'a'
 
-mkObject.keyOf(2); // 'b'
+seempleObject.keyOf(2); // 'b'
 
-mkObject.keyOf(3); // null</code></pre>
+seempleObject.keyOf(3); // null</code></pre>
 
  
 
@@ -10056,7 +10046,7 @@ data-importance="1">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mkObject = new Seemple.Object({
+<pre><code class="lang-js">const seempleObject = new Seemple.Object({
 	a: 1,
 	b: 2,
 	c: new Seemple.Object({
@@ -10066,10 +10056,10 @@ data-importance="1">
 });
 
 // повертає {a: 1, b: 2, c: { d: 3, e: 4 }}
-console.log(mkObject.toJSON());
+console.log(seempleObject.toJSON());
 
 // повертає {a: 1, b: 2, c: SeempleObject}
-console.log(mkObject.toJSON(false));</code></pre>
+console.log(seempleObject.toJSON(false));</code></pre>
 
  
 
@@ -10409,7 +10399,7 @@ data-importance="1">
 
 <pre><code class="lang-js">this.push(1, 2, 3);</code></pre>
 
-<pre><code class="lang-js">const mkArray = this
+<pre><code class="lang-js">const seempleArray = this
 	.forEach((value, index) => {
 		//...
 	})
@@ -10417,7 +10407,7 @@ data-importance="1">
 		//...
 	});
 
-console.log(mkArray.isSeempleArray); // true</code></pre>
+console.log(seempleArray.isSeempleArray); // true</code></pre>
 
 <pre><code class="lang-js">this.reverse();</code></pre>
 
@@ -10510,7 +10500,7 @@ this.push_(1, 2, 3, {
 data-importance="1">
 	<h2>
 		<a href="#!Seemple.Array-Model">
-			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Seemple.Array#</span>Model<wbr>(<span class="args">data, mkArray, index</span>)
+			<span class="signature">&lt;virtual&gt;</span><span class="memberof">Seemple.Array#</span>Model<wbr>(<span class="args">data, seempleArray, index</span>)
 				
 		</a> 
 	</h2>
@@ -10552,7 +10542,7 @@ data-importance="1">
 			
 				<tr>
 					<td>
-						mkArray
+						seempleArray
 						
 					</td>
 					 
@@ -10720,7 +10710,7 @@ this.push(6, 7);
 this.unshift(true, {});
 
 // ["true", "[object Object]", "1", "2", "3", "4", "5", "6", "7"]
-console.log(mkArray.toJSON());</code></pre>
+console.log(seempleArray.toJSON());</code></pre>
 
 <pre><code class="lang-js">this.mediateItem(item => {
 	if(item.something) {
@@ -11511,13 +11501,13 @@ data-importance="1">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mkArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
+<pre><code class="lang-js">const seempleArray = new Seemple.Array([1, 2, new SeempleArray(3, 4)]);
 
 // повертає [1, 2, [3, 4]]
-console.log(mkArray.toJSON());
+console.log(seempleArray.toJSON());
 
 // повертає [1, 2, SeempleArray]
-console.log(mkArray.toJSON(false));</code></pre>
+console.log(seempleArray.toJSON(false));</code></pre>
 
  
 
@@ -12111,9 +12101,9 @@ data-importance="2">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.from([1, 2, 3, 4]);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.from([1, 2, 3, 4]);</code></pre>
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.from([1, 2, 3, 4], item => item * 2);</code></pre>
 
     <h4><p>Спадкування методу</p>
 </h4>
@@ -12181,7 +12171,7 @@ data-importance="2">
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mkArray = Seemple.Array.of(1, 2, 3, 4);</code></pre>
+<pre><code class="lang-js">const seempleArray = Seemple.Array.of(1, 2, 3, 4);</code></pre>
 
     <h4><p>Спадкування методу</p>
 </h4>
@@ -12297,7 +12287,7 @@ this.trigger('fyeah', 'foo', 'bar', 'baz');</code></pre>
 	<h3>Приклади</h3>
 
 
-<pre><code class="lang-js">const mk = new Seemple();
+<pre><code class="lang-js">const seemple = new Seemple();
 obj.calc('a', 'b');</code></pre>
 
  
@@ -13000,13 +12990,6 @@ whatever = 42;</code></pre>
 	</section>
 
 </main>
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-    room: 'seemplejs/ua'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
 <div class="typo-badge">
 	<span class="close" title="Більше не показувати"></span>
 	Знайшли помилку в тексті? <br> Виберіть її і натисніть <br>
