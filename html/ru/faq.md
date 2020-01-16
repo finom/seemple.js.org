@@ -26,7 +26,7 @@ function bindNode(object, key, node, binder) {
 
 
 ### Есть ли во фреймворке роутинг?
-Да, [seemple-router](https://github.com/seemplejs/seemple-router) реализует двустороннее связывание свойства и части URL в стиле Seemple.js. Подробное описание на русском можно прочесть [в статье на Хабре](https://habrahabr.ru/company/seemple/blog/277171/).
+Да, [seemple-router](https://github.com/finom/seemple-router) реализует двустороннее связывание свойства и части URL в стиле Seemple.js. Подробное описание на русском можно прочесть [в статье на Хабре](https://habrahabr.ru/company/seemple/blog/277171/).
 
 ### Как предварительно отрендерить приложение на сервере?
 

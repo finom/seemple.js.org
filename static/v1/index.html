@@ -32,7 +32,7 @@
 		<meta name="msapplication-config" content="icons/browserconfig.xml">
 		<meta name="theme-color" content="#8BC34A">
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
-		<meta property="og:image" content="http://seemple.io/img/mk_logo.png">
+		<meta property="og:image" content="https://seemple.js.org/img/mk_logo.png">
 		<script>
 		if (window.applicationCache && (!localStorage.reloadedTimeSpike || new Date().getTime() - localStorage.reloadedTimeSpike > 60*1000)) {
 			applicationCache.addEventListener('updateready', function() {
@@ -94,7 +94,7 @@
 	<span class="view-switcher">
 		<span data-value="all" class="checked">Everything</span><span data-value="per-one">One by one</span>
 	</span>
-	<a href="https://github.com/seemplejs/seemple/releases/tag/v2.0.0-alpha.0">Seemple 2 is coming</a>
+	<a href="https://github.com/finom/seemple/releases/tag/v2.0.0-alpha.0">Seemple 2 is coming</a>
 	<span class="version-switcher hide">
 		<span data-value="stable" class="checked">Stable version</span><span data-value="unstable">1.1 Beta</span>
 	</span>
@@ -2109,8 +2109,8 @@
 
 	<hr>
 	<span class="nav-heading">Articles</span>
-	<a href="https://github.com/seemplejs/seemple/wiki/Seemple.js:-From-simple-to-simple">Tutorial</a>
-	<a href="https://github.com/seemplejs/seemple/wiki/Seemple.js:-Events">Events</a>
+	<a href="https://github.com/finom/seemple/wiki/Seemple.js:-From-simple-to-simple">Tutorial</a>
+	<a href="https://github.com/finom/seemple/wiki/Seemple.js:-Events">Events</a>
 
 	<hr>
 	<span class="nav-heading">Links</span>
@@ -2147,7 +2147,7 @@ app.x = 'The easiest framework in the Universe';
 		<div class="social">
 			<a href="https://twitter.com/seemplejs" class="social-twitter">seemplejs</a>
 			<a href="https://www.facebook.com/seemplejs/" class="social-fb">seemplejs</a>
-			<a href="http://seemple.io/forum" class="social-forum">Forum</a>
+			<a href="https://seemple.js.org/forum" class="social-forum">Forum</a>
 			<a href="https://gitter.im/seemplejs/seemple" class="social-gitter">Chat on Gitter</a>
 		</div>
 
@@ -15597,7 +15597,7 @@ magic.mediate(object, 'z', Number);
     console.log(data);
 }
 
-getData();</code></pre><h3>Is there a routing in Seemple?</h3><p>Yep and nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example <a href="https://github.com/flatiron/director">director</a>. But for simple tasks and tasks of average complexity (99% of all projecs) you can use <a href="https://github.com/seemplejs/seemple-router">a plugin</a> which implements two-way data binding between URL and object properties. The plugin fits perfectly into the concept of Seemple, adding to an app the easiest way of URL control ever.</p>
+getData();</code></pre><h3>Is there a routing in Seemple?</h3><p>Yep and nope. Similar to AJAX, there are lots of wonderful libraries implementing routing in the Internet, for example <a href="https://github.com/flatiron/director">director</a>. But for simple tasks and tasks of average complexity (99% of all projecs) you can use <a href="https://github.com/finom/seemple-router">a plugin</a> which implements two-way data binding between URL and object properties. The plugin fits perfectly into the concept of Seemple, adding to an app the easiest way of URL control ever.</p>
 <h3>How does Seemple work?</h3><p>Seemple uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing. One of the main setter peculiarities is the lightning speed which can be compared to the speed of working with ordinary properties. In their performance accessors are ahead of other solutions such as <code>Object.observe</code> and, especially, dirty-checking.</p>
 <p>As an example of how the two-way data binding works (<a href="#!Seemple-bindNode">bindNode</a> function in particular), have a look at this code:</p>
 <pre class="prettyprint source lang-js"><code>window.bindNode = function bindNode(object, key, node, binder) {
@@ -15690,7 +15690,7 @@ You can see the example of function working at <a href="//jsbin.com/mabetap/7/ed
 			</ul>
         </p>
         <p>
-            Can't find your browser? Open <a href="http://seemple.io/seemple/test/SpecRunner.html">browser test</a> yourself.
+            Can't find your browser? Open <a href="https://seemple.js.org/seemple/test/SpecRunner.html">browser test</a> yourself.
         </p>
     </article>
 </section>

@@ -27,7 +27,7 @@ As you see, it’s real easy (for simplicity, the function doesn’t support man
 
 ### Is there a routing in Seemple.js?
 
-Yes. Check out [seemple-router](https://github.com/seemplejs/seemple-router).
+Yes. Check out [seemple-router](https://github.com/finom/seemple-router).
 
 ### How to pre-render an application on a server
 

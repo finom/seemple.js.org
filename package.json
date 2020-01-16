@@ -73,11 +73,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/seemplejs/seemple.io.git"
+    "url": "https://github.com/finom/seemple.js.org.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/seemplejs/seemple.io/issues"
+    "url": "https://github.com/finom/seemple.js.org/issues"
   },
-  "homepage": "https://github.com/seemplejs/seemple.io#readme"
+  "homepage": "https://github.com/finom/seemple.js.org#readme"
 }

@@ -21,5 +21,5 @@ module.exports = (dirname, item) => {
 
     checkExistence(path.resolve(root, relativeFilePath))
 
-    return 'https://github.com/seemplejs/seemple.io/blob/master/' + escapedFilePath + linenoSuffix;
+    return 'https://github.com/finom/seemple.io/blob/master/' + escapedFilePath + linenoSuffix;
 }

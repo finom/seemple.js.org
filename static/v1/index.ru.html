@@ -32,7 +32,7 @@
 		<meta name="msapplication-config" content="icons/browserconfig.xml">
 		<meta name="theme-color" content="#8BC34A">
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
-		<meta property="og:image" content="http://seemple.io/img/mk_logo.png">
+		<meta property="og:image" content="https://seemple.js.org/img/mk_logo.png">
 		<script>
 		if (window.applicationCache && (!localStorage.reloadedTimeSpike || new Date().getTime() - localStorage.reloadedTimeSpike > 60*1000)) {
 			applicationCache.addEventListener('updateready', function() {
@@ -94,7 +94,7 @@
 	<span class="view-switcher">
 		<span data-value="all" class="checked">Всё сразу</span><span data-value="per-one">По одному</span>
 	</span>
-	<a href="https://github.com/seemplejs/seemple/releases/tag/v2.0.0-alpha.0">Seemple 2 is coming</a>
+	<a href="https://github.com/finom/seemple/releases/tag/v2.0.0-alpha.0">Seemple 2 is coming</a>
 	<span class="version-switcher hide">
 		<span data-value="stable" class="checked">Стабильная</span><span data-value="unstable">1.1 Beta</span>
 	</span>
@@ -15652,7 +15652,7 @@ magic.mediate(object, 'z', Number);
 </li>
 <li>Расширен список флагов для <a href="#!Seemple.bindNode">Seemple.bindNode</a>.<ul>
 <li>Добавлен флаг <code>debounce</code>, оптимизирующий обращения к DOM</li>
-<li>Исправлена проблема <a href="https://github.com/seemplejs/seemple/issues/26">#26</a> за счет флага <code>deep: false</code>, который включает игнорирование точек в имени свойства.</li>
+<li>Исправлена проблема <a href="https://github.com/finom/seemple/issues/26">#26</a> за счет флага <code>deep: false</code>, который включает игнорирование точек в имени свойства.</li>
 </ul>
 </li>
 <li>Добавлен метод <a href="#!Seemple.deepFind">Seemple.deepFind</a>.</li>
@@ -15687,7 +15687,7 @@ magic.mediate(object, 'z', Number);
 <li>Поддержка Opera 11.6+ (было 12+) и Firefox 8+ (было 15+)</li>
 <li>Ускорен метод <a href="#!Seemple.Array-pull">Seemple.Array#pull</a></li>
 <li>Исправлена проблема удаления DOM событий, используя метод <a href="#!Seemple-off">Seemple#off</a></li>
-<li>Исправлена <a href="https://github.com/seemplejs/seemple/issues/19">небольшая проблема</a> в методе <a href="#!Seemple-mediate">Seemple#mediate</a></li>
+<li>Исправлена <a href="https://github.com/finom/seemple/issues/19">небольшая проблема</a> в методе <a href="#!Seemple-mediate">Seemple#mediate</a></li>
 <li>Исправлена проблема работы <a href="#!Seemple.binders.dataset">Seemple.binders.dataset</a> в Internet Explorer</li>
 <li>Все байндеры покрыты тестами</li>
 <li>Другие небольшие исправления</li>
@@ -15953,7 +15953,7 @@ magic.mediate(object, 'z', Number);
     console.log(data);
 }
 
-getData();</code></pre><h3>Есть ли в Матрешке роутинг?</h3><p>И да и нет. Как и в случае с AJAX, в интернете есть полно замечательных библитек, реализующих роутинг, например <a href="https://github.com/flatiron/director">director</a>. Но для простых задач и задач средней сложности (99% всех проектов) можно воспользоваться плагином, реализующим двусторонее связывание части URL со свойствами объекта. Плагин прекрасно вписывается в концепцию Матрешки, добавляя в приложение самый простой способ управления адресом во всей Вселенной. Плагин находится по <a href="https://github.com/seemplejs/seemple-router">этой ссылке</a>. Подробное описание на русском можно прочесть <a href="https://habrahabr.ru/company/seemple/blog/277171/">в статье на Хабре</a>.</p>
+getData();</code></pre><h3>Есть ли в Матрешке роутинг?</h3><p>И да и нет. Как и в случае с AJAX, в интернете есть полно замечательных библитек, реализующих роутинг, например <a href="https://github.com/flatiron/director">director</a>. Но для простых задач и задач средней сложности (99% всех проектов) можно воспользоваться плагином, реализующим двусторонее связывание части URL со свойствами объекта. Плагин прекрасно вписывается в концепцию Матрешки, добавляя в приложение самый простой способ управления адресом во всей Вселенной. Плагин находится по <a href="https://github.com/finom/seemple-router">этой ссылке</a>. Подробное описание на русском можно прочесть <a href="https://habrahabr.ru/company/seemple/blog/277171/">в статье на Хабре</a>.</p>
 <h3>Как работает Матрешка?</h3><p>Матрешка использует акцессоры (accessors), в частности, сеттеры (setters) для реализации двустороннего связывания данных и отлова событий изменения свойств. Эта технология существует достаточно давно. Одной из главных особенностей сеттеров, является молниеносная скорость, сравнимая со скоростью работы с обычными свойствами. В производительности акцессоры выигрывают у других решений: <code>Object.observe</code> и, особенно, dirty-checking.</p>
 <p>В качестве примера того, как работает двустороннее связывание (в частности, функция <a href="#!Seemple-bindNode">bindNode</a>), взгляните на этот код:</p>
 <pre class="prettyprint source lang-js"><code>window.bindNode = function bindNode(object, key, node, binder) {
@@ -16046,7 +16046,7 @@ getData();</code></pre><h3>Есть ли в Матрешке роутинг?</h3
 			</ul>
         </p>
         <p>
-            Не нашли свой браузер? Откройте в нем <a href="http://seemple.io/seemple/test/SpecRunner.html">страницу с тестами</a>.
+            Не нашли свой браузер? Откройте в нем <a href="https://seemple.js.org/seemple/test/SpecRunner.html">страницу с тестами</a>.
         </p>
     </article>
 </section>

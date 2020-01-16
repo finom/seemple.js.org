@@ -3,7 +3,7 @@ import Main from './app/main.class';
 try {
     window.app = new Main();
 } catch(e) {
-	let report = 'https://github.com/seemplejs/seemple.io/issues/new?title=Houston,%20we%20have%20a%20problem&body=userAgent: ' + encodeURIComponent(' ' + navigator.userAgent + '\nError: ' + e.message);
+	let report = 'https://github.com/finom/seemple.io/issues/new?title=Houston,%20we%20have%20a%20problem&body=userAgent: ' + encodeURIComponent(' ' + navigator.userAgent + '\nError: ' + e.message);
 
     if(!localStorage.ignoreErrors && confirm('Houston, we have a problem:\n' + e + '\n\nThe main script of the website is thrown an error. Would you like to report the issue?\n\nBy pressing "Cancel" further errors will be ignored and you can continue reading documentation, but some features will not work (syntax highlighting, comments etc).')) {
         location.href = report;
