@@ -35,7 +35,8 @@
 	}
 
 	.logo-seemple {
-		height: 100px;
+		max-height: 100px;
+		max-width: 100%;
 	}
 
 	@media #{$medium-and-down} {
