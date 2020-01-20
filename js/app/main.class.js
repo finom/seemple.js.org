@@ -106,10 +106,10 @@ export default class Main extends SeempleObject {
 			});
 		}
 
-		fetch('https://api.github.com/repos/finom/seemple/releases/latest')
+		/* fetch('https://api.github.com/repos/finom/seemple/releases/latest')
 			.then(resp => resp.json())
 			.then(data => this.version = data.tag_name || '')
-			.catch(() => this.version = '');
+			.catch(() => this.version = ''); */
 	}
 
 	initDynamicStyles() {
@@ -200,10 +200,10 @@ export default class Main extends SeempleObject {
 					node: ':sandbox',
 					binder: dataset('importanceLevel')
 				}],
-				version: {
+				/* version: {
 					node: '#promo .version',
 					binder: html()
-				}
+				} */
 			})
 			.bindNode({
 				view: ':bound(viewSwitcher)'
