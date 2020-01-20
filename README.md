@@ -1,4 +1,4 @@
-# [seemple.io](https://seemple.js.org) source code [![Build Status](https://travis-ci.org/finom/seemple.js.org.svg)](https://travis-ci.org/finom/seemple.js.org)
+# [seemple.js.org](https://seemple.js.org) source code [![Build Status](https://travis-ci.org/finom/seemple.js.org.svg)](https://travis-ci.org/finom/seemple.js.org)
 
 <p align="center"><img src="http://i.imgur.com/42Lyr6F.png"></p>
 
