@@ -10,7 +10,7 @@ const resolve = (...givenPaths) => path.resolve(__dirname, '..', ...givenPaths);
 const { NODE_ENV, PORT } = process.env;
 
 const entry = {
-    'js/app': [
+    '/js/app': [
         './sass/screen.scss',
         'babel-polyfill',
         './js/app'
@@ -58,9 +58,10 @@ module.exports = {
     optimization: { minimize: true },
     output: {
         path: resolve('dist'),
-        filename: '[name].js',
+        filename: 'js/[name].js',
         libraryTarget: 'var',
-        chunkFilename: 'js/[id].js'
+        chunkFilename: 'js/[id].js',
+        publicPath: '/',
     },
     module: {
         rules: [

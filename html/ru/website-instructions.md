@@ -20,43 +20,6 @@
 
 > Документация разработана с использованием JSDoc3 и GitHub Flavored Markdown.
 
-### Язык
-
-В примерах на этой странице используется синтаксис, соответствующий спецификации ECMAScript 2015 (в частности, классы, стрелочные функции, циклы for..of, let/const). Те, кто не использует транспайлеры (инструменты, которые конвертируют новый JavaScript в старый) и, в то же время, вынуждены поддерживать устаревающие браузеры, могут заменить ``const`` и ``let`` на ``var``, arrow function на function expression, а классы, на вызов функции {@link Seemple.Class}. При этом, конечно, нужно понимать разницу между старым синтаксисом и новым.
-
-```js
-const foo = 1;
-let bar = 2;
-// ->
-var foo = 1;
-var bar = 2;
-```
-
-```js
-this.on('foo', evt => {
-    doSomething();
-});
-// ->
-this.on('foo', function(evt) {
-    doSomething();
-});
-```
-
-```js
-class Foo extends Bar {
-    method() {
-        // ...
-    }
-}
-// ->
-var Foo = Class({
-    'extends': Bar,
-    method: function() {
-        // ...
-    }
-});
-```
-
 
 ### Модули
 
@@ -68,7 +31,7 @@ var Foo = Class({
 // или функции можно импортировать в виде модуля
 const SeempleArray = require('seemple/array');
 const propBinder = require('seemple/binders/prop');
-const bindNode = require('seemple/bindNode');
+const bindNode = require('seemple/bindnode');
 ```
 
 Импорт главного модуля подтянет весь фреймворк. Как правило, это не требуется.

@@ -16,7 +16,7 @@
 		<div class="my-output"></div>
 
 		<script
-		  src="https://seemplejs.github.io/seemple/seemple.min.js">
+		  src="https://finom.github.io/seemple/seemple.min.js">
 		</script>
 
 		<script src="js/app.js"></script>
@@ -66,8 +66,8 @@ app.x = 'Hello World!';
 ### Другие примеры
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/finom/seemple-todomvc/tree/master/"
-class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//seemplejs.github.io/seemple-todomvc/docs/app.html))
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/todomvc/"
+class="example-link">TodoMVC</a> - список дел. ([Исходный код с аннотациями](//finom.github.io/seemple-todomvc/docs/app.html))
 
 <span class="list-item-number">2.</span>
 <a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/treeview/"

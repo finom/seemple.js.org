@@ -20,44 +20,6 @@ In a footer of every article of the documentation you can find a link to a sourc
 
 > The documentation is written using JSDoc3 and GitHub Flavored Markdown.
 
-### A programming language
-
-At examples of the documentation ECMAScript 2015 syntax is used (classes, arrow functions, let/const, for..of). Developers who don't use transpilers and, at the same time, they are forced to support outdated browsers (like Internet Explorer 11) can simply replace such syntax by ECMAScript 5 alternatives. Of course, you need to understand the difference between the old and the new syntax.
-
-
-```js
-const foo = 1;
-let bar = 2;
-// ->
-var foo = 1;
-var bar = 2;
-```
-
-```js
-this.on('foo', evt => {
-    doSomething();
-});
-// ->
-this.on('foo', function(evt) {
-    doSomething();
-});
-```
-
-```js
-class Foo extends Bar {
-    method() {
-        // ...
-    }
-}
-// ->
-var Foo = Class({
-    'extends': Bar,
-    method: function() {
-        // ...
-    }
-});
-```
-
 
 ### Modules
 
@@ -67,7 +29,7 @@ If you use CommonJS you can see paths to modules at every article of the documen
 // every static function or a class can be imported as CJS module
 const SeempleArray = require('seemple/array');
 const propBinder = require('seemple/binders/prop');
-const bindNode = require('seemple/bindNode');
+const bindNode = require('seemple/bindnode');
 ```
 
 The import of the main module pulls entire framework. Usually it's not required.

@@ -24,11 +24,6 @@ function bindNode(object, key, node, binder) {
 ```
 As you see, it’s real easy (for simplicity, the function doesn’t support many-to-many binding).
 
-
-### Is there a routing in Seemple.js?
-
-Yes. Check out [seemple-router](https://github.com/finom/seemple-router).
-
 ### How to pre-render an application on a server
 
 For the app pre-rendering Seemple.js can be used on Node.js (``window`` global object can be created via [jsdom](https://github.com/tmpvar/jsdom)) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.

@@ -16,7 +16,7 @@ Writing your first application is very easy. You should:
 		<input type="text" class="my-input">
 		<div class="my-output"></div>
 		<script
-		  src="https://seemplejs.github.io/seemple/seemple.min.js">
+		  src="https://finom.github.io/seemple/seemple.min.js">
 		</script>
 		<script src="js/app.js"></script>
 	</body>
@@ -66,8 +66,8 @@ Cool, isn't it? You can work with such magical properties directly.
 * [Seemple#on method](#!Seemple-on)
 
 <span class="list-item-number">1.</span>
-<a href="https://github.com/finom/seemple-todomvc/tree/master/"
-class="example-link">TodoMVC</a> - a to-do list. ([Source code with annotations](//seemplejs.github.io/seemple-todomvc/docs/app.html))
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/todomvc/"
+class="example-link">TodoMVC</a> - a to-do list. ([Source code with annotations](//finom.github.io/seemple-examples-and-tutorials/todomvc/docs/todomvc/js/app.html))
 
 <span class="list-item-number">2.</span>
 <a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/treeview/"
