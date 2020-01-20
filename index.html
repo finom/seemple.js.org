@@ -7,31 +7,28 @@
 		<meta name="description" content="Seemple.js - A simple JavaScript framework">
 		<meta name="viewport" content="initial-scale=1, width=device-width">
 		<meta charset="UTF-8">
-		<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-touch-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-touch-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="icons/favicon-194x194.png" sizes="194x194">
-		<link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96">
-		<link rel="icon" type="image/png" href="icons/android-chrome-192x192.png" sizes="192x192">
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="icons/manifest.json">
-		<link rel="shortcut icon" href="icons/favicon.ico">
+
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+		<link rel="manifest" href="/icons/site.webmanifest">
+		<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/icons/favicon.ico">
+		<meta name="apple-mobile-web-app-title" content="Seemple.js">
+		<meta name="application-name" content="Seemple.js">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-config" content="/icons/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
 		<link rel="dns-prefetch" href="//google-analytics.com/">
 		<meta name="apple-mobile-web-app-title" content="{{ page.title }}">
 		<meta name="application-name" content="{{ page.title }}">
 		<meta name="msapplication-TileColor" content="#00aba9">
 		<meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
 		<meta name="theme-color" content="#8BC34A">
 		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
-		<meta property="og:image" content="http://seemple.io/img/mk_logo.png">
+		<meta property="og:image" content="https://seemple.js.org/logo/seemple-full-horizontal.png">
 
 		<style>
 			.loader {
@@ -64,7 +61,7 @@
 			    100% { transform: rotate(360deg); }
 			}
 		</style>
-	<link href="css/style.css" rel="stylesheet"></head>
+	<link href="/css/style.css" rel="stylesheet"></head>
 	<body>
 		<div class="loader">
 			<div class="loader-inner"> </div>
@@ -1495,18 +1492,11 @@
 	<span class="nav-heading">Info</span>
 	<a href="#!faq">FAQ</a>
 	<hr>
-	<span class="nav-heading">Links</span>
-	<a href="https://github.com/seemplejs/examples-and-tutorials">Examples and tutorials</a>
-<a href="https://github.com/seemplejs/seemple-router">seemple-router</a>
-<a href="https://github.com/seemplejs/seemple-binders-file">seemple-binders-file</a>
-
-<a href="/v1">Seemple 1</a>
-
 
 	<span class="nav-heading">Other languages</span>
 	<a href="/ua/" class="another-language"><i></i> Українською</a>
 	<a href="/ru/" class="another-language"><i></i> На русском</a>
-	<a>Last update 15.1.2020</a>
+	<a>Last update 20.1.2020</a>
 </nav>
 
 
@@ -1529,8 +1519,11 @@ app.x = 'A framework for single-page applications creation';
 &lt;/script&gt;</code></pre>
 		</div>
 		<p>
-			<a href="https://github.com/seemplejs/seemple/archive/gh-pages.zip" download="seemplejs.zip" class="download-btn">Download <i></i></a>
+			<a href="https://github.com/finom/seemple/archive/gh-pages.zip" download="seemplejs.zip" class="download-btn">Download <i></i></a>
 			<a href="https://github.com/finom/seemple" class="github-btn">Github <i></i></a>
+		</p>
+		<p>
+				<a href="https://github.com/finom/seemple-examples-and-tutorials/"  target="_blank">Tutorials and examples</a>
 		</p>
 
 		<div class="social"></div>
@@ -1584,38 +1577,12 @@ app.x = 'A framework for single-page applications creation';
 <blockquote>
 <p>The documentation is written using JSDoc3 and GitHub Flavored Markdown.</p>
 </blockquote>
-<h3 id="a-programming-language">A programming language</h3>
-<p>At examples of the documentation ECMAScript 2015 syntax is used (classes, arrow functions, let/const, for..of). Developers who don&#39;t use transpilers and, at the same time, they are forced to support outdated browsers (like Internet Explorer 11) can simply replace such syntax by ECMAScript 5 alternatives. Of course, you need to understand the difference between the old and the new syntax.</p>
-<pre><code class="language-js">const foo = 1;
-let bar = 2;
-// -&gt;
-var foo = 1;
-var bar = 2;</code></pre>
-<pre><code class="language-js">this.on(&#39;foo&#39;, evt =&gt; {
-    doSomething();
-});
-// -&gt;
-this.on(&#39;foo&#39;, function(evt) {
-    doSomething();
-});</code></pre>
-<pre><code class="language-js">class Foo extends Bar {
-    method() {
-        // ...
-    }
-}
-// -&gt;
-var Foo = Class({
-    &#39;extends&#39;: Bar,
-    method: function() {
-        // ...
-    }
-});</code></pre>
 <h3 id="modules">Modules</h3>
 <p>If you use CommonJS you can see paths to modules at every article of the documentation. A size of resulting JavaScript bundle can be reduced by the import of needed parts of the framework.</p>
 <pre><code class="language-js">// every static function or a class can be imported as CJS module
 const SeempleArray = require(&#39;seemple/array&#39;);
 const propBinder = require(&#39;seemple/binders/prop&#39;);
-const bindNode = require(&#39;seemple/bindNode&#39;);</code></pre>
+const bindNode = require(&#39;seemple/bindnode&#39;);</code></pre>
 <p>The import of the main module pulls entire framework. Usually it&#39;s not required.</p>
 <pre><code class="language-js">const Seemple = require(&#39;seemple&#39;);</code></pre>
 <blockquote>
@@ -1637,7 +1604,7 @@ const bindNode = require(&#39;seemple/bindNode&#39;);</code></pre>
         &lt;input type=&quot;text&quot; class=&quot;my-input&quot;&gt;
         &lt;div class=&quot;my-output&quot;&gt;&lt;/div&gt;
         &lt;script
-          src=&quot;https://seemplejs.github.io/seemple/seemple.min.js&quot;&gt;
+          src=&quot;https://finom.github.io/seemple/seemple.min.js&quot;&gt;
         &lt;/script&gt;
         &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
     &lt;/body&gt;
@@ -1676,19 +1643,19 @@ const app = new Application();</code></pre>
 <li><a href="#!Seemple-on">Seemple#on method</a></li>
 </ul>
 <p><span class="list-item-number">1.</span>
-<a href="https://github.com/seemplejs/seemple-todomvc/tree/master/"
-class="example-link">TodoMVC</a> - a to-do list. (<a href="//seemplejs.github.io/seemple-todomvc/docs/app.html">Source code with annotations</a>)</p>
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/todomvc/"
+class="example-link">TodoMVC</a> - a to-do list. (<a href="//finom.github.io/seemple-examples-and-tutorials/todomvc/docs/todomvc/js/app.html">Source code with annotations</a>)</p>
 <p><span class="list-item-number">2.</span>
-<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/treeview/"
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/treeview/"
 class="example-link">TreeView</a> of unlimited nesting depth.</p>
 <p><span class="list-item-number">3.</span>
-<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/markdown-editor/"
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/markdown-editor/"
 class="example-link">Markdown editor</a> made with few lines of code.</p>
 <p><span class="list-item-number">4.</span>
-<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/soundcloud-search/"
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/soundcloud-search/"
 class="example-link">Simple SoundCloud player</a> - music search via SoundCloud API.</p>
 <p><span class="list-item-number">5.</span>
-<a href="https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/contact-list/"
+<a href="https://github.com/finom/seemple-examples-and-tutorials/tree/master/contact-list/"
 class="example-link">Contact List</a> - allows to add, remove, sort, search and change contacts.</p>
 
 		</article>
@@ -1765,16 +1732,16 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple" data-title="Class Seemple">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple"
   title="Class Seemple"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -1807,16 +1774,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23selectAll.jsdoc.js#L32">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23selectAll.jsdoc.js#L32">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-$(instance)" data-title="Method Seemple-$(instance)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-$(instance)"
   title="Method Seemple-$(instance)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2168,16 +2135,16 @@ setTimeout(() =&gt; {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-bindNode" data-title="Method Seemple-bindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-bindNode"
   title="Method Seemple-bindNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2308,16 +2275,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js#L333">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js#L333">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-bindNode(2)" data-title="Method Seemple-bindNode(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-bindNode(2)"
   title="Method Seemple-bindNode(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2436,16 +2403,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js#L380">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindNode.jsdoc.js#L380">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-bindNode(3)" data-title="Method Seemple-bindNode(3)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-bindNode(3)"
   title="Method Seemple-bindNode(3)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2487,16 +2454,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindOptionalNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindOptionalNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-bindOptionalNode" data-title="Method Seemple-bindOptionalNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-bindOptionalNode"
   title="Method Seemple-bindOptionalNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2592,16 +2559,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindSandbox.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23bindSandbox.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-bindSandbox" data-title="Method Seemple-bindSandbox">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-bindSandbox"
   title="Method Seemple-bindSandbox"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -2966,16 +2933,16 @@ this.a = 5;</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23calc.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23calc.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-calc" data-title="Method Seemple-calc">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-calc"
   title="Method Seemple-calc"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3085,16 +3052,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23calc.jsdoc.js#L362">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23calc.jsdoc.js#L362">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-calc(batch)" data-title="Method Seemple-calc(batch)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-calc(batch)"
   title="Method Seemple-calc(batch)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3362,16 +3329,16 @@ app.appData = {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23instantiate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23instantiate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-instantiate" data-title="Method Seemple-instantiate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-instantiate"
   title="Method Seemple-instantiate"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3464,16 +3431,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23instantiate.jsdoc.js#L169">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23instantiate.jsdoc.js#L169">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-instantiate(2)" data-title="Method Seemple-instantiate(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-instantiate(2)"
   title="Method Seemple-instantiate(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3577,16 +3544,16 @@ alert(typeof this.x); // "string"</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23mediate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23mediate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-mediate" data-title="Method Seemple-mediate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-mediate"
   title="Method Seemple-mediate"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3657,16 +3624,16 @@ alert(typeof this.z); // "boolean"</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23mediate.jsdoc.js#L33">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23mediate.jsdoc.js#L33">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-mediate(2)" data-title="Method Seemple-mediate(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-mediate(2)"
   title="Method Seemple-mediate(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3810,16 +3777,16 @@ this.off('change:x', handler, object);</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23off.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23off.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-off" data-title="Method Seemple-off">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-off"
   title="Method Seemple-off"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -3981,16 +3948,16 @@ this.on('foo', () => {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23on.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23on.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-on" data-title="Method Seemple-on">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-on"
   title="Method Seemple-on"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4097,16 +4064,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23on.jsdoc.js#L46">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23on.jsdoc.js#L46">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-on(2)" data-title="Method Seemple-on(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-on(2)"
   title="Method Seemple-on(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4268,16 +4235,16 @@ for(let i = 0; i &lt; 100; i++) {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23onDebounce.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23onDebounce.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-onDebounce" data-title="Method Seemple-onDebounce">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-onDebounce"
   title="Method Seemple-onDebounce"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4405,16 +4372,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23onDebounce.jsdoc.js#L35">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23onDebounce.jsdoc.js#L35">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-onDebounce(2)" data-title="Method Seemple-onDebounce(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-onDebounce(2)"
   title="Method Seemple-onDebounce(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4544,16 +4511,16 @@ this.x = 3; // does nothing</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23once.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23once.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-once" data-title="Method Seemple-once">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-once"
   title="Method Seemple-once"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4651,16 +4618,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23once.jsdoc.js#L32">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23once.jsdoc.js#L32">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-once(2)" data-title="Method Seemple-once(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-once(2)"
   title="Method Seemple-once(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4817,16 +4784,16 @@ this.name = 'Arthur Philip Dent';</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23parseBindings.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23parseBindings.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-parseBindings" data-title="Method Seemple-parseBindings">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-parseBindings"
   title="Method Seemple-parseBindings"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -4926,16 +4893,16 @@ this.remove(['myKey1', 'myKey2']);</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23remove.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23remove.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-remove" data-title="Method Seemple-remove">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-remove"
   title="Method Seemple-remove"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5019,16 +4986,16 @@ $('.app').find('.my-element')[0];</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-select" data-title="Method Seemple-select">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-select"
   title="Method Seemple-select"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5124,16 +5091,16 @@ nodes = $('.my-element').find('.my-another-element');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23selectAll.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23selectAll.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-selectAll" data-title="Method Seemple-selectAll">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-selectAll"
   title="Method Seemple-selectAll"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5270,16 +5237,16 @@ this.set('myKey', 4, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23set.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23set.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-set" data-title="Method Seemple-set">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-set"
   title="Method Seemple-set"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5367,16 +5334,16 @@ this.set('myKey', 4, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23set.jsdoc.js#L53">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23set.jsdoc.js#L53">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-set(2)" data-title="Method Seemple-set(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-set(2)"
   title="Method Seemple-set(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5485,16 +5452,16 @@ this.trigger('foo', 1, 2, 3); // alerts 6</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23trigger.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23trigger.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-trigger" data-title="Method Seemple-trigger">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-trigger"
   title="Method Seemple-trigger"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5616,16 +5583,16 @@ this.myKey = false;</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-unbindNode" data-title="Method Seemple-unbindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-unbindNode"
   title="Method Seemple-unbindNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5722,16 +5689,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-unbindNode(2)" data-title="Method Seemple-unbindNode(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-unbindNode(2)"
   title="Method Seemple-unbindNode(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5840,16 +5807,16 @@ this.unbindNode(temporaryBindings);</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js#L48">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23unbindNode.jsdoc.js#L48">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-unbindNode(3)" data-title="Method Seemple-unbindNode(3)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-unbindNode(3)"
   title="Method Seemple-unbindNode(3)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5887,16 +5854,16 @@ this.$nodes.myKey; // the same as $('.my-node')</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23nodes.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23nodes.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-$nodes" data-title="Property Seemple-$nodes">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-$nodes"
   title="Property Seemple-$nodes"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5925,16 +5892,16 @@ data-importance="3">
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23isMatreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23isMatreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-isSeemple" data-title="Property Seemple-isSeemple">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-isSeemple"
   title="Property Seemple-isSeemple"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -5972,16 +5939,16 @@ this.nodes.myKey; // the same as $('.my-node')[0]</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23nodes.jsdoc.js#L12">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka/Matreshka%23nodes.jsdoc.js#L12">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple-nodes" data-title="Property Seemple-nodes">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple-nodes"
   title="Property Seemple-nodes"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6117,16 +6084,16 @@ alert(MyClass.staticMethod()); // bar</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.Class.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.Class.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Class" data-title="Method Seemple.Class">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Class"
   title="Method Seemple.Class"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6182,16 +6149,16 @@ Seemple.bindNode(object, 'x', '.my-node');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.bindNode" data-title="Method Seemple.bindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.bindNode"
   title="Method Seemple.bindNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6247,16 +6214,16 @@ Seemple.bindOptionalNode(object, 'x', '.my-node');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindOptionalNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindOptionalNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.bindOptionalNode" data-title="Method Seemple.bindOptionalNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.bindOptionalNode"
   title="Method Seemple.bindOptionalNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6312,16 +6279,16 @@ Seemple.bindSandbox(object, '.my-node');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindSandbox.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.bindSandbox.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.bindSandbox" data-title="Method Seemple.bindSandbox">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.bindSandbox"
   title="Method Seemple.bindSandbox"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6380,16 +6347,16 @@ alert(object.sum); // 42</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.calc.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.calc.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.calc" data-title="Method Seemple.calc">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.calc"
   title="Method Seemple.calc"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6480,16 +6447,16 @@ Seemple.chain(object)
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.chain.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.chain.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.chain" data-title="Method Seemple.chain">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.chain"
   title="Method Seemple.chain"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6548,16 +6515,16 @@ alert(this.x.a); // 42</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.instantiate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.instantiate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.instantiate" data-title="Method Seemple.instantiate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.instantiate"
   title="Method Seemple.instantiate"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6655,16 +6622,16 @@ console.log(Seemple.lookForBinder(element));
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.lookForBinder.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.lookForBinder.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.lookForBinder" data-title="Method Seemple.lookForBinder">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.lookForBinder"
   title="Method Seemple.lookForBinder"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6722,16 +6689,16 @@ alert(typeof object.x); // string</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.mediate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.mediate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.mediate" data-title="Method Seemple.mediate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.mediate"
   title="Method Seemple.mediate"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6791,16 +6758,16 @@ Seemple.off(object, 'foo');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.off.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.off.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.off" data-title="Method Seemple.off">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.off"
   title="Method Seemple.off"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6860,16 +6827,16 @@ Seemple.trigger(object, 'foo', { hello: 'World' });</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.on.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.on.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.on" data-title="Method Seemple.on">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.on"
   title="Method Seemple.on"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6927,16 +6894,16 @@ Seemple.onDebounce(object, 'foo', evt => {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.onDebounce.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.onDebounce.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.onDebounce" data-title="Method Seemple.onDebounce">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.onDebounce"
   title="Method Seemple.onDebounce"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -6994,16 +6961,16 @@ Seemple.once(object, 'foo', evt => {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.once.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.once.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.once" data-title="Method Seemple.once">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.once"
   title="Method Seemple.once"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7062,16 +7029,16 @@ object.name = 'World';</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.parseBindings.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.parseBindings.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.parseBindings" data-title="Method Seemple.parseBindings">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.parseBindings"
   title="Method Seemple.parseBindings"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7126,16 +7093,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.remove.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.remove.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.remove" data-title="Method Seemple.remove">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.remove"
   title="Method Seemple.remove"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7195,16 +7162,16 @@ Seemple.select(object, '.my-element');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.select" data-title="Method Seemple.select">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.select"
   title="Method Seemple.select"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7260,16 +7227,16 @@ Seemple.selectAll(object, '.my-element');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.selectAll.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.selectAll.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.selectAll" data-title="Method Seemple.selectAll">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.selectAll"
   title="Method Seemple.selectAll"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7327,16 +7294,16 @@ Seemple.set(object, 'x', 42, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.set.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.set.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.set" data-title="Method Seemple.set">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.set"
   title="Method Seemple.set"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7389,16 +7356,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.toMatreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.toMatreshka.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.toSeemple" data-title="Method Seemple.toSeemple">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.toSeemple"
   title="Method Seemple.toSeemple"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7458,16 +7425,16 @@ Seemple.trigger(object, 'foo', { hello: 'World' });</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.trigger.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.trigger.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.trigger" data-title="Method Seemple.trigger">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.trigger"
   title="Method Seemple.trigger"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7523,16 +7490,16 @@ Seemple.unbindNode(object, 'x', '.my-node');</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.unbindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.unbindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.unbindNode" data-title="Method Seemple.unbindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.unbindNode"
   title="Method Seemple.unbindNode"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7599,16 +7566,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.useDOMLibrary.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.useDOMLibrary.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.useDOMLibrary" data-title="Method Seemple.useDOMLibrary">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.useDOMLibrary"
   title="Method Seemple.useDOMLibrary"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7666,16 +7633,16 @@ this.bindNode('myKey', '.foo.bar');</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.defaultBinders.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.defaultBinders.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.defaultBinders" data-title="Property Seemple.defaultBinders">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.defaultBinders"
   title="Property Seemple.defaultBinders"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7713,16 +7680,16 @@ Seemple.parserBrackets.right = ']]';</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.parserBrackers.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka-static/Matreshka.parserBrackers.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.parserBrackets" data-title="Property Seemple.parserBrackets">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.parserBrackets"
   title="Property Seemple.parserBrackets"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7786,16 +7753,16 @@ this.bindNode('myKey', '.my-element',
 
 
 
-	<a class="make-patch-link" target="_blank" href="">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders" data-title="Namespace Seemple.binders">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders"
   title="Namespace Seemple.binders"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -7896,16 +7863,16 @@ this.myKey = 'World'; // the foo attr now has value "Hello, World"</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.attr.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.attr.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.attr" data-title="Method Seemple.binders.attr">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.attr"
   title="Method Seemple.binders.attr"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8005,16 +7972,16 @@ this.myKey = true; // removes the 'foo' class</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.className.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.className.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.className" data-title="Method Seemple.binders.className">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.className"
   title="Method Seemple.binders.className"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8114,16 +8081,16 @@ this.myKey = 'foo'; // the attr data-my-prop now has value "Hello, foo"</code></
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.dataset.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.dataset.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.dataset" data-title="Method Seemple.binders.dataset">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.dataset"
   title="Method Seemple.binders.dataset"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8202,16 +8169,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.display.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.display.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.display" data-title="Method Seemple.binders.display">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.display"
   title="Method Seemple.binders.display"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8296,16 +8263,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.existence.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.existence.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.existence" data-title="Method Seemple.binders.existence">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.existence"
   title="Method Seemple.binders.existence"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8394,16 +8361,16 @@ this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.html.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.html.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.html" data-title="Method Seemple.binders.html">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.html"
   title="Method Seemple.binders.html"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8480,16 +8447,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.input.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.input.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.input" data-title="Method Seemple.binders.input">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.input"
   title="Method Seemple.binders.input"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8535,16 +8502,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.output.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.output.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.output" data-title="Method Seemple.binders.output">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.output"
   title="Method Seemple.binders.output"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8590,16 +8557,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.progress.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.progress.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.progress" data-title="Method Seemple.binders.progress">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.progress"
   title="Method Seemple.binders.progress"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8706,16 +8673,16 @@ this.myProp = 'World';</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.prop.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.prop.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.prop" data-title="Method Seemple.binders.prop">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.prop"
   title="Method Seemple.binders.prop"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8792,16 +8759,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.select.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.select" data-title="Method Seemple.binders.select">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.select"
   title="Method Seemple.binders.select"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8902,16 +8869,16 @@ this.myKey = 'cats.jpg'; // backgroundImage now equals to "url("cats.jpg")"</cod
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.style.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.style.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.style" data-title="Method Seemple.binders.style">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.style"
   title="Method Seemple.binders.style"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -8998,16 +8965,16 @@ this.myKey = 'foo'; // sets textContent as "Hello, foo"</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.text.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.text.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.text" data-title="Method Seemple.binders.text">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.text"
   title="Method Seemple.binders.text"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9053,16 +9020,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.textarea.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.binders/Matreshka.binders.textarea.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.binders.textarea" data-title="Method Seemple.binders.textarea">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.binders.textarea"
   title="Method Seemple.binders.textarea"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9188,16 +9155,16 @@ for(let item of seempleObject) {
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object" data-title="Class Seemple.Object">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object"
   title="Class Seemple.Object"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9280,16 +9247,16 @@ data-importance="1">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23addDataKeys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23addDataKeys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-addDataKeys" data-title="Method Seemple.Object-addDataKeys">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-addDataKeys"
   title="Method Seemple.Object-addDataKeys"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9384,16 +9351,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23each.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23each.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-each" data-title="Method Seemple.Object-each">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-each"
   title="Method Seemple.Object-each"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9438,16 +9405,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23entries.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23entries.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-entries" data-title="Method Seemple.Object-entries">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-entries"
   title="Method Seemple.Object-entries"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9518,16 +9485,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23isDataKey.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23isDataKey.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-isDataKey" data-title="Method Seemple.Object-isDataKey">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-isDataKey"
   title="Method Seemple.Object-isDataKey"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9613,16 +9580,16 @@ seempleObject.keyOf(3); // null</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23keyOf.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23keyOf.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-keyOf" data-title="Method Seemple.Object-keyOf">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-keyOf"
   title="Method Seemple.Object-keyOf"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9665,16 +9632,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23keys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23keys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-keys" data-title="Method Seemple.Object-keys">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-keys"
   title="Method Seemple.Object-keys"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9755,16 +9722,16 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23removeDataKeys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23removeDataKeys.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-removeDataKeys" data-title="Method Seemple.Object-removeDataKeys">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-removeDataKeys"
   title="Method Seemple.Object-removeDataKeys"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -9916,16 +9883,16 @@ this.b = 4;</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23setData.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23setData.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-setData" data-title="Method Seemple.Object-setData">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-setData"
   title="Method Seemple.Object-setData"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10027,16 +9994,16 @@ console.log(this.keys()); // ['a', 'b']</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23setData.jsdoc.js#L54">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23setData.jsdoc.js#L54">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-setData(2)" data-title="Method Seemple.Object-setData(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-setData(2)"
   title="Method Seemple.Object-setData(2)"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10122,16 +10089,16 @@ console.log(seempleObject.toJSON(false));</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23toJSON.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23toJSON.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-toJSON" data-title="Method Seemple.Object-toJSON">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-toJSON"
   title="Method Seemple.Object-toJSON"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10174,16 +10141,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23values.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23values.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-values" data-title="Method Seemple.Object-values">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-values"
   title="Method Seemple.Object-values"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10213,16 +10180,16 @@ data-importance="3">
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23isMatreshkaObject.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Object/Matreshka.Object%23isMatreshkaObject.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Object-isSeempleObject" data-title="Property Seemple.Object-isSeempleObject">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Object-isSeempleObject"
   title="Property Seemple.Object-isSeempleObject"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10374,16 +10341,16 @@ this.splice(1, 3);</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array" data-title="Class Seemple.Array">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array"
   title="Class Seemple.Array"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10471,16 +10438,16 @@ console.log(seempleArray.isSeempleArray); // true</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23METHOD.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23METHOD.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-METHOD" data-title="Method Seemple.Array-METHOD">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-METHOD"
   title="Method Seemple.Array-METHOD"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10540,16 +10507,16 @@ this.push_(1, 2, 3, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23METHOD_.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23METHOD_.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-METHOD_" data-title="Method Seemple.Array-METHOD_">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-METHOD_"
   title="Method Seemple.Array-METHOD_"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10678,16 +10645,16 @@ myArray.toJSON();</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23Model.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23Model.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-Model" data-title="Method Seemple.Array-Model">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-Model"
   title="Method Seemple.Array-Model"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10779,16 +10746,16 @@ console.log(seempleArray.toJSON());</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23mediateItem.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23mediateItem.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-mediateItem" data-title="Method Seemple.Array-mediateItem">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-mediateItem"
   title="Method Seemple.Array-mediateItem"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -10889,16 +10856,16 @@ const app = new MyArray();</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23onItemRender.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23onItemRender.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-onItemRender" data-title="Method Seemple.Array-onItemRender">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-onItemRender"
   title="Method Seemple.Array-onItemRender"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11007,16 +10974,16 @@ this.orderBy(['user', 'age'], ['asc', 'desc']);
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23orderBy.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23orderBy.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-orderBy" data-title="Method Seemple.Array-orderBy">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-orderBy"
   title="Method Seemple.Array-orderBy"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11141,16 +11108,16 @@ console.log(this.length); // 2</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23pull.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23pull.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-pull" data-title="Method Seemple.Array-pull">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-pull"
   title="Method Seemple.Array-pull"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11256,16 +11223,16 @@ this.recreate();</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23recreate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23recreate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-recreate" data-title="Method Seemple.Array-recreate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-recreate"
   title="Method Seemple.Array-recreate"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11344,16 +11311,16 @@ data-importance="3">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23rerender.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23rerender.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-rerender" data-title="Method Seemple.Array-rerender">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-rerender"
   title="Method Seemple.Array-rerender"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11483,16 +11450,16 @@ console.log(myCollection.toJSON());
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23restore.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23restore.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-restore" data-title="Method Seemple.Array-restore">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-restore"
   title="Method Seemple.Array-restore"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11571,16 +11538,16 @@ console.log(seempleArray.toJSON(false));</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23toJSON.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23toJSON.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-toJSON" data-title="Method Seemple.Array-toJSON">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-toJSON"
   title="Method Seemple.Array-toJSON"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11610,16 +11577,16 @@ data-importance="3">
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23isMatreshkaArray.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23isMatreshkaArray.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-isSeempleArray" data-title="Property Seemple.Array-isSeempleArray">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-isSeempleArray"
   title="Property Seemple.Array-isSeempleArray"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11895,16 +11862,16 @@ arr.push({ value: &#39;Item 1&#39; }, { value: &#39;Item 2&#39; });</code></pre>
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23itemRenderer.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23itemRenderer.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-itemRenderer" data-title="Property Seemple.Array-itemRenderer">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-itemRenderer"
   title="Property Seemple.Array-itemRenderer"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -11945,16 +11912,16 @@ data-importance="3">
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23renderIfPossible.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23renderIfPossible.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-renderIfPossible" data-title="Property Seemple.Array-renderIfPossible">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-renderIfPossible"
   title="Property Seemple.Array-renderIfPossible"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -12046,16 +12013,16 @@ arr.recreate([
 
  
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23trackBy.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array%23trackBy.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array-trackBy" data-title="Property Seemple.Array-trackBy">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array-trackBy"
   title="Property Seemple.Array-trackBy"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -12177,16 +12144,16 @@ console.log(myArray instanceof MyClass); // true</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.from.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.from.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array.from" data-title="Method Seemple.Array.from">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array.from"
   title="Method Seemple.Array.from"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -12245,16 +12212,16 @@ console.log(myArray instanceof MyClass); // true</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/seemplejs/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.of.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+	<!-- <a class="make-patch-link" target="_blank" href="https://github.com/finom/seemple.io/blob/master/doc/en/Matreshka.Array/Matreshka.Array.of.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="Seemple.Array.of" data-title="Method Seemple.Array.of">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
 <div class="comments-container"
   href="https://muut.com/i/seemple/comments/seemple-:Seemple.Array.of"
   title="Method Seemple.Array.of"
   data-channel="Seemple"
   data-show_online="false"
   data-upload="false"></div>
+-->
 
 </article>
 
@@ -12997,8 +12964,6 @@ whatever = 42;</code></pre>
     });
 }</code></pre>
 <p>As you see, it’s real easy (for simplicity, the function doesn’t support many-to-many binding).</p>
-<h3 id="is-there-a-routing-in-seemplejs">Is there a routing in Seemple.js?</h3>
-<p>Yes. Check out <a href="https://github.com/seemplejs/seemple-router">seemple-router</a>.</p>
 <h3 id="how-to-pre-render-an-application-on-a-server">How to pre-render an application on a server</h3>
 <p>For the app pre-rendering Seemple.js can be used on Node.js (<code>window</code> global object can be created via <a href="https://github.com/tmpvar/jsdom">jsdom</a>) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.</p>
 <p>The task of client-side is to restore application state from HTML. <a href="#!Seemple-bindNode">Seemple#bindNode</a> extracts element value and assigns it to a property and <a href="#!Seemple.Array-restore">Seemple.Array#restore</a> restores a state of a collection.</p>
@@ -13086,5 +13051,5 @@ whatever = 42;</code></pre>
 				<a class="next-page"></a>
 			</div>
 		</script>
-	<script type="text/javascript" src="js/app.js"></script></body>
+	<script type="text/javascript" src="/js//js/app.js"></script></body>
 </html>
