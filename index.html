@@ -7778,10 +7778,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/attr'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which changes an attribute of DOM node depending on an object property value</p>
 </div>
 	<div class="description"><p>The value can be transformed using <code>mappingFn</code> argument.</p>
@@ -7888,10 +7884,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/classname'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which switches over DOM node class name depending on an object property value. If property value equals <code>true</code> non-strictly, a class name is added, otherwise - it&#39;s removed. The logic can be changed by passing <code>false</code> as the second argument and in this way, a class name will be added  when a property value equals <code>false</code> non-strictly and vice versa.</p>
 </div>
 	<div class="description"></div>
@@ -7997,10 +7989,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/dataset'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which changes given <a href="https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset">dataset</a> property of bound DOM node depending on an object property value.</p>
 </div>
 	<div class="description"><p>The property value can be transformed using <code>mappingFn</code> argument.</p>
@@ -8075,7 +8063,7 @@ this.myKey = 'foo';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.dataset('myProp', value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // the attr data-my-prop now has value "Hello, foo"</code></pre>
 
  
@@ -8105,10 +8093,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/display'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which controls a visibility of DOM node (using <code>style.display</code>) depending on an object property value</p>
 </div>
@@ -8193,10 +8177,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/existence'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which controls an existence of DOM node at DOM tree depending on an object property value</p>
 </div>
@@ -8288,10 +8268,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/html'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which changes <code>innerHTML</code> of bound DOM node depending on an object property value</p>
 </div>
 	<div class="description"><p>The property value can be transformed using <code>mappingFn</code> argument.</p>
@@ -8354,7 +8330,7 @@ this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.html(value => `Hello, ${value}`));
-    
+
 // sets innerHTML="Hello, &lt;div>foo&lt;/div>"
 this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
@@ -8385,10 +8361,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/input'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which binds an object property to an <code>input</code> element value. It is not obligatory to use the binder directly because it is included in the <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a> list.</p>
 </div>
@@ -8471,10 +8443,6 @@ data-importance="3">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/output'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which binds an object property to an <code>output</code> element value. It is not obligatory to use the binder directly because it is included in the <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a> list.</p>
 </div>
 	<div class="description"></div>
@@ -8525,10 +8493,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/progress'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which binds an object property to a <code>progress</code> element value. It is not obligatory to use the binder directly because it is included in the <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a> list.</p>
 </div>
@@ -8581,10 +8545,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/prop'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which changes given property of DOM node depending on an object property value</p>
 </div>
@@ -8666,7 +8626,7 @@ this.disabled = false;</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myProp', '.my-node'
     Seemple.binders.prop('foo', value => `Hello, ${value}`));
-    
+
 // foo property of the element now has value "Hello, World"
 this.myProp = 'World';</code></pre>
 
@@ -8697,10 +8657,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/select'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which binds an object property to a <code>select</code> element value. It is not obligatory to use the binder directly because it is included in the <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a> list.</p>
 </div>
@@ -8784,10 +8740,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/style'</code>
-	</p>
-	
 	<div class="summary"><p>Returns a binder which changes given style property of bound DOM node depending on an object property value</p>
 </div>
 	<div class="description"><p>The property value can be transformed using <code>mappingFn</code> argument.</p>
@@ -8863,7 +8815,7 @@ this.myKey = 'red'; // background-color of .my-progress is red now</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
   Seemple.binders.style('backgroundImage', value => `url("${value}")`));
-  
+
 this.myKey = 'cats.jpg'; // backgroundImage now equals to "url("cats.jpg")"</code></pre>
 
  
@@ -8893,10 +8845,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/text'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which changes <code>textContent</code> of bound DOM node depending on an object property value</p>
 </div>
@@ -8959,7 +8907,7 @@ this.myKey = 'foo'; // sets textContent as "foo"</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.text(value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // sets textContent as "Hello, foo"</code></pre>
 
  
@@ -8988,10 +8936,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		CommonJS module: <code>'seemple/binders/textarea'</code>
-	</p>
 	
 	<div class="summary"><p>Returns a binder which binds an object property to a <code>textarea</code> element value. It is not obligatory to use the binder directly because it is included in the <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a> list.</p>
 </div>

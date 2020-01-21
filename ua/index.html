@@ -7719,10 +7719,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/attr'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, який змінює атрибут DOM елемента на значення властивості об&#39;єкту</p>
 </div>
 	<div class="description"><p>Значення властивості можна перетворити за допомогою переданої функції <code>mappingFn</code>.</p>
@@ -7829,10 +7825,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/classname'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, який перемикає ім&#39;я класу DOM елемента в залежності від значення властивості об&#39;єкта. Якщо значення властивості нестрого дорівнює <code>true</code>, ім&#39;я класу додається, в іншому випадку - забирається. Логіку можна змінити, передавши <code>false</code> другим аргументом, і, таким чином, ім&#39;я класу буде додаватися, коли значення властивості нестрого дорівнює <code>false</code> і навпаки.</p>
 </div>
 	<div class="description"></div>
@@ -7938,10 +7930,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/dataset'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, який змінює властивість <a href="https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset">dataset</a> DOM элемента в залежності від значення властивості об&#39;єкта.</p>
 </div>
 	<div class="description"><p>Значення властивості можна перетворити за допомогою переданої функції <code>mappingFn</code>.</p>
@@ -8016,7 +8004,7 @@ this.myKey = 'foo';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.dataset('myProp', value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // атрибут data-my-prop має значення "Hello, foo"</code></pre>
 
  
@@ -8046,10 +8034,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/display'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер для одностороннього зв&#39;язування, який змінює видимість DOM елементу (використовуючи <code>style.display</code>), в залежності від значення властивості об&#39;єкта</p>
 </div>
@@ -8134,10 +8118,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/existence'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер для одностороннього зв&#39;язування, що перемикає наявність елемента в DOM дереві, в залежності від значення властивості об&#39;єкта</p>
 </div>
@@ -8229,10 +8209,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/html'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, який змінює <code>innerHTML</code> DOM елемента в залежності від значення властивості об&#39;єкта</p>
 </div>
 	<div class="description"><p>Значення властивості можна перетворити за допомогою переданої функції <code>mappingFn</code>.</p>
@@ -8295,7 +8271,7 @@ this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.html(value => `Hello, ${value}`));
-    
+
 // встановить innerHTML элемента як "Hello, &lt;div>foo&lt;/div>"
 this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
@@ -8326,10 +8302,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/input'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер, що зв&#39;язує властивість об&#39;єкта з елементом <code>input</code>. Безпосередньо байндер використовувати не обов&#39;язково, так як він входить в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
@@ -8412,10 +8384,6 @@ data-importance="3">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/output'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, що зв&#39;язує властивість об&#39;єкта з елементом <code>output</code>. Безпосередньо байндер використовувати не обов&#39;язково, так як він входить в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
 	<div class="description"></div>
@@ -8466,10 +8434,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/progress'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер, що зв&#39;язує властивість об&#39;єкта з елементом <code>progress</code>. Безпосередньо байндер використовувати не обов&#39;язково, так як він входить в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
@@ -8522,10 +8486,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/prop'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер, який змінює властивість DOM елемента на значення властивості об&#39;єкта</p>
 </div>
@@ -8638,10 +8598,6 @@ data-importance="3">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/select'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, що зв&#39;язує властивість об&#39;єкта з елементом <code>select</code>. Безпосередньо байндер використовувати не обов&#39;язково, так як він входить в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
 	<div class="description"></div>
@@ -8724,10 +8680,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/style'</code>
-	</p>
-	
 	<div class="summary"><p>Повертає байндер, який змінює задану властивість стилю DOM елемента в залежності від значення властивості об&#39;єкта</p>
 </div>
 	<div class="description"><p>Значення властивості можна перетворити за допомогою переданої функції <code>mappingFn</code>.</p>
@@ -8803,7 +8755,7 @@ this.myKey = 'red'; // колір фону .my-node став червоним</c
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
   Seemple.binders.style('backgroundImage', value => `url("${value}")`));
-  
+
 this.myKey = 'cats.jpg'; // backgroundImage дорівнює "url("cats.jpg")"</code></pre>
 
  
@@ -8833,10 +8785,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/text'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер, який змінює <code>textContent</code> (текстовий вміст) DOM елемента в залежності від значення властивості об&#39;єкта.</p>
 </div>
@@ -8899,7 +8847,7 @@ this.myKey = 'foo'; // встановить textContent элемента як "f
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.text(value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // встановить textContent элемента як "Hello, foo"</code></pre>
 
  
@@ -8928,10 +8876,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Шлях до модуля CommonJS: <code>'seemple/binders/textarea'</code>
-	</p>
 	
 	<div class="summary"><p>Повертає байндер, що зв&#39;язує властивість об&#39;єкта з елементом <code>textarea</code>. Безпосередньо байндер використовувати не обов&#39;язково, так як він входить в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>

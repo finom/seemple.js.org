@@ -7720,10 +7720,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/attr'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, меняющий атрибут DOM элемента на значение свойства объекта</p>
 </div>
 	<div class="description"><p>Значение свойства можно преобразить с помощью переданной функции <code>mappingFn</code>.</p>
@@ -7830,10 +7826,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/classname'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, который переключает имя класса DOM элемента в зависимости от значения свойства объекта. Если значение свойства нестрого равно <code>true</code>, имя класса добавляется, в противном случае - убирается. Логику можно изменить, передав <code>false</code> вторым аргументом, и, таким образом, имя класса будет добавляться, когда значение свойства нестрого равно <code>false</code> и наоборот.</p>
 </div>
 	<div class="description"></div>
@@ -7939,10 +7931,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/dataset'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, меняющий заданное свойство объекта <a href="https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset">dataset</a> DOM элемента в зависимости от значения свойства объекта.</p>
 </div>
 	<div class="description"><p>Значение свойства можно преобразить с помощью переданной функции <code>mappingFn</code>.</p>
@@ -8017,7 +8005,7 @@ this.myKey = 'foo';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.dataset('myProp', value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // атрибут data-my-prop имеет значение "Hello, foo"</code></pre>
 
  
@@ -8047,10 +8035,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/display'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер для одностороннего связывания, меняющий видимость DOM элемента (используя <code>style.display</code>), в зависимости от значения свойства объекта</p>
 </div>
@@ -8135,10 +8119,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/existence'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер для одностороннего связывания, переключающий наличие элемента в DOM дереве, в зависимости от значения свойства объекта</p>
 </div>
@@ -8230,10 +8210,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/html'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, меняющий <code>innerHTML</code> DOM элемента в зависимости от значения свойства объекта</p>
 </div>
 	<div class="description"><p>Значение свойства можно преобразить с помощью переданной функции <code>mappingFn</code>.</p>
@@ -8296,7 +8272,7 @@ this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.html(value => `Hello, ${value}`));
-    
+
 // установит innerHTML элемента как "Hello, &lt;div>foo&lt;/div>"
 this.myKey = '&lt;div>foo&lt;/div>';</code></pre>
 
@@ -8327,10 +8303,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/input'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер, связывающий свойство объекта с элементом <code>input</code>. Напрямую байндер использовать не обязательно, так как он входит в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
@@ -8413,10 +8385,6 @@ data-importance="3">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/output'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, связывающий свойство объекта с элементом <code>output</code>. Напрямую байндер использовать не обязательно, так как он входит в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
 	<div class="description"></div>
@@ -8467,10 +8435,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/progress'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер, связывающий свойство объекта с элементом <code>progress</code>. Напрямую байндер использовать не обязательно, так как он входит в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
@@ -8523,10 +8487,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/prop'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер, меняющий свойство DOM элемента на значение свойства объекта</p>
 </div>
@@ -8639,10 +8599,6 @@ data-importance="3">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/select'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, связывающий свойство объекта с элементом <code>select</code>. Напрямую байндер использовать не обязательно, так как он входит в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
 	<div class="description"></div>
@@ -8725,10 +8681,6 @@ data-importance="2">
 	</h2>
 	
 	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/style'</code>
-	</p>
-	
 	<div class="summary"><p>Возвращает байндер, меняющий заданное свойство стиля DOM элемента в зависимости от значения свойства объекта.</p>
 </div>
 	<div class="description"><p>Значение свойства можно преобразить с помощью переданной функции <code>mappingFn</code>.</p>
@@ -8804,7 +8756,7 @@ this.myKey = 'red'; // цвет фона .my-element стал красным</co
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
   Seemple.binders.style('backgroundImage', value => `url("${value}")`));
-  
+
 this.myKey = 'cats.jpg'; // backgroundImage теперь равен "url("cats.jpg")"</code></pre>
 
  
@@ -8834,10 +8786,6 @@ data-importance="2">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/text'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер, меняющий <code>textContent</code> (текстовое содержимое) DOM элемента в зависимости от значения свойства объекта.</p>
 </div>
@@ -8900,7 +8848,7 @@ this.myKey = 'foo'; // установит textContent элемента как "f
 
 <pre><code class="lang-js">this.bindNode('myKey', '.my-element',
     Seemple.binders.text(value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // установит textContent элемента как "Hello, foo"</code></pre>
 
  
@@ -8929,10 +8877,6 @@ data-importance="3">
 </span>
 	</h2>
 	
-	
-	<p class="module">
-		Путь к модулю CommonJS: <code>'seemple/binders/textarea'</code>
-	</p>
 	
 	<div class="summary"><p>Возвращает байндер, связывающий свойство объекта с элементом <code>textarea</code>. Напрямую байндер использовать не обязательно, так как он входит в список <a href="#!Seemple.defaultBinders">Seemple.defaultBinders</a>.</p>
 </div>
