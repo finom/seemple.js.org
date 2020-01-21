@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.prop
-@module seemple/binders/prop
 @importance 2
 @since 0.3
 @summary Повертає байндер, який змінює властивість DOM елемента на значення властивості об'єкта

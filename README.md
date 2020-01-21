@@ -1,6 +1,6 @@
 # [seemple.js.org](https://seemple.js.org) source code [![Build Status](https://travis-ci.org/finom/seemple.js.org.svg)](https://travis-ci.org/finom/seemple.js.org)
 
-<p align="center"><img src="http://i.imgur.com/42Lyr6F.png"></p>
+<p align="center"><img src="https://i.imgur.com/BQFat7T.png"></p>
 
 This repo contains the source code for [Seemple.js](https://github.com/finom/seemple) website.
 

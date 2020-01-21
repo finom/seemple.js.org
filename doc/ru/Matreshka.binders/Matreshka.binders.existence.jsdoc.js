@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.existence
-@module seemple/binders/existence
 @importance 2
 @since 2.3
 @summary Возвращает байндер для одностороннего связывания, переключающий наличие элемента в DOM дереве, в зависимости от значения свойства объекта

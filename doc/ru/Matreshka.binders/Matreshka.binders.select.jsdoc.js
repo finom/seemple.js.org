@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.select
-@module seemple/binders/select
 @importance 3
 @since 0.3
 @summary Возвращает байндер, связывающий свойство объекта с элементом ``select``. Напрямую байндер использовать не обязательно, так как он входит в список {@link Seemple.defaultBinders}.

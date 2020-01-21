@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.dataset
-@module seemple/binders/dataset
 @importance 2
 @since 1.1
 @summary Повертає байндер, який змінює властивість [dataset](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset) DOM элемента в залежності від значення властивості об'єкта.
@@ -15,6 +14,6 @@ this.myKey = 'foo';
 @example <caption>Використання ``mappingFn``</caption>
 this.bindNode('myKey', '.my-element',
     Seemple.binders.dataset('myProp', value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // атрибут data-my-prop має значення "Hello, foo"
 */

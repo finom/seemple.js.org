@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.dataset
-@module seemple/binders/dataset
 @importance 2
 @since 1.1
 @summary Returns a binder which changes given [dataset](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/dataset) property of bound DOM node depending on an object property value.
@@ -15,6 +14,6 @@ this.myKey = 'foo';
 @example <caption>The usage of mapping function</caption>
 this.bindNode('myKey', '.my-element',
     Seemple.binders.dataset('myProp', value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // the attr data-my-prop now has value "Hello, foo"
 */

@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.existence
-@module seemple/binders/existence
 @importance 2
 @since 2.3
 @summary Returns a binder which controls an existence of DOM node at DOM tree depending on an object property value

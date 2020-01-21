@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.attr
-@module seemple/binders/attr
 @importance 2
 @since 0.3
 @summary Возвращает байндер, меняющий атрибут DOM элемента на значение свойства объекта

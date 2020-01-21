@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.html
-@module seemple/binders/html
 @importance 2
 @since 0.1
 @summary Повертає байндер, який змінює ``innerHTML`` DOM елемента в залежності від значення властивості об'єкта
@@ -14,7 +13,7 @@ this.myKey = '<div>foo</div>';
 @example <caption>Використання ``mappingFn``</caption>
 this.bindNode('myKey', '.my-element',
     Seemple.binders.html(value => `Hello, ${value}`));
-    
+
 // встановить innerHTML элемента як "Hello, <div>foo</div>"
 this.myKey = '<div>foo</div>';
 */

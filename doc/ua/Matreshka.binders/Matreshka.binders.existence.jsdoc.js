@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.existence
-@module seemple/binders/existence
 @importance 2
 @since 2.3
 @summary Повертає байндер для одностороннього зв'язування, що перемикає наявність елемента в DOM дереві, в залежності від значення властивості об'єкта

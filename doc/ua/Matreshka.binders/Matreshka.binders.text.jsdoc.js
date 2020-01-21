@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.text
-@module seemple/binders/text
 @importance 2
 @since 1.1
 @summary Повертає байндер, який змінює ``textContent`` (текстовий вміст) DOM елемента в залежності від значення властивості об'єкта.
@@ -13,6 +12,6 @@ this.myKey = 'foo'; // встановить textContent элемента як "f
 @example <caption>Використання ``mappingFn``</caption>
 this.bindNode('myKey', '.my-element',
     Seemple.binders.text(value => `Hello, ${value}`));
-    
+
 this.myKey = 'foo'; // встановить textContent элемента як "Hello, foo"
 */

@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.attr
-@module seemple/binders/attr
 @importance 2
 @since 0.3
 @summary Returns a binder which changes an attribute of DOM node depending on an object property value

@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.display
-@module seemple/binders/display
 @importance 2
 @since 0.1
 @summary Returns a binder which controls a visibility of DOM node (using ``style.display``) depending on an object property value

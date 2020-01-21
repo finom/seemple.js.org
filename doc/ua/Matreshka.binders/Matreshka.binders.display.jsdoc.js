@@ -1,6 +1,5 @@
 /**
 @function Seemple.binders.display
-@module seemple/binders/display
 @importance 2
 @since 0.1
 @summary Повертає байндер для одностороннього зв'язування, який змінює видимість DOM елементу (використовуючи ``style.display``), в залежності від значення властивості об'єкта
