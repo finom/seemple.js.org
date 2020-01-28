@@ -1496,7 +1496,7 @@
 	<span class="nav-heading">Other languages</span>
 	<a href="/ua/" class="another-language"><i></i> Українською</a>
 	<a href="/ru/" class="another-language"><i></i> На русском</a>
-	<a>Last update 21.1.2020</a>
+	<a>Last update 28.1.2020</a>
 </nav>
 
 
@@ -3095,7 +3095,7 @@ data-importance="2">
 <li>If <code>updateCallback</code> function is given, the method calls it with two arguments: current property value and the data which code is trying to assign.</li>
 <li>If given class is inherited from <a href="#!Seemple.Object">Seemple.Object</a>, the instance is updated with new data using <a href="#!Seemple.Object-setData">Seemple.Object#setData</a> method.</li>
 <li>If given class is inherited from <a href="#!Seemple.Array">Seemple.Array</a>, the instance is updated with new data using <a href="#!Seemple.Array-recreate">Seemple.Array#recreate</a> method.</li>
-<li>If <code>updateCallback</code> function isn&#39;t given and the class isn’t inherited from <a href="#!Seemple.Object">Seemple.Object</a> or <a href="#!Seemple.Array">Seemple.Array</a>, the instance is extended by object properties which is trying to to be assigned.</li>
+<li>If <code>updateCallback</code> function isn&#39;t given and the class isn’t inherited from <a href="#!Seemple.Object">Seemple.Object</a> or <a href="#!Seemple.Array">Seemple.Array</a>, the instance is extended by object properties which is trying to be assigned.</li>
 </ul>
 <blockquote>
 <p>A feature of this method is an absence of limitations on the class source. Any function-constructor that can be initialized using <code>new</code> operator and not only <a href="#!Seemple">Seemple</a>&#39;s successors can act as a class.</p>
@@ -3247,7 +3247,7 @@ class App extends Seemple {
 class AppData extends Seemple.Object {
 	constructor(data) {
 		super(data)
-			.inatantiate({
+			.instantiate({
 				friends: Friends,
 				settins: Settings
 			});
