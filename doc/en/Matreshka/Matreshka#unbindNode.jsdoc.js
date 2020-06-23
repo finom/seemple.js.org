@@ -5,7 +5,7 @@
 @fires unbind:KEY
 @summary Destroys a binding between given property and HTML node
 @desc Using this method you can delete the binding between a property and HTML node, which has been added recently and no longer needed.
-@param {string|null} - A key or an array of keys. If you pass ``null`` instead of the key, all bindings for the given instance will be deleted
+@param {string|null} key - A key or an array of keys. If you pass ``null`` instead of the key, all bindings for the given instance will be deleted
 @param {string|node|$nodes} [node] - HTML node
 @param {eventOptions} [eventOptions] -  Event object (``"silent"`` key disables firing the events ``"unbind"`` and ``"unbind:KEY"``)
 @returns {object} self
