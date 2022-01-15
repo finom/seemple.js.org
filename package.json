@@ -46,7 +46,7 @@
     "http-server": "^0.12.1",
     "jsdoc": "^3.6.3",
     "json-loader": "^0.5.7",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "node-sass": "^4.13.0",
     "node-sass-asset-functions": "0.1.0",
     "npm-check-updates": "^4.0.1",
