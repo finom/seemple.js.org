@@ -1,3 +1,7 @@
+# Moved
+
+The site is at [matreshka.js.org](https://matreshka.js.org/); its source is in [finom/matreshka](https://github.com/finom/matreshka/tree/main/docs). seemple.js.org redirects there.
+
 # [seemple.js.org](https://seemple.js.org) source code [![Build Status](https://travis-ci.org/finom/seemple.js.org.svg)](https://travis-ci.org/finom/seemple.js.org)
 
 <p align="center"><img src="https://i.imgur.com/BQFat7T.png"></p>
